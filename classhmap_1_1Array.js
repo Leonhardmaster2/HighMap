@@ -57,6 +57,7 @@ var classhmap_1_1Array =
     [ "linear_index_reverse", "classhmap_1_1Array.html#a15bdceec6c77955e7c4a640f0a231ac7", null ],
     [ "max", "classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9", null ],
     [ "mean", "classhmap_1_1Array.html#a1d0c6960def9d61ed748ee6a787421a5", null ],
+    [ "median", "classhmap_1_1Array.html#aa9708b3da88de03bb156db4b4f7cd263", null ],
     [ "min", "classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556", null ],
     [ "normalize", "classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25", null ],
     [ "normalization_coeff", "classhmap_1_1Array.html#ac368e46495976f11a552ce2a50d5cc6e", null ],

@@ -1234,6 +1234,8 @@ size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{up
 \begin{DoxyCompactList}\small\item\em Returns a shuffled copy of a vector. \end{DoxyCompactList}\item 
 std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a03345527b3df79e1825d2f91d776ba35}{find\+\_\+sign\+\_\+changes}} (const std\+::vector$<$ float $>$ \&data)
 \begin{DoxyCompactList}\small\item\em Returns indices where a sign change occurs in the input vector. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a9f89bb49dba35b60582df3749d8524b8}{compute\+\_\+median}} (std\+::vector$<$ float $>$ values)
+\begin{DoxyCompactList}\small\item\em Computes the median value of a set of floats. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a31a4797a24a40eff0c53d17040327abe}{moving\+\_\+average}} (const std\+::vector$<$ float $>$ \&input, int radius)
 \begin{DoxyCompactList}\small\item\em Smooths a vector using a centered moving average. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ac95d63662a6878f27011c0b4c7c70078}{vector\+\_\+unique\+\_\+values}} (std\+::vector$<$ float $>$ \&v)
@@ -18663,6 +18665,24 @@ A sign change is detected between i-\/1 and i when values have opposite signs.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Indices i where a sign change occurs between data\mbox{[}i-\/1\mbox{]} and data\mbox{[}i\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a9f89bb49dba35b60582df3749d8524b8}\label{namespacehmap_a9f89bb49dba35b60582df3749d8524b8} 
+\index{hmap@{hmap}!compute\_median@{compute\_median}}
+\index{compute\_median@{compute\_median}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{compute\_median()}{compute\_median()}}
+{\footnotesize\ttfamily float hmap\+::compute\+\_\+median (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{values }\end{DoxyParamCaption})}
+
+
+
+Computes the median value of a set of floats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Input values (copied and partially reordered). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Median of the input values. 
 \end{DoxyReturn}
 \Hypertarget{namespacehmap_a31a4797a24a40eff0c53d17040327abe}\label{namespacehmap_a31a4797a24a40eff0c53d17040327abe} 
 \index{hmap@{hmap}!moving\_average@{moving\_average}}

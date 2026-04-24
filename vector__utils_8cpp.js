@@ -1,6 +1,7 @@
 var vector__utils_8cpp =
 [
     [ "argsort", "vector__utils_8cpp.html#a8be122241fa42b0f6a7ef67106391780", null ],
+    [ "compute_median", "vector__utils_8cpp.html#a9f89bb49dba35b60582df3749d8524b8", null ],
     [ "find_sign_changes", "vector__utils_8cpp.html#a03345527b3df79e1825d2f91d776ba35", null ],
     [ "make_histogram", "vector__utils_8cpp.html#a47f7c4ead587ead4a75c9c7f4fc4b079", null ],
     [ "moving_average", "vector__utils_8cpp.html#a31a4797a24a40eff0c53d17040327abe", null ],

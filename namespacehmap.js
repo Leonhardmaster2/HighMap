@@ -934,6 +934,7 @@ var namespacehmap =
     [ "shuffle_vector", "namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5", null ],
     [ "shuffled_vector", "namespacehmap.html#a0520c7ad885d5776f6e06ec12e7f1729", null ],
     [ "find_sign_changes", "namespacehmap.html#a03345527b3df79e1825d2f91d776ba35", null ],
+    [ "compute_median", "namespacehmap.html#a9f89bb49dba35b60582df3749d8524b8", null ],
     [ "moving_average", "namespacehmap.html#a31a4797a24a40eff0c53d17040327abe", null ],
     [ "vector_unique_values", "namespacehmap.html#ac95d63662a6878f27011c0b4c7c70078", null ],
     [ "remap", "namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad", null ],

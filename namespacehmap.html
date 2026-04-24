@@ -1773,6 +1773,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a03345527b3df79e1825d2f91d776ba35" id="r_a03345527b3df79e1825d2f91d776ba35"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a03345527b3df79e1825d2f91d776ba35">find_sign_changes</a> (const std::vector&lt; float &gt; &amp;data)</td></tr>
 <tr class="memdesc:a03345527b3df79e1825d2f91d776ba35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns indices where a sign change occurs in the input vector.  <br /></td></tr>
 <tr class="separator:a03345527b3df79e1825d2f91d776ba35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f89bb49dba35b60582df3749d8524b8" id="r_a9f89bb49dba35b60582df3749d8524b8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9f89bb49dba35b60582df3749d8524b8">compute_median</a> (std::vector&lt; float &gt; values)</td></tr>
+<tr class="memdesc:a9f89bb49dba35b60582df3749d8524b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the median value of a set of floats.  <br /></td></tr>
+<tr class="separator:a9f89bb49dba35b60582df3749d8524b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31a4797a24a40eff0c53d17040327abe" id="r_a31a4797a24a40eff0c53d17040327abe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a31a4797a24a40eff0c53d17040327abe">moving_average</a> (const std::vector&lt; float &gt; &amp;input, int radius)</td></tr>
 <tr class="memdesc:a31a4797a24a40eff0c53d17040327abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smooths a vector using a centered moving average.  <br /></td></tr>
 <tr class="separator:a31a4797a24a40eff0c53d17040327abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4314,7 +4317,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RP_GAIN</a></div><div class="ttdeci">@ RP_GAIN</div><div class="ttdef"><b>Definition</b> math.hpp:67</div></div>
 <div class="ttc" id="anamespacehmap_html_a862fef5e0387bea9358648fc7aa5680b"><div class="ttname"><a href="namespacehmap.html#a862fef5e0387bea9358648fc7aa5680b">hmap::decimate_vw</a></div><div class="ttdeci">Path decimate_vw(const Path &amp;path, int n_points_target=3)</div><div class="ttdoc">Simplifies the current path using the Visvalingam-Whyatt algorithm.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:201</div></div>
 <div class="ttc" id="anamespacehmap_html_aae12be5c22515d12229d65dc4ecd0db0"><div class="ttname"><a href="namespacehmap.html#aae12be5c22515d12229d65dc4ecd0db0">hmap::flatbed_carve</a></div><div class="ttdeci">Array flatbed_carve(glm::ivec2 shape, const Path &amp;path, float bottom_extent=32.f, float vmin=0.1f, float depth=0.05f, float falloff_distance=128.f, float outer_slope=0.1f, bool preserve_bedshape=true, RadialProfile radial_profile=RadialProfile::RP_GAIN, float radial_profile_parameter=2.f, Array *p_falloff_mask=nullptr, const Array *p_noise_r=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Carves a flatbed shape along a path.</div><div class="ttdef"><b>Definition</b> flatbed_carve.cpp:13</div></div>
-<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:166</div></div>
+<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:186</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flatbed_carve.png" alt=""/>
 </div>
@@ -8593,7 +8596,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">                          {z, zs, zc},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:294</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_ab55ee6021288a467f7d782b09e888f25"><div class="ttname"><a href="classhmap_1_1Array.html#ab55ee6021288a467f7d782b09e888f25">hmap::Array::normalize</a></div><div class="ttdeci">void normalize()</div><div class="ttdoc">Normalize array values so that the sum of all elements is equal to 1.</div><div class="ttdef"><b>Definition</b> methods.cpp:299</div></div>
 <div class="ttc" id="anamespacehmap_html_a15951dcd1ef3999591c757944f894e15"><div class="ttname"><a href="namespacehmap.html#a15951dcd1ef3999591c757944f894e15">hmap::convolve2d_svd</a></div><div class="ttdeci">Array convolve2d_svd(const Array &amp;z, const Array &amp;kernel, int rank=3)</div><div class="ttdoc">Return the approximate convolution product of the array with a Singular Value Decomposition (SVD) of ...</div><div class="ttdef"><b>Definition</b> convolve2d_svd.cpp:19</div></div>
 <div class="ttc" id="anamespacehmap_html_ab9b4237b1eef6255e59cc20255757dcf"><div class="ttname"><a href="namespacehmap.html#ab9b4237b1eef6255e59cc20255757dcf">hmap::disk</a></div><div class="ttdeci">Array disk(glm::ivec2 shape)</div><div class="ttdoc">Generates a disk-shaped kernel footprint.</div><div class="ttdef"><b>Definition</b> kernels.cpp:225</div></div>
 <div class="ttc" id="anamespacehmap_html_acf8376b5e40b4373986c9a6b41c02429"><div class="ttname"><a href="namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429">hmap::convolve2d</a></div><div class="ttdeci">Array convolve2d(const Array &amp;array, const Array &amp;kernel)</div><div class="ttdoc">Return the convolution product of the array with a given 2D kernel.</div><div class="ttdef"><b>Definition</b> convolve.cpp:54</div></div>
@@ -27999,7 +28002,7 @@ h}{\partial y}
 <div class="line">                          {alpha0, alpha, alpha_uw},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:289</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a56c77f78e4864f5c6f2cbd6de8100556"><div class="ttname"><a href="classhmap_1_1Array.html#a56c77f78e4864f5c6f2cbd6de8100556">hmap::Array::min</a></div><div class="ttdeci">float min() const</div><div class="ttdoc">Return the value of the smallest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:294</div></div>
 <div class="ttc" id="anamespacehmap_html_a3f8dc201377b61428eba8daa4a03a65f"><div class="ttname"><a href="namespacehmap.html#a3f8dc201377b61428eba8daa4a03a65f">hmap::unwrap_phase</a></div><div class="ttdeci">Array unwrap_phase(const Array &amp;alpha)</div><div class="ttdoc">Unwraps a 2D phase array to correct discontinuities in phase data.</div><div class="ttdef"><b>Definition</b> unwrap_phase.cpp:14</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_unwrap_phase.png" alt=""/>
@@ -30574,6 +30577,33 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Indices i where a sign change occurs between data[i-1] and data[i]. </dd></dl>
+
+</div>
+</div>
+<a id="a9f89bb49dba35b60582df3749d8524b8" name="a9f89bb49dba35b60582df3749d8524b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f89bb49dba35b60582df3749d8524b8">&#9670;&#160;</a></span>compute_median()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::compute_median </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the median value of a set of floats. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>Input values (copied and partially reordered). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Median of the input values. </dd></dl>
 
 </div>
 </div>
@@ -35681,7 +35711,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {mask, z, contour, <a class="code hl_function" href="namespacehmap.html#a339d883dc34fc818dd25077c5daab953">is_non_zero</a>(contour), z * contour},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_aead9df3c2a79ee8bc479b04ca314743e"><div class="ttname"><a href="classhmap_1_1Array.html#aead9df3c2a79ee8bc479b04ca314743e">hmap::Array::resample_to_shape_nearest</a></div><div class="ttdeci">Array resample_to_shape_nearest(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using nearest neighbor interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:389</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_aead9df3c2a79ee8bc479b04ca314743e"><div class="ttname"><a href="classhmap_1_1Array.html#aead9df3c2a79ee8bc479b04ca314743e">hmap::Array::resample_to_shape_nearest</a></div><div class="ttdeci">Array resample_to_shape_nearest(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using nearest neighbor interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:394</div></div>
 <div class="ttc" id="anamespacehmap_html_a2420e66a1e851eff3503d805004495b3"><div class="ttname"><a href="namespacehmap.html#a2420e66a1e851eff3503d805004495b3">hmap::contour_smoothing</a></div><div class="ttdeci">Array contour_smoothing(const Array &amp;array, int ir, float transition_ratio=0.1f)</div><div class="ttdoc">Smooth contour boundaries of segmented regions.</div><div class="ttdef"><b>Definition</b> morphology.cpp:65</div></div>
 <div class="ttc" id="anamespacehmap_html_a339d883dc34fc818dd25077c5daab953"><div class="ttname"><a href="namespacehmap.html#a339d883dc34fc818dd25077c5daab953">hmap::is_non_zero</a></div><div class="ttdeci">Array is_non_zero(const Array &amp;array)</div><div class="ttdoc">Returns a binary mask of non-zero elements.</div><div class="ttdef"><b>Definition</b> math.cpp:188</div></div>
 <div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
@@ -37649,7 +37679,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:368</div></div>
+<div class="ttc" id="aclasshmap_1_1Array_html_a065a69e1a3477f6dd9f8ab88c1af554d"><div class="ttname"><a href="classhmap_1_1Array.html#a065a69e1a3477f6dd9f8ab88c1af554d">hmap::Array::resample_to_shape</a></div><div class="ttdeci">Array resample_to_shape(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using bilinear interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:373</div></div>
 <div class="ttc" id="anamespacehmap_html_a1fb8077215c98a741e0de5366c2f7ca3"><div class="ttname"><a href="namespacehmap.html#a1fb8077215c98a741e0de5366c2f7ca3">hmap::downscale_transform</a></div><div class="ttdeci">void downscale_transform(Array &amp;array, float kc, std::function&lt; void(Array &amp;x)&gt; unary_op, bool apply_prefiltering=false)</div><div class="ttdoc">Applies a downscaling transformation to a 2D array using Fourier-based filtering.</div><div class="ttdef"><b>Definition</b> downscale_transform.cpp:15</div></div>
 </div><!-- fragment --></li>
 </ul>
