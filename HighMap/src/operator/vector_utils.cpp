@@ -27,6 +27,26 @@ std::vector<size_t> argsort(const std::vector<float> &v)
   return idx;
 }
 
+float compute_median(std::vector<float> values)
+{
+  size_t n = values.size();
+  if (n == 0) return 0.f; // or handle error
+
+  size_t mid = n / 2;
+
+  std::nth_element(values.begin(), values.begin() + mid, values.end());
+  float median = values[mid];
+
+  if (n % 2 == 0)
+  {
+    // Need the lower middle value as well
+    std::nth_element(values.begin(), values.begin() + mid - 1, values.end());
+    median = 0.5f * (median + values[mid - 1]);
+  }
+
+  return median;
+}
+
 std::vector<size_t> find_sign_changes(const std::vector<float> &data)
 {
   std::vector<size_t> indices;

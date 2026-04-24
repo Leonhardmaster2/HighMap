@@ -642,6 +642,12 @@ public:
   float mean() const;
 
   /**
+   * @brief Return the median value of the elements in the array.
+   * @return float The median value of the elements in the array.
+   */
+  float median() const;
+
+  /**
    * @brief Return the value of the smallest element in the array.
    *
    *        This function computes the minimum value present in the array. If

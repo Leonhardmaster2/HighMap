@@ -286,6 +286,11 @@ float Array::mean() const
   return this->sum() / (float)this->size();
 };
 
+float Array::median() const
+{
+  return compute_median(this->vector);
+}
+
 float Array::min() const
 {
   return *std::min_element(this->vector.begin(), this->vector.end());
