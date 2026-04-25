@@ -125,49 +125,6 @@ Array base_elevation(glm::ivec2                             shape,
                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief Carves a flatbed shape along a path.
- *
- * Generates a height array by carving a flat-bottomed bed around a path, with a
- * radial profile for the bed shape and an optional outer falloff.
- *
- * @param  shape                    Output array resolution.
- * @param  path                     Path defining the bed centerline.
- * @param  bottom_extent            Radius of the flatbed region.
- * @param  vmin                     Base height value.
- * @param  depth                    Bed depth.
- * @param  falloff_distance         Falloff width outside the bed.
- * @param  outer_slope              Linear slope beyond the bed.
- * @param  preserve_bedshape        Preserve relative bed shape under radial
- *                                  noise.
- * @param  radial_profile           Radial profile type.
- * @param  radial_profile_parameter Shape parameter for the profile.
- * @param  p_falloff_mask           Optional output falloff mask.
- * @param  p_noise_r                Optional radial noise.
- * @param  bbox                     World-space bounding box.
- *
- * @return                          Generated flatbed height array.
- *
- * **Example**
- * @include ex_flatbed_carve.cpp
- *
- * **Result**
- * @image html ex_flatbed_carve.png
- */
-Array flatbed_carve(glm::ivec2    shape,
-                    const Path   &path,
-                    float         bottom_extent = 32.f, // pixels
-                    float         vmin = 0.1f,
-                    float         depth = 0.05f,
-                    float         falloff_distance = 128.f,
-                    float         outer_slope = 0.1f,
-                    bool          preserve_bedshape = true,
-                    RadialProfile radial_profile = RadialProfile::RP_GAIN,
-                    float         radial_profile_parameter = 2.f,
-                    Array        *p_falloff_mask = nullptr,
-                    const Array  *p_noise_r = nullptr,
-                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
  * @brief Apply the reverse midpoint displacement algorithm to the input array.
  *
  * This function implements the reverse midpoint displacement algorithm as
