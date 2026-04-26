@@ -8,7 +8,8 @@ var searchData=
   ['alter_5felevation_2ecpp_5',['alter_elevation.cpp',['../alter__elevation_8cpp.html',1,'']]],
   ['array_2ecpp_6',['array.cpp',['../array_8cpp.html',1,'']]],
   ['array_2ehpp_7',['array.hpp',['../array_8hpp.html',1,'']]],
-  ['assert_2ecpp_8',['assert.cpp',['../assert_8cpp.html',1,'']]],
-  ['assert_2ehpp_9',['assert.hpp',['../assert_8hpp.html',1,'']]],
-  ['authoring_2ehpp_10',['authoring.hpp',['../authoring_8hpp.html',1,'']]]
+  ['array_5ffunctions_2ecpp_8',['array_functions.cpp',['../array__functions_8cpp.html',1,'']]],
+  ['assert_2ecpp_9',['assert.cpp',['../assert_8cpp.html',1,'']]],
+  ['assert_2ehpp_10',['assert.hpp',['../assert_8hpp.html',1,'']]],
+  ['authoring_2ehpp_11',['authoring.hpp',['../authoring_8hpp.html',1,'']]]
 ];

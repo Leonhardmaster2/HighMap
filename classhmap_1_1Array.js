@@ -31,7 +31,6 @@ var classhmap_1_1Array =
     [ "operator()", "classhmap_1_1Array.html#a5299b00bc91a36d8aad629bcd1436d63", null ],
     [ "argmax", "classhmap_1_1Array.html#a9c70ac5b5ca393c53bcc423407572a2b", null ],
     [ "col_to_vector", "classhmap_1_1Array.html#a832a302b58fa7b346df04675a14ad59c", null ],
-    [ "count_non_zero", "classhmap_1_1Array.html#a11949e2b41c869b364bc76129b4efeb4", null ],
     [ "depose_amount_bilinear_at", "classhmap_1_1Array.html#aec532fdab57a1b7571a0e273a567537c", null ],
     [ "depose_amount_kernel_bilinear_at", "classhmap_1_1Array.html#a8bc07abfedb22639797124b951331ddf", null ],
     [ "depose_amount_kernel_at", "classhmap_1_1Array.html#a8c78b70cb181e3e43169b2b4e8d28e55", null ],

@@ -1,6 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"functions_8hpp_source.html":[5,0,1,0,0,22],
 "functions_b.html":[4,3,0,1],
 "functions_c.html":[4,3,0,2],
 "functions_d.html":[4,3,0,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX9 =
 "index.html#autotoc_md2":[0,0],
 "index.html#autotoc_md3":[0,1],
 "index.html#autotoc_md4":[0,1,0],
-"index.html#autotoc_md5":[0,1,1]
+"index.html#autotoc_md5":[0,1,1],
+"index.html#autotoc_md6":[0,1,2]
 };

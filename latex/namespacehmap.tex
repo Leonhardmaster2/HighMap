@@ -488,6 +488,10 @@ glm\+::vec4 \mbox{\hyperlink{namespacehmap_adc5300323fa35e021fd83b8b048ef3b1}{ad
 \item 
 glm\+::vec4 \mbox{\hyperlink{namespacehmap_a65974181387dcb86ae7660a4708b4c09}{adjust}} (const glm\+::vec4 \&v, float dr)
 \item 
+size\+\_\+t \mbox{\hyperlink{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f}{count\+\_\+non\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
+\begin{DoxyCompactList}\small\item\em Count the number of non-\/zero elements in the array. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{namespacehmap_af8950d06447258f6e3fc9daf98e01737}{count\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
+\begin{DoxyCompactList}\small\item\em Count the number of zero elements in the array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a518f05118e1b9704160a7c3276a2f483}{cv\+\_\+mat\+\_\+to\+\_\+array}} (const cv\+::\+Mat \&mat, bool remap\+\_\+values=true, bool flip\+\_\+j=false)
 \begin{DoxyCompactList}\small\item\em Converts an Open\+CV {\ttfamily cv\+::\+Mat} to a 2D {\ttfamily \doxylink{classhmap_1_1Array}{Array}} with optional value scaling to \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Fn $>$ }\\void \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\+\_\+each\+\_\+cell}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, Fn \&\&fn)
@@ -609,10 +613,6 @@ std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{namespacehmap_a2f2ca726f4e4112
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} curvature\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Compute curvature measures on a scalar field. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacehmap_a7d7c20120bea803d47a9a8394007e383}{assert\+\_\+almost\+\_\+equal}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float tolerance=1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const std\+::string \&fname="{}"{}, \mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}p\+\_\+results=nullptr)
-\item 
-size\+\_\+t \mbox{\hyperlink{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f}{count\+\_\+non\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
-\item 
-size\+\_\+t \mbox{\hyperlink{namespacehmap_af8950d06447258f6e3fc9daf98e01737}{count\+\_\+zero}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \item 
 bool \mbox{\hyperlink{namespacehmap_a199fe70937b1653266fe9c9bedc4653d}{is\+\_\+subset}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b)
 \item 
@@ -3040,6 +3040,42 @@ VA\+\_\+\+SINGLE\+\_\+\+ARRAY\+\_\+\+DOWNSCALED&\\
 \doxysubsubsection{\texorpdfstring{adjust()}{adjust()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily glm\+::vec4 hmap\+::adjust (\begin{DoxyParamCaption}\item[{const glm\+::vec4 \&}]{v,  }\item[{float}]{dr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f}\label{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f} 
+\index{hmap@{hmap}!count\_non\_zero@{count\_non\_zero}}
+\index{count\_non\_zero@{count\_non\_zero}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{count\_non\_zero()}{count\_non\_zero()}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::count\+\_\+non\+\_\+zero (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+
+
+
+Count the number of non-\/zero elements in the array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements not equal to 0. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_af8950d06447258f6e3fc9daf98e01737}\label{namespacehmap_af8950d06447258f6e3fc9daf98e01737} 
+\index{hmap@{hmap}!count\_zero@{count\_zero}}
+\index{count\_zero@{count\_zero}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{count\_zero()}{count\_zero()}}
+{\footnotesize\ttfamily size\+\_\+t hmap\+::count\+\_\+zero (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+
+
+
+Count the number of zero elements in the array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements equal to 0. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a518f05118e1b9704160a7c3276a2f483}\label{namespacehmap_a518f05118e1b9704160a7c3276a2f483} 
 \index{hmap@{hmap}!cv\_mat\_to\_array@{cv\_mat\_to\_array}}
 \index{cv\_mat\_to\_array@{cv\_mat\_to\_array}!hmap@{hmap}}
@@ -6201,18 +6237,6 @@ Computes various curvature descriptors from the input array {\ttfamily z}. If {\
 \index{assert\_almost\_equal@{assert\_almost\_equal}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{assert\_almost\_equal()}{assert\_almost\_equal()}}
 {\footnotesize\ttfamily bool hmap\+::assert\+\_\+almost\+\_\+equal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{b,  }\item[{float}]{tolerance = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const std\+::string \&}]{fname = {\ttfamily "{}"{}},  }\item[{\mbox{\hyperlink{structhmap_1_1AssertResults}{Assert\+Results}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+results = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f}\label{namespacehmap_a98feadac2cf9a77dbaa715d5aee4803f} 
-\index{hmap@{hmap}!count\_non\_zero@{count\_non\_zero}}
-\index{count\_non\_zero@{count\_non\_zero}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{count\_non\_zero()}{count\_non\_zero()}}
-{\footnotesize\ttfamily size\+\_\+t hmap\+::count\+\_\+non\+\_\+zero (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_af8950d06447258f6e3fc9daf98e01737}\label{namespacehmap_af8950d06447258f6e3fc9daf98e01737} 
-\index{hmap@{hmap}!count\_zero@{count\_zero}}
-\index{count\_zero@{count\_zero}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{count\_zero()}{count\_zero()}}
-{\footnotesize\ttfamily size\+\_\+t hmap\+::count\+\_\+zero (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a199fe70937b1653266fe9c9bedc4653d}\label{namespacehmap_a199fe70937b1653266fe9c9bedc4653d} 
 \index{hmap@{hmap}!is\_subset@{is\_subset}}

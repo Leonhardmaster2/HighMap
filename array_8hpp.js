@@ -2,6 +2,8 @@ var array_8hpp =
 [
     [ "hmap::Array", "classhmap_1_1Array.html", "classhmap_1_1Array" ],
     [ "uint", "array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14", null ],
+    [ "count_non_zero", "array_8hpp.html#a98feadac2cf9a77dbaa715d5aee4803f", null ],
+    [ "count_zero", "array_8hpp.html#af8950d06447258f6e3fc9daf98e01737", null ],
     [ "cv_mat_to_array", "array_8hpp.html#a518f05118e1b9704160a7c3276a2f483", null ],
     [ "for_each_cell", "array_8hpp.html#a05ee0ea53f1a06ac43741f11e25ec2cc", null ],
     [ "for_each_cell", "array_8hpp.html#a8a43091b3356d69271fa6d185f5bdcbe", null ],
