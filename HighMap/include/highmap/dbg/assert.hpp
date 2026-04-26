@@ -41,9 +41,6 @@ bool assert_almost_equal(const Array       &a,
                          const std::string &fname = "",
                          AssertResults     *p_results = nullptr);
 
-size_t count_non_zero(const Array &array);
-size_t count_zero(const Array &array);
-
 // true if all non-zero pixels of a are also non-zero in b
 bool is_subset(const Array &a, const Array &b);
 

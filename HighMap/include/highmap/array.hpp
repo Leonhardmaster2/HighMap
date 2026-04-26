@@ -306,13 +306,6 @@ public:
   std::vector<float> col_to_vector(int j);
 
   /**
-   * @brief Return the number of non-zero elements in the array.
-   *
-   * @return int The number of non-zero elements.
-   */
-  int count_non_zero();
-
-  /**
    * @brief Distribute a value 'amount' around the four cells (i, j), (i + 1,
    * j), (i, j + 1), (i + 1, j + 1) by "reversing" the bilinear interpolation.
    *
@@ -997,6 +990,24 @@ public:
   std::vector<float> unique_values() const;
 };
 
+// ==========================================================================
+//  Functions
+// ==========================================================================
+
+/**
+ * @brief Count the number of non-zero elements in the array.
+ * @param array Input array.
+ * @return Number of elements not equal to 0.
+ */
+size_t count_non_zero(const Array &array);
+
+/**
+ * @brief Count the number of zero elements in the array.
+ * @param array Input array.
+ * @return Number of elements equal to 0.
+ */
+size_t count_zero(const Array &array);
+
 /**
  * @brief Converts an OpenCV `cv::Mat` to a 2D `Array` with optional value
  * scaling to \[0, 1\].
@@ -1025,9 +1036,9 @@ Array cv_mat_to_array(const cv::Mat &mat,
                       bool           remap_values = true,
                       bool           flip_j = false);
 
-//-----------------------------------
+// ==========================================================================
 // per cell operations wrapper(s)
-//-----------------------------------
+// ==========================================================================
 
 /// Apply a function to every cell (mutable).
 template <typename Fn> inline void for_each_cell(Array &a, Fn &&fn)

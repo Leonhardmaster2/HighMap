@@ -215,7 +215,7 @@ Array skeleton(const Array &array, bool zero_at_borders)
 
     diff = sk - prev;
 
-  } while (diff.count_non_zero() > 0);
+  } while (count_non_zero(diff) > 0);
 
   // remove padding
   sk = sk.extract_slice({1, sk.shape.x - 1, 1, sk.shape.y - 1});
