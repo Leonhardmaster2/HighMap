@@ -40,15 +40,17 @@ void coastal_erosion_diffusion(Array &z,
   if (p_water_mask) *p_water_mask = mask;
 }
 
-void coastal_erosion_profile(Array &z,
-                             Array &water_depth,
-                             float  shore_ground_extent,
-                             float  shore_water_extent,
-                             float  slope_shore,
-                             float  slope_shore_water,
-                             float  scarp_extent_ratio,
-                             bool   apply_post_filter,
-                             Array *p_shore_mask)
+void coastal_erosion_profile(Array       &z,
+                             Array       &water_depth,
+                             float        shore_ground_extent,
+                             float        shore_water_extent,
+                             float        slope_shore,
+                             float        slope_shore_water,
+                             float        scarp_extent_ratio,
+                             bool         apply_post_filter,
+                             int          post_filter_iterations,
+                             const Array *p_noise,
+                             Array       *p_shore_mask)
 {
   Array           z_bckp = z;
   Array           shore_mask(z.shape); // includes ground & water
@@ -69,8 +71,10 @@ void coastal_erosion_profile(Array &z,
       {
         // --- ground
 
+        float dr = p_noise ? (*p_noise)(i, j) : 0.f;
+
         // transition factor
-        float t = r_ground(i, j) / shore_ground_extent;
+        float t = r_ground(i, j) / (shore_ground_extent * (1.f + dr));
 
         if (t <= 1.f)
         {
@@ -122,7 +126,12 @@ void coastal_erosion_profile(Array &z,
       }
     }
 
-  if (apply_post_filter) laplace(z, &shore_mask);
+  // postprocessing - filter numerical artifacts
+  if (apply_post_filter)
+  {
+    Array mask = threshold_smooth(shore_mask, 0.f, scarp_extent_ratio);
+    laplace(z, &mask, 0.125f, post_filter_iterations);
+  }
 
   // adjust water depth so that water height is the same as before
   // filtering
@@ -146,6 +155,8 @@ void coastal_erosion_profile(Array       &z,
                              float        slope_shore_water,
                              float        scarp_extent_ratio,
                              bool         apply_post_filter,
+                             int          post_filter_iterations,
+                             const Array *p_noise,
                              Array       *p_shore_mask)
 {
   if (!p_mask)
@@ -157,6 +168,8 @@ void coastal_erosion_profile(Array       &z,
                             slope_shore_water,
                             scarp_extent_ratio,
                             apply_post_filter,
+                            post_filter_iterations,
+                            p_noise,
                             p_shore_mask);
   else
   {
@@ -169,6 +182,8 @@ void coastal_erosion_profile(Array       &z,
                             slope_shore_water,
                             scarp_extent_ratio,
                             apply_post_filter,
+                            post_filter_iterations,
+                            p_noise,
                             p_shore_mask);
     z = lerp(z, z_f, *(p_mask));
   }

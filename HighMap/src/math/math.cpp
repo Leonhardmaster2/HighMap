@@ -495,6 +495,40 @@ Array sqrt_safe(const Array &array)
   return array_out;
 }
 
+float threshold(float x, float x0, float x1)
+{
+  if (x < x0) return 0.f;
+  if (x < x1) return (x - x0) / (x1 - x0);
+  return 1.f;
+}
+
+Array threshold(const Array &x, float x0, float x1)
+{
+  Array array_out = Array(x.shape);
+  std::transform(x.vector.begin(),
+                 x.vector.end(),
+                 array_out.vector.begin(),
+                 [x0, x1](float v) { return threshold(v, x0, x1); });
+  return array_out;
+}
+
+float threshold_smooth(float x, float x0, float x1)
+{
+  if (x < x0) return 0.f;
+  if (x < x1) return smoothstep3((x - x0) / (x1 - x0));
+  return 1.f;
+}
+
+Array threshold_smooth(const Array &x, float x0, float x1)
+{
+  Array array_out = Array(x.shape);
+  std::transform(x.vector.begin(),
+                 x.vector.end(),
+                 array_out.vector.begin(),
+                 [x0, x1](float v) { return threshold_smooth(v, x0, x1); });
+  return array_out;
+}
+
 float triangle(float x, float vmin, float vmax)
 {
   if (x <= vmin || x >= vmax) return 0.f;
@@ -504,4 +538,5 @@ float triangle(float x, float vmin, float vmax)
 
   return 1.f - std::abs((x - mid) / half_width);
 }
+
 } // namespace hmap

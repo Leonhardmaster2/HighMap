@@ -151,7 +151,9 @@ void coastal_erosion_profile(Array &z,
                              float  slope_shore_water = 0.5f,
                              float  scarp_extent_ratio = 0.5f, // in [0, 1]
                              bool   apply_post_filter = true,
-                             Array *p_shore_mask = nullptr);
+                             int    post_filter_iterations = 3,
+                             const Array *p_noise = nullptr,
+                             Array       *p_shore_mask = nullptr);
 
 void coastal_erosion_profile(Array       &z,
                              const Array *p_mask,
@@ -160,9 +162,11 @@ void coastal_erosion_profile(Array       &z,
                              float        shore_water_extent,
                              float        slope_shore = 0.5f,
                              float        slope_shore_water = 0.5f,
-                             float  scarp_extent_ratio = 0.5f, // in [0, 1]
-                             bool   apply_post_filter = true,
-                             Array *p_shore_mask = nullptr);
+                             float scarp_extent_ratio = 0.5f, // in [0, 1]
+                             bool  apply_post_filter = true,
+                             int   post_filter_iterations = 3,
+                             const Array *p_noise = nullptr,
+                             Array       *p_shore_mask = nullptr);
 
 /**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
