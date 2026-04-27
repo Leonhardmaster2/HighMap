@@ -46,10 +46,10 @@ enum DistanceTransformType : int
  * @return                  Array with small components removed.
  *
  * **Example**
- * @include ex_area_remove.cpp
+ * @include ex_area_remove_fill.cpp
  *
  * **Result**
- * @image html ex_area_remove.png
+ * @image html ex_area_remove_fill.png
  *
  * See unit tests: @ref test_area_remove.cpp
  */
