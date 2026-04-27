@@ -50,6 +50,8 @@ enum DistanceTransformType : int
  *
  * **Result**
  * @image html ex_area_remove.png
+ *
+ * See unit tests: @ref test_area_remove.cpp
  */
 Array area_remove(const Array &array,
                   float        threshold_size,
