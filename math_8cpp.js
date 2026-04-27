@@ -48,5 +48,9 @@ var math_8cpp =
     [ "smoothstep7", "math_8cpp.html#af37d772a8b2ab47144d459fd35aaf7dc", null ],
     [ "sqrt", "math_8cpp.html#a6b608e2826c1f9ba54a0e8922d5faa6b", null ],
     [ "sqrt_safe", "math_8cpp.html#a30e6961ce99edeb86af6f4ce61651bd0", null ],
+    [ "threshold", "math_8cpp.html#a2752dc48a6d7bac9d3798033d1e7b3dd", null ],
+    [ "threshold", "math_8cpp.html#a4aca9463a5f708bb66040f866cb002be", null ],
+    [ "threshold_smooth", "math_8cpp.html#ab565b6dd40d712a5ebc3170e13a1cceb", null ],
+    [ "threshold_smooth", "math_8cpp.html#a2385e9d8a207cf88d0b76cdd5aec3317", null ],
     [ "triangle", "math_8cpp.html#adce0295b768dd046d1ddcd117cb1b8b4", null ]
 ];
