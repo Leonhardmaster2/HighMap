@@ -47,6 +47,8 @@ class Graph;
  * adding points, calculating the centroid, merging with other point clouds, and
  * more. This class is useful for applications involving point cloud processing,
  * geometric computations, and spatial analysis.
+ *
+ * See unit tests: @ref test_cloud.cpp
  */
 class Cloud
 {

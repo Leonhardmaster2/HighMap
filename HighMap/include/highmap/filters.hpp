@@ -326,7 +326,7 @@ Array faceted(const Array &array,
  * **Result**
  * @image html ex_fill_talus.png
  *
- * @see               {@link thermal_scree}, {@link thermal_scree_fast}
+ * See unit tests: @ref test_fill_talus.cpp
  */
 void fill_talus(Array       &z,
                 float        talus,

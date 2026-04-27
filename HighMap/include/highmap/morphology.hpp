@@ -183,6 +183,8 @@ Array dilation_expand_min_value_border_only(const Array &array);
  * @image html ex_distance_transform2.png
  * @image html ex_distance_transform3.png
  * @image html ex_distance_transform4.png
+ *
+ * See unit tests: @ref test_distance_transform.cpp
  */
 Array distance_transform(const Array &array,
                          bool         return_squared_distance = false);
@@ -206,6 +208,8 @@ Array distance_transform(const Array &array,
  * @image html ex_distance_transform2.png
  * @image html ex_distance_transform3.png
  * @image html ex_distance_transform4.png
+ *
+ * See unit tests: @ref test_distance_transform.cpp
  */
 Array distance_transform_approx(const Array &array,
                                 bool         return_squared_distance = false);
@@ -228,6 +232,8 @@ Array distance_transform_approx(const Array &array,
  * @image html ex_distance_transform2.png
  * @image html ex_distance_transform3.png
  * @image html ex_distance_transform4.png
+ *
+ * See unit tests: @ref test_distance_transform.cpp
  */
 Array distance_transform_manhattan(const Array &array,
                                    bool return_squared_distance = false);
@@ -243,6 +249,8 @@ Array distance_transform_manhattan(const Array &array,
  * @param  return_squared_distance Whether the distance returned is squared or
  *                                 not.
  * @return                         Array Reference to the output array.
+ *
+ * See unit tests: @ref test_distance_transform.cpp
  */
 Array distance_transform_with_closest(const Array     &array,
                                       Mat<glm::ivec2> &closest,
@@ -261,6 +269,8 @@ Array distance_transform_with_closest(const Array     &array,
  *
  * **Result**
  * @image html ex_morphology_base.png
+ *
+ * See unit tests: @ref test_erosion.cpp
  */
 Array erosion(const Array &array, int ir);
 

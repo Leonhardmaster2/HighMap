@@ -79,6 +79,8 @@ namespace hmap
  * **Result**
  * @image html ex_connected_components0.png
  * @image html ex_connected_components1.png
+ *
+ * See unit tests: @ref test_connected_components.cpp
  */
 Array connected_components(
     const Array                           &array,

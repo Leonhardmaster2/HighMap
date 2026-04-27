@@ -433,6 +433,8 @@ enum LocalMetrics : int
  *
  * **Result**
  * @image html ex_local_metrics.png
+ *
+ * See unit tests: @ref test_local_metrics.cpp
  */
 Array local_metrics(const Array &array, int ir, LocalMetrics metric);
 

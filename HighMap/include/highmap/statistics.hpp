@@ -26,6 +26,8 @@ namespace hmap
  *
  * **Example**
  * @include ex_cautocorr_length_scale.cpp
+ *
+ * See unit tests: @ref test_autocorr_length_scale.cpp
  */
 float autocorr_length_scale(const Array &array, float max_lag_fraction = 0.4f);
 
@@ -39,6 +41,8 @@ float autocorr_length_scale(const Array &array, float max_lag_fraction = 0.4f);
  * @param  array            Input 2D heightmap, accessed via array(i, j).
  * @param  max_lag_fraction Search range as a fraction of each axis length.
  * @return                  {scale_i, scale_j} length scales in grid cells.
+ *
+ * See unit tests: @ref test_autocorr_length_scale.cpp
  */
 glm::vec2 autocorr_length_scale_axial(const Array &array,
                                       float        max_lag_fraction = 0.4f);
@@ -50,6 +54,8 @@ glm::vec2 autocorr_length_scale_axial(const Array &array,
  * @param  p_mean Pointer to a precomputed mean (avoids recomputation); if null,
  *                the mean is computed internally.
  * @return        Population variance.
+ *
+ * See unit tests: @ref test_variance.cpp
  */
 float variance(const Array &array, float *p_mean = nullptr);
 

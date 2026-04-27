@@ -16,6 +16,8 @@ namespace hmap
 /**
  * @class Point
  * @brief A class to represent and manipulate 2D points that can carry a value.
+ *
+ * See unit tests: @ref test_point.cpp
  */
 class Point
 {

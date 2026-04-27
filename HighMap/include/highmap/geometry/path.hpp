@@ -578,6 +578,8 @@ Path decasteljau(
  *
  * **Result**
  * @image html ex_path_decimate.png
+ *
+ * See unit tests: @ref test_decimate_vw.cpp
  */
 Path decimate_vw(const Path &path, int n_points_target = 3);
 
