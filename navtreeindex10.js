@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"index.html#autotoc_md17":[0,2],
+"index.html#autotoc_md2":[0,0],
 "index.html#autotoc_md3":[0,1],
 "index.html#autotoc_md4":[0,1,0],
 "index.html#autotoc_md5":[0,1,1],
@@ -244,10 +246,8 @@ var NAVTREEINDEX10 =
 "local__metrics__wrapper_8cpp.html":[5,0,1,1,22,2],
 "local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d":[5,0,1,1,22,2,0],
 "lru__tile__storage_8cpp.html":[5,0,1,1,41,3],
-"math_8cpp.html":[5,0,1,1,23,1],
-"math_8cpp.html#a03359e722d96524598aa525022317c95":[5,0,1,1,23,1,29],
-"math_8cpp.html#a0aa2c50266e16cf5af077e4e3f77bd8f":[5,0,1,1,23,1,28],
-"math_8cpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6":[5,0,1,1,23,1,14],
-"math_8cpp.html#a105e497c433e14b4235534ae6d2b87b9":[5,0,1,1,23,1,24],
-"math_8cpp.html#a14833c6f5d5f2546447ead949b571c2c":[5,0,1,1,23,1,10]
+"main_8cpp.html":[5,0,2,0,0],
+"main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627":[5,0,2,0,0,1],
+"main_8cpp.html#a4a24013b5fd4fa30708c51c72fcc9b56":[5,0,2,0,0,0],
+"math_8cpp.html":[5,0,1,1,23,1]
 };
