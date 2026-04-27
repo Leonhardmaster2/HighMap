@@ -17,11 +17,13 @@ var searchData=
   ['snow_5fsimulation_2ecpp_14',['snow_simulation.cpp',['../snow__simulation_8cpp.html',1,'']]],
   ['solve_5fpoisson_5fgauss_5fseidel_2ecpp_15',['solve_poisson_gauss_seidel.cpp',['../solve__poisson__gauss__seidel_8cpp.html',1,'']]],
   ['stamping_2ecpp_16',['stamping.cpp',['../stamping_8cpp.html',1,'']]],
-  ['stitching_5fhelpers_2ecpp_17',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
-  ['strata_5fgpu_2ecpp_18',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
-  ['stratify_2ecpp_19',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
-  ['string_5futils_2ecpp_20',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
-  ['string_5futils_2ehpp_21',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
-  ['swirl_2ecpp_22',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
-  ['synthesis_2ehpp_23',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
+  ['statistics_2ecpp_17',['statistics.cpp',['../statistics_8cpp.html',1,'']]],
+  ['statistics_2ehpp_18',['statistics.hpp',['../statistics_8hpp.html',1,'']]],
+  ['stitching_5fhelpers_2ecpp_19',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
+  ['strata_5fgpu_2ecpp_20',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
+  ['stratify_2ecpp_21',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
+  ['string_5futils_2ecpp_22',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
+  ['string_5futils_2ehpp_23',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
+  ['swirl_2ecpp_24',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
+  ['synthesis_2ehpp_25',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
 ];

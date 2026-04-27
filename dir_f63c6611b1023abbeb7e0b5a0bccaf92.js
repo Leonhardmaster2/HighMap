@@ -35,6 +35,7 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "selector", "dir_1cba66e80ee4896e7c0cfb585594799d.html", "dir_1cba66e80ee4896e7c0cfb585594799d" ],
     [ "shadows", "dir_a54b96d09e8bf6dd337a4445ce02c047.html", "dir_a54b96d09e8bf6dd337a4445ce02c047" ],
     [ "shortest_path", "dir_9d90790234575969b5cab0bca7d85e6c.html", "dir_9d90790234575969b5cab0bca7d85e6c" ],
+    [ "statistics", "dir_fa90668d6095963db6268b5c70060e00.html", "dir_fa90668d6095963db6268b5c70060e00" ],
     [ "synthesis", "dir_8760b9dc8be054badb91ad7be8102a42.html", "dir_8760b9dc8be054badb91ad7be8102a42" ],
     [ "tensor", "dir_587de0fe1254c61fb078abd0f5f64ed3.html", "dir_587de0fe1254c61fb078abd0f5f64ed3" ],
     [ "terrain_tri_mesh", "dir_28d1f6f5761f5c8b206221dff91b5473.html", "dir_28d1f6f5761f5c8b206221dff91b5473" ],

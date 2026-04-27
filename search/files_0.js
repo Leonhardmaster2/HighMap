@@ -11,5 +11,6 @@ var searchData=
   ['array_5ffunctions_2ecpp_8',['array_functions.cpp',['../array__functions_8cpp.html',1,'']]],
   ['assert_2ecpp_9',['assert.cpp',['../assert_8cpp.html',1,'']]],
   ['assert_2ehpp_10',['assert.hpp',['../assert_8hpp.html',1,'']]],
-  ['authoring_2ehpp_11',['authoring.hpp',['../authoring_8hpp.html',1,'']]]
+  ['authoring_2ehpp_11',['authoring.hpp',['../authoring_8hpp.html',1,'']]],
+  ['autocorr_5flength_5fscale_2ecpp_12',['autocorr_length_scale.cpp',['../autocorr__length__scale_8cpp.html',1,'']]]
 ];

@@ -1768,6 +1768,12 @@ void \mbox{\hyperlink{namespacehmap_a96d3c2fa385b510ee723e9074dfaa194}{find\+\_\
 \item 
 std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_acfb2652ac666e36a3a47c1673d4e486b}{find\+\_\+path\+\_\+midpoint}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, glm\+::ivec2 ij\+\_\+start, glm\+::ivec2 ij\+\_\+end, float offset\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int max\+\_\+it=0, int steps=16)
 \begin{DoxyCompactList}\small\item\em Compute a path between two points using iterative midpoint refinement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40}{autocorr\+\_\+length\+\_\+scale}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float max\+\_\+lag\+\_\+fraction=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Estimate the isotropic dominant length scale of a 2D heightmap. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{namespacehmap_ab83b1277c6a2909787cd39988d9f762b}{autocorr\+\_\+length\+\_\+scale\+\_\+axial}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float max\+\_\+lag\+\_\+fraction=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Estimate axis-\/aligned dominant length scales of a 2D heightmap. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}{variance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \texorpdfstring{$\ast$}{*}p\+\_\+mean=nullptr)
+\begin{DoxyCompactList}\small\item\em Compute the population variance of a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}{non\+\_\+parametric\+\_\+sampling}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::ivec2 patch\+\_\+shape, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float error\+\_\+threshold=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Synthesize a new heightmap based on an input array using a non-\/parametric sampling method. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9f1bfc155429e75866df0a713a4e68a0}{quilting}} (const std\+::vector$<$ const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ \&p\+\_\+arrays, glm\+::ivec2 patch\+\_\+base\+\_\+shape, glm\+::ivec2 tiling, float overlap, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ secondary\+\_\+arrays=\{\}, bool patch\+\_\+flip=true, bool patch\+\_\+rotate=true, bool patch\+\_\+transpose=true, float filter\+\_\+width\+\_\+ratio=0.\+25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -29206,7 +29212,75 @@ Vector of grid indices forming the path.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}\label{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40}\label{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40} 
+\index{hmap@{hmap}!autocorr\_length\_scale@{autocorr\_length\_scale}}
+\index{autocorr\_length\_scale@{autocorr\_length\_scale}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{autocorr\_length\_scale()}{autocorr\_length\_scale()}}
+{\footnotesize\ttfamily float hmap\+::autocorr\+\_\+length\+\_\+scale (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{max\+\_\+lag\+\_\+fraction = {\ttfamily 0.4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Estimate the isotropic dominant length scale of a 2D heightmap. 
+
+Computes the e-\/folding lag of the autocorrelation function (averaged over i and j directions) via binary search. Returns {\ttfamily max(ni, nj)} for flat arrays.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input 2D heightmap, accessed via array(i, j). \\
+\hline
+{\em max\+\_\+lag\+\_\+fraction} & Search range as a fraction of the shorter dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length scale in grid cells.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ \Hypertarget{namespacehmap_ab83b1277c6a2909787cd39988d9f762b}\label{namespacehmap_ab83b1277c6a2909787cd39988d9f762b} 
+\index{hmap@{hmap}!autocorr\_length\_scale\_axial@{autocorr\_length\_scale\_axial}}
+\index{autocorr\_length\_scale\_axial@{autocorr\_length\_scale\_axial}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{autocorr\_length\_scale\_axial()}{autocorr\_length\_scale\_axial()}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::autocorr\+\_\+length\+\_\+scale\+\_\+axial (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{max\+\_\+lag\+\_\+fraction = {\ttfamily 0.4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Estimate axis-\/aligned dominant length scales of a 2D heightmap. 
+
+Independently computes the e-\/folding autocorrelation lag along the i and j grid axes. Use when the field is anisotropic but aligned with the grid. Returns {\ttfamily \{ni, nj\}} for flat arrays.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input 2D heightmap, accessed via array(i, j). \\
+\hline
+{\em max\+\_\+lag\+\_\+fraction} & Search range as a fraction of each axis length. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{scale\+\_\+i, scale\+\_\+j\} length scales in grid cells. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}\label{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa} 
+\index{hmap@{hmap}!variance@{variance}}
+\index{variance@{variance}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{variance()}{variance()}}
+{\footnotesize\ttfamily float hmap\+::variance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float \texorpdfstring{$\ast$}{*}}]{p\+\_\+mean = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Compute the population variance of a 2D array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input 2D array, accessed via array(i, j). \\
+\hline
+{\em p\+\_\+mean} & Pointer to a precomputed mean (avoids recomputation); if null, the mean is computed internally. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Population variance. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}\label{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0} 
 \index{hmap@{hmap}!non\_parametric\_sampling@{non\_parametric\_sampling}}
 \index{non\_parametric\_sampling@{non\_parametric\_sampling}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{non\_parametric\_sampling()}{non\_parametric\_sampling()}}

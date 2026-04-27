@@ -2553,6 +2553,15 @@ Functions</h2></td></tr>
 <tr class="memitem:acfb2652ac666e36a3a47c1673d4e486b" id="r_acfb2652ac666e36a3a47c1673d4e486b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::ivec2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acfb2652ac666e36a3a47c1673d4e486b">find_path_midpoint</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, glm::ivec2 ij_start, glm::ivec2 ij_end, float offset_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int max_it=0, int steps=16)</td></tr>
 <tr class="memdesc:acfb2652ac666e36a3a47c1673d4e486b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a path between two points using iterative midpoint refinement.  <br /></td></tr>
 <tr class="separator:acfb2652ac666e36a3a47c1673d4e486b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414c6fe47e8dadbab8ad532a0538be40" id="r_a414c6fe47e8dadbab8ad532a0538be40"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a414c6fe47e8dadbab8ad532a0538be40">autocorr_length_scale</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float max_lag_fraction=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a414c6fe47e8dadbab8ad532a0538be40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate the isotropic dominant length scale of a 2D heightmap.  <br /></td></tr>
+<tr class="separator:a414c6fe47e8dadbab8ad532a0538be40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab83b1277c6a2909787cd39988d9f762b" id="r_ab83b1277c6a2909787cd39988d9f762b"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab83b1277c6a2909787cd39988d9f762b">autocorr_length_scale_axial</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float max_lag_fraction=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:ab83b1277c6a2909787cd39988d9f762b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate axis-aligned dominant length scales of a 2D heightmap.  <br /></td></tr>
+<tr class="separator:ab83b1277c6a2909787cd39988d9f762b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec6ff7b54fb5d02804aa8de94bcd4caa" id="r_aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aec6ff7b54fb5d02804aa8de94bcd4caa">variance</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float *p_mean=nullptr)</td></tr>
+<tr class="memdesc:aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the population variance of a 2D array.  <br /></td></tr>
+<tr class="separator:aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7064111b8b50fd4e29928e6d3f5e10f0" id="r_a7064111b8b50fd4e29928e6d3f5e10f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7064111b8b50fd4e29928e6d3f5e10f0">non_parametric_sampling</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, glm::ivec2 patch_shape, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float error_threshold=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a7064111b8b50fd4e29928e6d3f5e10f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synthesize a new heightmap based on an input array using a non-parametric sampling method.  <br /></td></tr>
 <tr class="separator:a7064111b8b50fd4e29928e6d3f5e10f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -48809,6 +48818,122 @@ off" values that fall below the threshold, which can be useful for filtering out
 <img src="ex_find_path_midpoint.png" alt=""/>
 </div>
  
+</div>
+</div>
+<a id="a414c6fe47e8dadbab8ad532a0538be40" name="a414c6fe47e8dadbab8ad532a0538be40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414c6fe47e8dadbab8ad532a0538be40">&#9670;&#160;</a></span>autocorr_length_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::autocorr_length_scale </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_lag_fraction</em> = <code>0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estimate the isotropic dominant length scale of a 2D heightmap. </p>
+<p>Computes the e-folding lag of the autocorrelation function (averaged over i and j directions) via binary search. Returns <code>max(ni, nj)</code> for flat arrays.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input 2D heightmap, accessed via array(i, j). </td></tr>
+    <tr><td class="paramname">max_lag_fraction</td><td>Search range as a fraction of the shorter dimension. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Length scale in grid cells.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"></div><!-- fragment --> 
+</div>
+</div>
+<a id="ab83b1277c6a2909787cd39988d9f762b" name="ab83b1277c6a2909787cd39988d9f762b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab83b1277c6a2909787cd39988d9f762b">&#9670;&#160;</a></span>autocorr_length_scale_axial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 hmap::autocorr_length_scale_axial </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_lag_fraction</em> = <code>0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estimate axis-aligned dominant length scales of a 2D heightmap. </p>
+<p>Independently computes the e-folding autocorrelation lag along the i and j grid axes. Use when the field is anisotropic but aligned with the grid. Returns <code>{ni, nj}</code> for flat arrays.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input 2D heightmap, accessed via array(i, j). </td></tr>
+    <tr><td class="paramname">max_lag_fraction</td><td>Search range as a fraction of each axis length. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{scale_i, scale_j} length scales in grid cells. </dd></dl>
+
+</div>
+</div>
+<a id="aec6ff7b54fb5d02804aa8de94bcd4caa" name="aec6ff7b54fb5d02804aa8de94bcd4caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec6ff7b54fb5d02804aa8de94bcd4caa">&#9670;&#160;</a></span>variance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::variance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>p_mean</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the population variance of a 2D array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>Input 2D array, accessed via array(i, j). </td></tr>
+    <tr><td class="paramname">p_mean</td><td>Pointer to a precomputed mean (avoids recomputation); if null, the mean is computed internally. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Population variance. </dd></dl>
+
 </div>
 </div>
 <a id="a7064111b8b50fd4e29928e6d3f5e10f0" name="a7064111b8b50fd4e29928e6d3f5e10f0"></a>
