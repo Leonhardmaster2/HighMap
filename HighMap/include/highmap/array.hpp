@@ -996,15 +996,15 @@ public:
 
 /**
  * @brief Count the number of non-zero elements in the array.
- * @param array Input array.
- * @return Number of elements not equal to 0.
+ * @param  array Input array.
+ * @return       Number of elements not equal to 0.
  */
 size_t count_non_zero(const Array &array);
 
 /**
  * @brief Count the number of zero elements in the array.
- * @param array Input array.
- * @return Number of elements equal to 0.
+ * @param  array Input array.
+ * @return       Number of elements equal to 0.
  */
 size_t count_zero(const Array &array);
 

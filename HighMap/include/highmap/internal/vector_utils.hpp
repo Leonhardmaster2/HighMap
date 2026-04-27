@@ -109,8 +109,8 @@ std::vector<size_t> find_sign_changes(const std::vector<float> &data);
 
 /**
  * @brief Computes the median value of a set of floats.
- * @param values Input values (copied and partially reordered).
- * @return Median of the input values.
+ * @param  values Input values (copied and partially reordered).
+ * @return        Median of the input values.
  */
 float compute_median(std::vector<float> values);
 

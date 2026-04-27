@@ -57,6 +57,7 @@
 #include "highmap/selector.hpp"
 #include "highmap/shadows.hpp"
 #include "highmap/shortest_path.hpp"
+#include "highmap/statistics.hpp"
 #include "highmap/synthesis.hpp"
 #include "highmap/tensor.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
