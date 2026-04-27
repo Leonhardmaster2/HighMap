@@ -21238,6 +21238,30 @@ Detects connected regions in the input array and removes those whose area is sma
 \end{DoxyReturn}
 {\bfseries{Example}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ threshold\_size\ =\ 64.f\ *\ 64.f;\ \textcolor{comment}{//\ pixels\ *\ pixels}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ zr\ =\ \mbox{\hyperlink{namespacehmap_ad5e2af6d9a9f26690998f2c26865444a}{hmap::area\_remove}}(z,\ threshold\_size);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ labels\ =\ \mbox{\hyperlink{namespacehmap_a34efdecd3db27a30c06537acda6d9457}{hmap::connected\_components}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_area\_remove\_fill.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zr,\ labels\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 
