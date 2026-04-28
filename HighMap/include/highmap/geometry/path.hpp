@@ -447,6 +447,8 @@ private:
  *                        curves.
  * @param edm             The mode for dividing edges. Default is
  *                        Path::EdgeDivisionMode::EDM_PER_EDGE.
+ *
+ * See unit tests: @ref test_splines.cpp
  */
 Path bezier(const Path            &path,
             float                  curvature_ratio = 0.3f,
@@ -472,6 +474,8 @@ Path bezier(const Path            &path,
  * @param edge_divisions  Number of edge subdivisions for smoothness.
  * @param edm             The mode for dividing edges. Default is
  *                        Path::EdgeDivisionMode::EDM_PER_EDGE.
+ *
+ * See unit tests: @ref test_splines.cpp
  */
 Path bezier_round(
     const Path            &path,
@@ -502,6 +506,8 @@ Path bezier_round(
  *
  * @warning This function does not correctly handle closed polylines.
  * @param edm            Mode for dividing edges. Default is EDM_PER_EDGE.
+ *
+ * See unit tests: @ref test_splines.cpp
  */
 Path bspline(const Path            &path,
              int                    edge_divisions = 10,
@@ -524,6 +530,8 @@ Path bspline(const Path            &path,
  *
  * **Result**
  * @image html ex_path_catmullrom.png
+ *
+ * See unit tests: @ref test_splines.cpp
  */
 Path catmullrom(
     const Path            &path,
@@ -553,6 +561,8 @@ Path catmullrom(
  *
  * **Result**
  * @image html ex_path_decasteljau.png
+ *
+ * See unit tests: @ref test_splines.cpp
  */
 Path decasteljau(
     const Path            &path,
