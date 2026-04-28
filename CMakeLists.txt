@@ -5,6 +5,7 @@ project(highmap-root)
 option(HIGHMAP_ENABLE_OPENCL "" ON)
 option(HIGHMAP_ENABLE_EXAMPLES "" ON)
 option(HIGHMAP_ENABLE_TESTS "" ON)
+option(HIGHMAP_ENABLE_BENCHMARKS "" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -54,4 +55,9 @@ endif()
 if(HIGHMAP_ENABLE_TESTS)
   message(STATUS "HighMap tests enabled")
   add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+endif()
+
+if(HIGHMAP_ENABLE_BENCHMARKS)
+  message(STATUS "HighMap benchmarks enabled")
+  add_subdirectory(${PROJECT_SOURCE_DIR}/benchmarks)
 endif()

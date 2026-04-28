@@ -12,9 +12,9 @@ FetchContent_MakeAvailable(googletest)
 
 file(GLOB TEST_SOURCES src/*.cpp)
 
-add_executable(highmap_tests ${TEST_SOURCES})
+add_executable(${PROJECT_NAME} ${TEST_SOURCES})
 
-target_link_libraries(highmap_tests
+target_link_libraries(${PROJECT_NAME}
   PRIVATE
     GTest::gtest
     GTest::gtest_main
