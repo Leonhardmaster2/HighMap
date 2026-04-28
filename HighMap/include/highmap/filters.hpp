@@ -1803,7 +1803,7 @@ void smooth_cone(Array &array, int ir, const Array *p_mask); ///< @overload
  * **Result**
  * @image html ex_smooth_cpulse.png
  *
- * @see          {@link smooth_gaussian}
+ * See unit tests: @ref test_smooth_cpulse.cpp
  */
 void smooth_cpulse(Array &array, int ir);
 void smooth_cpulse(Array &array, int ir, const Array *p_mask); ///< @overload

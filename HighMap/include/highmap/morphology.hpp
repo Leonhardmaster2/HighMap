@@ -542,6 +542,8 @@ Array signed_distance_transform(const Array &array, int prefilter_ir = 0);
  *
  * **Result**
  * @image html ex_skeleton.png
+ *
+ * See unit tests: @ref test_skeleton.cpp
  */
 Array skeleton(const Array &array, bool zero_at_borders = true);
 
