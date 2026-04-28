@@ -578,8 +578,8 @@ Array sqrt(const Array &array);
  *
  * Returns sqrt(v) for positive values, and 0 for non-positive values.
  *
- * @param array Input array.
- * @return Array with safe square root applied to each element.
+ * @param  array Input array.
+ * @return       Array with safe square root applied to each element.
  */
 Array sqrt_safe(const Array &array);
 
@@ -593,10 +593,10 @@ float threshold(float x, float x0, float x1);
 /**
  * @brief Applies a linear threshold element-wise to an array.
  *
- * @param x Input array.
- * @param x0 Lower threshold.
- * @param x1 Upper threshold.
- * @return Array with threshold applied to each element.
+ * @param  x  Input array.
+ * @param  x0 Lower threshold.
+ * @param  x1 Upper threshold.
+ * @return    Array with threshold applied to each element.
  */
 Array threshold(const Array &x, float x0, float x1);
 
@@ -611,10 +611,10 @@ float threshold_smooth(float x, float x0, float x1);
 /**
  * @brief Applies a smooth threshold element-wise to an array.
  *
- * @param x Input array.
- * @param x0 Lower threshold.
- * @param x1 Upper threshold.
- * @return Array with smooth threshold applied to each element.
+ * @param  x  Input array.
+ * @param  x0 Lower threshold.
+ * @param  x1 Upper threshold.
+ * @return    Array with smooth threshold applied to each element.
  */
 Array threshold_smooth(const Array &x, float x0, float x1);
 

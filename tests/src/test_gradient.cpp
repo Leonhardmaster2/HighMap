@@ -55,8 +55,8 @@ TEST(Gradient, GradientNorm_OperatorsConsistency)
   Array c = gradient_norm_scharr(input);
 
   // same trend → values should be close
-  EXPECT_TRUE(assert_almost_equal(p, s, 0.1f));
-  EXPECT_TRUE(assert_almost_equal(s, c, 0.1f));
+  EXPECT_TRUE(assert_almost_equal(p, s, 1e-5f));
+  EXPECT_TRUE(assert_almost_equal(s, c, 1e-5f));
 }
 
 TEST(Gradient, GradientAngle_SlopeConsistency)
@@ -96,8 +96,6 @@ TEST(Gradient, GradientAngle_SlopeY)
   // f(x,y)=y → angle = 0
   Array input = Array({{0, 1, 2}, {0, 1, 2}, {0, 1, 2}});
   Array angle = gradient_angle(input, false);
-
-  angle.infos();
 
   for (float v : angle.vector)
     EXPECT_NEAR(v, M_PI_2, 1e-5);
