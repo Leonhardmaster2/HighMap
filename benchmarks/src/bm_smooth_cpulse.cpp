@@ -22,7 +22,6 @@ static void BM_smooth_cpulse_CPU(benchmark::State &state)
   state.SetItemsProcessed(int64_t(state.iterations()) * n * n);
 }
 
-
 static void BM_smooth_cpulse_GPU(benchmark::State &state)
 {
   const int n = state.range(0); // mesh size

@@ -22,7 +22,6 @@ static void BM_gradient_norm_CPU(benchmark::State &state)
   state.SetItemsProcessed(int64_t(state.iterations()) * n * n);
 }
 
-
 static void BM_gradient_norm_GPU(benchmark::State &state)
 {
   const int n = state.range(0); // mesh size
@@ -44,7 +43,7 @@ static void gradient_norm_args(benchmark::internal::Benchmark *b)
   std::vector<int> sizes = {128, 256, 512, 1024};
 
   for (int n : sizes)
-      b->Args({n});
+    b->Args({n});
 }
 
 BENCHMARK(BM_gradient_norm_CPU)->Apply(gradient_norm_args);
