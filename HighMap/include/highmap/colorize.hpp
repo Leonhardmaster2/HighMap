@@ -116,6 +116,32 @@ void color_adjust(VirtualTexture    &tex,
                   const ComputeMode &cm);
 
 /**
+ * @brief Create a mask of pixels matching a target color within a tolerance.
+ *
+ * @param  r         Red channel array.
+ * @param  g         Green channel array.
+ * @param  b         Blue channel array.
+ * @param  color     Target RGB color.
+ * @param  tolerance Allowed color difference (0 = exact match).
+ *
+ * @return           Array Mask array (1 for match, 0 otherwise), same size as
+ *                   inputs.
+ *
+ * **Example**
+ * @include ex_color_match_mask.cpp
+ *
+ * **Result**
+ * @image html ex_color_match_mask.png
+ *
+ * See unit tests: @ref test_color_match_mask.cpp
+ */
+Array color_match_mask(const Array     &r,
+                       const Array     &g,
+                       const Array     &b,
+                       const glm::vec3 &color,
+                       float            tolerance = 0.f);
+
+/**
  * @brief Apply colorization to an array.
  *
  * This function applies a colormap to the input array and optionally applies
