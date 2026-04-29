@@ -4,6 +4,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_area_remove.cpp", "test__area__remove_8cpp.html", "test__area__remove_8cpp" ],
     [ "test_autocorr_length_scale.cpp", "test__autocorr__length__scale_8cpp.html", "test__autocorr__length__scale_8cpp" ],
     [ "test_cloud.cpp", "test__cloud_8cpp.html", "test__cloud_8cpp" ],
+    [ "test_color_match_mask.cpp", "test__color__match__mask_8cpp.html", "test__color__match__mask_8cpp" ],
     [ "test_connected_components.cpp", "test__connected__components_8cpp.html", "test__connected__components_8cpp" ],
     [ "test_decimate_vw.cpp", "test__decimate__vw_8cpp.html", "test__decimate__vw_8cpp" ],
     [ "test_distance_transform.cpp", "test__distance__transform_8cpp.html", "test__distance__transform_8cpp" ],

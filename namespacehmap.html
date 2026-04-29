@@ -813,6 +813,9 @@ Functions</h2></td></tr>
 <tr class="separator:aefc8cbe645337bb5b663436c0324f9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1175ee497ff12b2f3c6cdb7cc805949f" id="r_a1175ee497ff12b2f3c6cdb7cc805949f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a1175ee497ff12b2f3c6cdb7cc805949f">color_adjust</a> (<a class="el" href="classhmap_1_1VirtualTexture.html">VirtualTexture</a> &amp;tex, <a class="el" href="structhmap_1_1ColorAdjust.html">ColorAdjust</a> param, const <a class="el" href="structhmap_1_1ComputeMode.html">ComputeMode</a> &amp;cm)</td></tr>
 <tr class="separator:a1175ee497ff12b2f3c6cdb7cc805949f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e198f16e345fef1b2aeebc2fe7c429" id="r_a45e198f16e345fef1b2aeebc2fe7c429"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a45e198f16e345fef1b2aeebc2fe7c429">color_match_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;r, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;g, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;b, const glm::vec3 &amp;color, float tolerance=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a45e198f16e345fef1b2aeebc2fe7c429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a mask of pixels matching a target color within a tolerance.  <br /></td></tr>
+<tr class="separator:a45e198f16e345fef1b2aeebc2fe7c429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a635351aa13228557a585470ba4563" id="r_a33a635351aa13228557a585470ba4563"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a33a635351aa13228557a585470ba4563">colorize</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float vmin, float vmax, int cmap, bool hillshading, bool reverse=false, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr)</td></tr>
 <tr class="memdesc:a33a635351aa13228557a585470ba4563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply colorization to an array.  <br /></td></tr>
 <tr class="separator:a33a635351aa13228557a585470ba4563"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -6997,6 +7000,95 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45e198f16e345fef1b2aeebc2fe7c429" name="a45e198f16e345fef1b2aeebc2fe7c429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45e198f16e345fef1b2aeebc2fe7c429">&#9670;&#160;</a></span>color_match_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::color_match_mask </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>tolerance</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a mask of pixels matching a target color within a tolerance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>Red channel array. </td></tr>
+    <tr><td class="paramname">g</td><td>Green channel array. </td></tr>
+    <tr><td class="paramname">b</td><td>Blue channel array. </td></tr>
+    <tr><td class="paramname">color</td><td>Target RGB color. </td></tr>
+    <tr><td class="paramname">tolerance</td><td>Allowed color difference (0 = exact match).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhmap_1_1Array.html" title="Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.">Array</a> Mask array (1 for match, 0 otherwise), same size as inputs.</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> r = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> g = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, ++seed);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> b = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, ++seed);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(r);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(g);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(b);</div>
+<div class="line"> </div>
+<div class="line">  glm::vec3 color = {1.f, 0.f, 0.f}; <span class="comment">// red</span></div>
+<div class="line">  <span class="keywordtype">float</span>     tolerance = 0.5f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> mask = <a class="code hl_function" href="namespacehmap.html#a45e198f16e345fef1b2aeebc2fe7c429">hmap::color_match_mask</a>(r, g, b, color, tolerance);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_color_match_mask.png&quot;</span>,</div>
+<div class="line">                          {r, g, b, mask},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a45e198f16e345fef1b2aeebc2fe7c429"><div class="ttname"><a href="namespacehmap.html#a45e198f16e345fef1b2aeebc2fe7c429">hmap::color_match_mask</a></div><div class="ttdeci">Array color_match_mask(const Array &amp;r, const Array &amp;g, const Array &amp;b, const glm::vec3 &amp;color, float tolerance=0.f)</div><div class="ttdoc">Create a mask of pixels matching a target color within a tolerance.</div><div class="ttdef"><b>Definition</b> color_match_mask.cpp:11</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_color_match_mask.png" alt=""/>
+</div>
+<p>See unit tests: <a class="el" href="test__color__match__mask_8cpp.html">test_color_match_mask.cpp</a> </p>
 
 </div>
 </div>
