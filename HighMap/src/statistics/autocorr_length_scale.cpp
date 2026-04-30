@@ -25,7 +25,7 @@ float autocorr_length_scale(const Array &array, float max_lag_fraction)
 
   // --- Autocorrelation
 
-  const float target = var / M_E;
+  const float target = var / 2.7182818284590452354f;
   const int   max_lag = static_cast<int>(std::min(ni, nj) * max_lag_fraction);
 
   // evaluate unnormalized autocorrelation at a given lag == average
@@ -78,7 +78,7 @@ glm::vec2 autocorr_length_scale_axial(const Array &array,
 
   // --- Autocorrelation
 
-  const float target = var / M_E;
+  const float target = var / 2.7182818284590452354f;
 
   // along rows (i-direction)
   auto Ri = [&](int lag)
