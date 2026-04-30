@@ -111,6 +111,47 @@ void apply_hillshade(std::vector<uint8_t> &img,
                      float                 exponent = 1.f,
                      bool                  is_img_rgba = false);
 
+/**
+ * @brief Apply color correction and tonemapping to RGB arrays.
+ *
+ * Performs per-pixel adjustments including levels, exposure, tonemapping
+ * (Reinhard, ACES, or AGX), contrast, saturation, temperature, gamma, and
+ * optional dithering.
+ *
+ * @param r           Red channel array (modified in place).
+ * @param g           Green channel array (modified in place).
+ * @param b           Blue channel array (modified in place).
+ * @param param       Color adjustment parameters.
+ * @param dither_seed Seed used for dithering noise.
+ *
+ * **Example**
+ * @include ex_color_adjust.cpp
+ *
+ * **Result**
+ * @image html ex_color_adjust.png
+ */
+void color_adjust(Array      &r,
+                  Array      &g,
+                  Array      &b,
+                  ColorAdjust param,
+                  glm::ivec2  dither_seed);
+
+/**
+ * @brief Apply color adjustment to a virtual texture.
+ *
+ * Processes the texture tile-by-tile using the same adjustments as the
+ * array-based version.
+ *
+ * @param tex   Input/output virtual texture.
+ * @param param Color adjustment parameters.
+ * @param cm    Compute mode controlling execution.
+ *
+ * **Example**
+ * @include ex_color_adjust.cpp
+ *
+ * **Result**
+ * @image html ex_color_adjust.png
+ */
 void color_adjust(VirtualTexture    &tex,
                   ColorAdjust        param,
                   const ComputeMode &cm);

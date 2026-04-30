@@ -23,6 +23,94 @@ inline float helper_hash_01(uint32_t x)
   return float(helper_hash_u32(x)) * (1.0f / float(0xffffffffu));
 }
 
+void color_adjust(Array      &r,
+                  Array      &g,
+                  Array      &b,
+                  ColorAdjust param,
+                  glm::ivec2  dither_seed)
+{
+  const glm::ivec2 &shape = r.shape;
+  const float       inv_gamma = 1.f / param.gamma;
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      glm::vec3 c{r(i, j), g(i, j), b(i, j)};
+
+      // levels
+      c = (c - param.in_min) / (param.in_max - param.in_min);
+      c = glm::clamp(c, 0.0f, 1.0f);
+
+      // exposure
+      c *= std::exp2(param.exposure);
+
+      // tonemap
+      if (param.filmic_tonemap) c = c / (glm::vec3(1.0f) + c); // Reinhard
+
+      if (param.aces_tonemap)
+      {
+        glm::vec3 a = c * (2.51f * c + 0.03f);
+        glm::vec3 b = c * (2.43f * c + 0.59f) + 0.14f;
+        c = a / b;
+      }
+
+      if (param.agx_tonemap)
+      {
+        // scene-linear → log2
+        glm::vec3 x = glm::max(c, glm::vec3(1e-6f));
+        x = glm::log2(x);
+
+        // normalize log range (AGX working range)
+        constexpr float log_min = -10.0f;
+        constexpr float log_max = 0.0f;
+
+        x = (x - log_min) / (log_max - log_min);
+        x = glm::clamp(x, 0.0f, 1.0f);
+
+        // AGX contrast curve (smooth filmic sigmoid)
+        x = x * x * (3.0f - 2.0f * x);
+
+        // back to linear
+        c = glm::exp2(x * (log_max - log_min) + log_min);
+
+        // Gamut / saturation compression (very important for AGX look)
+        float luma = glm::dot(c, glm::vec3(0.2126f, 0.7152f, 0.0722f));
+        float sat = glm::mix(1.0f, 0.85f, luma);
+        c = glm::mix(glm::vec3(luma), c, sat);
+      }
+
+      // contrast
+      c = (c - 0.5f) * param.contrast + 0.5f;
+
+      // saturation
+      float l = glm::dot(c, glm::vec3(0.2126f, 0.7152f, 0.0722f));
+      c = glm::mix(glm::vec3(l), c, param.saturation);
+
+      // temperature
+      c.r *= 1.0f + param.temperature;
+      c.b *= 1.0f - param.temperature;
+
+      // gamma
+      c = glm::pow(c, glm::vec3(inv_gamma));
+
+      // hash dithering
+      int x = dither_seed.x * shape.x + i;
+      int y = dither_seed.y * shape.y + j;
+
+      float n = helper_hash_01(uint32_t(x) ^ (uint32_t(y) << 16));
+      n = (n - 0.5f) * param.dither_amp;
+
+      c += glm::vec3(n);
+
+      // final clamp
+      c = glm::clamp(c, 0.0f, 1.0f);
+
+      r(i, j) = c.r;
+      g(i, j) = c.g;
+      b(i, j) = c.b;
+    }
+}
+
 void color_adjust(VirtualTexture &tex, ColorAdjust param, const ComputeMode &cm)
 {
 
@@ -32,85 +120,7 @@ void color_adjust(VirtualTexture &tex, ColorAdjust param, const ComputeMode &cm)
     Array &g = *p[1];
     Array &b = *p[2];
 
-    const float inv_gamma = 1.f / param.gamma;
-
-    for (int j = 0; j < region.shape.y; ++j)
-      for (int i = 0; i < region.shape.x; ++i)
-      {
-        glm::vec3 c{r(i, j), g(i, j), b(i, j)};
-
-        // levels
-        c = (c - param.in_min) / (param.in_max - param.in_min);
-        c = glm::clamp(c, 0.0f, 1.0f);
-
-        // exposure
-        c *= std::exp2(param.exposure);
-
-        // tonemap
-        if (param.filmic_tonemap) c = c / (glm::vec3(1.0f) + c); // Reinhard
-
-        if (param.aces_tonemap)
-        {
-          glm::vec3 a = c * (2.51f * c + 0.03f);
-          glm::vec3 b = c * (2.43f * c + 0.59f) + 0.14f;
-          c = a / b;
-        }
-
-        if (param.agx_tonemap)
-        {
-          // scene-linear → log2
-          glm::vec3 x = glm::max(c, glm::vec3(1e-6f));
-          x = glm::log2(x);
-
-          // normalize log range (AGX working range)
-          constexpr float log_min = -10.0f;
-          constexpr float log_max = 0.0f;
-
-          x = (x - log_min) / (log_max - log_min);
-          x = glm::clamp(x, 0.0f, 1.0f);
-
-          // AGX contrast curve (smooth filmic sigmoid)
-          x = x * x * (3.0f - 2.0f * x);
-
-          // back to linear
-          c = glm::exp2(x * (log_max - log_min) + log_min);
-
-          // Gamut / saturation compression (very important for AGX look)
-          float luma = glm::dot(c, glm::vec3(0.2126f, 0.7152f, 0.0722f));
-          float sat = glm::mix(1.0f, 0.85f, luma);
-          c = glm::mix(glm::vec3(luma), c, sat);
-        }
-
-        // contrast
-        c = (c - 0.5f) * param.contrast + 0.5f;
-
-        // saturation
-        float l = glm::dot(c, glm::vec3(0.2126f, 0.7152f, 0.0722f));
-        c = glm::mix(glm::vec3(l), c, param.saturation);
-
-        // temperature
-        c.r *= 1.0f + param.temperature;
-        c.b *= 1.0f - param.temperature;
-
-        // gamma
-        c = glm::pow(c, glm::vec3(inv_gamma));
-
-        // hash dithering
-        int x = region.key.tx * region.shape.x + i;
-        int y = region.key.ty * region.shape.y + j;
-
-        float n = helper_hash_01(uint32_t(x) ^ (uint32_t(y) << 16));
-        n = (n - 0.5f) * param.dither_amp;
-
-        c += glm::vec3(n);
-
-        // final clamp
-        c = glm::clamp(c, 0.0f, 1.0f);
-
-        r(i, j) = c.r;
-        g(i, j) = c.g;
-        b(i, j) = c.b;
-      }
+    color_adjust(r, g, b, param, {region.key.tx, region.key.ty});
   };
 
   for_each_tile(tex, lambda, cm);
