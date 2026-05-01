@@ -34,6 +34,9 @@ int main(void)
 
   hmap::Array water_depth2 = hmap::flooding_uniform_level(z2, 0.3f);
 
+  hmap::Array shore_mask;
+  hmap::Array scarp_mask;
+
   hmap::coastal_erosion_profile(z2,
                                 water_depth2,
                                 shore_ground_extent,
@@ -43,10 +46,18 @@ int main(void)
                                 0.5f,
                                 true,
                                 5,
-                                &dr);
+                                &dr,
+                                &shore_mask,
+                                &scarp_mask);
 
   hmap::export_banner_png("ex_coastal_erosion_profile.png",
-                          {z0, z1, z1 + water_depth1, z2, z2 + water_depth2},
+                          {z0,
+                           z1,
+                           z1 + water_depth1,
+                           z2,
+                           z2 + water_depth2,
+                           shore_mask,
+                           scarp_mask},
                           hmap::Cmap::TERRAIN,
                           true);
 }

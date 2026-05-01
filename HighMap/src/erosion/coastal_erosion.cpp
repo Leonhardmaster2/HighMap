@@ -16,6 +16,8 @@ void coastal_erosion_diffusion(Array &z,
                                int    iterations,
                                Array *p_water_mask)
 {
+  const glm::ivec2 &shape = z.shape;
+
   Array mask;
   Array z_bckp;
 
@@ -29,8 +31,8 @@ void coastal_erosion_diffusion(Array &z,
 
     // adjust water depth so that water height is the same as before
     // filtering
-    for (int j = 0; j < z.shape.y; j++)
-      for (int i = 0; i < z.shape.x; i++)
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
       {
         if (water_depth(i, j) > 0.f)
           water_depth(i, j) = z_bckp(i, j) + water_depth(i, j) - z(i, j);
@@ -50,22 +52,25 @@ void coastal_erosion_profile(Array       &z,
                              bool         apply_post_filter,
                              int          post_filter_iterations,
                              const Array *p_noise,
-                             Array       *p_shore_mask)
+                             Array       *p_shore_mask,
+                             Array       *p_scarp_mask)
 {
-  Array           z_bckp = z;
-  Array           shore_mask(z.shape); // includes ground & water
-  Mat<glm::ivec2> closest_g(z.shape);  // ground
-  Mat<glm::ivec2> closest_w(z.shape);  // water
+  const glm::ivec2 &shape = z.shape;
+  Array             z_bckp = z;
+  Array             shore_mask(shape); // includes ground & water
+  Array             scarp_mask(shape);
+  Mat<glm::ivec2>   closest_g(shape); // ground
+  Mat<glm::ivec2>   closest_w(shape); // water
 
   Array r_ground = distance_transform_with_closest(water_depth, closest_g);
   Array r_water = distance_transform_with_closest(is_zero(water_depth),
                                                   closest_w);
 
-  float slope_shore_n = slope_shore / float(z.shape.x);
-  float slope_shore_water_n = slope_shore_water / float(z.shape.x);
+  float slope_shore_n = slope_shore / float(shape.x);
+  float slope_shore_water_n = slope_shore_water / float(shape.x);
 
-  for (int j = 0; j < z.shape.y; ++j)
-    for (int i = 0; i < z.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
       if (r_ground(i, j) > 0.f)
       {
@@ -98,6 +103,8 @@ void coastal_erosion_profile(Array       &z,
             ts = smoothstep3(ts);
 
             new_z = lerp(h, z(i, j), ts);
+
+            scarp_mask(i, j) = 4.f * ts * (1.f - ts);
           }
 
           z(i, j) = new_z;
@@ -135,8 +142,8 @@ void coastal_erosion_profile(Array       &z,
 
   // adjust water depth so that water height is the same as before
   // filtering
-  for (int j = 0; j < z.shape.y; j++)
-    for (int i = 0; i < z.shape.x; i++)
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
     {
       if (water_depth(i, j) > 0.f)
         water_depth(i, j) = z_bckp(i, j) + water_depth(i, j) - z(i, j);
@@ -144,6 +151,7 @@ void coastal_erosion_profile(Array       &z,
 
   // other optional outputs
   if (p_shore_mask) *p_shore_mask = shore_mask;
+  if (p_scarp_mask) *p_scarp_mask = scarp_mask;
 }
 
 void coastal_erosion_profile(Array       &z,
@@ -157,7 +165,8 @@ void coastal_erosion_profile(Array       &z,
                              bool         apply_post_filter,
                              int          post_filter_iterations,
                              const Array *p_noise,
-                             Array       *p_shore_mask)
+                             Array       *p_shore_mask,
+                             Array       *p_scarp_mask)
 {
   if (!p_mask)
     coastal_erosion_profile(z,
@@ -170,7 +179,8 @@ void coastal_erosion_profile(Array       &z,
                             apply_post_filter,
                             post_filter_iterations,
                             p_noise,
-                            p_shore_mask);
+                            p_shore_mask,
+                            p_scarp_mask);
   else
   {
     Array z_f = z;
@@ -184,7 +194,8 @@ void coastal_erosion_profile(Array       &z,
                             apply_post_filter,
                             post_filter_iterations,
                             p_noise,
-                            p_shore_mask);
+                            p_shore_mask,
+                            p_scarp_mask);
     z = lerp(z, z_f, *(p_mask));
   }
 }

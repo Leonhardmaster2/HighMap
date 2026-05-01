@@ -153,7 +153,8 @@ void coastal_erosion_profile(Array &z,
                              bool   apply_post_filter = true,
                              int    post_filter_iterations = 3,
                              const Array *p_noise = nullptr,
-                             Array       *p_shore_mask = nullptr);
+                             Array       *p_shore_mask = nullptr,
+                             Array       *p_scarp_mask = nullptr);
 
 void coastal_erosion_profile(Array       &z,
                              const Array *p_mask,
@@ -166,7 +167,8 @@ void coastal_erosion_profile(Array       &z,
                              bool  apply_post_filter = true,
                              int   post_filter_iterations = 3,
                              const Array *p_noise = nullptr,
-                             Array       *p_shore_mask = nullptr);
+                             Array       *p_shore_mask = nullptr,
+                             Array       *p_scarp_mask = nullptr);
 
 /**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
