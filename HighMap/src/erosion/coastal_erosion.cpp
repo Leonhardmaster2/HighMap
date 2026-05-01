@@ -110,6 +110,14 @@ void coastal_erosion_profile(Array       &z,
 
           z(i, j) = std::min(z(i, j), new_z);
         }
+        else if (t <= 1.1f)
+        {
+          // extend the scarp mask slightly outside (10%) to ensure a smooth
+          // transition
+          float ts = (t - 1.1f) / (1.f - 1.1f); // in [1, 0]
+          ts = smoothstep3(ts);
+          scarp_mask(i, j) = ts;
+        }
       }
       else
       {
