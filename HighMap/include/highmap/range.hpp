@@ -409,7 +409,7 @@ float minimum_smooth(const float a, const float b, float k); ///< @overload
  * **Example**
  * @include ex_remap.cpp
  *
- * @see            {@link clamp}
+ * See unit tests: @ref test_remap.cpp
  */
 void remap(Array &array,
            float  vmin,
@@ -428,6 +428,8 @@ void remap(Array &array,
  * @param array Input array to be remapped.
  * @param vmin  The lower bound of the target range to remap to (default is 0).
  * @param vmax  The upper bound of the target range to remap to (default is 1).
+ *
+ * See unit tests: @ref test_remap.cpp
  */
 void remap(Array &array, float vmin = 0, float vmax = 1); ///< @overload
 
