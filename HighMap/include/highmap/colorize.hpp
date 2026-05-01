@@ -137,26 +137,6 @@ void color_adjust(Array      &r,
                   glm::ivec2  dither_seed);
 
 /**
- * @brief Apply color adjustment to a virtual texture.
- *
- * Processes the texture tile-by-tile using the same adjustments as the
- * array-based version.
- *
- * @param tex   Input/output virtual texture.
- * @param param Color adjustment parameters.
- * @param cm    Compute mode controlling execution.
- *
- * **Example**
- * @include ex_color_adjust.cpp
- *
- * **Result**
- * @image html ex_color_adjust.png
- */
-void color_adjust(VirtualTexture    &tex,
-                  ColorAdjust        param,
-                  const ComputeMode &cm);
-
-/**
  * @brief Create a mask of pixels matching a target color within a tolerance.
  *
  * @param  r         Red channel array.

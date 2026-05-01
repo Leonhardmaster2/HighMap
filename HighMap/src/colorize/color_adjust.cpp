@@ -111,19 +111,4 @@ void color_adjust(Array      &r,
     }
 }
 
-void color_adjust(VirtualTexture &tex, ColorAdjust param, const ComputeMode &cm)
-{
-
-  auto lambda = [&param](std::vector<Array *> &p, const TileRegion &region)
-  {
-    Array &r = *p[0];
-    Array &g = *p[1];
-    Array &b = *p[2];
-
-    color_adjust(r, g, b, param, {region.key.tx, region.key.ty});
-  };
-
-  for_each_tile(tex, lambda, cm);
-}
-
 } // namespace hmap
