@@ -7,6 +7,7 @@ var operator_8hpp =
     [ "inpainting_diffusion", "operator_8hpp.html#ab642074e3e056d07ae13cf346e208c79", null ],
     [ "linspace", "operator_8hpp.html#a3957ac4ae673f8ad402b5dd71e99b015", null ],
     [ "linspace_jitted", "operator_8hpp.html#a068e4d5be8c16ab9e708dca9678dc8de", null ],
+    [ "logspace", "operator_8hpp.html#a72951e6ba82ab8726d1b5d2f491226b2", null ],
     [ "fill_array_using_xy_function", "operator_8hpp.html#a54f6b9fef96254284b27ea73543abe55", null ],
     [ "fill_array_using_xy_function", "operator_8hpp.html#af1b7865647bb6acd5f3c9720b3677da7", null ],
     [ "find_vertical_cut_path", "operator_8hpp.html#ae0a3c73cc23a288fe03bf5ed6ac73c3d", null ],

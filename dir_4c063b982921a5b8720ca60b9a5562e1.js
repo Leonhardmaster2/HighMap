@@ -11,5 +11,6 @@ var dir_4c063b982921a5b8720ca60b9a5562e1 =
     [ "filters_gpu.cpp", "filters__gpu_8cpp.html", "filters__gpu_8cpp" ],
     [ "recast.cpp", "recast_8cpp.html", "recast_8cpp" ],
     [ "recurve.cpp", "recurve_8cpp.html", "recurve_8cpp" ],
+    [ "spectral_equalizer.cpp", "spectral__equalizer_8cpp.html", "spectral__equalizer_8cpp" ],
     [ "tesselate.cpp", "tesselate_8cpp.html", "tesselate_8cpp" ]
 ];

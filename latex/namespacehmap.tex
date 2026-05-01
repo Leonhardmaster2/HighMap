@@ -1539,6 +1539,8 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a3957ac4ae673f8ad402b5
 \begin{DoxyCompactList}\small\item\em Generate a vector of evenly spaced numbers over a specified interval. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a068e4d5be8c16ab9e708dca9678dc8de}{linspace\+\_\+jitted}} (float start, float stop, int num, float ratio, int seed, bool endpoint=true)
 \begin{DoxyCompactList}\small\item\em Generate a vector of jittered (noised) numbers over a specified interval. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a72951e6ba82ab8726d1b5d2f491226b2}{logspace}} (float start, float stop, int num, bool endpoint=true)
+\begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a54f6b9fef96254284b27ea73543abe55}{fill\+\_\+array\+\_\+using\+\_\+xy\+\_\+function}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching, std\+::function$<$ float(float, float, float)$>$ fct\+\_\+xy)
 \begin{DoxyCompactList}\small\item\em Fill an array using a scalar function based on (x, y) coordinates. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af1b7865647bb6acd5f3c9720b3677da7}{fill\+\_\+array\+\_\+using\+\_\+xy\+\_\+function}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching, std\+::function$<$ float(float, float, float)$>$ fct\+\_\+xy, int subsampling)
@@ -23513,6 +23515,32 @@ This function creates a vector with values spaced over an interval but with adde
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$float$>$ Vector of jittered values. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a72951e6ba82ab8726d1b5d2f491226b2}\label{namespacehmap_a72951e6ba82ab8726d1b5d2f491226b2} 
+\index{hmap@{hmap}!logspace@{logspace}}
+\index{logspace@{logspace}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{logspace()}{logspace()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::logspace (\begin{DoxyParamCaption}\item[{float}]{start,  }\item[{float}]{stop,  }\item[{int}]{num,  }\item[{bool}]{endpoint = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Generates a logarithmically spaced vector. 
+
+Values are distributed evenly in log-\/space between start and stop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & First value (must be \texorpdfstring{$>$}{>} 0) \\
+\hline
+{\em stop} & Last value (must be \texorpdfstring{$>$}{>} 0) \\
+\hline
+{\em num} & Number of samples \\
+\hline
+{\em endpoint} & If true, includes stop as last element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of log-\/spaced values 
 \end{DoxyReturn}
 \Hypertarget{namespacehmap_a54f6b9fef96254284b27ea73543abe55}\label{namespacehmap_a54f6b9fef96254284b27ea73543abe55} 
 \index{hmap@{hmap}!fill\_array\_using\_xy\_function@{fill\_array\_using\_xy\_function}}

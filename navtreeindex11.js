@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"local__metrics_8hpp.html#af4ec8b5be149e6749fdf09759daf1e9e":[5,0,1,0,0,29,6],
 "local__metrics_8hpp_source.html":[5,0,1,0,0,29],
 "local__metrics__gpu_8cpp.html":[5,0,1,1,22,1],
 "local__metrics__gpu_8cpp.html#a022f5800d7e28f79f9e2d3abf687f490":[5,0,1,1,22,1,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX11 =
 "morphology__gpu_8cpp.html#a1afc69c95369f96477e049d657a15b3b":[5,0,1,1,24,4,12],
 "morphology__gpu_8cpp.html#a335e4629532ba64049e0721bdcb5f3ba":[5,0,1,1,24,4,0],
 "morphology__gpu_8cpp.html#a4b010c9a58ba75a27467385a368f70ce":[5,0,1,1,24,4,13],
-"morphology__gpu_8cpp.html#a4da387d47e1096eb2297f4d72513e4ae":[5,0,1,1,24,4,2],
-"morphology__gpu_8cpp.html#a5287e8c6a324fa91bea6c7bf98aacd68":[5,0,1,1,24,4,16]
+"morphology__gpu_8cpp.html#a4da387d47e1096eb2297f4d72513e4ae":[5,0,1,1,24,4,2]
 };

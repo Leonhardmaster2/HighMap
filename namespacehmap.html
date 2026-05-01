@@ -2218,6 +2218,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a068e4d5be8c16ab9e708dca9678dc8de" id="r_a068e4d5be8c16ab9e708dca9678dc8de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a068e4d5be8c16ab9e708dca9678dc8de">linspace_jitted</a> (float start, float stop, int num, float ratio, int seed, bool endpoint=true)</td></tr>
 <tr class="memdesc:a068e4d5be8c16ab9e708dca9678dc8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector of jittered (noised) numbers over a specified interval.  <br /></td></tr>
 <tr class="separator:a068e4d5be8c16ab9e708dca9678dc8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72951e6ba82ab8726d1b5d2f491226b2" id="r_a72951e6ba82ab8726d1b5d2f491226b2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a72951e6ba82ab8726d1b5d2f491226b2">logspace</a> (float start, float stop, int num, bool endpoint=true)</td></tr>
+<tr class="memdesc:a72951e6ba82ab8726d1b5d2f491226b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a logarithmically spaced vector.  <br /></td></tr>
+<tr class="separator:a72951e6ba82ab8726d1b5d2f491226b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54f6b9fef96254284b27ea73543abe55" id="r_a54f6b9fef96254284b27ea73543abe55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a54f6b9fef96254284b27ea73543abe55">fill_array_using_xy_function</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, glm::vec4 bbox, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_stretching, std::function&lt; float(float, float, float)&gt; fct_xy)</td></tr>
 <tr class="memdesc:a54f6b9fef96254284b27ea73543abe55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill an array using a scalar function based on (x, y) coordinates.  <br /></td></tr>
 <tr class="separator:a54f6b9fef96254284b27ea73543abe55"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -12247,7 +12250,7 @@ additional_depth)</code>.</li>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a068e4d5be8c16ab9e708dca9678dc8de"><div class="ttname"><a href="namespacehmap.html#a068e4d5be8c16ab9e708dca9678dc8de">hmap::linspace_jitted</a></div><div class="ttdeci">std::vector&lt; float &gt; linspace_jitted(float start, float stop, int num, float ratio, int seed, bool endpoint=true)</div><div class="ttdoc">Generate a vector of jittered (noised) numbers over a specified interval.</div><div class="ttdef"><b>Definition</b> vector.cpp:72</div></div>
 <div class="ttc" id="anamespacehmap_html_a06a4f7bbf99b83632ceb8a9ba5989823"><div class="ttname"><a href="namespacehmap.html#a06a4f7bbf99b83632ceb8a9ba5989823">hmap::stratify_oblique</a></div><div class="ttdeci">void stratify_oblique(Array &amp;z, Array *p_mask, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, float talus, float angle, Array *p_noise=nullptr)</div><div class="ttdoc">Stratify the heightmap by creating a series of oblique layers with elevations corrected by a gamma fa...</div><div class="ttdef"><b>Definition</b> stratify.cpp:241</div></div>
-<div class="ttc" id="anamespacehmap_html_a3e6de5f9e14f11872651af22e5756c32"><div class="ttname"><a href="namespacehmap.html#a3e6de5f9e14f11872651af22e5756c32">hmap::random_vector</a></div><div class="ttdeci">std::vector&lt; float &gt; random_vector(float min, float max, int num, int seed)</div><div class="ttdoc">Generate a vector filled with random values within a specified range.</div><div class="ttdef"><b>Definition</b> vector.cpp:107</div></div>
+<div class="ttc" id="anamespacehmap_html_a3e6de5f9e14f11872651af22e5756c32"><div class="ttname"><a href="namespacehmap.html#a3e6de5f9e14f11872651af22e5756c32">hmap::random_vector</a></div><div class="ttdeci">std::vector&lt; float &gt; random_vector(float min, float max, int num, int seed)</div><div class="ttdoc">Generate a vector filled with random values within a specified range.</div><div class="ttdef"><b>Definition</b> vector.cpp:139</div></div>
 <div class="ttc" id="anamespacehmap_html_aac71bb6c14edc17967957f7918acdbdd"><div class="ttname"><a href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">hmap::angle</a></div><div class="ttdeci">float angle(const Point &amp;p1, const Point &amp;p2)</div><div class="ttdoc">Computes the angle between two points relative to the x-axis.</div><div class="ttdef"><b>Definition</b> points.cpp:42</div></div>
 <div class="ttc" id="anamespacehmap_html_abc0ddcae8cec8a556b8a343eaafe1dc4"><div class="ttname"><a href="namespacehmap.html#abc0ddcae8cec8a556b8a343eaafe1dc4">hmap::stratify</a></div><div class="ttdeci">void stratify(Array &amp;z, Array *p_mask, std::vector&lt; float &gt; hs, std::vector&lt; float &gt; gamma, Array *p_noise=nullptr)</div><div class="ttdoc">Stratify the heightmap by creating a series of layers with elevations corrected by a gamma factor.</div><div class="ttdef"><b>Definition</b> stratify.cpp:46</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -38574,6 +38577,59 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;float&gt; Vector of jittered values. </dd></dl>
+
+</div>
+</div>
+<a id="a72951e6ba82ab8726d1b5d2f491226b2" name="a72951e6ba82ab8726d1b5d2f491226b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72951e6ba82ab8726d1b5d2f491226b2">&#9670;&#160;</a></span>logspace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; hmap::logspace </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>stop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>endpoint</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a logarithmically spaced vector. </p>
+<p>Values are distributed evenly in log-space between start and stop.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>First value (must be &gt; 0) </td></tr>
+    <tr><td class="paramname">stop</td><td>Last value (must be &gt; 0) </td></tr>
+    <tr><td class="paramname">num</td><td>Number of samples </td></tr>
+    <tr><td class="paramname">endpoint</td><td>If true, includes stop as last element </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of log-spaced values </dd></dl>
 
 </div>
 </div>

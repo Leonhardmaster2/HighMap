@@ -7192,6 +7192,76 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/filters/filters_gpu.cpp" line="685" column="6" bodyfile="HighMap/src/filters/filters_gpu.cpp" bodystart="685" bodyend="695" declfile="HighMap/include/highmap/filters.hpp" declline="2521" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a302ad3eae3f0a06441915c2b97d56641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::gpu::spectral_equalizer</definition>
+        <argsstring>(const Array &amp;array, const std::vector&lt; float &gt; &amp;weights, int ir_min, int ir_max)</argsstring>
+        <name>spectral_equalizer</name>
+        <qualifiedname>hmap::gpu::spectral_equalizer</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>weights</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir_min</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ir_max</declname>
+        </param>
+        <briefdescription>
+<para>Spectral equalizer for 2D fields using a multiscale Gaussian pyramid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Decomposes the input array into log-spaced frequency bands using Gaussian smoothing, then recombines them using normalized user-defined weights.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input 2D field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weights</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Spectral gains (mapped from low to high frequencies). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir_min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum Gaussian radius. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ir_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum Gaussian radius. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Filtered array with adjusted spectral content.</para>
+</simplesect>
+<bold>Example</bold> <programlisting filename="ex_spectral_equalizer.png"></programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_spectral_equalizer.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/filters/spectral_equalizer.cpp" line="15" column="7" bodyfile="HighMap/src/filters/spectral_equalizer.cpp" bodystart="15" bodyend="99" declfile="HighMap/include/highmap/filters.hpp" declline="2543" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab4b68e1b48d16193615105656680ced8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::gradient_angle_circular_smoothing</definition>

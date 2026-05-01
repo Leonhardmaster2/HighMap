@@ -17,15 +17,16 @@ var searchData=
   ['local_5fmean_14',['local_mean',['../namespacehmap.html#ac297b8711e186ee1e5cdc7d1fc6a7972',1,'hmap::local_mean()'],['../namespacehmap_1_1gpu.html#a72341578d241e21b4c31d7497287cfc3',1,'hmap::gpu::local_mean()']]],
   ['local_5fmedian_5fdeviation_15',['local_median_deviation',['../namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038',1,'hmap::local_median_deviation()'],['../namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490',1,'hmap::gpu::local_median_deviation(const Array &amp;array, int ir)']]],
   ['local_5fmetrics_16',['local_metrics',['../namespacehmap_1_1gpu.html#a13719c4aafe9ffaabd767afe5a8bd44d',1,'hmap::gpu']]],
-  ['local_5fmin_17',['local_min',['../namespacehmap.html#aa7ab501bae56bac2236a74ade5cd34a4',1,'hmap::local_min()'],['../namespacehmap_1_1gpu.html#a5c576fca64db583bf500d667173c128a',1,'hmap::gpu::local_min(const Array &amp;array, int ir)']]],
+  ['local_5fmin_17',['local_min',['../namespacehmap_1_1gpu.html#a5c576fca64db583bf500d667173c128a',1,'hmap::gpu::local_min()'],['../namespacehmap.html#aa7ab501bae56bac2236a74ade5cd34a4',1,'hmap::local_min()']]],
   ['local_5frelief_18',['local_relief',['../namespacehmap_1_1gpu.html#a5e3ebf317043142adc19dd211ba07230',1,'hmap::gpu']]],
   ['local_5fskewness_19',['local_skewness',['../namespacehmap_1_1gpu.html#aa40b626be86c63829e7e118fa389d260',1,'hmap::gpu']]],
   ['local_5fvariance_20',['local_variance',['../namespacehmap_1_1gpu.html#aeca9d8454f50273ca4a4f3db0c25a1b1',1,'hmap::gpu']]],
   ['local_5fz_5fscore_21',['local_z_score',['../namespacehmap_1_1gpu.html#ad6ef648576e9339058037a28ce17d225',1,'hmap::gpu']]],
   ['log10_22',['log10',['../namespacehmap.html#a75475b6109023ce0ad64f6f9f7c4c525',1,'hmap']]],
-  ['lorentzian_23',['lorentzian',['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap']]],
-  ['lorentzian_5fcompact_24',['lorentzian_compact',['../namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3',1,'hmap']]],
-  ['low_5fpass_5fhigh_5forder_25',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],
-  ['lrutilestorage_26',['LruTileStorage',['../classhmap_1_1LruTileStorage.html#a18948b97db31797b0fe45c58d2da883b',1,'hmap::LruTileStorage']]],
-  ['luminance_27',['luminance',['../namespacehmap.html#a051c3f6f1ceda0feaf3c36c97bd7fef9',1,'hmap']]]
+  ['logspace_23',['logspace',['../namespacehmap.html#a72951e6ba82ab8726d1b5d2f491226b2',1,'hmap']]],
+  ['lorentzian_24',['lorentzian',['../namespacehmap.html#a921bc84c2e2cf76a022da0ffaaf60802',1,'hmap']]],
+  ['lorentzian_5fcompact_25',['lorentzian_compact',['../namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3',1,'hmap']]],
+  ['low_5fpass_5fhigh_5forder_26',['low_pass_high_order',['../namespacehmap.html#a81842482472ceecc660913388219bb77',1,'hmap']]],
+  ['lrutilestorage_27',['LruTileStorage',['../classhmap_1_1LruTileStorage.html#a18948b97db31797b0fe45c58d2da883b',1,'hmap::LruTileStorage']]],
+  ['luminance_28',['luminance',['../namespacehmap.html#a051c3f6f1ceda0feaf3c36c97bd7fef9',1,'hmap']]]
 ];
