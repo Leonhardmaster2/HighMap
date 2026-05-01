@@ -75,7 +75,7 @@ TEST(Variance, ScalingProperty)
 
 TEST(Variance, NonSquareArray)
 {
-  Array input = Array(std::vector<std::vector<float>>{{1, 2, 3, 4}});
+  Array input = Array({{1, 2, 3, 4}});
 
   float var = variance(input, nullptr);
 

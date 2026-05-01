@@ -61,6 +61,8 @@ public:
   Array(glm::ivec2 shape, float value);                    ///< @overload
   Array(const std::string &filename, bool flip_j = false); ///< @overload
   Array(const std::vector<std::vector<float>> &data);      ///< @overload
+  Array(const std::initializer_list<std::initializer_list<float>>
+            &data); ///< @overload
 
   //----------------------------------------
   // overload

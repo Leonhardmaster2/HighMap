@@ -134,7 +134,7 @@ TEST(Gradient, Laplacian_Quadratic)
 
 TEST(Gradient, GradientTalus_Step)
 {
-  Array input = Array(std::vector<std::vector<float>>{{0, 0, 1, 1}});
+  Array input = Array({{0, 0, 1, 1}});
   Array talus = gradient_talus(input);
 
   // jump of 1 should be detected
@@ -144,7 +144,7 @@ TEST(Gradient, GradientTalus_Step)
 
 TEST(Gradient, TalusJumpMask_BinaryResponse)
 {
-  Array input = Array(std::vector<std::vector<float>>{{0, 0, 10, 10}});
+  Array input = Array({{0, 0, 10, 10}});
   Array mask = talus_jump_mask(input, 1.f, 1.f);
 
   // high gradient → mask near 1

@@ -7,9 +7,9 @@ using namespace hmap;
 
 TEST(ColorMatchMask, ExactMatch)
 {
-  Array r = Array(std::vector<std::vector<float>>{{0.2f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.4f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.6f}});
+  Array r = Array({{0.2f}});
+  Array g = Array({{0.4f}});
+  Array b = Array({{0.6f}});
 
   glm::vec3 target(0.2f, 0.4f, 0.6f);
 
@@ -20,9 +20,9 @@ TEST(ColorMatchMask, ExactMatch)
 
 TEST(ColorMatchMask, WithinToleranceSmallDeviation)
 {
-  Array r = Array(std::vector<std::vector<float>>{{0.2f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.4f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.6f}});
+  Array r = Array({{0.2f}});
+  Array g = Array({{0.4f}});
+  Array b = Array({{0.6f}});
 
   glm::vec3 target(0.21f, 0.41f, 0.61f);
 
@@ -33,9 +33,9 @@ TEST(ColorMatchMask, WithinToleranceSmallDeviation)
 
 TEST(ColorMatchMask, OutsideTolerance)
 {
-  Array r = Array(std::vector<std::vector<float>>{{0.2f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.4f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.6f}});
+  Array r = Array({{0.2f}});
+  Array g = Array({{0.4f}});
+  Array b = Array({{0.6f}});
 
   glm::vec3 target(0.5f, 0.5f, 0.5f);
 
@@ -47,9 +47,9 @@ TEST(ColorMatchMask, OutsideTolerance)
 TEST(ColorMatchMask, ExactlyOnToleranceBoundary)
 {
   // distance = 0.1
-  Array r = Array(std::vector<std::vector<float>>{{0.0f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.0f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.0f}});
+  Array r = Array({{0.0f}});
+  Array g = Array({{0.0f}});
+  Array b = Array({{0.0f}});
 
   glm::vec3 target(0.1f, 0.f, 0.f);
 
@@ -76,9 +76,9 @@ TEST(ColorMatchMask, MultiPixel)
 
 TEST(ColorMatchMask, VerySmallTolerance)
 {
-  Array r = Array(std::vector<std::vector<float>>{{0.2f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.4f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.6f}});
+  Array r = Array({{0.2f}});
+  Array g = Array({{0.4f}});
+  Array b = Array({{0.6f}});
 
   glm::vec3 target(0.2001f, 0.4f, 0.6f);
 
@@ -89,9 +89,9 @@ TEST(ColorMatchMask, VerySmallTolerance)
 
 TEST(ColorMatchMask, MaxRangeDifference)
 {
-  Array r = Array(std::vector<std::vector<float>>{{0.f}});
-  Array g = Array(std::vector<std::vector<float>>{{0.f}});
-  Array b = Array(std::vector<std::vector<float>>{{0.f}});
+  Array r = Array({{0.f}});
+  Array g = Array({{0.f}});
+  Array b = Array({{0.f}});
 
   glm::vec3 target(1.f, 1.f, 1.f);
 

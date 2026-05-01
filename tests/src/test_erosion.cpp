@@ -86,8 +86,8 @@ TEST(Erosion, FlatRegionUnchanged)
 
 TEST(Erosion, NonSquareArray)
 {
-  Array input = Array(std::vector<std::vector<float>>{{5, 4, 3, 2}});
-  Array expected = Array(std::vector<std::vector<float>>{{4, 3, 2, 2}});
+  Array input = Array({{5, 4, 3, 2}});
+  Array expected = Array({{4, 3, 2, 2}});
 
   Array cpu = erosion(input, 1);
   Array gpu = gpu::erosion(input, 1);

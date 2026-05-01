@@ -42,6 +42,17 @@ Array::Array(const std::vector<std::vector<float>> &data)
       (*this)(i, j) = data[i][j];
 }
 
+Array::Array(const std::initializer_list<std::initializer_list<float>> &data)
+{
+  std::vector<std::vector<float>> tmp;
+  tmp.reserve(data.size());
+
+  for (const auto &row : data)
+    tmp.emplace_back(row); // vector<float>(initializer_list<float>)
+
+  *this = Array(tmp);
+}
+
 glm::ivec2 Array::get_shape()
 {
   return shape;

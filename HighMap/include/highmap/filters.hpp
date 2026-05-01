@@ -1608,6 +1608,8 @@ void reverse_above_theshold(Array       &array,
  *
  * **Result**
  * @image html ex_saturate.png
+ *
+ * See unit tests: @ref test_saturate.cpp
  */
 void saturate(Array &array,
               float  vmin,
@@ -1616,7 +1618,31 @@ void saturate(Array &array,
               float  from_max,
               float  k = 0.f);
 
-void saturate(Array &array, float vmin, float vmax, float k = 0.f);
+void saturate(Array &array, float vmin, float vmax, float k = 0.f); ///<
+                                                                    // @overload
+
+/**
+ * @brief Saturate values based on percentile range.
+ *
+ * Computes low/high bounds from percentiles and applies saturation scaling.
+ *
+ * @param array           Input array (modified in place).
+ * @param percentile_low  Lower percentile [0–1].
+ * @param percentile_high Upper percentile [0–1].
+ * @param k               Saturation strength.
+ *
+ * **Example**
+ * @include ex_saturate.cpp
+ *
+ * **Result**
+ * @image html ex_saturate.png
+ *
+ * See unit tests: @ref test_saturate.cpp
+ */
+void saturate_percentile(Array &array,
+                         float  percentile_low,
+                         float  percentile_high,
+                         float  k = 0.f);
 
 /**
  * @brief Apply a sharpening filter based on the Laplace operator.

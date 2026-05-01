@@ -203,4 +203,13 @@ void saturate(Array &array, float vmin, float vmax, float k)
   remap(array, min_bckp, max_bckp);
 }
 
+void saturate_percentile(Array &array,
+                         float  percentile_low,
+                         float  percentile_high,
+                         float  k)
+{
+  glm::vec2 range = array.range_percentile(percentile_low, percentile_high);
+  saturate(array, range.x, range.y, k);
+}
+
 } // namespace hmap
