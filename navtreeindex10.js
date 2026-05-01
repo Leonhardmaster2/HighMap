@@ -1,5 +1,8 @@
 var NAVTREEINDEX10 =
 {
+"index.html#autotoc_md11":[0,1,3,3],
+"index.html#autotoc_md12":[0,1,4],
+"index.html#autotoc_md13":[0,1,4,0],
 "index.html#autotoc_md14":[0,1,4,1],
 "index.html#autotoc_md15":[0,1,4,2],
 "index.html#autotoc_md16":[0,1,4,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX10 =
 "local__metrics__gpu_8cpp.html#ad6ef648576e9339058037a28ce17d225":[5,0,1,1,22,1,8],
 "local__metrics__gpu_8cpp.html#aebca5a0fef9c05a0e2378aef452707ed":[5,0,1,1,22,1,10],
 "local__metrics__gpu_8cpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1":[5,0,1,1,22,1,7],
-"local__metrics__wrapper_8cpp.html":[5,0,1,1,22,2],
-"local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d":[5,0,1,1,22,2,0],
-"lru__tile__storage_8cpp.html":[5,0,1,1,41,3],
-"main_8cpp.html":[5,0,2,0,0]
+"local__metrics__wrapper_8cpp.html":[5,0,1,1,22,2]
 };

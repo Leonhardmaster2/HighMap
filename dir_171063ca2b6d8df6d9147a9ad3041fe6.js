@@ -14,6 +14,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_gradient.cpp", "test__gradient_8cpp.html", "test__gradient_8cpp" ],
     [ "test_local_metrics.cpp", "test__local__metrics_8cpp.html", "test__local__metrics_8cpp" ],
     [ "test_point.cpp", "test__point_8cpp.html", "test__point_8cpp" ],
+    [ "test_saturate.cpp", "test__saturate_8cpp.html", "test__saturate_8cpp" ],
     [ "test_skeleton.cpp", "test__skeleton_8cpp.html", "test__skeleton_8cpp" ],
     [ "test_smooth_cpulse.cpp", "test__smooth__cpulse_8cpp.html", "test__smooth__cpulse_8cpp" ],
     [ "test_splines.cpp", "test__splines_8cpp.html", "test__splines_8cpp" ],

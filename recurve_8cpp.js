@@ -13,5 +13,6 @@ var recurve_8cpp =
     [ "recurve_smoothstep_rational", "recurve_8cpp.html#affcc500f17897f37cdb0717bc579d2b4", null ],
     [ "recurve_smoothstep_rational", "recurve_8cpp.html#ab9926efb5c9c3859a0407b8fb9dbe4f7", null ],
     [ "saturate", "recurve_8cpp.html#a2e4283dd5da8add89788c5023c73042c", null ],
-    [ "saturate", "recurve_8cpp.html#ad4c8b8b2361aa1fec5c984287a837461", null ]
+    [ "saturate", "recurve_8cpp.html#ad4c8b8b2361aa1fec5c984287a837461", null ],
+    [ "saturate_percentile", "recurve_8cpp.html#aa5afebf536169cd294d771fa2d6f7756", null ]
 ];

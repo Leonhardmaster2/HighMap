@@ -1,5 +1,8 @@
 var NAVTREEINDEX11 =
 {
+"local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d":[5,0,1,1,22,2,0],
+"lru__tile__storage_8cpp.html":[5,0,1,1,41,3],
+"main_8cpp.html":[5,0,2,0,0],
 "main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627":[5,0,2,0,0,1],
 "main_8cpp.html#a4a24013b5fd4fa30708c51c72fcc9b56":[5,0,2,0,0,0],
 "math_8cpp.html":[5,0,1,1,23,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX11 =
 "mountain__cone_8cpp.html#a29dc87fffb657a560a2e7245db561892":[5,0,1,1,27,1,4,0],
 "mountain__inselberg_8cpp.html":[5,0,1,1,27,1,5],
 "mountain__inselberg_8cpp.html#a94581d5070c7403c96b11a0f741b4cf5":[5,0,1,1,27,1,5,0],
-"mountain__stump_8cpp.html":[5,0,1,1,27,1,6],
-"mountain__stump_8cpp.html#aa0e1c42211074f9d051a9f1b50da107a":[5,0,1,1,27,1,6,0],
-"mountain__tibesti_8cpp.html":[5,0,1,1,27,1,7],
-"mountain__tibesti_8cpp.html#ab0c3573265940002d1b9940964477d47":[5,0,1,1,27,1,7,0]
+"mountain__stump_8cpp.html":[5,0,1,1,27,1,6]
 };

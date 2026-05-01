@@ -902,6 +902,8 @@ void \mbox{\hyperlink{namespacehmap_a2e4283dd5da8add89788c5023c73042c}{saturate}
 \begin{DoxyCompactList}\small\item\em Saturate the array values based on the input interval \mbox{[}vmin, vmax\mbox{]} (the output amplitude is not modified). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ad4c8b8b2361aa1fec5c984287a837461}{saturate}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin, float vmax, float k=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
+void \mbox{\hyperlink{namespacehmap_aa5afebf536169cd294d771fa2d6f7756}{saturate\+\_\+percentile}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float percentile\+\_\+low, float percentile\+\_\+high, float k=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Saturate values based on percentile range. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a738bcdb6b3493bf7f2cbfcfc03a00159}{sharpen}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Apply a sharpening filter based on the Laplace operator. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_aae4699340c68bc39efae13b0e81eea3d}{sharpen}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, float ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -12324,19 +12326,78 @@ This function adjusts the heightmap values to fit within the specified range \mb
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ k\ =\ 0.1f;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2e4283dd5da8add89788c5023c73042c}{hmap::saturate}}(zs,\ vmin,\ vmax,\ k);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_saturate.png"{}},\ \{z,\ zs\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\ =\ z;}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ remove\ 5\%\ lowest\ and\ 5\%\ highest}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_aa5afebf536169cd294d771fa2d6f7756}{hmap::saturate\_percentile}}(zp,\ 0.05f,\ 0.95f,\ k);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_saturate.png"{}},\ \{z,\ zs,\ zp\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_ad4c8b8b2361aa1fec5c984287a837461}\label{namespacehmap_ad4c8b8b2361aa1fec5c984287a837461} 
+{\bfseries{Result}} 
+
+See unit tests\+: \doxylink{test__saturate_8cpp}{test\+\_\+saturate.\+cpp} \Hypertarget{namespacehmap_ad4c8b8b2361aa1fec5c984287a837461}\label{namespacehmap_ad4c8b8b2361aa1fec5c984287a837461} 
 \index{hmap@{hmap}!saturate@{saturate}}
 \index{saturate@{saturate}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{saturate()}{saturate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void hmap\+::saturate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{vmin,  }\item[{float}]{vmax,  }\item[{float}]{k = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_a738bcdb6b3493bf7f2cbfcfc03a00159}\label{namespacehmap_a738bcdb6b3493bf7f2cbfcfc03a00159} 
+\Hypertarget{namespacehmap_aa5afebf536169cd294d771fa2d6f7756}\label{namespacehmap_aa5afebf536169cd294d771fa2d6f7756} 
+\index{hmap@{hmap}!saturate\_percentile@{saturate\_percentile}}
+\index{saturate\_percentile@{saturate\_percentile}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{saturate\_percentile()}{saturate\_percentile()}}
+{\footnotesize\ttfamily void hmap\+::saturate\+\_\+percentile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{float}]{percentile\+\_\+low,  }\item[{float}]{percentile\+\_\+high,  }\item[{float}]{k = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Saturate values based on percentile range. 
+
+Computes low/high bounds from percentiles and applies saturation scaling.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array (modified in place). \\
+\hline
+{\em percentile\+\_\+low} & Lower percentile \mbox{[}0–1\mbox{]}. \\
+\hline
+{\em percentile\+\_\+high} & Upper percentile \mbox{[}0–1\mbox{]}. \\
+\hline
+{\em k} & Saturation strength.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ zs\ =\ z;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ vmin\ =\ -\/0.2f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ vmax\ =\ 0.2f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ k\ =\ 0.1f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2e4283dd5da8add89788c5023c73042c}{hmap::saturate}}(zs,\ vmin,\ vmax,\ k);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ zp\ =\ z;}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ remove\ 5\%\ lowest\ and\ 5\%\ highest}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_aa5afebf536169cd294d771fa2d6f7756}{hmap::saturate\_percentile}}(zp,\ 0.05f,\ 0.95f,\ k);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_saturate.png"{}},\ \{z,\ zs,\ zp\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}} 
+
+See unit tests\+: \doxylink{test__saturate_8cpp}{test\+\_\+saturate.\+cpp} \Hypertarget{namespacehmap_a738bcdb6b3493bf7f2cbfcfc03a00159}\label{namespacehmap_a738bcdb6b3493bf7f2cbfcfc03a00159} 
 \index{hmap@{hmap}!sharpen@{sharpen}}
 \index{sharpen@{sharpen}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{sharpen()}{sharpen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

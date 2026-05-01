@@ -82,6 +82,7 @@ var filters_8hpp =
     [ "reverse_above_theshold", "filters_8hpp.html#a56f425774168f76ab81c2c8a06145761", null ],
     [ "saturate", "filters_8hpp.html#a2e4283dd5da8add89788c5023c73042c", null ],
     [ "saturate", "filters_8hpp.html#ad4c8b8b2361aa1fec5c984287a837461", null ],
+    [ "saturate_percentile", "filters_8hpp.html#aa5afebf536169cd294d771fa2d6f7756", null ],
     [ "sharpen", "filters_8hpp.html#a738bcdb6b3493bf7f2cbfcfc03a00159", null ],
     [ "sharpen", "filters_8hpp.html#aae4699340c68bc39efae13b0e81eea3d", null ],
     [ "sharpen_cone", "filters_8hpp.html#a6190b6dde2fd6a6bf9e98eecec10e5f1", null ],

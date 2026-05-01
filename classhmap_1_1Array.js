@@ -5,6 +5,7 @@ var classhmap_1_1Array =
     [ "Array", "classhmap_1_1Array.html#a52faf036f69f7797b124b3fd130e5e79", null ],
     [ "Array", "classhmap_1_1Array.html#a159f84f6af60d932d8f8984a176c9c76", null ],
     [ "Array", "classhmap_1_1Array.html#ad7d8c34fde630804f83c045bedcaed1d", null ],
+    [ "Array", "classhmap_1_1Array.html#a71febe0e8018238139ff4d291a782419", null ],
     [ "operator=", "classhmap_1_1Array.html#a263037d82c46689a6575719b0054f10a", null ],
     [ "operator*=", "classhmap_1_1Array.html#a412b5d0f678c59a3cde14395bbc83a3c", null ],
     [ "operator*=", "classhmap_1_1Array.html#ad631aba3c1ded924c1cd3fe6abe4c45f", null ],

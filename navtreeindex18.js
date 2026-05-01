@@ -1,5 +1,9 @@
 var NAVTREEINDEX18 =
 {
+"primitives_8hpp.html#a8765c9b9011f8ecb9fc2993a5ae73113":[5,0,1,0,0,33,29],
+"primitives_8hpp.html#a8b4f0ce7f877624d2120fd2415066aad":[5,0,1,0,0,33,56],
+"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2f":[5,0,1,0,0,33,0],
+"primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fa1d0f88509ad557940f07cd8c5d721820":[5,0,1,0,0,33,0,6],
 "primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fa3e5996ed4314058911435c50bc95e1c2":[5,0,1,0,0,33,0,0],
 "primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2fa85f252453c9797b7e00cc96cb7147537":[5,0,1,0,0,33,0,8],
 "primitives_8hpp.html#a8e3756915e28aa80cec2190043cc8c2faaf0f73f1150aae0a8affdab8b5f38eca":[5,0,1,0,0,33,0,1],
@@ -192,6 +196,7 @@ var NAVTREEINDEX18 =
 "recurve_8cpp.html#a9cb00fb8280178099a8d430f761c62bd":[5,0,1,1,15,10,0],
 "recurve_8cpp.html#a9dc604a3fcfa918857f3488977d2a45f":[5,0,1,1,15,10,1],
 "recurve_8cpp.html#aa1f23e7ca8c6eccc62ff3f9e73bb3884":[5,0,1,1,15,10,8],
+"recurve_8cpp.html#aa5afebf536169cd294d771fa2d6f7756":[5,0,1,1,15,10,14],
 "recurve_8cpp.html#ab9926efb5c9c3859a0407b8fb9dbe4f7":[5,0,1,1,15,10,11],
 "recurve_8cpp.html#ad1ea450b3a5185e8066a5da48718489c":[5,0,1,1,15,10,5],
 "recurve_8cpp.html#ad4c8b8b2361aa1fec5c984287a837461":[5,0,1,1,15,10,13],
@@ -244,10 +249,5 @@ var NAVTREEINDEX18 =
 "selector_8cpp.html#a6c6abf2b8bd3161610e273ef97ee4771":[5,0,1,1,32,4,0],
 "selector_8cpp.html#a6ee46e297f2d253660bfe461b9321fe2":[5,0,1,1,32,4,17],
 "selector_8cpp.html#a7b42d7b9a8dfdf8b67a1a482974ee33f":[5,0,1,1,32,4,15],
-"selector_8cpp.html#a849d37221d492c5d96d945dc64b02754":[5,0,1,1,32,4,12],
-"selector_8cpp.html#a9fdc6086f5eb14b779b6351b2b49471a":[5,0,1,1,32,4,13],
-"selector_8cpp.html#aa387b6418bf9dac2b4f05b41a2a106d5":[5,0,1,1,32,4,8],
-"selector_8cpp.html#ac3436096f5ea39274658f503d7c950c1":[5,0,1,1,32,4,3],
-"selector_8cpp.html#ac6dcaa05c7c34302fa2560ddedbb9931":[5,0,1,1,32,4,21],
-"selector_8cpp.html#ac72cb684be1045c7f2a5c8941f905772":[5,0,1,1,32,4,22]
+"selector_8cpp.html#a849d37221d492c5d96d945dc64b02754":[5,0,1,1,32,4,12]
 };
