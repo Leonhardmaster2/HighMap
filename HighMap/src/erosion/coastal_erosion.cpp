@@ -78,8 +78,9 @@ void coastal_erosion_profile(Array       &z,
 
         float dr = p_noise ? (*p_noise)(i, j) : 0.f;
 
-        // transition factor
-        float t = r_ground(i, j) / (shore_ground_extent * (1.f + dr));
+        // transition factor (extent is at least 1 pixel)
+        float local_extent = std::max(1.f, shore_ground_extent * (1.f + dr));
+        float t = r_ground(i, j) / local_extent;
 
         if (t <= 1.f)
         {
@@ -104,10 +105,10 @@ void coastal_erosion_profile(Array       &z,
 
             new_z = lerp(h, z(i, j), ts);
 
-            scarp_mask(i, j) = 4.f * ts * (1.f - ts);
+            scarp_mask(i, j) = ts;
           }
 
-          z(i, j) = new_z;
+          z(i, j) = std::min(z(i, j), new_z);
         }
       }
       else
@@ -128,7 +129,7 @@ void coastal_erosion_profile(Array       &z,
           float h = zref - slope * r_water(i, j);
           float new_z = lerp(h, z(i, j), smoothstep3(t));
 
-          z(i, j) = new_z;
+          z(i, j) = std::min(z(i, j), new_z);
         }
       }
     }
