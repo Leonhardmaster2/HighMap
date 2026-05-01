@@ -102,7 +102,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator+=(const float value);
-
   Array &operator+=(const Array &array); ///< @overload
 
   /**

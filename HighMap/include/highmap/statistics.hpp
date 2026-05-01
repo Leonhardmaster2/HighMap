@@ -13,6 +13,15 @@
 
 namespace hmap
 {
+/**
+ * @brief Normalization methods.
+ */
+enum NormalizationMethod : int
+{
+  NM_MIN_MAX,     ///<
+  NM_STANDARDIZE, ///<
+  NM_ROBUST,      ///<
+};
 
 /**
  * @brief Estimate the isotropic dominant length scale of a 2D heightmap.
@@ -46,6 +55,42 @@ float autocorr_length_scale(const Array &array, float max_lag_fraction = 0.4f);
  */
 glm::vec2 autocorr_length_scale_axial(const Array &array,
                                       float        max_lag_fraction = 0.4f);
+
+/**
+ * @brief In-place normalization of an array.
+ *
+ * Applies a normalization transform to the input array depending on the
+ * selected method. The operation modifies the array directly.
+ *
+ * Supported methods:
+ * - NM_MIN_MAX: rescales values to the range [0, 1]
+ * - NM_STANDARDIZE: applies z-score normalization (zero mean, unit variance)
+ * - NM_ROBUST: applies robust scaling using median and interquartile range
+ * (IQR)
+ *
+ * @param array  Input/output array to normalize in-place.
+ * @param method Normalization strategy to apply.
+ *
+ * @warning For NM_ROBUST, division by a near-zero interquartile range may lead
+ * to numerical instability if the input is nearly constant.
+ *
+ * See unit tests: @ref test_normalized.cpp
+ */
+void normalize(Array &array, NormalizationMethod method);
+
+/**
+ * @brief Returns a normalized copy of an array.
+ *
+ * This is a convenience wrapper around normalize().
+ *
+ * @param  array  Input array to normalize.
+ * @param  method Normalization strategy to apply.
+ *
+ * @return        A new Array containing the normalized values.
+ *
+ * See unit tests: @ref test_normalized.cpp
+ */
+Array normalized(const Array &array, NormalizationMethod method);
 
 /**
  * @brief Compute the population variance of a 2D array.
