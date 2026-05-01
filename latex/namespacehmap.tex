@@ -572,8 +572,6 @@ void \mbox{\hyperlink{namespacehmap_aefc8cbe645337bb5b663436c0324f9e2}{apply\+\_
 \begin{DoxyCompactList}\small\item\em Apply hillshading to an 8-\/bit image. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a7634a1bb2505ae11370c431b0b1fd9ea}{color\+\_\+adjust}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&r, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&g, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, \mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}} param, glm\+::ivec2 dither\+\_\+seed)
 \begin{DoxyCompactList}\small\item\em Apply color correction and tonemapping to RGB arrays. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}{color\+\_\+adjust}} (\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&tex, \mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}} param, const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&cm)
-\begin{DoxyCompactList}\small\item\em Apply color adjustment to a virtual texture. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a45e198f16e345fef1b2aeebc2fe7c429}{color\+\_\+match\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&r, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&g, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, const glm\+::vec3 \&color, float tolerance=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Create a mask of pixels matching a target color within a tolerance. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}} \mbox{\hyperlink{namespacehmap_a33a635351aa13228557a585470ba4563}{colorize}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin, float vmax, int cmap, bool hillshading, bool reverse=false, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise=nullptr)
@@ -4894,7 +4892,7 @@ This function applies a hillshading effect to a vector of 8-\/bit image data. Th
 \Hypertarget{namespacehmap_a7634a1bb2505ae11370c431b0b1fd9ea}\label{namespacehmap_a7634a1bb2505ae11370c431b0b1fd9ea} 
 \index{hmap@{hmap}!color\_adjust@{color\_adjust}}
 \index{color\_adjust@{color\_adjust}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{color\_adjust()}{color\_adjust()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{color\_adjust()}{color\_adjust()}}
 {\footnotesize\ttfamily void hmap\+::color\+\_\+adjust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{r,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{g,  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{b,  }\item[{\mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}}}]{param,  }\item[{glm\+::ivec2}]{dither\+\_\+seed }\end{DoxyParamCaption})}
 
 
@@ -4918,189 +4916,6 @@ Performs per-\/pixel adjustments including levels, exposure, tonemapping (Reinha
 \end{DoxyParams}
 {\bfseries{Example}} 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox(0.f,\ 1.0f,\ 0.f,\ 1.f);\ \textcolor{comment}{//\ x1,x2,y1,y2}}
-\DoxyCodeLine{\ \ glm::ivec2\ shape(1024,\ 1024);}
-\DoxyCodeLine{\ \ glm::ivec2\ tile\_shape(256,\ 256);}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ halo\ =\ 32;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ shape\ =\ \{1000,\ 581\};}
-\DoxyCodeLine{\ \ tile\_shape\ =\ \{220,\ 312\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{10000,\ 10000\};}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ tile\_shape\ =\ \{4096,\ 4096\};}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SEQUENTIAL;}}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mode\ =\ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{hmap::ForEachMode::VA\_DISTRIBUTED}};}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SINGLE\_ARRAY;}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ bool\ trim\_storage\ =\ true;}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ trim\_storage\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_RAM;}}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ storage\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{hmap::StorageMode::VA\_DISK\_LRU}};}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_LRU\_MIN;}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_SEQUENTIAL;}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ComputeMode}{hmap::ComputeMode}}\ cm\ =\ \{.\mbox{\hyperlink{structhmap_1_1ComputeMode_a88f263de26dea2af6e22e2d4f5f02cab}{mode}}\ =\ mode,\ .trim\_storage\ =\ trim\_storage\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ texture}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda0\ =}
-\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<hmap::Array\ *>\ \&tiles,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&R\ =\ *tiles[0];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&G\ =\ *tiles[1];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&B\ =\ *tiles[2];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&A\ =\ *tiles[3];}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ region.shape.y;\ ++j)}
-\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ region.shape.x;\ ++i)}
-\DoxyCodeLine{\ \ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ R(i,\ j)\ =\ pos.x;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ G(i,\ j)\ =\ 0.f;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ B(i,\ j)\ =\ pos.y;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ A(i,\ j)\ =\ 1.f;\ \textcolor{comment}{//\ pos.x;}}
-\DoxyCodeLine{\ \ \ \ \ \ \}}
-\DoxyCodeLine{\ \ \};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(tex.channels\_ptr(),\ lambda0,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}ex\_color\_adjust0.png"{}},\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ modify}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_adjust\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}();}
-\DoxyCodeLine{\ \ tex\_adjust.copy\_from(tex,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust}{hmap::ColorAdjust}}\ param;}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ param.gamma\ =\ 2.1f;}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ param.aces\_tonemap\ =\ true;}}
-\DoxyCodeLine{\ \ param.\mbox{\hyperlink{structhmap_1_1ColorAdjust_a4c9f3e46e241abba388ee27b20602fe5}{agx\_tonemap}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a7634a1bb2505ae11370c431b0b1fd9ea}{hmap::color\_adjust}}(tex,\ param,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}ex\_color\_adjust1.png"{}},\ cm);}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f}\label{namespacehmap_a1175ee497ff12b2f3c6cdb7cc805949f} 
-\index{hmap@{hmap}!color\_adjust@{color\_adjust}}
-\index{color\_adjust@{color\_adjust}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{color\_adjust()}{color\_adjust()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void hmap\+::color\+\_\+adjust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1VirtualTexture}{Virtual\+Texture}} \&}]{tex,  }\item[{\mbox{\hyperlink{structhmap_1_1ColorAdjust}{Color\+Adjust}}}]{param,  }\item[{const \mbox{\hyperlink{structhmap_1_1ComputeMode}{Compute\+Mode}} \&}]{cm }\end{DoxyParamCaption})}
-
-
-
-Apply color adjustment to a virtual texture. 
-
-Processes the texture tile-\/by-\/tile using the same adjustments as the array-\/based version.
-
-
-\begin{DoxyParams}{Parameters}
-{\em tex} & Input/output virtual texture. \\
-\hline
-{\em param} & Color adjustment parameters. \\
-\hline
-{\em cm} & Compute mode controlling execution.\\
-\hline
-\end{DoxyParams}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::vec4\ \ bbox(0.f,\ 1.0f,\ 0.f,\ 1.f);\ \textcolor{comment}{//\ x1,x2,y1,y2}}
-\DoxyCodeLine{\ \ glm::ivec2\ shape(1024,\ 1024);}
-\DoxyCodeLine{\ \ glm::ivec2\ tile\_shape(256,\ 256);}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ halo\ =\ 32;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ shape\ =\ \{1000,\ 581\};}
-\DoxyCodeLine{\ \ tile\_shape\ =\ \{220,\ 312\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{10000,\ 10000\};}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ tile\_shape\ =\ \{4096,\ 4096\};}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SEQUENTIAL;}}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ mode\ =\ \mbox{\hyperlink{namespacehmap_ae383414b46ae8992e621c407f09ce7c5a5356cbfe824240ce4bd458109890b9d5}{hmap::ForEachMode::VA\_DISTRIBUTED}};}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ mode\ =\ hmap::ForEachMode::VA\_SINGLE\_ARRAY;}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ bool\ trim\_storage\ =\ true;}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ trim\_storage\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_RAM;}}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ storage\_mode\ =\ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{hmap::StorageMode::VA\_DISK\_LRU}};}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_LRU\_MIN;}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ auto\ storage\_mode\ =\ hmap::StorageMode::VA\_DISK\_SEQUENTIAL;}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ComputeMode}{hmap::ComputeMode}}\ cm\ =\ \{.\mbox{\hyperlink{structhmap_1_1ComputeMode_a88f263de26dea2af6e22e2d4f5f02cab}{mode}}\ =\ mode,\ .trim\_storage\ =\ trim\_storage\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ texture}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}(shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tile\_shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ halo,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storage\_mode);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ lambda0\ =}
-\DoxyCodeLine{\ \ \ \ \ \ [](std::vector<hmap::Array\ *>\ \&tiles,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1TileRegion}{hmap::TileRegion}}\ \&region)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&R\ =\ *tiles[0];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&G\ =\ *tiles[1];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&B\ =\ *tiles[2];}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ \&A\ =\ *tiles[3];}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ region.shape.y;\ ++j)}
-\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ region.shape.x;\ ++i)}
-\DoxyCodeLine{\ \ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ region.cell\_center(i,\ j);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ R(i,\ j)\ =\ pos.x;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ G(i,\ j)\ =\ 0.f;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ B(i,\ j)\ =\ pos.y;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ A(i,\ j)\ =\ 1.f;\ \textcolor{comment}{//\ pos.x;}}
-\DoxyCodeLine{\ \ \ \ \ \ \}}
-\DoxyCodeLine{\ \ \};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{hmap::for\_each\_tile}}(tex.channels\_ptr(),\ lambda0,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}ex\_color\_adjust0.png"{}},\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ modify}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ tex\_adjust\ =\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{hmap::VirtualTexture}}();}
-\DoxyCodeLine{\ \ tex\_adjust.copy\_from(tex,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{structhmap_1_1ColorAdjust}{hmap::ColorAdjust}}\ param;}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ param.gamma\ =\ 2.1f;}}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ param.aces\_tonemap\ =\ true;}}
-\DoxyCodeLine{\ \ param.\mbox{\hyperlink{structhmap_1_1ColorAdjust_a4c9f3e46e241abba388ee27b20602fe5}{agx\_tonemap}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a7634a1bb2505ae11370c431b0b1fd9ea}{hmap::color\_adjust}}(tex,\ param,\ cm);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ tex.to\_png(\textcolor{stringliteral}{"{}ex\_color\_adjust1.png"{}},\ cm);}
-\DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
 

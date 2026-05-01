@@ -603,7 +603,6 @@ var namespacehmap =
     [ "apply_hillshade", "namespacehmap.html#a4960846742ad118ec9eadaba40ca39ac", null ],
     [ "apply_hillshade", "namespacehmap.html#aefc8cbe645337bb5b663436c0324f9e2", null ],
     [ "color_adjust", "namespacehmap.html#a7634a1bb2505ae11370c431b0b1fd9ea", null ],
-    [ "color_adjust", "namespacehmap.html#a1175ee497ff12b2f3c6cdb7cc805949f", null ],
     [ "color_match_mask", "namespacehmap.html#a45e198f16e345fef1b2aeebc2fe7c429", null ],
     [ "colorize", "namespacehmap.html#a33a635351aa13228557a585470ba4563", null ],
     [ "colorize", "namespacehmap.html#a6f991e3bdf7c5c4bed631f2b7fb4f072", null ],
