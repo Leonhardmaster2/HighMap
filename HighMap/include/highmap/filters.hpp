@@ -2522,4 +2522,27 @@ void smooth_fill_smear_peaks(Array       &array,
                              int          ir,
                              const Array *p_mask); ///< @overload
 
+/**
+ * @brief Spectral equalizer for 2D fields using a multiscale Gaussian pyramid.
+ *
+ * Decomposes the input array into log-spaced frequency bands using Gaussian
+ * smoothing, then recombines them using normalized user-defined weights.
+ *
+ * @param  array   Input 2D field.
+ * @param  weights Spectral gains (mapped from low to high frequencies).
+ * @param  ir_min  Minimum Gaussian radius.
+ * @param  ir_max  Maximum Gaussian radius.
+ * @return         Filtered array with adjusted spectral content.
+ *
+ * **Example**
+ * @include ex_spectral_equalizer.png
+ *
+ * **Result**
+ * @image html ex_spectral_equalizer.png
+ */
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max);
+
 } // namespace hmap::gpu

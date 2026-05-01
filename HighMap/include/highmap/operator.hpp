@@ -166,6 +166,22 @@ std::vector<float> linspace_jitted(float start,
                                    bool  endpoint = true);
 
 /**
+ * @brief Generates a logarithmically spaced vector.
+ *
+ * Values are distributed evenly in log-space between start and stop.
+ *
+ * @param  start    First value (must be > 0)
+ * @param  stop     Last value (must be > 0)
+ * @param  num      Number of samples
+ * @param  endpoint If true, includes stop as last element
+ * @return          Vector of log-spaced values
+ */
+std::vector<float> logspace(float start,
+                            float stop,
+                            int   num,
+                            bool  endpoint = true);
+
+/**
  * @brief Fill an array using a scalar function based on (x, y) coordinates.
  *
  * This function populates an array with values computed from a scalar function
