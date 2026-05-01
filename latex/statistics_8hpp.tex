@@ -5,6 +5,14 @@
 \item 
 namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{hmap\+::\+Normalization\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca}{hmap\+::\+NM\+\_\+\+MIN\+\_\+\+MAX}}
+, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b}{hmap\+::\+NM\+\_\+\+STANDARDIZE}}
+, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c}{hmap\+::\+NM\+\_\+\+ROBUST}}
+ \}
+\begin{DoxyCompactList}\small\item\em Normalization methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +20,10 @@ float \mbox{\hyperlink{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40}{hmap\+::
 \begin{DoxyCompactList}\small\item\em Estimate the isotropic dominant length scale of a 2D heightmap. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{namespacehmap_ab83b1277c6a2909787cd39988d9f762b}{hmap\+::autocorr\+\_\+length\+\_\+scale\+\_\+axial}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float max\+\_\+lag\+\_\+fraction=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Estimate axis-\/aligned dominant length scales of a 2D heightmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}{hmap\+::normalize}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
+\begin{DoxyCompactList}\small\item\em In-\/place normalization of an array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3d6212896d8cd828bd5bd827d24a0344}{hmap\+::normalized}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
+\begin{DoxyCompactList}\small\item\em Returns a normalized copy of an array. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}{hmap\+::variance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \texorpdfstring{$\ast$}{*}p\+\_\+mean=nullptr)
 \begin{DoxyCompactList}\small\item\em Compute the population variance of a 2D array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 

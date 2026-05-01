@@ -467,6 +467,11 @@ enum \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbe}{Clamp\+Mo
 , \mbox{\hyperlink{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd}{NONE}}
  \}
 \item 
+enum \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca}{NM\+\_\+\+MIN\+\_\+\+MAX}}
+, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b}{NM\+\_\+\+STANDARDIZE}}
+, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c}{NM\+\_\+\+ROBUST}}
+ \}
+\begin{DoxyCompactList}\small\item\em Normalization methods. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6e}{Storage\+Mode}} \+: int \{ \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce}{VA\+\_\+\+RAM}}
 , \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4}{VA\+\_\+\+DISK\+\_\+\+LRU}}
 , \mbox{\hyperlink{namespacehmap_ad21b93a34c88a47d6b54f3a4d5b65e6ea3696aa48b93c260deb79c830ae605781}{VA\+\_\+\+DISK\+\_\+\+LRU\+\_\+\+MIN}}
@@ -1784,6 +1789,10 @@ float \mbox{\hyperlink{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40}{autocorr
 \begin{DoxyCompactList}\small\item\em Estimate the isotropic dominant length scale of a 2D heightmap. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{namespacehmap_ab83b1277c6a2909787cd39988d9f762b}{autocorr\+\_\+length\+\_\+scale\+\_\+axial}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float max\+\_\+lag\+\_\+fraction=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Estimate axis-\/aligned dominant length scales of a 2D heightmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}{normalize}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
+\begin{DoxyCompactList}\small\item\em In-\/place normalization of an array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3d6212896d8cd828bd5bd827d24a0344}{normalized}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
+\begin{DoxyCompactList}\small\item\em Returns a normalized copy of an array. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}{variance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \texorpdfstring{$\ast$}{*}p\+\_\+mean=nullptr)
 \begin{DoxyCompactList}\small\item\em Compute the population variance of a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7064111b8b50fd4e29928e6d3f5e10f0}{non\+\_\+parametric\+\_\+sampling}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::ivec2 patch\+\_\+shape, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float error\+\_\+threshold=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -2986,6 +2995,30 @@ BOTH&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!hmap@{hmap}}\index{hmap@{hmap}!NONE@{NONE}}}\Hypertarget{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd}\label{namespacehmap_ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd} 
 NONE&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}\label{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae} 
+\index{hmap@{hmap}!NormalizationMethod@{NormalizationMethod}}
+\index{NormalizationMethod@{NormalizationMethod}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{NormalizationMethod}{NormalizationMethod}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{hmap\+::\+Normalization\+Method}} \+: int}
+
+
+
+Normalization methods. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NM\_MIN\_MAX@{NM\_MIN\_MAX}!hmap@{hmap}}\index{hmap@{hmap}!NM\_MIN\_MAX@{NM\_MIN\_MAX}}}\Hypertarget{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca}\label{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca} 
+NM\+\_\+\+MIN\+\_\+\+MAX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NM\_STANDARDIZE@{NM\_STANDARDIZE}!hmap@{hmap}}\index{hmap@{hmap}!NM\_STANDARDIZE@{NM\_STANDARDIZE}}}\Hypertarget{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b}\label{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b} 
+NM\+\_\+\+STANDARDIZE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NM\_ROBUST@{NM\_ROBUST}!hmap@{hmap}}\index{hmap@{hmap}!NM\_ROBUST@{NM\_ROBUST}}}\Hypertarget{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c}\label{namespacehmap_ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c} 
+NM\+\_\+\+ROBUST&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -29574,7 +29607,58 @@ Independently computes the e-\/folding autocorrelation lag along the i and j gri
 \begin{DoxyReturn}{Returns}
 \{scale\+\_\+i, scale\+\_\+j\} length scales in grid cells.
 \end{DoxyReturn}
-See unit tests\+: \doxylink{test__autocorr__length__scale_8cpp}{test\+\_\+autocorr\+\_\+length\+\_\+scale.\+cpp} \Hypertarget{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}\label{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa} 
+See unit tests\+: \doxylink{test__autocorr__length__scale_8cpp}{test\+\_\+autocorr\+\_\+length\+\_\+scale.\+cpp} \Hypertarget{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}\label{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b} 
+\index{hmap@{hmap}!normalize@{normalize}}
+\index{normalize@{normalize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily void hmap\+::normalize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{\mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}}}]{method }\end{DoxyParamCaption})}
+
+
+
+In-\/place normalization of an array. 
+
+Applies a normalization transform to the input array depending on the selected method. The operation modifies the array directly.
+
+Supported methods\+:
+\begin{DoxyItemize}
+\item NM\+\_\+\+MIN\+\_\+\+MAX\+: rescales values to the range \mbox{[}0, 1\mbox{]}
+\item NM\+\_\+\+STANDARDIZE\+: applies z-\/score normalization (zero mean, unit variance)
+\item NM\+\_\+\+ROBUST\+: applies robust scaling using median and interquartile range (IQR)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input/output array to normalize in-\/place. \\
+\hline
+{\em method} & Normalization strategy to apply.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+For NM\+\_\+\+ROBUST, division by a near-\/zero interquartile range may lead to numerical instability if the input is nearly constant.
+\end{DoxyWarning}
+See unit tests\+: test\+\_\+normalized.\+cpp \Hypertarget{namespacehmap_a3d6212896d8cd828bd5bd827d24a0344}\label{namespacehmap_a3d6212896d8cd828bd5bd827d24a0344} 
+\index{hmap@{hmap}!normalized@{normalized}}
+\index{normalized@{normalized}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{normalized()}{normalized()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::normalized (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{\mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}}}]{method }\end{DoxyParamCaption})}
+
+
+
+Returns a normalized copy of an array. 
+
+This is a convenience wrapper around \doxylink{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}{normalize()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to normalize. \\
+\hline
+{\em method} & Normalization strategy to apply.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classhmap_1_1Array}{Array} containing the normalized values.
+\end{DoxyReturn}
+See unit tests\+: test\+\_\+normalized.\+cpp \Hypertarget{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}\label{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa} 
 \index{hmap@{hmap}!variance@{variance}}
 \index{variance@{variance}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{variance()}{variance()}}

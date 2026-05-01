@@ -107,7 +107,7 @@
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dacc;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="classhmap_1_1Path_1ab083b81103f72c7c9b9fa81451599357" kindref="member">Path::get_curvature</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>normalized)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="classhmap_1_1Path_1ab083b81103f72c7c9b9fa81451599357" kindref="member">Path::get_curvature</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a3d6212896d8cd828bd5bd827d24a0344" kindref="member">normalized</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="101"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ke<sp/>=<sp/>this-&gt;<ref refid="classhmap_1_1Path_1a39ef1335efd434f12c92527f12933d9e" kindref="member">is_closed</ref>()<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>cv(this-&gt;<ref refid="classhmap_1_1Cloud_1adc675e8b2769a94b4c23bf7e69348f84" kindref="member">size</ref>()<sp/>+<sp/>ke);</highlight></codeline>
@@ -124,7 +124,7 @@
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>cmax<sp/>=<sp/>std::max(cmax,<sp/>std::abs(cv[k]));</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(normalized)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacehmap_1a3d6212896d8cd828bd5bd827d24a0344" kindref="member">normalized</ref>)</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>cv)</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>/=<sp/>cmax;</highlight></codeline>

@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('statistics_8hpp.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">statistics.hpp File Reference</div></div>
 </div><!--header-->
@@ -110,6 +111,15 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacehmap" id="r_namespacehmap"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html">hmap</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad9d7f866e3a5140ed694e502c1db44ae" id="r_ad9d7f866e3a5140ed694e502c1db44ae"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44ae">hmap::NormalizationMethod</a> : int { <a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca">hmap::NM_MIN_MAX</a>
+, <a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b">hmap::NM_STANDARDIZE</a>
+, <a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c">hmap::NM_ROBUST</a>
+ }</td></tr>
+<tr class="memdesc:ad9d7f866e3a5140ed694e502c1db44ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalization methods.  <a href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44ae">More...</a><br /></td></tr>
+<tr class="separator:ad9d7f866e3a5140ed694e502c1db44ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a414c6fe47e8dadbab8ad532a0538be40" id="r_a414c6fe47e8dadbab8ad532a0538be40"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a414c6fe47e8dadbab8ad532a0538be40">hmap::autocorr_length_scale</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float max_lag_fraction=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
@@ -118,6 +128,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab83b1277c6a2909787cd39988d9f762b" id="r_ab83b1277c6a2909787cd39988d9f762b"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab83b1277c6a2909787cd39988d9f762b">hmap::autocorr_length_scale_axial</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float max_lag_fraction=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ab83b1277c6a2909787cd39988d9f762b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate axis-aligned dominant length scales of a 2D heightmap.  <br /></td></tr>
 <tr class="separator:ab83b1277c6a2909787cd39988d9f762b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27faed8c5c8f89f271b6882c8a7cc81b" id="r_a27faed8c5c8f89f271b6882c8a7cc81b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a27faed8c5c8f89f271b6882c8a7cc81b">hmap::normalize</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44ae">NormalizationMethod</a> method)</td></tr>
+<tr class="memdesc:a27faed8c5c8f89f271b6882c8a7cc81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">In-place normalization of an array.  <br /></td></tr>
+<tr class="separator:a27faed8c5c8f89f271b6882c8a7cc81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6212896d8cd828bd5bd827d24a0344" id="r_a3d6212896d8cd828bd5bd827d24a0344"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3d6212896d8cd828bd5bd827d24a0344">hmap::normalized</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44ae">NormalizationMethod</a> method)</td></tr>
+<tr class="memdesc:a3d6212896d8cd828bd5bd827d24a0344"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a normalized copy of an array.  <br /></td></tr>
+<tr class="separator:a3d6212896d8cd828bd5bd827d24a0344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec6ff7b54fb5d02804aa8de94bcd4caa" id="r_aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aec6ff7b54fb5d02804aa8de94bcd4caa">hmap::variance</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float *p_mean=nullptr)</td></tr>
 <tr class="memdesc:aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the population variance of a 2D array.  <br /></td></tr>
 <tr class="separator:aec6ff7b54fb5d02804aa8de94bcd4caa"><td class="memSeparator" colspan="2">&#160;</td></tr>

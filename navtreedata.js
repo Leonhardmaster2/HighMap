@@ -73,8 +73,8 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
+        [ "Functions", "globals_func.html", "globals_func" ],
         [ "Typedefs", "globals_type.html", null ]
       ] ]
     ] ],
@@ -94,19 +94,19 @@ var NAVTREEINDEX =
 "erosion_8hpp.html#a182b5cbe63e2d42368c19f66dd9febb3",
 "filters_8cpp.html#ad99aff62bcc6c5c7a610d315e255b6d5",
 "functions_8hpp.html#ab8197c4c7a85dacb616fee7a7d0df195a21c0228de087e15358fc1a394892ba52",
-"index.html#autotoc_md11",
-"local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d",
-"mountain__stump_8cpp.html#aa0e1c42211074f9d051a9f1b50da107a",
-"namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba842713d3dc1b52f8b51bb2eaeb8bcf7e",
-"namespacehmap.html#a8e3756915e28aa80cec2190043cc8c2faf044e64b09fbae8b02b6c44f2d69925f",
-"namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5",
-"namespacehmap_1_1gpu.html#a3e358c95d75cd4df78381a7d6700c2fd",
-"noise_8cpp.html",
-"primitives_8hpp.html#a8765c9b9011f8ecb9fc2993a5ae73113",
-"selector_8cpp.html#a9fdc6086f5eb14b779b6351b2b49471a",
-"structhmap_1_1Recorder.html#aba9c05c56a1c5a769f12467684735add",
-"tensor_8hpp_source.html",
-"tile__storage_8hpp.html#a43075b5f93cea5525adb69b8d6990683"
+"hydrology_8hpp.html#a948b4703486f175cd2681bd9bc7b5a88",
+"local__metrics_8hpp_source.html",
+"morphology__gpu_8cpp.html#a5a96e5f24b80d47262daede2c0743ba6",
+"namespacehmap.html#a41239b5831a88a5b2528f24e8c95a92a",
+"namespacehmap.html#a8afd3d81a238c8a5d10059b3a029554e",
+"namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369",
+"namespacehmap_1_1gpu.html#a1dbc83521075f7c0179c7157f292b2b2",
+"namespacemembers_func_z.html",
+"primitives_8hpp.html#a5401f2bf9d2eacda951f012e04c6571f",
+"sdf__2d__polyline_8cpp.html#a93d9f75a0af0e7e76e77851efd36c804",
+"structhmap_1_1Mat.html#a64286cac9e847ae6f76dd8f696108b8a",
+"structhmap_1_1VirtualArray.html#af18d79861c72756d23fbde116be927d0",
+"thermal_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -546,6 +546,11 @@ var namespacehmap =
       [ "BOTH", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbead7d8162264f038302952e47ad5e7a2ed", null ],
       [ "NONE", "namespacehmap.html#ad4876bd26d1f3b33a1492645bfe50fbea8a618ee5b7e734d56e2d5957bd9893fd", null ]
     ] ],
+    [ "NormalizationMethod", "namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44ae", [
+      [ "NM_MIN_MAX", "namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aea4680230e1e65f446536dc824ba4985ca", null ],
+      [ "NM_STANDARDIZE", "namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aeae57ff6409cf6f0f59120845c765b349b", null ],
+      [ "NM_ROBUST", "namespacehmap.html#ad9d7f866e3a5140ed694e502c1db44aeaf15cebde3e8fe2d5c3633e5d118d423c", null ]
+    ] ],
     [ "StorageMode", "namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6e", [
       [ "VA_RAM", "namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6eae10df7db812e0abe9bc94fc28ae907ce", null ],
       [ "VA_DISK_LRU", "namespacehmap.html#ad21b93a34c88a47d6b54f3a4d5b65e6ea671262171ccce9633cc42db046ea63d4", null ],
@@ -1209,6 +1214,8 @@ var namespacehmap =
     [ "find_path_midpoint", "namespacehmap.html#acfb2652ac666e36a3a47c1673d4e486b", null ],
     [ "autocorr_length_scale", "namespacehmap.html#a414c6fe47e8dadbab8ad532a0538be40", null ],
     [ "autocorr_length_scale_axial", "namespacehmap.html#ab83b1277c6a2909787cd39988d9f762b", null ],
+    [ "normalize", "namespacehmap.html#a27faed8c5c8f89f271b6882c8a7cc81b", null ],
+    [ "normalized", "namespacehmap.html#a3d6212896d8cd828bd5bd827d24a0344", null ],
     [ "variance", "namespacehmap.html#aec6ff7b54fb5d02804aa8de94bcd4caa", null ],
     [ "non_parametric_sampling", "namespacehmap.html#a7064111b8b50fd4e29928e6d3f5e10f0", null ],
     [ "quilting", "namespacehmap.html#a9f1bfc155429e75866df0a713a4e68a0", null ],
