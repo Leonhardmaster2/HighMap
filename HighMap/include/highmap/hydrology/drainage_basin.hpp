@@ -39,9 +39,11 @@ public:
   void update_stream_tree();
   void update_traversals();
 
-  std::vector<size_t> get_outlets() const;
-  void                set_outlets(const std::vector<size_t> &outlet_indices);
+  std::vector<size_t> &get_outlets() const;
+  void                 set_outlets(const std::vector<size_t> &outlet_indices);
   const std::vector<size_t> &get_receivers() const;
+
+  void invert_receiver_map();
 
   // --- Basin topology utilities ---
 
@@ -86,6 +88,9 @@ private:
   std::vector<size_t>              roots; // basin ID
   std::vector<std::vector<size_t>> children;
   std::vector<bool>                outlets_mask;
+  mutable std::vector<size_t>      cached_outlets;
+  mutable bool                     outlets_dirty = true;
+  int                              tick = 0;
 
   // --- Traversal cache ---
 
@@ -107,9 +112,6 @@ std::vector<glm::vec3> heightmap_retopology(const Array &z,
                                             float        max_error,
                                             int          max_triangles = 0,
                                             int          max_points = 0);
-
-std::vector<std::vector<size_t>> invert_receiver_map(
-    const std::vector<size_t> &receivers);
 
 std::vector<size_t> sample_border_points(const std::vector<glm::vec3> &xyz,
                                          size_t                        nb);

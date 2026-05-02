@@ -3,6 +3,8 @@
  * this software. */
 #include "macrologger.h"
 
+#include "highmap/dbg/timer.hpp"
+
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
 #include "highmap/interpolate2d.hpp"
@@ -32,13 +34,13 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
   for (int it = 0; it < max_iterations; ++it)
   {
     std::vector acc(db.size(), 0.f);
-
     db.update_stream_tree(seed, noise_strength);
 
     auto area = db.get_mesh().get_vertex_areas(true);
     db.accumulate_area_by_outlet(area, acc);
 
-    auto  response_times = db.compute_response_times(acc, erodibility, m_exp);
+    auto response_times = db.compute_response_times(acc, erodibility, m_exp);
+
     float diff = db.update_elevations(response_times, uplift_rate, max_slope);
 
     if (diff < tolerance) break;

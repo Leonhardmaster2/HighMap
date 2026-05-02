@@ -77,9 +77,9 @@ void DrainageBasinCellBased::compute_receivers(unsigned int seed,
         float slope = dz * cd[k];
 
         // deterministic noise in [-1, 1)
-        float noise = 2.f * hash_to_unit_float(seed,
-                                               (i * cols + j) ^
-                                                   (ni * cols + nj)) -
+        float noise = 2.f * fast_hash32_to_unit_float(seed,
+                                                      (i * cols + j) ^
+                                                          (ni * cols + nj)) -
                       1.f;
         float score = slope * (1.f + noise_strength * noise);
 
