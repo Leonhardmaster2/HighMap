@@ -1,13 +1,16 @@
 #include "highmap.hpp"
 
+#include <omp.h>
+
 int main(void)
 {
+  omp_set_num_threads(8);
+
   glm::ivec2 shape = {256, 256};
-  // shape = {1024, 1024};
-  glm::vec2 res = {2.f, 2.f};
+  glm::vec2 kw = {2.f, 2.f};
   int       seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
   auto z0 = z;
 
@@ -39,7 +42,7 @@ int main(void)
   auto z3 = z;
   int  deposition_ir = 32;
   c_erosion = 0.2f;
-  hmap::hydraulic_stream_log(z3, c_erosion, talus_ref, deposition_ir);
+  hmap::gpu::hydraulic_stream_log(z3, c_erosion, talus_ref, deposition_ir);
 
   z3.dump();
 
