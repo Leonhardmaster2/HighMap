@@ -7118,9 +7118,13 @@ Iteratively updates elevations using a drainage model with uplift, slope constra
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{timer_8hpp}{highmap/dbg/timer.hpp}}"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}macrologger.h"{}}}
 \DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
 \DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
@@ -7261,9 +7265,13 @@ Eroded heightmap.
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{timer_8hpp}{highmap/dbg/timer.hpp}}"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}macrologger.h"{}}}
 \DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
 \DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
