@@ -84,4 +84,22 @@ Array spectral_equalizer(const Array              &array,
   return out;
 }
 
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max,
+                         const Array              *p_mask)
+{
+  if (!p_mask)
+  {
+    return spectral_equalizer(array, weights, ir_min, ir_max);
+  }
+  else
+  {
+    Array array_f = array;
+    array_f = spectral_equalizer(array_f, weights, ir_min, ir_max);
+    return lerp(array, array_f, *(p_mask));
+  }
+}
+
 } // namespace hmap::gpu

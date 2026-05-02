@@ -2545,4 +2545,10 @@ Array spectral_equalizer(const Array              &array,
                          int                       ir_min,
                          int                       ir_max);
 
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max,
+                         const Array              *p_mask); ///< @overload
+
 } // namespace hmap::gpu
