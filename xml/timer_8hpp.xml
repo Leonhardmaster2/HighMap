@@ -4,6 +4,7 @@
     <compoundname>timer.hpp</compoundname>
     <innerclass refid="structhmap_1_1Recorder" prot="public">hmap::Recorder</innerclass>
     <innerclass refid="classhmap_1_1Timer" prot="public">hmap::Timer</innerclass>
+    <innerclass refid="structhmap_1_1ScopedTimer" prot="public">hmap::ScopedTimer</innerclass>
     <innernamespace refid="namespacehmap">hmap</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -92,7 +93,20 @@
 <codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>current_level<sp/>=<sp/>0;<sp/></highlight></codeline>
 <codeline lineno="188"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="structhmap_1_1ScopedTimer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmap_1_1ScopedTimer" kindref="compound">ScopedTimer</ref></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192" refid="structhmap_1_1ScopedTimer_1ae4f87957271838e7c5a263d358ffacc2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1ScopedTimer_1ae4f87957271838e7c5a263d358ffacc2" kindref="member">ScopedTimer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Timer_1ae9248cf01bfd4d8f680a6c7d5b80f45b" kindref="member">Timer::Start</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196" refid="structhmap_1_1ScopedTimer_1a2f3f39b91f3e0313debb9de8398b6194" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhmap_1_1ScopedTimer_1a2f3f39b91f3e0313debb9de8398b6194" kindref="member">~ScopedTimer</ref>()</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Timer_1a6054c197a10338a1bd48299be29593b5" kindref="member">Timer::Stop</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200" refid="structhmap_1_1ScopedTimer_1ad41ee35a3544e14dbef17fe6fafd0024" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structhmap_1_1ScopedTimer_1ad41ee35a3544e14dbef17fe6fafd0024" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/include/highmap/dbg/timer.hpp"/>
   </compounddef>

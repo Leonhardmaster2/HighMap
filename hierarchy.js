@@ -86,6 +86,7 @@ var hierarchy =
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::PyramidDecomposition", "classhmap_1_1PyramidDecomposition.html", null ],
     [ "hmap::Recorder", "structhmap_1_1Recorder.html", null ],
+    [ "hmap::ScopedTimer", "structhmap_1_1ScopedTimer.html", null ],
     [ "hmap::Tensor", "classhmap_1_1Tensor.html", null ],
     [ "hmap::TerrainTriMesh", "classhmap_1_1TerrainTriMesh.html", null ],
     [ "TileAccess", "structTileAccess.html", null ],

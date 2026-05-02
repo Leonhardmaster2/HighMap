@@ -192,7 +192,26 @@ $(document).ready(function(){initNavTree('timer_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>};</div>
 </div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>} <span class="comment">// namespace hmap</span></div>
+<div class="foldopen" id="foldopen00190" data-start="{" data-end="};">
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="structhmap_1_1ScopedTimer.html">  190</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structhmap_1_1ScopedTimer.html">ScopedTimer</a></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>{</div>
+<div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="structhmap_1_1ScopedTimer.html#ae4f87957271838e7c5a263d358ffacc2">  192</a></span>  <a class="code hl_function" href="structhmap_1_1ScopedTimer.html#ae4f87957271838e7c5a263d358ffacc2">ScopedTimer</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">id</span>)</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <a class="code hl_function" href="classhmap_1_1Timer.html#ae9248cf01bfd4d8f680a6c7d5b80f45b">Timer::Start</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  }</div>
+</div>
+<div class="foldopen" id="foldopen00196" data-start="{" data-end="}">
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="structhmap_1_1ScopedTimer.html#a2f3f39b91f3e0313debb9de8398b6194">  196</a></span>  <a class="code hl_function" href="structhmap_1_1ScopedTimer.html#a2f3f39b91f3e0313debb9de8398b6194">~ScopedTimer</a>()</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <a class="code hl_function" href="classhmap_1_1Timer.html#a6054c197a10338a1bd48299be29593b5">Timer::Stop</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  }</div>
+</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="structhmap_1_1ScopedTimer.html#ad41ee35a3544e14dbef17fe6fafd0024">  200</a></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structhmap_1_1ScopedTimer.html#ad41ee35a3544e14dbef17fe6fafd0024">id</a>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>};</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aclasshmap_1_1Timer_html"><div class="ttname"><a href="classhmap_1_1Timer.html">hmap::Timer</a></div><div class="ttdoc">The Timer class is a singleton that manages multiple Recorders and provides an interface for timing e...</div><div class="ttdef"><b>Definition</b> timer.hpp:103</div></div>
 <div class="ttc" id="aclasshmap_1_1Timer_html_a315ce1e0ff2450ead4e1d704acbbe4c3"><div class="ttname"><a href="classhmap_1_1Timer.html#a315ce1e0ff2450ead4e1d704acbbe4c3">hmap::Timer::Clear</a></div><div class="ttdeci">static void Clear()</div><div class="ttdef"><b>Definition</b> timer.cpp:56</div></div>
 <div class="ttc" id="aclasshmap_1_1Timer_html_a576626db87904b2c0937e8441fee866f"><div class="ttname"><a href="classhmap_1_1Timer.html#a576626db87904b2c0937e8441fee866f">hmap::Timer::get_instance</a></div><div class="ttdeci">static Timer &amp; get_instance()</div><div class="ttdoc">Gets the singleton instance of the Timer class.</div><div class="ttdef"><b>Definition</b> timer.cpp:39</div></div>
@@ -210,6 +229,10 @@ $(document).ready(function(){initNavTree('timer_8hpp_source.html',''); initResiz
 <div class="ttc" id="astructhmap_1_1Recorder_html_ad553f417348e2de1e528eaacdfbf2d5e"><div class="ttname"><a href="structhmap_1_1Recorder.html#ad553f417348e2de1e528eaacdfbf2d5e">hmap::Recorder::nb_calls</a></div><div class="ttdeci">int nb_calls</div><div class="ttdoc">The number of times the event has been recorded.</div><div class="ttdef"><b>Definition</b> timer.hpp:60</div></div>
 <div class="ttc" id="astructhmap_1_1Recorder_html_ad758a2382f097ff1fb636744e902aa49"><div class="ttname"><a href="structhmap_1_1Recorder.html#ad758a2382f097ff1fb636744e902aa49">hmap::Recorder::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Starts the timer for this Recorder instance.</div><div class="ttdef"><b>Definition</b> timer.cpp:22</div></div>
 <div class="ttc" id="astructhmap_1_1Recorder_html_af6f300d4c80eabfbaf57fdbebde9062e"><div class="ttname"><a href="structhmap_1_1Recorder.html#af6f300d4c80eabfbaf57fdbebde9062e">hmap::Recorder::total</a></div><div class="ttdeci">float total</div><div class="ttdoc">The total time recorded for the event.</div><div class="ttdef"><b>Definition</b> timer.hpp:63</div></div>
+<div class="ttc" id="astructhmap_1_1ScopedTimer_html"><div class="ttname"><a href="structhmap_1_1ScopedTimer.html">hmap::ScopedTimer</a></div><div class="ttdef"><b>Definition</b> timer.hpp:191</div></div>
+<div class="ttc" id="astructhmap_1_1ScopedTimer_html_a2f3f39b91f3e0313debb9de8398b6194"><div class="ttname"><a href="structhmap_1_1ScopedTimer.html#a2f3f39b91f3e0313debb9de8398b6194">hmap::ScopedTimer::~ScopedTimer</a></div><div class="ttdeci">~ScopedTimer()</div><div class="ttdef"><b>Definition</b> timer.hpp:196</div></div>
+<div class="ttc" id="astructhmap_1_1ScopedTimer_html_ad41ee35a3544e14dbef17fe6fafd0024"><div class="ttname"><a href="structhmap_1_1ScopedTimer.html#ad41ee35a3544e14dbef17fe6fafd0024">hmap::ScopedTimer::id</a></div><div class="ttdeci">const char * id</div><div class="ttdef"><b>Definition</b> timer.hpp:200</div></div>
+<div class="ttc" id="astructhmap_1_1ScopedTimer_html_ae4f87957271838e7c5a263d358ffacc2"><div class="ttname"><a href="structhmap_1_1ScopedTimer.html#ae4f87957271838e7c5a263d358ffacc2">hmap::ScopedTimer::ScopedTimer</a></div><div class="ttdeci">ScopedTimer(const char *id)</div><div class="ttdef"><b>Definition</b> timer.hpp:192</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

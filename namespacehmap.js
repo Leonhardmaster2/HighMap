@@ -277,6 +277,7 @@ var namespacehmap =
     [ "Recorder", "structhmap_1_1Recorder.html", "structhmap_1_1Recorder" ],
     [ "RectangleFunction", "classhmap_1_1RectangleFunction.html", "classhmap_1_1RectangleFunction" ],
     [ "RiftFunction", "classhmap_1_1RiftFunction.html", "classhmap_1_1RiftFunction" ],
+    [ "ScopedTimer", "structhmap_1_1ScopedTimer.html", "structhmap_1_1ScopedTimer" ],
     [ "Simplex2Function", "classhmap_1_1Simplex2Function.html", "classhmap_1_1Simplex2Function" ],
     [ "Simplex2SFunction", "classhmap_1_1Simplex2SFunction.html", "classhmap_1_1Simplex2SFunction" ],
     [ "SlopeFunction", "classhmap_1_1SlopeFunction.html", "classhmap_1_1SlopeFunction" ],
