@@ -9,6 +9,7 @@ int main(void)
   int        seed = 1;
 
   hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
+  hmap::remap(z0);
 
   std::vector<float> weights;
   int                ir_min = 4;
@@ -16,13 +17,10 @@ int main(void)
 
   weights = {0.05f, 0.f, 0.f, 0.f, 1.f, 1.f};
   auto z1 = hmap::gpu::spectral_equalizer(z0, weights, ir_min, ir_max);
+  hmap::remap(z1); // make it visible
 
-  weights = {0.f, 1.f};
+  weights = {1.f, 1.f};
   auto z2 = hmap::gpu::spectral_equalizer(z0, weights, ir_min, ir_max);
-
-  hmap::remap(z0);
-  hmap::remap(z1);
-  hmap::remap(z2);
 
   hmap::export_banner_png("ex_spectral_equalizer.png",
                           {z0, z1, z2},

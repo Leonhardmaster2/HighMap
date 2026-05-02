@@ -18,26 +18,15 @@ Array spectral_equalizer(const Array              &array,
                          int                       ir_max)
 {
   const glm::ivec2 &shape = array.shape;
-  const size_t      nwgt = weights.size();
+  const size_t      nbands = weights.size();
 
-  if (nwgt < 1) return array;
-
-  // --- Normalize weights
-
-  std::vector<float> wn;
-  wn.reserve(nwgt);
-  float sum = std::accumulate(weights.begin(), weights.end(), 0.f);
-
-  if (sum == 0.f) return array;
-
-  for (const auto &w : weights)
-    wn.push_back(w / sum);
+  if (nbands < 1) return array;
 
   // --- Define Gaussian half-width
 
   std::vector<float> tmp = logspace(float(ir_min),
                                     float(ir_max),
-                                    nwgt - 1,
+                                    nbands - 1,
                                     true);
 
   std::vector<int> irs;
@@ -71,8 +60,7 @@ Array spectral_equalizer(const Array              &array,
 
   // --- Weighted rebuild
 
-  Array        out(shape);
-  const size_t nbands = wn.size();
+  Array out(shape);
 
   for (size_t k = 0; k < nbands; ++k)
   {
@@ -90,10 +78,8 @@ Array spectral_equalizer(const Array              &array,
     }
 
     // weights are from low to high wavenumbers
-    out += wn[nbands - 1 - k] * band;
+    out += weights[nbands - 1 - k] * band;
   }
-
-  out.infos();
 
   return out;
 }
