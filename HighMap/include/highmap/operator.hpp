@@ -68,6 +68,26 @@ void add_kernel_maximum_smooth(Array       &array,
                                int          j);
 
 /**
+ * @brief Combines two arrays by selecting values from a or b based on a slice
+ * position.
+ * @param  a           First input array.
+ * @param  b           Second input array.
+ * @param  slice_x_pos Horizontal slice position in [0,1].
+ * @param  slice_y_pos Vertical slice position in [0,1].
+ * @return             Output array mixing a (top-left) and b (bottom-right).
+ *
+ * **Example**
+ * @include ex_compare.cpp
+ *
+ * **Result**
+ * @image html ex_compare.png
+ */
+Array compare(const Array &a,
+              const Array &b,
+              float        slice_x_pos,
+              float        slice_y_pos);
+
+/**
  * @brief Apply linear regression for detrending of a 2D array.
  *
  * This function performs detrending on the input array by applying linear
