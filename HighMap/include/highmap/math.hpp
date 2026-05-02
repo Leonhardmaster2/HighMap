@@ -210,14 +210,14 @@ Array exp(const Array &array);
  * @param  x Input value.
  * @return   Approximate value of exp(x).
  */
-inline float fast_exp(float x);
+float fast_exp(float x);
 
 /**
  * @brief Fast approximation of the natural logarithm.
  * @param  x Input value (must be > 0).
  * @return   Approximate value of ln(x).
  */
-inline float fast_log(float x);
+float fast_log(float x);
 
 /**
  * @brief Applies a gain curve to remap a value in [0,1].
