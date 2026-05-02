@@ -114,11 +114,14 @@ $(document).ready(function(){initNavTree('random_8hpp_source.html',''); initResi
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#adbf9d5560582ab7f6bde2e08054c0bf1">hash_to_unit_float</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed, <span class="keywordtype">size_t</span> k);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#a1727bd2e6f80a1762f65db5583067fa8">splitmix64_to_unit_float</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed, <span class="keywordtype">size_t</span> k);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">float</span> <a class="code hl_function" href="namespacehmap.html#a1dddbe034996fa79873ee62b3a3152fe">fast_hash32_to_unit_float</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed, <span class="keywordtype">size_t</span> k);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:23</div></div>
-<div class="ttc" id="anamespacehmap_html_adbf9d5560582ab7f6bde2e08054c0bf1"><div class="ttname"><a href="namespacehmap.html#adbf9d5560582ab7f6bde2e08054c0bf1">hmap::hash_to_unit_float</a></div><div class="ttdeci">float hash_to_unit_float(unsigned int seed, size_t k)</div><div class="ttdef"><b>Definition</b> hash.cpp:10</div></div>
+<div class="ttc" id="anamespacehmap_html_a1727bd2e6f80a1762f65db5583067fa8"><div class="ttname"><a href="namespacehmap.html#a1727bd2e6f80a1762f65db5583067fa8">hmap::splitmix64_to_unit_float</a></div><div class="ttdeci">float splitmix64_to_unit_float(unsigned int seed, size_t k)</div><div class="ttdoc">Generates a deterministic uniform float in [0,1) using a SplitMix64-style hash.</div><div class="ttdef"><b>Definition</b> hash.cpp:10</div></div>
+<div class="ttc" id="anamespacehmap_html_a1dddbe034996fa79873ee62b3a3152fe"><div class="ttname"><a href="namespacehmap.html#a1dddbe034996fa79873ee62b3a3152fe">hmap::fast_hash32_to_unit_float</a></div><div class="ttdeci">float fast_hash32_to_unit_float(unsigned int seed, size_t k)</div><div class="ttdoc">Generates a fast deterministic uniform float in [0,1) using a 32-bit hash.</div><div class="ttdef"><b>Definition</b> hash.cpp:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

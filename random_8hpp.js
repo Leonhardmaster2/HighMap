@@ -1,4 +1,5 @@
 var random_8hpp =
 [
-    [ "hash_to_unit_float", "random_8hpp.html#adbf9d5560582ab7f6bde2e08054c0bf1", null ]
+    [ "splitmix64_to_unit_float", "random_8hpp.html#a1727bd2e6f80a1762f65db5583067fa8", null ],
+    [ "fast_hash32_to_unit_float", "random_8hpp.html#a1dddbe034996fa79873ee62b3a3152fe", null ]
 ];
