@@ -1,5 +1,11 @@
 var NAVTREEINDEX22 =
 {
+"test__smooth__cpulse_8cpp.html#ab37cc06859cedd84c5a6529c28bb92b9":[5,0,2,0,18,2],
+"test__smooth__cpulse_8cpp.html#ab4798cfd31d1559e1c6565aed8832da7":[5,0,2,0,18,1],
+"test__smooth__cpulse_8cpp.html#aba1ee19b21833a6033a2b1d065165603":[5,0,2,0,18,0],
+"test__smooth__cpulse_8cpp.html#aeef7d3dfd4814189da5fcd1d523597d1":[5,0,2,0,18,5],
+"test__splines_8cpp.html":[5,0,2,0,19],
+"test__splines_8cpp.html#a581dc48c6aaf8eab38fb9c27b6b0008a":[5,0,2,0,19,1],
 "test__splines_8cpp.html#a7752e7ffef70e632fa7347dbcd4597d7":[5,0,2,0,19,2],
 "test__splines_8cpp.html#a91577aef440d79ca1c8ffadd551255b2":[5,0,2,0,19,3],
 "test__splines_8cpp.html#aeb0040f5b6eac21c2f0256fa8f844cad":[5,0,2,0,19,0],

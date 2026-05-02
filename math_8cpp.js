@@ -14,6 +14,8 @@ var math_8cpp =
     [ "ceil_div", "math_8cpp.html#a6294951db2b05d8b1081e4d865c11244", null ],
     [ "cos", "math_8cpp.html#a4a3589145183ecdcc6392e28cd1ebef8", null ],
     [ "exp", "math_8cpp.html#aad00066161ccf5ba4d6f93ab48c10876", null ],
+    [ "fast_exp", "math_8cpp.html#ab6aaeb84221d16ab37212d3b3fe8c5fd", null ],
+    [ "fast_log", "math_8cpp.html#a158fef5f54c7dd51aaf730dbe63093ba", null ],
     [ "gain", "math_8cpp.html#a0db2ecdc6ca69af1e6eb3402b1147cb6", null ],
     [ "gaussian_decay", "math_8cpp.html#a99778512aa5779e70039e6b04e62d40c", null ],
     [ "hypot", "math_8cpp.html#acc88d4cddcb41e8142b7fef4846e3454", null ],

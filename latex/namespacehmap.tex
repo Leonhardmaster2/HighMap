@@ -1381,8 +1381,12 @@ int \mbox{\hyperlink{namespacehmap_a6294951db2b05d8b1081e4d865c11244}{ceil\+\_\+
 \begin{DoxyCompactList}\small\item\em Return the cosine of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Return the exponantial of the array elements. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_ab6aaeb84221d16ab37212d3b3fe8c5fd}{fast\+\_\+exp}} (float x)
+\begin{DoxyCompactList}\small\item\em Fast approximation of the exponential function. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a158fef5f54c7dd51aaf730dbe63093ba}{fast\+\_\+log}} (float x)
+\begin{DoxyCompactList}\small\item\em Fast approximation of the natural logarithm. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a0db2ecdc6ca69af1e6eb3402b1147cb6}{gain}} (float x, float factor)
-\item 
+\begin{DoxyCompactList}\small\item\em Applies a gain curve to remap a value in \mbox{[}0,1\mbox{]}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a99778512aa5779e70039e6b04e62d40c}{gaussian\+\_\+decay}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float sigma)
 \begin{DoxyCompactList}\small\item\em Return the Gaussian of the array elements. \end{DoxyCompactList}\item 
 std\+::function$<$ float(float, float)$>$ \mbox{\hyperlink{namespacehmap_a325c785e4776325f3061d9f5bd89fccf}{get\+\_\+distance\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{Distance\+Function}} dist\+\_\+fct)
@@ -7407,6 +7411,7 @@ Apply hydraulic erosion based on a flow accumulation map.
 \DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
 \DoxyCodeLine{\ \ glm::vec2\ kw\ =\ \{2.f,\ 2.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
@@ -7519,6 +7524,7 @@ Apply hydraulic erosion based on a flow accumulation map, alternative formulatio
 \DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
 \DoxyCodeLine{\ \ glm::vec2\ kw\ =\ \{2.f,\ 2.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
@@ -20531,12 +20537,62 @@ Return the exponantial of the array elements.
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Reference to the current object. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_ab6aaeb84221d16ab37212d3b3fe8c5fd}\label{namespacehmap_ab6aaeb84221d16ab37212d3b3fe8c5fd} 
+\index{hmap@{hmap}!fast\_exp@{fast\_exp}}
+\index{fast\_exp@{fast\_exp}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{fast\_exp()}{fast\_exp()}}
+{\footnotesize\ttfamily float hmap\+::fast\+\_\+exp (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fast approximation of the exponential function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Approximate value of exp(x). 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a158fef5f54c7dd51aaf730dbe63093ba}\label{namespacehmap_a158fef5f54c7dd51aaf730dbe63093ba} 
+\index{hmap@{hmap}!fast\_log@{fast\_log}}
+\index{fast\_log@{fast\_log}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{fast\_log()}{fast\_log()}}
+{\footnotesize\ttfamily float hmap\+::fast\+\_\+log (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fast approximation of the natural logarithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value (must be \texorpdfstring{$>$}{>} 0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Approximate value of ln(x). 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a0db2ecdc6ca69af1e6eb3402b1147cb6}\label{namespacehmap_a0db2ecdc6ca69af1e6eb3402b1147cb6} 
 \index{hmap@{hmap}!gain@{gain}}
 \index{gain@{gain}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{gain()}{gain()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily float hmap\+::gain (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{factor }\end{DoxyParamCaption})}
 
+
+
+Applies a gain curve to remap a value in \mbox{[}0,1\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value in \mbox{[}0,1\mbox{]}. \\
+\hline
+{\em factor} & Gain factor controlling contrast. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Remapped value in \mbox{[}0,1\mbox{]}. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a99778512aa5779e70039e6b04e62d40c}\label{namespacehmap_a99778512aa5779e70039e6b04e62d40c} 
 \index{hmap@{hmap}!gaussian\_decay@{gaussian\_decay}}
 \index{gaussian\_decay@{gaussian\_decay}!hmap@{hmap}}

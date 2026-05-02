@@ -1985,7 +1985,14 @@ Functions</h2></td></tr>
 <tr class="memitem:aad00066161ccf5ba4d6f93ab48c10876" id="r_aad00066161ccf5ba4d6f93ab48c10876"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aad00066161ccf5ba4d6f93ab48c10876">exp</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:aad00066161ccf5ba4d6f93ab48c10876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the exponantial of the array elements.  <br /></td></tr>
 <tr class="separator:aad00066161ccf5ba4d6f93ab48c10876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6aaeb84221d16ab37212d3b3fe8c5fd" id="r_ab6aaeb84221d16ab37212d3b3fe8c5fd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ab6aaeb84221d16ab37212d3b3fe8c5fd">fast_exp</a> (float x)</td></tr>
+<tr class="memdesc:ab6aaeb84221d16ab37212d3b3fe8c5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fast approximation of the exponential function.  <br /></td></tr>
+<tr class="separator:ab6aaeb84221d16ab37212d3b3fe8c5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a158fef5f54c7dd51aaf730dbe63093ba" id="r_a158fef5f54c7dd51aaf730dbe63093ba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a158fef5f54c7dd51aaf730dbe63093ba">fast_log</a> (float x)</td></tr>
+<tr class="memdesc:a158fef5f54c7dd51aaf730dbe63093ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fast approximation of the natural logarithm.  <br /></td></tr>
+<tr class="separator:a158fef5f54c7dd51aaf730dbe63093ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0db2ecdc6ca69af1e6eb3402b1147cb6" id="r_a0db2ecdc6ca69af1e6eb3402b1147cb6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0db2ecdc6ca69af1e6eb3402b1147cb6">gain</a> (float x, float factor)</td></tr>
+<tr class="memdesc:a0db2ecdc6ca69af1e6eb3402b1147cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a gain curve to remap a value in [0,1].  <br /></td></tr>
 <tr class="separator:a0db2ecdc6ca69af1e6eb3402b1147cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99778512aa5779e70039e6b04e62d40c" id="r_a99778512aa5779e70039e6b04e62d40c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a99778512aa5779e70039e6b04e62d40c">gaussian_decay</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float sigma)</td></tr>
 <tr class="memdesc:a99778512aa5779e70039e6b04e62d40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Gaussian of the array elements.  <br /></td></tr>
@@ -11265,6 +11272,7 @@ additional_depth)</code>.</li>
 <div class="line">  omp_set_num_threads(8);</div>
 <div class="line"> </div>
 <div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  shape = {1024, 1024};</div>
 <div class="line">  glm::vec2 kw = {2.f, 2.f};</div>
 <div class="line">  <span class="keywordtype">int</span>       seed = 1;</div>
 <div class="line"> </div>
@@ -11522,6 +11530,7 @@ additional_depth)</code>.</li>
 <div class="line">  omp_set_num_threads(8);</div>
 <div class="line"> </div>
 <div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  shape = {1024, 1024};</div>
 <div class="line">  glm::vec2 kw = {2.f, 2.f};</div>
 <div class="line">  <span class="keywordtype">int</span>       seed = 1;</div>
 <div class="line"> </div>
@@ -20004,7 +20013,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2752dc48a6d7bac9d3798033d1e7b3dd"><div class="ttname"><a href="namespacehmap.html#a2752dc48a6d7bac9d3798033d1e7b3dd">hmap::threshold</a></div><div class="ttdeci">float threshold(float x, float x0, float x1)</div><div class="ttdoc">Applies a linear threshold to a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:498</div></div>
+<div class="ttc" id="anamespacehmap_html_a2752dc48a6d7bac9d3798033d1e7b3dd"><div class="ttname"><a href="namespacehmap.html#a2752dc48a6d7bac9d3798033d1e7b3dd">hmap::threshold</a></div><div class="ttdeci">float threshold(float x, float x0, float x1)</div><div class="ttdoc">Applies a linear threshold to a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:519</div></div>
 <div class="ttc" id="anamespacehmap_html_ab79b21593238cc836f4dd32fecf63a58"><div class="ttname"><a href="namespacehmap.html#ab79b21593238cc836f4dd32fecf63a58">hmap::reverse_above_theshold</a></div><div class="ttdeci">void reverse_above_theshold(Array &amp;array, const Array &amp;threshold, float scaling=1.f, float transition_extent=0.f)</div><div class="ttdoc">Applies a smooth reversal of values above a given threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:681</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_reverse_above_theshold.png" alt=""/>
@@ -29246,8 +29255,8 @@ h}{\partial y}
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a68aac609ccba8f581da1cdf5cee671b9"><div class="ttname"><a href="classhmap_1_1Array.html#a68aac609ccba8f581da1cdf5cee671b9">hmap::Array::max</a></div><div class="ttdeci">float max() const</div><div class="ttdoc">Return the value of the greatest element in the array.</div><div class="ttdef"><b>Definition</b> methods.cpp:271</div></div>
 <div class="ttc" id="anamespacehmap_html_a38c0a582a98d48f73f49f12ebf1b78f9"><div class="ttname"><a href="namespacehmap.html#a38c0a582a98d48f73f49f12ebf1b78f9">hmap::cubic_pulse</a></div><div class="ttdeci">Array cubic_pulse(glm::ivec2 shape)</div><div class="ttdoc">Generates a cubic pulse kernel array.</div><div class="ttdef"><b>Definition</b> kernels.cpp:97</div></div>
-<div class="ttc" id="anamespacehmap_html_a58ba4910af868f70849f343e0c73adf3"><div class="ttname"><a href="namespacehmap.html#a58ba4910af868f70849f343e0c73adf3">hmap::flow_accumulation_dinf</a></div><div class="ttdeci">Array flow_accumulation_dinf(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow accumulation for each cell using the Multiple Flow Direction (MFD) model.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:37</div></div>
-<div class="ttc" id="anamespacehmap_html_a65291377b8b0a24636f60c36fd1e4044"><div class="ttname"><a href="namespacehmap.html#a65291377b8b0a24636f60c36fd1e4044">hmap::flow_accumulation_dinf_perturbed</a></div><div class="ttdeci">Array flow_accumulation_dinf_perturbed(const Array &amp;z, float talus_ref, int nsamples, glm::vec2 kw, uint seed, float amp, const Array *p_perturb_scaling=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Computes averaged D-infinity flow accumulation with terrain perturbations.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:107</div></div>
+<div class="ttc" id="anamespacehmap_html_a58ba4910af868f70849f343e0c73adf3"><div class="ttname"><a href="namespacehmap.html#a58ba4910af868f70849f343e0c73adf3">hmap::flow_accumulation_dinf</a></div><div class="ttdeci">Array flow_accumulation_dinf(const Array &amp;z, float talus_ref)</div><div class="ttdoc">Computes the flow accumulation for each cell using the Multiple Flow Direction (MFD) model.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:38</div></div>
+<div class="ttc" id="anamespacehmap_html_a65291377b8b0a24636f60c36fd1e4044"><div class="ttname"><a href="namespacehmap.html#a65291377b8b0a24636f60c36fd1e4044">hmap::flow_accumulation_dinf_perturbed</a></div><div class="ttdeci">Array flow_accumulation_dinf_perturbed(const Array &amp;z, float talus_ref, int nsamples, glm::vec2 kw, uint seed, float amp, const Array *p_perturb_scaling=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Computes averaged D-infinity flow accumulation with terrain perturbations.</div><div class="ttdef"><b>Definition</b> flow_accumulation_dinf.cpp:118</div></div>
 <div class="ttc" id="anamespacehmap_html_ae239201a0a4193e1ce78bdf1fce4c151"><div class="ttname"><a href="namespacehmap.html#ae239201a0a4193e1ce78bdf1fce4c151">hmap::clamp_max</a></div><div class="ttdeci">void clamp_max(Array &amp;array, float vmax)</div><div class="ttdoc">Clamp array values larger than a given bound.</div><div class="ttdef"><b>Definition</b> range.cpp:79</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_flow_accumulation_dinf0.png" alt=""/>
@@ -34061,6 +34070,76 @@ The resulting order is not guaranteed to be preserved. </dd></dl>
 
 </div>
 </div>
+<a id="ab6aaeb84221d16ab37212d3b3fe8c5fd" name="ab6aaeb84221d16ab37212d3b3fe8c5fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6aaeb84221d16ab37212d3b3fe8c5fd">&#9670;&#160;</a></span>fast_exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::fast_exp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fast approximation of the exponential function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Input value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Approximate value of exp(x). </dd></dl>
+
+</div>
+</div>
+<a id="a158fef5f54c7dd51aaf730dbe63093ba" name="a158fef5f54c7dd51aaf730dbe63093ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a158fef5f54c7dd51aaf730dbe63093ba">&#9670;&#160;</a></span>fast_log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hmap::fast_log </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fast approximation of the natural logarithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Input value (must be &gt; 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Approximate value of ln(x). </dd></dl>
+
+</div>
+</div>
 <a id="a0db2ecdc6ca69af1e6eb3402b1147cb6" name="a0db2ecdc6ca69af1e6eb3402b1147cb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0db2ecdc6ca69af1e6eb3402b1147cb6">&#9670;&#160;</a></span>gain() <span class="overload">[3/3]</span></h2>
 
@@ -34086,6 +34165,16 @@ The resulting order is not guaranteed to be preserved. </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Applies a gain curve to remap a value in [0,1]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Input value in [0,1]. </td></tr>
+    <tr><td class="paramname">factor</td><td>Gain factor controlling contrast. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Remapped value in [0,1]. </dd></dl>
 
 </div>
 </div>
@@ -34142,7 +34231,7 @@ The resulting order is not guaranteed to be preserved. </dd></dl>
 <div class="line">                          {z, zg},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a99778512aa5779e70039e6b04e62d40c"><div class="ttname"><a href="namespacehmap.html#a99778512aa5779e70039e6b04e62d40c">hmap::gaussian_decay</a></div><div class="ttdeci">Array gaussian_decay(const Array &amp;array, float sigma)</div><div class="ttdoc">Return the Gaussian of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:156</div></div>
+<div class="ttc" id="anamespacehmap_html_a99778512aa5779e70039e6b04e62d40c"><div class="ttname"><a href="namespacehmap.html#a99778512aa5779e70039e6b04e62d40c">hmap::gaussian_decay</a></div><div class="ttdeci">Array gaussian_decay(const Array &amp;array, float sigma)</div><div class="ttdoc">Return the Gaussian of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:177</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_gaussian_decay.png" alt=""/>
 </div>
@@ -34655,7 +34744,7 @@ The resulting order is not guaranteed to be preserved. </dd></dl>
 <div class="line">                          {dr, dx, dy},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_af9ae05bbdab06ce61f1385ef4231d03b"><div class="ttname"><a href="namespacehmap.html#af9ae05bbdab06ce61f1385ef4231d03b">hmap::radial_displacement_to_xy</a></div><div class="ttdeci">void radial_displacement_to_xy(const Array &amp;dr, Array &amp;dx, Array &amp;dy, float smoothing=1.f, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Interpret the input array dr as a radial displacement and convert it to a pair of displacements dx an...</div><div class="ttdef"><b>Definition</b> math.cpp:245</div></div>
+<div class="ttc" id="anamespacehmap_html_af9ae05bbdab06ce61f1385ef4231d03b"><div class="ttname"><a href="namespacehmap.html#af9ae05bbdab06ce61f1385ef4231d03b">hmap::radial_displacement_to_xy</a></div><div class="ttdeci">void radial_displacement_to_xy(const Array &amp;dr, Array &amp;dx, Array &amp;dy, float smoothing=1.f, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Interpret the input array dr as a radial displacement and convert it to a pair of displacements dx an...</div><div class="ttdef"><b>Definition</b> math.cpp:266</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_radial_displacement_to_xy.png" alt=""/>
 </div>
@@ -34794,7 +34883,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_sigmoid.png&quot;</span>, {z, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_ad0759b7e3cb7455527b9b5b4947720bd"><div class="ttname"><a href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a></div><div class="ttdeci">float sigmoid(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</div><div class="ttdoc">Computes the sigmoid function for a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:279</div></div>
+<div class="ttc" id="anamespacehmap_html_ad0759b7e3cb7455527b9b5b4947720bd"><div class="ttname"><a href="namespacehmap.html#ad0759b7e3cb7455527b9b5b4947720bd">hmap::sigmoid</a></div><div class="ttdeci">float sigmoid(float x, float width=1.f, float vmin=0.f, float vmax=1.f, float x0=0.f)</div><div class="ttdoc">Computes the sigmoid function for a scalar value.</div><div class="ttdef"><b>Definition</b> math.cpp:300</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_sigmoid.png" alt=""/>
 </div>
@@ -34975,8 +35064,8 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {z, z3, z5},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:307</div></div>
-<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:378</div></div>
+<div class="ttc" id="anamespacehmap_html_a413648e2595721d8ba4096357dbb1f84"><div class="ttname"><a href="namespacehmap.html#a413648e2595721d8ba4096357dbb1f84">hmap::smoothstep3</a></div><div class="ttdeci">Array smoothstep3(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 3rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:328</div></div>
+<div class="ttc" id="anamespacehmap_html_aa4468d1e57ee67ba0be8fb1ab931045a"><div class="ttname"><a href="namespacehmap.html#aa4468d1e57ee67ba0be8fb1ab931045a">hmap::smoothstep5</a></div><div class="ttdeci">Array smoothstep5(const Array &amp;array, float vmin=0.f, float vmax=1.f)</div><div class="ttdoc">Return the 5rd order smoothstep function of the array elements.</div><div class="ttdef"><b>Definition</b> math.cpp:399</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smoothstep.png" alt=""/>
 </div>
@@ -36106,7 +36195,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html_aead9df3c2a79ee8bc479b04ca314743e"><div class="ttname"><a href="classhmap_1_1Array.html#aead9df3c2a79ee8bc479b04ca314743e">hmap::Array::resample_to_shape_nearest</a></div><div class="ttdeci">Array resample_to_shape_nearest(glm::ivec2 new_shape) const</div><div class="ttdoc">Return a resampled array of shape new_shape using nearest neighbor interpolation.</div><div class="ttdef"><b>Definition</b> methods.cpp:386</div></div>
 <div class="ttc" id="anamespacehmap_html_a2420e66a1e851eff3503d805004495b3"><div class="ttname"><a href="namespacehmap.html#a2420e66a1e851eff3503d805004495b3">hmap::contour_smoothing</a></div><div class="ttdeci">Array contour_smoothing(const Array &amp;array, int ir, float transition_ratio=0.1f)</div><div class="ttdoc">Smooth contour boundaries of segmented regions.</div><div class="ttdef"><b>Definition</b> morphology.cpp:65</div></div>
-<div class="ttc" id="anamespacehmap_html_a339d883dc34fc818dd25077c5daab953"><div class="ttname"><a href="namespacehmap.html#a339d883dc34fc818dd25077c5daab953">hmap::is_non_zero</a></div><div class="ttdeci">Array is_non_zero(const Array &amp;array)</div><div class="ttdoc">Returns a binary mask of non-zero elements.</div><div class="ttdef"><b>Definition</b> math.cpp:188</div></div>
+<div class="ttc" id="anamespacehmap_html_a339d883dc34fc818dd25077c5daab953"><div class="ttname"><a href="namespacehmap.html#a339d883dc34fc818dd25077c5daab953">hmap::is_non_zero</a></div><div class="ttdeci">Array is_non_zero(const Array &amp;array)</div><div class="ttdoc">Returns a binary mask of non-zero elements.</div><div class="ttdef"><b>Definition</b> math.cpp:209</div></div>
 <div class="ttc" id="anamespacehmap_html_a4799d3f029d45240a5b40b4853583a58"><div class="ttname"><a href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a></div><div class="ttdeci">void make_binary(Array &amp;array, float threshold=0.f)</div><div class="ttdoc">Convert array values to binary using a threshold.</div><div class="ttdef"><b>Definition</b> filters.cpp:456</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_contour_smoothing.png" alt=""/>
