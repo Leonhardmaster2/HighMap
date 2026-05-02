@@ -147,6 +147,27 @@ Array exp(const Array &array)
   return array_out;
 }
 
+float fast_exp(float x)
+{
+  union
+  {
+    float   f;
+    int32_t i;
+  } u;
+  u.i = (int32_t)(12102203.f * x) + 127 * (1 << 23);
+  return u.f;
+}
+
+float fast_log(float x)
+{
+  union
+  {
+    float   f;
+    int32_t i;
+  } u = {x};
+  return (u.i - 1064866805) * 8.262958405e-8f;
+}
+
 float gain(float x, float factor)
 {
   return x < 0.5 ? 0.5f * std::pow(2.f * x, factor)

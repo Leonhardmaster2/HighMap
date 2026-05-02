@@ -9,6 +9,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 
@@ -48,10 +49,14 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
   // use raw pointer to avoid operator() overhead
   float *facc_ptr = facc.vector.data();
 
+  Timer::Start("dinf");
   std::vector<float> dinf = flow_direction_dinf_flat(z, talus_ref);
+  Timer::Stop("dinf");
 
   // build nidp — parallelized with atomic increments
   std::vector<int> nidp(ncells, 0); // int, not uint8_t (atomic-safe)
+
+  Timer::Start("nidp");
 
 #pragma omp parallel for schedule(static)
   for (int j = 1; j < ny - 1; ++j)
@@ -69,6 +74,8 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
       }
     }
 
+  Timer::Stop("nidp");
+
   // seed queue with source cells (nidp == 0)
   std::vector<int> queue;
   queue.reserve(ncells / 4);
@@ -76,6 +83,8 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
   for (int j = 1; j < ny - 1; ++j)
     for (int i = 1; i < nx - 1; ++i)
       if (nidp[j * nx + i] == 0) queue.push_back(j * nx + i);
+
+  Timer::Start("acc");
 
   // topological accumulation, inherently sequential
   while (!queue.empty())
@@ -99,6 +108,8 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
       if (--nidp[nidx] == 0) queue.push_back(nidx);
     }
   }
+
+  Timer::Stop("acc");
 
   fill_borders(facc);
   return facc;
@@ -216,7 +227,7 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
         float dz = zij - z(i + di[k], j + dj[k]);
         if (dz > 0.f)
         {
-          const float v = std::exp(pij * (std::log(dz) + log_c[k])) * ecl[k];
+          const float v = fast_exp(pij * (fast_log(dz) + log_c[k])) * ecl[k];
           tmp[k] = v;
           sum += v;
         }

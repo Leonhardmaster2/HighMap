@@ -7,6 +7,7 @@ int main(void)
   omp_set_num_threads(8);
 
   glm::ivec2 shape = {256, 256};
+  shape = {1024, 1024};
   glm::vec2 kw = {2.f, 2.f};
   int       seed = 1;
 
