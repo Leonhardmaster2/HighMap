@@ -1,5 +1,8 @@
 var NAVTREEINDEX22 =
 {
+"test__splines_8cpp.html#aeb0040f5b6eac21c2f0256fa8f844cad":[5,0,2,0,19,0],
+"test__variance_8cpp.html":[5,0,2,0,20],
+"test__variance_8cpp.html#a5901933ecacba95c74c9c5ed346a1e1e":[5,0,2,0,20,3],
 "test__variance_8cpp.html#a7906931a52c09841d3919814ce5389a8":[5,0,2,0,20,6],
 "test__variance_8cpp.html#aaac60150ac35437eb59734a8301c75e5":[5,0,2,0,20,1],
 "test__variance_8cpp.html#aafb544f91248e1e92b9e3bd68f476705":[5,0,2,0,20,0],

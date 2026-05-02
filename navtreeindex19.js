@@ -1,5 +1,7 @@
 var NAVTREEINDEX19 =
 {
+"sdf_8hpp.html#a6ce804c0a3c7bdfe98464278da568a57":[5,0,1,0,0,37,2],
+"sdf_8hpp.html#a765ffa5ee98f47eba4b9d4ebe7680190":[5,0,1,0,0,37,0],
 "sdf_8hpp.html#a93d9f75a0af0e7e76e77851efd36c804":[5,0,1,0,0,37,1],
 "sdf_8hpp_source.html":[5,0,1,0,0,37],
 "sdf__2d__polyline_8cpp.html":[5,0,1,1,31,0],
@@ -107,6 +109,7 @@ var NAVTREEINDEX19 =
 "solve__poisson__gauss__seidel_8cpp.html#a0bcc84aa462aee73e1a3a52729f21ea6":[5,0,1,1,18,4,0],
 "spectral__equalizer_8cpp.html":[5,0,1,1,15,11],
 "spectral__equalizer_8cpp.html#a302ad3eae3f0a06441915c2b97d56641":[5,0,1,1,15,11,0],
+"spectral__equalizer_8cpp.html#ae94d740e0c470e8b8732bbb3a2498de4":[5,0,1,1,15,11,1],
 "stamping_8cpp.html":[5,0,1,1,2,4],
 "stamping_8cpp.html#a4fb4163cdefab63b52484ea8091a11ed":[5,0,1,1,2,4,0],
 "statistics_8cpp.html":[5,0,1,1,35,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX19 =
 "structhmap_1_1LruTileEntry.html#a64f43e9e8cd9c2a013deacda2409e26f":[3,0,0,35,0],
 "structhmap_1_1LruTileEntry.html#a64f43e9e8cd9c2a013deacda2409e26f":[4,0,0,34,0],
 "structhmap_1_1Mat.html":[4,0,0,36],
-"structhmap_1_1Mat.html":[3,0,0,37],
-"structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0":[4,0,0,36,8],
-"structhmap_1_1Mat.html#a1ab58820a1efbf5e7c2f7ee1d51dd7c0":[3,0,0,37,8],
-"structhmap_1_1Mat.html#a429366c8daa4495b65f288f3527f2022":[3,0,0,37,3]
+"structhmap_1_1Mat.html":[3,0,0,37]
 };
