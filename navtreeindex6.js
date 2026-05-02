@@ -57,6 +57,8 @@ var NAVTREEINDEX6 =
 "colormaps_8hpp.html#ac70fe3cbb32e0340d5dd3e15cdcf9369ae91cb25d4df330517ac69b5f0f2c3e0c":[5,0,1,0,0,14,0,6],
 "colormaps_8hpp.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143":[5,0,1,0,0,14,0,3],
 "colormaps_8hpp_source.html":[5,0,1,0,0,14],
+"compare_8cpp.html":[5,0,1,1,27,0],
+"compare_8cpp.html#acafd15472972fb139c59071c091741cf":[5,0,1,1,27,0,0],
 "cone_8cpp.html":[5,0,1,1,28,3],
 "cone_8cpp.html#a78b0b574724e2036ad5da6148e21acd8":[5,0,1,1,28,3,2],
 "cone_8cpp.html#ace61bbd6a24c696dc24901dbe39be203":[5,0,1,1,28,3,1],
@@ -125,8 +127,8 @@ var NAVTREEINDEX6 =
 "depression__filling_8cpp.html#aa64448e4b5640d90570e53249907c98a":[5,0,1,1,12,3,0],
 "depression__filling__priority__flood_8cpp.html":[5,0,1,1,12,4],
 "depression__filling__priority__flood_8cpp.html#acd726fbea3f38f8052289866302cbeec":[5,0,1,1,12,4,0],
-"detrend_8cpp.html":[5,0,1,1,27,0],
-"detrend_8cpp.html#a000840cf4916102db68d6428c8c8c7e2":[5,0,1,1,27,0,0],
+"detrend_8cpp.html":[5,0,1,1,27,1],
+"detrend_8cpp.html#a000840cf4916102db68d6428c8c8c7e2":[5,0,1,1,27,1,0],
 "diffusion__limited__aggregation_8cpp.html":[5,0,1,1,28,5],
 "diffusion__limited__aggregation_8cpp.html#a2612499c23723b7e9627c40fa62c8b12":[5,0,1,1,28,5,1],
 "diffusion__limited__aggregation_8cpp.html#a4bf1e669410e1a5dac4c5261d8ef9bfd":[5,0,1,1,28,5,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "drainage__basin__cell__based_8hpp_source.html":[5,0,1,0,0,2,1],
 "erosion_8hpp.html":[5,0,1,0,0,18],
 "erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81],
-"erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1],
-"erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,0,0,18,93],
-"erosion_8hpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,0,0,18,34]
+"erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1]
 };

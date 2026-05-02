@@ -2214,6 +2214,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a34aa21678ff4bb869bb29ee0f2f68886" id="r_a34aa21678ff4bb869bb29ee0f2f68886"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a34aa21678ff4bb869bb29ee0f2f68886">add_kernel_maximum_smooth</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;kernel, float k_smooth, int i, int j)</td></tr>
 <tr class="memdesc:a34aa21678ff4bb869bb29ee0f2f68886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a smoothed maximum value from a kernel to a specified position in a 2D array.  <br /></td></tr>
 <tr class="separator:a34aa21678ff4bb869bb29ee0f2f68886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acafd15472972fb139c59071c091741cf" id="r_acafd15472972fb139c59071c091741cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#acafd15472972fb139c59071c091741cf">compare</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;b, float slice_x_pos, float slice_y_pos)</td></tr>
+<tr class="memdesc:acafd15472972fb139c59071c091741cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines two arrays by selecting values from a or b based on a slice position.  <br /></td></tr>
+<tr class="separator:acafd15472972fb139c59071c091741cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a000840cf4916102db68d6428c8c8c7e2" id="r_a000840cf4916102db68d6428c8c8c7e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a000840cf4916102db68d6428c8c8c7e2">detrend_reg</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a000840cf4916102db68d6428c8c8c7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply linear regression for detrending of a 2D array.  <br /></td></tr>
 <tr class="separator:a000840cf4916102db68d6428c8c8c7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -38399,6 +38402,82 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 </dl>
 <p>The kernel is truncated to ensure it fits within the bounds of the array. After applying the kernel, the values in the array are updated with the result of the maximum_smooth function. </p>
 
+</div>
+</div>
+<a id="acafd15472972fb139c59071c091741cf" name="acafd15472972fb139c59071c091741cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acafd15472972fb139c59071c091741cf">&#9670;&#160;</a></span>compare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::compare </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>slice_x_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>slice_y_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Combines two arrays by selecting values from a or b based on a slice position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>First input array. </td></tr>
+    <tr><td class="paramname">b</td><td>Second input array. </td></tr>
+    <tr><td class="paramname">slice_x_pos</td><td>Horizontal slice position in [0,1]. </td></tr>
+    <tr><td class="paramname">slice_y_pos</td><td>Vertical slice position in [0,1]. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Output array mixing a (top-left) and b (bottom-right).</dd></dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, ++seed);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> b = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>,</div>
+<div class="line">                                  shape,</div>
+<div class="line">                                  0.5f * kw,</div>
+<div class="line">                                  ++seed);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span>       slice_x_pos = 0.5f;</div>
+<div class="line">  <span class="keywordtype">float</span>       slice_y_pos = 0.2f;</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> out = <a class="code hl_function" href="namespacehmap.html#acafd15472972fb139c59071c091741cf">hmap::compare</a>(a, b, slice_x_pos, slice_y_pos);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_compare.png&quot;</span>, {a, b, out}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_acafd15472972fb139c59071c091741cf"><div class="ttname"><a href="namespacehmap.html#acafd15472972fb139c59071c091741cf">hmap::compare</a></div><div class="ttdeci">Array compare(const Array &amp;a, const Array &amp;b, float slice_x_pos, float slice_y_pos)</div><div class="ttdoc">Combines two arrays by selecting values from a or b based on a slice position.</div><div class="ttdef"><b>Definition</b> compare.cpp:9</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_compare.png" alt=""/>
+</div>
+ 
 </div>
 </div>
 <a id="a000840cf4916102db68d6428c8c8c7e2" name="a000840cf4916102db68d6428c8c8c7e2"></a>

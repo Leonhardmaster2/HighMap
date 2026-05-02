@@ -1090,6 +1090,7 @@ var namespacehmap =
     [ "log_openmp_info", "namespacehmap.html#afaefd4e8848d0155162b24a1a67f9479", null ],
     [ "add_kernel", "namespacehmap.html#ae51dda5e070b01ad1a85b44d986f5003", null ],
     [ "add_kernel_maximum_smooth", "namespacehmap.html#a34aa21678ff4bb869bb29ee0f2f68886", null ],
+    [ "compare", "namespacehmap.html#acafd15472972fb139c59071c091741cf", null ],
     [ "detrend_reg", "namespacehmap.html#a000840cf4916102db68d6428c8c8c7e2", null ],
     [ "hstack", "namespacehmap.html#ad6fc7fb24960fa6a45bc657ae2d89f80", null ],
     [ "inpainting_diffusion", "namespacehmap.html#ab642074e3e056d07ae13cf346e208c79", null ],

@@ -1537,6 +1537,8 @@ void \mbox{\hyperlink{namespacehmap_ae51dda5e070b01ad1a85b44d986f5003}{add\+\_\+
 \begin{DoxyCompactList}\small\item\em Add a kernel to a specified position in an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a34aa21678ff4bb869bb29ee0f2f68886}{add\+\_\+kernel\+\_\+maximum\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel, float k\+\_\+smooth, int i, int j)
 \begin{DoxyCompactList}\small\item\em Adds a smoothed maximum value from a kernel to a specified position in a 2D array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acafd15472972fb139c59071c091741cf}{compare}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float slice\+\_\+x\+\_\+pos, float slice\+\_\+y\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Combines two arrays by selecting values from a or b based on a slice position. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}{detrend\+\_\+reg}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Apply linear regression for detrending of a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad6fc7fb24960fa6a45bc657ae2d89f80}{hstack}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
@@ -23408,7 +23410,57 @@ This function applies a truncated kernel to the given array at position (ic, jc)
 {\em jc} & The y-\/coordinate of the center in the array where the kernel is applied.\\
 \hline
 \end{DoxyParams}
-The kernel is truncated to ensure it fits within the bounds of the array. After applying the kernel, the values in the array are updated with the result of the maximum\+\_\+smooth function. \Hypertarget{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}\label{namespacehmap_a000840cf4916102db68d6428c8c8c7e2} 
+The kernel is truncated to ensure it fits within the bounds of the array. After applying the kernel, the values in the array are updated with the result of the maximum\+\_\+smooth function. \Hypertarget{namespacehmap_acafd15472972fb139c59071c091741cf}\label{namespacehmap_acafd15472972fb139c59071c091741cf} 
+\index{hmap@{hmap}!compare@{compare}}
+\index{compare@{compare}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{compare()}{compare()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::compare (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{b,  }\item[{float}]{slice\+\_\+x\+\_\+pos,  }\item[{float}]{slice\+\_\+y\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Combines two arrays by selecting values from a or b based on a slice position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & First input array. \\
+\hline
+{\em b} & Second input array. \\
+\hline
+{\em slice\+\_\+x\+\_\+pos} & Horizontal slice position in \mbox{[}0,1\mbox{]}. \\
+\hline
+{\em slice\+\_\+y\+\_\+pos} & Vertical slice position in \mbox{[}0,1\mbox{]}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output array mixing a (top-\/left) and b (bottom-\/right).
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ a\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ ++seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ b\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5f\ *\ kw,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slice\_x\_pos\ =\ 0.5f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ slice\_y\_pos\ =\ 0.2f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ out\ =\ \mbox{\hyperlink{namespacehmap_acafd15472972fb139c59071c091741cf}{hmap::compare}}(a,\ b,\ slice\_x\_pos,\ slice\_y\_pos);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_compare.png"{}},\ \{a,\ b,\ out\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}\label{namespacehmap_a000840cf4916102db68d6428c8c8c7e2} 
 \index{hmap@{hmap}!detrend\_reg@{detrend\_reg}}
 \index{detrend\_reg@{detrend\_reg}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{detrend\_reg()}{detrend\_reg()}}

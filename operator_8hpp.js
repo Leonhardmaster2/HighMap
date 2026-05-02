@@ -2,6 +2,7 @@ var operator_8hpp =
 [
     [ "add_kernel", "operator_8hpp.html#ae51dda5e070b01ad1a85b44d986f5003", null ],
     [ "add_kernel_maximum_smooth", "operator_8hpp.html#a34aa21678ff4bb869bb29ee0f2f68886", null ],
+    [ "compare", "operator_8hpp.html#acafd15472972fb139c59071c091741cf", null ],
     [ "detrend_reg", "operator_8hpp.html#a000840cf4916102db68d6428c8c8c7e2", null ],
     [ "hstack", "operator_8hpp.html#ad6fc7fb24960fa6a45bc657ae2d89f80", null ],
     [ "inpainting_diffusion", "operator_8hpp.html#ab642074e3e056d07ae13cf346e208c79", null ],
