@@ -1527,6 +1527,10 @@ void \mbox{\hyperlink{namespacehmap_a669a4f9586f3df4b018e321048c9bc7d}{downscale
 \item 
 void \mbox{\hyperlink{namespacehmap_a868ae7c781d7e72af7b1416898a2f891}{upscale\+\_\+amplification}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int upscaling\+\_\+levels, float persistence, std\+::function$<$ void(\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&x, float current\+\_\+scaling)$>$ unary\+\_\+op)
 \begin{DoxyCompactList}\small\item\em Applies an upscaling amplification process to an array, followed by a unary operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacehmap_aab86375877f77e5c6fd396c339d8cbea}{init\+\_\+openmp}} (int num\+\_\+threads=8)
+\item 
+void \mbox{\hyperlink{namespacehmap_afaefd4e8848d0155162b24a1a67f9479}{log\+\_\+openmp\+\_\+info}} ()
+\item 
 void \mbox{\hyperlink{namespacehmap_ae51dda5e070b01ad1a85b44d986f5003}{add\+\_\+kernel}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel, int i, int j)
 \begin{DoxyCompactList}\small\item\em Add a kernel to a specified position in an array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a34aa21678ff4bb869bb29ee0f2f68886}{add\+\_\+kernel\+\_\+maximum\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&kernel, float k\+\_\+smooth, int i, int j)
@@ -7127,8 +7131,7 @@ Iteratively updates elevations using a drainage model with uplift, slope constra
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_aab86375877f77e5c6fd396c339d8cbea}{hmap::init\_openmp}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
 \DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
@@ -7274,8 +7277,7 @@ Eroded heightmap.
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ omp\_set\_num\_threads(8);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_aab86375877f77e5c6fd396c339d8cbea}{hmap::init\_openmp}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
 \DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
@@ -23342,6 +23344,18 @@ This function progressively upscales the given array by powers of 2 (starting fr
 \begin{DoxyNote}{Note}
 The function first applies bicubic resampling to upscale the array, then applies the user-\/provided {\ttfamily unary\+\_\+op} at each upscaling level. After all levels are processed, the array is resampled back to its initial shape using bilinear interpolation. 
 \end{DoxyNote}
+\Hypertarget{namespacehmap_aab86375877f77e5c6fd396c339d8cbea}\label{namespacehmap_aab86375877f77e5c6fd396c339d8cbea} 
+\index{hmap@{hmap}!init\_openmp@{init\_openmp}}
+\index{init\_openmp@{init\_openmp}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{init\_openmp()}{init\_openmp()}}
+{\footnotesize\ttfamily bool hmap\+::init\+\_\+openmp (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+threads = {\ttfamily 8} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_afaefd4e8848d0155162b24a1a67f9479}\label{namespacehmap_afaefd4e8848d0155162b24a1a67f9479} 
+\index{hmap@{hmap}!log\_openmp\_info@{log\_openmp\_info}}
+\index{log\_openmp\_info@{log\_openmp\_info}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{log\_openmp\_info()}{log\_openmp\_info()}}
+{\footnotesize\ttfamily void hmap\+::log\+\_\+openmp\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \Hypertarget{namespacehmap_ae51dda5e070b01ad1a85b44d986f5003}\label{namespacehmap_ae51dda5e070b01ad1a85b44d986f5003} 
 \index{hmap@{hmap}!add\_kernel@{add\_kernel}}
 \index{add\_kernel@{add\_kernel}!hmap@{hmap}}

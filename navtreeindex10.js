@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"hydrology_8hpp.html#a7bed0a401445a2b13d8d37e7a34ea598":[5,0,1,0,0,2,2,33],
 "hydrology_8hpp.html#a819fc20190d598c4664d442ee824fc96":[5,0,1,0,0,2,2,15],
 "hydrology_8hpp.html#a823804201f4a5d9d2f2ada14120a6c8c":[5,0,1,0,0,2,2,5],
 "hydrology_8hpp.html#a8284b00f1f460f1d5a406ee45587dcd9":[5,0,1,0,0,2,2,0],
@@ -35,8 +36,8 @@ var NAVTREEINDEX10 =
 "index.html#autotoc_md7":[0,1,3],
 "index.html#autotoc_md8":[0,1,3,0],
 "index.html#autotoc_md9":[0,1,3,1],
-"inpainting__gaussian_8cpp.html":[5,0,1,1,26,2],
-"inpainting__gaussian_8cpp.html#ab642074e3e056d07ae13cf346e208c79":[5,0,1,1,26,2,0],
+"inpainting__gaussian_8cpp.html":[5,0,1,1,27,2],
+"inpainting__gaussian_8cpp.html#ab642074e3e056d07ae13cf346e208c79":[5,0,1,1,27,2,0],
 "interpolate1d_8cpp.html":[5,0,1,1,20,2],
 "interpolate1d_8cpp.html#a567abeb8b68a281411d811987a84ee42":[5,0,1,1,20,2,0],
 "interpolate1d_8hpp.html":[5,0,1,0,0,24],
@@ -131,13 +132,13 @@ var NAVTREEINDEX10 =
 "interpolate__heightmap__virtual__array_8cpp.html#aab05ca060b3dd80724ff669864c0f4d2":[5,0,1,1,20,13,2],
 "interpolate__heightmap__virtual__array_8cpp.html#ace2076a7808458f99aeaeec2bc404d6b":[5,0,1,1,20,13,0],
 "io_8cpp.html":[5,0,1,1,1,2],
-"island_8cpp.html":[5,0,1,1,27,1,3],
-"island_8cpp.html#a04ae8a1ec2b8156be692aa690d32e1ff":[5,0,1,1,27,1,3,2],
-"island_8cpp.html#a6f12f5873de12bca27a99b9c9d2cf0a0":[5,0,1,1,27,1,3,5],
-"island_8cpp.html#a7aac37734b22ffed4807f274511861be":[5,0,1,1,27,1,3,3],
-"island_8cpp.html#a8583f0ee018a30b63c9cacb4580cd3e9":[5,0,1,1,27,1,3,1],
-"island_8cpp.html#a8591567b50b8d48394fcc8fb046188b7":[5,0,1,1,27,1,3,0],
-"island_8cpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,1,27,1,3,4],
+"island_8cpp.html":[5,0,1,1,28,1,3],
+"island_8cpp.html#a04ae8a1ec2b8156be692aa690d32e1ff":[5,0,1,1,28,1,3,2],
+"island_8cpp.html#a6f12f5873de12bca27a99b9c9d2cf0a0":[5,0,1,1,28,1,3,5],
+"island_8cpp.html#a7aac37734b22ffed4807f274511861be":[5,0,1,1,28,1,3,3],
+"island_8cpp.html#a8583f0ee018a30b63c9cacb4580cd3e9":[5,0,1,1,28,1,3,1],
+"island_8cpp.html#a8591567b50b8d48394fcc8fb046188b7":[5,0,1,1,28,1,3,0],
+"island_8cpp.html#ae20d5b7f78d4c3eb5064490a3a407533":[5,0,1,1,28,1,3,4],
 "kd__tree_8cpp.html":[5,0,1,1,16,4],
 "kd__tree_8hpp.html":[5,0,1,0,0,1,3],
 "kd__tree_8hpp.html#ae4a8f5c1d747f5eccbe078ab94598707":[5,0,1,0,0,1,3,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fafad6a20433412feb877a9e8ebb76633c":[5,0,1,0,0,29,0,7],
 "local__metrics_8hpp.html#ab4d8048b79080012b8e60c270de8137f":[5,0,1,0,0,29,8],
 "local__metrics_8hpp.html#ac297b8711e186ee1e5cdc7d1fc6a7972":[5,0,1,0,0,29,4],
-"local__metrics_8hpp.html#ad6ef648576e9339058037a28ce17d225":[5,0,1,0,0,29,17],
-"local__metrics_8hpp.html#adac2e2b20d0c2720e2dc068641bcd922":[5,0,1,0,0,29,1]
+"local__metrics_8hpp.html#ad6ef648576e9339058037a28ce17d225":[5,0,1,0,0,29,17]
 };
