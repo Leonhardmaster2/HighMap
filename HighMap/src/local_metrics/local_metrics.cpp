@@ -1,6 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <deque>
+
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/curvature.hpp"
@@ -14,35 +16,63 @@ namespace hmap
 
 Array local_max(const Array &array, int ir)
 {
-  Array array_out = Array(array.shape);
+  const int nx = array.shape.x;
+  const int ny = array.shape.y;
+
   Array array_tmp = Array(array.shape);
+  Array array_out = Array(array.shape);
 
-  // row
-  for (int i = 0; i < array.shape.x; i++)
+  // --- Pass 1: centered sliding max along rows
+
+#pragma omp parallel for schedule(static)
+  for (int j = 0; j < ny; ++j)
   {
-    int i1 = std::max(0, i - ir);
-    int i2 = std::min(array.shape.x, i + ir + 1);
+    std::deque<int> dq;
 
-    for (int j = 0; j < array.shape.y; j++)
+    // iterate beyond nx-1 to flush the right side of centered windows
+    for (int i = 0; i < nx + ir; ++i)
     {
-      float max = array(i, j);
-      for (int u = i1; u < i2; u++)
-        if (array(u, j) > max) max = array(u, j);
-      array_tmp(i, j) = max;
+      // add element i if within bounds
+      if (i < nx)
+      {
+        while (!dq.empty() && array(dq.back(), j) <= array(i, j))
+          dq.pop_back();
+        dq.push_back(i);
+      }
+
+      // window for output p = i-ir is [p-ir, p+ir] = [i-2*ir, i]
+      while (!dq.empty() && dq.front() < i - 2 * ir)
+        dq.pop_front();
+
+      // write output with ir-step delay
+      const int p = i - ir;
+      if (p >= 0 && p < nx && !dq.empty())
+        array_tmp(p, j) = array(dq.front(), j);
     }
   }
 
-  // column
-  for (int j = 0; j < array.shape.y; j++)
+  // --- Pass 2: centered sliding max along columns
+
+#pragma omp parallel for schedule(static)
+  for (int i = 0; i < nx; ++i)
   {
-    int j1 = std::max(0, j - ir);
-    int j2 = std::min(array.shape.y, j + ir + 1);
-    for (int i = 0; i < array.shape.x; i++)
+    std::deque<int> dq;
+
+    for (int j = 0; j < ny + ir; ++j)
     {
-      float max = array_tmp(i, j);
-      for (int v = j1; v < j2; v++)
-        if (array_tmp(i, v) > max) max = array_tmp(i, v);
-      array_out(i, j) = max;
+      if (j < ny)
+      {
+        while (!dq.empty() && array_tmp(i, dq.back()) <= array_tmp(i, j))
+          dq.pop_back();
+        dq.push_back(j);
+      }
+
+      while (!dq.empty() && dq.front() < j - 2 * ir)
+        dq.pop_front();
+
+      const int p = j - ir;
+      if (p >= 0 && p < ny && !dq.empty())
+        array_out(i, p) = array_tmp(i, dq.front());
     }
   }
 
@@ -79,9 +109,6 @@ Array relative_elevation(const Array &array, int ir)
 {
   Array amin = local_min(array, ir);
   Array amax = local_max(array, ir);
-
-  smooth_cpulse(amin, ir);
-  smooth_cpulse(amax, ir);
 
   return (array - amin) / (amax - amin + std::numeric_limits<float>::min());
 }

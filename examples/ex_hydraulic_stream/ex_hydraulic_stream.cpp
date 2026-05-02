@@ -2,6 +2,9 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+  hmap::init_openmp();
+
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
   glm::vec2 kw = {2.f, 2.f};
@@ -32,8 +35,6 @@ int main(void)
                          &moisture_map,
                          &erosion_map,
                          ir);
-
-  hmap::gpu::init_opencl();
 
   // log scale
   auto z3 = z;

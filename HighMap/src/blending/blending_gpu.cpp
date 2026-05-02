@@ -15,8 +15,8 @@ namespace hmap::gpu
 
 Array blend_gradients(const Array &array1, const Array &array2, int ir)
 {
-  Array dn1 = gpu::gradient_norm(array1);
-  Array dn2 = gpu::gradient_norm(array2);
+  Array dn1 = hmap::gradient_norm(array1);
+  Array dn2 = hmap::gradient_norm(array2);
 
   gpu::smooth_cpulse(dn1, ir);
   gpu::smooth_cpulse(dn2, ir);

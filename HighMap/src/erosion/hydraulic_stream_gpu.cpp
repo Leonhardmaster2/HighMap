@@ -12,6 +12,8 @@
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
 
+#include "highmap/dbg/timer.hpp"
+
 namespace hmap::gpu
 {
 

@@ -187,4 +187,17 @@ private:
   int current_level = 0; ///< Current nesting level (if applicable).
 };
 
+struct ScopedTimer
+{
+  ScopedTimer(const char *id)
+  {
+    Timer::Start(id);
+  }
+  ~ScopedTimer()
+  {
+    Timer::Stop(id);
+  }
+  const char *id;
+};
+
 } // namespace hmap

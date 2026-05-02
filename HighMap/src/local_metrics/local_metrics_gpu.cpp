@@ -158,9 +158,6 @@ Array relative_elevation(const Array &array, int ir)
   Array amin = gpu::local_min(array, ir);
   Array amax = gpu::local_max(array, ir);
 
-  gpu::smooth_cpulse(amin, ir);
-  gpu::smooth_cpulse(amax, ir);
-
   return (array - amin) / (amax - amin + std::numeric_limits<float>::min());
 }
 
@@ -168,9 +165,6 @@ Array relative_elevation_square_kernel(const Array &array, int ir)
 {
   Array amin = hmap::local_min(array, ir);
   Array amax = hmap::local_max(array, ir);
-
-  gpu::smooth_cpulse(amin, ir);
-  gpu::smooth_cpulse(amax, ir);
 
   return (array - amin) / (amax - amin + std::numeric_limits<float>::min());
 }
