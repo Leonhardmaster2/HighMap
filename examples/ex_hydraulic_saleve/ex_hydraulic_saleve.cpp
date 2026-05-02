@@ -3,9 +3,13 @@
 #include "highmap/dbg/timer.hpp"
 #include "macrologger.h"
 
+#include <omp.h>
+
 int main(void)
 {
   hmap::gpu::init_opencl();
+
+  omp_set_num_threads(8);
 
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
