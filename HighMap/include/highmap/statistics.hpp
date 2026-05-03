@@ -57,6 +57,23 @@ glm::vec2 autocorr_length_scale_axial(const Array &array,
                                       float        max_lag_fraction = 0.4f);
 
 /**
+ * @brief Apply linear regression for detrending of a 2D array.
+ *
+ * This function performs detrending on the input array by applying linear
+ * regression separately to each row and column, removing trends from the data.
+ *
+ * @param  array Input 2D array to be detrended.
+ * @return       Array The detrended output array.
+ *
+ * **Example**
+ * @include ex_detrend.cpp
+ *
+ * **Result**
+ * @image html ex_detrend.png
+ */
+Array detrend_reg(const Array &array);
+
+/**
  * @brief In-place normalization of an array.
  *
  * Applies a normalization transform to the input array depending on the
