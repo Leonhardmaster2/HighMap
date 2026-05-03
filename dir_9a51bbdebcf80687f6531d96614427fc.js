@@ -1,7 +1,6 @@
 var dir_9a51bbdebcf80687f6531d96614427fc =
 [
     [ "compare.cpp", "compare_8cpp.html", "compare_8cpp" ],
-    [ "detrend.cpp", "detrend_8cpp.html", "detrend_8cpp" ],
     [ "fill_array.cpp", "fill__array_8cpp.html", "fill__array_8cpp" ],
     [ "inpainting_gaussian.cpp", "inpainting__gaussian_8cpp.html", "inpainting__gaussian_8cpp" ],
     [ "operator.cpp", "operator_8cpp.html", "operator_8cpp" ],

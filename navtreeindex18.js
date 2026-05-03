@@ -1,6 +1,5 @@
 var NAVTREEINDEX18 =
 {
-"primitives_8cpp.html#aac2bd27e550ca991c67d8df2df6f0999":[5,0,1,1,28,10,15],
 "primitives_8cpp.html#adafc477ac182ce40ebf2cee1c84cb936":[5,0,1,1,28,10,10],
 "primitives_8cpp.html#aeffedc90714bfcfed6a5f18d780b1094":[5,0,1,1,28,10,2],
 "primitives_8hpp.html":[5,0,1,0,0,34],
@@ -249,5 +248,6 @@ var NAVTREEINDEX18 =
 "recurve_8cpp.html#a69b83eb8de92d70ffc446c6aebec9935":[5,0,1,1,15,10,7],
 "recurve_8cpp.html#a9cb00fb8280178099a8d430f761c62bd":[5,0,1,1,15,10,0],
 "recurve_8cpp.html#a9dc604a3fcfa918857f3488977d2a45f":[5,0,1,1,15,10,1],
-"recurve_8cpp.html#aa1f23e7ca8c6eccc62ff3f9e73bb3884":[5,0,1,1,15,10,8]
+"recurve_8cpp.html#aa1f23e7ca8c6eccc62ff3f9e73bb3884":[5,0,1,1,15,10,8],
+"recurve_8cpp.html#aa5afebf536169cd294d771fa2d6f7756":[5,0,1,1,15,10,14]
 };

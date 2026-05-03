@@ -1539,8 +1539,6 @@ void \mbox{\hyperlink{namespacehmap_a34aa21678ff4bb869bb29ee0f2f68886}{add\+\_\+
 \begin{DoxyCompactList}\small\item\em Adds a smoothed maximum value from a kernel to a specified position in a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acafd15472972fb139c59071c091741cf}{compare}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&b, float slice\+\_\+x\+\_\+pos, float slice\+\_\+y\+\_\+pos)
 \begin{DoxyCompactList}\small\item\em Combines two arrays by selecting values from a or b based on a slice position. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}{detrend\+\_\+reg}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
-\begin{DoxyCompactList}\small\item\em Apply linear regression for detrending of a 2D array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad6fc7fb24960fa6a45bc657ae2d89f80}{hstack}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array1, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array2)
 \begin{DoxyCompactList}\small\item\em Horizontally stack two arrays side by side. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab642074e3e056d07ae13cf346e208c79}{inpainting\+\_\+diffusion}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&mask, int iterations)
@@ -1803,6 +1801,8 @@ float \mbox{\hyperlink{namespacehmap_a414c6fe47e8dadbab8ad532a0538be40}{autocorr
 \begin{DoxyCompactList}\small\item\em Estimate the isotropic dominant length scale of a 2D heightmap. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{namespacehmap_ab83b1277c6a2909787cd39988d9f762b}{autocorr\+\_\+length\+\_\+scale\+\_\+axial}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float max\+\_\+lag\+\_\+fraction=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Estimate axis-\/aligned dominant length scales of a 2D heightmap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}{detrend\+\_\+reg}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
+\begin{DoxyCompactList}\small\item\em Apply linear regression for detrending of a 2D array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}{normalize}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
 \begin{DoxyCompactList}\small\item\em In-\/place normalization of an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3d6212896d8cd828bd5bd827d24a0344}{normalized}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, \mbox{\hyperlink{namespacehmap_ad9d7f866e3a5140ed694e502c1db44ae}{Normalization\+Method}} method)
@@ -23460,46 +23460,6 @@ Output array mixing a (top-\/left) and b (bottom-\/right).
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}\label{namespacehmap_a000840cf4916102db68d6428c8c8c7e2} 
-\index{hmap@{hmap}!detrend\_reg@{detrend\_reg}}
-\index{detrend\_reg@{detrend\_reg}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{detrend\_reg()}{detrend\_reg()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::detrend\+\_\+reg (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
-
-
-
-Apply linear regression for detrending of a 2D array. 
-
-This function performs detrending on the input array by applying linear regression separately to each row and column, removing trends from the data.
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & Input 2D array to be detrended. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} The detrended output array.
-\end{DoxyReturn}
-{\bfseries{Example}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 2.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}{detrend\_reg}}(z0);}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_detrend.png"{}},\ \{z0,\ z1\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
-\DoxyCodeLine{\}}
-
-\end{DoxyCodeInclude}
-
-
 {\bfseries{Result}}  \Hypertarget{namespacehmap_ad6fc7fb24960fa6a45bc657ae2d89f80}\label{namespacehmap_ad6fc7fb24960fa6a45bc657ae2d89f80} 
 \index{hmap@{hmap}!hstack@{hstack}}
 \index{hstack@{hstack}!hmap@{hmap}}
@@ -29798,7 +29758,47 @@ Independently computes the e-\/folding autocorrelation lag along the i and j gri
 \begin{DoxyReturn}{Returns}
 \{scale\+\_\+i, scale\+\_\+j\} length scales in grid cells.
 \end{DoxyReturn}
-See unit tests\+: \doxylink{test__autocorr__length__scale_8cpp}{test\+\_\+autocorr\+\_\+length\+\_\+scale.\+cpp} \Hypertarget{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}\label{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b} 
+See unit tests\+: \doxylink{test__autocorr__length__scale_8cpp}{test\+\_\+autocorr\+\_\+length\+\_\+scale.\+cpp} \Hypertarget{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}\label{namespacehmap_a000840cf4916102db68d6428c8c8c7e2} 
+\index{hmap@{hmap}!detrend\_reg@{detrend\_reg}}
+\index{detrend\_reg@{detrend\_reg}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{detrend\_reg()}{detrend\_reg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::detrend\+\_\+reg (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array }\end{DoxyParamCaption})}
+
+
+
+Apply linear regression for detrending of a 2D array. 
+
+This function performs detrending on the input array by applying linear regression separately to each row and column, removing trends from the data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input 2D array to be detrended. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} The detrended output array.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a000840cf4916102db68d6428c8c8c7e2}{detrend\_reg}}(z0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_detrend.png"{}},\ \{z0,\ z1\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b}\label{namespacehmap_a27faed8c5c8f89f271b6882c8a7cc81b} 
 \index{hmap@{hmap}!normalize@{normalize}}
 \index{normalize@{normalize}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
