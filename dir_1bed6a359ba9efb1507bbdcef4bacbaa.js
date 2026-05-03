@@ -25,6 +25,7 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "mudslide.cpp", "mudslide_8cpp.html", "mudslide_8cpp" ],
     [ "rifts_gpu.cpp", "rifts__gpu_8cpp.html", "rifts__gpu_8cpp" ],
     [ "strata_gpu.cpp", "strata__gpu_8cpp.html", "strata__gpu_8cpp" ],
+    [ "strata_plates.cpp", "strata__plates_8cpp.html", "strata__plates_8cpp" ],
     [ "stratify.cpp", "stratify_8cpp.html", "stratify_8cpp" ],
     [ "thermal.cpp", "thermal_8cpp.html", "thermal_8cpp" ],
     [ "thermal_flatten.cpp", "thermal__flatten_8cpp.html", "thermal__flatten_8cpp" ],

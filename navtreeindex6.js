@@ -248,6 +248,6 @@ var NAVTREEINDEX6 =
 "drainage__basin__cell__based_8hpp.html#a6d5ae7cdae4d3db7507517699fb44ed7":[5,0,1,0,0,2,1,2],
 "drainage__basin__cell__based_8hpp_source.html":[5,0,1,0,0,2,1],
 "erosion_8hpp.html":[5,0,1,0,0,18],
-"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,81],
+"erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,18,82],
 "erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,0,0,18,1]
 };

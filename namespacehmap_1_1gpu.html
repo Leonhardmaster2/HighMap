@@ -212,6 +212,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abf47ed6cea5c36afa47bf5463310db52" id="r_abf47ed6cea5c36afa47bf5463310db52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#abf47ed6cea5c36afa47bf5463310db52">strata_cells_fbm</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, glm::vec2 kw, float amp, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, float gamma=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float gamma_lateral=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_default_noise=true, float default_noise_amp=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool absolute_displacement=true, float occurence_probability=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, int octaves=8, float persistence=0.4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:abf47ed6cea5c36afa47bf5463310db52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies masked multi-octave stratified cell displacement.  <br /></td></tr>
 <tr class="separator:abf47ed6cea5c36afa47bf5463310db52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae509d0c59f65cb1c7499f47d5b1e5e3b" id="r_ae509d0c59f65cb1c7499f47d5b1e5e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae509d0c59f65cb1c7499f47d5b1e5e3b">strata_plates</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int direction_offset=0, int direction_count=3, bool random_directions=false, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed=0, float mix_ratio=0.9<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_dx=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_dy=nullptr)</td></tr>
+<tr class="memdesc:ae509d0c59f65cb1c7499f47d5b1e5e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply stratified talus projection along multiple directions.  <br /></td></tr>
+<tr class="separator:ae509d0c59f65cb1c7499f47d5b1e5e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed6ad946ac7bcb852974a38eca78ac8" id="r_a9ed6ad946ac7bcb852974a38eca78ac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a9ed6ad946ac7bcb852974a38eca78ac8">strata_terrace</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float gamma, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float kz=4.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool linear_gamma=true, float gamma_noise_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr)</td></tr>
 <tr class="memdesc:a9ed6ad946ac7bcb852974a38eca78ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a terrace (stratification) filter to a heightmap.  <br /></td></tr>
 <tr class="separator:a9ed6ad946ac7bcb852974a38eca78ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -334,11 +337,11 @@ Functions</h2></td></tr>
 <tr class="memitem:aa1d48aaeafd42970a2b0c9b6795d73b5" id="r_aa1d48aaeafd42970a2b0c9b6795d73b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aa1d48aaeafd42970a2b0c9b6795d73b5">plateau</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, float factor)</td></tr>
 <tr class="memdesc:aa1d48aaeafd42970a2b0c9b6795d73b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
 <tr class="separator:aa1d48aaeafd42970a2b0c9b6795d73b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c8c9b43fbd562b0cc3364c9d85c9433" id="r_a0c8c9b43fbd562b0cc3364c9d85c9433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a0c8c9b43fbd562b0cc3364c9d85c9433">project_talus_along_direction</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float talus, int direction=0)</td></tr>
-<tr class="memdesc:a0c8c9b43fbd562b0cc3364c9d85c9433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Projects array values along a given direction using talus attenuation.  <br /></td></tr>
-<tr class="separator:a0c8c9b43fbd562b0cc3364c9d85c9433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8928c157c38b8376feb59e718a434f99" id="r_a8928c157c38b8376feb59e718a434f99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8928c157c38b8376feb59e718a434f99">project_talus_along_direction</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float talus, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int direction=0)</td></tr>
-<tr class="separator:a8928c157c38b8376feb59e718a434f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a827aef0074d35a0de74fee9047892cba" id="r_a827aef0074d35a0de74fee9047892cba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a827aef0074d35a0de74fee9047892cba">project_talus_along_direction</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int direction=0)</td></tr>
+<tr class="memdesc:a827aef0074d35a0de74fee9047892cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Projects array values along a given direction using talus attenuation.  <br /></td></tr>
+<tr class="separator:a827aef0074d35a0de74fee9047892cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca27ec1ffac3a2df41dba4e95fe9d09c" id="r_aca27ec1ffac3a2df41dba4e95fe9d09c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aca27ec1ffac3a2df41dba4e95fe9d09c">project_talus_along_direction</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int direction=0)</td></tr>
+<tr class="separator:aca27ec1ffac3a2df41dba4e95fe9d09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5639aa9dbe4048e12f83ff5c5660db07" id="r_a5639aa9dbe4048e12f83ff5c5660db07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a5639aa9dbe4048e12f83ff5c5660db07">shrink</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, int ir, int iterations=1)</td></tr>
 <tr class="memdesc:a5639aa9dbe4048e12f83ff5c5660db07"><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="namespacehmap.html#acde2b4e7bac6ebfe2c2dcfe3f0a369f1" title="Apply shrinking, or &quot;deflating&quot;, to emphasize the ridges in the heightmap.">hmap::shrink</a>.  <br /></td></tr>
 <tr class="separator:a5639aa9dbe4048e12f83ff5c5660db07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -884,7 +887,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="amain_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition</b> main.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a65a176508b404f80e5f5abd31456712e"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e">hmap::gpu::blend_poisson_bf</a></div><div class="ttdeci">Array blend_poisson_bf(const Array &amp;array1, const Array &amp;array2, const int iterations=500, const Array *p_mask=nullptr)</div><div class="ttdoc">Blends two arrays using Poisson blending with a brute-force solver.</div><div class="ttdef"><b>Definition</b> blending_gpu.cpp:30</div></div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_adb8336ed4d83c15500872185dee45d50"><div class="ttname"><a href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a></div><div class="ttdeci">bool init_opencl()</div><div class="ttdef"><b>Definition</b> gpu_opencl.cpp:24</div></div>
-<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:186</div></div>
+<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:254</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a035bda7c8c2179b47b9a766531c2e89e">hmap::WORLEY</a></div><div class="ttdeci">@ WORLEY</div><div class="ttdoc">Worley.</div><div class="ttdef"><b>Definition</b> functions.hpp:73</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::PERLIN</a></div><div class="ttdeci">@ PERLIN</div><div class="ttdoc">Perlin.</div><div class="ttdef"><b>Definition</b> functions.hpp:64</div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:11</div></div>
@@ -4377,6 +4380,126 @@ Only available if OpenCL is enabled.</dd></dl>
  
 </div>
 </div>
+<a id="ae509d0c59f65cb1c7499f47d5b1e5e3b" name="ae509d0c59f65cb1c7499f47d5b1e5e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae509d0c59f65cb1c7499f47d5b1e5e3b">&#9670;&#160;</a></span>strata_plates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::strata_plates </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>talus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction_offset</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction_count</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>random_directions</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>seed</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mix_ratio</em> = <code>0.9<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_dx</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_dy</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply stratified talus projection along multiple directions. </p>
+<p>Projects the input array along several directions (sequential or random), blends the results, and optionally applies a spatial warp.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">z</td><td>Input/output height array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">talus</td><td>Talus values used for projection. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">direction_offset</td><td>Offset for sequential direction selection. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">direction_count</td><td>Number of directions to use (max 8). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">random_directions</td><td>Whether to use random directions. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">seed</td><td>Seed for random direction selection. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mix_ratio</td><td>Blending factor between iterations. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_mask</td><td>Optional mask array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_dx</td><td>Optional X displacement map for warp. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p_dy</td><td>Optional Y displacement map for warp.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#adb8336ed4d83c15500872185dee45d50">hmap::gpu::init_opencl</a>();</div>
+<div class="line"> </div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#acb13e7346085793fda4c94c47b75d9a9">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> talus(shape, 2.f / shape.x);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> z1 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae509d0c59f65cb1c7499f47d5b1e5e3b">hmap::gpu::strata_plates</a>(z1, talus);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_strata_plates.png&quot;</span>,</div>
+<div class="line">                          {z0, z1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae509d0c59f65cb1c7499f47d5b1e5e3b"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae509d0c59f65cb1c7499f47d5b1e5e3b">hmap::gpu::strata_plates</a></div><div class="ttdeci">void strata_plates(Array &amp;z, const Array &amp;talus, int direction_offset=0, int direction_count=3, bool random_directions=false, uint seed=0, float mix_ratio=0.9f, const Array *p_mask=nullptr, const Array *p_dx=nullptr, const Array *p_dy=nullptr)</div><div class="ttdoc">Apply stratified talus projection along multiple directions.</div><div class="ttdef"><b>Definition</b> strata_plates.cpp:14</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_strata_plates.png" alt=""/>
+</div>
+ 
+</div>
+</div>
 <a id="a9ed6ad946ac7bcb852974a38eca78ac8" name="a9ed6ad946ac7bcb852974a38eca78ac8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ed6ad946ac7bcb852974a38eca78ac8">&#9670;&#160;</a></span>strata_terrace() <span class="overload">[1/2]</span></h2>
 
@@ -6703,8 +6826,8 @@ Only available if OpenCL is enabled.</dd></dl>
 
 </div>
 </div>
-<a id="a0c8c9b43fbd562b0cc3364c9d85c9433" name="a0c8c9b43fbd562b0cc3364c9d85c9433"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c8c9b43fbd562b0cc3364c9d85c9433">&#9670;&#160;</a></span>project_talus_along_direction() <span class="overload">[1/2]</span></h2>
+<a id="a827aef0074d35a0de74fee9047892cba" name="a827aef0074d35a0de74fee9047892cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a827aef0074d35a0de74fee9047892cba">&#9670;&#160;</a></span>project_talus_along_direction() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6718,7 +6841,7 @@ Only available if OpenCL is enabled.</dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
           <td class="paramname"><em>talus</em>, </td>
         </tr>
         <tr>
@@ -6753,8 +6876,8 @@ Only available if OpenCL is enabled.</dd></dl>
  
 </div>
 </div>
-<a id="a8928c157c38b8376feb59e718a434f99" name="a8928c157c38b8376feb59e718a434f99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8928c157c38b8376feb59e718a434f99">&#9670;&#160;</a></span>project_talus_along_direction() <span class="overload">[2/2]</span></h2>
+<a id="aca27ec1ffac3a2df41dba4e95fe9d09c" name="aca27ec1ffac3a2df41dba4e95fe9d09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca27ec1ffac3a2df41dba4e95fe9d09c">&#9670;&#160;</a></span>project_talus_along_direction() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6768,7 +6891,7 @@ Only available if OpenCL is enabled.</dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
           <td class="paramname"><em>talus</em>, </td>
         </tr>
         <tr>

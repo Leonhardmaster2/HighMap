@@ -22,9 +22,10 @@ var searchData=
   ['statistics_2ehpp_19',['statistics.hpp',['../statistics_8hpp.html',1,'']]],
   ['stitching_5fhelpers_2ecpp_20',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
   ['strata_5fgpu_2ecpp_21',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
-  ['stratify_2ecpp_22',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
-  ['string_5futils_2ecpp_23',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
-  ['string_5futils_2ehpp_24',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
-  ['swirl_2ecpp_25',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
-  ['synthesis_2ehpp_26',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
+  ['strata_5fplates_2ecpp_22',['strata_plates.cpp',['../strata__plates_8cpp.html',1,'']]],
+  ['stratify_2ecpp_23',['stratify.cpp',['../stratify_8cpp.html',1,'']]],
+  ['string_5futils_2ecpp_24',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
+  ['string_5futils_2ehpp_25',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],
+  ['swirl_2ecpp_26',['swirl.cpp',['../swirl_8cpp.html',1,'']]],
+  ['synthesis_2ehpp_27',['synthesis.hpp',['../synthesis_8hpp.html',1,'']]]
 ];

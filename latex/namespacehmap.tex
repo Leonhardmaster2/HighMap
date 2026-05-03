@@ -1235,6 +1235,12 @@ std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{namespacehmap_a8be122241fa42b0
 \begin{DoxyCompactList}\small\item\em Reorders a vector using a given index mapping. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{upperbound\+\_\+right}} (const std\+::vector$<$ float $>$ \&v, float value)
 \begin{DoxyCompactList}\small\item\em Returns the index of the first element greater than a given value. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a7fbf29372398921d451f74b89d9a9a2e}{generate\+\_\+random\+\_\+vector}} (size\+\_\+t size, float min\+\_\+value, float max\+\_\+value, uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Generate a vector of random floating-\/point values within a given range. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespacehmap_a9d0696281951271fcb3c7b9d7b2d4514}{generate\+\_\+random\+\_\+vector}} (size\+\_\+t size, int min\+\_\+value, int max\+\_\+value, uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Generate a vector of random integers within a given range. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespacehmap_a943b5fe94afb086d501a00dc3f581784}{generate\+\_\+unique\+\_\+random\+\_\+vector}} (size\+\_\+t size, int min\+\_\+value, int max\+\_\+value, uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Generate a vector of unique random integers within a given range. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}{shuffle\+\_\+vector}} (std\+::vector$<$ T $>$ \&values, std\+::uint32\+\_\+t seed)
 \begin{DoxyCompactList}\small\item\em Shuffles a vector in-\/place using a deterministic seed. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{namespacehmap_a0520c7ad885d5776f6e06ec12e7f1729}{shuffled\+\_\+vector}} (const std\+::vector$<$ T $>$ \&values, std\+::uint32\+\_\+t seed)
@@ -18764,6 +18770,89 @@ Equivalent to std\+::upper\+\_\+bound but returns the index instead of an iterat
 \begin{DoxyReturn}{Returns}
 Index of the first element greater than value. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a7fbf29372398921d451f74b89d9a9a2e}\label{namespacehmap_a7fbf29372398921d451f74b89d9a9a2e} 
+\index{hmap@{hmap}!generate\_random\_vector@{generate\_random\_vector}}
+\index{generate\_random\_vector@{generate\_random\_vector}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{generate\_random\_vector()}{generate\_random\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::generate\+\_\+random\+\_\+vector (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
+
+
+
+Generate a vector of random floating-\/point values within a given range. 
+
+Uses a deterministic random number generator initialized with the provided seed. The same seed will always produce the same sequence of values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Number of elements in the vector. \\
+\hline
+{\em min\+\_\+value} & Lower bound of the range (inclusive). \\
+\hline
+{\em max\+\_\+value} & Upper bound of the range (inclusive). \\
+\hline
+{\em seed} & Seed used to initialize the random number generator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$float$>$ Vector filled with random values in \mbox{[}min\+\_\+value, max\+\_\+value\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a9d0696281951271fcb3c7b9d7b2d4514}\label{namespacehmap_a9d0696281951271fcb3c7b9d7b2d4514} 
+\index{hmap@{hmap}!generate\_random\_vector@{generate\_random\_vector}}
+\index{generate\_random\_vector@{generate\_random\_vector}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{generate\_random\_vector()}{generate\_random\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ hmap\+::generate\+\_\+random\+\_\+vector (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{int}]{min\+\_\+value,  }\item[{int}]{max\+\_\+value,  }\item[{uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
+
+
+
+Generate a vector of random integers within a given range. 
+
+Uses a deterministic random number generator initialized with the provided seed. The same seed will always produce the same sequence of values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Number of elements in the vector. \\
+\hline
+{\em min\+\_\+value} & Lower bound of the range (inclusive). \\
+\hline
+{\em max\+\_\+value} & Upper bound of the range (inclusive). \\
+\hline
+{\em seed} & Seed used to initialize the random number generator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$int$>$ Vector filled with random integers in \mbox{[}min\+\_\+value, max\+\_\+value\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_a943b5fe94afb086d501a00dc3f581784}\label{namespacehmap_a943b5fe94afb086d501a00dc3f581784} 
+\index{hmap@{hmap}!generate\_unique\_random\_vector@{generate\_unique\_random\_vector}}
+\index{generate\_unique\_random\_vector@{generate\_unique\_random\_vector}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{generate\_unique\_random\_vector()}{generate\_unique\_random\_vector()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ hmap\+::generate\+\_\+unique\+\_\+random\+\_\+vector (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{int}]{min\+\_\+value,  }\item[{int}]{max\+\_\+value,  }\item[{uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
+
+
+
+Generate a vector of unique random integers within a given range. 
+
+Values are sampled without replacement using a deterministic shuffle based on the provided seed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Number of elements to generate. \\
+\hline
+{\em min\+\_\+value} & Lower bound (inclusive). \\
+\hline
+{\em max\+\_\+value} & Upper bound (inclusive). \\
+\hline
+{\em seed} & Seed for reproducible randomness. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$int$>$ Vector of unique integers in \mbox{[}min\+\_\+value, max\+\_\+value\mbox{]}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument\+Ifsizeexceeds} & available unique values. \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}\label{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5} 
 \index{hmap@{hmap}!shuffle\_vector@{shuffle\_vector}}
 \index{shuffle\_vector@{shuffle\_vector}!hmap@{hmap}}

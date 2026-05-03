@@ -85,6 +85,7 @@ var erosion_8hpp =
     [ "strata_cells", "erosion_8hpp.html#aea0ca081d8da637b22e20799b2d8e914", null ],
     [ "strata_cells_fbm", "erosion_8hpp.html#a182b5cbe63e2d42368c19f66dd9febb3", null ],
     [ "strata_cells_fbm", "erosion_8hpp.html#abf47ed6cea5c36afa47bf5463310db52", null ],
+    [ "strata_plates", "erosion_8hpp.html#ae509d0c59f65cb1c7499f47d5b1e5e3b", null ],
     [ "strata_terrace", "erosion_8hpp.html#a9ed6ad946ac7bcb852974a38eca78ac8", null ],
     [ "strata_terrace", "erosion_8hpp.html#aa75d564b4578a7b56c64cdd8bf740f3e", null ],
     [ "thermal", "erosion_8hpp.html#a2eb4bdf2d7dc4441e56865027764425e", null ],

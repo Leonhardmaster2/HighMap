@@ -1774,6 +1774,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a0b7db6f8ce57fcdeca7ca1e3b7d1e686" id="r_a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686">upperbound_right</a> (const std::vector&lt; float &gt; &amp;v, float value)</td></tr>
 <tr class="memdesc:a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the first element greater than a given value.  <br /></td></tr>
 <tr class="separator:a0b7db6f8ce57fcdeca7ca1e3b7d1e686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbf29372398921d451f74b89d9a9a2e" id="r_a7fbf29372398921d451f74b89d9a9a2e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7fbf29372398921d451f74b89d9a9a2e">generate_random_vector</a> (size_t size, float min_value, float max_value, uint32_t seed)</td></tr>
+<tr class="memdesc:a7fbf29372398921d451f74b89d9a9a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector of random floating-point values within a given range.  <br /></td></tr>
+<tr class="separator:a7fbf29372398921d451f74b89d9a9a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d0696281951271fcb3c7b9d7b2d4514" id="r_a9d0696281951271fcb3c7b9d7b2d4514"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a9d0696281951271fcb3c7b9d7b2d4514">generate_random_vector</a> (size_t size, int min_value, int max_value, uint32_t seed)</td></tr>
+<tr class="memdesc:a9d0696281951271fcb3c7b9d7b2d4514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector of random integers within a given range.  <br /></td></tr>
+<tr class="separator:a9d0696281951271fcb3c7b9d7b2d4514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a943b5fe94afb086d501a00dc3f581784" id="r_a943b5fe94afb086d501a00dc3f581784"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a943b5fe94afb086d501a00dc3f581784">generate_unique_random_vector</a> (size_t size, int min_value, int max_value, uint32_t seed)</td></tr>
+<tr class="memdesc:a943b5fe94afb086d501a00dc3f581784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a vector of unique random integers within a given range.  <br /></td></tr>
+<tr class="separator:a943b5fe94afb086d501a00dc3f581784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad465af1e2c3cc465b53657b457bf68a5" id="r_ad465af1e2c3cc465b53657b457bf68a5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad465af1e2c3cc465b53657b457bf68a5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad465af1e2c3cc465b53657b457bf68a5">shuffle_vector</a> (std::vector&lt; T &gt; &amp;values, std::uint32_t seed)</td></tr>
 <tr class="memdesc:ad465af1e2c3cc465b53657b457bf68a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffles a vector in-place using a deterministic seed.  <br /></td></tr>
@@ -4493,7 +4502,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a74f6ef0464e0ec67df5179f49e14e35a"><div class="ttname"><a href="namespacehmap.html#a74f6ef0464e0ec67df5179f49e14e35a">hmap::ridgelines</a></div><div class="ttdeci">Array ridgelines(glm::ivec2 shape, const std::vector&lt; float &gt; &amp;xr, const std::vector&lt; float &gt; &amp;yr, const std::vector&lt; float &gt; &amp;zr, float slope, float k_smoothing=1.f, float width=0.1f, float vmin=0.f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec4 bbox_array={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generate a heightmap based on a set of ridgelines and a specified slope.</div><div class="ttdef"><b>Definition</b> ridgelines.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_a79ad6fb857a38f8de9915d01992e5161"><div class="ttname"><a href="namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161">hmap::slope</a></div><div class="ttdeci">Array slope(glm::ivec2 shape, float angle, float slope, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_stretching=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Return an array corresponding to a slope with a given overall.</div><div class="ttdef"><b>Definition</b> primitives.cpp:319</div></div>
-<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:186</div></div>
+<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:254</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_ridgelines.png" alt=""/>
 </div>
@@ -21029,7 +21038,7 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="line">                          <span class="keyword">false</span>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_a7d2aae253f1f67bbdbc718859f83ef0a"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a7d2aae253f1f67bbdbc718859f83ef0a">hmap::gpu::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">See hmap::smooth_cpulse.</div><div class="ttdef"><b>Definition</b> filters_gpu.cpp:502</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a7d2aae253f1f67bbdbc718859f83ef0a"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a7d2aae253f1f67bbdbc718859f83ef0a">hmap::gpu::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">See hmap::smooth_cpulse.</div><div class="ttdef"><b>Definition</b> filters_gpu.cpp:506</div></div>
 <div class="ttc" id="anamespacehmap_html_a95c0f4c53278620f0812381ccaa7459e"><div class="ttname"><a href="namespacehmap.html#a95c0f4c53278620f0812381ccaa7459e">hmap::smooth_cpulse</a></div><div class="ttdeci">void smooth_cpulse(Array &amp;array, int ir)</div><div class="ttdoc">Apply filtering to the array using convolution with a cubic pulse kernel.</div><div class="ttdef"><b>Definition</b> filters.cpp:892</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_smooth_cpulse.png" alt=""/>
@@ -30662,6 +30671,171 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Index of the first element greater than value. </dd></dl>
+
+</div>
+</div>
+<a id="a7fbf29372398921d451f74b89d9a9a2e" name="a7fbf29372398921d451f74b89d9a9a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fbf29372398921d451f74b89d9a9a2e">&#9670;&#160;</a></span>generate_random_vector() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; hmap::generate_random_vector </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a vector of random floating-point values within a given range. </p>
+<p>Uses a deterministic random number generator initialized with the provided seed. The same seed will always produce the same sequence of values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Number of elements in the vector. </td></tr>
+    <tr><td class="paramname">min_value</td><td>Lower bound of the range (inclusive). </td></tr>
+    <tr><td class="paramname">max_value</td><td>Upper bound of the range (inclusive). </td></tr>
+    <tr><td class="paramname">seed</td><td>Seed used to initialize the random number generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;float&gt; Vector filled with random values in [min_value, max_value]. </dd></dl>
+
+</div>
+</div>
+<a id="a9d0696281951271fcb3c7b9d7b2d4514" name="a9d0696281951271fcb3c7b9d7b2d4514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d0696281951271fcb3c7b9d7b2d4514">&#9670;&#160;</a></span>generate_random_vector() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; hmap::generate_random_vector </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a vector of random integers within a given range. </p>
+<p>Uses a deterministic random number generator initialized with the provided seed. The same seed will always produce the same sequence of values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Number of elements in the vector. </td></tr>
+    <tr><td class="paramname">min_value</td><td>Lower bound of the range (inclusive). </td></tr>
+    <tr><td class="paramname">max_value</td><td>Upper bound of the range (inclusive). </td></tr>
+    <tr><td class="paramname">seed</td><td>Seed used to initialize the random number generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;int&gt; Vector filled with random integers in [min_value, max_value]. </dd></dl>
+
+</div>
+</div>
+<a id="a943b5fe94afb086d501a00dc3f581784" name="a943b5fe94afb086d501a00dc3f581784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a943b5fe94afb086d501a00dc3f581784">&#9670;&#160;</a></span>generate_unique_random_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; hmap::generate_unique_random_vector </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a vector of unique random integers within a given range. </p>
+<p>Values are sampled without replacement using a deterministic shuffle based on the provided seed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Number of elements to generate. </td></tr>
+    <tr><td class="paramname">min_value</td><td>Lower bound (inclusive). </td></tr>
+    <tr><td class="paramname">max_value</td><td>Upper bound (inclusive). </td></tr>
+    <tr><td class="paramname">seed</td><td>Seed for reproducible randomness. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;int&gt; Vector of unique integers in [min_value, max_value].</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argumentIfsizeexceeds</td><td>available unique values. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
