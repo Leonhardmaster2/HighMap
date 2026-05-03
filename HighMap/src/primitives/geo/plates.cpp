@@ -59,7 +59,9 @@ Array plates(glm::ivec2 shape,
                                     nullptr,
                                     bbox);
 
-  Array plates = gpu::project_talus_along_direction(voronoi, talus, direction);
+  Array plates = gpu::project_talus_along_direction(voronoi,
+                                                    Array(shape, talus),
+                                                    direction);
 
   return lerp(voronoi, plates, mix_ratio);
 }

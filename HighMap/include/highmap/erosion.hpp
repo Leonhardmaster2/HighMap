@@ -1945,6 +1945,40 @@ void strata_cells_fbm(Array       &z,
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Apply stratified talus projection along multiple directions.
+ *
+ * Projects the input array along several directions (sequential or random),
+ * blends the results, and optionally applies a spatial warp.
+ *
+ * @param[in,out] z                 Input/output height array.
+ * @param[in]     talus             Talus values used for projection.
+ * @param[in]     direction_offset  Offset for sequential direction selection.
+ * @param[in]     direction_count   Number of directions to use (max 8).
+ * @param[in]     random_directions Whether to use random directions.
+ * @param[in]     seed              Seed for random direction selection.
+ * @param[in]     mix_ratio         Blending factor between iterations.
+ * @param[in]     p_mask            Optional mask array.
+ * @param[in]     p_dx              Optional X displacement map for warp.
+ * @param[in]     p_dy              Optional Y displacement map for warp.
+ *
+ * **Example**
+ * @include ex_strata_plates.cpp
+ *
+ * **Result**
+ * @image html ex_strata_plates.png
+ */
+void strata_plates(Array       &z,
+                   const Array &talus,
+                   int          direction_offset = 0,
+                   int          direction_count = 3,
+                   bool         random_directions = false,
+                   uint         seed = 0,
+                   float        mix_ratio = 0.9f,
+                   const Array *p_mask = nullptr,
+                   const Array *p_dx = nullptr,
+                   const Array *p_dy = nullptr);
+
+/**
  * @brief Applies a terrace (stratification) filter to a heightmap.
  *
  * Quantizes elevation into kz strata levels and shapes terrace transitions

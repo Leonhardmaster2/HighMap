@@ -2465,11 +2465,11 @@ void plateau(Array &array, int ir, float factor); ///< @overload
  * @image html ex_project_talus_along_direction.png
  */
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
+                                    const Array &talus,
                                     int          direction = 0);
 
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
+                                    const Array &talus,
                                     const Array *p_mask,
                                     int          direction = 0);
 

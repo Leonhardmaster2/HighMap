@@ -346,9 +346,11 @@ void plateau(Array &array, int ir, float factor)
 }
 
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
+                                    const Array &talus,
                                     int          direction)
 {
+  const glm::ivec2 &shape = array.shape;
+
   // no negative values, raises issue with atomic max in OpenCL
   const float vmin = array.min();
   Array       out = array + vmin;
@@ -374,14 +376,16 @@ Array project_talus_along_direction(const Array &array,
   auto run = clwrapper::Run("project_talus_along_direction");
 
   run.bind_buffer<float>("array", out.vector);
+  run.bind_buffer<float>("talus", talus.vector);
   run.bind_buffer<float>("out", out.vector);
 
-  run.bind_arguments(array.shape.x, array.shape.y, talus, di, dj);
+  run.bind_arguments(shape.x, shape.y, di, dj);
 
   run.write_buffer("array");
+  run.write_buffer("talus");
   run.write_buffer("out");
 
-  run.execute({array.shape.x, array.shape.y});
+  run.execute({shape.x, shape.y});
 
   run.read_buffer("out");
 
@@ -389,7 +393,7 @@ Array project_talus_along_direction(const Array &array,
 }
 
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
+                                    const Array &talus,
                                     const Array *p_mask,
                                     int          direction)
 {

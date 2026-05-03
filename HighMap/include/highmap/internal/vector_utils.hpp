@@ -63,6 +63,63 @@ size_t upperbound_right(const std::vector<float> &v, float value);
 // ============================================================
 
 /**
+ * @brief Generate a vector of random floating-point values within a given
+ * range.
+ *
+ * Uses a deterministic random number generator initialized with the provided
+ * seed. The same seed will always produce the same sequence of values.
+ *
+ * @param  size      Number of elements in the vector.
+ * @param  min_value Lower bound of the range (inclusive).
+ * @param  max_value Upper bound of the range (inclusive).
+ * @param  seed      Seed used to initialize the random number generator.
+ * @return           std::vector<float> Vector filled with random values in
+ *                   [min_value, max_value].
+ */
+std::vector<float> generate_random_vector(size_t   size,
+                                          float    min_value,
+                                          float    max_value,
+                                          uint32_t seed);
+
+/**
+ * @brief Generate a vector of random integers within a given range.
+ *
+ * Uses a deterministic random number generator initialized with the provided
+ * seed. The same seed will always produce the same sequence of values.
+ *
+ * @param  size      Number of elements in the vector.
+ * @param  min_value Lower bound of the range (inclusive).
+ * @param  max_value Upper bound of the range (inclusive).
+ * @param  seed      Seed used to initialize the random number generator.
+ * @return           std::vector<int> Vector filled with random integers in
+ *                   [min_value, max_value].
+ */
+std::vector<int> generate_random_vector(size_t   size,
+                                        int      min_value,
+                                        int      max_value,
+                                        uint32_t seed);
+
+/**
+ * @brief Generate a vector of unique random integers within a given range.
+ *
+ * Values are sampled without replacement using a deterministic shuffle based on
+ * the provided seed.
+ *
+ * @param  size      Number of elements to generate.
+ * @param  min_value Lower bound (inclusive).
+ * @param  max_value Upper bound (inclusive).
+ * @param  seed      Seed for reproducible randomness.
+ * @return           std::vector<int> Vector of unique integers in [min_value,
+ *                   max_value].
+ *
+ * @throws std::invalid_argumentIfsizeexceeds available unique values.
+ */
+std::vector<int> generate_unique_random_vector(size_t   size,
+                                               int      min_value,
+                                               int      max_value,
+                                               uint32_t seed);
+
+/**
  * @brief Shuffles a vector in-place using a deterministic seed.
  *
  * @tparam T Type of the vector elements.

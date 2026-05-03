@@ -8,6 +8,7 @@
 #include <numeric>
 #include <random>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -74,6 +75,73 @@ std::vector<size_t> find_sign_changes(const std::vector<float> &data)
   }
 
   return indices;
+}
+
+std::vector<float> generate_random_vector(size_t   size,
+                                          float    min_value,
+                                          float    max_value,
+                                          uint32_t seed)
+{
+  std::vector<float> result(size);
+
+  std::mt19937                          rng(seed);
+  std::uniform_real_distribution<float> dist(min_value, max_value);
+
+  for (auto &value : result)
+  {
+    value = dist(rng);
+  }
+
+  return result;
+}
+
+std::vector<int> generate_random_vector(size_t   size,
+                                        int      min_value,
+                                        int      max_value,
+                                        uint32_t seed)
+{
+  std::vector<int> result(size);
+
+  std::mt19937                       rng(seed); // deterministic engine
+  std::uniform_int_distribution<int> dist(min_value, max_value);
+
+  for (auto &value : result)
+  {
+    value = dist(rng);
+  }
+
+  return result;
+}
+
+std::vector<int> generate_unique_random_vector(size_t   size,
+                                               int      min_value,
+                                               int      max_value,
+                                               uint32_t seed)
+{
+  if (min_value > max_value)
+    throw std::invalid_argument("min_value must be <= max_value");
+
+  size_t range_size = static_cast<size_t>(max_value - min_value + 1);
+
+  if (size > range_size)
+    throw std::invalid_argument(
+        "size exceeds number of unique values in range");
+
+  // fill full range
+  std::vector<int> values(range_size);
+  for (size_t i = 0; i < range_size; ++i)
+  {
+    values[i] = min_value + static_cast<int>(i);
+  }
+
+  // shuffle
+  std::mt19937 rng(seed);
+  std::shuffle(values.begin(), values.end(), rng);
+
+  // keep only what we need
+  values.resize(size);
+
+  return values;
 }
 
 std::string make_histogram(const std::vector<float> &values,

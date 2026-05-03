@@ -3,10 +3,10 @@ R""(
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 void kernel project_talus_along_direction(global float *array,
+                                          global float *talus,
                                           global float *out,
                                           const int     nx,
                                           const int     ny,
-                                          const float   talus,
                                           const int     di,
                                           const int     dj)
 {
@@ -28,9 +28,8 @@ void kernel project_talus_along_direction(global float *array,
 
     if (i < 0 || i >= nx || j < 0 || j >= ny) break;
 
-    float v = val - dr * talus;
-
     int   idx = linear_index(i, j, nx);
+    float v = val - dr * talus[idx];
     float vref = out[idx];
 
     if (v < vref) break;

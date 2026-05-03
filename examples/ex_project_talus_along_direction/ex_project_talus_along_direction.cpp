@@ -12,7 +12,7 @@ int main(void)
 
   std::vector<hmap::Array> z_list = {z};
 
-  float talus = 2.f / shape.x;
+  hmap::Array talus(shape, 2.f / shape.x);
 
   for (int direction = 0; direction < 8; ++direction)
   {
