@@ -362,7 +362,7 @@ Array smoothstep3(const Array &array, float vmin, float vmax)
                    if (v <= vmin) return vmin;
                    if (v >= vmax) return vmax;
                    float vn = (v - vmin) * inv_range;
-                   vn = vn * vn * vn * (vn * (vn * 6.f - 15.f) + 10.f);
+                   vn = vn * vn * (3.f - 2.f * vn);
                    return vmin + range * vn;
                  });
 
