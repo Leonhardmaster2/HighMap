@@ -1290,7 +1290,6 @@ var namespacehmap =
     [ "is_monotonic", "namespacehmap.html#a567abeb8b68a281411d811987a84ee42", null ],
     [ "find_last_index_smaller_than", "namespacehmap.html#ad2cd9e279b20e6621b1daca2d2b732bf", null ],
     [ "hypot", "namespacehmap.html#acc88d4cddcb41e8142b7fef4846e3454", null ],
-    [ "smoothstep3_remap", "namespacehmap.html#aa40ed8e52770b4aa56fe9dbfdd63de8b", null ],
     [ "helper_thinning", "namespacehmap.html#a2c98f2116e221df5f6684a7546bb233f", null ],
     [ "cmp_path", "namespacehmap.html#a5ce9334e0b274e48f7ba8bcaa9dd12a3", null ],
     [ "helper_flip_rot_transpose", "namespacehmap.html#a36f7eca67d2fdc5dd03a63f8b1d7255e", null ],

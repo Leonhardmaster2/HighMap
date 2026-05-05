@@ -13,6 +13,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_gpu_cpu.cpp", "test__gpu__cpu_8cpp.html", "test__gpu__cpu_8cpp" ],
     [ "test_gradient.cpp", "test__gradient_8cpp.html", "test__gradient_8cpp" ],
     [ "test_local_metrics.cpp", "test__local__metrics_8cpp.html", "test__local__metrics_8cpp" ],
+    [ "test_math.cpp", "test__math_8cpp.html", "test__math_8cpp" ],
     [ "test_normalize.cpp", "test__normalize_8cpp.html", "test__normalize_8cpp" ],
     [ "test_point.cpp", "test__point_8cpp.html", "test__point_8cpp" ],
     [ "test_range.cpp", "test__range_8cpp.html", "test__range_8cpp" ],

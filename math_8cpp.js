@@ -36,7 +36,6 @@ var math_8cpp =
     [ "smoothstep3", "math_8cpp.html#afe0b1df8525d0478c7433777cadd60a3", null ],
     [ "smoothstep3_lower", "math_8cpp.html#a4c21ef9d4f7d33f2413c7fe391b86253", null ],
     [ "smoothstep3_lower", "math_8cpp.html#a65666d55312d1afca0246939f292ca63", null ],
-    [ "smoothstep3_remap", "math_8cpp.html#aa40ed8e52770b4aa56fe9dbfdd63de8b", null ],
     [ "smoothstep3_upper", "math_8cpp.html#af23a6099bd3307b408f17d2346ab3d3f", null ],
     [ "smoothstep3_upper", "math_8cpp.html#ac9b2a7930233d045f876d285c67623fa", null ],
     [ "smoothstep5", "math_8cpp.html#aa4468d1e57ee67ba0be8fb1ab931045a", null ],
