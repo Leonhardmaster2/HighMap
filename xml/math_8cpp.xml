@@ -372,7 +372,7 @@
 <codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(v<sp/>&lt;=<sp/>vmin)<sp/>return<sp/>vmin;</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(v<sp/>&gt;=<sp/>vmax)<sp/>return<sp/>vmax;</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>vn<sp/>=<sp/>(v<sp/>-<sp/>vmin)<sp/>*<sp/>inv_range;</highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vn<sp/>=<sp/>vn<sp/>*<sp/>vn<sp/>*<sp/>vn<sp/>*<sp/>(vn<sp/>*<sp/>(vn<sp/>*<sp/>6.f<sp/>-<sp/>15.f)<sp/>+<sp/>10.f);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vn<sp/>=<sp/>vn<sp/>*<sp/>vn<sp/>*<sp/>(3.f<sp/>-<sp/>2.f<sp/>*<sp/>vn);</highlight></codeline>
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>vmin<sp/>+<sp/>range<sp/>*<sp/>vn;</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"></highlight></codeline>
