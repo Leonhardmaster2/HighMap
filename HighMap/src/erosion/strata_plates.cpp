@@ -42,7 +42,7 @@ void strata_plates(Array       &z,
   }
 
   float shift = direction_count % 2 ? 1.f : 0.f;
-  
+
   for (int k = 0; k < direction_count; ++k)
   {
     float t = 1.f - triangle(float(k), 0.f, direction_count - shift);
