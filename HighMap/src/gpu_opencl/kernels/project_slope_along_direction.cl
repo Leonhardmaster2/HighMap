@@ -8,7 +8,8 @@ void kernel project_talus_along_direction(global float *array,
                                           const int     nx,
                                           const int     ny,
                                           const int     di,
-                                          const int     dj)
+                                          const int     dj,
+                                          const float   vmin)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
 
@@ -16,6 +17,12 @@ void kernel project_talus_along_direction(global float *array,
 
   int   index = linear_index(g.x, g.y, nx);
   float val = array[index];
+
+  if (val < vmin)
+  {
+    out[index] = val;
+    return;
+  }
 
   // full domain diagonal in worst case scenario
   const int nsteps = (int)(1.414f * max(nx, ny));

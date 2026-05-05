@@ -347,13 +347,14 @@ void plateau(Array &array, int ir, float factor)
 
 Array project_talus_along_direction(const Array &array,
                                     const Array &talus,
-                                    int          direction)
+                                    int          direction,
+                                    float        vmin)
 {
   const glm::ivec2 &shape = array.shape;
 
   // no negative values, raises issue with atomic max in OpenCL
-  const float vmin = array.min();
-  Array       out = array + vmin;
+  const float offset = array.min();
+  Array       out = array + offset;
 
   // D8 directions (clockwise, starting from +X)
   constexpr int d8_offsets[8][2] = {
@@ -379,7 +380,7 @@ Array project_talus_along_direction(const Array &array,
   run.bind_buffer<float>("talus", talus.vector);
   run.bind_buffer<float>("out", out.vector);
 
-  run.bind_arguments(shape.x, shape.y, di, dj);
+  run.bind_arguments(shape.x, shape.y, di, dj, vmin + offset);
 
   run.write_buffer("array");
   run.write_buffer("talus");
@@ -389,22 +390,23 @@ Array project_talus_along_direction(const Array &array,
 
   run.read_buffer("out");
 
-  return out - vmin;
+  return out - offset;
 }
 
 Array project_talus_along_direction(const Array &array,
                                     const Array &talus,
                                     const Array *p_mask,
-                                    int          direction)
+                                    int          direction,
+                                    float        vmin)
 {
   if (!p_mask)
   {
-    return project_talus_along_direction(array, talus, direction);
+    return project_talus_along_direction(array, talus, direction, vmin);
   }
   else
   {
     Array array_f = array;
-    array_f = project_talus_along_direction(array_f, talus, direction);
+    array_f = project_talus_along_direction(array_f, talus, direction, vmin);
     return lerp(array, array_f, *(p_mask));
   }
 }

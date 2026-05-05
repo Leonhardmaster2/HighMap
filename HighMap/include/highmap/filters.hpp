@@ -2466,12 +2466,14 @@ void plateau(Array &array, int ir, float factor); ///< @overload
  */
 Array project_talus_along_direction(const Array &array,
                                     const Array &talus,
-                                    int          direction = 0);
+                                    int          direction = 0,
+                                    float        vmin = -FLT_MAX);
 
 Array project_talus_along_direction(const Array &array,
                                     const Array &talus,
                                     const Array *p_mask,
-                                    int          direction = 0);
+                                    int          direction = 0,
+                                    float        vmin = -FLT_MAX);
 
 /*! @brief See hmap::shrink */
 void shrink(Array &array, int ir, int iterations = 1);
