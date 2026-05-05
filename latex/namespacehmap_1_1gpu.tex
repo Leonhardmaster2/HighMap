@@ -168,9 +168,9 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ae197a615380c768a5ce30df18397db52}{pl
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a558c273680de2328f37e5df7ee598813}{hmap\+::plateau}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_aa1d48aaeafd42970a2b0c9b6795d73b5}{plateau}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float factor)
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a827aef0074d35a0de74fee9047892cba}{project\+\_\+talus\+\_\+along\+\_\+direction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, int direction=0)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a0925ea6d4015309249863be8076af45f}{project\+\_\+talus\+\_\+along\+\_\+direction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, int direction=0, float vmin=-\/FLT\+\_\+\+MAX)
 \begin{DoxyCompactList}\small\item\em Projects array values along a given direction using talus attenuation. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aca27ec1ffac3a2df41dba4e95fe9d09c}{project\+\_\+talus\+\_\+along\+\_\+direction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int direction=0)
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ae6c94ff5fe464c75e5ef05b05d5ccacf}{project\+\_\+talus\+\_\+along\+\_\+direction}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&talus, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask, int direction=0, float vmin=-\/FLT\+\_\+\+MAX)
 \item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a5639aa9dbe4048e12f83ff5c5660db07}{shrink}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, int iterations=1)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_acde2b4e7bac6ebfe2c2dcfe3f0a369f1}{hmap\+::shrink}. \end{DoxyCompactList}\item 
@@ -2913,11 +2913,11 @@ See \doxylink{namespacehmap_a558c273680de2328f37e5df7ee598813}{hmap\+::plateau}.
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_1_1gpu_a827aef0074d35a0de74fee9047892cba}\label{namespacehmap_1_1gpu_a827aef0074d35a0de74fee9047892cba} 
+\Hypertarget{namespacehmap_1_1gpu_a0925ea6d4015309249863be8076af45f}\label{namespacehmap_1_1gpu_a0925ea6d4015309249863be8076af45f} 
 \index{hmap::gpu@{hmap::gpu}!project\_talus\_along\_direction@{project\_talus\_along\_direction}}
 \index{project\_talus\_along\_direction@{project\_talus\_along\_direction}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{project\_talus\_along\_direction()}{project\_talus\_along\_direction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::project\+\_\+talus\+\_\+along\+\_\+direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{int}]{direction = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::project\+\_\+talus\+\_\+along\+\_\+direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{int}]{direction = {\ttfamily 0},  }\item[{float}]{vmin = {\ttfamily -\/FLT\+\_\+MAX} }\end{DoxyParamCaption})}
 
 
 
@@ -2946,11 +2946,11 @@ The array is temporarily shifted to non-\/negative values to ensure correctness 
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_aca27ec1ffac3a2df41dba4e95fe9d09c}\label{namespacehmap_1_1gpu_aca27ec1ffac3a2df41dba4e95fe9d09c} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_ae6c94ff5fe464c75e5ef05b05d5ccacf}\label{namespacehmap_1_1gpu_ae6c94ff5fe464c75e5ef05b05d5ccacf} 
 \index{hmap::gpu@{hmap::gpu}!project\_talus\_along\_direction@{project\_talus\_along\_direction}}
 \index{project\_talus\_along\_direction@{project\_talus\_along\_direction}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{project\_talus\_along\_direction()}{project\_talus\_along\_direction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::project\+\_\+talus\+\_\+along\+\_\+direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{int}]{direction = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::project\+\_\+talus\+\_\+along\+\_\+direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{talus,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+mask,  }\item[{int}]{direction = {\ttfamily 0},  }\item[{float}]{vmin = {\ttfamily -\/FLT\+\_\+MAX} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_1_1gpu_a5639aa9dbe4048e12f83ff5c5660db07}\label{namespacehmap_1_1gpu_a5639aa9dbe4048e12f83ff5c5660db07} 
 \index{hmap::gpu@{hmap::gpu}!shrink@{shrink}}

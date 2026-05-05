@@ -81,7 +81,7 @@ var searchData=
   ['print_5farray_2ecpp_78',['print_array.cpp',['../print__array_8cpp.html',1,'']]],
   ['print_5finfo_79',['print_info',['../classhmap_1_1TerrainTriMesh.html#a5af9d302226d00078fba8f9e40183935',1,'hmap::TerrainTriMesh']]],
   ['processes_80',['Physical processes',['../index.html#autotoc_md10',1,'']]],
-  ['project_5ftalus_5falong_5fdirection_81',['project_talus_along_direction',['../namespacehmap_1_1gpu.html#a827aef0074d35a0de74fee9047892cba',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, const Array &amp;talus, int direction=0)'],['../namespacehmap_1_1gpu.html#aca27ec1ffac3a2df41dba4e95fe9d09c',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, const Array &amp;talus, const Array *p_mask, int direction=0)']]],
+  ['project_5ftalus_5falong_5fdirection_81',['project_talus_along_direction',['../namespacehmap_1_1gpu.html#a0925ea6d4015309249863be8076af45f',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, const Array &amp;talus, int direction=0, float vmin=-FLT_MAX)'],['../namespacehmap_1_1gpu.html#ae6c94ff5fe464c75e5ef05b05d5ccacf',1,'hmap::gpu::project_talus_along_direction(const Array &amp;array, const Array &amp;talus, const Array *p_mask, int direction=0, float vmin=-FLT_MAX)']]],
   ['ptp_82',['ptp',['../classhmap_1_1Array.html#ac33557899eb50bcf964b2e5a2ad8ddcb',1,'hmap::Array']]],
   ['pyramid_2ehpp_83',['pyramid.hpp',['../pyramid_8hpp.html',1,'']]],
   ['pyramid_5fdecomposition_2ecpp_84',['pyramid_decomposition.cpp',['../pyramid__decomposition_8cpp.html',1,'']]],
