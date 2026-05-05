@@ -25,7 +25,7 @@ var searchData=
   ['range_22',['range',['../classhmap_1_1Array.html#af74af7737221d6a23fbea9c43d5d8b07',1,'hmap::Array::range()'],['../structhmap_1_1VirtualArray.html#a465cc3d634b2d9ffc492705213a18327',1,'hmap::VirtualArray::range()']]],
   ['range_2ecpp_23',['range.cpp',['../range_8cpp.html',1,'']]],
   ['range_2ehpp_24',['range.hpp',['../range_8hpp.html',1,'']]],
-  ['range_5fcpu_2ecpp_25',['range_cpu.cpp',['../range__cpu_8cpp.html',1,'']]],
+  ['range_5fgpu_2ecpp_25',['range_gpu.cpp',['../range__gpu_8cpp.html',1,'']]],
   ['range_5fpercentile_26',['range_percentile',['../structhmap_1_1VirtualArray.html#a9dfca3fde2a46f13ce166089f869ed94',1,'hmap::VirtualArray::range_percentile()'],['../classhmap_1_1Array.html#abef6971c016bf7dda37715878ffe4802',1,'hmap::Array::range_percentile()']]],
   ['ratio_27',['ratio',['../classhmap_1_1WorleyDoubleFunction.html#a88899456b80da0d707ae74964ead8bc0',1,'hmap::WorleyDoubleFunction']]],
   ['raw_20binary_20file_28',['Raw binary file',['../index.html#autotoc_md15',1,'']]],

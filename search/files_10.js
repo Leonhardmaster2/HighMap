@@ -5,7 +5,7 @@ var searchData=
   ['random_2ehpp_2',['random.hpp',['../random_8hpp.html',1,'']]],
   ['range_2ecpp_3',['range.cpp',['../range_8cpp.html',1,'']]],
   ['range_2ehpp_4',['range.hpp',['../range_8hpp.html',1,'']]],
-  ['range_5fcpu_2ecpp_5',['range_cpu.cpp',['../range__cpu_8cpp.html',1,'']]],
+  ['range_5fgpu_2ecpp_5',['range_gpu.cpp',['../range__gpu_8cpp.html',1,'']]],
   ['read_5fto_5farray_2ecpp_6',['read_to_array.cpp',['../read__to__array_8cpp.html',1,'']]],
   ['recast_2ecpp_7',['recast.cpp',['../recast_8cpp.html',1,'']]],
   ['recurve_2ecpp_8',['recurve.cpp',['../recurve_8cpp.html',1,'']]],
