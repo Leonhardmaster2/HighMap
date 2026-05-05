@@ -17,6 +17,8 @@ void strata_plates(Array       &z,
                    int          direction_count,
                    bool         random_directions,
                    uint         seed,
+                   float        vmin,
+                   float        skew,
                    float        mix_ratio,
                    const Array *p_mask,
                    const Array *p_dx,
@@ -26,7 +28,8 @@ void strata_plates(Array       &z,
 
   direction_count = std::min(8, direction_count);
 
-  std::vector<int> directions(direction_count);
+  std::vector<int>   directions(direction_count);
+  std::vector<float> skew_factor(direction_count);
 
   if (random_directions)
   {
@@ -38,11 +41,21 @@ void strata_plates(Array       &z,
       directions[k] = (k + direction_offset) % 8;
   }
 
+  for (int k = 0; k < direction_count; ++k)
+  {
+    float t = 1.f - triangle(float(k), 0.f, direction_count - 1.f);
+    skew_factor[k] = 1.f + skew * t;
+  }
+
   // --- Apply...
 
   for (int k = 0; k < direction_count; ++k)
   {
-    Array zp = project_talus_along_direction(z, talus, p_mask, directions[k]);
+    Array zp = project_talus_along_direction(z,
+                                             skew_factor[k] * talus,
+                                             p_mask,
+                                             directions[k],
+                                             vmin);
     z = lerp(z, zp, mix_ratio);
   }
 
