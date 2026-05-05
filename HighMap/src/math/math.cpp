@@ -182,7 +182,7 @@ Array gaussian_decay(const Array &array, float sigma)
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array_out.vector.begin(),
-                 [coeff](float v) { return fast_exp(-coeff * v * v); });
+                 [coeff](float v) { return std::exp(-coeff * v * v); });
   return array_out;
 }
 
