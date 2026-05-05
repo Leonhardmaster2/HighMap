@@ -1,11 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-
 #include <cmath>
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/math.hpp"
 
 namespace hmap
 {
@@ -176,12 +176,13 @@ float gain(float x, float factor)
 
 Array gaussian_decay(const Array &array, float sigma)
 {
-  float coeff = 0.5f / (sigma * sigma);
-  Array array_out = Array(array.shape);
+  Array       array_out = Array(array.shape);
+  const float coeff = 0.5f / (sigma * sigma);
+
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array_out.vector.begin(),
-                 [&coeff](float v) { return std::exp(-coeff * v * v); });
+                 [coeff](float v) { return fast_exp(-coeff * v * v); });
   return array_out;
 }
 
@@ -192,7 +193,7 @@ Array hypot(const Array &array1, const Array &array2)
                  array1.vector.end(),
                  array2.vector.begin(),
                  array_out.vector.begin(),
-                 [](float a, float b) { return std::hypot(a, b); });
+                 [](float a, float b) { return std::sqrt(a * a + b * b); });
   return array_out;
 }
 
@@ -228,19 +229,32 @@ Array is_zero(const Array &array)
 
 Array lerp(const Array &array1, const Array &array2, const Array &t)
 {
-  Array array_out = array1 * (1.f - t) + array2 * t;
+  Array        array_out(array1.shape);
+  const size_t n = array1.vector.size();
+
+  for (size_t i = 0; i < n; ++i)
+  {
+    float ti = t.vector[i];
+    array_out.vector[i] = array1.vector[i] * (1.f - ti) + array2.vector[i] * ti;
+  }
+
   return array_out;
 }
 
 Array lerp(const Array &array1, const Array &array2, float t)
 {
-  Array array_out = array1 * (1.f - t) + array2 * t;
+  Array        array_out(array1.shape);
+  const size_t n = array1.vector.size();
+
+  for (size_t i = 0; i < n; ++i)
+    array_out.vector[i] = array1.vector[i] * (1.f - t) + array2.vector[i] * t;
+
   return array_out;
 }
 
 float lerp(float a, float b, float t)
 {
-  return a * (1.f - t) + b * t;
+  return std::lerp(a, b, t);
 }
 
 Array log10(const Array &array)
@@ -255,11 +269,19 @@ Array log10(const Array &array)
 
 Array pow(const Array &array, float exp)
 {
+  if (exp == 2.f) return array * array;
+  if (exp == 0.5f) return sqrt(array);
+  if (exp == 3.f)
+  {
+    Array sq = array * array;
+    return sq * array;
+  }
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array_out.vector.begin(),
-                 [&exp](float v) { return std::pow(v, exp); });
+                 [exp](float v) { return std::pow(v, exp); });
   return array_out;
 }
 
@@ -328,22 +350,22 @@ Array sin(const Array &array)
 Array smoothstep3(const Array &array, float vmin, float vmax)
 {
   Array array_out = Array(array.shape);
+
+  const float inv_range = 1.f / (vmax - vmin);
+  const float range = vmax - vmin;
+
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array_out.vector.begin(),
-                 [&vmin, &vmax](float v)
+                 [vmin, vmax, range, inv_range](float v)
                  {
-                   if (v < vmin)
-                     return vmin;
-                   else if (v > vmax)
-                     return vmax;
-                   else
-                   {
-                     float vn = (v - vmin) / (vmax - vmin);
-                     vn = vn * vn * (3.f - 2.f * vn);
-                     return vmin + (vmax - vmin) * vn;
-                   }
+                   if (v <= vmin) return vmin;
+                   if (v >= vmax) return vmax;
+                   float vn = (v - vmin) * inv_range;
+                   vn = vn * vn * vn * (vn * (vn * 6.f - 15.f) + 10.f);
+                   return vmin + range * vn;
                  });
+
   return array_out;
 }
 
@@ -367,20 +389,6 @@ Array smoothstep3_lower(const Array &x)
   return array_out;
 }
 
-float smoothstep3_remap(float x, float vmin, float vmax)
-{
-  if (x < vmin)
-    return 0.f;
-  else if (x > vmax)
-    return 1.f;
-  else
-  {
-    float xn = (x - vmin) / (vmax - vmin);
-    // xn = xn * xn * (3.f - 2.f * xn);
-    return xn;
-  }
-}
-
 float smoothstep3_upper(float x)
 {
   return x * (1.f + x - x * x);
@@ -402,7 +410,7 @@ Array smoothstep5(const Array &array, float vmin, float vmax)
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array_out.vector.begin(),
-                 [&vmin, &vmax](float v)
+                 [vmin, vmax](float v)
                  {
                    if (v < vmin)
                      return vmin;
@@ -420,23 +428,30 @@ Array smoothstep5(const Array &array, float vmin, float vmax)
 
 Array smoothstep5(const Array &array, const Array &vmin, const Array &vmax)
 {
-  Array array_out = Array(array.shape);
+  Array        array_out(array.shape);
+  const size_t n = array.vector.size();
 
-  for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < array.shape.x; i++)
+  for (size_t i = 0; i < n; ++i)
+  {
+    const float v = array.vector[i];
+    const float lo = vmin.vector[i];
+    const float hi = vmax.vector[i];
+
+    if (v <= lo)
     {
-      if (array(i, j) < vmin(i, j))
-        array_out(i, j) = vmin(i, j);
-      else if (array(i, j) > vmax(i, j))
-        array_out(i, j) = vmax(i, j);
-      else
-      {
-        float vn = (array(i, j) - vmin(i, j)) / (vmax(i, j) - vmin(i, j));
-        vn = vn * vn * vn * (vn * (vn * 6.f - 15.f) + 10.f);
-        array_out(i, j) = vmin(i, j) + (vmax(i, j) - vmin(i, j)) * vn;
-      }
+      array_out.vector[i] = lo;
+      continue;
+    }
+    else if (v >= hi)
+    {
+      array_out.vector[i] = hi;
+      continue;
     }
 
+    float vn = (v - lo) / (hi - lo);
+    vn = vn * vn * vn * (vn * (vn * 6.f - 15.f) + 10.f);
+    array_out.vector[i] = lo + (hi - lo) * vn;
+  }
   return array_out;
 }
 
