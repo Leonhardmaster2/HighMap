@@ -152,6 +152,8 @@ void coastal_erosion_profile(Array &z,
                              float  scarp_extent_ratio = 0.5f, // in [0, 1]
                              bool   apply_post_filter = true,
                              int    post_filter_iterations = 3,
+                             bool   solid_shore_mask = true,
+                             float  scarp_mask_transition_ratio = 0.2f,
                              const Array *p_noise = nullptr,
                              Array       *p_shore_mask = nullptr,
                              Array       *p_scarp_mask = nullptr);
@@ -166,6 +168,8 @@ void coastal_erosion_profile(Array       &z,
                              float scarp_extent_ratio = 0.5f, // in [0, 1]
                              bool  apply_post_filter = true,
                              int   post_filter_iterations = 3,
+                             bool  solid_shore_mask = true,
+                             float scarp_mask_transition_ratio = 0.2f,
                              const Array *p_noise = nullptr,
                              Array       *p_shore_mask = nullptr,
                              Array       *p_scarp_mask = nullptr);

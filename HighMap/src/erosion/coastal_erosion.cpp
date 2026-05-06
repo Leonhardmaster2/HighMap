@@ -51,6 +51,8 @@ void coastal_erosion_profile(Array       &z,
                              float        scarp_extent_ratio,
                              bool         apply_post_filter,
                              int          post_filter_iterations,
+                             bool         solid_shore_mask,
+                             float        scarp_mask_transition_ratio,
                              const Array *p_noise,
                              Array       *p_shore_mask,
                              Array       *p_scarp_mask)
@@ -58,6 +60,7 @@ void coastal_erosion_profile(Array       &z,
   const glm::ivec2 &shape = z.shape;
   Array             z_bckp = z;
   Array             shore_mask(shape); // includes ground & water
+  Array             smooth_mask(shape);
   Array             scarp_mask(shape);
   Mat<glm::ivec2>   closest_g(shape); // ground
   Mat<glm::ivec2>   closest_w(shape); // water
@@ -84,7 +87,8 @@ void coastal_erosion_profile(Array       &z,
 
         if (t <= 1.f)
         {
-          shore_mask(i, j) = 1.f - t;
+          shore_mask(i, j) = solid_shore_mask ? 1.f : 1.f - t;
+          smooth_mask(i, j) = 1.f - t;
 
           float t_scarp = 1.f - scarp_extent_ratio;
           float zref = z(closest_g(i, j));
@@ -105,7 +109,10 @@ void coastal_erosion_profile(Array       &z,
 
             new_z = lerp(h, z(i, j), ts);
 
-            scarp_mask(i, j) = ts;
+            // sharp mask transition (only a ratio of the width to blend-in)
+            scarp_mask(i, j) = threshold_smooth(ts,
+                                                0.f,
+                                                scarp_mask_transition_ratio);
           }
 
           z(i, j) = std::min(z(i, j), new_z);
@@ -145,7 +152,7 @@ void coastal_erosion_profile(Array       &z,
   // postprocessing - filter numerical artifacts
   if (apply_post_filter)
   {
-    Array mask = threshold_smooth(shore_mask, 0.f, scarp_extent_ratio);
+    Array mask = threshold_smooth(smooth_mask, 0.f, scarp_extent_ratio);
     laplace(z, &mask, 0.125f, post_filter_iterations);
   }
 
@@ -173,6 +180,8 @@ void coastal_erosion_profile(Array       &z,
                              float        scarp_extent_ratio,
                              bool         apply_post_filter,
                              int          post_filter_iterations,
+                             bool         solid_shore_mask,
+                             float        scarp_mask_transition_ratio,
                              const Array *p_noise,
                              Array       *p_shore_mask,
                              Array       *p_scarp_mask)
@@ -187,6 +196,8 @@ void coastal_erosion_profile(Array       &z,
                             scarp_extent_ratio,
                             apply_post_filter,
                             post_filter_iterations,
+                            solid_shore_mask,
+                            scarp_mask_transition_ratio,
                             p_noise,
                             p_shore_mask,
                             p_scarp_mask);
@@ -202,6 +213,8 @@ void coastal_erosion_profile(Array       &z,
                             scarp_extent_ratio,
                             apply_post_filter,
                             post_filter_iterations,
+                            solid_shore_mask,
+                            scarp_mask_transition_ratio,
                             p_noise,
                             p_shore_mask,
                             p_scarp_mask);
