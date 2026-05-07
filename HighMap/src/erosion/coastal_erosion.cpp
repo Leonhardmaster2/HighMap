@@ -133,9 +133,10 @@ void coastal_erosion_profile(Array       &z,
         // transition factor
         float t = r_water(i, j) / shore_water_extent;
 
-        if (t <= 1.f)
+        if (t <= 1.f && t_scarp > 0.f)
         {
           shore_mask(i, j) = 1.f - t;
+          smooth_mask(i, j) = 1.f;
 
           // ensure slope continuity at water level
           float slope = lerp(slope_shore_n, slope_shore_water_n, t);
@@ -152,8 +153,8 @@ void coastal_erosion_profile(Array       &z,
   // postprocessing - filter numerical artifacts
   if (apply_post_filter)
   {
-    Array mask = threshold_smooth(smooth_mask, 0.f, scarp_extent_ratio);
-    laplace(z, &mask, 0.125f, post_filter_iterations);
+    smooth_mask = threshold_smooth(smooth_mask, 1.f - t_scarp, 1.f);
+    laplace(z, &smooth_mask, 0.125f, post_filter_iterations);
   }
 
   // adjust water depth so that water height is the same as before
@@ -206,6 +207,8 @@ void coastal_erosion_profile(Array       &z,
   else
   {
     Array z_f = z;
+    Array water_depth_in = water_depth;
+
     coastal_erosion_profile(z_f,
                             water_depth,
                             shore_ground_extent,
@@ -220,13 +223,14 @@ void coastal_erosion_profile(Array       &z,
                             p_noise,
                             p_shore_mask,
                             p_scarp_mask);
+
     z = lerp(z, z_f, *p_mask);
+    water_depth = lerp(water_depth_in, water_depth, *p_mask);
 
     // output masks
     Array zeros(z.shape);
 
     if (p_shore_mask) *p_shore_mask = lerp(zeros, *p_shore_mask, *p_mask);
-
     if (p_scarp_mask) *p_scarp_mask = lerp(zeros, *p_scarp_mask, *p_mask);
   }
 }
