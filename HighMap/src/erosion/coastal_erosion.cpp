@@ -187,6 +187,7 @@ void coastal_erosion_profile(Array       &z,
                              Array       *p_scarp_mask)
 {
   if (!p_mask)
+  {
     coastal_erosion_profile(z,
                             water_depth,
                             shore_ground_extent,
@@ -201,6 +202,7 @@ void coastal_erosion_profile(Array       &z,
                             p_noise,
                             p_shore_mask,
                             p_scarp_mask);
+  }
   else
   {
     Array z_f = z;
@@ -218,7 +220,14 @@ void coastal_erosion_profile(Array       &z,
                             p_noise,
                             p_shore_mask,
                             p_scarp_mask);
-    z = lerp(z, z_f, *(p_mask));
+    z = lerp(z, z_f, *p_mask);
+
+    // output masks
+    Array zeros(z.shape);
+
+    if (p_shore_mask) *p_shore_mask = lerp(zeros, *p_shore_mask, *p_mask);
+
+    if (p_scarp_mask) *p_scarp_mask = lerp(zeros, *p_scarp_mask, *p_mask);
   }
 }
 
