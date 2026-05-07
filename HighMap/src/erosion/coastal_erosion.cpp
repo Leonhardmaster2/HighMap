@@ -71,6 +71,7 @@ void coastal_erosion_profile(Array       &z,
 
   float slope_shore_n = slope_shore / float(shape.x);
   float slope_shore_water_n = slope_shore_water / float(shape.x);
+  float t_scarp = 1.f - scarp_extent_ratio;
 
   for (int j = 0; j < shape.y; ++j)
     for (int i = 0; i < shape.x; ++i)
@@ -90,7 +91,6 @@ void coastal_erosion_profile(Array       &z,
           shore_mask(i, j) = solid_shore_mask ? 1.f : 1.f - t;
           smooth_mask(i, j) = 1.f - t;
 
-          float t_scarp = 1.f - scarp_extent_ratio;
           float zref = z(closest_g(i, j));
           float h = zref + slope_shore_n * r_ground(i, j);
 
@@ -117,7 +117,7 @@ void coastal_erosion_profile(Array       &z,
 
           z(i, j) = std::min(z(i, j), new_z);
         }
-        else if (t <= 1.1f)
+        else if (t <= 1.1f && t_scarp < 1.f)
         {
           // extend the scarp mask slightly outside (10%) to ensure a smooth
           // transition
