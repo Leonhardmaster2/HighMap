@@ -1083,6 +1083,7 @@ var namespacehmap =
     [ "reconstruction_by_dilation", "namespacehmap.html#a5b01ee5f465847e08cde67a9533590e3", null ],
     [ "reconstruction_by_erosion", "namespacehmap.html#a2ac3034879fe68a7cc67d2d452a60c1a", null ],
     [ "relative_distance_from_skeleton", "namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f", null ],
+    [ "remove_endpoints", "namespacehmap.html#a7e2e905cda124cb865b4bc1bf7b48645", null ],
     [ "signed_curvature_from_distance", "namespacehmap.html#ac56515202b30368216c7324b819cc838", null ],
     [ "signed_distance_transform", "namespacehmap.html#ad4ab7bb38b3ea37fa912190251c1ed76", null ],
     [ "skeleton", "namespacehmap.html#a11ddd5ab1aa625db9419d9b65c0eaa64", null ],

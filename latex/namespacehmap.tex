@@ -1521,6 +1521,8 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by erosion. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir\+\_\+search, bool zero\+\_\+at\+\_\+borders=true, int ir\+\_\+erosion=1)
 \begin{DoxyCompactList}\small\item\em Computes the relative distance of each non-\/zero cell in a binary array from the skeleton and border. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}{remove\+\_\+endpoints}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int iterations=1, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+\begin{DoxyCompactList}\small\item\em Removes endpoint-\/like pixels from a binary/weighted array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{signed\+\_\+curvature\+\_\+from\+\_\+distance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
 \begin{DoxyCompactList}\small\item\em Computes the signed curvature of the distance transform. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{signed\+\_\+distance\+\_\+transform}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
@@ -18848,7 +18850,7 @@ std\+::vector$<$int$>$ Vector of unique integers in \mbox{[}min\+\_\+value, max\
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Ifsizeexceeds} & available unique values. \\
+{\em std\+::invalid\+\_\+argument\+Ifsizeexceedsavailable} & unique values. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}\label{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5} 
@@ -23166,7 +23168,63 @@ The skeleton is computed using the Zhang-\/\+Suen skeletonization algorithm.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}     \Hypertarget{namespacehmap_ac56515202b30368216c7324b819cc838}\label{namespacehmap_ac56515202b30368216c7324b819cc838} 
+{\bfseries{Result}}     \Hypertarget{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}\label{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645} 
+\index{hmap@{hmap}!remove\_endpoints@{remove\_endpoints}}
+\index{remove\_endpoints@{remove\_endpoints}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{remove\_endpoints()}{remove\_endpoints()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::remove\+\_\+endpoints (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{iterations = {\ttfamily 1},  }\item[{float}]{background\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Removes endpoint-\/like pixels from a binary/weighted array. 
+
+Iteratively filters out isolated or weakly connected pixels based on their neighborhood connectivity. Pixels matching the background value or having fewer than 2 non-\/background neighbors are removed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to process. \\
+\hline
+{\em iterations} & Number of erosion-\/like iterations to apply. \\
+\hline
+{\em background\+\_\+value} & Value considered as background (removed). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filtered array after endpoint removal.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 8.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z,\ -\/1.f,\ 0.4f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ iterations\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk0\ =\ \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk1\ =\ \mbox{\hyperlink{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}{hmap::remove\_endpoints}}(sk0,\ iterations);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ overlay\ =\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{hmap::maximum}}(0.2f\ *\ sk0,\ sk1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_remove\_endpoints.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{sk0,\ sk1,\ overlay\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ac56515202b30368216c7324b819cc838}\label{namespacehmap_ac56515202b30368216c7324b819cc838} 
 \index{hmap@{hmap}!signed\_curvature\_from\_distance@{signed\_curvature\_from\_distance}}
 \index{signed\_curvature\_from\_distance@{signed\_curvature\_from\_distance}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{signed\_curvature\_from\_distance()}{signed\_curvature\_from\_distance()}}
