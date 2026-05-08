@@ -10,11 +10,12 @@
 namespace hmap
 {
 
-void coastal_erosion_diffusion(Array &z,
-                               Array &water_depth,
-                               float  additional_depth,
-                               int    iterations,
-                               Array *p_water_mask)
+void coastal_erosion_diffusion(Array       &z,
+                               Array       &water_depth,
+                               float        additional_depth,
+                               int          iterations,
+                               const Array *p_mask,
+                               Array       *p_water_mask)
 {
   const glm::ivec2 &shape = z.shape;
 
@@ -25,6 +26,8 @@ void coastal_erosion_diffusion(Array &z,
   {
     z_bckp = z;
     mask = water_mask(water_depth, z, additional_depth);
+
+    if (p_mask) mask *= (*p_mask);
 
     // filtering
     hmap::laplace(z, &mask, /* sigma */ 0.125f, 1);

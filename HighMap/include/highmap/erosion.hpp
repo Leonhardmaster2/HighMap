@@ -90,11 +90,12 @@ std::vector<hmap::ErosionProfile> check_erosion_profile_function(
  * **Result**
  * @image html ex_coastal_erosion_diffusion.png
  */
-void coastal_erosion_diffusion(Array &z,
-                               Array &water_depth,
-                               float  additional_depth,
-                               int    iterations = 10,
-                               Array *p_water_mask = nullptr);
+void coastal_erosion_diffusion(Array       &z,
+                               Array       &water_depth,
+                               float        additional_depth,
+                               int          iterations = 10,
+                               const Array *p_mask = nullptr,
+                               Array       *p_water_mask = nullptr);
 
 /**
  * @brief Applies a coastal erosion profile to a terrain elevation field.
