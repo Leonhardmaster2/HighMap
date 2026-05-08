@@ -351,6 +351,50 @@ Array relative_distance_from_skeleton(const Array &array,
   return rdist;
 }
 
+Array remove_endpoints(const Array &array,
+                       int          iterations,
+                       float        background_value)
+{
+  const glm::ivec2 &shape = array.shape;
+  Array             wrk = array;
+  Array             out(shape);
+
+  for (int it = 0; it < iterations; ++it)
+  {
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
+      {
+        // Skip background pixels immediately
+        if (wrk(i, j) == background_value)
+        {
+          out(i, j) = background_value;
+          continue;
+        }
+
+        int n = 0;
+        for (int r = -1; r <= 1; ++r)
+          for (int s = -1; s <= 1; ++s)
+          {
+            if (r == 0 && s == 0) continue;
+
+            const int ni = i + r;
+            const int nj = j + s;
+
+            if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+                wrk(ni, nj) != background_value)
+              ++n;
+          }
+
+        // also remove "lonely" cells, with no surrounding pixels
+        out(i, j) = (n < 2) ? background_value : wrk(i, j);
+      }
+
+    std::swap(wrk, out);
+  }
+
+  return wrk; // result is in wrk after the last swap
+}
+
 Array skeleton(const Array &array, bool zero_at_borders)
 {
   // https://github.com/krishraghuram/Zhang-Suen-Skeletonization

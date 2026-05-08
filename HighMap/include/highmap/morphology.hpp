@@ -485,6 +485,28 @@ Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_erosion = 1);
 
 /**
+ * @brief Removes endpoint-like pixels from a binary/weighted array.
+ *
+ * Iteratively filters out isolated or weakly connected pixels based on their
+ * neighborhood connectivity. Pixels matching the background value or having
+ * fewer than 2 non-background neighbors are removed.
+ *
+ * @param  array            Input array to process.
+ * @param  iterations       Number of erosion-like iterations to apply.
+ * @param  background_value Value considered as background (removed).
+ * @return                  Filtered array after endpoint removal.
+ *
+ * **Example**
+ * @include ex_remove_endpoints.cpp
+ *
+ * **Result**
+ * @image html ex_remove_endpoints.png
+ */
+Array remove_endpoints(const Array &array,
+                       int          iterations = 1,
+                       float        background_value = 0.f);
+
+/**
  * @brief Computes the signed curvature of the distance transform.
  *
  * Computes the Euclidean distance transform of a binary array, optionally
