@@ -1,5 +1,6 @@
 var NAVTREEINDEX15 =
 {
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba255d4f7c6ccaff8e1dbba731b721c118":[3,0,0,98,15],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba2c204df8ef8fa0dc1eb38995cad3bc0f":[3,0,0,98,1],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba332f2a26193b501879c33538df5f62e1":[3,0,0,98,2],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba3efd2608af3057bde072badad31513ac":[3,0,0,98,10],
@@ -184,7 +185,7 @@ var NAVTREEINDEX15 =
 "namespacehmap.html#aeb7c9ef8addab179badc77310cfde1b5":[3,0,0,628],
 "namespacehmap.html#aeb883524caa1b5ce67ee3b60376b4abb":[3,0,0,224],
 "namespacehmap.html#aec6ff7b54fb5d02804aa8de94bcd4caa":[3,0,0,782],
-"namespacehmap.html#aed9491c87a175e07ff614dfa3ad8b4f4":[3,0,0,848],
+"namespacehmap.html#aed9491c87a175e07ff614dfa3ad8b4f4":[3,0,0,849],
 "namespacehmap.html#aeddca5280bfeacef3cdf4bee68a2195f":[3,0,0,506],
 "namespacehmap.html#aee026d8b23196038c2b16c370b743889":[3,0,0,504],
 "namespacehmap.html#aee36bf04c8ae880814a5341d4ea262f4":[3,0,0,749],
@@ -226,6 +227,7 @@ var NAVTREEINDEX15 =
 "namespacehmap.html#af91a60a9fcbed7e38f53df57631a5298":[3,0,0,136],
 "namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c":[3,0,0,195],
 "namespacehmap.html#af975837e0f5b169dcb6d3f5f58c95fe9":[3,0,0,213],
+"namespacehmap.html#af988efebdf30c6135f68af79aaa83605":[3,0,0,843],
 "namespacehmap.html#af9ae05bbdab06ce61f1385ef4231d03b":[3,0,0,585],
 "namespacehmap.html#af9b55527f8d0f1c01d110b3144ee7d91":[3,0,0,384],
 "namespacehmap.html#af9e3033eb08345c1e3c46bde5dcd29a1":[3,0,0,313],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "namespacehmap.html#affdf6ff9564f31cb988131c2b2c4c280":[3,0,0,261],
 "namespacehmap_1_1gpu.html":[3,0,0,0],
 "namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869":[3,0,0,0,38],
-"namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490":[3,0,0,0,112],
-"namespacehmap_1_1gpu.html#a04047f16ece68b32c1c8e68b4780f0df":[3,0,0,0,50],
-"namespacehmap_1_1gpu.html#a04ae8a1ec2b8156be692aa690d32e1ff":[3,0,0,0,206]
+"namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490":[3,0,0,0,112]
 };

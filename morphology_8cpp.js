@@ -16,6 +16,7 @@ var morphology_8cpp =
     [ "morphological_top_hat", "morphology_8cpp.html#a211108a73f7ebadb6ac87621c4e47301", null ],
     [ "opening", "morphology_8cpp.html#abd3024b8233a70596ff2924607221637", null ],
     [ "opening_by_reconstruction", "morphology_8cpp.html#a35df7dd9ad7cff66bed5f5dcdac30797", null ],
+    [ "helper_reconstruction_impl", "morphology_8cpp.html#af988efebdf30c6135f68af79aaa83605", null ],
     [ "reconstruction_by_dilation", "morphology_8cpp.html#a5b01ee5f465847e08cde67a9533590e3", null ],
     [ "reconstruction_by_erosion", "morphology_8cpp.html#a2ac3034879fe68a7cc67d2d452a60c1a", null ],
     [ "helper_thinning", "morphology_8cpp.html#a2c98f2116e221df5f6684a7546bb233f", null ],

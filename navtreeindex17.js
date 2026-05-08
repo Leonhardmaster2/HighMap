@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"namespacemembers_eval_w.html":[3,1,4,20],
+"namespacemembers_eval_x.html":[3,1,4,21],
 "namespacemembers_f.html":[3,1,0,6],
 "namespacemembers_func.html":[3,1,1,0],
 "namespacemembers_func.html":[3,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "primitives_8cpp.html#a2b25a71f7da0b8324df986e01e5b08dc":[5,0,1,1,28,10,5],
 "primitives_8cpp.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5":[5,0,1,1,28,10,0],
 "primitives_8cpp.html#a3faedeb1505b5224b1f7e82e840beb73":[5,0,1,1,28,10,7],
-"primitives_8cpp.html#a41239b5831a88a5b2528f24e8c95a92a":[5,0,1,1,28,10,13],
-"primitives_8cpp.html#a4af0bde798f0266db4dfe24e1134a506":[5,0,1,1,28,10,4],
-"primitives_8cpp.html#a7628beb3c72d94109fa4de260bd22453":[5,0,1,1,28,10,8]
+"primitives_8cpp.html#a41239b5831a88a5b2528f24e8c95a92a":[5,0,1,1,28,10,13]
 };
