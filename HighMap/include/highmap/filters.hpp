@@ -73,43 +73,6 @@ Array bulkify(const Array         &z,
               glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief Applies diffusion retargeting by detecting local maxima and adjusting
- * based on the difference between two arrays.
- *
- * This function identifies points of interest in the `array_before` (local
- * maxima in a 3x3 neighborhood), computes the difference between the
- * corresponding points in `array_before` and `array_after`, and stores these
- * differences in a delta array. It then applies smoothing to the delta values,
- * remaps them within the original min-max range, and returns the corrected
- * array by adding the adjusted delta to `array_after`.
- *
- * @param  array_before The original 2D array used to detect local maxima for
- *                      retargeting.
- * @param  array_after  The 2D array representing the state after the diffusion
- *                      process.
- * @param  ir           The smoothing radius used in the smoothing step
- *                      (`smooth_cpulse`).
- *
- * @return              A new 2D array where the delta between the two input
- *                      arrays has been smoothed and applied as a correction to
- *                      `array_after`.
- *
- * **Example**
- * @include ex_diffusion_retargeting.cpp
- *
- * **Result**
- * @image html ex_diffusion_retargeting.png
- */
-Array diffusion_retargeting(const Array &array_before,
-                            const Array &array_after,
-                            int          ir);
-
-Array diffusion_retargeting(const Array &array_before,
-                            const Array &array_after,
-                            const Array &mask,
-                            int          iterations);
-
-/**
  * @brief Apply histogram equalization to the array values.
  *
  * This function performs histogram equalization on the input array to enhance
@@ -262,38 +225,6 @@ void expand_talus(Array       &z,
                   uint         seed,
                   int          ir = 1,
                   float        noise_ratio = 0.2f);
-
-/**
- * @brief Generate a faceted heightmap that retains the main features of the
- * input heightmap.
- *
- * This function processes the input heightmap to produce a new heightmap with a
- * 'faceted' appearance, where the terrain features are preserved but with a
- * more angular and planar aspect. This effect can be controlled by specifying a
- * neighborhood type and optional noise arrays for domain warping.
- *
- * @param  array        Input array representing the original heightmap.
- * @param  neighborhood Neighborhood type that defines how the faceting effect
- *                      is applied (see @ref neighborhood).
- * @param  p_noise_x    Optional reference to the input noise array used for
- *                      domain warping in the x-direction (NOT in pixels, with
- *                      respect to a unit domain).
- * @param  p_noise_y    Optional reference to the input noise array used for
- *                      domain warping in the y-direction (NOT in pixels, with
- *                      respect to a unit domain).
- * @return              Array Output array containing the faceted heightmap.
- *
- * **Example**
- * @include ex_faceted.cpp
- *
- * **Result**
- * @image html ex_faceted.png
- */
-Array faceted(const Array &array,
-              int          neighborhood = 0,
-              const Array *p_noise_x = nullptr,
-              const Array *p_noise_y = nullptr);
-
 /**
  * @brief Enforce a talus slope constraint on a height field.
  *
@@ -2199,35 +2130,6 @@ void terrace(Array       &array,
              const Array *p_noise = nullptr,
              float        vmin = 0.f,
              float        vmax = -1.f);
-
-/**
- * @brief Apply tessellation to the array with random node placement.
- *
- * This function applies tessellation to the input array, creating a denser mesh
- * by randomly distributing nodes based on the specified node density. The
- * `seed` parameter allows for controlling the randomness of the node placement,
- * and the `p_weight` reference is used to adjust the density distribution.
- *
- * @param  array        Input array to which tessellation will be applied.
- * @param  seed         Random seed number to initialize the node placement.
- * @param  node_density Node density as a ratio relative to the number of cells
- *                      in the input array. Determines the number of nodes to be
- *                      added.
- * @param  p_weight     Optional reference to the density distribution array,
- *                      expected in the range [0, 1]. If provided, tessellation
- *                      is influenced by this distribution.
- * @return              Array Output array after tessellation is applied.
- *
- * **Example**
- * @include ex_tessellate.cpp
- *
- * **Result**
- * @image html ex_tessellate.png
- */
-Array tessellate(Array       &array,
-                 uint         seed,
-                 float        node_density = 0.001f,
-                 const Array *p_weight = nullptr);
 
 } // namespace hmap
 
