@@ -107,25 +107,22 @@ Array reconstruction_by_dilation(const Array &marker,
                                  float        k_smooth_min)
 {
   constexpr float tol = 1e-6f;
-
-  Array current = marker;
-  Array next;
+  Array           current = marker;
+  Array           next;
 
   while (true)
   {
     next = gpu::dilation(current, ir);
-
-    // clamp to mask
     next = hmap::minimum_smooth(next, mask, k_smooth_min);
 
-    float diff = abs(next - current).max();
+    float diff = 0.f;
+    for (int j = 0; j < current.shape.y; ++j)
+      for (int i = 0; i < current.shape.x; ++i)
+        diff = std::max(diff, std::abs(next(i, j) - current(i, j)));
 
-    if (diff < tol) // convergence
-      break;
-
-    current = next;
+    std::swap(current, next);
+    if (diff < tol) break;
   }
-
   return current;
 }
 
@@ -135,25 +132,22 @@ Array reconstruction_by_erosion(const Array &marker,
                                 float        k_smooth_max)
 {
   constexpr float tol = 1e-6f;
-
-  Array current = marker;
-  Array next;
+  Array           current = marker;
+  Array           next;
 
   while (true)
   {
     next = gpu::erosion(current, ir);
-
-    // clamp to mask
     next = hmap::maximum_smooth(next, mask, k_smooth_max);
 
-    float diff = abs(next - current).max();
+    float diff = 0.f;
+    for (int j = 0; j < current.shape.y; ++j)
+      for (int i = 0; i < current.shape.x; ++i)
+        diff = std::max(diff, std::abs(next(i, j) - current(i, j)));
 
-    if (diff < tol) // convergence
-      break;
-
-    current = next;
+    std::swap(current, next);
+    if (diff < tol) break;
   }
-
   return current;
 }
 
