@@ -159,11 +159,19 @@ void coastal_erosion_profile(Array       &z,
 
   // adjust water depth so that water height is the same as before
   // filtering
-  for (int j = 0; j < shape.y; j++)
-    for (int i = 0; i < shape.x; i++)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
       if (water_depth(i, j) > 0.f)
-        water_depth(i, j) = z_bckp(i, j) + water_depth(i, j) - z(i, j);
+      {
+        float water_surface = z_bckp(i, j) + water_depth(i, j);
+        water_depth(i, j) = std::max(0.f, water_surface - z(i, j));
+      }
+      else
+      {
+        // restore dry cells the inner call may have dirtied
+        water_depth(i, j) = 0.f;
+      }
     }
 
   // other optional outputs
@@ -206,8 +214,10 @@ void coastal_erosion_profile(Array       &z,
   }
   else
   {
+    Array z_bckp = z;
+    Array water_depth_bckp = water_depth;
+
     Array z_f = z;
-    Array water_depth_in = water_depth;
 
     coastal_erosion_profile(z_f,
                             water_depth,
@@ -225,13 +235,26 @@ void coastal_erosion_profile(Array       &z,
                             p_scarp_mask);
 
     z = lerp(z, z_f, *p_mask);
-    water_depth = lerp(water_depth_in, water_depth, *p_mask);
+
+    // recompute water_depth
+    for (int j = 0; j < z.shape.y; ++j)
+      for (int i = 0; i < z.shape.x; ++i)
+      {
+        if (water_depth_bckp(i, j) > 0.f)
+        {
+          float water_surface = z_bckp(i, j) + water_depth_bckp(i, j);
+          water_depth(i, j) = std::max(0.f, water_surface - z(i, j));
+        }
+        else
+        {
+          // restore dry cells the inner call may have dirtied
+          water_depth(i, j) = 0.f;
+        }
+      }
 
     // output masks
-    Array zeros(z.shape);
-
-    if (p_shore_mask) *p_shore_mask = lerp(zeros, *p_shore_mask, *p_mask);
-    if (p_scarp_mask) *p_scarp_mask = lerp(zeros, *p_scarp_mask, *p_mask);
+    if (p_shore_mask) *p_shore_mask = (*p_shore_mask) * (*p_mask);
+    if (p_scarp_mask) *p_scarp_mask = (*p_scarp_mask) * (*p_mask);
   }
 }
 
