@@ -133,7 +133,7 @@ void coastal_erosion_profile(Array       &z,
         // transition factor
         float t = r_water(i, j) / shore_water_extent;
 
-        if (t <= 1.f && t_scarp > 0.f)
+        if (t <= 1.f)
         {
           shore_mask(i, j) = 1.f - t;
           smooth_mask(i, j) = 1.f;
