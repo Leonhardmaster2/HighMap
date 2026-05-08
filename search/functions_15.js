@@ -25,6 +25,5 @@ var searchData=
   ['worley_5fdouble_22',['worley_double',['../namespacehmap.html#a494a16a2183fc9e360d5390ce55ecef0',1,'hmap']]],
   ['worleydoublefunction_23',['WorleyDoubleFunction',['../classhmap_1_1WorleyDoubleFunction.html#a29d8fc15f950de7d69ac348f574c902e',1,'hmap::WorleyDoubleFunction']]],
   ['worleyfunction_24',['WorleyFunction',['../classhmap_1_1WorleyFunction.html#a7448c51edd9da58b2304ce1cdf3131df',1,'hmap::WorleyFunction']]],
-  ['wrinkle_25',['wrinkle',['../namespacehmap.html#a3537908cc646f5e7eb8350690ccec2db',1,'hmap::wrinkle(Array &amp;array, float wrinkle_amplitude, const Array *p_mask, float wrinkle_angle=0.f, float displacement_amplitude=1.f, int ir=0, float kw=2.f, uint seed=1, int octaves=8, float weight=0.7f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})'],['../namespacehmap.html#aa0033ed394620c8749d0f8c48c2c4120',1,'hmap::wrinkle(Array &amp;array, float wrinkle_amplitude, float wrinkle_angle=0.f, float displacement_amplitude=1.f, int ir=0, float kw=2.f, uint seed=1, int octaves=8, float weight=0.7f, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})']]],
-  ['write_5fraw_5f16bit_26',['write_raw_16bit',['../namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a',1,'hmap']]]
+  ['write_5fraw_5f16bit_25',['write_raw_16bit',['../namespacehmap.html#a466d4275bb86ca9ca603c9d4192f931a',1,'hmap']]]
 ];

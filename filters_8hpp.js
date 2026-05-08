@@ -115,8 +115,6 @@ var filters_8hpp =
     [ "terrace", "filters_8hpp.html#a5a852e7e8cb38a8c3231d4867995ae1c", null ],
     [ "terrace", "filters_8hpp.html#a878694830f25c7c79f4d9a0a723a5148", null ],
     [ "tessellate", "filters_8hpp.html#a473007073da159b88b14711dbd6553fb", null ],
-    [ "wrinkle", "filters_8hpp.html#a3537908cc646f5e7eb8350690ccec2db", null ],
-    [ "wrinkle", "filters_8hpp.html#aa0033ed394620c8749d0f8c48c2c4120", null ],
     [ "bilateral_filter", "filters_8hpp.html#ad6240ccabf3a0f858698dc0b77ab619e", null ],
     [ "bilateral_filter", "filters_8hpp.html#a0cd7116e5c346fe9534e25b53d5e054a", null ],
     [ "directional_blur", "filters_8hpp.html#a7236194a9133a228c9965f1c3e32d6a2", null ],

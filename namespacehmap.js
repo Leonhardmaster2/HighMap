@@ -811,8 +811,6 @@ var namespacehmap =
     [ "terrace", "namespacehmap.html#a5a852e7e8cb38a8c3231d4867995ae1c", null ],
     [ "terrace", "namespacehmap.html#a878694830f25c7c79f4d9a0a723a5148", null ],
     [ "tessellate", "namespacehmap.html#a473007073da159b88b14711dbd6553fb", null ],
-    [ "wrinkle", "namespacehmap.html#a3537908cc646f5e7eb8350690ccec2db", null ],
-    [ "wrinkle", "namespacehmap.html#aa0033ed394620c8749d0f8c48c2c4120", null ],
     [ "make_xy_function_from_array", "namespacehmap.html#a84ca1f41de32e4beacb10787127b4b8a", null ],
     [ "create_noise_function_from_type", "namespacehmap.html#af72b39fe64d11f55c59bcc8face3981b", null ],
     [ "cloud_sdf_to_array", "namespacehmap.html#aad6694d36e91a15ded7373064d15b88c", null ],
