@@ -2229,65 +2229,6 @@ Array tessellate(Array       &array,
                  float        node_density = 0.001f,
                  const Array *p_weight = nullptr);
 
-/**
- * @brief Apply wrinkle effect to the array, creating wrinkled or bumpy
- * features.
- *
- * This function adds wrinkle-like features to the input array. The
- * `wrinkle_amplitude` controls the intensity of the wrinkling effect, while
- * other parameters such as `displacement_amplitude`, `ir`, `kw`, `seed`,
- * `octaves`, and `weight` control various aspects of the underlying noise and
- * wrinkle generation.
- *
- * @param array                  Input array to which wrinkles will be applied.
- * @param wrinkle_amplitude      Amplitude of the wrinkle effect.
- * @param p_mask                 Optional filter mask, expected in the range [0,
- *                               1]. If provided, the wrinkle effect is applied
- *                               according to this mask. If not provided, the
- *                               entire array is processed.
- * @param wrinkle_angle          Overall rotation angle (in degree).
- * @param displacement_amplitude Drives the displacement of the wrinkles.
- * @param ir                     Smooth filter radius applied during wrinkle
- *                               generation.
- * @param kw                     Underlying primitive wavenumber, affecting the
- *                               frequency of wrinkles.
- * @param seed                   Random seed number for generating underlying
- *                               primitive noise.
- * @param octaves                Number of octaves used in the underlying
- *                               primitive noise.
- * @param weight                 Weight of the underlying primitive noise.
- * @param bbox                   Bounding box for the generated wrinkles,
- *                               default is {0.f, 1.f, 0.f, 1.f}.
- *
- * **Example**
- * @include ex_wrinkle.png
- *
- * **Result**
- * @image html ex_wrinkle.png
- */
-void wrinkle(Array       &array,
-             float        wrinkle_amplitude,
-             const Array *p_mask,
-             float        wrinkle_angle = 0.f,
-             float        displacement_amplitude = 1.f,
-             int          ir = 0,
-             float        kw = 2.f,
-             uint         seed = 1,
-             int          octaves = 8,
-             float        weight = 0.7f,
-             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
-
-void wrinkle(Array    &array,
-             float     wrinkle_amplitude,
-             float     wrinkle_angle = 0.f,
-             float     displacement_amplitude = 1.f,
-             int       ir = 0,
-             float     kw = 2.f,
-             uint      seed = 1,
-             int       octaves = 8,
-             float     weight = 0.7f,
-             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu

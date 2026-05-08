@@ -46,6 +46,8 @@ int main(void)
                                 0.5f,
                                 true,
                                 5,
+                                true,
+                                0.2f,
                                 &dr,
                                 &shore_mask,
                                 &scarp_mask);
