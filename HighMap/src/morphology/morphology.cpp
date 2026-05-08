@@ -356,14 +356,13 @@ void helper_thinning(Array &in, int iter)
 }
 
 Array relative_distance_from_skeleton(const Array &array,
+                                      const Array &skeleton,
                                       int          ir_search,
-                                      bool         zero_at_borders,
                                       int          ir_erosion)
 {
   const glm::ivec2 &shape = array.shape;
 
   Array border = array - erosion(array, ir_erosion);
-  Array sk = skeleton(array, zero_at_borders);
 
   Array rdist(shape);
 
@@ -385,7 +384,7 @@ Array relative_distance_from_skeleton(const Array &array,
           for (int p = p1; p < p2; p++)
           {
             // distance to skeleton
-            if (sk(p, q) == 1.f)
+            if (skeleton(p, q) == 1.f)
             {
               float d2 = (float)((i - p) * (i - p) + (j - q) * (j - q));
               if (d2 < dmax_sk) dmax_sk = d2;
@@ -406,6 +405,15 @@ Array relative_distance_from_skeleton(const Array &array,
       }
 
   return rdist;
+}
+
+Array relative_distance_from_skeleton(const Array &array,
+                                      int          ir_search,
+                                      bool         zero_at_borders,
+                                      int          ir_erosion)
+{
+  Array sk = skeleton(array, zero_at_borders);
+  return relative_distance_from_skeleton(array, sk, ir_search, ir_erosion);
 }
 
 Array remove_endpoints(const Array &array,

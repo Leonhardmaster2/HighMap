@@ -152,20 +152,19 @@ Array reconstruction_by_erosion(const Array &marker,
 }
 
 Array relative_distance_from_skeleton(const Array &array,
+                                      const Array &skeleton,
                                       int          ir_search,
-                                      bool         zero_at_borders,
                                       int          ir_erosion)
 {
   const glm::ivec2 &shape = array.shape;
 
   Array border = array - gpu::erosion(array, ir_erosion);
-  Array sk = gpu::skeleton(array, zero_at_borders);
   Array rdist(shape);
 
   auto run = clwrapper::Run("relative_distance_from_skeleton");
 
   run.bind_imagef("array", array.vector, shape.x, shape.y);
-  run.bind_imagef("sk", sk.vector, shape.x, shape.y);
+  run.bind_imagef("sk", skeleton.vector, shape.x, shape.y);
   run.bind_imagef("border", border.vector, shape.x, shape.y);
   run.bind_imagef("rdist", rdist.vector, shape.x, shape.y, true);
   run.bind_arguments(shape.x, shape.y, ir_search);
@@ -175,6 +174,15 @@ Array relative_distance_from_skeleton(const Array &array,
   run.read_imagef("rdist");
 
   return rdist;
+}
+
+Array relative_distance_from_skeleton(const Array &array,
+                                      int          ir_search,
+                                      bool         zero_at_borders,
+                                      int          ir_erosion)
+{
+  Array sk = gpu::skeleton(array, zero_at_borders);
+  return gpu::relative_distance_from_skeleton(array, sk, ir_search, ir_erosion);
 }
 
 Array skeleton(const Array &array, bool zero_at_borders)

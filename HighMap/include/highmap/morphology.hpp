@@ -484,6 +484,33 @@ Array relative_distance_from_skeleton(const Array &array,
                                       bool         zero_at_borders = true,
                                       int          ir_erosion = 1);
 
+Array relative_distance_from_skeleton(const Array &array,
+                                      const Array &skeleton,
+                                      int          ir_search,
+                                      int ir_erosion = 1); ///< @overload
+
+/**
+ * @brief Computes a skeletonized version of an array.
+ *
+ * Extracts or refines the skeleton structure of the input array using a
+ * reference skeleton mask. Optionally forces border values to zero to avoid
+ * edge artifacts.
+ *
+ * @param  array           Input array to skeletonize.
+ * @param  skeleton        Reference skeleton mask or initialization array.
+ * @param  zero_at_borders If true, clears skeleton values at borders.
+ * @return                 Skeletonized array.
+ *
+ * **Example**
+ * @include ex_skeleton.cpp
+ *
+ * **Result**
+ * @image html ex_skeleton.png
+ */
+Array skeleton(const Array &array,
+               const Array &skeleton,
+               bool         zero_at_borders = true);
+
 /**
  * @brief Removes endpoint-like pixels from a binary/weighted array.
  *
@@ -660,6 +687,12 @@ Array reconstruction_by_erosion(const Array &marker,
 Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders = true,
+                                      int          ir_erosion = 1);
+
+/*! @brief See hmap::relative_distance_from_skeleton */
+Array relative_distance_from_skeleton(const Array &array,
+                                      const Array &skeleton,
+                                      int          ir_search,
                                       int          ir_erosion = 1);
 
 /*! @brief See hmap::signed_curvature_from_distance */
