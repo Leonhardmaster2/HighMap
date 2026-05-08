@@ -361,48 +361,44 @@ Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_erosion)
 {
   const glm::ivec2 &shape = array.shape;
-
-  Array border = array - erosion(array, ir_erosion);
-
-  Array rdist(shape);
+  Array             border = array - erosion(array, ir_erosion);
+  Array             rdist(shape);
 
   for (int j = 0; j < shape.y; j++)
     for (int i = 0; i < shape.x; i++)
-      // only work for cells within the non-zero regions
-      if (array(i, j) != 0.f)
+    {
+      if (array(i, j) == 0.f) continue;
+
+      float dmin_sk = std::numeric_limits<float>::max();
+      float dmin_bd = std::numeric_limits<float>::max();
+
+      const int p1 = std::max(i - ir_search, 0);
+      const int p2 = std::min(i + ir_search + 1, shape.x);
+      const int q1 = std::max(j - ir_search, 0);
+      const int q2 = std::min(j + ir_search + 1, shape.y);
+
+      for (int q = q1; q < q2; q++)
       {
-        // find the closest skeleton and border cells
-        float dmax_sk = std::numeric_limits<float>::max();
-        float dmax_bd = std::numeric_limits<float>::max();
+        const int dq2 = (j - q) * (j - q);
 
-        int p1 = std::max(i - ir_search, 0);
-        int p2 = std::min(i + ir_search + 1, shape.x);
-        int q1 = std::max(j - ir_search, 0);
-        int q2 = std::min(j + ir_search + 1, shape.y);
+        for (int p = p1; p < p2; p++)
+        {
+          const bool is_sk = skeleton(p, q) == 1.f;
+          const bool is_bd = border(p, q) == 1.f;
 
-        for (int q = q1; q < q2; q++)
-          for (int p = p1; p < p2; p++)
-          {
-            // distance to skeleton
-            if (skeleton(p, q) == 1.f)
-            {
-              float d2 = (float)((i - p) * (i - p) + (j - q) * (j - q));
-              if (d2 < dmax_sk) dmax_sk = d2;
-            }
+          // skip non-feature cells early
+          if (!is_sk && !is_bd) continue;
 
-            // distance to border
-            if (border(p, q) == 1.f)
-            {
-              float d2 = (float)((i - p) * (i - p) + (j - q) * (j - q));
-              if (d2 < dmax_bd) dmax_bd = d2;
-            }
-          }
+          const int d2 = (i - p) * (i - p) + dq2;
 
-        // relative distance (from 1.f on the skeleton to 0.f and
-        // the border)
-        float sum = dmax_bd + dmax_sk;
-        if (sum) rdist(i, j) = dmax_bd / sum;
+          if (is_sk && d2 < dmin_sk) dmin_sk = d2;
+          if (is_bd && d2 < dmin_bd) dmin_bd = d2;
+        }
       }
+
+      const float sum = dmin_bd + dmin_sk;
+      if (sum > 0.f) rdist(i, j) = dmin_bd / sum;
+    }
 
   return rdist;
 }
