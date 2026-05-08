@@ -146,44 +146,36 @@ void flood_fill(Array &array,
                 float  fill_value,
                 float  background_value)
 {
+  if (array(i, j) != background_value) return; // nothing to do
+
   const glm::ivec2 &shape = array.shape;
 
-  std::vector<int> queue_i = {i};
-  std::vector<int> queue_j = {j};
+  std::vector<glm::ivec2> queue;
+  queue.reserve(shape.x * shape.y);
 
-  queue_i.reserve(shape.x * shape.y);
-  queue_j.reserve(shape.x * shape.y);
+  // mark and enqueue seed
+  array(i, j) = fill_value;
+  queue.push_back({i, j});
 
-  while (queue_i.size() > 0)
+  while (!queue.empty())
   {
-    i = queue_i.back();
-    j = queue_j.back();
-    queue_i.pop_back();
-    queue_j.pop_back();
+    auto c = queue.back();
+    queue.pop_back();
 
-    if (array(i, j) == background_value)
+    // 4-connected neighbors
+    constexpr int di[] = {-1, 1, 0, 0};
+    constexpr int dj[] = {0, 0, -1, 1};
+
+    for (int d = 0; d < 4; ++d)
     {
-      array(i, j) = fill_value;
+      const int ni = c.x + di[d];
+      const int nj = c.y + dj[d];
 
-      if (i > 0)
+      if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+          array(ni, nj) == background_value)
       {
-        queue_i.push_back(i - 1);
-        queue_j.push_back(j);
-      }
-      if (i < shape.x - 1)
-      {
-        queue_i.push_back(i + 1);
-        queue_j.push_back(j);
-      }
-      if (j > 0)
-      {
-        queue_i.push_back(i);
-        queue_j.push_back(j - 1);
-      }
-      if (j < shape.y - 1)
-      {
-        queue_i.push_back(i);
-        queue_j.push_back(j + 1);
+        array(ni, nj) = fill_value;
+        queue.push_back({ni, nj});
       }
     }
   }
