@@ -38129,16 +38129,19 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  <span class="keyword">auto</span> sk = <a class="code hl_function" href="namespacehmap.html#a3bf018295d3d90631e606c005059af3e">hmap::skeleton</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span> skg = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a5287e8c6a324fa91bea6c7bf98aacd68">hmap::gpu::skeleton</a>(z);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span>  ir_search = 32;</div>
-<div class="line">  <span class="keyword">auto</span> rdist = <a class="code hl_function" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">relative_distance_from_skeleton</a>(z, ir_search);</div>
+<div class="line">  <span class="keywordtype">int</span> ir_search = 32;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> rdist = <a class="code hl_function" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a>(z, ir_search);</div>
+<div class="line">  <span class="keyword">auto</span> rdistg = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a5a96e5f24b80d47262daede2c0743ba6">hmap::gpu::relative_distance_from_skeleton</a>(z, ir_search);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_skeleton.png&quot;</span>,</div>
-<div class="line">                          {z, sk, skg, 0.5f * (z + sk), rdist},</div>
+<div class="line">                          {z, sk, skg, 0.5f * (z + sk), rdist, rdistg},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a5287e8c6a324fa91bea6c7bf98aacd68"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5287e8c6a324fa91bea6c7bf98aacd68">hmap::gpu::skeleton</a></div><div class="ttdeci">Array skeleton(const Array &amp;array, bool zero_at_borders=true)</div><div class="ttdoc">See hmap::skeleton.</div><div class="ttdef"><b>Definition</b> morphology_gpu.cpp:188</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_a5a96e5f24b80d47262daede2c0743ba6"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a5a96e5f24b80d47262daede2c0743ba6">hmap::gpu::relative_distance_from_skeleton</a></div><div class="ttdeci">Array relative_distance_from_skeleton(const Array &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</div><div class="ttdoc">See hmap::relative_distance_from_skeleton.</div><div class="ttdef"><b>Definition</b> morphology_gpu.cpp:179</div></div>
 <div class="ttc" id="anamespacehmap_html_a3bf018295d3d90631e606c005059af3e"><div class="ttname"><a href="namespacehmap.html#a3bf018295d3d90631e606c005059af3e">hmap::skeleton</a></div><div class="ttdeci">Array skeleton(const Array &amp;array, const Array &amp;skeleton, bool zero_at_borders=true)</div><div class="ttdoc">Computes a skeletonized version of an array.</div></div>
-<div class="ttc" id="anamespacehmap_html_a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><div class="ttname"><a href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a></div><div class="ttdeci">Array relative_distance_from_skeleton(const Array &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</div><div class="ttdoc">Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.</div><div class="ttdef"><b>Definition</b> morphology.cpp:410</div></div>
+<div class="ttc" id="anamespacehmap_html_a7c7d934cc5a3a5e1a6f17c09a0e1e51f"><div class="ttname"><a href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a></div><div class="ttdeci">Array relative_distance_from_skeleton(const Array &amp;array, int ir_search, bool zero_at_borders=true, int ir_erosion=1)</div><div class="ttdoc">Computes the relative distance of each non-zero cell in a binary array from the skeleton and border.</div><div class="ttdef"><b>Definition</b> morphology.cpp:406</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_skeleton.png" alt=""/>
 </div>
@@ -38214,7 +38217,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">                          {sk0, sk1, overlay},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a7e2e905cda124cb865b4bc1bf7b48645"><div class="ttname"><a href="namespacehmap.html#a7e2e905cda124cb865b4bc1bf7b48645">hmap::remove_endpoints</a></div><div class="ttdeci">Array remove_endpoints(const Array &amp;array, int iterations=1, float background_value=0.f)</div><div class="ttdoc">Removes endpoint-like pixels from a binary/weighted array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:419</div></div>
+<div class="ttc" id="anamespacehmap_html_a7e2e905cda124cb865b4bc1bf7b48645"><div class="ttname"><a href="namespacehmap.html#a7e2e905cda124cb865b4bc1bf7b48645">hmap::remove_endpoints</a></div><div class="ttdeci">Array remove_endpoints(const Array &amp;array, int iterations=1, float background_value=0.f)</div><div class="ttdoc">Removes endpoint-like pixels from a binary/weighted array.</div><div class="ttdef"><b>Definition</b> morphology.cpp:415</div></div>
 <div class="ttc" id="anamespacehmap_html_aa52f3e1fcb1cad464a512c09a0c8eb54"><div class="ttname"><a href="namespacehmap.html#aa52f3e1fcb1cad464a512c09a0c8eb54">hmap::maximum</a></div><div class="ttdeci">Array maximum(const Array &amp;array1, const Array &amp;array2)</div><div class="ttdoc">Return the element-wise maximum of two arrays.</div><div class="ttdef"><b>Definition</b> range.cpp:244</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_remove_endpoints.png" alt=""/>
@@ -38391,11 +38394,13 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <div class="line">  <span class="keyword">auto</span> sk = <a class="code hl_function" href="namespacehmap.html#a3bf018295d3d90631e606c005059af3e">hmap::skeleton</a>(z);</div>
 <div class="line">  <span class="keyword">auto</span> skg = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a5287e8c6a324fa91bea6c7bf98aacd68">hmap::gpu::skeleton</a>(z);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span>  ir_search = 32;</div>
-<div class="line">  <span class="keyword">auto</span> rdist = <a class="code hl_function" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">relative_distance_from_skeleton</a>(z, ir_search);</div>
+<div class="line">  <span class="keywordtype">int</span> ir_search = 32;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">auto</span> rdist = <a class="code hl_function" href="namespacehmap.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f">hmap::relative_distance_from_skeleton</a>(z, ir_search);</div>
+<div class="line">  <span class="keyword">auto</span> rdistg = <a class="code hl_function" href="namespacehmap_1_1gpu.html#a5a96e5f24b80d47262daede2c0743ba6">hmap::gpu::relative_distance_from_skeleton</a>(z, ir_search);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_skeleton.png&quot;</span>,</div>
-<div class="line">                          {z, sk, skg, 0.5f * (z + sk), rdist},</div>
+<div class="line">                          {z, sk, skg, 0.5f * (z + sk), rdist, rdistg},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">

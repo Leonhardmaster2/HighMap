@@ -23228,11 +23228,13 @@ Skeletonized array.
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap::skeleton}}(z);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ skg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap::gpu::skeleton}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\_search\ =\ 32;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{hmap::relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdistg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5a96e5f24b80d47262daede2c0743ba6}{hmap::gpu::relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_skeleton.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist,\ rdistg\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
 \DoxyCodeLine{\}}
 
@@ -23414,11 +23416,13 @@ This implementation is based on the algorithm described at \href{https://github.
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap::skeleton}}(z);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ skg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap::gpu::skeleton}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ir\_search\ =\ 32;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{hmap::relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdistg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5a96e5f24b80d47262daede2c0743ba6}{hmap::gpu::relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_skeleton.png"{}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist,\ rdistg\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
 \DoxyCodeLine{\}}
 
