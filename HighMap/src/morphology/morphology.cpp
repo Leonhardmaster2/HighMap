@@ -82,12 +82,13 @@ Array dilation(const Array &array, int ir)
 
 Array dilation_expand_border_only(const Array &array, int ir)
 {
-  Array out = local_max(array, ir);
+  const glm::ivec2 &shape = array.shape;
+  Array             out = local_max(array, ir);
 
   // only keep result in the "background" to leave initial vlaues
   // untouched
-  for (int j = 0; j < array.shape.y; ++j)
-    for (int i = 0; i < array.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
       if (array(i, j) != 0.f) out(i, j) = array(i, j);
     }
@@ -145,11 +146,13 @@ void flood_fill(Array &array,
                 float  fill_value,
                 float  background_value)
 {
+  const glm::ivec2 &shape = array.shape;
+
   std::vector<int> queue_i = {i};
   std::vector<int> queue_j = {j};
 
-  queue_i.reserve(array.shape.x * array.shape.y);
-  queue_j.reserve(array.shape.x * array.shape.y);
+  queue_i.reserve(shape.x * shape.y);
+  queue_j.reserve(shape.x * shape.y);
 
   while (queue_i.size() > 0)
   {
@@ -167,7 +170,7 @@ void flood_fill(Array &array,
         queue_i.push_back(i - 1);
         queue_j.push_back(j);
       }
-      if (i < array.shape.x - 1)
+      if (i < shape.x - 1)
       {
         queue_i.push_back(i + 1);
         queue_j.push_back(j);
@@ -177,7 +180,7 @@ void flood_fill(Array &array,
         queue_i.push_back(i);
         queue_j.push_back(j - 1);
       }
-      if (j < array.shape.y - 1)
+      if (j < shape.y - 1)
       {
         queue_i.push_back(i);
         queue_j.push_back(j + 1);
@@ -314,13 +317,15 @@ Array relative_distance_from_skeleton(const Array &array,
                                       bool         zero_at_borders,
                                       int          ir_erosion)
 {
+  const glm::ivec2 &shape = array.shape;
+
   Array border = array - erosion(array, ir_erosion);
   Array sk = skeleton(array, zero_at_borders);
 
-  Array rdist(array.shape);
+  Array rdist(shape);
 
-  for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < array.shape.x; i++)
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
       // only work for cells within the non-zero regions
       if (array(i, j) != 0.f)
       {
@@ -329,9 +334,9 @@ Array relative_distance_from_skeleton(const Array &array,
         float dmax_bd = std::numeric_limits<float>::max();
 
         int p1 = std::max(i - ir_search, 0);
-        int p2 = std::min(i + ir_search + 1, array.shape.x);
+        int p2 = std::min(i + ir_search + 1, shape.x);
         int q1 = std::max(j - ir_search, 0);
-        int q2 = std::min(j + ir_search + 1, array.shape.y);
+        int q2 = std::min(j + ir_search + 1, shape.y);
 
         for (int q = q1; q < q2; q++)
           for (int p = p1; p < p2; p++)

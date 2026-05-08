@@ -48,12 +48,13 @@ Array dilation(const Array &array, int ir)
 
 Array dilation_expand_border_only(const Array &array, int ir)
 {
-  Array out = gpu::dilation(array, ir);
+  const glm::ivec2 &shape = array.shape;
+  Array             out = gpu::dilation(array, ir);
 
   // only keep result in the "background" to leave initial vlaues
   // untouched
-  for (int j = 0; j < array.shape.y; ++j)
-    for (int i = 0; i < array.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
       if (array(i, j) != 0.f) out(i, j) = array(i, j);
     }
@@ -161,22 +162,21 @@ Array relative_distance_from_skeleton(const Array &array,
                                       bool         zero_at_borders,
                                       int          ir_erosion)
 {
+  const glm::ivec2 &shape = array.shape;
+
   Array border = array - gpu::erosion(array, ir_erosion);
   Array sk = gpu::skeleton(array, zero_at_borders);
-  Array rdist(array.shape);
+  Array rdist(shape);
 
   auto run = clwrapper::Run("relative_distance_from_skeleton");
 
-  run.bind_imagef("array",
-                  const_cast<std::vector<float> &>(array.vector),
-                  array.shape.x,
-                  array.shape.y);
-  run.bind_imagef("sk", sk.vector, array.shape.x, array.shape.y);
-  run.bind_imagef("border", border.vector, array.shape.x, array.shape.y);
-  run.bind_imagef("rdist", rdist.vector, array.shape.x, array.shape.y, true);
-  run.bind_arguments(array.shape.x, array.shape.y, ir_search);
+  run.bind_imagef("array", array.vector, shape.x, shape.y);
+  run.bind_imagef("sk", sk.vector, shape.x, shape.y);
+  run.bind_imagef("border", border.vector, shape.x, shape.y);
+  run.bind_imagef("rdist", rdist.vector, shape.x, shape.y, true);
+  run.bind_arguments(shape.x, shape.y, ir_search);
 
-  run.execute({array.shape.x, array.shape.y});
+  run.execute({shape.x, shape.y});
 
   run.read_imagef("rdist");
 
