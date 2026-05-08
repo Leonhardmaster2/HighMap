@@ -893,9 +893,9 @@ Functions</h2></td></tr>
 <tr class="separator:a02f191e398bfc3c0e87999d8576d7c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac718f038155dde59fb50eb22684ed255" id="r_ac718f038155dde59fb50eb22684ed255"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">hmap::ErosionProfile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">check_erosion_profile_function</a> (float delta=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="separator:ac718f038155dde59fb50eb22684ed255"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54724c8701b75260e97924451731e41f" id="r_a54724c8701b75260e97924451731e41f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a54724c8701b75260e97924451731e41f">coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
-<tr class="memdesc:a54724c8701b75260e97924451731e41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
-<tr class="separator:a54724c8701b75260e97924451731e41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18a33814eb6bc286dfe516a9781819cf" id="r_a18a33814eb6bc286dfe516a9781819cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf">coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
+<tr class="memdesc:a18a33814eb6bc286dfe516a9781819cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
+<tr class="separator:a18a33814eb6bc286dfe516a9781819cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4911ba93b495bd3f66b9f7185d5e0a23" id="r_a4911ba93b495bd3f66b9f7185d5e0a23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4911ba93b495bd3f66b9f7185d5e0a23">coastal_erosion_profile</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float slope_shore_water=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float scarp_extent_ratio=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool apply_post_filter=true, int post_filter_iterations=3, bool solid_shore_mask=true, float scarp_mask_transition_ratio=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_shore_mask=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_scarp_mask=nullptr)</td></tr>
 <tr class="memdesc:a4911ba93b495bd3f66b9f7185d5e0a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a coastal erosion profile to a terrain elevation field.  <br /></td></tr>
 <tr class="separator:a4911ba93b495bd3f66b9f7185d5e0a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -9198,8 +9198,8 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 
 </div>
 </div>
-<a id="a54724c8701b75260e97924451731e41f" name="a54724c8701b75260e97924451731e41f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54724c8701b75260e97924451731e41f">&#9670;&#160;</a></span>coastal_erosion_diffusion()</h2>
+<a id="a18a33814eb6bc286dfe516a9781819cf" name="a18a33814eb6bc286dfe516a9781819cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18a33814eb6bc286dfe516a9781819cf">&#9670;&#160;</a></span>coastal_erosion_diffusion()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -9227,6 +9227,12 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>iterations</em> = <code>10</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -9278,15 +9284,15 @@ additional_depth)</code>.</li>
 <div class="line">  <span class="keywordtype">float</span> additional_depth = 0.075f;</div>
 <div class="line">  <span class="keywordtype">int</span>   iterations = 10;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a54724c8701b75260e97924451731e41f">hmap::coastal_erosion_diffusion</a>(z, water_depth, additional_depth, iterations);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf">hmap::coastal_erosion_diffusion</a>(z, water_depth, additional_depth, iterations);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_coastal_erosion_diffusion.png&quot;</span>,</div>
 <div class="line">                          {z0, z, z + water_depth},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a18a33814eb6bc286dfe516a9781819cf"><div class="ttname"><a href="namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf">hmap::coastal_erosion_diffusion</a></div><div class="ttdeci">void coastal_erosion_diffusion(Array &amp;z, Array &amp;water_depth, float additional_depth, int iterations=10, const Array *p_mask=nullptr, Array *p_water_mask=nullptr)</div><div class="ttdoc">Simulates terrain diffusion due to coastal erosion.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:13</div></div>
 <div class="ttc" id="anamespacehmap_html_a2318944325d02f3969aa7fa58b500278"><div class="ttname"><a href="namespacehmap.html#a2318944325d02f3969aa7fa58b500278">hmap::flooding_uniform_level</a></div><div class="ttdeci">Array flooding_uniform_level(const Array &amp;z, float zref)</div><div class="ttdoc">Compute water depth for a uniform flooding level.</div><div class="ttdef"><b>Definition</b> flooding.cpp:18</div></div>
-<div class="ttc" id="anamespacehmap_html_a54724c8701b75260e97924451731e41f"><div class="ttname"><a href="namespacehmap.html#a54724c8701b75260e97924451731e41f">hmap::coastal_erosion_diffusion</a></div><div class="ttdeci">void coastal_erosion_diffusion(Array &amp;z, Array &amp;water_depth, float additional_depth, int iterations=10, Array *p_water_mask=nullptr)</div><div class="ttdoc">Simulates terrain diffusion due to coastal erosion.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:13</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_coastal_erosion_diffusion.png" alt=""/>
 </div>
@@ -9483,7 +9489,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a4911ba93b495bd3f66b9f7185d5e0a23"><div class="ttname"><a href="namespacehmap.html#a4911ba93b495bd3f66b9f7185d5e0a23">hmap::coastal_erosion_profile</a></div><div class="ttdeci">void coastal_erosion_profile(Array &amp;z, Array &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5f, float slope_shore_water=0.5f, float scarp_extent_ratio=0.5f, bool apply_post_filter=true, int post_filter_iterations=3, bool solid_shore_mask=true, float scarp_mask_transition_ratio=0.2f, const Array *p_noise=nullptr, Array *p_shore_mask=nullptr, Array *p_scarp_mask=nullptr)</div><div class="ttdoc">Applies a coastal erosion profile to a terrain elevation field.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:45</div></div>
+<div class="ttc" id="anamespacehmap_html_a4911ba93b495bd3f66b9f7185d5e0a23"><div class="ttname"><a href="namespacehmap.html#a4911ba93b495bd3f66b9f7185d5e0a23">hmap::coastal_erosion_profile</a></div><div class="ttdeci">void coastal_erosion_profile(Array &amp;z, Array &amp;water_depth, float shore_ground_extent, float shore_water_extent, float slope_shore=0.5f, float slope_shore_water=0.5f, float scarp_extent_ratio=0.5f, bool apply_post_filter=true, int post_filter_iterations=3, bool solid_shore_mask=true, float scarp_mask_transition_ratio=0.2f, const Array *p_noise=nullptr, Array *p_shore_mask=nullptr, Array *p_scarp_mask=nullptr)</div><div class="ttdoc">Applies a coastal erosion profile to a terrain elevation field.</div><div class="ttdef"><b>Definition</b> coastal_erosion.cpp:48</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a03f4fca6bab010831c1e90a0cce9dd80">hmap::SIMPLEX2S</a></div><div class="ttdeci">@ SIMPLEX2S</div><div class="ttdoc">OpenSimplex2S.</div><div class="ttdef"><b>Definition</b> functions.hpp:68</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_coastal_erosion_profile.png" alt=""/>
