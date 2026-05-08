@@ -1521,6 +1521,10 @@ void \mbox{\hyperlink{namespacehmap_adff494af7c8bf4db7f3e6fddd3261793}{flood\+\_
 \begin{DoxyCompactList}\small\item\em Perform morphological reconstruction by erosion. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir\+\_\+search, bool zero\+\_\+at\+\_\+borders=true, int ir\+\_\+erosion=1)
 \begin{DoxyCompactList}\small\item\em Computes the relative distance of each non-\/zero cell in a binary array from the skeleton and border. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aac6a0f72428db11736aa16539aca0a5c}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{skeleton}}, int ir\+\_\+search, int ir\+\_\+erosion=1)
+\begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&skeleton, bool zero\+\_\+at\+\_\+borders=true)
+\begin{DoxyCompactList}\small\item\em Computes a skeletonized version of an array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}{remove\+\_\+endpoints}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int iterations=1, float background\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Removes endpoint-\/like pixels from a binary/weighted array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ac56515202b30368216c7324b819cc838}{signed\+\_\+curvature\+\_\+from\+\_\+distance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
@@ -18852,7 +18856,7 @@ std\+::vector$<$int$>$ Vector of unique integers in \mbox{[}min\+\_\+value, max\
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+Ifsizeexceedsavailable} & unique values. \\
+{\em std\+::invalid\+\_\+argument\+Ifsizeexceedsavailableunique} & values. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}\label{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5} 
@@ -23114,7 +23118,7 @@ Iteratively erodes the marker image while constraining values to be greater than
 {\bfseries{Result}}  \Hypertarget{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}\label{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f} 
 \index{hmap@{hmap}!relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}}
 \index{relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}}
+\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir\+\_\+search,  }\item[{bool}]{zero\+\_\+at\+\_\+borders = {\ttfamily true},  }\item[{int}]{ir\+\_\+erosion = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 
@@ -23170,7 +23174,72 @@ The skeleton is computed using the Zhang-\/\+Suen skeletonization algorithm.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}     \Hypertarget{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}\label{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645} 
+{\bfseries{Result}}     \Hypertarget{namespacehmap_aac6a0f72428db11736aa16539aca0a5c}\label{namespacehmap_aac6a0f72428db11736aa16539aca0a5c} 
+\index{hmap@{hmap}!relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}}
+\index{relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{skeleton,  }\item[{int}]{ir\+\_\+search,  }\item[{int}]{ir\+\_\+erosion = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
+
+\Hypertarget{namespacehmap_a3bf018295d3d90631e606c005059af3e}\label{namespacehmap_a3bf018295d3d90631e606c005059af3e} 
+\index{hmap@{hmap}!skeleton@{skeleton}}
+\index{skeleton@{skeleton}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{skeleton()}{skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{skeleton,  }\item[{bool}]{zero\+\_\+at\+\_\+borders = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Computes a skeletonized version of an array. 
+
+Extracts or refines the skeleton structure of the input array using a reference skeleton mask. Optionally forces border values to zero to avoid edge artifacts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array to skeletonize. \\
+\hline
+{\em skeleton} & Reference skeleton mask or initialization array. \\
+\hline
+{\em zero\+\_\+at\+\_\+borders} & If true, clears skeleton values at borders. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Skeletonized array.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 8.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z,\ -\/1.f,\ 0.4f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ skg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap::gpu::skeleton}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ rdist\ =\ \mbox{\hyperlink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{relative\_distance\_from\_skeleton}}(z,\ ir\_search);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_skeleton.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ sk,\ skg,\ 0.5f\ *\ (z\ +\ sk),\ rdist\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d}{hmap::Cmap::GRAY}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}\label{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645} 
 \index{hmap@{hmap}!remove\_endpoints@{remove\_endpoints}}
 \index{remove\_endpoints@{remove\_endpoints}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{remove\_endpoints()}{remove\_endpoints()}}
@@ -23213,7 +23282,7 @@ Filtered array after endpoint removal.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ iterations\ =\ 16;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk0\ =\ \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk0\ =\ \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap::skeleton}}(z);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk1\ =\ \mbox{\hyperlink{namespacehmap_a7e2e905cda124cb865b4bc1bf7b48645}{hmap::remove\_endpoints}}(sk0,\ iterations);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ overlay\ =\ \mbox{\hyperlink{namespacehmap_aa52f3e1fcb1cad464a512c09a0c8eb54}{hmap::maximum}}(0.2f\ *\ sk0,\ sk1);}
@@ -23303,7 +23372,7 @@ Signed distance transform.
 \Hypertarget{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}\label{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64} 
 \index{hmap@{hmap}!skeleton@{skeleton}}
 \index{skeleton@{skeleton}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{skeleton()}{skeleton()}}
+\doxysubsubsection{\texorpdfstring{skeleton()}{skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{bool}]{zero\+\_\+at\+\_\+borders = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
@@ -23342,7 +23411,7 @@ This implementation is based on the algorithm described at \href{https://github.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a4799d3f029d45240a5b40b4853583a58}{hmap::make\_binary}}(z);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap::skeleton}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ sk\ =\ \mbox{\hyperlink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap::skeleton}}(z);}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ skg\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{hmap::gpu::skeleton}}(z);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ ir\_search\ =\ 32;}

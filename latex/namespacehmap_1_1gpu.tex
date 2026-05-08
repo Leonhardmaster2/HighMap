@@ -310,12 +310,14 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_ad44fefa43fdf773f241dcf4c46795e80}{in
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap\+::reconstruction\+\_\+by\+\_\+erosion}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a5a96e5f24b80d47262daede2c0743ba6}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir\+\_\+search, bool zero\+\_\+at\+\_\+borders=true, int ir\+\_\+erosion=1)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{hmap\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aecfa4981872dbbe775a63f64c9837029}{relative\+\_\+distance\+\_\+from\+\_\+skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{skeleton}}, int ir\+\_\+search, int ir\+\_\+erosion=1)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{hmap\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_afffb85b7bc6b9884cd00254c122da8e6}{signed\+\_\+curvature\+\_\+from\+\_\+distance}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ac56515202b30368216c7324b819cc838}{hmap\+::signed\+\_\+curvature\+\_\+from\+\_\+distance}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a76cfd96b971a288964561449d83e21aa}{signed\+\_\+distance\+\_\+transform}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int prefilter\+\_\+ir=0)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{hmap\+::signed\+\_\+distance\+\_\+transform}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a5287e8c6a324fa91bea6c7bf98aacd68}{skeleton}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, bool zero\+\_\+at\+\_\+borders=true)
-\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap\+::skeleton}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap\+::skeleton}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}{morphological\+\_\+operators}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, \mbox{\hyperlink{namespacehmap_a321149eda3417aa485a010c31267818c}{Morphology\+Operation}} operation)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ad6e4d1cf34786ef4065fbc0a5fa03d6d}{hmap\+::morphological\+\_\+operators}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_aae6131a978635eb515958f41584bcbfc}{helper\+\_\+bind\+\_\+optional\+\_\+buffer}} (clwrapper\+::\+Run \&run, const std\+::string \&id, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+array)
@@ -4437,8 +4439,18 @@ See \doxylink{namespacehmap_a2ac3034879fe68a7cc67d2d452a60c1a}{hmap\+::reconstru
 \Hypertarget{namespacehmap_1_1gpu_a5a96e5f24b80d47262daede2c0743ba6}\label{namespacehmap_1_1gpu_a5a96e5f24b80d47262daede2c0743ba6} 
 \index{hmap::gpu@{hmap::gpu}!relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}}
 \index{relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}!hmap::gpu@{hmap::gpu}}
-\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}}
+\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{ir\+\_\+search,  }\item[{bool}]{zero\+\_\+at\+\_\+borders = {\ttfamily true},  }\item[{int}]{ir\+\_\+erosion = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_a7c7d934cc5a3a5e1a6f17c09a0e1e51f}{hmap\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton}. 
+
+\Hypertarget{namespacehmap_1_1gpu_aecfa4981872dbbe775a63f64c9837029}\label{namespacehmap_1_1gpu_aecfa4981872dbbe775a63f64c9837029} 
+\index{hmap::gpu@{hmap::gpu}!relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}}
+\index{relative\_distance\_from\_skeleton@{relative\_distance\_from\_skeleton}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{relative\_distance\_from\_skeleton()}{relative\_distance\_from\_skeleton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::relative\+\_\+distance\+\_\+from\+\_\+skeleton (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{skeleton,  }\item[{int}]{ir\+\_\+search,  }\item[{int}]{ir\+\_\+erosion = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 
 
@@ -4472,7 +4484,7 @@ See \doxylink{namespacehmap_ad4ab7bb38b3ea37fa912190251c1ed76}{hmap\+::signed\+\
 
 
 
-See \doxylink{namespacehmap_a11ddd5ab1aa625db9419d9b65c0eaa64}{hmap\+::skeleton}. 
+See \doxylink{namespacehmap_a3bf018295d3d90631e606c005059af3e}{hmap\+::skeleton}. 
 
 \Hypertarget{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67}\label{namespacehmap_1_1gpu_af427123c185935335c9d2e108c833c67} 
 \index{hmap::gpu@{hmap::gpu}!morphological\_operators@{morphological\_operators}}

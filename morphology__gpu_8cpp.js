@@ -15,6 +15,7 @@ var morphology__gpu_8cpp =
     [ "opening_by_reconstruction", "morphology__gpu_8cpp.html#a1afc69c95369f96477e049d657a15b3b", null ],
     [ "reconstruction_by_dilation", "morphology__gpu_8cpp.html#a4b010c9a58ba75a27467385a368f70ce", null ],
     [ "reconstruction_by_erosion", "morphology__gpu_8cpp.html#ad1813ae47f33d026b0c3e6f7e370b5c8", null ],
+    [ "relative_distance_from_skeleton", "morphology__gpu_8cpp.html#aecfa4981872dbbe775a63f64c9837029", null ],
     [ "relative_distance_from_skeleton", "morphology__gpu_8cpp.html#a5a96e5f24b80d47262daede2c0743ba6", null ],
     [ "skeleton", "morphology__gpu_8cpp.html#a5287e8c6a324fa91bea6c7bf98aacd68", null ]
 ];

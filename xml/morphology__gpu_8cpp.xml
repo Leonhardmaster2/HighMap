@@ -163,75 +163,83 @@
 <codeline lineno="152"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a5a96e5f24b80d47262daede2c0743ba6" kindref="member">relative_distance_from_skeleton</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_search,</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zero_at_borders,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;<ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">skeleton</ref>,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_search,</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_erosion)</highlight></codeline>
 <codeline lineno="158"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::ivec2<sp/>&amp;shape<sp/>=<sp/>array.<ref refid="classhmap_1_1Array_1a9ee3e85888021b80660357e73f35a5ea" kindref="member">shape</ref>;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/>Array<sp/><ref refid="namespacehmap_1_1gpu_1a335e4629532ba64049e0721bdcb5f3ba" kindref="member">border</ref><sp/>=<sp/>array<sp/>-<sp/><ref refid="namespacehmap_1_1gpu_1aed5416971461ddb7fb6427bdeb5cae86" kindref="member">gpu::erosion</ref>(array,<sp/>ir_erosion);</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">gpu::skeleton</ref>(array,<sp/>zero_at_borders);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/>Array<sp/>rdist(shape);</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;relative_distance_from_skeleton&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;array&quot;</highlight><highlight class="normal">,<sp/>array.vector,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;sk&quot;</highlight><highlight class="normal">,<sp/>sk.vector,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;border&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1_1gpu_1a335e4629532ba64049e0721bdcb5f3ba" kindref="member">border</ref>.<ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">vector</ref>,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;rdist&quot;</highlight><highlight class="normal">,<sp/>rdist.vector,<sp/>shape.x,<sp/>shape.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/>run.bind_arguments(shape.x,<sp/>shape.y,<sp/>ir_search);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/>run.execute({shape.x,<sp/>shape.y});</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;rdist&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rdist;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">skeleton</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>zero_at_borders)</highlight></codeline>
-<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/><ref refid="namespacehmap_1a9254ab903bd000631c5f5216e21f7caa" kindref="member">generate_buffered_array</ref>(array,<sp/>{1,<sp/>1,<sp/>1,<sp/>1});</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1af3d5a6d239d30fe1698a524dfedcd63f" kindref="member">set_borders</ref>(sk,<sp/>0.f,<sp/>1);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::ivec2<sp/>&amp;shape_pad<sp/>=<sp/>sk.shape;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/>Array<sp/>prev;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/>Array<sp/>diff;</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;thinning&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">,<sp/>sk.vector,<sp/>shape_pad.x,<sp/>shape_pad.y);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">,<sp/>sk.vector,<sp/>shape_pad.x,<sp/>sk.shape.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/>run.bind_arguments(shape_pad.x,<sp/>shape_pad.y,<sp/>0);</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>prev<sp/>=<sp/>sk;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>Array<sp/>rdist(shape);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;relative_distance_from_skeleton&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;array&quot;</highlight><highlight class="normal">,<sp/>array.vector,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;sk&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">skeleton</ref>.<ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">vector</ref>,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;border&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1_1gpu_1a335e4629532ba64049e0721bdcb5f3ba" kindref="member">border</ref>.<ref refid="classhmap_1_1Array_1af586ddce153ac93df48a6d26609d7264" kindref="member">vector</ref>,<sp/>shape.x,<sp/>shape.y);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;rdist&quot;</highlight><highlight class="normal">,<sp/>rdist.vector,<sp/>shape.x,<sp/>shape.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>run.bind_arguments(shape.x,<sp/>shape.y,<sp/>ir_search);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>run.execute({shape.x,<sp/>shape.y});</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;rdist&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rdist;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a5a96e5f24b80d47262daede2c0743ba6" kindref="member">relative_distance_from_skeleton</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_search,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zero_at_borders,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ir_erosion)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">gpu::skeleton</ref>(array,<sp/>zero_at_borders);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1_1gpu_1a5a96e5f24b80d47262daede2c0743ba6" kindref="member">gpu::relative_distance_from_skeleton</ref>(array,<sp/>sk,<sp/>ir_search,<sp/>ir_erosion);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal">Array<sp/><ref refid="namespacehmap_1_1gpu_1a5287e8c6a324fa91bea6c7bf98aacd68" kindref="member">skeleton</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array<sp/>&amp;array,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>zero_at_borders)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>Array<sp/>sk<sp/>=<sp/><ref refid="namespacehmap_1a9254ab903bd000631c5f5216e21f7caa" kindref="member">generate_buffered_array</ref>(array,<sp/>{1,<sp/>1,<sp/>1,<sp/>1});</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1af3d5a6d239d30fe1698a524dfedcd63f" kindref="member">set_borders</ref>(sk,<sp/>0.f,<sp/>1);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::ivec2<sp/>&amp;shape_pad<sp/>=<sp/>sk.shape;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>Array<sp/>prev;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>Array<sp/>diff;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>clwrapper::Run(</highlight><highlight class="stringliteral">&quot;thinning&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>run.set_argument(4,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>pass<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>run.write_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({shape_pad.x,<sp/>shape_pad.y});</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>run.set_argument(4,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>pass<sp/>2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>run.write_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({shape_pad.x,<sp/>shape_pad.y});</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>diff<sp/>=<sp/>sk<sp/>-<sp/>prev;</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="namespacehmap_1a98feadac2cf9a77dbaa715d5aee4803f" kindref="member">count_non_zero</ref>(diff)<sp/>&gt;<sp/>0);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>padding</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/>sk<sp/>=<sp/>sk.extract_slice({1,<sp/>sk.shape.x<sp/>-<sp/>1,<sp/>1,<sp/>sk.shape.y<sp/>-<sp/>1});</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>border<sp/>to<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zero_at_borders)<sp/><ref refid="namespacehmap_1ae8bdfc965780305d1d26ff8b84e1dced" kindref="member">zeroed_borders</ref>(sk);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">,<sp/>sk.vector,<sp/>shape_pad.x,<sp/>shape_pad.y);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>run.bind_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">,<sp/>sk.vector,<sp/>shape_pad.x,<sp/>sk.shape.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>run.bind_arguments(shape_pad.x,<sp/>shape_pad.y,<sp/>0);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>prev<sp/>=<sp/>sk;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>run.set_argument(4,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>pass<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>run.write_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({shape_pad.x,<sp/>shape_pad.y});</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>run.set_argument(4,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>pass<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>run.write_imagef(</highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>run.execute({shape_pad.x,<sp/>shape_pad.y});</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>run.read_imagef(</highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>diff<sp/>=<sp/>sk<sp/>-<sp/>prev;</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sk;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight></codeline>
-<codeline lineno="223"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="namespacehmap_1a98feadac2cf9a77dbaa715d5aee4803f" kindref="member">count_non_zero</ref>(diff)<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>padding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>sk<sp/>=<sp/>sk.extract_slice({1,<sp/>sk.shape.x<sp/>-<sp/>1,<sp/>1,<sp/>sk.shape.y<sp/>-<sp/>1});</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>border<sp/>to<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(zero_at_borders)<sp/><ref refid="namespacehmap_1ae8bdfc965780305d1d26ff8b84e1dced" kindref="member">zeroed_borders</ref>(sk);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sk;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap::gpu</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/src/morphology/morphology_gpu.cpp"/>
   </compounddef>

@@ -20,6 +20,7 @@ var morphology_8cpp =
     [ "reconstruction_by_dilation", "morphology_8cpp.html#a5b01ee5f465847e08cde67a9533590e3", null ],
     [ "reconstruction_by_erosion", "morphology_8cpp.html#a2ac3034879fe68a7cc67d2d452a60c1a", null ],
     [ "helper_thinning", "morphology_8cpp.html#a2c98f2116e221df5f6684a7546bb233f", null ],
+    [ "relative_distance_from_skeleton", "morphology_8cpp.html#aac6a0f72428db11736aa16539aca0a5c", null ],
     [ "relative_distance_from_skeleton", "morphology_8cpp.html#a7c7d934cc5a3a5e1a6f17c09a0e1e51f", null ],
     [ "remove_endpoints", "morphology_8cpp.html#a7e2e905cda124cb865b4bc1bf7b48645", null ],
     [ "skeleton", "morphology_8cpp.html#a11ddd5ab1aa625db9419d9b65c0eaa64", null ]
