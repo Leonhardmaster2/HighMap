@@ -97,29 +97,38 @@ Array dilation_expand_border_only(const Array &array, int ir)
 
 Array dilation_expand_min_value_border_only(const Array &array)
 {
-  Array out(array.shape);
+  const glm::ivec2 &shape = array.shape;
+  Array             out(shape);
 
-  // only keep result in the "background" to leave initial vlaues
-  // untouched
-  for (int j = 0; j < array.shape.y; ++j)
-    for (int i = 0; i < array.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
-      float vmin = std::numeric_limits<float>::max();
-      float vmin_non_zero = std::numeric_limits<float>::max();
+      // non-background pixels are left untouched
+      if (array(i, j) != 0.f)
+      {
+        out(i, j) = array(i, j);
+        continue;
+      }
 
+      // for background pixels: find min non-zero neighbor
+      float vmin_non_zero = std::numeric_limits<float>::max();
       for (int r = -1; r <= 1; ++r)
         for (int s = -1; s <= 1; ++s)
         {
-          vmin = std::min(vmin, array(i, j));
+          if (r == 0 && s == 0) continue;
 
-          if (array(i, j) != 0.f)
-            vmin_non_zero = std::min(vmin_non_zero, array(i, j));
+          const int ni = i + r;
+          const int nj = j + s;
+
+          if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+              array(ni, nj) != 0.f)
+            vmin_non_zero = std::min(vmin_non_zero, array(ni, nj));
         }
 
-      if (vmin == 0.f && vmin_non_zero != std::numeric_limits<float>::max())
-        out(i, j) = vmin;
-      else
-        out(i, j) = array(i, j);
+      // expand only if a non-zero neighbor was found
+      out(i, j) = (vmin_non_zero != std::numeric_limits<float>::max())
+                      ? vmin_non_zero
+                      : 0.f;
     }
 
   return out;
