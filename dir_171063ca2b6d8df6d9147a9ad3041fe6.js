@@ -10,6 +10,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_distance_transform.cpp", "test__distance__transform_8cpp.html", "test__distance__transform_8cpp" ],
     [ "test_erosion.cpp", "test__erosion_8cpp.html", "test__erosion_8cpp" ],
     [ "test_fill_talus.cpp", "test__fill__talus_8cpp.html", "test__fill__talus_8cpp" ],
+    [ "test_flood_fill.cpp", "test__flood__fill_8cpp.html", "test__flood__fill_8cpp" ],
     [ "test_gpu_cpu.cpp", "test__gpu__cpu_8cpp.html", "test__gpu__cpu_8cpp" ],
     [ "test_gradient.cpp", "test__gradient_8cpp.html", "test__gradient_8cpp" ],
     [ "test_local_metrics.cpp", "test__local__metrics_8cpp.html", "test__local__metrics_8cpp" ],
