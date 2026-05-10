@@ -1,0 +1,2 @@
+add_executable(ex_level_set_curvature ex_level_set_curvature.cpp)
+target_link_libraries(ex_level_set_curvature highmap)

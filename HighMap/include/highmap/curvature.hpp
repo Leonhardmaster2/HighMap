@@ -22,6 +22,8 @@ namespace hmap
  * @param  array        Input array.
  * @param  prefilter_ir Optional smoothing radius for curvature evaluation.
  * @return              Signed curvature.
+ *
+ * See unit tests: @ref test_level_set_curvature.cpp
  */
 Array level_set_curvature(const Array &array, int prefilter_ir);
 
