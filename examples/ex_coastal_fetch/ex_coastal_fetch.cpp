@@ -9,8 +9,9 @@ int main(void)
   int        seed = 1;
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
+  z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
 
-  int ndirections = 16;
+  int ndirections = 128;
 
   // --- base isotropic
 

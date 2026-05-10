@@ -14,7 +14,7 @@ void kernel coastal_fetch(read_only image2d_t  z,
   if (g.x >= nx || g.y >= ny) return;
 
   const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
-                            CLK_ADDRESS_MIRRORED_REPEAT | CLK_FILTER_NEAREST;
+                            CLK_ADDRESS_MIRRORED_REPEAT | CLK_FILTER_LINEAR;
 
   // early skip if requested
   if (read_imagef(compute_mask, sampler, g).x <= 0.f)
@@ -25,7 +25,7 @@ void kernel coastal_fetch(read_only image2d_t  z,
 
   // full domain diagonal in worst case scenario
   const int    nsteps = (int)(1.414f * max(nx, ny));
-  const float2 pos0 = (float2)(g.x, g.y);
+  const float2 pos0 = (float2)(g.x + 0.5f, g.y + 0.5f);
   const float  z0 = read_imagef(z, sampler, g).x;
 
   float fetch = 0.f;
@@ -35,17 +35,15 @@ void kernel coastal_fetch(read_only image2d_t  z,
   {
     float  theta = 2.f * M_PI * (float)idir / (float)ndirections;
     float2 dir = (float2)(cos(theta), sin(theta));
-    bool   hit = false;
 
     for (int k = 0; k < nsteps; ++k)
     {
       float2 ray = pos0 + (float)(k + 1) * dir;
 
-      if (!is_inside((int)ray.x, (int)ray.y, nx, ny))
+      if (!is_inside((int)ray.x, (int)ray.y, nx + 1, ny + 1))
       {
         fetch += (float)nsteps; // open boundary = full fetch
         nhit++;
-        hit = true;
         break;
       }
 
@@ -55,16 +53,8 @@ void kernel coastal_fetch(read_only image2d_t  z,
       {
         fetch += (float)(k + 1); // distance to blocking land
         nhit++;
-        hit = true;
         break;
       }
-    }
-    // if nsteps exhausted without hitting anything (shouldn't happen
-    // with boundary check above, but defensive):
-    if (!hit)
-    {
-      fetch += (float)nsteps;
-      nhit++;
     }
   }
 
@@ -86,7 +76,7 @@ kernel void coastal_fetch_directional(read_only image2d_t  z,
   if (g.x >= nx || g.y >= ny) return;
 
   const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
-                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_LINEAR;
 
   // early skip if requested
   if (read_imagef(compute_mask, sampler, g).x <= 0.f)
@@ -96,7 +86,7 @@ kernel void coastal_fetch_directional(read_only image2d_t  z,
   }
 
   const int    nsteps = (int)(1.414f * max(nx, ny));
-  const float2 pos0 = (float2)(g.x, g.y);
+  const float2 pos0 = (float2)(g.x + 0.5f, g.y + 0.5f);
   const float  z0 = read_imagef(z, sampler, g).x;
 
   float fetch_weighted = 0.f;

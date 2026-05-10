@@ -110,10 +110,10 @@ void Array::dump(const std::string &fname) const
   this->to_png_grayscale(fname, CV_16U);
 }
 
-void Array::dump_histogram(const std::string &msg) const
+void Array::dump_histogram(int bins, const std::string &msg) const
 {
   std::cout << "Array: " << msg << "\n";
-  std::cout << make_histogram(this->vector, 32, 6);
+  std::cout << make_histogram(this->vector, bins, 6);
 }
 
 Array Array::extract_slice(glm::ivec4 idx) const

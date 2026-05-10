@@ -347,7 +347,7 @@ public:
   /**
    * @brief Debug tool, dump array content as an ASCII histogram to the consol.
    */
-  void dump_histogram(const std::string &msg = "") const;
+  void dump_histogram(int bins = 32, const std::string &msg = "") const;
 
   /**
    * @brief Extracts a subarray defined by the slice indices {i1, i2, j1, j2}
