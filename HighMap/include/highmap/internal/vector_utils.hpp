@@ -112,7 +112,7 @@ std::vector<int> generate_random_vector(size_t   size,
  * @return           std::vector<int> Vector of unique integers in [min_value,
  *                   max_value].
  *
- * @throws std::invalid_argumentIfsizeexceedsavailableunique values.
+ * @throws std::invalid_argumentIfsizeexceedsavailableuniquevalues.
  */
 std::vector<int> generate_unique_random_vector(size_t   size,
                                                int      min_value,

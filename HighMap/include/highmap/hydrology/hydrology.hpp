@@ -694,10 +694,63 @@ Array water_mask(const Array &water_depth,
 namespace hmap::gpu
 {
 
+/**
+ * @brief Computes the omnidirectional coastal fetch for each cell.
+ *
+ * Casts @p ndirections evenly-spaced rays from each cell and averages the
+ * distance to the first land obstacle (or domain boundary) across all
+ * directions. High values indicate open, wave-exposed coastline;
+ * low values indicate sheltered or enclosed areas such as harbors.
+ *
+ * @param  z              Input elevation array.
+ * @param  ndirections    Number of ray directions (uniformly distributed over
+ *                        2π). Higher values improve accuracy at the cost of
+ *                        performance.
+ * @param  p_compute_mask Optional boolean mask; fetch is only evaluated where
+ *                        the mask is true. Pass nullptr to process the entire
+ *                        domain.
+ * @return                Array of mean fetch values (in grid cells).
+ *
+ * **Example**
+ * @include ex_coastal_fetch.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_fetch.png
+ */
 Array coastal_fetch(const Array &z,
                     int          ndirections,
                     const Array *p_compute_mask = nullptr);
 
+/**
+ * @brief Computes directional coastal fetch weighted by alignment with a
+ * prevailing wind or wave direction.
+ *
+ * Each ray's fetch contribution is weighted by
+ * @f$ \max(0,\, \cos(\theta - \alpha))^e @f$, where @f$\theta@f$ is the ray
+ * azimuth, @f$\alpha@f$ is @p angle, and
+ * @f$e@f$ is @p directional_exp. Rays in the back hemisphere are discarded.
+ * Increasing @p directional_exp narrows the effective lobe around the
+ * prevailing direction.
+ *
+ * @param  z               Input elevation array.
+ * @param  angle           Prevailing direction (radians, trigonometric
+ *                         convention: 0 = East, π/2 = North).
+ * @param  directional_exp Exponent applied to the cosine weight. Use 1 for a
+ *                         full cosine lobe, 2 to approximate wind-energy
+ *                         weighting, or higher values for a narrower
+ *                         directional response.
+ * @param  ndirections     Number of ray directions sampled over 2π.
+ * @param  p_compute_mask  Optional boolean mask. Pass nullptr to process the
+ *                         entire domain.
+ * @return                 Array of directionally-weighted fetch values (in grid
+ *                         cells).
+ *
+ * **Example**
+ * @include ex_coastal_fetch.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_fetch.png
+ */
 Array coastal_fetch_directional(const Array &z,
                                 float        angle,
                                 float        directional_exp,
