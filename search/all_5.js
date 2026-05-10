@@ -84,6 +84,6 @@ var searchData=
   ['dt_5fjfa_81',['DT_JFA',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aaa09d87a577ce3a1b91c372aa051b0406',1,'hmap']]],
   ['dt_5fmanhattan_82',['DT_MANHATTAN',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925aae4b14640395ecd7333bea8838ea9dda1',1,'hmap']]],
   ['dump_83',['dump',['../classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8',1,'hmap::Array::dump()'],['../structhmap_1_1Recorder.html#ac5bd6628a256636229047bbc12ced680',1,'hmap::Recorder::dump()'],['../classhmap_1_1Timer.html#a5bc931885a549c561740f39cea91dd5f',1,'hmap::Timer::Dump()']]],
-  ['dump_5fhistogram_84',['dump_histogram',['../classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c',1,'hmap::Array']]],
+  ['dump_5fhistogram_84',['dump_histogram',['../classhmap_1_1Array.html#a36fa8104b8fe789f5035a1ddfa5b1519',1,'hmap::Array']]],
   ['dumpdurations_85',['DumpDurations',['../classhmap_1_1Timer.html#a61eaa1759a0b195fe512c276cc253eb9',1,'hmap::Timer']]]
 ];

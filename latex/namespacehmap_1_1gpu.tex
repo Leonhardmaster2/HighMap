@@ -3411,8 +3411,9 @@ Casts {\ttfamily ndirections} evenly-\/spaced rays from each cell and averages t
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{hmap::bulkify}}(z,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}{hmap::PrimitiveType::PRIM\_CONE\_SMOOTH}},\ 1.f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 16;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 128;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ isotropic}}
 \DoxyCodeLine{}
@@ -3491,8 +3492,9 @@ Each ray\textquotesingle{}s fetch contribution is weighted by $ \max(0,\, \cos(\
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{hmap::bulkify}}(z,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}{hmap::PrimitiveType::PRIM\_CONE\_SMOOTH}},\ 1.f);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 16;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 128;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ isotropic}}
 \DoxyCodeLine{}

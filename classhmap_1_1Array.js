@@ -36,7 +36,7 @@ var classhmap_1_1Array =
     [ "depose_amount_kernel_bilinear_at", "classhmap_1_1Array.html#a8bc07abfedb22639797124b951331ddf", null ],
     [ "depose_amount_kernel_at", "classhmap_1_1Array.html#a8c78b70cb181e3e43169b2b4e8d28e55", null ],
     [ "dump", "classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8", null ],
-    [ "dump_histogram", "classhmap_1_1Array.html#a172a6d1a17ceae78548ff7e12d21d87c", null ],
+    [ "dump_histogram", "classhmap_1_1Array.html#a36fa8104b8fe789f5035a1ddfa5b1519", null ],
     [ "extract_slice", "classhmap_1_1Array.html#a2cb7491733f41de0f72f132c0ecff188", null ],
     [ "extract_slice", "classhmap_1_1Array.html#a7d552a649bcc47445b11d2e42d193492", null ],
     [ "from_file", "classhmap_1_1Array.html#a000acd474d036adfa4e5e334139788ce", null ],
