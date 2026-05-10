@@ -1,0 +1,2 @@
+add_executable(ex_coastal_fetch ex_coastal_fetch.cpp)
+target_link_libraries(ex_coastal_fetch highmap)

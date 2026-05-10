@@ -694,6 +694,16 @@ Array water_mask(const Array &water_depth,
 namespace hmap::gpu
 {
 
+Array coastal_fetch(const Array &z,
+                    int          ndirections,
+                    const Array *p_compute_mask = nullptr);
+
+Array coastal_fetch_directional(const Array &z,
+                                float        angle,
+                                float        directional_exp,
+                                int          ndirections,
+                                const Array *p_compute_mask = nullptr);
+
 /**
  * @brief Approximates flow accumulation from a 2D velocity field.
  *

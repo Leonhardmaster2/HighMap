@@ -36,6 +36,7 @@ bool init_opencl()
 #include "kernels/advection_warp.cl"
 #include "kernels/bilateral_filter.cl"
 #include "kernels/blend_poisson_bf.cl"
+#include "kernels/coastal_fetch.cl"
 #include "kernels/curvature_quadric.cl"
 #include "kernels/directional_blur.cl"
 #include "kernels/eulerian_transport.cl"
