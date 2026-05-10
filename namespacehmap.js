@@ -112,6 +112,8 @@ var namespacehmap =
       [ "phase_field", "namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72", null ],
       [ "phase_field", "namespacehmap_1_1gpu.html#a8bacd8632631365c7efdcf842e3b49d0", null ],
       [ "phase_field_angle", "namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec", null ],
+      [ "coastal_fetch", "namespacehmap_1_1gpu.html#a731ad5f4c97f6c8d9987c9b8c2881d55", null ],
+      [ "coastal_fetch_directional", "namespacehmap_1_1gpu.html#ad20345f6e15426e0b6a150a1fd9e4bfa", null ],
       [ "flow_accumulation_from_velocity_field", "namespacehmap_1_1gpu.html#a1ac328bd9a69f8737550a131d3f9c516", null ],
       [ "flow_direction_d8", "namespacehmap_1_1gpu.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
       [ "flow_simulation", "namespacehmap_1_1gpu.html#ab2ccca5e12b451191af1edc97cb86fbf", null ],

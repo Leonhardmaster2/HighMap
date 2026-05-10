@@ -1,5 +1,10 @@
 var NAVTREEINDEX15 =
 {
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba95e433ab6ec047421d332a80d727fd29":[3,0,0,98,14],
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871baa7c7a874805813166a55e3d5b75b620c":[3,0,0,98,9],
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bab090c9d0931d522e426c4c3e852ab725":[3,0,0,98,3],
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bab8e641a60a539570cba93410908467ee":[3,0,0,98,4],
+"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bab9d58e353a90ade3e7bb101339d747bc":[3,0,0,98,8],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bac692212c784096efd35f54c700a039f6":[3,0,0,98,16],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bad7b6b74b201392410caefcc4933811e0":[3,0,0,98,17],
 "namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871bae0ce3a88364042b24f65140c351fb6e8":[3,0,0,98,13],
@@ -237,17 +242,12 @@ var NAVTREEINDEX15 =
 "namespacehmap.html#affdf6ff9564f31cb988131c2b2c4c280":[3,0,0,259],
 "namespacehmap_1_1gpu.html":[3,0,0,0],
 "namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869":[3,0,0,0,38],
-"namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490":[3,0,0,0,112],
+"namespacehmap_1_1gpu.html#a022f5800d7e28f79f9e2d3abf687f490":[3,0,0,0,114],
 "namespacehmap_1_1gpu.html#a04047f16ece68b32c1c8e68b4780f0df":[3,0,0,0,50],
-"namespacehmap_1_1gpu.html#a04ae8a1ec2b8156be692aa690d32e1ff":[3,0,0,0,207],
-"namespacehmap_1_1gpu.html#a07420c28501484b219710bac89da8f60":[3,0,0,0,195],
+"namespacehmap_1_1gpu.html#a04ae8a1ec2b8156be692aa690d32e1ff":[3,0,0,0,209],
+"namespacehmap_1_1gpu.html#a07420c28501484b219710bac89da8f60":[3,0,0,0,197],
 "namespacehmap_1_1gpu.html#a0925ea6d4015309249863be8076af45f":[3,0,0,0,72],
-"namespacehmap_1_1gpu.html#a0c43413a89b330fc5f4051112d6a2a85":[3,0,0,0,201],
+"namespacehmap_1_1gpu.html#a0c43413a89b330fc5f4051112d6a2a85":[3,0,0,0,203],
 "namespacehmap_1_1gpu.html#a0cd7116e5c346fe9534e25b53d5e054a":[3,0,0,0,52],
-"namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72":[3,0,0,0,93],
-"namespacehmap_1_1gpu.html#a11bc9aa25f858fb2587a8b6118570fa0":[3,0,0,0,77],
-"namespacehmap_1_1gpu.html#a125118b55d309727ff0b46d686fd3829":[3,0,0,0,4],
-"namespacehmap_1_1gpu.html#a12757ceaaf11f04640c3a18520886cc8":[3,0,0,0,197],
-"namespacehmap_1_1gpu.html#a129b54789c706428d04afd91d5eb8ae6":[3,0,0,0,100],
-"namespacehmap_1_1gpu.html#a12bceca15985a29f6827f016fa18ebb3":[3,0,0,0,179]
+"namespacehmap_1_1gpu.html#a0eab8e0319f11623e88016ce6cd44d72":[3,0,0,0,93]
 };

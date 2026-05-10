@@ -407,6 +407,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8bacd8632631365c7efdcf842e3b49d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba356da2f66b4fc2886bd27edc3a15ec" id="r_aba356da2f66b4fc2886bd27edc3a15ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#aba356da2f66b4fc2886bd27edc3a15ec">phase_field_angle</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;<a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, const glm::vec2 &amp;kw, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, float kp, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, int angle_filter_ir=8, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_ctrl_param=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_modulus=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_angle_jump_mask=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="separator:aba356da2f66b4fc2886bd27edc3a15ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731ad5f4c97f6c8d9987c9b8c2881d55" id="r_a731ad5f4c97f6c8d9987c9b8c2881d55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a731ad5f4c97f6c8d9987c9b8c2881d55">coastal_fetch</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int ndirections, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_compute_mask=nullptr)</td></tr>
+<tr class="separator:a731ad5f4c97f6c8d9987c9b8c2881d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20345f6e15426e0b6a150a1fd9e4bfa" id="r_ad20345f6e15426e0b6a150a1fd9e4bfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ad20345f6e15426e0b6a150a1fd9e4bfa">coastal_fetch_directional</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float <a class="el" href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">angle</a>, float directional_exp, int ndirections, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_compute_mask=nullptr)</td></tr>
+<tr class="separator:ad20345f6e15426e0b6a150a1fd9e4bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac328bd9a69f8737550a131d3f9c516" id="r_a1ac328bd9a69f8737550a131d3f9c516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a1ac328bd9a69f8737550a131d3f9c516">flow_accumulation_from_velocity_field</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;u, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;v, int iterations)</td></tr>
 <tr class="memdesc:a1ac328bd9a69f8737550a131d3f9c516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approximates flow accumulation from a 2D velocity field.  <br /></td></tr>
 <tr class="separator:a1ac328bd9a69f8737550a131d3f9c516"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -8084,6 +8088,86 @@ Only available if OpenCL is enabled.</dd></dl>
           <td></td>
           <td class="paramtype">glm::vec4&#160;</td>
           <td class="paramname"><em>bbox</em> = <code>{0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a731ad5f4c97f6c8d9987c9b8c2881d55" name="a731ad5f4c97f6c8d9987c9b8c2881d55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731ad5f4c97f6c8d9987c9b8c2881d55">&#9670;&#160;</a></span>coastal_fetch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::coastal_fetch </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ndirections</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_compute_mask</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad20345f6e15426e0b6a150a1fd9e4bfa" name="ad20345f6e15426e0b6a150a1fd9e4bfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20345f6e15426e0b6a150a1fd9e4bfa">&#9670;&#160;</a></span>coastal_fetch_directional()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhmap_1_1Array.html">Array</a> hmap::gpu::coastal_fetch_directional </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>directional_exp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ndirections</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_compute_mask</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

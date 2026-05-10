@@ -28,6 +28,8 @@ var hydrology_8hpp =
     [ "water_depth_increase", "hydrology_8hpp.html#a136f042ce2ad8c14033f4d839f56265d", null ],
     [ "water_mask", "hydrology_8hpp.html#ad39c72e2b4c07d3013f7b0143c31137c", null ],
     [ "water_mask", "hydrology_8hpp.html#abc5928f49e530927c8fb61a9afea3274", null ],
+    [ "coastal_fetch", "hydrology_8hpp.html#a731ad5f4c97f6c8d9987c9b8c2881d55", null ],
+    [ "coastal_fetch_directional", "hydrology_8hpp.html#ad20345f6e15426e0b6a150a1fd9e4bfa", null ],
     [ "flow_accumulation_from_velocity_field", "hydrology_8hpp.html#a1ac328bd9a69f8737550a131d3f9c516", null ],
     [ "flow_direction_d8", "hydrology_8hpp.html#af794a4c54c3766ca86b7e4a06346ab91", null ],
     [ "flow_simulation", "hydrology_8hpp.html#ab2ccca5e12b451191af1edc97cb86fbf", null ],
