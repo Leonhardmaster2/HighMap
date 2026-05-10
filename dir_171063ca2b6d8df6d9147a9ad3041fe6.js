@@ -13,6 +13,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_flood_fill.cpp", "test__flood__fill_8cpp.html", "test__flood__fill_8cpp" ],
     [ "test_gpu_cpu.cpp", "test__gpu__cpu_8cpp.html", "test__gpu__cpu_8cpp" ],
     [ "test_gradient.cpp", "test__gradient_8cpp.html", "test__gradient_8cpp" ],
+    [ "test_level_set_curvature.cpp", "test__level__set__curvature_8cpp.html", "test__level__set__curvature_8cpp" ],
     [ "test_local_metrics.cpp", "test__local__metrics_8cpp.html", "test__local__metrics_8cpp" ],
     [ "test_math.cpp", "test__math_8cpp.html", "test__math_8cpp" ],
     [ "test_normalize.cpp", "test__normalize_8cpp.html", "test__normalize_8cpp" ],
