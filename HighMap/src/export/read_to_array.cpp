@@ -11,7 +11,7 @@
 namespace hmap
 {
 
-Array read_to_array(const std::string &fname, bool flip_j)
+Array read_to_array(const std::string &fname, bool flip_j, bool remap)
 {
   cv::Mat mat = cv::imread(fname, cv::IMREAD_GRAYSCALE | cv::IMREAD_ANYDEPTH);
 
@@ -22,7 +22,6 @@ Array read_to_array(const std::string &fname, bool flip_j)
   }
   else
   {
-    bool remap = true;
     return cv_mat_to_array(mat, remap, flip_j);
   }
 }

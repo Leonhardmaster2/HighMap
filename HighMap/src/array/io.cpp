@@ -88,7 +88,6 @@ void Array::print() const
 void Array::to_exr(const std::string &fname) const
 {
   Array array_copy = *this;
-  remap(array_copy);
 
   cv::Mat mat = array_copy.to_cv_mat();
 

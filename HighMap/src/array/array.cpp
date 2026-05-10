@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <algorithm>
+#include <filesystem>
 #include <stdexcept>
 
 #include "macrologger.h"
@@ -29,7 +30,13 @@ Array::Array(glm::ivec2 shape, float value) : shape(shape)
 
 Array::Array(const std::string &filename, bool flip_j)
 {
-  *this = read_to_array(filename, flip_j);
+  bool remap = true;
+
+  std::filesystem::path file_path(filename);
+  std::filesystem::path ext = file_path.extension();
+  if (ext.string() == ".exr") remap = false;
+
+  *this = read_to_array(filename, flip_j, remap);
 }
 
 Array::Array(const std::vector<std::vector<float>> &data)
