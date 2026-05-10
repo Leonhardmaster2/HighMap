@@ -217,9 +217,9 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{ph
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_aba356da2f66b4fc2886bd27edc3a15ec}{phase\+\_\+field\+\_\+angle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&\mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, const glm\+::vec2 \&kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float kp, int n\+\_\+kernel\+\_\+samples=8, const glm\+::vec2 \&jitter=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int angle\+\_\+filter\+\_\+ir=8, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+modulus=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+angle\+\_\+jump\+\_\+mask=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a731ad5f4c97f6c8d9987c9b8c2881d55}{coastal\+\_\+fetch}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ndirections, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+compute\+\_\+mask=nullptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Computes the omnidirectional coastal fetch for each cell. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}{coastal\+\_\+fetch\+\_\+directional}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float directional\+\_\+exp, int ndirections, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+compute\+\_\+mask=nullptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Computes directional coastal fetch weighted by alignment with a prevailing wind or wave direction. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}{flow\+\_\+accumulation\+\_\+from\+\_\+velocity\+\_\+field}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&u, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&v, int iterations)
 \begin{DoxyCompactList}\small\item\em Approximates flow accumulation from a 2D velocity field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_af794a4c54c3766ca86b7e4a06346ab91}{flow\+\_\+direction\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
@@ -3380,13 +3380,157 @@ Computed phase field.
 \doxysubsubsection{\texorpdfstring{coastal\_fetch()}{coastal\_fetch()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::coastal\+\_\+fetch (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{ndirections,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+compute\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}\label{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa} 
+
+
+Computes the omnidirectional coastal fetch for each cell. 
+
+Casts {\ttfamily ndirections} evenly-\/spaced rays from each cell and averages the distance to the first land obstacle (or domain boundary) across all directions. High values indicate open, wave-\/exposed coastline; low values indicate sheltered or enclosed areas such as harbors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input elevation array. \\
+\hline
+{\em ndirections} & Number of ray directions (uniformly distributed over 2π). Higher values improve accuracy at the cost of performance. \\
+\hline
+{\em p\+\_\+compute\+\_\+mask} & Optional boolean mask; fetch is only evaluated where the mask is true. Pass nullptr to process the entire domain. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of mean fetch values (in grid cells).
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ isotropic}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a731ad5f4c97f6c8d9987c9b8c2881d55}{hmap::gpu::coastal\_fetch}}(z,\ ndirections);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ compute\ mask\ (compute\ only\ where\ mask\ is\ positive)}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ cmask\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(cmask,\ -\/0.5,\ 0.5f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a731ad5f4c97f6c8d9987c9b8c2881d55}{hmap::gpu::coastal\_fetch}}(z,\ ndirections,\ \&cmask);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ directional}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 15.f;\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}}\ =\ 1.f;\ \ \ \ \textcolor{comment}{//\ increase\ to\ sharpen\ selection}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f3\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}{hmap::gpu::coastal\_fetch\_directional}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndirections);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f4\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}{hmap::gpu::coastal\_fetch\_directional}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4.f\ *\ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndirections);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ output\ (normalized)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_coastal\_fetch.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ f1,\ f2,\ f3,\ f4\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}\label{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa} 
 \index{hmap::gpu@{hmap::gpu}!coastal\_fetch\_directional@{coastal\_fetch\_directional}}
 \index{coastal\_fetch\_directional@{coastal\_fetch\_directional}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{coastal\_fetch\_directional()}{coastal\_fetch\_directional()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::coastal\+\_\+fetch\+\_\+directional (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{angle,  }\item[{float}]{directional\+\_\+exp,  }\item[{int}]{ndirections,  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+compute\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}\label{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516} 
+
+
+Computes directional coastal fetch weighted by alignment with a prevailing wind or wave direction. 
+
+Each ray\textquotesingle{}s fetch contribution is weighted by $ \max(0,\, \cos(\theta - \alpha))^e $, where $\theta$ is the ray azimuth, $\alpha$ is {\ttfamily angle}, and $e$ is {\ttfamily directional\+\_\+exp}. Rays in the back hemisphere are discarded. Increasing {\ttfamily directional\+\_\+exp} narrows the effective lobe around the prevailing direction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input elevation array. \\
+\hline
+{\em angle} & Prevailing direction (radians, trigonometric convention\+: 0 = East, π/2 = North). \\
+\hline
+{\em directional\+\_\+exp} & Exponent applied to the cosine weight. Use 1 for a full cosine lobe, 2 to approximate wind-\/energy weighting, or higher values for a narrower directional response. \\
+\hline
+{\em ndirections} & Number of ray directions sampled over 2π. \\
+\hline
+{\em p\+\_\+compute\+\_\+mask} & Optional boolean mask. Pass nullptr to process the entire domain. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} of directionally-\/weighted fetch values (in grid cells).
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ ndirections\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ base\ isotropic}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a731ad5f4c97f6c8d9987c9b8c2881d55}{hmap::gpu::coastal\_fetch}}(z,\ ndirections);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ compute\ mask\ (compute\ only\ where\ mask\ is\ positive)}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ cmask\ =\ z;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(cmask,\ -\/0.5,\ 0.5f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f2\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a731ad5f4c97f6c8d9987c9b8c2881d55}{hmap::gpu::coastal\_fetch}}(z,\ ndirections,\ \&cmask);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ directional}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 15.f;\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}}\ =\ 1.f;\ \ \ \ \textcolor{comment}{//\ increase\ to\ sharpen\ selection}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f3\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}{hmap::gpu::coastal\_fetch\_directional}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndirections);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ f4\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ad20345f6e15426e0b6a150a1fd9e4bfa}{hmap::gpu::coastal\_fetch\_directional}}(z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4.f\ *\ \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndirections);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ output\ (normalized)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_coastal\_fetch.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ f1,\ f2,\ f3,\ f4\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516}\label{namespacehmap_1_1gpu_a1ac328bd9a69f8737550a131d3f9c516} 
 \index{hmap::gpu@{hmap::gpu}!flow\_accumulation\_from\_velocity\_field@{flow\_accumulation\_from\_velocity\_field}}
 \index{flow\_accumulation\_from\_velocity\_field@{flow\_accumulation\_from\_velocity\_field}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{flow\_accumulation\_from\_velocity\_field()}{flow\_accumulation\_from\_velocity\_field()}}
