@@ -655,15 +655,17 @@ Array water_depth_increase(const Array &water_depth,
  * @brief Compute the curvature of the water interface from a signed distance
  * field.
  *
- * The interface curvature is evaluated from the level set built from
- * the water depth mask. Optionally, curvature values can be extended
- * away from the interface using closest-point propagation.
+ * The interface curvature is evaluated from the level set built from the water
+ * depth mask. Optionally, curvature values can be extended away from the
+ * interface using closest-point propagation.
  *
- * @param water_depth Water depth field.
- * @param prefilter_ir Prefilter radius used for curvature evaluation.
- * @param extend_values_from_interface Extend interface curvature values
- *        to the full domain using closest boundary points.
- * @return Curvature field.
+ * @param  water_depth                  Water depth field.
+ * @param  prefilter_ir                 Prefilter radius used for curvature
+ *                                      evaluation.
+ * @param  extend_values_from_interface Extend interface curvature values to the
+ *                                      full domain using closest boundary
+ *                                      points.
+ * @return                              Curvature field.
  *
  * **Example**
  * @include ex_water_frontier_curvature.cpp
