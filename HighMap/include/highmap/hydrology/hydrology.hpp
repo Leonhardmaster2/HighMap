@@ -640,10 +640,17 @@ void water_depth_dry_out(Array       &water_depth,
  * @note The algorithm uses a simple flood-fill–like approach with an upward
  * constraint, ensuring that water spreads only to neighboring cells at higher
  * elevation.
+ *
+ * **Example**
+ * @include ex_water_depth_increase.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_increase.png
  */
 Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth);
+
 /**
  * @brief Compute the curvature of the water interface from a signed distance
  * field.

@@ -12,7 +12,6 @@ int main(void)
   hmap::remap(z);
 
   hmap::Array water_depth = hmap::flooding_uniform_level(z, 0.5f);
-  // hmap::Array water_depth = hmap::flooding_lake_system(z, 500, 1e-4f);
 
   int prefilter_ir = 16;
 

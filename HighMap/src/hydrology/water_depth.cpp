@@ -93,113 +93,136 @@ Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth)
 {
-  const glm::ivec2 shape = water_depth.shape;
-  Array            water_depth_extended(shape);
+  const int ni = water_depth.shape.x;
+  const int nj = water_depth.shape.y;
+  Array     water_depth_extended(water_depth.shape);
 
-  const std::array<glm::ivec2, 8> neighbors = {
-      {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}};
+  constexpr int di[8] = {-1, 1, 0, 0, -1, -1, 1, 1};
+  constexpr int dj[8] = {0, 0, -1, 1, -1, 1, -1, 1};
 
-  auto in_bounds = [&](const glm::ivec2 &p)
-  { return p.x >= 0 && p.x < shape.x && p.y >= 0 && p.y < shape.y; };
+  auto in_bounds = [&](int i, int j) noexcept
+  { return i >= 0 && i < ni && j >= 0 && j < nj; };
 
-  std::deque<glm::ivec2> queue;
-  const size_t           max_it = 2 * shape.x * shape.y;
+  const int            ncells = ni * nj;
+  std::vector<int>     queue;
+  std::vector<uint8_t> in_queue(ncells, 0);
+  queue.reserve(ncells / 4);
 
-  // --- Seed water cells and enqueue border cells
+  // --- Seed: copy water cells, enqueue border cells
 
-  for (int y = 0; y < shape.y; ++y)
-  {
-    for (int x = 0; x < shape.x; ++x)
+  for (int j = 0; j < nj; ++j)
+    for (int i = 0; i < ni; ++i)
     {
-      if (water_depth(x, y) <= 0.f) continue;
+      if (water_depth(i, j) <= 0.f) continue;
 
-      water_depth_extended(x, y) = water_depth(x, y) + additional_depth;
-      const glm::ivec2 p{x, y};
+      water_depth_extended(i, j) = water_depth(i, j) + additional_depth;
 
-      for (const auto &d : neighbors)
+      const int flat = j * ni + i;
+      if (in_queue[flat]) continue;
+
+      for (int k = 0; k < 8; ++k)
       {
-        glm::ivec2 n = p + d;
-        if (in_bounds(n) && water_depth(n.x, n.y) == 0.f)
+        int qi = i + di[k], qj = j + dj[k];
+        if (in_bounds(qi, qj) && water_depth(qi, qj) <= 0.f)
         {
-          queue.push_back(p);
+          queue.push_back(flat);
+          in_queue[flat] = 1;
           break;
         }
       }
     }
-  }
 
-  // --- Upward flood propagation
+  // --- Upward flood propagation (toward higher terrain)
 
-  for (size_t it = 0; !queue.empty() && it < max_it; ++it)
+  for (int head = 0; head < (int)queue.size(); ++head)
   {
-    glm::ivec2 p = queue.front();
-    queue.pop_front();
+    const int flat_p = queue[head];
+    in_queue[flat_p] = 0;
 
-    const float base_depth = water_depth_extended(p.x, p.y);
-    const float base_z = z(p.x, p.y);
+    const int   pi = flat_p % ni;
+    const int   pj = flat_p / ni;
+    const float base_depth = water_depth_extended(pi, pj);
+    const float base_z = z(pi, pj);
 
-    for (const auto &d : neighbors)
+    for (int k = 0; k < 8; ++k)
     {
-      glm::ivec2 n = p + d;
-      if (!in_bounds(n)) continue;
+      const int ni_ = pi + di[k], nj_ = pj + dj[k];
+      if (!in_bounds(ni_, nj_)) continue;
 
-      const float dz = z(n.x, n.y) - base_z;
+      const float dz = z(ni_, nj_) - base_z;
       if (dz <= 0.f) continue;
 
       const float propagated = base_depth - dz;
-      if (propagated > water_depth_extended(n.x, n.y))
+      if (propagated <= 0.f) continue;
+
+      const int flat_n = nj_ * ni + ni_;
+      if (propagated > water_depth_extended(ni_, nj_))
       {
-        water_depth_extended(n.x, n.y) = propagated;
-        queue.push_back(n);
-      }
-    }
-  }
-
-  // --- Hole filling (downward propagation)
-
-  queue.clear();
-
-  for (int y = 0; y < shape.y; ++y)
-  {
-    for (int x = 0; x < shape.x; ++x)
-    {
-      if (water_depth_extended(x, y) <= 0.f) continue;
-
-      const glm::ivec2 p{x, y};
-
-      for (const auto &d : neighbors)
-      {
-        glm::ivec2 n = p + d;
-        if (in_bounds(n) && water_depth_extended(n.x, n.y) == 0.f)
+        water_depth_extended(ni_, nj_) = propagated;
+        if (!in_queue[flat_n])
         {
-          queue.push_back(p);
-          break;
+          queue.push_back(flat_n);
+          in_queue[flat_n] = 1;
         }
       }
     }
   }
 
-  for (size_t it = 0; !queue.empty() && it < max_it; ++it)
-  {
-    glm::ivec2 p = queue.front();
-    queue.pop_front();
+  // Hole-filling: downward propagation into depressions
 
-    const float base_depth = water_depth_extended(p.x, p.y);
-    const float base_z = z(p.x, p.y);
+  queue.clear();
+  std::fill(in_queue.begin(), in_queue.end(), 0);
 
-    for (const auto &d : neighbors)
+  for (int j = 0; j < nj; ++j)
+    for (int i = 0; i < ni; ++i)
     {
-      glm::ivec2 n = p + d;
-      if (!in_bounds(n)) continue;
+      if (water_depth_extended(i, j) <= 0.f) continue;
 
-      const float dz = z(n.x, n.y) - base_z;
+      const int flat = j * ni + i;
+      if (in_queue[flat]) continue;
+
+      for (int k = 0; k < 8; ++k)
+      {
+        int qi = i + di[k], qj = j + dj[k];
+        if (in_bounds(qi, qj) && water_depth_extended(qi, qj) <= 0.f)
+        {
+          queue.push_back(flat);
+          in_queue[flat] = 1;
+          break;
+        }
+      }
+    }
+
+  for (int head = 0; head < (int)queue.size(); ++head)
+  {
+    const int flat_p = queue[head];
+    in_queue[flat_p] = 0;
+
+    const int   pi = flat_p % ni;
+    const int   pj = flat_p / ni;
+    const float base_depth = water_depth_extended(pi, pj);
+    const float base_z = z(pi, pj);
+
+    for (int k = 0; k < 8; ++k)
+    {
+      const int ni_ = pi + di[k], nj_ = pj + dj[k];
+      if (!in_bounds(ni_, nj_)) continue;
+
+      const float dz = z(ni_, nj_) - base_z;
       if (dz >= 0.f) continue;
 
       const float propagated = base_depth + dz;
-      if (propagated > water_depth_extended(n.x, n.y))
+      if (propagated <= 0.f) continue;
+
+      const int flat_n = nj_ * ni + ni_;
+      if (propagated > water_depth_extended(ni_, nj_))
       {
-        water_depth_extended(n.x, n.y) = propagated;
-        queue.push_back(n);
+        water_depth_extended(ni_, nj_) = propagated;
+        if (!in_queue[flat_n])
+        {
+          queue.push_back(flat_n);
+          in_queue[flat_n] = 1;
+        }
       }
     }
   }
