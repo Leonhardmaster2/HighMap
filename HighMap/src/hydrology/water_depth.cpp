@@ -3,17 +3,11 @@
  * this software. */
 #include <limits>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/features.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
-#include "highmap/kernels.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
@@ -31,8 +25,6 @@ Array merge_water_depths(const Array &depth1,
     water_depth = maximum(depth1, depth2);
   else
     water_depth = maximum_smooth(depth1, depth2, k_smooth) - k_smooth / 6.f;
-
-  water_depth.infos();
 
   return water_depth;
 }
