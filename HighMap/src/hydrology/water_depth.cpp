@@ -6,9 +6,11 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/curvature.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
 #include "highmap/kernels.hpp"
@@ -205,6 +207,36 @@ Array water_depth_increase(const Array &water_depth,
   return water_depth_extended;
 }
 
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool         extend_values_from_interface)
+{
+  const glm::ivec2 &shape = water_depth.shape;
+
+  Mat<glm::ivec2> closest_in(shape);
+  Mat<glm::ivec2> closest_out(shape);
+
+  Array dist_in = distance_transform_with_closest(is_zero(water_depth),
+                                                  closest_in);
+  Array dist_out = distance_transform_with_closest(water_depth, closest_out);
+  Array phi = dist_in - dist_out;
+  phi = level_set_curvature(phi, prefilter_ir);
+
+  if (extend_values_from_interface)
+  {
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
+      {
+        if (water_depth(i, j) > 0.f)
+          phi(i, j) = phi(closest_in(i, j));
+        else
+          phi(i, j) = phi(closest_out(i, j));
+      }
+  }
+
+  return phi;
+}
+
 Array water_mask(const Array &water_depth)
 {
   Array mask = water_depth;
@@ -271,6 +303,36 @@ void water_depth_filter(Array       &depth,
     for (int i = 0; i < shape.x; ++i)
       if ((*p_water_mask)(i, j) != 0.f)
         depth(i, j) = std::max(0.f, zt(i, j) - z(i, j));
+}
+
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool         extend_values_from_interface)
+{
+  const glm::ivec2 &shape = water_depth.shape;
+
+  Mat<glm::ivec2> closest_in(shape);
+  Mat<glm::ivec2> closest_out(shape);
+
+  Array dist_in = distance_transform_with_closest(is_zero(water_depth),
+                                                  closest_in);
+  Array dist_out = distance_transform_with_closest(water_depth, closest_out);
+  Array phi = dist_in - dist_out;
+  phi = gpu::level_set_curvature(phi, prefilter_ir);
+
+  if (extend_values_from_interface)
+  {
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
+      {
+        if (water_depth(i, j) > 0.f)
+          phi(i, j) = phi(closest_in(i, j));
+        else
+          phi(i, j) = phi(closest_out(i, j));
+      }
+  }
+
+  return phi;
 }
 
 } // namespace hmap::gpu

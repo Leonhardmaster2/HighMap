@@ -644,6 +644,29 @@ void water_depth_dry_out(Array       &water_depth,
 Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth);
+/**
+ * @brief Compute the curvature of the water interface from a signed distance
+ * field.
+ *
+ * The interface curvature is evaluated from the level set built from
+ * the water depth mask. Optionally, curvature values can be extended
+ * away from the interface using closest-point propagation.
+ *
+ * @param water_depth Water depth field.
+ * @param prefilter_ir Prefilter radius used for curvature evaluation.
+ * @param extend_values_from_interface Extend interface curvature values
+ *        to the full domain using closest boundary points.
+ * @return Curvature field.
+ *
+ * **Example**
+ * @include ex_water_frontier_curvature.cpp
+ *
+ * **Result**
+ * @image html ex_water_frontier_curvature.png
+ */
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool extend_values_from_interface = false);
 
 /**
  * @brief Generates a binary mask representing water presence.
@@ -897,5 +920,10 @@ void water_depth_filter(Array       &depth,
                         const Array *p_water_mask = nullptr,
                         bool         smooth_contour = false,
                         float        transition_ratio = 0.1f);
+
+/*! @brief See hmap::water_frontier_curvature */
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool extend_values_from_interface = false);
 
 } // namespace hmap::gpu
