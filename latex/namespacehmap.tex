@@ -1207,6 +1207,8 @@ void \mbox{\hyperlink{namespacehmap_a3aebd62906b90ccfde11140e13b0853f}{water\+\_
 \begin{DoxyCompactList}\small\item\em Apply a drying factor to a water depth field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a136f042ce2ad8c14033f4d839f56265d}{water\+\_\+depth\+\_\+increase}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Simulates the increase in water depth over a terrain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ab562e00b361d918c52dd5860fc88ae06}{water\+\_\+frontier\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, int prefilter\+\_\+ir, bool extend\+\_\+values\+\_\+from\+\_\+interface=false)
+\begin{DoxyCompactList}\small\item\em Compute the curvature of the water interface from a signed distance field. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}{water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Generates a binary mask representing water presence. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_abc5928f49e530927c8fb61a9afea3274}{water\+\_\+mask}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float additional\+\_\+depth)
@@ -18336,7 +18338,65 @@ An \doxylink{classhmap_1_1Array}{Array} representing the updated water depth dis
 \begin{DoxyNote}{Note}
 The algorithm uses a simple flood-\/fill–like approach with an upward constraint, ensuring that water spreads only to neighboring cells at higher elevation. 
 \end{DoxyNote}
-\Hypertarget{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}\label{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c} 
+\Hypertarget{namespacehmap_ab562e00b361d918c52dd5860fc88ae06}\label{namespacehmap_ab562e00b361d918c52dd5860fc88ae06} 
+\index{hmap@{hmap}!water\_frontier\_curvature@{water\_frontier\_curvature}}
+\index{water\_frontier\_curvature@{water\_frontier\_curvature}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{water\_frontier\_curvature()}{water\_frontier\_curvature()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::water\+\_\+frontier\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{int}]{prefilter\+\_\+ir,  }\item[{bool}]{extend\+\_\+values\+\_\+from\+\_\+interface = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Compute the curvature of the water interface from a signed distance field. 
+
+The interface curvature is evaluated from the level set built from the water depth mask. Optionally, curvature values can be extended away from the interface using closest-\/point propagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em water\+\_\+depth} & Water depth field. \\
+\hline
+{\em prefilter\+\_\+ir} & Prefilter radius used for curvature evaluation. \\
+\hline
+{\em extend\+\_\+values\+\_\+from\+\_\+interface} & Extend interface curvature values to the full domain using closest boundary points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Curvature field.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ water\_depth\ =\ \mbox{\hyperlink{namespacehmap_a2318944325d02f3969aa7fa58b500278}{hmap::flooding\_uniform\_level}}(z,\ 0.5f);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::Array\ water\_depth\ =\ hmap::flooding\_lake\_system(z,\ 500,\ 1e-\/4f);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ prefilter\_ir\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ wc0\ =\ \mbox{\hyperlink{namespacehmap_ab562e00b361d918c52dd5860fc88ae06}{hmap::water\_frontier\_curvature}}(water\_depth,\ prefilter\_ir);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ wc1\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_a4b9ba3dd7bc6c093329b262fd4ca8f6c}{hmap::gpu::water\_frontier\_curvature}}(water\_depth,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefilter\_ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_water\_frontier\_curvature.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ water\_depth,\ wc0,\ wc1\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced}{hmap::Cmap::JET}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c}\label{namespacehmap_ad39c72e2b4c07d3013f7b0143c31137c} 
 \index{hmap@{hmap}!water\_mask@{water\_mask}}
 \index{water\_mask@{water\_mask}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{water\_mask()}{water\_mask()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

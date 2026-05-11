@@ -234,6 +234,8 @@ void \mbox{\hyperlink{namespacehmap_1_1gpu_a8a89eb3b3dcbdd39e57abc1770420bf1}{ph
 \begin{DoxyCompactList}\small\item\em Simulate snow accumulation and redistribution over a terrain. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a687d85d20bee065ffabeecea9124f432}{water\+\_\+depth\+\_\+filter}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&depth, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr, bool smooth\+\_\+contour=false, float transition\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Filters water depth values using elevation data and a given radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a4b9ba3dd7bc6c093329b262fd4ca8f6c}{water\+\_\+frontier\+\_\+curvature}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, int prefilter\+\_\+ir, bool extend\+\_\+values\+\_\+from\+\_\+interface=false)
+\begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_ab562e00b361d918c52dd5860fc88ae06}{hmap\+::water\+\_\+frontier\+\_\+curvature}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target)
 \item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a8b7cdbe45c09fc626e1a67d22fb46245}{interpolate\+\_\+array\+\_\+bicubic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&source, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&target, const glm\+::vec4 \&bbox\+\_\+source, const glm\+::vec4 \&bbox\+\_\+target)
@@ -3771,7 +3773,17 @@ Filters water depth values using elevation data and a given radius.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}\label{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_1_1gpu_a4b9ba3dd7bc6c093329b262fd4ca8f6c}\label{namespacehmap_1_1gpu_a4b9ba3dd7bc6c093329b262fd4ca8f6c} 
+\index{hmap::gpu@{hmap::gpu}!water\_frontier\_curvature@{water\_frontier\_curvature}}
+\index{water\_frontier\_curvature@{water\_frontier\_curvature}!hmap::gpu@{hmap::gpu}}
+\doxysubsubsection{\texorpdfstring{water\_frontier\_curvature()}{water\_frontier\_curvature()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::gpu\+::water\+\_\+frontier\+\_\+curvature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{water\+\_\+depth,  }\item[{int}]{prefilter\+\_\+ir,  }\item[{bool}]{extend\+\_\+values\+\_\+from\+\_\+interface = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+See \doxylink{namespacehmap_ab562e00b361d918c52dd5860fc88ae06}{hmap\+::water\+\_\+frontier\+\_\+curvature}. 
+
+\Hypertarget{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55}\label{namespacehmap_1_1gpu_a7fca2b47602e86cf0c65908230bdee55} 
 \index{hmap::gpu@{hmap::gpu}!interpolate\_array\_bicubic@{interpolate\_array\_bicubic}}
 \index{interpolate\_array\_bicubic@{interpolate\_array\_bicubic}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{interpolate\_array\_bicubic()}{interpolate\_array\_bicubic()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
