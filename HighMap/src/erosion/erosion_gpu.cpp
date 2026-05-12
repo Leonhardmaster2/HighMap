@@ -5,6 +5,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap::gpu
@@ -99,46 +100,28 @@ void hydraulic_particle(Array       &z,
                         bool         enable_directional_bias,
                         float        angle_bias)
 {
-  if (!p_mask)
-    gpu::hydraulic_particle(z,
-                            nparticles,
-                            seed,
-                            p_bedrock,
-                            p_moisture_map,
-                            p_elevation_shift,
-                            p_erosion_map,
-                            p_deposition_map,
-                            c_capacity,
-                            c_erosion,
-                            c_deposition,
-                            c_inertia,
-                            c_gravity,
-                            drag_rate,
-                            evap_rate,
-                            enable_directional_bias,
-                            angle_bias);
-  else
-  {
-    Array z_f = z;
-    gpu::hydraulic_particle(z_f,
-                            nparticles,
-                            seed,
-                            p_bedrock,
-                            p_moisture_map,
-                            p_elevation_shift,
-                            p_erosion_map,
-                            p_deposition_map,
-                            c_capacity,
-                            c_erosion,
-                            c_deposition,
-                            c_inertia,
-                            c_gravity,
-                            drag_rate,
-                            evap_rate,
-                            enable_directional_bias,
-                            angle_bias);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    gpu::hydraulic_particle(a,
+                                            nparticles,
+                                            seed,
+                                            p_bedrock,
+                                            p_moisture_map,
+                                            p_elevation_shift,
+                                            p_erosion_map,
+                                            p_deposition_map,
+                                            c_capacity,
+                                            c_erosion,
+                                            c_deposition,
+                                            c_inertia,
+                                            c_gravity,
+                                            drag_rate,
+                                            evap_rate,
+                                            enable_directional_bias,
+                                            angle_bias);
+                  });
 }
 
 } // namespace hmap::gpu

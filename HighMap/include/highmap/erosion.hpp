@@ -1134,6 +1134,12 @@ void deposition_fill_holes(Array &z,
                            float  deposition_strength,
                            int    iterations = 1);
 
+void deposition_fill_holes(Array       &z,
+                           int          deposition_ir,
+                           float        deposition_strength,
+                           const Array *p_mask,
+                           int          iterations = 1); ///< @overload
+
 /**
  * @brief Simulates hydraulic erosion on a heightmap using particle-based flow.
  *

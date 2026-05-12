@@ -5,6 +5,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap::gpu
 {
@@ -23,6 +24,20 @@ void deposition_fill_holes(Array &z,
     zd = gpu::blend_gradients(zd, z, deposition_ir);
     z = lerp(z, zd, deposition_strength);
   }
+}
+
+void deposition_fill_holes(Array       &z,
+                           int          deposition_ir,
+                           float        deposition_strength,
+                           const Array *p_mask,
+                           int          iterations)
+{
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a) {
+        deposition_fill_holes(a, deposition_ir, deposition_strength, iterations);
+      });
 }
 
 } // namespace hmap::gpu
