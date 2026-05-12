@@ -97,17 +97,17 @@ var NAVTREEINDEX =
 "hydrology_8hpp.html#a8284b00f1f460f1d5a406ee45587dcd9",
 "local__metrics_8hpp.html#adac2e2b20d0c2720e2dc068641bcd922",
 "morphology_8hpp.html#aed49f777e8ad095bafc5dc014e548e6e",
-"namespacehmap.html#a3aa96cd684efd827ce57ffd9fef3c950",
-"namespacehmap.html#a836dbf6645c0e60bd887d6f14210b9d3",
-"namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba006b1f81b483f6b3e26dd4a4668ee6dc",
-"namespacehmap_1_1gpu.html#a00b54f4e60a8fbd6ed5213600d598869",
-"namespacemembers_eval_n.html",
-"points_8cpp.html#aef71b544e3f4e5321cb3d41a7366e0f3",
-"recast_8cpp.html#abf3c7485f0f6f9e56b2cec58e085dc23",
-"structhmap_1_1IVec2Eq.html",
-"structhmap_1_1VirtualArray.html#a465cc3d634b2d9ffc492705213a18327",
-"test__math_8cpp.html#acfb7f4dd3f09c800e0de77c35d470db6",
-"vector__utils_8hpp.html#a0520c7ad885d5776f6e06ec12e7f1729"
+"namespacehmap.html#a3a29e127d53bc5b547af422da36da1cc",
+"namespacehmap.html#a826591db096cb2ca4d836d4c5eeaac02",
+"namespacehmap.html#ac39b5e32d90e0351f4124ea61334461d",
+"namespacehmap.html#affcc500f17897f37cdb0717bc579d2b4",
+"namespacemembers_eval_i.html",
+"points_8cpp.html#ac14815cf025b7430d31d08125a5c6f0d",
+"recast_8cpp.html#a86963a517ac96c442272bdf6fd967f60",
+"structhmap_1_1ComputeMode.html#a88f263de26dea2af6e22e2d4f5f02cab",
+"structhmap_1_1VirtualArray.html#a307123a81d2ea77c85ae28612a1c06c2",
+"test__math_8cpp.html#a89bdb70158bfa2509005f70c139d6dfb",
+"vector__utils_8cpp.html#ac1fdc0ac0b6e1024faeaddcd30ebe2fe"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
