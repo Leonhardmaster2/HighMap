@@ -475,507 +475,513 @@
 \DoxyCodeLine{01134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ deposition\_strength,}
 \DoxyCodeLine{01135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 1);}
 \DoxyCodeLine{01136\ }
-\DoxyCodeLine{01169\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\_particle}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ nparticles,}
-\DoxyCodeLine{01171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_elevation\_shift\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_capacity\ =\ 10.f,}
-\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 0.05f,}
-\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.05f,}
-\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_inertia\ =\ 0.1f,}
-\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_gravity\ =\ 1.f,}
-\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ drag\_rate\ =\ 0.001f,}
-\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ evap\_rate\ =\ 0.001f,}
-\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_directional\_bias\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ angle\_bias\ =\ 30.f);}
-\DoxyCodeLine{01186\ }
-\DoxyCodeLine{01188\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\_particle}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ nparticles,}
-\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_elevation\_shift\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_capacity\ =\ 10.f,}
-\DoxyCodeLine{01198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 0.05f,}
-\DoxyCodeLine{01199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.05f,}
-\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_inertia\ =\ 0.1f,}
-\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_gravity\ =\ 1.f,}
-\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ drag\_rate\ =\ 0.001f,}
-\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ evap\_rate\ =\ 0.001f,}
-\DoxyCodeLine{01204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_directional\_bias\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ angle\_bias\ =\ 30.f);}
-\DoxyCodeLine{01206\ }
-\DoxyCodeLine{01255\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_afbecd3a8ce025fb08ca3296ce81f695d}{hydraulic\_procedural}}(}
-\DoxyCodeLine{01256\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01257\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
-\DoxyCodeLine{01258\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
-\DoxyCodeLine{01259\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01260\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
-\DoxyCodeLine{01261\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
-\DoxyCodeLine{01262\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
-\DoxyCodeLine{01263\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
-\DoxyCodeLine{01264\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
-\DoxyCodeLine{01265\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01266\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
-\DoxyCodeLine{01267\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01268\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01269\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
-\DoxyCodeLine{01270\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01271\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
-\DoxyCodeLine{01272\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01273\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01274\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01275\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01276\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
-\DoxyCodeLine{01277\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01278\ }
-\DoxyCodeLine{01317\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60f3eb887b87ec545d68977b8811cadc}{hydraulic\_procedural\_fbm}}(}
-\DoxyCodeLine{01318\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01319\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
-\DoxyCodeLine{01320\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
-\DoxyCodeLine{01321\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01322\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
-\DoxyCodeLine{01323\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 3,}
-\DoxyCodeLine{01324\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ persistence\ =\ 0.5f,}
-\DoxyCodeLine{01325\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
-\DoxyCodeLine{01326\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
-\DoxyCodeLine{01327\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
-\DoxyCodeLine{01328\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
-\DoxyCodeLine{01329\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
-\DoxyCodeLine{01330\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01331\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
-\DoxyCodeLine{01332\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01333\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01334\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
-\DoxyCodeLine{01335\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01336\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
-\DoxyCodeLine{01337\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01338\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01339\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01340\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01341\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
-\DoxyCodeLine{01342\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01343\ }
-\DoxyCodeLine{01344\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60f3eb887b87ec545d68977b8811cadc}{hydraulic\_procedural\_fbm}}(}
-\DoxyCodeLine{01345\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01346\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
-\DoxyCodeLine{01347\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
-\DoxyCodeLine{01348\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01349\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_mask,}
-\DoxyCodeLine{01350\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
-\DoxyCodeLine{01351\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 3,}
-\DoxyCodeLine{01352\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ persistence\ =\ 0.5f,}
-\DoxyCodeLine{01353\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
-\DoxyCodeLine{01354\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
-\DoxyCodeLine{01355\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
-\DoxyCodeLine{01356\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
-\DoxyCodeLine{01357\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
-\DoxyCodeLine{01358\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01359\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
-\DoxyCodeLine{01360\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01361\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01362\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
-\DoxyCodeLine{01363\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01364\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
-\DoxyCodeLine{01365\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01366\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01367\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01368\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01369\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
-\DoxyCodeLine{01370\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01371\ }
-\DoxyCodeLine{01419\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9749d24b9dd9bed8ee333910951db395}{hydraulic\_schott}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{01421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{01422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
-\DoxyCodeLine{01423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_thermal\ =\ 0.1f,}
-\DoxyCodeLine{01424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.2f,}
-\DoxyCodeLine{01425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
-\DoxyCodeLine{01426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\_depo\ =\ 0.8f,}
-\DoxyCodeLine{01427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
-\DoxyCodeLine{01428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ thermal\_weight\ =\ 1.5f,}
-\DoxyCodeLine{01429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_weight\ =\ 2.5f,}
-\DoxyCodeLine{01430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01431\ }
-\DoxyCodeLine{01432\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9749d24b9dd9bed8ee333910951db395}{hydraulic\_schott}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{01434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{01435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{01436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
-\DoxyCodeLine{01437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_thermal\ =\ 0.1f,}
-\DoxyCodeLine{01438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.2f,}
-\DoxyCodeLine{01439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
-\DoxyCodeLine{01440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\_depo\ =\ 0.8f,}
-\DoxyCodeLine{01441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
-\DoxyCodeLine{01442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ thermal\_weight\ =\ 1.5f,}
-\DoxyCodeLine{01443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_weight\ =\ 2.5f,}
-\DoxyCodeLine{01444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});\ }
-\DoxyCodeLine{01445\ }
-\DoxyCodeLine{01447\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_aa3c0fc5295f81856967feed8cf87f711}{hydraulic\_schott\_erosion}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{01449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
-\DoxyCodeLine{01450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
-\DoxyCodeLine{01451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
-\DoxyCodeLine{01452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01454\ }
-\DoxyCodeLine{01456\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7814928e0f3b995421d298677934d11d}{hydraulic\_stream\_log}}(Array\ \&z,}
-\DoxyCodeLine{01457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ c\_erosion,}
-\DoxyCodeLine{01458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus\_ref,}
-\DoxyCodeLine{01459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ deposition\_ir\ =\ 32,}
-\DoxyCodeLine{01460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ deposition\_scale\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ gradient\_power\ =\ 0.8f,}
-\DoxyCodeLine{01462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ gradient\_scaling\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ gradient\_prefilter\_ir\ =\ 16,}
-\DoxyCodeLine{01464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ saturation\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_flow\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01470\ }
-\DoxyCodeLine{01471\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7814928e0f3b995421d298677934d11d}{hydraulic\_stream\_log}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion,}
-\DoxyCodeLine{01473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ talus\_ref,}
-\DoxyCodeLine{01474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{01475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ deposition\_ir\ =\ 32,}
-\DoxyCodeLine{01476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_scale\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
-\DoxyCodeLine{01478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ gradient\_prefilter\_ir\ =\ 16,}
-\DoxyCodeLine{01480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ saturation\_ratio\ =\ 1.f,}
-\DoxyCodeLine{01481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\_map\ =\ \textcolor{keyword}{nullptr});\ }
-\DoxyCodeLine{01486\ }
-\DoxyCodeLine{01488\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a548895d6665a5466b8541122338b59a9}{hydraulic\_vpipes}}(Array\ \&z,}
-\DoxyCodeLine{01489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ water\_height\ =\ 1e-\/2f,}
-\DoxyCodeLine{01490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ maintain\_water\_volume\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ evap\_rate\ =\ 0.1f,}
-\DoxyCodeLine{01492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 50,}
-\DoxyCodeLine{01493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ dt\ =\ 0.5f,}
-\DoxyCodeLine{01494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_capacity\ =\ 0.5f,}
-\DoxyCodeLine{01495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_erode\ =\ 0.001f,}
-\DoxyCodeLine{01496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_depose\ =\ 0.01f,}
-\DoxyCodeLine{01497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_discharge\_exp\ =\ 1.f,}
-\DoxyCodeLine{01498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ downcutting\_max\_depth\_ratio\ =\ 10.f,}
-\DoxyCodeLine{01499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ flux\_diffusion\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ flux\_diffusion\_strength\ =\ 0.01f,}
-\DoxyCodeLine{01501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_rain\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_water\_depth\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_sediment\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_vel\_u\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_vel\_v\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01506\ }
-\DoxyCodeLine{01535\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a3faa3e769849fbcc7784d130c05f99a2}{mudslide}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&landslide\_mask,}
-\DoxyCodeLine{01537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ depth,}
-\DoxyCodeLine{01538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{01539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ depth\_map\_exponent\ =\ 0.5f,}
-\DoxyCodeLine{01540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ viscosity\_law\_power\ =\ 1.5f,}
-\DoxyCodeLine{01541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_depth\_end\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_depth\_init\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01543\ }
-\DoxyCodeLine{01545\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a3faa3e769849fbcc7784d130c05f99a2}{mudslide}}(Array\ \&z,}
-\DoxyCodeLine{01546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus\_limit,}
-\DoxyCodeLine{01547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ depth,}
-\DoxyCodeLine{01548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations,}
-\DoxyCodeLine{01549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ depth\_map\_exponent\ =\ 0.5f,}
-\DoxyCodeLine{01550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ viscosity\_law\_power\ =\ 1.5f,}
-\DoxyCodeLine{01551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_depth\_end\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_depth\_init\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01553\ }
-\DoxyCodeLine{01605\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_adca53669496f6a636042e11a859d1a16}{rifts}}(Array\ \ \ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01606\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&kw,\ \ \ \ \textcolor{comment}{//\ \ =\ \{4.f,\ 1.2f\},}}
-\DoxyCodeLine{01607\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ \textcolor{comment}{//\ degs}}
-\DoxyCodeLine{01608\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ amplitude,}
-\DoxyCodeLine{01609\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01610\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ elevation\_noise\_shift\ =\ 0.f,}
-\DoxyCodeLine{01611\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ k\_smooth\_bottom\ =\ 0.05f,}
-\DoxyCodeLine{01612\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ k\_smooth\_top\ =\ 0.05f,}
-\DoxyCodeLine{01613\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ radial\_spread\_amp\ =\ 0.2f,}
-\DoxyCodeLine{01614\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ elevation\_noise\_amp\ =\ 0.1f,}
-\DoxyCodeLine{01615\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ clamp\_vmin\ =\ 0.f,}
-\DoxyCodeLine{01616\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ remap\_vmin\ =\ 0.f,}
-\DoxyCodeLine{01617\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_mask\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01618\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ reverse\_mask\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01619\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ mask\_gamma\ =\ 1.f,}
-\DoxyCodeLine{01620\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01621\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01622\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01623\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&center\ =\ \{0.5f,\ 0.5f\},}
-\DoxyCodeLine{01624\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01625\ }
-\DoxyCodeLine{01648\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{sediment\_deposition}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{01650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{01651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ max\_deposition\ =\ 0.01,}
-\DoxyCodeLine{01653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 5,}
-\DoxyCodeLine{01654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ thermal\_subiterations\ =\ 10);}
-\DoxyCodeLine{01655\ }
-\DoxyCodeLine{01656\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{sediment\_deposition}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{01658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ max\_deposition\ =\ 0.01,}
-\DoxyCodeLine{01660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 5,}
-\DoxyCodeLine{01661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ thermal\_subiterations\ =\ 10);}
-\DoxyCodeLine{01662\ }
-\DoxyCodeLine{01684\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b}{sediment\_layer}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus\_layer,}
-\DoxyCodeLine{01686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus\_upper\_limit,}
-\DoxyCodeLine{01687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{01688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ apply\_post\_filter\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01690\ }
-\DoxyCodeLine{01748\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_abb80ba73ad4baeb50723d73b1e597824}{strata}}(Array\ \ \ \ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01749\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
-\DoxyCodeLine{01750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}},}
-\DoxyCodeLine{01751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
-\DoxyCodeLine{01752\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01753\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01754\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ kz\ =\ 1.f,}
-\DoxyCodeLine{01755\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 4,}
-\DoxyCodeLine{01756\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
-\DoxyCodeLine{01757\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
-\DoxyCodeLine{01758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.4f,}
-\DoxyCodeLine{01759\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&noise\_kw\ =\ \{4.f,\ 4.f\},}
-\DoxyCodeLine{01760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ enable\_ridge\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&ridge\_noise\_kw\ =\ \{4.f,\ 1.2f\},}
-\DoxyCodeLine{01762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_angle\_shift\ =\ 45.f,}
-\DoxyCodeLine{01763\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_noise\_amp\ =\ 0.5f,}
-\DoxyCodeLine{01764\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_clamp\_vmin\ =\ 0.f,}
-\DoxyCodeLine{01765\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_remap\_vmin\ =\ 0.f,}
-\DoxyCodeLine{01766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_elevation\_mask\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01767\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_ridge\_mask\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ mask\_gamma\ =\ 0.4f,}
-\DoxyCodeLine{01769\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01770\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01771\ }
-\DoxyCodeLine{01798\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a663d541671a7a9afbd694ccb11351ec5}{strata\_cells}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
-\DoxyCodeLine{01800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
-\DoxyCodeLine{01801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
-\DoxyCodeLine{01803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
-\DoxyCodeLine{01804\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
-\DoxyCodeLine{01805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ noise\_amp\ =\ 0.5f,}
-\DoxyCodeLine{01806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
-\DoxyCodeLine{01808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01811\ }
-\DoxyCodeLine{01839\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a663d541671a7a9afbd694ccb11351ec5}{strata\_cells}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
-\DoxyCodeLine{01841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
-\DoxyCodeLine{01842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{01844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
-\DoxyCodeLine{01845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
-\DoxyCodeLine{01846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
-\DoxyCodeLine{01847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ noise\_amp\ =\ 0.5f,}
-\DoxyCodeLine{01848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
-\DoxyCodeLine{01850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01853\ }
-\DoxyCodeLine{01884\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a182b5cbe63e2d42368c19f66dd9febb3}{strata\_cells\_fbm}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
-\DoxyCodeLine{01886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
-\DoxyCodeLine{01887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
-\DoxyCodeLine{01889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
-\DoxyCodeLine{01890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
-\DoxyCodeLine{01891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ default\_noise\_amp\ =\ 0.05f,}
-\DoxyCodeLine{01893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
-\DoxyCodeLine{01895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ octaves\ =\ 8,}
-\DoxyCodeLine{01896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ persistence\ =\ 0.4f,}
-\DoxyCodeLine{01897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ lacunarity\ =\ 2.2f,}
-\DoxyCodeLine{01898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01900\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01901\ }
-\DoxyCodeLine{01933\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a182b5cbe63e2d42368c19f66dd9febb3}{strata\_cells\_fbm}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01934\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
-\DoxyCodeLine{01935\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
-\DoxyCodeLine{01936\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{01937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{01938\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
-\DoxyCodeLine{01939\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
-\DoxyCodeLine{01940\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
-\DoxyCodeLine{01941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01942\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ default\_noise\_amp\ =\ 0.05f,}
-\DoxyCodeLine{01943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{01944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
-\DoxyCodeLine{01945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ octaves\ =\ 8,}
-\DoxyCodeLine{01946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ persistence\ =\ 0.4f,}
-\DoxyCodeLine{01947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ lacunarity\ =\ 2.2f,}
-\DoxyCodeLine{01948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01949\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01950\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
-\DoxyCodeLine{01951\ }
-\DoxyCodeLine{01975\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a44ccc2a39f98099989aa7c419bf81592}{strata\_plates}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{01976\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{01977\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ direction\_offset\ =\ 0,}
-\DoxyCodeLine{01978\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ direction\_count\ =\ 3,}
-\DoxyCodeLine{01979\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ random\_directions\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{01980\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed\ =\ 0,}
-\DoxyCodeLine{01981\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin\ =\ -\/FLT\_MAX,}
-\DoxyCodeLine{01982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ skew\ =\ 0.f,}
-\DoxyCodeLine{01983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ mix\_ratio\ =\ 0.9f,}
-\DoxyCodeLine{01984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_dx\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{01986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_dy\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{01987\ }
-\DoxyCodeLine{02009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9ed6ad946ac7bcb852974a38eca78ac8}{strata\_terrace}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
-\DoxyCodeLine{02011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{02012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ kz\ =\ 4.f,\ \textcolor{comment}{//\ 4-\/layers}}
-\DoxyCodeLine{02013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{02014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
-\DoxyCodeLine{02015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02016\ }
-\DoxyCodeLine{02038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9ed6ad946ac7bcb852974a38eca78ac8}{strata\_terrace}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
-\DoxyCodeLine{02040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{02041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{02042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ kz\ =\ 4.f,\ \textcolor{comment}{//\ 4-\/layers}}
-\DoxyCodeLine{02043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{02044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
-\DoxyCodeLine{02045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02046\ }
-\DoxyCodeLine{02048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02051\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02052\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02053\ }
-\DoxyCodeLine{02055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02056\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{02057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02059\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02060\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02061\ }
-\DoxyCodeLine{02063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \&z,}
-\DoxyCodeLine{02064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus,}
-\DoxyCodeLine{02065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02066\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02067\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02068\ }
-\DoxyCodeLine{02070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36a2eba6d158e44d0ef917d9582987fe}{thermal\_auto\_bedrock}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01137\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}{deposition\_fill\_holes}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ deposition\_ir,}
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_strength,}
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 1);\ }
+\DoxyCodeLine{01142\ }
+\DoxyCodeLine{01175\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\_particle}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ nparticles,}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_elevation\_shift\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_capacity\ =\ 10.f,}
+\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 0.05f,}
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.05f,}
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_inertia\ =\ 0.1f,}
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_gravity\ =\ 1.f,}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ drag\_rate\ =\ 0.001f,}
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ evap\_rate\ =\ 0.001f,}
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_directional\_bias\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ angle\_bias\ =\ 30.f);}
+\DoxyCodeLine{01192\ }
+\DoxyCodeLine{01194\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae084938139cca4f7c15866ceabe18ab7}{hydraulic\_particle}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{01196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ nparticles,}
+\DoxyCodeLine{01197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_elevation\_shift\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_capacity\ =\ 10.f,}
+\DoxyCodeLine{01204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 0.05f,}
+\DoxyCodeLine{01205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.05f,}
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_inertia\ =\ 0.1f,}
+\DoxyCodeLine{01207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_gravity\ =\ 1.f,}
+\DoxyCodeLine{01208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ drag\_rate\ =\ 0.001f,}
+\DoxyCodeLine{01209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ evap\_rate\ =\ 0.001f,}
+\DoxyCodeLine{01210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_directional\_bias\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ angle\_bias\ =\ 30.f);}
+\DoxyCodeLine{01212\ }
+\DoxyCodeLine{01261\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_afbecd3a8ce025fb08ca3296ce81f695d}{hydraulic\_procedural}}(}
+\DoxyCodeLine{01262\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01263\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
+\DoxyCodeLine{01264\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
+\DoxyCodeLine{01265\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01266\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
+\DoxyCodeLine{01267\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
+\DoxyCodeLine{01268\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{01269\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
+\DoxyCodeLine{01270\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
+\DoxyCodeLine{01271\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01272\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
+\DoxyCodeLine{01273\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01274\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01275\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
+\DoxyCodeLine{01276\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01277\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
+\DoxyCodeLine{01278\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01279\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01280\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01281\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01282\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
+\DoxyCodeLine{01283\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01284\ }
+\DoxyCodeLine{01323\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60f3eb887b87ec545d68977b8811cadc}{hydraulic\_procedural\_fbm}}(}
+\DoxyCodeLine{01324\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01325\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
+\DoxyCodeLine{01326\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
+\DoxyCodeLine{01327\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01328\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
+\DoxyCodeLine{01329\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 3,}
+\DoxyCodeLine{01330\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ persistence\ =\ 0.5f,}
+\DoxyCodeLine{01331\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
+\DoxyCodeLine{01332\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
+\DoxyCodeLine{01333\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{01334\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
+\DoxyCodeLine{01335\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
+\DoxyCodeLine{01336\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01337\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
+\DoxyCodeLine{01338\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01339\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01340\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
+\DoxyCodeLine{01341\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01342\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
+\DoxyCodeLine{01343\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01344\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01345\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01346\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01347\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
+\DoxyCodeLine{01348\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01349\ }
+\DoxyCodeLine{01350\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a60f3eb887b87ec545d68977b8811cadc}{hydraulic\_procedural\_fbm}}(}
+\DoxyCodeLine{01351\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01352\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ kp\_global,}
+\DoxyCodeLine{01353\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ c\_erosion,}
+\DoxyCodeLine{01354\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01355\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_mask,}
+\DoxyCodeLine{01356\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{ErosionProfile}}\ erosion\_profile\ =\ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{ErosionProfile::EP\_TRIANGLE\_GRENIER}},}
+\DoxyCodeLine{01357\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 3,}
+\DoxyCodeLine{01358\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ persistence\ =\ 0.5f,}
+\DoxyCodeLine{01359\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
+\DoxyCodeLine{01360\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ erosion\_profile\_parameter\ =\ 0.01f,}
+\DoxyCodeLine{01361\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ angle\_shift\ =\ 0.f,\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{01362\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ phase\_smoothing\ =\ 0.1f,}
+\DoxyCodeLine{01363\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ talus\_ref\ =\ 0.001f,}
+\DoxyCodeLine{01364\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01365\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
+\DoxyCodeLine{01366\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ exclude\_ridges\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01367\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ apply\_deposition\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01368\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ deposition\_strength\ =\ 1.f,}
+\DoxyCodeLine{01369\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01370\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.01f,}
+\DoxyCodeLine{01371\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_kp\_multiplier\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01372\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_angle\_shift\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01373\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01374\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01375\ \ \ \ \ Array\ \ \ \ \ \ \ \ \ *p\_ridge\_mask\ =\ \textcolor{keyword}{nullptr},\ \textcolor{comment}{//\ ouptput}}
+\DoxyCodeLine{01376\ \ \ \ \ glm::vec4\ \ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01377\ }
+\DoxyCodeLine{01425\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9749d24b9dd9bed8ee333910951db395}{hydraulic\_schott}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{01427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{01428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
+\DoxyCodeLine{01429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_thermal\ =\ 0.1f,}
+\DoxyCodeLine{01430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.2f,}
+\DoxyCodeLine{01431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
+\DoxyCodeLine{01432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\_depo\ =\ 0.8f,}
+\DoxyCodeLine{01433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
+\DoxyCodeLine{01434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ thermal\_weight\ =\ 1.5f,}
+\DoxyCodeLine{01435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_weight\ =\ 2.5f,}
+\DoxyCodeLine{01436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01437\ }
+\DoxyCodeLine{01438\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9749d24b9dd9bed8ee333910951db395}{hydraulic\_schott}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{01440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{01441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{01442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
+\DoxyCodeLine{01443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_thermal\ =\ 0.1f,}
+\DoxyCodeLine{01444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_deposition\ =\ 0.2f,}
+\DoxyCodeLine{01445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
+\DoxyCodeLine{01446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\_depo\ =\ 0.8f,}
+\DoxyCodeLine{01447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
+\DoxyCodeLine{01448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ thermal\_weight\ =\ 1.5f,}
+\DoxyCodeLine{01449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_weight\ =\ 2.5f,}
+\DoxyCodeLine{01450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{01451\ }
+\DoxyCodeLine{01453\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_aa3c0fc5295f81856967feed8cf87f711}{hydraulic\_schott\_erosion}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{01455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion\ =\ 1.f,}
+\DoxyCodeLine{01456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_acc\_exponent\ =\ 0.8f,}
+\DoxyCodeLine{01457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ flow\_routing\_exponent\ =\ 1.3f,}
+\DoxyCodeLine{01458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01460\ }
+\DoxyCodeLine{01462\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7814928e0f3b995421d298677934d11d}{hydraulic\_stream\_log}}(Array\ \&z,}
+\DoxyCodeLine{01463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ c\_erosion,}
+\DoxyCodeLine{01464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus\_ref,}
+\DoxyCodeLine{01465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ deposition\_ir\ =\ 32,}
+\DoxyCodeLine{01466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ deposition\_scale\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ gradient\_power\ =\ 0.8f,}
+\DoxyCodeLine{01468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ gradient\_scaling\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ gradient\_prefilter\_ir\ =\ 16,}
+\DoxyCodeLine{01470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ saturation\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_flow\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01476\ }
+\DoxyCodeLine{01477\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a7814928e0f3b995421d298677934d11d}{hydraulic\_stream\_log}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ c\_erosion,}
+\DoxyCodeLine{01479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ talus\_ref,}
+\DoxyCodeLine{01480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{01481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ deposition\_ir\ =\ 32,}
+\DoxyCodeLine{01482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ deposition\_scale\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_power\ =\ 0.8f,}
+\DoxyCodeLine{01484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gradient\_scaling\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ gradient\_prefilter\_ir\ =\ 16,}
+\DoxyCodeLine{01486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ saturation\_ratio\ =\ 1.f,}
+\DoxyCodeLine{01487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_moisture\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_erosion\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_flow\_map\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{01492\ }
+\DoxyCodeLine{01494\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a548895d6665a5466b8541122338b59a9}{hydraulic\_vpipes}}(Array\ \&z,}
+\DoxyCodeLine{01495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ water\_height\ =\ 1e-\/2f,}
+\DoxyCodeLine{01496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ maintain\_water\_volume\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ evap\_rate\ =\ 0.1f,}
+\DoxyCodeLine{01498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 50,}
+\DoxyCodeLine{01499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ dt\ =\ 0.5f,}
+\DoxyCodeLine{01500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_capacity\ =\ 0.5f,}
+\DoxyCodeLine{01501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_erode\ =\ 0.001f,}
+\DoxyCodeLine{01502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_depose\ =\ 0.01f,}
+\DoxyCodeLine{01503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ k\_discharge\_exp\ =\ 1.f,}
+\DoxyCodeLine{01504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ downcutting\_max\_depth\_ratio\ =\ 10.f,}
+\DoxyCodeLine{01505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ flux\_diffusion\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ flux\_diffusion\_strength\ =\ 0.01f,}
+\DoxyCodeLine{01507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_rain\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_water\_depth\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_sediment\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_vel\_u\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_vel\_v\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01512\ }
+\DoxyCodeLine{01541\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a3faa3e769849fbcc7784d130c05f99a2}{mudslide}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&landslide\_mask,}
+\DoxyCodeLine{01543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ depth,}
+\DoxyCodeLine{01544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{01545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ depth\_map\_exponent\ =\ 0.5f,}
+\DoxyCodeLine{01546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ viscosity\_law\_power\ =\ 1.5f,}
+\DoxyCodeLine{01547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_depth\_end\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_depth\_init\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01549\ }
+\DoxyCodeLine{01551\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a3faa3e769849fbcc7784d130c05f99a2}{mudslide}}(Array\ \&z,}
+\DoxyCodeLine{01552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus\_limit,}
+\DoxyCodeLine{01553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ depth,}
+\DoxyCodeLine{01554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations,}
+\DoxyCodeLine{01555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ depth\_map\_exponent\ =\ 0.5f,}
+\DoxyCodeLine{01556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ viscosity\_law\_power\ =\ 1.5f,}
+\DoxyCodeLine{01557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_depth\_end\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_depth\_init\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01559\ }
+\DoxyCodeLine{01611\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_adca53669496f6a636042e11a859d1a16}{rifts}}(Array\ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01612\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&kw,\ \ \ \ \textcolor{comment}{//\ \ =\ \{4.f,\ 1.2f\},}}
+\DoxyCodeLine{01613\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ \textcolor{comment}{//\ degs}}
+\DoxyCodeLine{01614\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ amplitude,}
+\DoxyCodeLine{01615\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01616\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ elevation\_noise\_shift\ =\ 0.f,}
+\DoxyCodeLine{01617\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ k\_smooth\_bottom\ =\ 0.05f,}
+\DoxyCodeLine{01618\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ k\_smooth\_top\ =\ 0.05f,}
+\DoxyCodeLine{01619\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ radial\_spread\_amp\ =\ 0.2f,}
+\DoxyCodeLine{01620\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ elevation\_noise\_amp\ =\ 0.1f,}
+\DoxyCodeLine{01621\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ clamp\_vmin\ =\ 0.f,}
+\DoxyCodeLine{01622\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ remap\_vmin\ =\ 0.f,}
+\DoxyCodeLine{01623\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_mask\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01624\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ reverse\_mask\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01625\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ mask\_gamma\ =\ 1.f,}
+\DoxyCodeLine{01626\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01627\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01628\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01629\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&center\ =\ \{0.5f,\ 0.5f\},}
+\DoxyCodeLine{01630\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01631\ }
+\DoxyCodeLine{01654\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{sediment\_deposition}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{01656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{01657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ max\_deposition\ =\ 0.01,}
+\DoxyCodeLine{01659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 5,}
+\DoxyCodeLine{01660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ thermal\_subiterations\ =\ 10);}
+\DoxyCodeLine{01661\ }
+\DoxyCodeLine{01662\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1c2651f7a65e696e8b444364abf0b3cc}{sediment\_deposition}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{01664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ max\_deposition\ =\ 0.01,}
+\DoxyCodeLine{01666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 5,}
+\DoxyCodeLine{01667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ thermal\_subiterations\ =\ 10);}
+\DoxyCodeLine{01668\ }
+\DoxyCodeLine{01690\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_aec782e6aba3f4cfbbd97aafa46cc700b}{sediment\_layer}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus\_layer,}
+\DoxyCodeLine{01692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus\_upper\_limit,}
+\DoxyCodeLine{01693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{01694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ apply\_post\_filter\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01696\ }
+\DoxyCodeLine{01754\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_abb80ba73ad4baeb50723d73b1e597824}{strata}}(Array\ \ \ \ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01755\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{01756\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}},}
+\DoxyCodeLine{01757\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
+\DoxyCodeLine{01758\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01759\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ kz\ =\ 1.f,}
+\DoxyCodeLine{01761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ octaves\ =\ 4,}
+\DoxyCodeLine{01762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ lacunarity\ =\ 2.f,}
+\DoxyCodeLine{01763\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
+\DoxyCodeLine{01764\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ noise\_amp\ =\ 0.4f,}
+\DoxyCodeLine{01765\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&noise\_kw\ =\ \{4.f,\ 4.f\},}
+\DoxyCodeLine{01766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ enable\_ridge\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01767\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&ridge\_noise\_kw\ =\ \{4.f,\ 1.2f\},}
+\DoxyCodeLine{01768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_angle\_shift\ =\ 45.f,}
+\DoxyCodeLine{01769\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_noise\_amp\ =\ 0.5f,}
+\DoxyCodeLine{01770\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_clamp\_vmin\ =\ 0.f,}
+\DoxyCodeLine{01771\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ ridge\_remap\_vmin\ =\ 0.f,}
+\DoxyCodeLine{01772\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_elevation\_mask\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ apply\_ridge\_mask\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01774\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ mask\_gamma\ =\ 0.4f,}
+\DoxyCodeLine{01775\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01776\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01777\ }
+\DoxyCodeLine{01804\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a663d541671a7a9afbd694ccb11351ec5}{strata\_cells}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
+\DoxyCodeLine{01806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
+\DoxyCodeLine{01807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
+\DoxyCodeLine{01809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
+\DoxyCodeLine{01810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
+\DoxyCodeLine{01811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ noise\_amp\ =\ 0.5f,}
+\DoxyCodeLine{01812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
+\DoxyCodeLine{01814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01817\ }
+\DoxyCodeLine{01845\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a663d541671a7a9afbd694ccb11351ec5}{strata\_cells}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
+\DoxyCodeLine{01847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
+\DoxyCodeLine{01848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{01850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
+\DoxyCodeLine{01851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
+\DoxyCodeLine{01852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
+\DoxyCodeLine{01853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ noise\_amp\ =\ 0.5f,}
+\DoxyCodeLine{01854\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01855\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
+\DoxyCodeLine{01856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01859\ }
+\DoxyCodeLine{01890\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a182b5cbe63e2d42368c19f66dd9febb3}{strata\_cells\_fbm}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
+\DoxyCodeLine{01892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
+\DoxyCodeLine{01893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
+\DoxyCodeLine{01895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
+\DoxyCodeLine{01896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
+\DoxyCodeLine{01897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ default\_noise\_amp\ =\ 0.05f,}
+\DoxyCodeLine{01899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01900\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
+\DoxyCodeLine{01901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ octaves\ =\ 8,}
+\DoxyCodeLine{01902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ persistence\ =\ 0.4f,}
+\DoxyCodeLine{01903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ lacunarity\ =\ 2.2f,}
+\DoxyCodeLine{01904\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01905\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01906\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01907\ }
+\DoxyCodeLine{01939\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a182b5cbe63e2d42368c19f66dd9febb3}{strata\_cells\_fbm}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01940\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ \ \ \ kw,}
+\DoxyCodeLine{01941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ amp,}
+\DoxyCodeLine{01942\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{01943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{01944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 0.5f,}
+\DoxyCodeLine{01945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_lateral\ =\ 0.4f,}
+\DoxyCodeLine{01946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ 0.f,}
+\DoxyCodeLine{01947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ enable\_default\_noise\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ default\_noise\_amp\ =\ 0.05f,}
+\DoxyCodeLine{01949\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ absolute\_displacement\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{01950\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ occurence\_probability\ =\ 0.5f,}
+\DoxyCodeLine{01951\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ octaves\ =\ 8,}
+\DoxyCodeLine{01952\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ persistence\ =\ 0.4f,}
+\DoxyCodeLine{01953\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ lacunarity\ =\ 2.2f,}
+\DoxyCodeLine{01954\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01955\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01956\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{01957\ }
+\DoxyCodeLine{01981\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a44ccc2a39f98099989aa7c419bf81592}{strata\_plates}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{01982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{01983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ direction\_offset\ =\ 0,}
+\DoxyCodeLine{01984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ direction\_count\ =\ 3,}
+\DoxyCodeLine{01985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ random\_directions\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{01986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed\ =\ 0,}
+\DoxyCodeLine{01987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ vmin\ =\ -\/FLT\_MAX,}
+\DoxyCodeLine{01988\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ skew\ =\ 0.f,}
+\DoxyCodeLine{01989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ mix\_ratio\ =\ 0.9f,}
+\DoxyCodeLine{01990\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_dx\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{01992\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_dy\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01993\ }
+\DoxyCodeLine{02015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9ed6ad946ac7bcb852974a38eca78ac8}{strata\_terrace}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
+\DoxyCodeLine{02017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{02018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ kz\ =\ 4.f,\ \textcolor{comment}{//\ 4-\/layers}}
+\DoxyCodeLine{02019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{02020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
+\DoxyCodeLine{02021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02022\ }
+\DoxyCodeLine{02044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a9ed6ad946ac7bcb852974a38eca78ac8}{strata\_terrace}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma,\ \textcolor{comment}{//\ e.g\ 0.5f\ or\ 1.5f}}
+\DoxyCodeLine{02046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{02047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ kz\ =\ 4.f,\ \textcolor{comment}{//\ 4-\/layers}}
+\DoxyCodeLine{02049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ linear\_gamma\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{02050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\_noise\_ratio\ =\ 0.5f,}
+\DoxyCodeLine{02051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02052\ }
+\DoxyCodeLine{02054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02057\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02058\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02059\ }
+\DoxyCodeLine{02061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02062\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{02063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02065\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02066\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02067\ }
+\DoxyCodeLine{02069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a2eb4bdf2d7dc4441e56865027764425e}{thermal}}(Array\ \&z,}
+\DoxyCodeLine{02070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ talus,}
+\DoxyCodeLine{02071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02072\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02073\ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{02074\ }
 \DoxyCodeLine{02076\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36a2eba6d158e44d0ef917d9582987fe}{thermal\_auto\_bedrock}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{02078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02081\ }
-\DoxyCodeLine{02083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36a2eba6d158e44d0ef917d9582987fe}{thermal\_auto\_bedrock}}(Array\ \&z,}
-\DoxyCodeLine{02084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float},}
-\DoxyCodeLine{02085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02080\ }
+\DoxyCodeLine{02082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36a2eba6d158e44d0ef917d9582987fe}{thermal\_auto\_bedrock}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{02084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{02087\ }
-\DoxyCodeLine{02089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a00b54f4e60a8fbd6ed5213600d598869}{thermal\_olsen}}(Array\ \&z,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations);}
-\DoxyCodeLine{02090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a00b54f4e60a8fbd6ed5213600d598869}{thermal\_olsen}}(Array\ \&z,\ Array\ *p\_mask,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations);}
-\DoxyCodeLine{02091\ }
-\DoxyCodeLine{02109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae57a1e9bd94f218d4be17c9d8be012c3}{thermal\_inflate}}(Array\ \&z,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations\ =\ 10);}
-\DoxyCodeLine{02110\ }
-\DoxyCodeLine{02111\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae57a1e9bd94f218d4be17c9d8be012c3}{thermal\_inflate}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{02113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10);\ }
-\DoxyCodeLine{02115\ }
-\DoxyCodeLine{02117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_afabf7cb3077839af03388c0d1236d912}{thermal\_rib}}(Array\ \&z,\ \textcolor{keywordtype}{int}\ iterations,\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02118\ }
-\DoxyCodeLine{02138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1489150d5e1af976a9f814b9911b3ea0}{thermal\_ridge}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02142\ }
-\DoxyCodeLine{02143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1489150d5e1af976a9f814b9911b3ea0}{thermal\_ridge}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a36a2eba6d158e44d0ef917d9582987fe}{thermal\_auto\_bedrock}}(Array\ \&z,}
+\DoxyCodeLine{02090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float},}
+\DoxyCodeLine{02091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02093\ }
+\DoxyCodeLine{02095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a00b54f4e60a8fbd6ed5213600d598869}{thermal\_olsen}}(Array\ \&z,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations);}
+\DoxyCodeLine{02096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a00b54f4e60a8fbd6ed5213600d598869}{thermal\_olsen}}(Array\ \&z,\ Array\ *p\_mask,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations);}
+\DoxyCodeLine{02097\ }
+\DoxyCodeLine{02115\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae57a1e9bd94f218d4be17c9d8be012c3}{thermal\_inflate}}(Array\ \&z,\ \textcolor{keyword}{const}\ Array\ \&talus,\ \textcolor{keywordtype}{int}\ iterations\ =\ 10);}
+\DoxyCodeLine{02116\ }
+\DoxyCodeLine{02117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae57a1e9bd94f218d4be17c9d8be012c3}{thermal\_inflate}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10);\ }
+\DoxyCodeLine{02121\ }
+\DoxyCodeLine{02123\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_afabf7cb3077839af03388c0d1236d912}{thermal\_rib}}(Array\ \&z,\ \textcolor{keywordtype}{int}\ iterations,\ Array\ *p\_bedrock\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02124\ }
+\DoxyCodeLine{02144\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1489150d5e1af976a9f814b9911b3ea0}{thermal\_ridge}}(Array\ \ \ \ \ \ \ \&z,}
 \DoxyCodeLine{02145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
 \DoxyCodeLine{02146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{02147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{02148\ }
-\DoxyCodeLine{02168\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab753c4abd819aa6945c1cfc5e25ccec4}{thermal\_scree}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&zmax,}
-\DoxyCodeLine{02171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02173\ }
+\DoxyCodeLine{02149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_a1489150d5e1af976a9f814b9911b3ea0}{thermal\_ridge}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{02154\ }
 \DoxyCodeLine{02174\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab753c4abd819aa6945c1cfc5e25ccec4}{thermal\_scree}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{02176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&zmax,}
-\DoxyCodeLine{02178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
-\DoxyCodeLine{02179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});\ }
-\DoxyCodeLine{02180\ }
-\DoxyCodeLine{02201\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae8a8da3d95deb978d813ce782a1492bb}{valley\_fill}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 100,}
-\DoxyCodeLine{02204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 2.f,}
-\DoxyCodeLine{02205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ ratio\ =\ 0.8f,}
-\DoxyCodeLine{02206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmin\ =\ 0.f,}
-\DoxyCodeLine{02207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmax\ =\ 0.f,}
-\DoxyCodeLine{02208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ elevation\_max\_ratio\ =\ 1.f,}
-\DoxyCodeLine{02209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ preserve\_elevation\_range\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{02210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02212\ }
-\DoxyCodeLine{02213\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae8a8da3d95deb978d813ce782a1492bb}{valley\_fill}}(Array\ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
-\DoxyCodeLine{02215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
-\DoxyCodeLine{02216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 100,}
-\DoxyCodeLine{02217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 2.f,}
-\DoxyCodeLine{02218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ ratio\ =\ 0.8f,}
-\DoxyCodeLine{02219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmin\ =\ 0.f,}
-\DoxyCodeLine{02220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmax\ =\ 0.f,}
-\DoxyCodeLine{02221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ elevation\_max\_ratio\ =\ 1.f,}
-\DoxyCodeLine{02222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ preserve\_elevation\_range\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{02223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02225\ }
-\DoxyCodeLine{02247\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a52a653b3b3be84e8ff2330f30a6b5bf3}{watershed\_ridge}}(}
-\DoxyCodeLine{02248\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02249\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amplitude\ =\ 0.2f,}
-\DoxyCodeLine{02250\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ 32.f,\ \textcolor{comment}{//\ pixels}}
-\DoxyCodeLine{02251\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edt\_exponent\ =\ 0.5f,}
-\DoxyCodeLine{02252\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefilter\_ir\ =\ 0,}
-\DoxyCodeLine{02253\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ fd\_method\ =\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FlowDirectionMethod::FDM\_D8}},}
-\DoxyCodeLine{02254\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02255\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02256\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_scaling\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02257\ }
-\DoxyCodeLine{02258\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a52a653b3b3be84e8ff2330f30a6b5bf3}{watershed\_ridge}}(}
-\DoxyCodeLine{02259\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \&z,}
-\DoxyCodeLine{02260\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_mask,}
-\DoxyCodeLine{02261\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amplitude\ =\ 0.2f,}
-\DoxyCodeLine{02262\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ 32.f,}
-\DoxyCodeLine{02263\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edt\_exponent\ =\ 0.5f,}
-\DoxyCodeLine{02264\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefilter\_ir\ =\ 0,}
-\DoxyCodeLine{02265\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ fd\_method\ =\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FlowDirectionMethod::FDM\_D8}},}
-\DoxyCodeLine{02266\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02267\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{02268\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_scaling\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{02269\ }
-\DoxyCodeLine{02270\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
+\DoxyCodeLine{02175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&zmax,}
+\DoxyCodeLine{02177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02179\ }
+\DoxyCodeLine{02180\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ab753c4abd819aa6945c1cfc5e25ccec4}{thermal\_scree}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&zmax,}
+\DoxyCodeLine{02184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 10,}
+\DoxyCodeLine{02185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{02186\ }
+\DoxyCodeLine{02207\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae8a8da3d95deb978d813ce782a1492bb}{valley\_fill}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 100,}
+\DoxyCodeLine{02210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 2.f,}
+\DoxyCodeLine{02211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ ratio\ =\ 0.8f,}
+\DoxyCodeLine{02212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmin\ =\ 0.f,}
+\DoxyCodeLine{02213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmax\ =\ 0.f,}
+\DoxyCodeLine{02214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ elevation\_max\_ratio\ =\ 1.f,}
+\DoxyCodeLine{02215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ preserve\_elevation\_range\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{02216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02218\ }
+\DoxyCodeLine{02219\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae8a8da3d95deb978d813ce782a1492bb}{valley\_fill}}(Array\ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_mask,}
+\DoxyCodeLine{02221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \&talus,}
+\DoxyCodeLine{02222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ iterations\ =\ 100,}
+\DoxyCodeLine{02223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ gamma\ =\ 2.f,}
+\DoxyCodeLine{02224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ ratio\ =\ 0.8f,}
+\DoxyCodeLine{02225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmin\ =\ 0.f,}
+\DoxyCodeLine{02226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ zmax\ =\ 0.f,}
+\DoxyCodeLine{02227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ elevation\_max\_ratio\ =\ 1.f,}
+\DoxyCodeLine{02228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ preserve\_elevation\_range\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{02229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ *p\_noise\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ *p\_deposition\_map\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02231\ }
+\DoxyCodeLine{02253\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a52a653b3b3be84e8ff2330f30a6b5bf3}{watershed\_ridge}}(}
+\DoxyCodeLine{02254\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02255\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amplitude\ =\ 0.2f,}
+\DoxyCodeLine{02256\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ 32.f,\ \textcolor{comment}{//\ pixels}}
+\DoxyCodeLine{02257\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edt\_exponent\ =\ 0.5f,}
+\DoxyCodeLine{02258\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefilter\_ir\ =\ 0,}
+\DoxyCodeLine{02259\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ fd\_method\ =\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FlowDirectionMethod::FDM\_D8}},}
+\DoxyCodeLine{02260\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02261\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02262\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_scaling\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02263\ }
+\DoxyCodeLine{02264\ Array\ \mbox{\hyperlink{namespacehmap_1_1gpu_a52a653b3b3be84e8ff2330f30a6b5bf3}{watershed\_ridge}}(}
+\DoxyCodeLine{02265\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ \&z,}
+\DoxyCodeLine{02266\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_mask,}
+\DoxyCodeLine{02267\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amplitude\ =\ 0.2f,}
+\DoxyCodeLine{02268\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ 32.f,}
+\DoxyCodeLine{02269\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edt\_exponent\ =\ 0.5f,}
+\DoxyCodeLine{02270\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefilter\_ir\ =\ 0,}
+\DoxyCodeLine{02271\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2f}{FlowDirectionMethod}}\ fd\_method\ =\ \mbox{\hyperlink{namespacehmap_a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894}{FlowDirectionMethod::FDM\_D8}},}
+\DoxyCodeLine{02272\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_x\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02273\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_noise\_y\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{02274\ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \ \ \ *p\_scaling\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{02275\ }
+\DoxyCodeLine{02276\ \}\ \textcolor{comment}{//\ namespace\ hmap::gpu}}
 
 \end{DoxyCode}

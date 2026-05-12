@@ -148,6 +148,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8497e2fce595293ea07e68eac1e5bce2" id="r_a8497e2fce595293ea07e68eac1e5bce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2">deposition_fill_holes</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int deposition_ir, float deposition_strength, int iterations=1)</td></tr>
 <tr class="memdesc:a8497e2fce595293ea07e68eac1e5bce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill holes using Gaussian-based deposition.  <br /></td></tr>
 <tr class="separator:a8497e2fce595293ea07e68eac1e5bce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67fee4e11fb0b003d0ebb091e85533fe" id="r_a67fee4e11fb0b003d0ebb091e85533fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a67fee4e11fb0b003d0ebb091e85533fe">deposition_fill_holes</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int deposition_ir, float deposition_strength, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int iterations=1)</td></tr>
+<tr class="memdesc:a67fee4e11fb0b003d0ebb091e85533fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
+<tr class="separator:a67fee4e11fb0b003d0ebb091e85533fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae084938139cca4f7c15866ceabe18ab7" id="r_ae084938139cca4f7c15866ceabe18ab7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hydraulic_particle</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int nparticles, <a class="el" href="array_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> seed, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_moisture_map=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_elevation_shift=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_erosion_map=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr, float c_capacity=10.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_erosion=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_deposition=0.05<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_inertia=0.1<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float c_gravity=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float drag_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float evap_rate=0.001<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, bool enable_directional_bias=false, float angle_bias=30.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:ae084938139cca4f7c15866ceabe18ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates hydraulic erosion on a heightmap using particle-based flow.  <br /></td></tr>
 <tr class="separator:ae084938139cca4f7c15866ceabe18ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1032,7 +1035,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a8497e2fce595293ea07e68eac1e5bce2" name="a8497e2fce595293ea07e68eac1e5bce2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8497e2fce595293ea07e68eac1e5bce2">&#9670;&#160;</a></span>deposition_fill_holes()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8497e2fce595293ea07e68eac1e5bce2">&#9670;&#160;</a></span>deposition_fill_holes() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1080,6 +1083,54 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a67fee4e11fb0b003d0ebb091e85533fe" name="a67fee4e11fb0b003d0ebb091e85533fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67fee4e11fb0b003d0ebb091e85533fe">&#9670;&#160;</a></span>deposition_fill_holes() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::deposition_fill_holes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>deposition_ir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deposition_strength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
 
 </div>
 </div>
@@ -1275,7 +1326,7 @@ Functions</h2></td></tr>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a00b8f7462c1e22b1da8a67ec62d4c8c8"><div class="ttname"><a href="classhmap_1_1Array.html#a00b8f7462c1e22b1da8a67ec62d4c8c8">hmap::Array::dump</a></div><div class="ttdeci">void dump(const std::string &amp;fname=&quot;out.png&quot;) const</div><div class="ttdoc">Debug tool, dump some infos and generate an output file (16bits grayscale)</div><div class="ttdef"><b>Definition</b> methods.cpp:107</div></div>
-<div class="ttc" id="anamespacehmap_1_1gpu_html_ae084938139cca4f7c15866ceabe18ab7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, uint seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, const Array *p_elevation_shift=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.1f, float c_gravity=1.f, float drag_rate=0.001f, float evap_rate=0.001f, bool enable_directional_bias=false, float angle_bias=30.f)</div><div class="ttdoc">Simulates hydraulic erosion on a heightmap using particle-based flow.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:13</div></div>
+<div class="ttc" id="anamespacehmap_1_1gpu_html_ae084938139cca4f7c15866ceabe18ab7"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7">hmap::gpu::hydraulic_particle</a></div><div class="ttdeci">void hydraulic_particle(Array &amp;z, int nparticles, uint seed, const Array *p_bedrock=nullptr, const Array *p_moisture_map=nullptr, const Array *p_elevation_shift=nullptr, Array *p_erosion_map=nullptr, Array *p_deposition_map=nullptr, float c_capacity=10.f, float c_erosion=0.05f, float c_deposition=0.05f, float c_inertia=0.1f, float c_gravity=1.f, float drag_rate=0.001f, float evap_rate=0.001f, bool enable_directional_bias=false, float angle_bias=30.f)</div><div class="ttdoc">Simulates hydraulic erosion on a heightmap using particle-based flow.</div><div class="ttdef"><b>Definition</b> erosion_gpu.cpp:14</div></div>
 <div class="ttc" id="anamespacehmap_html_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961"><div class="ttname"><a href="namespacehmap.html#a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961">hmap::PRIM_CONE_SMOOTH</a></div><div class="ttdeci">@ PRIM_CONE_SMOOTH</div><div class="ttdef"><b>Definition</b> primitives.hpp:57</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::TERRAIN</a></div><div class="ttdeci">@ TERRAIN</div><div class="ttdef"><b>Definition</b> colormaps.hpp:92</div></div>
 <div class="ttc" id="anamespacehmap_html_ae3ecf5f88476c5d49978a130f8cab2f3"><div class="ttname"><a href="namespacehmap.html#ae3ecf5f88476c5d49978a130f8cab2f3">hmap::bulkify</a></div><div class="ttdeci">Array bulkify(const Array &amp;z, const PrimitiveType &amp;primitive_type, float amp=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies a primitive-based displacement to an array.</div><div class="ttdef"><b>Definition</b> bulkify.cpp:11</div></div>

@@ -23,6 +23,7 @@ var namespacehmap =
       [ "level_set_curvature", "namespacehmap_1_1gpu.html#a125118b55d309727ff0b46d686fd3829", null ],
       [ "curvature_quadric", "namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
       [ "deposition_fill_holes", "namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2", null ],
+      [ "deposition_fill_holes", "namespacehmap_1_1gpu.html#a67fee4e11fb0b003d0ebb091e85533fe", null ],
       [ "hydraulic_particle", "namespacehmap_1_1gpu.html#ae084938139cca4f7c15866ceabe18ab7", null ],
       [ "hydraulic_particle", "namespacehmap_1_1gpu.html#a24498e2366d9797fe9e585f494bff98f", null ],
       [ "hydraulic_procedural", "namespacehmap_1_1gpu.html#afbecd3a8ce025fb08ca3296ce81f695d", null ],
