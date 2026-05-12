@@ -94,6 +94,34 @@
 \DoxyCodeLine{00377\ }
 \DoxyCodeLine{00390\ Array\ \mbox{\hyperlink{namespacehmap_a462f8b6ebc7b8ab79c619987e0ddfce4}{vstack}}(\textcolor{keyword}{const}\ Array\ \&array1,\ \textcolor{keyword}{const}\ Array\ \&array2);}
 \DoxyCodeLine{00391\ }
-\DoxyCodeLine{00392\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00392\ \textcolor{comment}{//\ ===\ HELPERS}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00405\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Fn>}
+\DoxyCodeLine{00406\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a2091b67a724a6eb280a4ca99553b6edb}{apply\_with\_mask}}(\mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_mask,\ Fn\ \&\&fn)}
+\DoxyCodeLine{00407\ \{}
+\DoxyCodeLine{00408\ \ \ \textcolor{keywordflow}{if}\ (!p\_mask)}
+\DoxyCodeLine{00409\ \ \ \{}
+\DoxyCodeLine{00410\ \ \ \ \ fn(array);}
+\DoxyCodeLine{00411\ \ \ \}}
+\DoxyCodeLine{00412\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00413\ \ \ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ result\ =\ array;}
+\DoxyCodeLine{00415\ \ \ \ \ fn(result);}
+\DoxyCodeLine{00416\ \ \ \ \ array\ =\ \mbox{\hyperlink{namespacehmap_ac14815cf025b7430d31d08125a5c6f0d}{lerp}}(array,\ result,\ *p\_mask);}
+\DoxyCodeLine{00417\ \ \ \}}
+\DoxyCodeLine{00418\ \}}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00432\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Fn>}
+\DoxyCodeLine{00433\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \mbox{\hyperlink{namespacehmap_a7f6f419f3cc6f376344611faef5ad440}{transform\_with\_mask}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&array,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ *p\_mask,\ Fn\ \&\&fn)}
+\DoxyCodeLine{00434\ \{}
+\DoxyCodeLine{00435\ \ \ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ result\ =\ fn(array);}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \textcolor{keywordflow}{if}\ (p\_mask)}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacehmap_ac14815cf025b7430d31d08125a5c6f0d}{lerp}}(array,\ result,\ *p\_mask);}
+\DoxyCodeLine{00439\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00441\ \}}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

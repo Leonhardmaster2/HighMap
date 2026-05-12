@@ -17,5 +17,7 @@ var operator_8hpp =
     [ "rescale_vector", "operator_8hpp.html#a20f9714aa8853d2971fa627750226985", null ],
     [ "rescaled_vector", "operator_8hpp.html#a43889ea697d52a1da5cdab14d446e794", null ],
     [ "swap", "operator_8hpp.html#a81ae845564fe0e6f2f641451c063bc65", null ],
-    [ "vstack", "operator_8hpp.html#a462f8b6ebc7b8ab79c619987e0ddfce4", null ]
+    [ "vstack", "operator_8hpp.html#a462f8b6ebc7b8ab79c619987e0ddfce4", null ],
+    [ "apply_with_mask", "operator_8hpp.html#a2091b67a724a6eb280a4ca99553b6edb", null ],
+    [ "transform_with_mask", "operator_8hpp.html#a7f6f419f3cc6f376344611faef5ad440", null ]
 ];
