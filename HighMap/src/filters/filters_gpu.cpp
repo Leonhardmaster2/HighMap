@@ -9,6 +9,7 @@
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap::gpu
 {
@@ -131,14 +132,10 @@ void gamma_correction_local(Array       &array,
                             const Array *p_mask,
                             float        k)
 {
-  if (!p_mask)
-    gpu::gamma_correction_local(array, gamma, ir, k);
-  else
-  {
-    Array array_f = array;
-    gpu::gamma_correction_local(array_f, gamma, ir, k);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { gpu::gamma_correction_local(a, gamma, ir, k); });
 }
 
 void laplace(Array &array, float sigma, int iterations)
@@ -220,14 +217,11 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
-  if (!p_mask)
-    return gpu::mean_shift(array, ir, talus, iterations, talus_weighted);
-  else
-  {
-    Array array_f = array;
-    gpu::mean_shift(array_f, ir, talus, iterations, talus_weighted);
-    return lerp(array, array_f, *p_mask);
-  }
+  return transform_with_mask(
+      array,
+      p_mask,
+      [&](const Array &a)
+      { return gpu::mean_shift(a, ir, talus, iterations, talus_weighted); });
 }
 
 void median_3x3(Array &array)
@@ -245,14 +239,7 @@ void median_3x3(Array &array)
 
 void median_3x3(Array &array, const Array *p_mask)
 {
-  if (!p_mask)
-    gpu::median_3x3(array);
-  else
-  {
-    Array array_f = array;
-    gpu::median_3x3(array_f);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { gpu::median_3x3(a); });
 }
 
 Array median_pseudo(const Array &array, int ir)
@@ -399,16 +386,11 @@ Array project_talus_along_direction(const Array &array,
                                     int          direction,
                                     float        vmin)
 {
-  if (!p_mask)
-  {
-    return project_talus_along_direction(array, talus, direction, vmin);
-  }
-  else
-  {
-    Array array_f = array;
-    array_f = project_talus_along_direction(array_f, talus, direction, vmin);
-    return lerp(array, array_f, *(p_mask));
-  }
+ return transform_with_mask(
+      array,
+      p_mask,
+      [&](const Array &a)
+      { return project_talus_along_direction(a, talus, direction, vmin); });
 }
 
 void shrink(Array &array, int ir, int iterations)
@@ -636,12 +618,10 @@ void smooth_fill(Array       &array,
                  float        k,
                  Array       *p_deposition_map)
 {
-  Array array_bckp = array;
-
-  gpu::smooth_cpulse(array, ir, p_mask);
-  array = gpu::maximum_smooth(array, array_bckp, k);
-
-  if (p_deposition_map) *p_deposition_map = maximum(array - array_bckp, 0.f);
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { gpu::smooth_fill(a, ir, k, p_deposition_map); });
 }
 
 void smooth_fill_holes(Array &array, int ir)
@@ -662,14 +642,9 @@ void smooth_fill_holes(Array &array, int ir)
 
 void smooth_fill_holes(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    gpu::smooth_fill_holes(array, ir);
-  else
-  {
-    Array array_f = array;
-    gpu::smooth_fill_holes(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gpu::smooth_fill_holes(a, ir); });
 }
 
 void smooth_fill_smear_peaks(Array &array, int ir)
@@ -690,14 +665,9 @@ void smooth_fill_smear_peaks(Array &array, int ir)
 
 void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    gpu::smooth_fill_smear_peaks(array, ir);
-  else
-  {
-    Array array_f = array;
-    gpu::smooth_fill_smear_peaks(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gpu::smooth_fill_smear_peaks(a, ir); });
 }
 
 } // namespace hmap::gpu

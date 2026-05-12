@@ -389,4 +389,55 @@ void swap(Array &a, Array &b);
  */
 Array vstack(const Array &array1, const Array &array2);
 
+// === HELPERS
+
+/**
+ * @brief Applies a transformation function with optional masked blending.
+ *
+ * If `p_mask` is null, the function operates directly on `array` in-place.
+ * Otherwise, the transformation is applied on a temporary copy and blended back
+ * into `array` using the mask values.
+ *
+ * @param array  Input/output array to modify.
+ * @param p_mask Optional mask controlling interpolation strength.
+ * @param fn     Transformation function operating in-place on an Array.
+ */
+template <typename Fn>
+void apply_with_mask(Array &array, const Array *p_mask, Fn &&fn)
+{
+  if (!p_mask)
+  {
+    fn(array);
+  }
+  else
+  {
+    Array result = array;
+    fn(result);
+    array = lerp(array, result, *p_mask);
+  }
+}
+
+/**
+ * @brief Applies a transformation function with optional masked blending.
+ *
+ * The function computes a transformed array using `fn(array)`. If `p_mask`
+ * is provided, the result is blended with the original array using the mask
+ * values.
+ *
+ * @param  array  Input array.
+ * @param  p_mask Optional mask controlling interpolation strength.
+ * @param  fn     Transformation function returning a new Array.
+ * @return        The transformed (and optionally blended) array.
+ */
+template <typename Fn>
+Array transform_with_mask(const Array &array, const Array *p_mask, Fn &&fn)
+{
+  Array result = fn(array);
+
+  if (p_mask)
+    return lerp(array, result, *p_mask);
+  else
+    return result;
+}
+
 } // namespace hmap

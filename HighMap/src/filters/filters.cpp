@@ -35,14 +35,7 @@ void equalize(Array &array)
 
 void equalize(Array &array, const Array *p_mask)
 {
-  if (!p_mask)
-    equalize(array);
-  else
-  {
-    Array array_f = array;
-    equalize(array_f);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [](Array &a) { equalize(a); });
 }
 
 void expand(Array &array, int ir, int iterations)
@@ -78,14 +71,7 @@ void expand(Array &array, int ir, int iterations)
 
 void expand(Array &array, int ir, const Array *p_mask, int iterations)
 {
-  if (!p_mask)
-    expand(array, ir, iterations);
-  else
-  {
-    Array array_f = array;
-    expand(array_f, ir, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { expand(a, ir, iterations); });
 }
 
 void expand(Array &array, const Array &kernel, int iterations)
@@ -127,14 +113,9 @@ void expand(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
-  if (!p_mask)
-    expand(array, kernel, iterations);
-  else
-  {
-    Array array_f = array;
-    expand(array_f, kernel, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { expand(a, kernel, iterations); });
 }
 
 void expand_directional(Array       &array,
@@ -188,14 +169,7 @@ void gain(Array &array, float factor)
 
 void gain(Array &array, float factor, const Array *p_mask)
 {
-  if (!p_mask)
-    gain(array, factor);
-  else
-  {
-    Array array_f = array;
-    gain(array_f, factor);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { gain(a, factor); });
 }
 
 void gamma_correction(Array &array, float gamma)
@@ -210,14 +184,7 @@ void gamma_correction(Array &array, float gamma)
 
 void gamma_correction(Array &array, float gamma, const Array *p_mask)
 {
-  if (!p_mask)
-    gamma_correction(array, gamma);
-  else
-  {
-    Array array_f = array;
-    gamma_correction(array, gamma);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { gamma_correction(a, gamma); });
 }
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
@@ -259,14 +226,9 @@ void gamma_correction_local(Array       &array,
                             const Array *p_mask,
                             float        k)
 {
-  if (!p_mask)
-    gamma_correction_local(array, gamma, ir, k);
-  else
-  {
-    Array array_f = array;
-    gamma_correction_local(array_f, gamma, ir, k);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gamma_correction_local(a, gamma, ir, k); });
 }
 
 void kuwahara(Array &array, int ir, float mix_ratio)
@@ -317,15 +279,9 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 
 void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 {
-  if (!p_mask)
-    kuwahara(array, ir, mix_ratio);
-  else
-  {
-    Array array_f = array;
-    float forced_mix_ratio = 1.f;
-    kuwahara(array_f, ir, forced_mix_ratio);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { kuwahara(a, ir, p_mask ? 1.f : mix_ratio); });
 }
 
 void laplace(Array &array, float sigma, int iterations)
@@ -366,14 +322,9 @@ void laplace(Array &array, float sigma, int iterations)
 
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {
-  if (!p_mask)
-    laplace(array, sigma, iterations);
-  else
-  {
-    Array array_f = array;
-    laplace(array_f, sigma, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { laplace(a, sigma, iterations); });
 }
 
 void laplace_edge_preserving(Array &array,
@@ -402,14 +353,10 @@ void laplace_edge_preserving(Array       &array,
                              float        sigma,
                              int          iterations)
 {
-  if (!p_mask)
-    laplace_edge_preserving(array, talus, sigma, iterations);
-  else
-  {
-    Array array_f = array;
-    laplace_edge_preserving(array_f, talus, sigma, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { laplace_edge_preserving(a, talus, sigma, iterations); });
 }
 
 void low_pass_high_order(Array &array, int order, float sigma)
@@ -546,14 +493,11 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
-  if (!p_mask)
-    return mean_shift(array, ir, talus, iterations, talus_weighted);
-  else
-  {
-    Array array_f = array;
-    mean_shift(array_f, ir, talus, iterations, talus_weighted);
-    return lerp(array, array_f, *p_mask);
-  }
+  return transform_with_mask(
+      array,
+      p_mask,
+      [&](const Array &a)
+      { return mean_shift(a, ir, talus, iterations, talus_weighted); });
 }
 
 void median_3x3(Array &array)
@@ -586,14 +530,7 @@ void median_3x3(Array &array)
 
 void median_3x3(Array &array, const Array *p_mask)
 {
-  if (!p_mask)
-    median_3x3(array);
-  else
-  {
-    Array array_f = array;
-    median_3x3(array_f);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [](Array &a) { median_3x3(a); });
 }
 
 Array median_pseudo(const Array &array, int ir)
@@ -642,14 +579,10 @@ void normal_displacement(Array       &array,
                          int          ir,
                          bool         reverse)
 {
-  if (!p_mask)
-    normal_displacement(array, amount, ir, reverse);
-  else
-  {
-    Array array_f = array;
-    normal_displacement(array_f, amount, ir, reverse);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { normal_displacement(a, amount, ir, reverse); });
 }
 
 void plateau(Array &array, int ir, float factor)
@@ -668,14 +601,7 @@ void plateau(Array &array, int ir, float factor)
 
 void plateau(Array &array, const Array *p_mask, int ir, float factor)
 {
-  if (!p_mask)
-    plateau(array, ir, factor);
-  else
-  {
-    Array array_f = array;
-    plateau(array_f, ir, factor);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { plateau(a, ir, factor); });
 }
 
 void reverse_above_theshold(Array       &array,
@@ -723,14 +649,11 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
-  if (!p_mask)
-    reverse_above_theshold(array, threshold, scaling, transition_extent);
-  else
-  {
-    Array array_f = array;
-    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(
+      array,
+      p_mask,
+      [&](Array &a)
+      { reverse_above_theshold(a, threshold, scaling, transition_extent); });
 }
 
 void reverse_above_theshold(Array       &array,
@@ -739,14 +662,11 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
-  if (!p_mask)
-    reverse_above_theshold(array, threshold, scaling, transition_extent);
-  else
-  {
-    Array array_f = array;
-    reverse_above_theshold(array_f, threshold, scaling, transition_extent);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(
+      array,
+      p_mask,
+      [&](Array &a)
+      { reverse_above_theshold(a, threshold, scaling, transition_extent); });
 }
 
 void sharpen(Array &array, float ratio)
@@ -765,14 +685,7 @@ void sharpen(Array &array, float ratio)
 
 void sharpen(Array &array, const Array *p_mask, float ratio)
 {
-  if (!p_mask)
-    sharpen(array, ratio);
-  else
-  {
-    Array array_f = array;
-    sharpen(array_f, ratio);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { sharpen(a, ratio); });
 }
 
 void sharpen_cone(Array &array, int ir, float scale)
@@ -784,14 +697,7 @@ void sharpen_cone(Array &array, int ir, float scale)
 
 void sharpen_cone(Array &array, const Array *p_mask, int ir, float scale)
 {
-  if (!p_mask)
-    sharpen_cone(array, ir, scale);
-  else
-  {
-    Array array_f = array;
-    sharpen_cone(array_f, ir, scale);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { sharpen_cone(a, ir, scale); });
 }
 
 void shrink(Array &array, int ir, int iterations)
@@ -804,14 +710,7 @@ void shrink(Array &array, int ir, int iterations)
 
 void shrink(Array &array, int ir, const Array *p_mask, int iterations)
 {
-  if (!p_mask)
-    shrink(array, ir, iterations);
-  else
-  {
-    Array array_f = array;
-    shrink(array_f, ir, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { shrink(a, ir, iterations); });
 }
 
 void shrink(Array &array, const Array &kernel, int iterations)
@@ -827,14 +726,9 @@ void shrink(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
-  if (!p_mask)
-    shrink(array, kernel, iterations);
-  else
-  {
-    Array array_f = array;
-    shrink(array_f, kernel, iterations);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { shrink(a, kernel, iterations); });
 }
 
 void shrink_directional(Array       &array,
@@ -879,14 +773,7 @@ void smooth_cone(Array &array, int ir)
 
 void smooth_cone(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smooth_cone(array, ir);
-  else
-  {
-    Array array_f = array;
-    smooth_cone(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { smooth_cone(a, ir); });
 }
 
 void smooth_cpulse(Array &array, int ir)
@@ -917,14 +804,7 @@ void smooth_cpulse(Array &array, int ir)
 
 void smooth_cpulse(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smooth_cpulse(array, ir);
-  else
-  {
-    Array array_f = array;
-    smooth_cpulse(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { smooth_cpulse(a, ir); });
 }
 
 void smooth_cpulse_edge_removing(Array &array,
@@ -961,6 +841,7 @@ void smooth_gaussian(Array &array, int ir)
   float sum = 0.f;
   float sig2 = (float)(ir * ir);
   float x0 = (float)nk / 2.f;
+
   for (int i = 0; i < nk; i++)
   {
     float x = (float)i - x0;
@@ -981,14 +862,7 @@ void smooth_gaussian(Array &array, int ir)
 
 void smooth_gaussian(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smooth_gaussian(array, ir);
-  else
-  {
-    Array array_f = array;
-    smooth_gaussian(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { smooth_gaussian(a, ir); });
 }
 
 void smooth_fill(Array &array, int ir, float k, Array *p_deposition_map)
@@ -1016,14 +890,9 @@ void smooth_fill(Array       &array,
                  float        k,
                  Array       *p_deposition_map)
 {
-  if (!p_mask)
-    smooth_fill(array, ir, k, p_deposition_map);
-  else
-  {
-    Array array_f = array;
-    smooth_fill(array_f, ir, k, p_deposition_map);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { smooth_fill(a, ir, k, p_deposition_map); });
 }
 
 void smooth_fill_holes(Array &array, int ir)
@@ -1044,14 +913,7 @@ void smooth_fill_holes(Array &array, int ir)
 
 void smooth_fill_holes(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smooth_fill_holes(array, ir);
-  else
-  {
-    Array array_f = array;
-    smooth_fill_holes(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { smooth_fill_holes(a, ir); });
 }
 
 void smooth_fill_smear_peaks(Array &array, int ir)
@@ -1072,14 +934,9 @@ void smooth_fill_smear_peaks(Array &array, int ir)
 
 void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smooth_fill_smear_peaks(array, ir);
-  else
-  {
-    Array array_f = array;
-    smooth_fill_smear_peaks(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { smooth_fill_smear_peaks(a, ir); });
 }
 
 void smoothstep_local(Array &array, int ir)
@@ -1100,14 +957,7 @@ void smoothstep_local(Array &array, int ir)
 
 void smoothstep_local(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-    smoothstep_local(array, ir);
-  else
-  {
-    Array array_f = array;
-    smoothstep_local(array_f, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { smoothstep_local(a, ir); });
 }
 
 void steepen(Array &array, float scale, int ir)
@@ -1123,14 +973,7 @@ void steepen(Array &array, float scale, int ir)
 
 void steepen(Array &array, float scale, const Array *p_mask, int ir)
 {
-  if (!p_mask)
-    steepen(array, scale, ir);
-  else
-  {
-    Array array_f = array;
-    steepen(array_f, scale, ir);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { steepen(a, scale, ir); });
 }
 
 void steepen_convective(Array &array,
@@ -1173,14 +1016,10 @@ void steepen_convective(Array       &array,
                         int          ir,
                         float        dt)
 {
-  if (!p_mask)
-    steepen_convective(array, angle, iterations, ir, dt);
-  else
-  {
-    Array array_f = array;
-    steepen_convective(array_f, angle, iterations, ir, dt);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { steepen_convective(a, angle, iterations, ir, dt); });
 }
 
 void terrace(Array       &array,
@@ -1259,14 +1098,11 @@ void terrace(Array       &array,
              float        vmin,
              float        vmax)
 {
-  if (!p_mask)
-    terrace(array, seed, nlevels, gain, noise_ratio, p_noise, vmin, vmax);
-  else
-  {
-    Array array_f = array;
-    terrace(array_f, seed, nlevels, gain, noise_ratio, p_noise, vmin, vmax);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(
+      array,
+      p_mask,
+      [&](Array &a)
+      { terrace(a, seed, nlevels, gain, noise_ratio, p_noise, vmin, vmax); });
 }
 
 } // namespace hmap
