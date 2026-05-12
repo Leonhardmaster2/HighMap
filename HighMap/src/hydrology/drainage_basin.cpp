@@ -84,11 +84,11 @@ void DrainageBasin::compute_receivers()
   const auto                         &points = this->mesh.get_points();
 
 #pragma omp parallel for schedule(static)
-  for (size_t k = 0; k < n; ++k)
+  for (int k = 0; k < int(n); ++k)
   {
     if (this->outlets_mask[k])
     {
-      this->receivers[k] = k;
+      this->receivers[k] = size_t(k);
       continue;
     }
 
@@ -132,11 +132,11 @@ void DrainageBasin::compute_receivers(unsigned int seed, float noise_strength)
     // --- main loop
 
 #pragma omp parallel for schedule(static)
-  for (size_t k = 0; k < n; ++k)
+  for (int k = 0; k < int(n); ++k)
   {
     if (this->outlets_mask[k])
     {
-      this->receivers[k] = k; // mark as self-receiver
+      this->receivers[k] = size_t(k); // mark as self-receiver
       continue;
     }
 
@@ -177,7 +177,6 @@ std::vector<size_t> DrainageBasin::compute_strahler_order() const
   std::vector<size_t> max_child(n, 0);
   std::vector<size_t> count_max(n, 0);
 
-#pragma omp parallel for schedule(static)
   for (size_t o : this->get_outlets())
   {
     const auto &traversal = this->traversals.at(o);
@@ -606,7 +605,7 @@ float DrainageBasin::update_elevations(const std::vector<float> &response_times,
   // of nodes, so points[i].z writes never conflict across threads.
 
 #pragma omp parallel for schedule(static) reduction(+ : delta_sum)
-  for (size_t oi = 0; oi < n_outlets; ++oi)
+  for (int oi = 0; oi < int(n_outlets); ++oi)
   {
     const size_t outlet = outlets[oi];
     const auto  &traversal = this->traversals.at(outlet);
@@ -675,11 +674,9 @@ void DrainageBasin::update_traversals()
     this->traversals[o];
 
 #pragma omp parallel for schedule(static)
-  for (size_t oi = 0; oi < n_outlets; ++oi)
+  for (int oi = 0; oi < int(n_outlets); ++oi)
   {
-    size_t o = outlets[oi];
-    // for (const auto &o : outlets)
-    // {
+    size_t              o = outlets[oi];
     std::vector<size_t> traversal;
     traversal.reserve(reserve_size);
     traversal.push_back(o);
