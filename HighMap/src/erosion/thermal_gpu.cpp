@@ -75,14 +75,11 @@ void thermal(Array       &z,
              Array       *p_bedrock,
              Array       *p_deposition_map)
 {
-  if (!p_mask)
-    gpu::thermal(z, talus, iterations, p_bedrock, p_deposition_map);
-  else
-  {
-    Array z_f = z;
-    gpu::thermal(z_f, talus, iterations, p_bedrock, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a)
+      { gpu::thermal(a, talus, iterations, p_bedrock, p_deposition_map); });
 }
 
 void thermal(Array &z,
@@ -144,14 +141,11 @@ void thermal_auto_bedrock(Array       &z,
                           int          iterations,
                           Array       *p_deposition_map)
 {
-  if (!p_mask)
-    gpu::thermal_auto_bedrock(z, talus, iterations, p_deposition_map);
-  else
-  {
-    Array z_f = z;
-    gpu::thermal_auto_bedrock(z_f, talus, iterations, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a)
+      { gpu::thermal_auto_bedrock(a, talus, iterations, p_deposition_map); });
 }
 
 void thermal_inflate(Array &z, const Array &talus, int iterations)
@@ -177,14 +171,10 @@ void thermal_inflate(Array       &z,
                      const Array &talus,
                      int          iterations)
 {
-  if (!p_mask)
-    gpu::thermal_inflate(z, talus, iterations);
-  else
-  {
-    Array z_f = z;
-    gpu::thermal_inflate(z_f, talus, iterations);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  { gpu::thermal_inflate(a, talus, iterations); });
 }
 
 void thermal_olsen(Array &z, const Array &talus, int iterations)
@@ -205,21 +195,17 @@ void thermal_olsen(Array &z, const Array &talus, int iterations)
   extrapolate_borders(z);
 }
 
-void thermal_olsen(Array &z, Array *p_mask, const Array &talus, int iterations)
+void thermal_olsen(Array       &z,
+                   const Array *p_mask,
+                   const Array &talus,
+                   int          iterations)
 {
-  if (!p_mask)
-  {
-    gpu::thermal_olsen(z, talus, iterations);
-  }
-  else
-  {
-    Array z_f = z;
-    gpu::thermal_olsen(z_f, talus, iterations);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a) { gpu::thermal_olsen(a, talus, iterations); });
 }
 
-void thermal_rib(Array &z, int iterations, Array *p_bedrock)
+void thermal_rib(Array &z, int iterations)
 {
   auto run = clwrapper::Run("thermal_rib");
 
@@ -270,14 +256,11 @@ void thermal_ridge(Array       &z,
                    int          iterations,
                    Array       *p_deposition_map)
 {
-  if (!p_mask)
-    gpu::thermal_ridge(z, talus, iterations, p_deposition_map);
-  else
-  {
-    Array z_f = z;
-    gpu::thermal_ridge(z_f, talus, iterations, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a) {
+                    gpu::thermal_ridge(a, talus, iterations, p_deposition_map);
+                  });
 }
 
 void thermal_scree(Array       &z,
@@ -316,16 +299,11 @@ void thermal_scree(Array       &z,
                    int          iterations,
                    Array       *p_deposition_map)
 {
-  if (!p_mask)
-  {
-    gpu::thermal_scree(z, talus, zmax, iterations, p_deposition_map);
-  }
-  else
-  {
-    Array z_f = z;
-    gpu::thermal_scree(z_f, talus, zmax, iterations, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a)
+      { gpu::thermal_scree(a, talus, zmax, iterations, p_deposition_map); });
 }
 
 } // namespace hmap::gpu

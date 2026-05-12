@@ -10,9 +10,8 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/math.hpp"
+#include "highmap/operator.hpp"
 #include "highmap/range.hpp"
-
-#include "macrologger.h"
 
 namespace hmap
 {
@@ -178,14 +177,11 @@ void thermal(Array       &z,
              Array       *p_bedrock,
              Array       *p_deposition_map)
 {
-  if (!p_mask)
-    thermal(z, talus, iterations, p_bedrock, p_deposition_map);
-  else
-  {
-    Array z_f = z;
-    thermal(z_f, talus, iterations, p_bedrock, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a) {
+                    thermal(a, talus, iterations, p_bedrock, p_deposition_map);
+                  });
 }
 
 // uniform talus limit, no bedrock
@@ -250,20 +246,18 @@ void thermal_auto_bedrock(Array &z,
   thermal_auto_bedrock(z, talus_map, iterations, p_deposition_map);
 }
 
-void thermal_auto_bedrock(Array &z,
-                          Array *p_mask,
-                          float  talus,
-                          int    iterations,
-                          Array *p_deposition_map)
+void thermal_auto_bedrock(Array       &z,
+                          const Array *p_mask,
+                          float        talus,
+                          int          iterations,
+                          Array       *p_deposition_map)
 {
-  if (!p_mask)
-    thermal_auto_bedrock(z, talus, iterations, p_deposition_map);
-  else
-  {
-    Array z_f = z;
-    thermal_auto_bedrock(z_f, talus, iterations, p_deposition_map);
-    z = lerp(z, z_f, *(p_mask));
-  }
+
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a)
+      { thermal_auto_bedrock(a, talus, iterations, p_deposition_map); });
 }
 
 } // namespace hmap

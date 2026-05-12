@@ -2123,7 +2123,7 @@ void thermal_inflate(Array       &z,
                      int          iterations = 10); ///< @overload
 
 /*! @brief See hmap::thermal_rib */
-void thermal_rib(Array &z, int iterations, Array *p_bedrock = nullptr);
+void thermal_rib(Array &z, int iterations);
 
 /**
  * @brief Apply thermal weathering erosion to give a ridge like effect.
