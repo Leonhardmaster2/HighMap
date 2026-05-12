@@ -621,25 +621,33 @@ void water_depth_dry_out(Array       &water_depth,
                          float depth_max = std::numeric_limits<float>::max());
 
 /**
- * @brief Simulates the increase in water depth over a terrain.
+ * @brief Simulates a local increase in water depth without global reflooding.
  *
- * This function propagates additional water depth over a terrain elevation map
- * (`z`), starting from cells that already contain water. The propagation occurs
- * only in the upward direction (i.e., to higher elevation cells) and considers
- * 8-neighbor connectivity. It effectively models how water would expand when
- * its level rises by `additional_depth`.
+ * This function propagates an additional water depth over a terrain elevation
+ * map (`z`), starting only from cells that already contain water in the input
+ * `water_depth` array. The propagation is restricted to neighboring cells of
+ * higher elevation (8-connectivity), preventing the formation of entirely new
+ * flooded basins disconnected from the original water region.
  *
- * @param  water_depth      Input array representing the base water depth.
+ * Unlike water_depth_increase_with_flooding(), this function does not perform a
+ * full flooding simulation of the domain. It is primarily intended for
+ * expanding or softening an existing water mask slightly beyond the current
+ * shoreline.
+ *
+ * @param  water_depth      Input array representing the initial water depth.
  * @param  z                Elevation array corresponding to the same grid as
- *                          `water_depth`.
- * @param  additional_depth The additional water depth to simulate (e.g., a
- *                          flooding increment).
- * @return                  An Array representing the updated water depth
- *                          distribution after propagation.
+ *                         `water_depth`.
+ * @param  additional_depth Additional water depth to propagate from the
+ *                          existing water region.
+ * @return                  An Array containing the updated water depth after
+ *                          local propagation.
  *
- * @note The algorithm uses a simple flood-fill–like approach with an upward
- * constraint, ensuring that water spreads only to neighboring cells at higher
- * elevation.
+ * @note Water spreads only upward toward neighboring cells with higher
+ * elevation. Existing disconnected dry basins are not flooded.
+ *
+ * @note This function is useful for generating extended shoreline masks,
+ * erosion influence regions, or visually expanding water boundaries without
+ * performing a physically complete flooding simulation.
  *
  * **Example**
  * @include ex_water_depth_increase.cpp
@@ -651,6 +659,43 @@ Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth);
 
+/**
+ * @brief Simulates a physical rise in water level with full domain flooding.
+ *
+ * This function increases the water level by `additional_depth` and recomputes
+ * flooding over the terrain elevation map (`z`). Unlike water_depth_increase(),
+ * the propagation is not restricted to the vicinity of the original water
+ * region: water may spread through connected terrain and flood previously dry
+ * areas if they become reachable under the new water level.
+ *
+ * The simulation behaves more like a physical flooding process where rising
+ * water can overflow barriers, connect basins, and eventually inundate large
+ * portions of the domain depending on terrain topology.
+ *
+ * @param  water_depth      Input array representing the initial water depth.
+ * @param  z                Elevation array corresponding to the same grid as
+ *                         `water_depth`.
+ * @param  additional_depth Additional water depth used to raise the global
+ *                          water level.
+ * @return                  An Array containing the updated flooded state after
+ *                          recomputing water propagation.
+ *
+ * @note Flood propagation may extend far beyond the original water mask and can
+ * potentially inundate the entire connected terrain domain.
+ *
+ * @note This function is more physically plausible than water_depth_increase(),
+ * and is suitable for terrain flooding simulations, overflow analysis, or
+ * hydrological studies.
+ *
+ * **Example**
+ * @include ex_water_depth_increase.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_increase.png
+ */
+Array water_depth_increase_with_flooding(const Array &water_depth,
+                                         const Array &z,
+                                         float        additional_depth);
 /**
  * @brief Compute the curvature of the water interface from a signed distance
  * field.

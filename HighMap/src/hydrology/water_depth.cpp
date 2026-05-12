@@ -222,6 +222,64 @@ Array water_depth_increase(const Array &water_depth,
   return water_depth_extended;
 }
 
+Array water_depth_increase_with_flooding(const Array &water_depth,
+                                         const Array &z,
+                                         float        additional_depth)
+{
+  // WSE == Water Surface Elevation (z + water_depth)
+
+  const int ni = water_depth.shape.x;
+  const int nj = water_depth.shape.y;
+  Array     water_depth_extended(water_depth.shape); // zero-initialized
+
+  constexpr int DI[8] = {-1, 1, 0, 0, -1, -1, 1, 1};
+  constexpr int DJ[8] = {0, 0, -1, 1, -1, 1, -1, 1};
+
+  auto in_bounds = [&](int i, int j) noexcept
+  { return (unsigned)i < (unsigned)ni && (unsigned)j < (unsigned)nj; };
+
+  // max-heap: {water_surface_elevation, flat_index}
+  using Entry = std::pair<float, int>;
+  std::priority_queue<Entry> pq;
+  std::vector<bool>          visited(ni * nj, false);
+
+  // --- Seed: every wet cell defines a WSE
+
+  for (int j = 0; j < nj; ++j)
+    for (int i = 0; i < ni; ++i)
+    {
+      if (water_depth(i, j) <= 0.f) continue;
+      const float wse = z(i, j) + water_depth(i, j) + additional_depth;
+      pq.push({wse, j * ni + i});
+    }
+
+  // --- Single propagation pass (highest WSE settled first)
+
+  while (!pq.empty())
+  {
+    auto [wse, flat] = pq.top();
+    pq.pop();
+
+    if (visited[flat]) continue; // already settled at a higher WSE
+    visited[flat] = true;
+
+    const int pi = flat % ni, pj = flat / ni;
+    water_depth_extended(pi, pj) = wse - z(pi, pj);
+
+    for (int k = 0; k < 8; ++k)
+    {
+      const int i2 = pi + DI[k], j2 = pj + DJ[k];
+      if (!in_bounds(i2, j2)) continue;
+      const int flat_n = j2 * ni + i2;
+      if (visited[flat_n]) continue;
+      if (z(i2, j2) < wse)      // terrain is below water surface
+        pq.push({wse, flat_n}); // neighbor inherits the same WSE
+    }
+  }
+
+  return water_depth_extended;
+}
+
 Array water_frontier_curvature(const Array &water_depth,
                                int          prefilter_ir,
                                bool         extend_values_from_interface)

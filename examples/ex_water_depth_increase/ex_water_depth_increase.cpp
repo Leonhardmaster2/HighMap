@@ -14,7 +14,9 @@ int main(void)
 
   float additional_depth = 0.05f;
 
-  hmap::Array water_depth0 = hmap::flooding_lake_system(z);
+  hmap::Array water_depth0 = hmap::flooding_uniform_level(z, 0.3f);
+  // hmap::Array water_depth0 = hmap::flooding_lake_system(z);
+
   hmap::Array water_depth1 = hmap::water_depth_increase(water_depth0,
                                                         z,
                                                         additional_depth);
