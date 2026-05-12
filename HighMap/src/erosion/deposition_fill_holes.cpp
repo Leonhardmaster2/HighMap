@@ -32,12 +32,14 @@ void deposition_fill_holes(Array       &z,
                            const Array *p_mask,
                            int          iterations)
 {
-  apply_with_mask(
-      z,
-      p_mask,
-      [&](Array &a) {
-        deposition_fill_holes(a, deposition_ir, deposition_strength, iterations);
-      });
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a) {
+                    deposition_fill_holes(a,
+                                          deposition_ir,
+                                          deposition_strength,
+                                          iterations);
+                  });
 }
 
 } // namespace hmap::gpu

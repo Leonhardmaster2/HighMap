@@ -925,7 +925,7 @@ void stratify_oblique(Array             &z,
  * @image html ex_thermal.png
  */
 void thermal(Array       &z,
-             Array       *p_mask,
+             const Array *p_mask,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
@@ -974,10 +974,10 @@ void thermal_auto_bedrock(Array &z,
                           int    iterations = 10,
                           Array *p_deposition_map = nullptr); ///< @overload
 
-void thermal_auto_bedrock(Array &z,
-                          Array *p_mask,
-                          float  talus,
-                          int    iterations = 10,
+void thermal_auto_bedrock(Array       &z,
+                          const Array *p_mask,
+                          float        talus,
+                          int          iterations = 10,
                           Array *p_deposition_map = nullptr); ///< @overload
 
 /**
@@ -1077,7 +1077,7 @@ void thermal_schott(Array       &z,
 
 void thermal_schott(Array       &z,
                     const Array &talus,
-                    Array       *p_mask,
+                    const Array *p_mask,
                     int          iterations = 10,
                     float        intensity = 0.001f); ///< @overload
 
@@ -1107,11 +1107,11 @@ void thermal_schott(Array      &z,
                     int         iterations = 10,
                     float       intensity = 0.001f);
 
-void thermal_schott(Array      &z,
-                    const float talus,
-                    Array      *p_mask,
-                    int         iterations = 10,
-                    float       intensity = 0.001f); ///< @overload
+void thermal_schott(Array       &z,
+                    const float  talus,
+                    const Array *p_mask,
+                    int          iterations = 10,
+                    float        intensity = 0.001f); ///< @overload
 
 } // namespace hmap
 
@@ -2059,7 +2059,7 @@ void thermal(Array       &z,
 
 /*! @brief See hmap::thermal */
 void thermal(Array       &z,
-             Array       *p_mask,
+             const Array *p_mask,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
@@ -2080,7 +2080,7 @@ void thermal_auto_bedrock(Array       &z,
 
 /*! @brief See hmap::thermal_auto_bedrock */
 void thermal_auto_bedrock(Array       &z,
-                          Array       *p_mask,
+                          const Array *p_mask,
                           const Array &talus,
                           int          iterations = 10,
                           Array       *p_deposition_map = nullptr);
@@ -2093,7 +2093,10 @@ void thermal_auto_bedrock(Array &z,
 
 /*! @brief See hmap::thermal_olsen */
 void thermal_olsen(Array &z, const Array &talus, int iterations);
-void thermal_olsen(Array &z, Array *p_mask, const Array &talus, int iterations);
+void thermal_olsen(Array       &z,
+                   const Array *p_mask,
+                   const Array &talus,
+                   int          iterations);
 
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.

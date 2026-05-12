@@ -69,7 +69,7 @@ void thermal(Array       &z,
 }
 
 void thermal(Array       &z,
-             Array       *p_mask,
+             const Array *p_mask,
              const Array &talus,
              int          iterations,
              Array       *p_bedrock,
@@ -139,7 +139,7 @@ void thermal_auto_bedrock(Array &z,
 }
 
 void thermal_auto_bedrock(Array       &z,
-                          Array       *p_mask,
+                          const Array *p_mask,
                           const Array &talus,
                           int          iterations,
                           Array       *p_deposition_map)

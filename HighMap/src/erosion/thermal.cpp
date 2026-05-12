@@ -172,7 +172,7 @@ void thermal(Array       &z,
 //----------------------------------------------------------------------
 
 void thermal(Array       &z,
-             Array       *p_mask,
+             const Array *p_mask,
              const Array &talus,
              int          iterations,
              Array       *p_bedrock,
