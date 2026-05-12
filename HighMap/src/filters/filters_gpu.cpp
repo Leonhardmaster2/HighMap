@@ -8,8 +8,8 @@
 #include "highmap/local_metrics.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
 #include "highmap/operator.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -63,34 +63,9 @@ void expand(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
-  if (!p_mask)
-  {
-    gpu::expand(array, kernel, iterations);
-  }
-  else
-  {
-    auto run = clwrapper::Run("expand_masked");
-
-    run.bind_imagef("z", array.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("weights", kernel.vector, kernel.shape.x, kernel.shape.y);
-    run.bind_imagef("mask", p_mask->vector, p_mask->shape.x, p_mask->shape.y);
-    run.bind_imagef("out",
-                    array.vector,
-                    array.shape.x,
-                    array.shape.y,
-                    true); // out
-    run.bind_arguments(array.shape.x,
-                       array.shape.y,
-                       kernel.shape.x,
-                       kernel.shape.y);
-
-    for (int it = 0; it < iterations; ++it)
-    {
-      run.write_imagef("z");
-      run.execute({array.shape.x, array.shape.y});
-      run.read_imagef("out");
-    }
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gpu::expand(a, kernel, iterations); });
 }
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
@@ -155,26 +130,9 @@ void laplace(Array &array, float sigma, int iterations)
 
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {
-  if (!p_mask)
-  {
-    gpu::laplace(array, sigma, iterations);
-  }
-  else
-  {
-    auto run = clwrapper::Run("laplace_masked");
-
-    run.bind_buffer<float>("array", array.vector);
-    run.bind_buffer<float>("mask", p_mask->vector);
-    run.bind_arguments(array.shape.x, array.shape.y, sigma);
-
-    run.write_buffer("array");
-    run.write_buffer("mask");
-
-    for (int it = 0; it < iterations; it++)
-      run.execute({array.shape.x, array.shape.y});
-
-    run.read_buffer("array");
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gpu::laplace(a, sigma, iterations); });
 }
 
 Array mean_shift(const Array &array,
@@ -274,29 +232,10 @@ void normal_displacement(Array       &array,
                          int          ir,
                          bool         reverse)
 {
-  if (!p_mask)
-  {
-    gpu::normal_displacement(array, amount, ir, reverse);
-  }
-  else
-  {
-    auto run = clwrapper::Run("normal_displacement_masked");
-
-    Array array_f = array;
-    if (ir > 0) gpu::smooth_cpulse(array_f, ir);
-
-    if (reverse) amount *= -1.f;
-
-    run.bind_imagef("array", array.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("array_f", array_f.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("mask", p_mask->vector, array.shape.x, array.shape.y);
-    run.bind_imagef("out", array.vector, array.shape.x, array.shape.y, true);
-    run.bind_arguments(array.shape.x, array.shape.y, amount);
-
-    run.execute({array.shape.x, array.shape.y});
-
-    run.read_imagef("out");
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { gpu::normal_displacement(a, amount, ir, reverse); });
 }
 
 void plateau(Array &array, const Array *p_mask, int ir, float factor)
@@ -386,7 +325,7 @@ Array project_talus_along_direction(const Array &array,
                                     int          direction,
                                     float        vmin)
 {
- return transform_with_mask(
+  return transform_with_mask(
       array,
       p_mask,
       [&](const Array &a)
@@ -450,41 +389,9 @@ void shrink(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
-  if (!p_mask)
-  {
-    gpu::shrink(array, kernel, iterations);
-  }
-  else
-  {
-    auto run = clwrapper::Run("expand_masked");
-
-    run.bind_imagef("z", array.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("weights", kernel.vector, kernel.shape.x, kernel.shape.y);
-    run.bind_imagef("mask", p_mask->vector, p_mask->shape.x, p_mask->shape.y);
-    run.bind_imagef("out",
-                    array.vector,
-                    array.shape.x,
-                    array.shape.y,
-                    true); // out
-    run.bind_arguments(array.shape.x,
-                       array.shape.y,
-                       kernel.shape.x,
-                       kernel.shape.y);
-
-    for (int it = 0; it < iterations; ++it)
-    {
-      float amax = array.max();
-      array *= -1.f; // array <- amax - array;
-      array += amax;
-
-      run.write_imagef("z");
-      run.execute({array.shape.x, array.shape.y});
-      run.read_imagef("out");
-
-      array *= -1.f; // array <- amax - array;
-      array += amax;
-    }
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { gpu::shrink(a, kernel, iterations); });
 }
 
 void smooth_cpulse(Array &array, int ir)
@@ -537,58 +444,7 @@ void smooth_cpulse(Array &array, int ir)
 
 void smooth_cpulse(Array &array, int ir, const Array *p_mask)
 {
-  if (!p_mask)
-  {
-    gpu::smooth_cpulse(array, ir);
-  }
-  else
-  {
-    // define kernel
-    const int          nk = 2 * ir + 1;
-    std::vector<float> k1d(nk);
-
-    float sum = 0.f;
-    float x0 = (float)ir;
-    for (int i = 0; i < nk; i++)
-    {
-      float x = std::abs((float)i - x0) / (float)ir;
-      k1d[i] = std::exp(-0.5f * x * x * 9.f); // σ ≈ ir/3
-      sum += k1d[i];
-    }
-
-    // normalize
-    for (int i = 0; i < nk; i++)
-    {
-      k1d[i] /= sum;
-    }
-
-    auto run = clwrapper::Run("smooth_cpulse_masked");
-
-    run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
-    run.bind_imagef("weights", k1d, nk, 1);
-    run.bind_imagef("mask", p_mask->vector, p_mask->shape.x, p_mask->shape.y);
-    run.bind_imagef("out",
-                    array.vector,
-                    array.shape.x,
-                    array.shape.y,
-                    true); // out
-    run.bind_arguments(array.shape.x, array.shape.y, ir);
-
-    int pass_nb;
-
-    pass_nb = 0; // x
-    run.set_argument(7, pass_nb);
-    run.execute({array.shape.x, array.shape.y});
-
-    run.read_imagef("out");
-    run.write_imagef("in");
-
-    pass_nb = 1; // y
-    run.set_argument(7, pass_nb);
-    run.execute({array.shape.x, array.shape.y});
-
-    run.read_imagef("out");
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { gpu::smooth_cpulse(a, ir); });
 }
 
 void smooth_cpulse_edge_removing(Array &array,
