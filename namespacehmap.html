@@ -2732,8 +2732,6 @@ Functions</h2></td></tr>
 <tr class="separator:afb2677facc34ce83019137fd5a9818dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba0d25f051d23c9c637973b7edf19922" id="r_aba0d25f051d23c9c637973b7edf19922"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aba0d25f051d23c9c637973b7edf19922">helper_thermal_exchange</a> (float self, float other, float dist, float talus)</td></tr>
 <tr class="separator:aba0d25f051d23c9c637973b7edf19922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a133eb605a49d46d815128f6c43ed2b29" id="r_a133eb605a49d46d815128f6c43ed2b29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a133eb605a49d46d815128f6c43ed2b29">thermal_auto_bedrock</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, float talus, int iterations, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map)</td></tr>
-<tr class="separator:a133eb605a49d46d815128f6c43ed2b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44feaa8ab0a46b2affdeff7398a2bee0" id="r_a44feaa8ab0a46b2affdeff7398a2bee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a44feaa8ab0a46b2affdeff7398a2bee0">thermal_schott</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int iterations, float intensity)</td></tr>
 <tr class="separator:a44feaa8ab0a46b2affdeff7398a2bee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac93b43769361236ba4726a43fa5d9546" id="r_ac93b43769361236ba4726a43fa5d9546"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac93b43769361236ba4726a43fa5d9546">thermal_schott</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const float talus, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, int iterations, float intensity)</td></tr>
@@ -12905,7 +12903,7 @@ additional_depth)</code>.</li>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_thermal.png&quot;</span>, {z0, z}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a8ec6debc0a3f91e0d3bba7768041a075"><div class="ttname"><a href="namespacehmap.html#a8ec6debc0a3f91e0d3bba7768041a075">hmap::thermal</a></div><div class="ttdeci">void thermal(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=10, Array *p_bedrock=nullptr, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion.</div><div class="ttdef"><b>Definition</b> thermal.cpp:174</div></div>
+<div class="ttc" id="anamespacehmap_html_a8ec6debc0a3f91e0d3bba7768041a075"><div class="ttname"><a href="namespacehmap.html#a8ec6debc0a3f91e0d3bba7768041a075">hmap::thermal</a></div><div class="ttdeci">void thermal(Array &amp;z, const Array *p_mask, const Array &amp;talus, int iterations=10, Array *p_bedrock=nullptr, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion.</div><div class="ttdef"><b>Definition</b> thermal.cpp:173</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_thermal.png" alt=""/>
 </div>
@@ -13007,7 +13005,7 @@ additional_depth)</code>.</li>
 </div>
 </div>
 <a id="acbd2a3c82ec3ce4eaf77dbc92d580321" name="acbd2a3c82ec3ce4eaf77dbc92d580321"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbd2a3c82ec3ce4eaf77dbc92d580321">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acbd2a3c82ec3ce4eaf77dbc92d580321">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -13076,7 +13074,7 @@ additional_depth)</code>.</li>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
 <div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_acbd2a3c82ec3ce4eaf77dbc92d580321"><div class="ttname"><a href="namespacehmap.html#acbd2a3c82ec3ce4eaf77dbc92d580321">hmap::thermal_auto_bedrock</a></div><div class="ttdeci">void thermal_auto_bedrock(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion with automatic determination of the bedrock.</div><div class="ttdef"><b>Definition</b> thermal.cpp:206</div></div>
+<div class="ttc" id="anamespacehmap_html_acbd2a3c82ec3ce4eaf77dbc92d580321"><div class="ttname"><a href="namespacehmap.html#acbd2a3c82ec3ce4eaf77dbc92d580321">hmap::thermal_auto_bedrock</a></div><div class="ttdeci">void thermal_auto_bedrock(Array &amp;z, const Array &amp;talus, int iterations=10, Array *p_deposition_map=nullptr)</div><div class="ttdoc">Apply thermal weathering erosion with automatic determination of the bedrock.</div><div class="ttdef"><b>Definition</b> thermal.cpp:202</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_thermal_auto_bedrock.png" alt=""/>
 </div>
@@ -13084,7 +13082,7 @@ additional_depth)</code>.</li>
 </div>
 </div>
 <a id="a2e350857ce33125722d9c8ff6663f1c8" name="a2e350857ce33125722d9c8ff6663f1c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e350857ce33125722d9c8ff6663f1c8">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e350857ce33125722d9c8ff6663f1c8">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -13126,7 +13124,7 @@ additional_depth)</code>.</li>
 </div>
 </div>
 <a id="ab6e327bd3ebf43e1c087f427df1f999e" name="ab6e327bd3ebf43e1c087f427df1f999e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6e327bd3ebf43e1c087f427df1f999e">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e327bd3ebf43e1c087f427df1f999e">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -52741,52 +52739,6 @@ template&lt;typename T &gt; </div>
           <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>talus</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a133eb605a49d46d815128f6c43ed2b29" name="a133eb605a49d46d815128f6c43ed2b29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a133eb605a49d46d815128f6c43ed2b29">&#9670;&#160;</a></span>thermal_auto_bedrock() <span class="overload">[4/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::thermal_auto_bedrock </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_mask</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>talus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>iterations</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_deposition_map</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

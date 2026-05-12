@@ -99,7 +99,7 @@ var erosion_8hpp =
     [ "thermal_olsen", "erosion_8hpp.html#a2bb49a523386fcb8fc34f27741c520a8", null ],
     [ "thermal_inflate", "erosion_8hpp.html#ae57a1e9bd94f218d4be17c9d8be012c3", null ],
     [ "thermal_inflate", "erosion_8hpp.html#a72c9d220589d2724b4e48e9c37ff55ad", null ],
-    [ "thermal_rib", "erosion_8hpp.html#afabf7cb3077839af03388c0d1236d912", null ],
+    [ "thermal_rib", "erosion_8hpp.html#a435a38880a6bcabfb8991d5834a0f786", null ],
     [ "thermal_ridge", "erosion_8hpp.html#a1489150d5e1af976a9f814b9911b3ea0", null ],
     [ "thermal_ridge", "erosion_8hpp.html#ad0a05ed0beea669300d62197a0dadaf2", null ],
     [ "thermal_scree", "erosion_8hpp.html#ab753c4abd819aa6945c1cfc5e25ccec4", null ],
