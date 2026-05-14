@@ -415,8 +415,20 @@ void match_histogram(Array &array, const Array &array_reference)
   std::vector<size_t> ki = argsort(array.vector);
   std::vector<size_t> kr = argsort(array_reference.vector);
 
-  for (size_t i = 0; i < ki.size(); i++)
-    array.vector[ki[i]] = array_reference.vector[kr[i]];
+  size_t n = ki.size();
+  size_t nr = kr.size();
+
+  for (size_t i = 0; i < n; i++)
+  {
+    // map rank i in source → fractional rank in reference
+    float  t = static_cast<float>(i) / (n - 1) * (nr - 1);
+    size_t j0 = static_cast<size_t>(t);
+    size_t j1 = std::min(j0 + 1, nr - 1);
+    float  f = t - static_cast<float>(j0);
+
+    array.vector[ki[i]] = (1.f - f) * array_reference.vector[kr[j0]] +
+                          f * array_reference.vector[kr[j1]];
+  }
 }
 
 Array mean_shift(const Array &array,
