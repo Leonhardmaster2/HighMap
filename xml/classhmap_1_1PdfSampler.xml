@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classhmap_1_1PdfSampler" kind="class" language="C++" prot="public">
+    <compoundname>hmap::PdfSampler</compoundname>
+    <includes refid="random_8hpp" local="no">random.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhmap_1_1PdfSampler_1aaab18e42283470d86d6ab26932dbc0ed" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; hmap::PdfSampler::cdf</definition>
+        <argsstring></argsstring>
+        <name>cdf</name>
+        <qualifiedname>hmap::PdfSampler::cdf</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="60" column="34" bodyfile="HighMap/include/highmap/random.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1PdfSampler_1ad848e89c652bf0fc8a6689e58baf1135" prot="private" static="no" mutable="no">
+        <type>std::mt19937</type>
+        <definition>std::mt19937 hmap::PdfSampler::generator</definition>
+        <argsstring></argsstring>
+        <name>generator</name>
+        <qualifiedname>hmap::PdfSampler::generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="61" column="41" bodyfile="HighMap/include/highmap/random.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1PdfSampler_1adac98c8623532b468b2ba7168dc02ed3" prot="private" static="no" mutable="no">
+        <type>std::uniform_real_distribution&lt; float &gt;</type>
+        <definition>std::uniform_real_distribution&lt;float&gt; hmap::PdfSampler::distribution</definition>
+        <argsstring></argsstring>
+        <name>distribution</name>
+        <qualifiedname>hmap::PdfSampler::distribution</qualifiedname>
+        <initializer>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="62" column="34" bodyfile="HighMap/include/highmap/random.hpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classhmap_1_1PdfSampler_1a40f51dbae7f9dd271e1e56576c505ec0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::PdfSampler::PdfSampler</definition>
+        <argsstring>(const std::vector&lt; float &gt; &amp;pdf, uint32_t seed)</argsstring>
+        <name>PdfSampler</name>
+        <qualifiedname>hmap::PdfSampler::PdfSampler</qualifiedname>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>pdf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+<para>Builds the sampler from a PDF and seed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pdf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Probability weights. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Random generator seed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="44" column="3" bodyfile="HighMap/src/random/pdf_sampler.cpp" bodystart="15" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1PdfSampler_1a01aa50faf879bea4bd8291a16ffb9d47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float hmap::PdfSampler::sample</definition>
+        <argsstring>()</argsstring>
+        <name>sample</name>
+        <qualifiedname>hmap::PdfSampler::sample</qualifiedname>
+        <briefdescription>
+<para>Samples a float value in [0, 1[. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Sampled float. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="50" column="9" bodyfile="HighMap/src/random/pdf_sampler.cpp" bodystart="31" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1PdfSampler_1ae36e2260565931cbb6a9f6b1c8357fd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt; float &gt; hmap::PdfSampler::sample</definition>
+        <argsstring>(size_t nb_samples)</argsstring>
+        <name>sample</name>
+        <qualifiedname>hmap::PdfSampler::sample</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>nb_samples</declname>
+        </param>
+        <briefdescription>
+<para>Samples multiple float values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nb_samples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Vector of sampled values. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/random.hpp" line="57" column="15" bodyfile="HighMap/src/random/pdf_sampler.cpp" bodystart="46" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Samples indices from a discrete probability distribution. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="HighMap/include/highmap/random.hpp" line="36" column="1" bodyfile="HighMap/include/highmap/random.hpp" bodystart="37" bodyend="63"/>
+    <listofallmembers>
+      <member refid="classhmap_1_1PdfSampler_1aaab18e42283470d86d6ab26932dbc0ed" prot="private" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>cdf</name></member>
+      <member refid="classhmap_1_1PdfSampler_1adac98c8623532b468b2ba7168dc02ed3" prot="private" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>distribution</name></member>
+      <member refid="classhmap_1_1PdfSampler_1ad848e89c652bf0fc8a6689e58baf1135" prot="private" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>generator</name></member>
+      <member refid="classhmap_1_1PdfSampler_1a40f51dbae7f9dd271e1e56576c505ec0" prot="public" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>PdfSampler</name></member>
+      <member refid="classhmap_1_1PdfSampler_1a01aa50faf879bea4bd8291a16ffb9d47" prot="public" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>sample</name></member>
+      <member refid="classhmap_1_1PdfSampler_1ae36e2260565931cbb6a9f6b1c8357fd0" prot="public" virt="non-virtual"><scope>hmap::PdfSampler</scope><name>sample</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

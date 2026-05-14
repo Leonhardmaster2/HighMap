@@ -43,6 +43,7 @@ var annotated_dup =
       [ "NoiseFunction", "classhmap_1_1NoiseFunction.html", "classhmap_1_1NoiseFunction" ],
       [ "ParberryFunction", "classhmap_1_1ParberryFunction.html", "classhmap_1_1ParberryFunction" ],
       [ "Path", "classhmap_1_1Path.html", "classhmap_1_1Path" ],
+      [ "PdfSampler", "classhmap_1_1PdfSampler.html", "classhmap_1_1PdfSampler" ],
       [ "PerlinBillowFunction", "classhmap_1_1PerlinBillowFunction.html", "classhmap_1_1PerlinBillowFunction" ],
       [ "PerlinFunction", "classhmap_1_1PerlinFunction.html", "classhmap_1_1PerlinFunction" ],
       [ "PerlinHalfFunction", "classhmap_1_1PerlinHalfFunction.html", "classhmap_1_1PerlinHalfFunction" ],

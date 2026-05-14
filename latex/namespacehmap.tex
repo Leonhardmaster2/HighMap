@@ -92,6 +92,8 @@ class \mbox{\hyperlink{classhmap_1_1ParberryFunction}{Parberry\+Function}}
 \begin{DoxyCompactList}\small\item\em Parberry (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1Path}{Path}}
 \begin{DoxyCompactList}\small\item\em Represents an ordered set of points in 2D, forming a polyline (open or closed). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmap_1_1PdfSampler}{Pdf\+Sampler}}
+\begin{DoxyCompactList}\small\item\em Samples indices from a discrete probability distribution. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1PerlinBillowFunction}{Perlin\+Billow\+Function}}
 \begin{DoxyCompactList}\small\item\em Perlin \textquotesingle{}billow\textquotesingle{} (x, y) function class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1PerlinFunction}{Perlin\+Function}}
@@ -1675,10 +1677,10 @@ void \mbox{\hyperlink{namespacehmap_a7a433480a8cd89be48bc9ce8cbb25ce8}{swirl}} (
 \begin{DoxyCompactList}\small\item\em Return an array sparsely filled with random 0 and 1. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a494a16a2183fc9e360d5390ce55ecef0}{worley\+\_\+double}} (glm\+::ivec2 shape, glm\+::vec2 kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float k=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return an array filled with the maximum of two Worley (cellular) noises. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}{splitmix64\+\_\+to\+\_\+unit\+\_\+float}} (unsigned int seed, size\+\_\+t k)
-\begin{DoxyCompactList}\small\item\em Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe}{fast\+\_\+hash32\+\_\+to\+\_\+unit\+\_\+float}} (unsigned int seed, size\+\_\+t k)
 \begin{DoxyCompactList}\small\item\em Generates a fast deterministic uniform float in \mbox{[}0,1) using a 32-\/bit hash. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}{splitmix64\+\_\+to\+\_\+unit\+\_\+float}} (unsigned int seed, size\+\_\+t k)
+\begin{DoxyCompactList}\small\item\em Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{chop}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin)
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmin}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{chop\+\_\+max\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax)
@@ -27470,27 +27472,7 @@ Return an array filled with the maximum of two Worley (cellular) noises.
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}\label{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8} 
-\index{hmap@{hmap}!splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}}
-\index{splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{splitmix64\_to\_unit\_float()}{splitmix64\_to\_unit\_float()}}
-{\footnotesize\ttfamily float hmap\+::splitmix64\+\_\+to\+\_\+unit\+\_\+float (\begin{DoxyParamCaption}\item[{unsigned int}]{seed,  }\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
-
-
-
-Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em seed} & Base seed value. \\
-\hline
-{\em k} & Sample index. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Pseudo-\/random float in \mbox{[}0,1). 
-\end{DoxyReturn}
-\Hypertarget{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe}\label{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe}\label{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe} 
 \index{hmap@{hmap}!fast\_hash32\_to\_unit\_float@{fast\_hash32\_to\_unit\_float}}
 \index{fast\_hash32\_to\_unit\_float@{fast\_hash32\_to\_unit\_float}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{fast\_hash32\_to\_unit\_float()}{fast\_hash32\_to\_unit\_float()}}
@@ -27513,6 +27495,26 @@ Pseudo-\/random float in \mbox{[}0,1).
 \begin{DoxyNote}{Note}
 Faster but lower quality than \doxylink{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}{splitmix64\+\_\+to\+\_\+unit\+\_\+float()}. 
 \end{DoxyNote}
+\Hypertarget{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}\label{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8} 
+\index{hmap@{hmap}!splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}}
+\index{splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{splitmix64\_to\_unit\_float()}{splitmix64\_to\_unit\_float()}}
+{\footnotesize\ttfamily float hmap\+::splitmix64\+\_\+to\+\_\+unit\+\_\+float (\begin{DoxyParamCaption}\item[{unsigned int}]{seed,  }\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+
+
+Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & Base seed value. \\
+\hline
+{\em k} & Sample index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pseudo-\/random float in \mbox{[}0,1). 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_abc5d54d0d76a86f083db977837c28d69}\label{namespacehmap_abc5d54d0d76a86f083db977837c28d69} 
 \index{hmap@{hmap}!chop@{chop}}
 \index{chop@{chop}!hmap@{hmap}}
@@ -27591,10 +27593,10 @@ This function restricts the values in the input array to be within a specified r
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{hmap::clamp}}(z1,\ -\/0.1f,\ 0.1f);}
@@ -27840,10 +27842,10 @@ Generates a sloped plane and clamps the input array either with a min or max ope
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z;}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae6dfd87b0368629657c3138dbf24cbc4}{hmap::clamp}}(z1,\ -\/0.1f,\ 0.1f);}

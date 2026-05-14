@@ -83,6 +83,7 @@ var hierarchy =
     [ "hmap::NaturalNeighborInterpolator", "classhmap_1_1NaturalNeighborInterpolator.html", null ],
     [ "hmap::TerrainTriMesh::Neighbor", "structhmap_1_1TerrainTriMesh_1_1Neighbor.html", null ],
     [ "hmap::TerrainTriMesh::NeighborData", "structhmap_1_1TerrainTriMesh_1_1NeighborData.html", null ],
+    [ "hmap::PdfSampler", "classhmap_1_1PdfSampler.html", null ],
     [ "hmap::Point", "classhmap_1_1Point.html", null ],
     [ "hmap::PyramidDecomposition", "classhmap_1_1PyramidDecomposition.html", null ],
     [ "hmap::Recorder", "structhmap_1_1Recorder.html", null ],
