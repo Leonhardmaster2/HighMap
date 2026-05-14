@@ -11,6 +11,7 @@
 #include "highmap/interpolate1d.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/math.hpp"
+#include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 
@@ -36,16 +37,7 @@ void recurve(Array                    &array,
              const std::vector<float> &v,
              const Array              *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve(array, t, v);
-    else
-    {
-      Array array_f = array;
-      recurve(array_f, t, v);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve(a, t, v); });
 }
 
 void recurve_bexp(Array &array, float tau)
@@ -61,16 +53,7 @@ void recurve_bexp(Array &array, float tau)
 
 void recurve_bexp(Array &array, float tau, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_bexp(array, tau);
-    else
-    {
-      Array array_f = array;
-      recurve_bexp(array_f, tau);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_bexp(a, tau); });
 }
 
 void recurve_exp(Array &array, float tau)
@@ -86,16 +69,7 @@ void recurve_exp(Array &array, float tau)
 
 void recurve_exp(Array &array, float tau, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_exp(array, tau);
-    else
-    {
-      Array array_f = array;
-      recurve_exp(array_f, tau);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_exp(a, tau); });
 }
 
 void recurve_kura(Array &array, float a, float b)
@@ -111,16 +85,7 @@ void recurve_kura(Array &array, float a, float b)
 
 void recurve_kura(Array &array, float a, float b, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_kura(array, a, b);
-    else
-    {
-      Array array_f = array;
-      recurve_kura(array_f, a, b);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &ar) { recurve_kura(ar, a, b); });
 }
 
 void recurve_s(Array &array)
@@ -135,16 +100,7 @@ void recurve_s(Array &array)
 
 void recurve_s(Array &array, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_s(array);
-    else
-    {
-      Array array_f = array;
-      recurve_s(array_f);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_s(a); });
 }
 
 void recurve_smoothstep_rational(Array &array, float n)
@@ -163,16 +119,9 @@ void recurve_smoothstep_rational(Array &array, float n)
 
 void recurve_smoothstep_rational(Array &array, float n, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_smoothstep_rational(array, n);
-    else
-    {
-      Array array_f = array;
-      recurve_smoothstep_rational(array_f, n);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { recurve_smoothstep_rational(a, n); });
 }
 
 void saturate(Array &array,
