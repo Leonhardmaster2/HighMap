@@ -1,5 +1,7 @@
 var NAVTREEINDEX18 =
 {
+"points_8cpp.html#a62b55fdc2fbc76c4938a6b49a10cfd65":[5,0,1,1,16,9,2],
+"points_8cpp.html#a69877ef43645c767daa0735fde59821c":[5,0,1,1,16,9,20],
 "points_8cpp.html#a6f161aa76459d3e12f7844b7d660c980":[5,0,1,1,16,9,13],
 "points_8cpp.html#a81ad5d7feec9716598307f4de02d47de":[5,0,1,1,16,9,3],
 "points_8cpp.html#a9249226d73f4396157c1c6415ebf3a7c":[5,0,1,1,16,9,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX18 =
 "range_8hpp_source.html":[5,0,1,0,0,36],
 "range__gpu_8cpp.html":[5,0,1,1,30,1],
 "range__gpu_8cpp.html#a84e8cfef31aeb4ba10d4f7cbe04cb96d":[5,0,1,1,30,1,1],
-"range__gpu_8cpp.html#a9a3f272d7c8294ab3418be67e3c9b3eb":[5,0,1,1,30,1,0],
-"read__to__array_8cpp.html":[5,0,1,1,13,9],
-"read__to__array_8cpp.html#a09aeebc31234cb19376836a7009054d3":[5,0,1,1,13,9,0]
+"range__gpu_8cpp.html#a9a3f272d7c8294ab3418be67e3c9b3eb":[5,0,1,1,30,1,0]
 };

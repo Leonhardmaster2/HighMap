@@ -20,6 +20,7 @@ var namespacehmap =
       [ "blend_gradients", "namespacehmap_1_1gpu.html#a3a43696b1d6b8f0d966f9f05e5085edf", null ],
       [ "blend_poisson_bf", "namespacehmap_1_1gpu.html#a65a176508b404f80e5f5abd31456712e", null ],
       [ "transfer", "namespacehmap_1_1gpu.html#acff6d6d559781cdeba565ed795bb81d8", null ],
+      [ "sparse_max_convolution", "namespacehmap_1_1gpu.html#a8dac643af396f582c905c4a685db06d9", null ],
       [ "level_set_curvature", "namespacehmap_1_1gpu.html#a125118b55d309727ff0b46d686fd3829", null ],
       [ "curvature_quadric", "namespacehmap_1_1gpu.html#a7bfb7fecab3f34a73a57d7907c3ace7d", null ],
       [ "deposition_fill_holes", "namespacehmap_1_1gpu.html#a8497e2fce595293ea07e68eac1e5bce2", null ],
