@@ -82,6 +82,7 @@ bool init_opencl()
 #include "kernels/skeleton.cl"
 #include "kernels/smooth_cpulse.cl"
 #include "kernels/snow_simulation.cl"
+#include "kernels/sparse_max_convolution.cl"
 #include "kernels/thermal.cl"
 #include "kernels/thermal_inflate.cl"
 #include "kernels/thermal_olsen.cl"

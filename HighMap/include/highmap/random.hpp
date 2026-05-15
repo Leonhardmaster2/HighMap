@@ -38,7 +38,7 @@ class PdfSampler
 public:
   /**
    * @brief Builds the sampler from a PDF and seed.
-   * @param pdf Probability weights.
+   * @param pdf  Probability weights.
    * @param seed Random generator seed.
    */
   PdfSampler(const std::vector<float> &pdf, uint32_t seed);
@@ -51,8 +51,8 @@ public:
 
   /**
    * @brief Samples multiple float values.
-   * @param nb_samples Number of samples.
-   * @return Vector of sampled values.
+   * @param  nb_samples Number of samples.
+   * @return            Vector of sampled values.
    */
   std::vector<float> sample(size_t nb_samples);
 

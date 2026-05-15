@@ -154,3 +154,35 @@ Array convolve2d_svd_rotated_kernel(const Array &z,
                                     uint         seed = 1);
 
 } // namespace hmap
+
+namespace hmap::gpu
+{
+
+/**
+ * @brief Apply a sparse max-convolution.
+ *
+ * This operator propagates the non-zero values of the input array through a
+ * spatial kernel using a max-reduction instead of a summation. For each
+ * non-zero value of the input array, the kernel is centered at the sample
+ * position and contributes to the output through a weighted maximum.
+ *
+ * The operation is conceptually similar to a sparse morphological dilation or a
+ * max-convolution.
+ *
+ * @param  array       Input sparse scalar field.
+ * @param  kernel      Propagation kernel.
+ * @param  k_smoothmax Smooth maximum factor.
+ *
+ * @return             Sparse max-convolved array.
+ *
+ * **Example**
+ * @include ex_sparse_max_convolution.cpp
+ *
+ * **Result**
+ * @image html ex_sparse_max_convolution.png
+ */
+Array sparse_max_convolution(const Array &array,
+                             const Array &kernel,
+                             float        k_smoothmax = 0.f);
+
+} // namespace hmap::gpu
