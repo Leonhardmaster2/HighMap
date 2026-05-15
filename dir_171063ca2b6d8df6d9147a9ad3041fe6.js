@@ -18,6 +18,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
     [ "test_math.cpp", "test__math_8cpp.html", "test__math_8cpp" ],
     [ "test_math_histogram.cpp", "test__math__histogram_8cpp.html", "test__math__histogram_8cpp" ],
     [ "test_normalize.cpp", "test__normalize_8cpp.html", "test__normalize_8cpp" ],
+    [ "test_pdf_sampler.cpp", "test__pdf__sampler_8cpp.html", "test__pdf__sampler_8cpp" ],
     [ "test_point.cpp", "test__point_8cpp.html", "test__point_8cpp" ],
     [ "test_range.cpp", "test__range_8cpp.html", "test__range_8cpp" ],
     [ "test_remap.cpp", "test__remap_8cpp.html", "test__remap_8cpp" ],
