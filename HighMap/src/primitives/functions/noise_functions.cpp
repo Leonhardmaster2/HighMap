@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <cmath>
+#include <stdexcept>
 
 #include "FastNoiseLite.h"
 #include "delaunator-cpp.hpp"
@@ -336,6 +337,8 @@ std::unique_ptr<NoiseFunction> create_noise_function_from_type(
   switch (noise_type)
   {
     // clang-format off
+  case (NoiseType::PARBERRY):
+    throw std::invalid_argument("create_noise_function_from_type: PARBERRY noise function not available");
   case (NoiseType::PERLIN):
     return std::unique_ptr<NoiseFunction>(new PerlinFunction(kw, seed));
   case (NoiseType::PERLIN_BILLOW):

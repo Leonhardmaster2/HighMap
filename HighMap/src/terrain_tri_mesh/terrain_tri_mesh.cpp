@@ -238,6 +238,10 @@ int TerrainTriMesh::find_triangle(const glm::vec2 &p,
   }
   else
   {
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+
     for (int iter = 0; iter < max_iter; ++iter)
     {
       const auto &t = triangles[tri];
@@ -256,6 +260,8 @@ int TerrainTriMesh::find_triangle(const glm::vec2 &p,
 
       if (tri < 0) return -1;
     }
+
+#pragma GCC diagnostic pop
   }
 
   return -1;

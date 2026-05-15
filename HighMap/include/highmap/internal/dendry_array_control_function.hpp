@@ -143,12 +143,12 @@ protected:
     return offset + scaling * noise_function.get_delegate()(x, y, 0.f);
   }
 
-  bool InsideDomainImpl(float x, float y) const
+  bool InsideDomainImpl(float /* x */, float /* y */) const
   {
     return true;
   }
 
-  double DistToDomainImpl(float x, float y) const
+  double DistToDomainImpl(float /* x */, float /* y */) const
   {
     return 0.f;
   }
