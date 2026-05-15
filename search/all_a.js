@@ -16,7 +16,7 @@ var searchData=
   ['inpainting_5fdiffusion_13',['inpainting_diffusion',['../namespacehmap.html#ab642074e3e056d07ae13cf346e208c79',1,'hmap']]],
   ['inpainting_5fgaussian_2ecpp_14',['inpainting_gaussian.cpp',['../inpainting__gaussian_8cpp.html',1,'']]],
   ['inputs_15',['inputs',['../structTileAccess.html#ae6fe4c80de5359b04f183ec826c7bb2e',1,'TileAccess']]],
-  ['insidedomainimpl_16',['insidedomainimpl',['../classhmap_1_1ArrayControlFunction.html#aa985fe30c69aec6c5d40f93d0c33a473',1,'hmap::ArrayControlFunction::InsideDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a8b2a14789de2ac6aa3cddb1f6d6c77cb',1,'hmap::XyControlFunction::InsideDomainImpl()']]],
+  ['insidedomainimpl_16',['insidedomainimpl',['../classhmap_1_1ArrayControlFunction.html#aa985fe30c69aec6c5d40f93d0c33a473',1,'hmap::ArrayControlFunction::InsideDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a803029331138a5fecfe87fe9e1569a08',1,'hmap::XyControlFunction::InsideDomainImpl()']]],
   ['installation_17',['Sources and installation',['../index.html#autotoc_md4',1,'']]],
   ['interp_5fbezier_18',['interp_bezier',['../namespacehmap.html#ac5cbdd19410027f3d4e26fd68fd9bdb7',1,'hmap']]],
   ['interp_5fbspline_19',['interp_bspline',['../namespacehmap.html#af148c924b422baa2e359e0788b7392d0',1,'hmap']]],

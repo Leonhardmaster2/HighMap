@@ -7,7 +7,7 @@ var searchData=
   ['init_5fopenmp_4',['init_openmp',['../namespacehmap.html#aab86375877f77e5c6fd396c339d8cbea',1,'hmap']]],
   ['initialize_5',['initialize',['../classhmap_1_1ParberryFunction.html#a4891e1931b857fb12b8da7047fb1200a',1,'hmap::ParberryFunction']]],
   ['inpainting_5fdiffusion_6',['inpainting_diffusion',['../namespacehmap.html#ab642074e3e056d07ae13cf346e208c79',1,'hmap']]],
-  ['insidedomainimpl_7',['insidedomainimpl',['../classhmap_1_1ArrayControlFunction.html#aa985fe30c69aec6c5d40f93d0c33a473',1,'hmap::ArrayControlFunction::InsideDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a8b2a14789de2ac6aa3cddb1f6d6c77cb',1,'hmap::XyControlFunction::InsideDomainImpl()']]],
+  ['insidedomainimpl_7',['insidedomainimpl',['../classhmap_1_1ArrayControlFunction.html#aa985fe30c69aec6c5d40f93d0c33a473',1,'hmap::ArrayControlFunction::InsideDomainImpl()'],['../classhmap_1_1XyControlFunction.html#a803029331138a5fecfe87fe9e1569a08',1,'hmap::XyControlFunction::InsideDomainImpl()']]],
   ['interp_5fbezier_8',['interp_bezier',['../namespacehmap.html#ac5cbdd19410027f3d4e26fd68fd9bdb7',1,'hmap']]],
   ['interp_5fbspline_9',['interp_bspline',['../namespacehmap.html#af148c924b422baa2e359e0788b7392d0',1,'hmap']]],
   ['interp_5fcatmullrom_10',['interp_catmullrom',['../namespacehmap.html#ac7a93fe9501041332e1ff7a128742c6f',1,'hmap']]],

@@ -63,7 +63,7 @@ var searchData=
   ['distancefunction_60',['DistanceFunction',['../namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a',1,'hmap']]],
   ['distancetransformtype_61',['DistanceTransformType',['../namespacehmap.html#a9e2493cec1a67b3140691e617ddc925a',1,'hmap']]],
   ['distributed_5ftile_5floop_62',['distributed_tile_loop',['../virtual__array_8inl.html#afb0e81819ec38d3f973035c263fa13df',1,'virtual_array.inl']]],
-  ['disttodomainimpl_63',['disttodomainimpl',['../classhmap_1_1XyControlFunction.html#a7812fe0b327e2d30cda5656c10fd1a75',1,'hmap::XyControlFunction::DistToDomainImpl()'],['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()']]],
+  ['disttodomainimpl_63',['disttodomainimpl',['../classhmap_1_1XyControlFunction.html#a8f38798bd59177d4ab9dbe4f58250651',1,'hmap::XyControlFunction::DistToDomainImpl()'],['../classhmap_1_1ArrayControlFunction.html#a3c40696e8f26f0e6fbd66f0f97b83082',1,'hmap::ArrayControlFunction::DistToDomainImpl()']]],
   ['dither_5famp_64',['dither_amp',['../structhmap_1_1ColorAdjust.html#a0d6901dbb470d8b91a91bbd741c95481',1,'hmap::ColorAdjust']]],
   ['divergence_5ffrom_5fgradients_65',['divergence_from_gradients',['../namespacehmap.html#a27518ea42feb447ad4eb83147663c24d',1,'hmap']]],
   ['divide_66',['divide',['../classhmap_1_1Path.html#a8650db137a1b4ecccf05cfd0fd7d320b',1,'hmap::Path']]],
