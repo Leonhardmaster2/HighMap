@@ -13,8 +13,6 @@ int main(void)
 
   hmap::gpu::thermal_rib(z, 5);
 
-  z.infos();
-
   hmap::export_banner_png("ex_thermal_rib.png",
                           {z0, z},
                           hmap::Cmap::TERRAIN,

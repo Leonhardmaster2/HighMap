@@ -953,31 +953,6 @@ void thermal_flatten(Array &z,
                      int    iterations = 10,
                      int    post_filter_ir = 1); ///< @overload
 
-/**
- * @brief Apply thermal weathering erosion.
- *
- * Based on averaging over first neighbors, see \cite Olsen2004. Refer to \cite
- * Musgrave1989 for the original formulation.
- *
- * Thermal erosion refers to the process in which surface sediment weakens due
- * to temperature and detaches, falling down the slopes of the terrain until a
- * resting place is reached, where smooth plateaus tend to form
- * @cite Musgrave1989.
- *
- * @param z                Input array.
- * @param p_mask           Filter mask, expected in [0, 1].
- * @param talus            Talus limit.
- * @param p_bedrock        Lower elevation limit.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- * @param iterations       Number of iterations.
- */
-void thermal_olsen(Array       &z,
-                   const Array &talus,
-                   int          iterations = 10,
-                   Array       *p_bedrock = nullptr,
-                   Array       *p_deposition_map = nullptr);
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -1956,12 +1931,31 @@ void thermal_auto_bedrock(Array &z,
                           int    iterations = 10,
                           Array *p_deposition_map = nullptr);
 
-/*! @brief See hmap::thermal_olsen */
+/**
+ * @brief Apply thermal weathering erosion.
+ *
+ * Based on averaging over first neighbors, see \cite Olsen2004. Refer to \cite
+ * Musgrave1989 for the original formulation.
+ *
+ * Thermal erosion refers to the process in which surface sediment weakens due
+ * to temperature and detaches, falling down the slopes of the terrain until a
+ * resting place is reached, where smooth plateaus tend to form
+ * @cite Musgrave1989.
+ *
+ * @param z                Input array.
+ * @param p_mask           Filter mask, expected in [0, 1].
+ * @param talus            Talus limit.
+ * @param p_bedrock        Lower elevation limit.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ * @param iterations       Number of iterations.
+ */
 void thermal_olsen(Array &z, const Array &talus, int iterations);
+
 void thermal_olsen(Array       &z,
                    const Array *p_mask,
                    const Array &talus,
-                   int          iterations);
+                   int          iterations);///< @overload
 
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.
