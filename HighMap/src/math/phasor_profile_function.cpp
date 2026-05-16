@@ -58,7 +58,7 @@ std::function<float(float)> get_phasor_profile_function(
     break;
 
   case PhasorProfile::PP_COSINE_STD:
-    fct = [](float phi) { return std::cos(phi); };
+    fct = [](float phi) { return -std::cos(phi); };
     break;
 
   case PhasorProfile::PP_TRIANGLE:

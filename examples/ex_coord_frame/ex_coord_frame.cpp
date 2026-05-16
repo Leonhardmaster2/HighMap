@@ -4,10 +4,6 @@ int main(void)
 {
   glm::ivec2 shape = {64, 32};
   shape = {512, 256};
-  glm::ivec2 tiling = {4, 2};
-  float      overlap = 0.25f;
-  glm::vec2  kw = {4.f, 4.f};
-  int        seed = 1;
 
   // --- 1st frame
 
