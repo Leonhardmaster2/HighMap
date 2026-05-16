@@ -39,8 +39,6 @@ var erosion_8hpp =
     [ "hydraulic_stream_log", "erosion_8hpp.html#a98290631d4a1247b31b11ee1f42cd6e4", null ],
     [ "hydraulic_stream_upscale_amplification", "erosion_8hpp.html#a66355f091aa60d97d5a7c7eeb08c51cc", null ],
     [ "hydraulic_stream_upscale_amplification", "erosion_8hpp.html#af975837e0f5b169dcb6d3f5f58c95fe9", null ],
-    [ "hydraulic_vpipes", "erosion_8hpp.html#aa6efdb6d9fbf995b00f889ca290819cd", null ],
-    [ "hydraulic_vpipes", "erosion_8hpp.html#ac30a1d413b62e80d0d2fd3073cc975d5", null ],
     [ "stratify", "erosion_8hpp.html#abc0ddcae8cec8a556b8a343eaafe1dc4", null ],
     [ "stratify", "erosion_8hpp.html#ad117ced78d758baa0bb5e1e7655bd0b9", null ],
     [ "stratify", "erosion_8hpp.html#abca93ca8447abd2fc06c9892a4dc248c", null ],
