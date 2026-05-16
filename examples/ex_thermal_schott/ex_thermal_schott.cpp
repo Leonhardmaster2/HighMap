@@ -2,27 +2,35 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+
   glm::ivec2 shape = {256, 256};
-  glm::vec2  res = {2.f, 2.f};
+  glm::vec2  kw = {2.f, 2.f};
   int        seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
   auto z1 = z;
   auto z2 = z;
 
-  int   iterations = 100;
-  float intensity = 0.001f;
+  int   iterations = 500;
+  float intensity = 0.2f;
   float talus = 2.f / shape.x;
 
-  hmap::thermal_schott(z1, talus, iterations, intensity);
+  hmap::gpu::thermal_schott(z1,
+                            hmap::Array(shape, talus),
+                            iterations,
+                            intensity);
 
   // align talus constraint with the elevation
   hmap::Array talus_map = z;
   hmap::remap(talus_map, talus / 2.f, talus);
 
-  hmap::thermal_schott(z2, talus_map, iterations, intensity);
+  hmap::gpu::thermal_schott(z2, talus_map, iterations, intensity);
+
+  z1.dump("out1.png");
+  z2.dump();
 
   hmap::export_banner_png("ex_thermal_schott.png",
                           {z, z1, z2},

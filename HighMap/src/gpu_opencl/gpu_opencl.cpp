@@ -88,6 +88,7 @@ bool init_opencl()
 #include "kernels/thermal_olsen.cl"
 #include "kernels/thermal_rib.cl"
 #include "kernels/thermal_ridge.cl"
+#include "kernels/thermal_schott.cl"
 #include "kernels/thermal_scree.cl"
 #include "kernels/topographic_position_index.cl"
 #include "kernels/vorolines.cl"

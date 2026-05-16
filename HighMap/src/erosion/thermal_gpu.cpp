@@ -263,6 +263,48 @@ void thermal_ridge(Array       &z,
                   });
 }
 
+void thermal_schott(Array       &z,
+                    const Array &talus,
+                    int          iterations,
+                    float        intensity,
+                    Array       *p_deposition_map)
+{
+  Array z_bckp = Array();
+  if (p_deposition_map != nullptr) z_bckp = z;
+
+  auto run = clwrapper::Run("thermal_schott");
+
+  run.bind_buffer<float>("z", z.vector);
+  run.bind_buffer<float>("talus", talus.vector);
+  run.bind_arguments(z.shape.x, z.shape.y, intensity);
+
+  run.write_buffer("z");
+  run.write_buffer("talus");
+
+  for (int it = 0; it < iterations; it++)
+    run.execute({z.shape.x, z.shape.y});
+
+  run.read_buffer("z");
+  extrapolate_borders(z);
+
+  if (p_deposition_map) *p_deposition_map = abs(z - z_bckp);
+}
+
+void thermal_schott(Array       &z,
+                    const Array *p_mask,
+                    const Array &talus,
+                    int          iterations,
+                    float        intensity,
+                    Array       *p_deposition_map)
+{
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a) {
+        gpu::thermal_schott(a, talus, iterations, intensity, p_deposition_map);
+      });
+}
+
 void thermal_scree(Array       &z,
                    const Array &talus,
                    const Array &zmax,
