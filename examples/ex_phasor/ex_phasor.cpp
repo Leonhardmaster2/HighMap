@@ -37,7 +37,5 @@ int main(void)
                                         /* angle_shift */ 15.f);
   arrays.push_back(z);
 
-  z.to_png_grayscale("out.png", CV_16U);
-
   hmap::export_banner_png("ex_phasor.png", arrays, hmap::Cmap::JET);
 }

@@ -2529,7 +2529,6 @@ Array noise_fbm(NoiseType    noise_type,
  * @param  angle_shift      Global phase angle offset (degrees).
  * @param  n_kernel_samples Number of kernel samples.
  * @param  jitter           Sampling jitter (x,y).
- * @param  angle_filter_ir  Angular filtering radius.
  * @param  delta            Finite difference step.
  * @param  phase_smoothing  Phase smoothing factor.
  * @param  p_angle          Optional external angle field.
@@ -2551,7 +2550,6 @@ Array phasor(PhasorProfile   phasor_profile,
              float           angle_shift = 0.f,
              int             n_kernel_samples = 8,
              const glm::vec2 jitter = {1.f, 1.f},
-             int             angle_filter_ir = 8,
              float           delta = 0.01f,
              float           phase_smoothing = 10.f,
              const Array    *p_angle = nullptr,
@@ -2576,7 +2574,6 @@ Array phasor(PhasorProfile   phasor_profile,
  * @param  lacunarity       Frequency multiplier per octave.
  * @param  n_kernel_samples Number of kernel samples.
  * @param  jitter           Sampling jitter (x,y).
- * @param  angle_filter_ir  Angular filtering radius.
  * @param  delta            Finite difference step.
  * @param  phase_smoothing  Phase smoothing factor.
  * @param  p_angle          Optional external angle field.
@@ -2602,7 +2599,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                  float           lacunarity = 2.f,
                  int             n_kernel_samples = 8,
                  const glm::vec2 jitter = {1.f, 1.f},
-                 int             angle_filter_ir = 8,
                  float           delta = 0.01f,
                  float           phase_smoothing = 10.f,
                  const Array    *p_angle = nullptr,

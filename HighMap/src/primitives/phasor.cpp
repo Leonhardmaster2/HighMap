@@ -4,6 +4,7 @@
 #include "highmap/gradient.hpp"
 #include "highmap/math.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -15,7 +16,6 @@ Array phasor(PhasorProfile   phasor_profile,
              float           angle_shift,
              int             n_kernel_samples,
              const glm::vec2 jitter,
-             int             angle_filter_ir,
              float           delta,
              float           phase_smoothing,
              const Array    *p_angle,
@@ -40,7 +40,6 @@ Array phasor(PhasorProfile   phasor_profile,
                                   kp,
                                   n_kernel_samples,
                                   jitter,
-                                  angle_filter_ir,
                                   /* p_ctrl_param */ nullptr,
                                   p_noise_x,
                                   p_noise_y,
@@ -78,7 +77,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                  float           lacunarity,
                  int             n_kernel_samples,
                  const glm::vec2 jitter,
-                 int             angle_filter_ir,
                  float           delta,
                  float           phase_smoothing,
                  const Array    *p_angle,
@@ -98,7 +96,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                          angle_shift,
                          n_kernel_samples,
                          jitter,
-                         angle_filter_ir,
                          delta,
                          phase_smoothing,
                          p_angle,
@@ -107,6 +104,7 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                          bbox);
 
     sum += value * amp;
+    amp *= (1.f - weight) + weight * minimum(value + 1.f, 2.f) * 0.5f;
     kp_global *= lacunarity;
     amp *= persistence;
     seed++;

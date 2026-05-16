@@ -529,7 +529,6 @@ Array phase_field_angle(const Array     &angle, // rads
                         float            kp,
                         int              n_kernel_samples = 8,
                         const glm::vec2 &jitter = {0.5f, 0.5f},
-                        int              angle_filter_ir = 8,
                         const Array     *p_ctrl_param = nullptr,
                         const Array     *p_noise_x = nullptr,
                         const Array     *p_noise_y = nullptr,
