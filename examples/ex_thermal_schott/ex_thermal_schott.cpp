@@ -15,22 +15,15 @@ int main(void)
   auto z2 = z;
 
   int   iterations = 500;
-  float intensity = 0.2f;
   float talus = 2.f / shape.x;
 
-  hmap::gpu::thermal_schott(z1,
-                            hmap::Array(shape, talus),
-                            iterations,
-                            intensity);
+  hmap::gpu::thermal_schott(z1, hmap::Array(shape, talus), iterations);
 
   // align talus constraint with the elevation
   hmap::Array talus_map = z;
   hmap::remap(talus_map, talus / 2.f, talus);
 
-  hmap::gpu::thermal_schott(z2, talus_map, iterations, intensity);
-
-  z1.dump("out1.png");
-  z2.dump();
+  hmap::gpu::thermal_schott(z2, talus_map, iterations);
 
   hmap::export_banner_png("ex_thermal_schott.png",
                           {z, z1, z2},

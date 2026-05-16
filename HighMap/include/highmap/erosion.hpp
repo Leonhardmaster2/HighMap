@@ -2058,14 +2058,14 @@ void thermal_ridge(Array       &z,
 void thermal_schott(Array       &z,
                     const Array &talus,
                     int          iterations = 10,
-                    float        intensity = 0.001f,
+                    float        intensity = 0.2f,
                     Array       *p_deposition_map = nullptr);
 
 void thermal_schott(Array       &z,
                     const Array *p_mask,
                     const Array &talus,
                     int          iterations = 10,
-                    float        intensity = 0.001f,
+                    float        intensity = 0.2f,
                     Array       *p_deposition_map = nullptr); ///< @overload
 
 /**
