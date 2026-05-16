@@ -210,18 +210,24 @@ void thermal_rib(Array &z, int iterations)
   auto run = clwrapper::Run("thermal_rib");
 
   run.bind_buffer<float>("z", z.vector);
-  run.bind_arguments(z.shape.x, z.shape.y, 0);
+  run.bind_arguments(z.shape.x, z.shape.y);
 
   run.write_buffer("z");
 
   for (int it = 0; it < iterations; it++)
   {
-    run.set_argument(3, it);
     run.execute({z.shape.x, z.shape.y});
   }
 
   run.read_buffer("z");
   extrapolate_borders(z, 3);
+}
+
+void thermal_rib(Array &z, const Array *p_mask, int iterations)
+{
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a) { gpu::thermal_rib(a, iterations); });
 }
 
 void thermal_ridge(Array       &z,

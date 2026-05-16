@@ -978,20 +978,6 @@ void thermal_olsen(Array       &z,
                    Array       *p_bedrock = nullptr,
                    Array       *p_deposition_map = nullptr);
 
-/**
- * @brief Apply thermal erosion using a 'rib' algorithm (taken from Geomorph).
- * @param z          Input heightmap.
- * @param iterations Number of iterations.
- * @param p_bedrock  Lower elevation limit.
- *
- * **Example**
- * @include ex_thermal_rib.cpp
- *
- * **Result**
- * @image html ex_thermal_rib.png
- */
-void thermal_rib(Array &z, int iterations, Array *p_bedrock = nullptr);
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -2001,8 +1987,21 @@ void thermal_inflate(Array       &z,
                      const Array &talus,
                      int          iterations = 10); ///< @overload
 
-/*! @brief See hmap::thermal_rib */
+/**
+ * @brief Apply thermal erosion using a 'rib' algorithm (taken from Geomorph).
+ * @param z          Input heightmap.
+ * @param iterations Number of iterations.
+ * @param p_bedrock  Lower elevation limit.
+ *
+ * **Example**
+ * @include ex_thermal_rib.cpp
+ *
+ * **Result**
+ * @image html ex_thermal_rib.png
+ */
 void thermal_rib(Array &z, int iterations);
+
+void thermal_rib(Array &z, const Array *p_mask, int iterations); ///< @overload
 
 /**
  * @brief Apply thermal weathering erosion to give a ridge like effect.
