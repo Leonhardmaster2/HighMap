@@ -687,7 +687,6 @@ var namespacehmap =
     [ "thermal_auto_bedrock", "namespacehmap.html#ab6e327bd3ebf43e1c087f427df1f999e", null ],
     [ "thermal_flatten", "namespacehmap.html#a600b794acf99e4b8d41ee7526e5c21ec", null ],
     [ "thermal_flatten", "namespacehmap.html#aad5d723c32c1cd431ad4ab6638fb523d", null ],
-    [ "thermal_olsen", "namespacehmap.html#a1ebb59674f1b317db20cc87385bc41a5", null ],
     [ "export_asset", "namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58", null ],
     [ "export_asset", "namespacehmap.html#a0892411b8f3af0942381044595a99e52", null ],
     [ "export_as_ascii", "namespacehmap.html#a2f24b35f08d0ba5cce622c8896690fbd", null ],

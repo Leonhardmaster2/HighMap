@@ -29,7 +29,6 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "thermal.cpp", "thermal_8cpp.html", "thermal_8cpp" ],
     [ "thermal_flatten.cpp", "thermal__flatten_8cpp.html", "thermal__flatten_8cpp" ],
     [ "thermal_gpu.cpp", "thermal__gpu_8cpp.html", "thermal__gpu_8cpp" ],
-    [ "thermal_olsen.cpp", "thermal__olsen_8cpp.html", "thermal__olsen_8cpp" ],
     [ "thermal_schott.cpp", "thermal__schott_8cpp.html", "thermal__schott_8cpp" ],
     [ "valley_fill.cpp", "valley__fill_8cpp.html", "valley__fill_8cpp" ],
     [ "watershed_ridge.cpp", "watershed__ridge_8cpp.html", "watershed__ridge_8cpp" ]

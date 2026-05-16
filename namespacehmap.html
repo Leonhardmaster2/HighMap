@@ -1008,9 +1008,6 @@ Functions</h2></td></tr>
 <tr class="memitem:aad5d723c32c1cd431ad4ab6638fb523d" id="r_aad5d723c32c1cd431ad4ab6638fb523d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aad5d723c32c1cd431ad4ab6638fb523d">thermal_flatten</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float talus, int iterations=10, int post_filter_ir=1)</td></tr>
 <tr class="memdesc:aad5d723c32c1cd431ad4ab6638fb523d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.  <br /></td></tr>
 <tr class="separator:aad5d723c32c1cd431ad4ab6638fb523d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ebb59674f1b317db20cc87385bc41a5" id="r_a1ebb59674f1b317db20cc87385bc41a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a1ebb59674f1b317db20cc87385bc41a5">thermal_olsen</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;talus, int iterations=10, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_bedrock=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_deposition_map=nullptr)</td></tr>
-<tr class="memdesc:a1ebb59674f1b317db20cc87385bc41a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply thermal weathering erosion.  <br /></td></tr>
-<tr class="separator:a1ebb59674f1b317db20cc87385bc41a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b8945745feaeaa365d965ce66b32f58" id="r_a7b8945745feaeaa365d965ce66b32f58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7b8945745feaeaa365d965ce66b32f58">export_asset</a> (const std::string &amp;fname, const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="namespacehmap.html#ac81a92060b89699c4eb9826495d87250">MeshType</a> mesh_type=<a class="el" href="namespacehmap.html#ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14">MeshType::TRI</a>, <a class="el" href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871b">AssetExportFormat</a> export_format=<a class="el" href="namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba0766d2c2cb91f6e1e9a1b4dfcbffd562">AssetExportFormat::GLB2</a>, float elevation_scaling=0.2<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const std::string &amp;texture_fname=&quot;&quot;, const std::string &amp;normal_map_fname=&quot;&quot;, float max_error=5e-4<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a7b8945745feaeaa365d965ce66b32f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a heightmap to various 3D file formats.  <br /></td></tr>
 <tr class="separator:a7b8945745feaeaa365d965ce66b32f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -13048,67 +13045,6 @@ levelled out".</p>
 </div><div class="memdoc">
 
 <p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
-
-</div>
-</div>
-<a id="a1ebb59674f1b317db20cc87385bc41a5" name="a1ebb59674f1b317db20cc87385bc41a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ebb59674f1b317db20cc87385bc41a5">&#9670;&#160;</a></span>thermal_olsen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::thermal_olsen </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>talus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>iterations</em> = <code>10</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_bedrock</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_deposition_map</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Apply thermal weathering erosion. </p>
-<p>Based on averaging over first neighbors, see <b>[Olsen2004]</b>. Refer to <b>[Musgrave1989]</b> for the original formulation.</p>
-<p>Thermal erosion refers to the process in which surface sediment weakens due to temperature and detaches, falling down the slopes of the terrain until a resting place is reached, where smooth plateaus tend to form <b>[Musgrave1989]</b>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">z</td><td>Input array. </td></tr>
-    <tr><td class="paramname">p_mask</td><td>Filter mask, expected in [0, 1]. </td></tr>
-    <tr><td class="paramname">talus</td><td>Talus limit. </td></tr>
-    <tr><td class="paramname">p_bedrock</td><td>Lower elevation limit. </td></tr>
-    <tr><td class="paramname">p_deposition_map</td><td>[out] Reference to the deposition map, provided as an output field. </td></tr>
-    <tr><td class="paramname">iterations</td><td>Number of iterations. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
