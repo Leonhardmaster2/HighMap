@@ -734,61 +734,6 @@ void hydraulic_stream_upscale_amplification(
     float  clipping_ratio = 10.f); ///< @overload
 
 /**
- * @brief Apply hydraulic erosion using the 'virtual pipes' algorithm.
- *
- * See @cite Chiba1998, @cite Isheden2022, @cite Mei2007 and @cite Stava2008.
- *
- * @param z                  Input array.
- * @param p_mask             Intensity mask, expected in [0, 1] (applied as a
- * @param iterations         Number of iterations.
- * @param p_bedrock          Lower elevation limit.
- * @param p_moisture_map     Reference to the moisture map (quantity of rain),
- *                           expected to be in [0, 1].
- * @param p_erosion_map[out] Reference to the erosion map, provided as an output
- *                           field.
- * @param p_deposition_map   [out] Reference to the deposition map, provided as
- *                           an output field.
- * @param water_height       Water height.
- * @param c_capacity         Sediment capacity.
- * @param c_deposition       Deposition coefficient.
- * @param c_erosion          Erosion coefficient.
- * @param rain_rate          Rain rate.
- * @param evap_rate          Particle evaporation rate.
- *
- * **Example**
- * @include ex_hydraulic_vpipes.cpp
- *
- * **Result**
- * @image html ex_hydraulic_vpipes.png
- */
-void hydraulic_vpipes(Array &z,
-                      Array *p_mask,
-                      int    iterations,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr,
-                      Array *p_deposition_map = nullptr,
-                      float  water_height = 0.1f,
-                      float  c_capacity = 0.1f,
-                      float  c_erosion = 0.05f,
-                      float  c_deposition = 0.05f,
-                      float  rain_rate = 0.f,
-                      float  evap_rate = 0.01f);
-
-void hydraulic_vpipes(Array &z,
-                      int    iterations,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr,
-                      Array *p_deposition_map = nullptr,
-                      float  water_height = 0.1f,
-                      float  c_capacity = 0.1f,
-                      float  c_erosion = 0.05f,
-                      float  c_deposition = 0.05f,
-                      float  rain_rate = 0.f,
-                      float  evap_rate = 0.01f); ///< @overload
-
-/**
  * @brief Stratify the heightmap by creating a series of layers with elevations
  * corrected by a gamma factor.
  *
