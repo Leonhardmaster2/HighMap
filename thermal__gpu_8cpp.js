@@ -11,6 +11,7 @@ var thermal__gpu_8cpp =
     [ "thermal_olsen", "thermal__gpu_8cpp.html#a00b54f4e60a8fbd6ed5213600d598869", null ],
     [ "thermal_olsen", "thermal__gpu_8cpp.html#a2bb49a523386fcb8fc34f27741c520a8", null ],
     [ "thermal_rib", "thermal__gpu_8cpp.html#a435a38880a6bcabfb8991d5834a0f786", null ],
+    [ "thermal_rib", "thermal__gpu_8cpp.html#a812be167a39917ce8c869f7399dee231", null ],
     [ "thermal_ridge", "thermal__gpu_8cpp.html#a1489150d5e1af976a9f814b9911b3ea0", null ],
     [ "thermal_ridge", "thermal__gpu_8cpp.html#ad0a05ed0beea669300d62197a0dadaf2", null ],
     [ "thermal_schott", "thermal__gpu_8cpp.html#a525c9818a95840ee8dfaa0c4e0d4f779", null ],
