@@ -8209,10 +8209,10 @@ This is an overloaded member function, provided for convenience. It differs from
         </inbodydescription>
         <location file="HighMap/src/gradient/phase_field.cpp" line="107" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="107" bodyend="138" declfile="HighMap/include/highmap/gradient.hpp" declline="512" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1aba356da2f66b4fc2886bd27edc3a15ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a26a24f21c64b7b97b9b23a93b738e97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::phase_field_angle</definition>
-        <argsstring>(const Array &amp;angle, const glm::vec2 &amp;kw, uint seed, float kp, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, int angle_filter_ir=8, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_modulus=nullptr, Array *p_angle_jump_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(const Array &amp;angle, const glm::vec2 &amp;kw, uint seed, float kp, int n_kernel_samples=8, const glm::vec2 &amp;jitter={0.5f, 0.5f}, const Array *p_ctrl_param=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_modulus=nullptr, Array *p_angle_jump_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>phase_field_angle</name>
         <qualifiedname>hmap::gpu::phase_field_angle</qualifiedname>
         <param>
@@ -8240,11 +8240,6 @@ This is an overloaded member function, provided for convenience. It differs from
           <type>const glm::vec2 &amp;</type>
           <declname>jitter</declname>
           <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>angle_filter_ir</declname>
-          <defval>8</defval>
         </param>
         <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
@@ -8282,7 +8277,7 @@ This is an overloaded member function, provided for convenience. It differs from
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/gradient/phase_field.cpp" line="140" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="140" bodyend="196" declfile="HighMap/include/highmap/gradient.hpp" declline="526" declcolumn="7"/>
+        <location file="HighMap/src/gradient/phase_field.cpp" line="140" column="7" bodyfile="HighMap/src/gradient/phase_field.cpp" bodystart="140" bodyend="195" declfile="HighMap/include/highmap/gradient.hpp" declline="526" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a731ad5f4c97f6c8d9987c9b8c2881d55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15061,10 +15056,10 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </inbodydescription>
         <location file="HighMap/src/primitives/primitives_gpu.cpp" line="529" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="529" bodyend="574" declfile="HighMap/include/highmap/primitives.hpp" declline="2505" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a9d62502927b070f814860fdddbe700ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a350e2d35741c205d1df38dc0df922c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::phasor</definition>
-        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kp_global, uint seed, float angle_shift=0.f, int n_kernel_samples=8, const glm::vec2 jitter={1.f, 1.f}, int angle_filter_ir=8, float delta=0.01f, float phase_smoothing=10.f, const Array *p_angle=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kp_global, uint seed, float angle_shift=0.f, int n_kernel_samples=8, const glm::vec2 jitter={1.f, 1.f}, float delta=0.01f, float phase_smoothing=10.f, const Array *p_angle=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>phasor</name>
         <qualifiedname>hmap::gpu::phasor</qualifiedname>
         <param>
@@ -15097,11 +15092,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
           <type>const glm::vec2</type>
           <declname>jitter</declname>
           <defval>{1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>angle_filter_ir</declname>
-          <defval>8</defval>
         </param>
         <param>
           <type>float</type>
@@ -15196,14 +15186,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>angle_filter_ir</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Angular filtering radius. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername>delta</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -15276,7 +15258,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p<sp/>:<sp/>profiles)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a9d62502927b070f814860fdddbe700ce" kindref="member">hmap::gpu::phasor</ref>(p,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a350e2d35741c205d1df38dc0df922c9f" kindref="member">hmap::gpu::phasor</ref>(p,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
@@ -15285,14 +15267,12 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fbm<sp/>phasor</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1abfc7b275c69ec4197993181df13414f1" kindref="member">hmap::gpu::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" kindref="member">hmap::PhasorProfile::PP_COSINE_STD</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a4fe0944fc3e7465e0ec3518c9e541301" kindref="member">hmap::gpu::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" kindref="member">hmap::PhasorProfile::PP_COSINE_STD</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>angle_shift<sp/>*/</highlight><highlight class="normal"><sp/>15.f);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -15302,12 +15282,12 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="11" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="11" bodyend="68" declfile="HighMap/include/highmap/primitives.hpp" declline="2547" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="12" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="12" bodyend="67" declfile="HighMap/include/highmap/primitives.hpp" declline="2546" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1abfc7b275c69ec4197993181df13414f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a4fe0944fc3e7465e0ec3518c9e541301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::gpu::phasor_fbm</definition>
-        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kp_global, uint seed, float angle_shift=0.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, int n_kernel_samples=8, const glm::vec2 jitter={1.f, 1.f}, int angle_filter_ir=8, float delta=0.01f, float phase_smoothing=10.f, const Array *p_angle=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
+        <argsstring>(PhasorProfile phasor_profile, glm::ivec2 shape, float kp_global, uint seed, float angle_shift=0.f, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f, int n_kernel_samples=8, const glm::vec2 jitter={1.f, 1.f}, float delta=0.01f, float phase_smoothing=10.f, const Array *p_angle=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>phasor_fbm</name>
         <qualifiedname>hmap::gpu::phasor_fbm</qualifiedname>
         <param>
@@ -15360,11 +15340,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
           <type>const glm::vec2</type>
           <declname>jitter</declname>
           <defval>{1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>angle_filter_ir</declname>
-          <defval>8</defval>
         </param>
         <param>
           <type>float</type>
@@ -15491,14 +15466,6 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>angle_filter_ir</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Angular filtering radius. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername>delta</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -15571,7 +15538,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p<sp/>:<sp/>profiles)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a9d62502927b070f814860fdddbe700ce" kindref="member">hmap::gpu::phasor</ref>(p,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a350e2d35741c205d1df38dc0df922c9f" kindref="member">hmap::gpu::phasor</ref>(p,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
@@ -15580,14 +15547,12 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fbm<sp/>phasor</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1abfc7b275c69ec4197993181df13414f1" kindref="member">hmap::gpu::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" kindref="member">hmap::PhasorProfile::PP_COSINE_STD</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1a4fe0944fc3e7465e0ec3518c9e541301" kindref="member">hmap::gpu::phasor_fbm</ref>(<ref refid="namespacehmap_1a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" kindref="member">hmap::PhasorProfile::PP_COSINE_STD</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kp,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>angle_shift<sp/>*/</highlight><highlight class="normal"><sp/>15.f);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>arrays.push_back(z);</highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1ab2c7afe05160d85b0997d733cbb7d286" kindref="member">to_png_grayscale</ref>(</highlight><highlight class="stringliteral">&quot;out.png&quot;</highlight><highlight class="normal">,<sp/>CV_16U);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phasor.png&quot;</highlight><highlight class="normal">,<sp/>arrays,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced" kindref="member">hmap::Cmap::JET</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -15597,7 +15562,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/phasor.cpp" line="70" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="70" bodyend="116" declfile="HighMap/include/highmap/primitives.hpp" declline="2594" declcolumn="7"/>
+        <location file="HighMap/src/primitives/phasor.cpp" line="69" column="7" bodyfile="HighMap/src/primitives/phasor.cpp" bodystart="69" bodyend="114" declfile="HighMap/include/highmap/primitives.hpp" declline="2591" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1af761cf856c30010f78ad15cb374eb1e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -15767,7 +15732,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/plates.cpp" line="11" column="7" bodyfile="HighMap/src/primitives/geo/plates.cpp" bodystart="11" bodyend="67" declfile="HighMap/include/highmap/primitives.hpp" declline="2639" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/plates.cpp" line="11" column="7" bodyfile="HighMap/src/primitives/geo/plates.cpp" bodystart="11" bodyend="67" declfile="HighMap/include/highmap/primitives.hpp" declline="2635" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac7c2489dd7079a4904b481815bb7dd0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16000,7 +15965,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="576" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="576" bodyend="634" declfile="HighMap/include/highmap/primitives.hpp" declline="2696" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="576" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="576" bodyend="634" declfile="HighMap/include/highmap/primitives.hpp" declline="2692" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a350a865719e4a4834b6aa38e27c3a9d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16270,7 +16235,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="636" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="636" bodyend="700" declfile="HighMap/include/highmap/primitives.hpp" declline="2759" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="636" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="636" bodyend="700" declfile="HighMap/include/highmap/primitives.hpp" declline="2755" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1abbdd364965f18e629307200a4dbfa5a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16506,7 +16471,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/geo/shattered_peak.cpp" line="13" column="7" bodyfile="HighMap/src/primitives/geo/shattered_peak.cpp" bodystart="13" bodyend="102" declfile="HighMap/include/highmap/primitives.hpp" declline="2825" declcolumn="7"/>
+        <location file="HighMap/src/primitives/geo/shattered_peak.cpp" line="13" column="7" bodyfile="HighMap/src/primitives/geo/shattered_peak.cpp" bodystart="13" bodyend="102" declfile="HighMap/include/highmap/primitives.hpp" declline="2821" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a845e5938c39cdab886b3e354cb53d078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -16750,7 +16715,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="702" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="702" bodyend="779" declfile="HighMap/include/highmap/primitives.hpp" declline="2887" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="702" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="702" bodyend="779" declfile="HighMap/include/highmap/primitives.hpp" declline="2883" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1acc7dccf4ab556f489ffbaef1592fe375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17046,7 +17011,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="781" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="781" bodyend="824" declfile="HighMap/include/highmap/primitives.hpp" declline="2955" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="781" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="781" bodyend="824" declfile="HighMap/include/highmap/primitives.hpp" declline="2951" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a12bceca15985a29f6827f016fa18ebb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17248,7 +17213,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="826" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="826" bodyend="866" declfile="HighMap/include/highmap/primitives.hpp" declline="3012" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="826" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="826" bodyend="866" declfile="HighMap/include/highmap/primitives.hpp" declline="3008" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1accda29e5219749593e6dfa57717707d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17502,7 +17467,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="868" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="868" bodyend="916" declfile="HighMap/include/highmap/primitives.hpp" declline="3070" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="868" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="868" bodyend="916" declfile="HighMap/include/highmap/primitives.hpp" declline="3066" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a4e087a8e6a1ecbeb3bffe199a946c8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17619,7 +17584,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="999" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="999" bodyend="1033" declfile="HighMap/include/highmap/primitives.hpp" declline="3112" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="999" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="999" bodyend="1033" declfile="HighMap/include/highmap/primitives.hpp" declline="3108" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aafc7d621ebf149a27f287222127294ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17760,7 +17725,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="918" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="918" bodyend="951" declfile="HighMap/include/highmap/primitives.hpp" declline="3157" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="918" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="918" bodyend="951" declfile="HighMap/include/highmap/primitives.hpp" declline="3153" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aefe1a52023c39a9e20f5b30ce5dc1da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -17949,7 +17914,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="953" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="953" bodyend="997" declfile="HighMap/include/highmap/primitives.hpp" declline="3193" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="953" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="953" bodyend="997" declfile="HighMap/include/highmap/primitives.hpp" declline="3189" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1af15ee9a79a551cf83cdabdadc2065cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18159,7 +18124,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1035" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1035" bodyend="1079" declfile="HighMap/include/highmap/primitives.hpp" declline="3255" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1035" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1035" bodyend="1079" declfile="HighMap/include/highmap/primitives.hpp" declline="3251" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a33d9640c06dfec4032dbf8b2116ff803" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18215,7 +18180,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1081" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1081" bodyend="1125" declfile="HighMap/include/highmap/primitives.hpp" declline="3267" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1081" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1081" bodyend="1125" declfile="HighMap/include/highmap/primitives.hpp" declline="3263" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a3e358c95d75cd4df78381a7d6700c2fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -18430,7 +18395,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1127" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1127" bodyend="1172" declfile="HighMap/include/highmap/primitives.hpp" declline="3333" declcolumn="7"/>
+        <location file="HighMap/src/primitives/primitives_gpu.cpp" line="1127" column="7" bodyfile="HighMap/src/primitives/primitives_gpu.cpp" bodystart="1127" bodyend="1172" declfile="HighMap/include/highmap/primitives.hpp" declline="3329" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9a3f272d7c8294ab3418be67e3c9b3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
