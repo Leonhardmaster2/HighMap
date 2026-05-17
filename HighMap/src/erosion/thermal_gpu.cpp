@@ -148,6 +148,44 @@ void thermal_auto_bedrock(Array       &z,
       { gpu::thermal_auto_bedrock(a, talus, iterations, p_deposition_map); });
 }
 
+void thermal_flatten(Array       &z,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf,
+                     float        sigma_sup)
+{
+  const glm::ivec2 &shape = z.shape;
+
+  auto run = clwrapper::Run("thermal_flatten");
+
+  run.bind_buffer<float>("z", z.vector);
+  run.bind_buffer<float>("talus", talus.vector);
+  run.bind_arguments(shape.x, shape.y, sigma_inf, sigma_sup);
+
+  run.write_buffer("z");
+  run.write_buffer("talus");
+
+  for (int it = 0; it < iterations; it++)
+    run.execute({shape.x, shape.y});
+
+  run.read_buffer("z");
+  extrapolate_borders(z);
+}
+
+void thermal_flatten(Array       &z,
+                     const Array *p_mask,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf,
+                     float        sigma_sup)
+{
+  apply_with_mask(
+      z,
+      p_mask,
+      [&](Array &a)
+      { gpu::thermal_flatten(a, talus, iterations, sigma_inf, sigma_sup); });
+}
+
 void thermal_inflate(Array &z, const Array &talus, int iterations)
 {
   auto run = clwrapper::Run("thermal_inflate");

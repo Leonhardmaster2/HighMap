@@ -1932,6 +1932,34 @@ void thermal_auto_bedrock(Array &z,
                           Array *p_deposition_map = nullptr);
 
 /**
+ * @brief Apply iterative thermal flattening erosion on a heightmap.
+ *
+ * Material is redistributed locally according to the steepest neighbor slope
+ * and a per-cell talus threshold. Gentle and steep slopes can be relaxed
+ * independently using separate coefficients.
+ *
+ * The computation is performed on the GPU using OpenCL.
+ *
+ * @param[in,out] z          Heightmap modified in-place.
+ * @param[in]     talus      Per-cell talus threshold.
+ * @param[in]     iterations Number of iterations.
+ * @param[in]     sigma_inf  Relaxation factor for slopes below talus.
+ * @param[in]     sigma_sup  Relaxation factor for slopes above talus.
+ */
+void thermal_flatten(Array       &z,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf = 0.5f,
+                     float        sigma_sup = 0.f);
+
+void thermal_flatten(Array       &z,
+                     const Array *p_mask,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf = 0.5f,
+                     float        sigma_sup = 0.f); ///< @overload
+
+/**
  * @brief Apply thermal weathering erosion.
  *
  * Based on averaging over first neighbors, see \cite Olsen2004. Refer to \cite
@@ -1955,7 +1983,7 @@ void thermal_olsen(Array &z, const Array &talus, int iterations);
 void thermal_olsen(Array       &z,
                    const Array *p_mask,
                    const Array &talus,
-                   int          iterations);///< @overload
+                   int          iterations); ///< @overload
 
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.
