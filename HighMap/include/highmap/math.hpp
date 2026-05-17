@@ -32,6 +32,7 @@
 #endif
 
 #include "highmap/array.hpp"
+#include "highmap/math/chebyshev.hpp"
 
 namespace hmap
 {
