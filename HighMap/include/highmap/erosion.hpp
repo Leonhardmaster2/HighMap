@@ -850,81 +850,6 @@ void stratify_oblique(Array             &z,
                       float              angle,
                       Array             *p_noise = nullptr); ///< @overload
 
-/**
- * @brief Apply thermal weathering erosion.
- *
- * Based on https://www.shadertoy.com/view/XtKSWh
- *
- * @param z                Input array.
- * @param p_mask           Filter mask, expected in [0, 1].
- * @param talus            Talus limit.
- * @param p_bedrock        Lower elevation limit.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- * @param iterations       Number of iterations.
- *
- * **Example**
- * @include ex_thermal.cpp
- *
- * **Result**
- * @image html ex_thermal.png
- */
-void thermal(Array       &z,
-             const Array *p_mask,
-             const Array &talus,
-             int          iterations = 10,
-             Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
-
-void thermal(Array       &z,
-             const Array &talus,
-             int          iterations = 10,
-             Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
-
-void thermal(Array &z,
-             float  talus,
-             int    iterations = 10,
-             Array *p_bedrock = nullptr,
-             Array *p_deposition_map = nullptr); ///< @overload
-
-/**
- * @brief Apply thermal weathering erosion with automatic determination of the
- * bedrock.
- *
- * @todo more comprehensive documentation on auto-bedrock algo.
- * @todo fix hard-coded parameters.
- *
- * @see                    {@link thermal}
- *
- * @param z                Input array.
- * @param talus            Local talus limit.
- * @param iterations       Number of iterations.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- *
- * **Example**
- * @include ex_thermal_auto_bedrock.cpp
- *
- * **Result**
- * @image html ex_thermal_auto_bedrock.png
- */
-void thermal_auto_bedrock(Array       &z,
-                          const Array &talus,
-                          int          iterations = 10,
-                          Array       *p_deposition_map = nullptr);
-
-void thermal_auto_bedrock(Array &z,
-                          float  talus,
-                          int    iterations = 10,
-                          Array *p_deposition_map = nullptr); ///< @overload
-
-void thermal_auto_bedrock(Array       &z,
-                          const Array *p_mask,
-                          float        talus,
-                          int          iterations = 10,
-                          Array *p_deposition_map = nullptr); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -1862,46 +1787,80 @@ void strata_terrace(Array       &z,
                     float        gamma_noise_ratio = 0.5f,
                     const Array *p_noise = nullptr);
 
-/*! @brief See hmap::thermal */
+/**
+ * @brief Apply thermal weathering erosion.
+ *
+ * Based on https://www.shadertoy.com/view/XtKSWh
+ *
+ * @param z                Input array.
+ * @param p_mask           Filter mask, expected in [0, 1].
+ * @param talus            Talus limit.
+ * @param p_bedrock        Lower elevation limit.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ * @param iterations       Number of iterations.
+ *
+ * **Example**
+ * @include ex_thermal.cpp
+ *
+ * **Result**
+ * @image html ex_thermal.png
+ */
 void thermal(Array       &z,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
              Array       *p_deposition_map = nullptr);
 
-/*! @brief See hmap::thermal */
 void thermal(Array       &z,
              const Array *p_mask,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
+             Array       *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal */
 void thermal(Array &z,
              float  talus,
              int    iterations = 10,
              Array *p_bedrock = nullptr,
-             Array *p_deposition_map = nullptr);
+             Array *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal_auto_bedrock */
+/**
+ * @brief Apply thermal weathering erosion with automatic determination of the
+ * bedrock.
+ *
+ * @todo more comprehensive documentation on auto-bedrock algo.
+ * @todo fix hard-coded parameters.
+ *
+ * @see                    {@link thermal}
+ *
+ * @param z                Input array.
+ * @param talus            Local talus limit.
+ * @param iterations       Number of iterations.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ *
+ * **Example**
+ * @include ex_thermal_auto_bedrock.cpp
+ *
+ * **Result**
+ * @image html ex_thermal_auto_bedrock.png
+ */
 void thermal_auto_bedrock(Array       &z,
                           const Array &talus,
                           int          iterations = 10,
                           Array       *p_deposition_map = nullptr);
 
-/*! @brief See hmap::thermal_auto_bedrock */
 void thermal_auto_bedrock(Array       &z,
                           const Array *p_mask,
                           const Array &talus,
                           int          iterations = 10,
-                          Array       *p_deposition_map = nullptr);
+                          Array *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal_auto_bedrock */
 void thermal_auto_bedrock(Array &z,
                           float,
                           int    iterations = 10,
-                          Array *p_deposition_map = nullptr);
+                          Array *p_deposition_map = nullptr); ///< @overload
 
 /**
  * @brief Apply iterative thermal flattening erosion on a heightmap.
