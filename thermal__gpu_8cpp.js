@@ -6,6 +6,8 @@ var thermal__gpu_8cpp =
     [ "thermal_auto_bedrock", "thermal__gpu_8cpp.html#a36a2eba6d158e44d0ef917d9582987fe", null ],
     [ "thermal_auto_bedrock", "thermal__gpu_8cpp.html#ac87a6d725bf0751510f6b1f426a8af27", null ],
     [ "thermal_auto_bedrock", "thermal__gpu_8cpp.html#ae3402d591c3b13ef13cece96cdab85b4", null ],
+    [ "thermal_flatten", "thermal__gpu_8cpp.html#a5a5275d0f2588dbbd766e2c5b1a8d55a", null ],
+    [ "thermal_flatten", "thermal__gpu_8cpp.html#a13e5b18eb4ff1cf1f7357a9b29bf9368", null ],
     [ "thermal_inflate", "thermal__gpu_8cpp.html#ae57a1e9bd94f218d4be17c9d8be012c3", null ],
     [ "thermal_inflate", "thermal__gpu_8cpp.html#a72c9d220589d2724b4e48e9c37ff55ad", null ],
     [ "thermal_olsen", "thermal__gpu_8cpp.html#a00b54f4e60a8fbd6ed5213600d598869", null ],
