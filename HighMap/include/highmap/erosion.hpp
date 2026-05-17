@@ -925,34 +925,6 @@ void thermal_auto_bedrock(Array       &z,
                           int          iterations = 10,
                           Array *p_deposition_map = nullptr); ///< @overload
 
-/**
- * @brief Apply modified thermal weathering of Olsen.
- *
- * Based on the algorithm of Olsen \cite Olsen2004, which "causes slopes steeper
- * than the talus threshold to remain unaffected while flatter areas are
- * levelled out".
- *
- * @param z          Input array.
- * @param talus      Local talus limit.
- * @param iterations Number of iterations.
- *
- * **Example**
- * @include ex_thermal_flatten.cpp
- *
- * **Result**
- * @image html ex_thermal_flatten.png
- */
-void thermal_flatten(Array       &z,
-                     const Array &talus,
-                     const Array &bedrock,
-                     int          iterations = 10,
-                     int          post_filter_ir = 1);
-
-void thermal_flatten(Array &z,
-                     float  talus,
-                     int    iterations = 10,
-                     int    post_filter_ir = 1); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu
