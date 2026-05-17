@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classhmap_1_1ChebyshevEvaluator" kind="class" language="C++" prot="public">
+    <compoundname>hmap::ChebyshevEvaluator</compoundname>
+    <includes refid="chebyshev_8hpp" local="no">chebyshev.hpp</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" prot="public" static="no">
+        <type>float</type>
+        <definition>using hmap::ChebyshevEvaluator::value_type =  float</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="35" column="3" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhmap_1_1ChebyshevEvaluator_1aaf7aad73218fa684e5a3a83a99236c14" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref> &gt;</type>
+        <definition>std::vector&lt;value_type&gt; hmap::ChebyshevEvaluator::m_coefficients</definition>
+        <argsstring></argsstring>
+        <name>m_coefficients</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::m_coefficients</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="135" column="15" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1a2482d9b29d85d9ffab33f7076511d3fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>hmap::ChebyshevEvaluator::ChebyshevEvaluator</definition>
+        <argsstring>()=default</argsstring>
+        <name>ChebyshevEvaluator</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::ChebyshevEvaluator</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="40" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1ae1577567c5d4d67e8a1a246fb61bf061" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hmap::ChebyshevEvaluator::ChebyshevEvaluator</definition>
+        <argsstring>(std::vector&lt; value_type &gt; coefficients)</argsstring>
+        <name>ChebyshevEvaluator</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::ChebyshevEvaluator</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref> &gt;</type>
+          <declname>coefficients</declname>
+        </param>
+        <briefdescription>
+<para>Construct from Chebyshev coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coefficients</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Series coefficients ordered by polynomial degree. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="46" column="12" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1a79b2406fba930095679cd5026fd15437" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hmap::ChebyshevEvaluator::set_coefficients</definition>
+        <argsstring>(std::vector&lt; value_type &gt; coefficients)</argsstring>
+        <name>set_coefficients</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::set_coefficients</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref> &gt;</type>
+          <declname>coefficients</declname>
+        </param>
+        <briefdescription>
+<para>Set Chebyshev coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coefficients</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Series coefficients ordered by polynomial degree. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="55" column="8" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1a158ad4fc0866f7ef9046e1a7cfd44af5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref></type>
+        <definition>value_type hmap::ChebyshevEvaluator::evaluate</definition>
+        <argsstring>(value_type x) const noexcept</argsstring>
+        <name>evaluate</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::evaluate</qualifiedname>
+        <param>
+          <type><ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Evaluate the polynomial series at x. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses the Clenshaw recurrence algorithm.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Evaluation coordinate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Evaluated value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="69" column="21" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="69" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1ad4d253aca3195ade727efaf573f2def9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIt</type>
+          </param>
+          <param>
+            <type>typename OutputIt</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void hmap::ChebyshevEvaluator::evaluate_batch</definition>
+        <argsstring>(InputIt begin, InputIt end, OutputIt out) const noexcept</argsstring>
+        <name>evaluate_batch</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::evaluate_batch</qualifiedname>
+        <param>
+          <type>InputIt</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>InputIt</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>OutputIt</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Evaluate the series on a range of input values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>InputIt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input iterator type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OutputIt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output iterator type.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>begin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input begin iterator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input end iterator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output iterator. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="104" column="15" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="104" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1aeba72e393615e9bd94f7b257153ad9a1" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmap::ChebyshevEvaluator::degree</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>degree</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::degree</qualifiedname>
+        <briefdescription>
+<para>Get polynomial degree. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Highest polynomial degree. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="119" column="14" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classhmap_1_1ChebyshevEvaluator_1ac6de9bfd948d9ced88a35728a1262743" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kindref="member">value_type</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; value_type &gt; &amp; hmap::ChebyshevEvaluator::coefficients</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>coefficients</name>
+        <qualifiedname>hmap::ChebyshevEvaluator::coefficients</qualifiedname>
+        <briefdescription>
+<para>Get series coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Coefficient array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/math/chebyshev.hpp" line="129" column="28" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="129" bodyend="132"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Evaluates a Chebyshev polynomial series using Clenshaw recurrence. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Evaluates: <verbatim>f(x) = sum_k c_k T_k(x)
+</verbatim> where T_k are Chebyshev polynomials of the first kind.</para>
+<para>Designed for very large numbers of evaluations with minimal overhead. </para>
+    </detaileddescription>
+    <location file="HighMap/include/highmap/math/chebyshev.hpp" line="32" column="1" bodyfile="HighMap/include/highmap/math/chebyshev.hpp" bodystart="33" bodyend="136"/>
+    <listofallmembers>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1a2482d9b29d85d9ffab33f7076511d3fa" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>ChebyshevEvaluator</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1ae1577567c5d4d67e8a1a246fb61bf061" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>ChebyshevEvaluator</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1ac6de9bfd948d9ced88a35728a1262743" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>coefficients</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1aeba72e393615e9bd94f7b257153ad9a1" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>degree</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1a158ad4fc0866f7ef9046e1a7cfd44af5" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>evaluate</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1ad4d253aca3195ade727efaf573f2def9" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>evaluate_batch</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1aaf7aad73218fa684e5a3a83a99236c14" prot="private" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>m_coefficients</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1a79b2406fba930095679cd5026fd15437" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>set_coefficients</name></member>
+      <member refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" prot="public" virt="non-virtual"><scope>hmap::ChebyshevEvaluator</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

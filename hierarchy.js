@@ -3,6 +3,7 @@ var hierarchy =
     [ "hmap::Array", "classhmap_1_1Array.html", null ],
     [ "hmap::AssertResults", "structhmap_1_1AssertResults.html", null ],
     [ "hmap::TerrainTriMesh::BoundingBox", "structhmap_1_1TerrainTriMesh_1_1BoundingBox.html", null ],
+    [ "hmap::ChebyshevEvaluator", "classhmap_1_1ChebyshevEvaluator.html", null ],
     [ "hmap::Cloud", "classhmap_1_1Cloud.html", [
       [ "hmap::Graph", "classhmap_1_1Graph.html", null ],
       [ "hmap::Path", "classhmap_1_1Path.html", null ]
