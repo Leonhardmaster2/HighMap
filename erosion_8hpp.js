@@ -52,8 +52,6 @@ var erosion_8hpp =
     [ "thermal_auto_bedrock", "erosion_8hpp.html#acbd2a3c82ec3ce4eaf77dbc92d580321", null ],
     [ "thermal_auto_bedrock", "erosion_8hpp.html#a2e350857ce33125722d9c8ff6663f1c8", null ],
     [ "thermal_auto_bedrock", "erosion_8hpp.html#ab6e327bd3ebf43e1c087f427df1f999e", null ],
-    [ "thermal_flatten", "erosion_8hpp.html#a600b794acf99e4b8d41ee7526e5c21ec", null ],
-    [ "thermal_flatten", "erosion_8hpp.html#aad5d723c32c1cd431ad4ab6638fb523d", null ],
     [ "deposition_fill_holes", "erosion_8hpp.html#a8497e2fce595293ea07e68eac1e5bce2", null ],
     [ "deposition_fill_holes", "erosion_8hpp.html#a67fee4e11fb0b003d0ebb091e85533fe", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#ae084938139cca4f7c15866ceabe18ab7", null ],
