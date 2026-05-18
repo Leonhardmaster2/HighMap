@@ -91,34 +91,6 @@ Array caldera(glm::ivec2 shape,
   return z;
 }
 
-Array crater(glm::ivec2   shape,
-             float        radius,
-             float        depth,
-             float        lip_decay,
-             float        lip_height_ratio,
-             const Array *p_ctrl_param,
-             const Array *p_noise_x,
-             const Array *p_noise_y,
-             glm::vec2    center,
-             glm::vec4    bbox)
-{
-  Array          array = Array(shape);
-  CraterFunction f = CraterFunction(radius,
-                                    depth,
-                                    lip_decay,
-                                    lip_height_ratio,
-                                    center);
-
-  fill_array_using_xy_function(array,
-                               bbox,
-                               p_ctrl_param,
-                               p_noise_x,
-                               p_noise_y,
-                               nullptr,
-                               f.get_delegate());
-  return array;
-}
-
 Array peak(glm::ivec2   shape,
            float        radius,
            const Array *p_noise,

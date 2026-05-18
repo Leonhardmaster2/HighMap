@@ -411,20 +411,34 @@ Array cone_sigmoid(glm::ivec2   shape,
 Array constant(glm::ivec2 shape, float value = 0.f);
 
 /**
- * @brief Return a crater-shaped heightmap.
+ * @brief Generate a procedural impact crater heightmap.
  *
- * @param  shape                Array shape.
- * @param  radius               Crater radius.
- * @param  lip_decay            Ejecta lip decay.
- * @param  lip_height_ratio     Controls the ejecta lip relative height, in [0,
- *                              1].
- * @param  depth                Crater depth.
- * @param  p_ctrl_param         Reference to the control parameter array (acts
- *                              as a multiplier for the lip_height_ratio
- *                              parameter).
- * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
- * @param  bbox                 Domain bounding box.
- * @return                      Array New array.
+ * Creates a crater-shaped terrain with configurable inner cavity,
+ * outer lip, asymmetry, terraces, and optional central peak.
+ * Optional masks for the crater region and inner crater region
+ * can also be generated.
+ *
+ * @param shape Output array shape.
+ * @param radius Crater radius.
+ * @param center Crater center position.
+ * @param angle Main asymmetry orientation angle in degrees.
+ * @param inner_depth Depth of the crater cavity.
+ * @param inner_exp Exponent controlling the inner profile shape.
+ * @param lip_height Height of the crater rim.
+ * @param lip_extent Extent of the outer rim.
+ * @param lip_exp Exponent controlling rim falloff.
+ * @param asym_ratio Asymmetry factor applied along the main direction.
+ * @param central_peak_height Height of the central peak.
+ * @param central_peak_extent Radius of the central peak region.
+ * @param n_terraces Number of inner terraces.
+ * @param terrace_extent Terrace spacing factor.
+ * @param terrace_exp Terrace profile exponent.
+ * @param terrace_persistence Terrace amplitude decay factor.
+ * @param p_noise_r Optional radial noise distortion.
+ * @param bbox Bounding box coordinates.
+ * @param p_crater_mask Optional output crater mask.
+ * @param p_inner_crater_mask Optional output inner crater mask.
+ * @return Generated crater heightmap.
  *
  * **Example**
  * @include ex_crater.cpp
@@ -434,14 +448,24 @@ Array constant(glm::ivec2 shape, float value = 0.f);
  */
 Array crater(glm::ivec2   shape,
              float        radius,
-             float        depth,
-             float        lip_decay,
-             float        lip_height_ratio = 0.5f,
-             const Array *p_ctrl_param = nullptr,
-             const Array *p_noise_x = nullptr,
-             const Array *p_noise_y = nullptr,
              glm::vec2    center = {0.5f, 0.5f},
-             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+             float        angle = 30.f, // degs,
+             float        inner_depth = 0.1f,
+             float        inner_exp = 3.f,
+             float        lip_height = 0.02f,
+             float        lip_extent = 0.25f,
+             float        lip_exp = 2.f,
+             float        asym_ratio = 0.8f,
+             float        central_peak_height = 0.01f,
+             float        central_peak_extent = 0.4f,
+             int          n_terraces = 0,
+             float        terrace_extent = 0.1f,
+             float        terrace_exp = 2.f,
+             float        terrace_persistence = 0.5f,
+             const Array *p_noise_r = nullptr,
+             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f},
+             Array       *p_crater_mask = nullptr,
+             Array       *p_inner_crater_mask = nullptr);
 
 /**
  * @brief Generates a cubic pulse array.

@@ -285,6 +285,13 @@ Array pow(const Array &array, float exp)
   return array_out;
 }
 
+float power_curve(float x, float a, float b)
+{
+  // https://iquilezles.org/articles/functions/
+  float k = std::pow(a + b, a + b) / (std::pow(a, a) * std::pow(b, b));
+  return k * std::pow(x, a) * std::pow(1.f - x, b);
+}
+
 void radial_displacement_to_xy(const Array &dr,
                                Array       &dx,
                                Array       &dy,

@@ -379,6 +379,15 @@ Array log10(const Array &array);
 Array pow(const Array &array, float exp);
 
 /**
+ * @brief Smooth asymmetric bell-shaped curve on [0, 1].
+ *
+ * The parameters @p a and @p b control the left and right
+ * curvature respectively. The function is normalized so that
+ * its maximum value is 1.
+ */
+float power_curve(float x, float a, float b);
+
+/**
  * @brief Interpret the input array `dr` as a radial displacement and convert it
  * to a pair of displacements `dx` and `dy` in cartesian coordinates.
  * @param dr        Radial displacement.
