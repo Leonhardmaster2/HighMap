@@ -1188,31 +1188,6 @@ Array paraboloid(glm::ivec2   shape,
                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief Return a peak-shaped heightmap.
- *
- * @param  shape         Array shape.
- * @param  radius        Peak outer radius.
- * @param  p_noise       Reference to the input noise array used for domain
- *                       warping (NOT in pixels, with respect to a unit domain).
- * @param  noise_amp_r   Radial noise absolute scale (in pixels).
- * @param  noise_ratio_z Vertical noise relative scale (in [0, 1]).
- * @param  bbox          Domain bounding box.
- * @return               Array Resulting array.
- *
- * **Example**
- * @include ex_peak.cpp
- *
- * **Result**
- * @image html ex_peak.png
- */
-Array peak(glm::ivec2   shape,
-           float        radius,
-           const Array *p_noise,
-           float        noise_r_amp,
-           float        noise_z_ratio,
-           glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
  * @brief Generates a rectangle-shaped heightmap with optional modifications.
  *
  * This function creates a 2D array representing a rectangle with specified

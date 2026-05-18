@@ -91,45 +91,4 @@ Array caldera(glm::ivec2 shape,
   return z;
 }
 
-Array peak(glm::ivec2   shape,
-           float        radius,
-           const Array *p_noise,
-           float        noise_r_amp,
-           float        noise_z_ratio,
-           glm::vec4    bbox)
-{
-  glm::vec2 shift = {bbox.x, bbox.z};
-  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
-
-  Array z = Array(shape);
-  int   ic = (int)((0.5f - shift.x) / scale.x * z.shape.x);
-  int   jc = (int)((0.5f - shift.y) / scale.y * z.shape.y);
-
-  if (!p_noise)
-  {
-    for (int j = 0; j < z.shape.y; j++)
-      for (int i = 0; i < z.shape.x; i++)
-      {
-        float r = std::hypot((float)(i - ic), (float)(j - jc)) / radius;
-
-        if (r < 1.f) z(i, j) = 1.f - r * r * (3.f - 2.f * r);
-      }
-  }
-  else
-  {
-    for (int j = 0; j < z.shape.y; j++)
-      for (int i = 0; i < z.shape.x; i++)
-      {
-        float r = std::hypot((float)(i - ic), (float)(j - jc)) / radius;
-        r += r * noise_r_amp / radius * (2 * (*p_noise)(i, j) - 1);
-
-        if (r < 1.f) z(i, j) = 1.f - r * r * (3.f - 2.f * r);
-
-        z(i, j) *= 1.f + noise_z_ratio * (2.f * (*p_noise)(i, j) - 1.f);
-      }
-  }
-
-  return z;
-}
-
 } // namespace hmap
