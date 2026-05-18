@@ -1,0 +1,46 @@
+\doxysection{profiles.\+hpp}
+\hypertarget{profiles_8hpp_source}{}\label{profiles_8hpp_source}\index{HighMap/include/highmap/math/profiles.hpp@{HighMap/include/highmap/math/profiles.hpp}}
+\mbox{\hyperlink{profiles_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2023\ Otto\ Link.\ Distributed\ under\ the\ terms\ of\ the\ GNU\ General}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Public\ License.\ The\ full\ license\ is\ in\ the\ file\ LICENSE,\ distributed\ with}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ this\ software.\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{PhasorProfile}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7}{PP\_COSINE\_BULKY}},}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1}{PP\_COSINE\_PEAKY}},}
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc}{PP\_COSINE\_SQUARE}},}
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319}{PP\_COSINE\_STD}},}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}{PP\_TRIANGLE}},}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{RadialProfile}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba}{RP\_GAIN}},}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0}{RP\_LINEAR}},}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901}{RP\_POW}},}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd}{RP\_SMOOTHSTEP}},}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59}{RP\_SMOOTHSTEP\_UPPER}},}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c}{RP\_FLAT\_BOTTOM}},}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5}{RP\_SQRT}}}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00065\ std::function<float(\textcolor{keywordtype}{float})>\ \mbox{\hyperlink{namespacehmap_a3e2e333ca90c11a997a9ac04361b1741}{get\_phasor\_profile\_function}}(}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{PhasorProfile}}\ phasor\_profile,}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ delta,}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ *p\_profile\_avg\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00084\ std::function<float(\textcolor{keywordtype}{float})>\ \mbox{\hyperlink{namespacehmap_a6558dec0d9f57bbc8f9ef9b2fe324757}{get\_radial\_profile\_function}}(}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{RadialProfile}}\ radial\_profile,}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ delta);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+
+\end{DoxyCode}

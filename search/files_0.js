@@ -7,7 +7,7 @@ var searchData=
   ['alpha_5fmodel_2ecpp_4',['alpha_model.cpp',['../alpha__model_8cpp.html',1,'']]],
   ['alter_5felevation_2ecpp_5',['alter_elevation.cpp',['../alter__elevation_8cpp.html',1,'']]],
   ['array_2ecpp_6',['array.cpp',['../array_8cpp.html',1,'']]],
-  ['array_2ehpp_7',['array.hpp',['../array_8hpp.html',1,'']]],
+  ['array_2ehpp_7',['array.hpp',['../array_8hpp.html',1,'(Global Namespace)'],['../math_2array_8hpp.html',1,'(Global Namespace)']]],
   ['array_5ffunctions_2ecpp_8',['array_functions.cpp',['../array__functions_8cpp.html',1,'']]],
   ['assert_2ecpp_9',['assert.cpp',['../assert_8cpp.html',1,'']]],
   ['assert_2ehpp_10',['assert.hpp',['../assert_8hpp.html',1,'']]],

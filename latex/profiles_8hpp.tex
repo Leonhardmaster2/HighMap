@@ -1,0 +1,37 @@
+\doxysection{High\+Map/include/highmap/math/profiles.hpp File Reference}
+\hypertarget{profiles_8hpp}{}\label{profiles_8hpp}\index{HighMap/include/highmap/math/profiles.hpp@{HighMap/include/highmap/math/profiles.hpp}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacehmap}{hmap}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{hmap\+::\+Phasor\+Profile}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+BULKY}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+PEAKY}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+SQUARE}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+STD}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}{hmap\+::\+PP\+\_\+\+TRIANGLE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Phasor angular profile type. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{hmap\+::\+Radial\+Profile}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba}{hmap\+::\+RP\+\_\+\+GAIN}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a8374fb3e0d0799f69d5a50e6e26f56b0}{hmap\+::\+RP\+\_\+\+LINEAR}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a67c1906a040e7234b7a636eaf7ef7901}{hmap\+::\+RP\+\_\+\+POW}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd}{hmap\+::\+RP\+\_\+\+SMOOTHSTEP}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90acedc11502bd1441e893fdc5a699b6d59}{hmap\+::\+RP\+\_\+\+SMOOTHSTEP\+\_\+\+UPPER}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90a42aff3426715647722fc7945ca24ec4c}{hmap\+::\+RP\+\_\+\+FLAT\+\_\+\+BOTTOM}}
+, \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5}{hmap\+::\+RP\+\_\+\+SQRT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Radial profile type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a3e2e333ca90c11a997a9ac04361b1741}{hmap\+::get\+\_\+phasor\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} phasor\+\_\+profile, float delta, float \texorpdfstring{$\ast$}{*}p\+\_\+profile\+\_\+avg=nullptr)
+\begin{DoxyCompactList}\small\item\em Generates a function representing a phasor profile based on the specified type and parameters. \end{DoxyCompactList}\item 
+std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a6558dec0d9f57bbc8f9ef9b2fe324757}{hmap\+::get\+\_\+radial\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+Profile}} radial\+\_\+profile, float delta)
+\begin{DoxyCompactList}\small\item\em Returns a normalized radial profile function. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -12,7 +12,7 @@
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Public<sp/>License.<sp/>The<sp/>full<sp/>license<sp/>is<sp/>in<sp/>the<sp/>file<sp/>LICENSE,<sp/>distributed<sp/>with</highlight></codeline>
 <codeline lineno="3"><highlight class="comment"><sp/>*<sp/>this<sp/>software.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gradient_8hpp" kindref="compound">highmap/gradient.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math_8hpp" kindref="compound">highmap/math.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math_2array_8hpp" kindref="compound">highmap/math/array.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap" kindref="compound">hmap</ref></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
@@ -44,7 +44,7 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>Array<sp/><ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref><sp/>=<sp/><ref refid="namespacehmap_1a5f58c4149344b401d82f0be3c3807156" kindref="member">gradient_norm</ref>(z);</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>slope_width<sp/>=<sp/>0.1f<sp/>*<sp/>slope_limit;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>z_bedrock<sp/>-=<sp/>slope_strength<sp/>*</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1.f<sp/>-<sp/><ref refid="namespacehmap_1ad0759b7e3cb7455527b9b5b4947720bd" kindref="member">sigmoid</ref>(<ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref><sp/>-<sp/>slope_limit,<sp/>slope_width));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1.f<sp/>-<sp/><ref refid="namespacehmap_1a0aa2c50266e16cf5af077e4e3f77bd8f" kindref="member">sigmoid</ref>(<ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref><sp/>-<sp/>slope_limit,<sp/>slope_width));</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>z_bedrock;</highlight></codeline>
