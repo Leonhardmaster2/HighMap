@@ -1142,7 +1142,6 @@ var namespacehmap =
     [ "noise_ridged", "namespacehmap.html#a21f9dbe435ff4fd987c9709664bafb28", null ],
     [ "noise_swiss", "namespacehmap.html#acfe4aa12e766873dc71cb5bdc2bf5b2c", null ],
     [ "paraboloid", "namespacehmap.html#a9bab88cc60ec72c09eec98f0fb9f452f", null ],
-    [ "peak", "namespacehmap.html#a77ce3e2ce7f345c48daf6a7dc123fc7f", null ],
     [ "rectangle", "namespacehmap.html#adafc477ac182ce40ebf2cee1c84cb936", null ],
     [ "rift", "namespacehmap.html#a808ede1d218fd226001c8f804bb85b97", null ],
     [ "slope", "namespacehmap.html#a79ad6fb857a38f8de9915d01992e5161", null ],

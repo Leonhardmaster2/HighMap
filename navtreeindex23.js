@@ -1,8 +1,5 @@
 var NAVTREEINDEX23 =
 {
-"upscale__amplification_8cpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,1,25,2,0],
-"upscaling_8hpp.html":[5,0,1,0,0,5,2],
-"upscaling_8hpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,0,0,5,2,0],
 "upscaling_8hpp_source.html":[5,0,1,0,0,5,2],
 "valley__fill_8cpp.html":[5,0,1,1,12,28],
 "valley__fill_8cpp.html#aa7ce5c44914d54ec7fa0162c5ccbab86":[5,0,1,1,12,28,1],

@@ -10,8 +10,8 @@ var NAVTREEINDEX9 =
 "flow__stream_8cpp.html#a948b4703486f175cd2681bd9bc7b5a88":[5,0,1,1,19,12,1],
 "format__raw_8cpp.html":[5,0,1,1,13,8],
 "format__raw_8cpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,1,13,8,0],
-"functions.html":[4,3,0,0],
 "functions.html":[4,3,0],
+"functions.html":[4,3,0,0],
 "functions_8cpp.html":[5,0,1,1,28,0,2],
 "functions_8cpp.html#a84ca1f41de32e4beacb10787127b4b8a":[5,0,1,1,28,0,2,0],
 "functions_8hpp.html":[5,0,1,0,0,23],
@@ -93,7 +93,6 @@ var NAVTREEINDEX9 =
 "generate__riverbed__gpu_8cpp.html":[5,0,1,1,19,14],
 "generate__riverbed__gpu_8cpp.html#a129b54789c706428d04afd91d5eb8ae6":[5,0,1,1,19,14,0],
 "geo_8cpp.html":[5,0,1,1,28,1,3],
-"geo_8cpp.html#a77ce3e2ce7f345c48daf6a7dc123fc7f":[5,0,1,1,28,1,3,2],
 "geo_8cpp.html#a9ee91a0c5ac4f49f1e40aa54ab69cb2f":[5,0,1,1,28,1,3,0],
 "geo_8cpp.html#aaa2b720ef7b261b4eb2f1e89838a538e":[5,0,1,1,28,1,3,1],
 "geomorphons_8cpp.html":[5,0,1,1,14,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX9 =
 "hydrology_8hpp.html#a05b9777b63947937181d7b7406e4b50d":[5,0,1,0,0,2,2,2],
 "hydrology_8hpp.html#a121c42071766df393b6e049315876d5e":[5,0,1,0,0,2,2,23],
 "hydrology_8hpp.html#a129b54789c706428d04afd91d5eb8ae6":[5,0,1,0,0,2,2,36],
-"hydrology_8hpp.html#a136f042ce2ad8c14033f4d839f56265d":[5,0,1,0,0,2,2,25]
+"hydrology_8hpp.html#a136f042ce2ad8c14033f4d839f56265d":[5,0,1,0,0,2,2,25],
+"hydrology_8hpp.html#a1ac328bd9a69f8737550a131d3f9c516":[5,0,1,0,0,2,2,32]
 };

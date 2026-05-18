@@ -52,7 +52,6 @@ var primitives_8hpp =
     [ "noise_ridged", "primitives_8hpp.html#a21f9dbe435ff4fd987c9709664bafb28", null ],
     [ "noise_swiss", "primitives_8hpp.html#acfe4aa12e766873dc71cb5bdc2bf5b2c", null ],
     [ "paraboloid", "primitives_8hpp.html#a9bab88cc60ec72c09eec98f0fb9f452f", null ],
-    [ "peak", "primitives_8hpp.html#a77ce3e2ce7f345c48daf6a7dc123fc7f", null ],
     [ "rectangle", "primitives_8hpp.html#adafc477ac182ce40ebf2cee1c84cb936", null ],
     [ "rift", "primitives_8hpp.html#a808ede1d218fd226001c8f804bb85b97", null ],
     [ "slope", "primitives_8hpp.html#a79ad6fb857a38f8de9915d01992e5161", null ],

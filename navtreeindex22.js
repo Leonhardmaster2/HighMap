@@ -1,8 +1,5 @@
 var NAVTREEINDEX22 =
 {
-"test__local__metrics_8cpp.html#a26f2daeead299a5010e8635b1a4f0feb":[5,0,2,0,15,4],
-"test__local__metrics_8cpp.html#a57dfdee5884f0d3ba94543b9990243b6":[5,0,2,0,15,3],
-"test__local__metrics_8cpp.html#a6792a8666aabc5f4865c4ea459c7447f":[5,0,2,0,15,7],
 "test__local__metrics_8cpp.html#aa9b2def75ae9517d2867d88870826fee":[5,0,2,0,15,5],
 "test__local__metrics_8cpp.html#aaf7bdc07642621cd0bf4a14bc427be12":[5,0,2,0,15,0],
 "test__local__metrics_8cpp.html#ac1f1eccbe6b333c14b1ae8f76f0f5829":[5,0,2,0,15,2],
@@ -249,5 +246,8 @@ var NAVTREEINDEX22 =
 "trench_8cpp.html#a1321283ca30e8f6203345e272ef3530b":[5,0,1,1,5,3,0],
 "unwrap__phase_8cpp.html":[5,0,1,1,18,5],
 "unwrap__phase_8cpp.html#a3f8dc201377b61428eba8daa4a03a65f":[5,0,1,1,18,5,0],
-"upscale__amplification_8cpp.html":[5,0,1,1,25,2]
+"upscale__amplification_8cpp.html":[5,0,1,1,25,2],
+"upscale__amplification_8cpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,1,25,2,0],
+"upscaling_8hpp.html":[5,0,1,0,0,5,2],
+"upscaling_8hpp.html#a868ae7c781d7e72af7b1416898a2f891":[5,0,1,0,0,5,2,0]
 };
