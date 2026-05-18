@@ -1385,6 +1385,8 @@ float \mbox{\hyperlink{namespacehmap_a1d5e665c9e945b8ad9a6b5f0c1b673ad}{lerp}} (
 \begin{DoxyCompactList}\small\item\em Return the log10 of the array elements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a105e497c433e14b4235534ae6d2b87b9}{pow}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float \mbox{\hyperlink{namespacehmap_aad00066161ccf5ba4d6f93ab48c10876}{exp}})
 \begin{DoxyCompactList}\small\item\em Return the array elements raised to the power \textquotesingle{}exp\textquotesingle{}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_ad22bdd7a9091286a11b872dc4de2ce9d}{power\+\_\+curve}} (float x, float a, float b)
+\begin{DoxyCompactList}\small\item\em Smooth asymmetric bell-\/shaped curve on \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_af9ae05bbdab06ce61f1385ef4231d03b}{radial\+\_\+displacement\+\_\+to\+\_\+xy}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy, float smoothing=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Interpret the input array {\ttfamily dr} as a radial displacement and convert it to a pair of displacements {\ttfamily dx} and {\ttfamily dy} in cartesian coordinates. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ad2d28babba03ed11cf115ab08009de64}{rotate\+\_\+displacement}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&delta, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dx, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&dy)
@@ -1575,8 +1577,8 @@ void \mbox{\hyperlink{namespacehmap_a81ae845564fe0e6f2f641451c063bc65}{swap}} (\
 \begin{DoxyCompactList}\small\item\em Generates a smooth conical heightmap using a sigmoid-\/based profile. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2b25a71f7da0b8324df986e01e5b08dc}{constant}} (glm\+::ivec2 shape, float value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Return a constant value array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a5401f2bf9d2eacda951f012e04c6571f}{crater}} (glm\+::ivec2 shape, float radius, float depth, float lip\+\_\+decay, float lip\+\_\+height\+\_\+ratio=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
-\begin{DoxyCompactList}\small\item\em Return a crater-\/shaped heightmap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2651fce70d267d4e115873dce4749ce1}{crater}} (glm\+::ivec2 shape, float radius, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}=30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float inner\+\_\+depth=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float inner\+\_\+exp=3.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float lip\+\_\+height=0.\+02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float lip\+\_\+extent=0.\+25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float lip\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float asym\+\_\+ratio=0.\+8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float central\+\_\+peak\+\_\+height=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float central\+\_\+peak\+\_\+extent=0.\+4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int n\+\_\+terraces=0, float terrace\+\_\+extent=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float terrace\+\_\+exp=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float terrace\+\_\+persistence=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+r=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+crater\+\_\+mask=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+inner\+\_\+crater\+\_\+mask=nullptr)
+\begin{DoxyCompactList}\small\item\em Generate a procedural impact crater heightmap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a8fc658165f2be0a1ef89bf24f828a762}{cubic\+\_\+pulse}} (glm\+::ivec2 shape, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a cubic pulse array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a2a437cb8e2d1cd5e7046b02d196d4ee7}{dendry}} (glm\+::ivec2 shape, glm\+::vec2 kw, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&control\+\_\+function, float eps=0.\+05, int resolution=1, float displacement=0.\+075, int primitives\+\_\+resolution\+\_\+steps=3, float slope\+\_\+power=2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float noise\+\_\+amplitude\+\_\+proportion=0.\+01, bool add\+\_\+control\+\_\+function=true, float control\+\_\+function\+\_\+overlap=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, int subsampling=1)
@@ -1926,6 +1928,8 @@ void \mbox{\hyperlink{namespacehmap_a36f7eca67d2fdc5dd03a63f8b1d7255e}{helper\+\
 void \mbox{\hyperlink{namespacehmap_ac1fdc0ac0b6e1024faeaddcd30ebe2fe}{reindex\+\_\+vector}} (std\+::vector$<$ int $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
 \item 
 void \mbox{\hyperlink{namespacehmap_a5cca080874e8af74fa03a3f0f0d2f307}{reindex\+\_\+vector}} (std\+::vector$<$ float $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
+\item 
+float \mbox{\hyperlink{namespacehmap_a38823c416595a4cbc4f1d13914f1185f}{helper\+\_\+crater\+\_\+radial\+\_\+function}} (float r, float inner\+\_\+depth, float inner\+\_\+exp, float lip\+\_\+height, float lip\+\_\+extent, float lip\+\_\+exp, int n\+\_\+terraces, float terrace\+\_\+extent, float terrace\+\_\+exp, float terrace\+\_\+persistence)
 \item 
 \mbox{\hyperlink{classhmap_1_1Point}{Point}} \mbox{\hyperlink{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4}{helper\+\_\+pick\+\_\+lowest}} (const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&pa, const \mbox{\hyperlink{classhmap_1_1Point}{Point}} \&pb, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+offset, int steps)
 \item 
@@ -20398,7 +20402,17 @@ Return the array elements raised to the power \textquotesingle{}exp\textquotesin
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} Reference to the current object. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_af9ae05bbdab06ce61f1385ef4231d03b}\label{namespacehmap_af9ae05bbdab06ce61f1385ef4231d03b} 
+\Hypertarget{namespacehmap_ad22bdd7a9091286a11b872dc4de2ce9d}\label{namespacehmap_ad22bdd7a9091286a11b872dc4de2ce9d} 
+\index{hmap@{hmap}!power\_curve@{power\_curve}}
+\index{power\_curve@{power\_curve}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{power\_curve()}{power\_curve()}}
+{\footnotesize\ttfamily float hmap\+::power\+\_\+curve (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{a,  }\item[{float}]{b }\end{DoxyParamCaption})}
+
+
+
+Smooth asymmetric bell-\/shaped curve on \mbox{[}0, 1\mbox{]}. 
+
+The parameters {\ttfamily a} and {\ttfamily b} control the left and right curvature respectively. The function is normalized so that its maximum value is 1. \Hypertarget{namespacehmap_af9ae05bbdab06ce61f1385ef4231d03b}\label{namespacehmap_af9ae05bbdab06ce61f1385ef4231d03b} 
 \index{hmap@{hmap}!radial\_displacement\_to\_xy@{radial\_displacement\_to\_xy}}
 \index{radial\_displacement\_to\_xy@{radial\_displacement\_to\_xy}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{radial\_displacement\_to\_xy()}{radial\_displacement\_to\_xy()}}
@@ -24228,37 +24242,63 @@ Return a constant value array.
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} New array. 
 \end{DoxyReturn}
-\Hypertarget{namespacehmap_a5401f2bf9d2eacda951f012e04c6571f}\label{namespacehmap_a5401f2bf9d2eacda951f012e04c6571f} 
+\Hypertarget{namespacehmap_a2651fce70d267d4e115873dce4749ce1}\label{namespacehmap_a2651fce70d267d4e115873dce4749ce1} 
 \index{hmap@{hmap}!crater@{crater}}
 \index{crater@{crater}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{crater()}{crater()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::crater (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{float}]{radius,  }\item[{float}]{depth,  }\item[{float}]{lip\+\_\+decay,  }\item[{float}]{lip\+\_\+height\+\_\+ratio = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+ctrl\+\_\+param = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+x = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+y = {\ttfamily nullptr},  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::crater (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{float}]{radius,  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{float}]{angle = {\ttfamily 30.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{inner\+\_\+depth = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{inner\+\_\+exp = {\ttfamily 3.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{lip\+\_\+height = {\ttfamily 0.02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{lip\+\_\+extent = {\ttfamily 0.25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{lip\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{asym\+\_\+ratio = {\ttfamily 0.8\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{central\+\_\+peak\+\_\+height = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{central\+\_\+peak\+\_\+extent = {\ttfamily 0.4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{n\+\_\+terraces = {\ttfamily 0},  }\item[{float}]{terrace\+\_\+extent = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{terrace\+\_\+exp = {\ttfamily 2.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{terrace\+\_\+persistence = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+r = {\ttfamily nullptr},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+crater\+\_\+mask = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+inner\+\_\+crater\+\_\+mask = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
-Return a crater-\/shaped heightmap. 
+Generate a procedural impact crater heightmap. 
+
+Creates a crater-\/shaped terrain with configurable inner cavity, outer lip, asymmetry, terraces, and optional central peak. Optional masks for the crater region and inner crater region can also be generated.
 
 
 \begin{DoxyParams}{Parameters}
-{\em shape} & \doxylink{classhmap_1_1Array}{Array} shape. \\
+{\em shape} & Output array shape. \\
 \hline
 {\em radius} & Crater radius. \\
 \hline
-{\em lip\+\_\+decay} & Ejecta lip decay. \\
+{\em center} & Crater center position. \\
 \hline
-{\em lip\+\_\+height\+\_\+ratio} & Controls the ejecta lip relative height, in \mbox{[}0, 1\mbox{]}. \\
+{\em angle} & Main asymmetry orientation angle in degrees. \\
 \hline
-{\em depth} & Crater depth. \\
+{\em inner\+\_\+depth} & Depth of the crater cavity. \\
 \hline
-{\em p\+\_\+ctrl\+\_\+param} & Reference to the control parameter array (acts as a multiplier for the lip\+\_\+height\+\_\+ratio parameter). \\
+{\em inner\+\_\+exp} & Exponent controlling the inner profile shape. \\
 \hline
-{\em p\+\_\+noise\+\_\+x,p\+\_\+noise\+\_\+y} & Reference to the input noise arrays. \\
+{\em lip\+\_\+height} & Height of the crater rim. \\
 \hline
-{\em bbox} & Domain bounding box. \\
+{\em lip\+\_\+extent} & Extent of the outer rim. \\
+\hline
+{\em lip\+\_\+exp} & Exponent controlling rim falloff. \\
+\hline
+{\em asym\+\_\+ratio} & Asymmetry factor applied along the main direction. \\
+\hline
+{\em central\+\_\+peak\+\_\+height} & Height of the central peak. \\
+\hline
+{\em central\+\_\+peak\+\_\+extent} & Radius of the central peak region. \\
+\hline
+{\em n\+\_\+terraces} & Number of inner terraces. \\
+\hline
+{\em terrace\+\_\+extent} & Terrace spacing factor. \\
+\hline
+{\em terrace\+\_\+exp} & Terrace profile exponent. \\
+\hline
+{\em terrace\+\_\+persistence} & Terrace amplitude decay factor. \\
+\hline
+{\em p\+\_\+noise\+\_\+r} & Optional radial noise distortion. \\
+\hline
+{\em bbox} & Bounding box coordinates. \\
+\hline
+{\em p\+\_\+crater\+\_\+mask} & Optional output crater mask. \\
+\hline
+{\em p\+\_\+inner\+\_\+crater\+\_\+mask} & Optional output inner crater mask. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\doxylink{classhmap_1_1Array}{Array} New array.
+Generated crater heightmap.
 \end{DoxyReturn}
 {\bfseries{Example}} 
 \begin{DoxyCodeInclude}{0}
@@ -24267,34 +24307,69 @@ Return a crater-\/shaped heightmap.
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
-\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ without\ noise}}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ radius\ =\ 0.2f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ lip\_decay\ =\ 0.12f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ depth\ =\ 0.5f;}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Base}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a5401f2bf9d2eacda951f012e04c6571f}{hmap::crater}}(shape,\ radius,\ depth,\ lip\_decay);}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ radius\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z1\ =\ \mbox{\hyperlink{namespacehmap_a2651fce70d267d4e115873dce4749ce1}{hmap::crater}}(shape,\ radius);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ with\ control\ array}}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ctrl\_array\ =\ \mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{hmap::noise}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kw,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed++);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(ctrl\_array);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ With\ noise}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ lip\_height\_ratio\ =\ 0.5f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ noise\_amp\ =\ 0.2f;}
+\DoxyCodeLine{\ \ glm::vec2\ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ seed\ =\ 1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a5401f2bf9d2eacda951f012e04c6571f}{hmap::crater}}(shape,}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}}\ =\ noise\_amp\ *}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ crater\_mask;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ radius\ =\ 0.2f;}
+\DoxyCodeLine{\ \ glm::vec2\ center\ =\ \{0.8f,\ 0.6f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}\ =\ -\/15.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ inner\_depth\ =\ 0.1f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ inner\_exp\ =\ 3.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ lip\_height\ =\ 0.02f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ lip\_extent\ =\ 0.25f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ lip\_exp\ =\ 2.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ asym\_ratio\ =\ 0.8f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ central\_peak\_height\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ central\_peak\_extent\ =\ 0.4f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ n\_terraces\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ terrace\_extent\ =\ 0.1f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ terrace\_exp\ =\ 2.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ \ \ \ \ terrace\_persistence\ =\ 0.5f;}
+\DoxyCodeLine{\ \ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z2\ =\ \mbox{\hyperlink{namespacehmap_a2651fce70d267d4e115873dce4749ce1}{hmap::crater}}(shape,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ radius,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depth,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lip\_decay,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lip\_height\_ratio,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&ctrl\_array);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inner\_depth,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inner\_exp,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lip\_height,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lip\_extent,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lip\_exp,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asym\_ratio,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ central\_peak\_height,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ central\_peak\_extent,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\_terraces,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ terrace\_extent,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ terrace\_exp,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ terrace\_persistence,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{namespacehmap_a63a7fc5faca6c5018e98b8af700f4b80}{noise}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&crater\_mask,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ p\_inner\_crater\_mask\ */}\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_crater.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
-\DoxyCodeLine{\ \ z1.\mbox{\hyperlink{classhmap_1_1Array_a6cd8060670649c0934ddab573e378d3f}{to\_file}}(\textcolor{stringliteral}{"{}out.bin"{}});}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ -\/-\/-\/\ Crater\ merging\ -\/\ mask-\/based}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ 2nd\ crater\ hits\ after\ the\ 1st\ one\ and\ replaces\ the\ ground}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z3\ =\ \mbox{\hyperlink{namespacehmap_ac14815cf025b7430d31d08125a5c6f0d}{lerp}}(z1,\ z2,\ crater\_mask);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_crater.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z1,\ z2,\ z3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
@@ -31148,6 +31223,12 @@ void hmap\+::convert\+\_\+mat\+\_\+to\+\_\+array (\begin{DoxyParamCaption}\item[
 \index{reindex\_vector@{reindex\_vector}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{reindex\_vector()}{reindex\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void hmap\+::reindex\+\_\+vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{v,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{idx }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a38823c416595a4cbc4f1d13914f1185f}\label{namespacehmap_a38823c416595a4cbc4f1d13914f1185f} 
+\index{hmap@{hmap}!helper\_crater\_radial\_function@{helper\_crater\_radial\_function}}
+\index{helper\_crater\_radial\_function@{helper\_crater\_radial\_function}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{helper\_crater\_radial\_function()}{helper\_crater\_radial\_function()}}
+{\footnotesize\ttfamily float hmap\+::helper\+\_\+crater\+\_\+radial\+\_\+function (\begin{DoxyParamCaption}\item[{float}]{r,  }\item[{float}]{inner\+\_\+depth,  }\item[{float}]{inner\+\_\+exp,  }\item[{float}]{lip\+\_\+height,  }\item[{float}]{lip\+\_\+extent,  }\item[{float}]{lip\+\_\+exp,  }\item[{int}]{n\+\_\+terraces,  }\item[{float}]{terrace\+\_\+extent,  }\item[{float}]{terrace\+\_\+exp,  }\item[{float}]{terrace\+\_\+persistence }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4}\label{namespacehmap_aed9491c87a175e07ff614dfa3ad8b4f4} 
 \index{hmap@{hmap}!helper\_pick\_lowest@{helper\_pick\_lowest}}

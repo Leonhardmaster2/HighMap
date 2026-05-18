@@ -118,6 +118,9 @@ var NAVTREEINDEX6 =
 "coord__frame_8cpp.html":[5,0,1,1,9,0],
 "coord__frame_8hpp.html":[5,0,1,0,0,17],
 "coord__frame_8hpp_source.html":[5,0,1,0,0,17],
+"crater_8cpp.html":[5,0,1,1,28,1,2],
+"crater_8cpp.html#a2651fce70d267d4e115873dce4749ce1":[5,0,1,1,28,1,2,1],
+"crater_8cpp.html#a38823c416595a4cbc4f1d13914f1185f":[5,0,1,1,28,1,2,0],
 "curvature_8cpp.html":[5,0,1,1,10,0],
 "curvature_8cpp.html#aa1f2e119a09d246fe0cf27e859ddb2e6":[5,0,1,1,10,0,0],
 "curvature_8hpp.html":[5,0,1,0,0,18],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "distance__transform_8cpp.html#a345246095a5b2601fa9cd2dacf851cbc":[5,0,1,1,24,0,1],
 "distance__transform_8cpp.html#a3bad25b24d9ae0e07e692c546bc3480d":[5,0,1,1,24,0,2],
 "distance__transform_8cpp.html#a8e7ea79047868729667b72aed4ddd81d":[5,0,1,1,24,0,3],
-"distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e":[5,0,1,1,24,0,0],
-"distance__transform__approx_8cpp.html":[5,0,1,1,24,1],
-"distance__transform__approx_8cpp.html#a23fdcd258e0bab2a5fcad31d6459c3fa":[5,0,1,1,24,1,0],
-"distance__transform__approx_8cpp.html#add641a7fc26ae08b1f679cbb7dd43177":[5,0,1,1,24,1,1]
+"distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e":[5,0,1,1,24,0,0]
 };

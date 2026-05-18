@@ -54,6 +54,7 @@ var math_8hpp =
     [ "lerp", "math_8hpp.html#a1d5e665c9e945b8ad9a6b5f0c1b673ad", null ],
     [ "log10", "math_8hpp.html#a75475b6109023ce0ad64f6f9f7c4c525", null ],
     [ "pow", "math_8hpp.html#a105e497c433e14b4235534ae6d2b87b9", null ],
+    [ "power_curve", "math_8hpp.html#ad22bdd7a9091286a11b872dc4de2ce9d", null ],
     [ "radial_displacement_to_xy", "math_8hpp.html#af9ae05bbdab06ce61f1385ef4231d03b", null ],
     [ "rotate_displacement", "math_8hpp.html#ad2d28babba03ed11cf115ab08009de64", null ],
     [ "sigmoid", "math_8hpp.html#ad0759b7e3cb7455527b9b5b4947720bd", null ],

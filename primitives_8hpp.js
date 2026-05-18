@@ -32,7 +32,7 @@ var primitives_8hpp =
     [ "cone_complex", "primitives_8hpp.html#ace61bbd6a24c696dc24901dbe39be203", null ],
     [ "cone_sigmoid", "primitives_8hpp.html#a78b0b574724e2036ad5da6148e21acd8", null ],
     [ "constant", "primitives_8hpp.html#a2b25a71f7da0b8324df986e01e5b08dc", null ],
-    [ "crater", "primitives_8hpp.html#a5401f2bf9d2eacda951f012e04c6571f", null ],
+    [ "crater", "primitives_8hpp.html#a2651fce70d267d4e115873dce4749ce1", null ],
     [ "cubic_pulse", "primitives_8hpp.html#a8fc658165f2be0a1ef89bf24f828a762", null ],
     [ "dendry", "primitives_8hpp.html#a2a437cb8e2d1cd5e7046b02d196d4ee7", null ],
     [ "dendry", "primitives_8hpp.html#a94e1606f6902ab37f41c476f8a5ff83b", null ],

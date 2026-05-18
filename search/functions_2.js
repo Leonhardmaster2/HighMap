@@ -86,7 +86,7 @@ var searchData=
   ['count_5fneighbors_5fto_5ffill_83',['count_neighbors_to_fill',['../namespacehmap.html#a0a359831aea68622813f65f4a989a75a',1,'hmap']]],
   ['count_5fnon_5fzero_84',['count_non_zero',['../namespacehmap.html#a98feadac2cf9a77dbaa715d5aee4803f',1,'hmap']]],
   ['count_5fzero_85',['count_zero',['../namespacehmap.html#af8950d06447258f6e3fc9daf98e01737',1,'hmap']]],
-  ['crater_86',['crater',['../namespacehmap.html#a5401f2bf9d2eacda951f012e04c6571f',1,'hmap']]],
+  ['crater_86',['crater',['../namespacehmap.html#a2651fce70d267d4e115873dce4749ce1',1,'hmap']]],
   ['craterfunction_87',['CraterFunction',['../classhmap_1_1CraterFunction.html#a0fe90eb8294777be4bd29e7a68cb723d',1,'hmap::CraterFunction']]],
   ['create_5fnoise_5ffunction_5ffrom_5ftype_88',['create_noise_function_from_type',['../namespacehmap.html#af72b39fe64d11f55c59bcc8face3981b',1,'hmap']]],
   ['cross_5fproduct_89',['cross_product',['../namespacehmap.html#a81ad5d7feec9716598307f4de02d47de',1,'hmap::cross_product(const Point &amp;p0, const Point &amp;p1, const Point &amp;p2)'],['../namespacehmap.html#a088f13a41a6ec41ad6fbc7f235da0dbc',1,'hmap::cross_product(const Point &amp;p1, const Point &amp;p2)']]],
