@@ -20,6 +20,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/math/profiles.hpp"
 
 #define HMAP_GRADIENT_OFFSET 0.001f
 
@@ -413,32 +414,32 @@ Array constant(glm::ivec2 shape, float value = 0.f);
 /**
  * @brief Generate a procedural impact crater heightmap.
  *
- * Creates a crater-shaped terrain with configurable inner cavity,
- * outer lip, asymmetry, terraces, and optional central peak.
- * Optional masks for the crater region and inner crater region
- * can also be generated.
+ * Creates a crater-shaped terrain with configurable inner cavity, outer lip,
+ * asymmetry, terraces, and optional central peak. Optional masks for the crater
+ * region and inner crater region can also be generated.
  *
- * @param shape Output array shape.
- * @param radius Crater radius.
- * @param center Crater center position.
- * @param angle Main asymmetry orientation angle in degrees.
- * @param inner_depth Depth of the crater cavity.
- * @param inner_exp Exponent controlling the inner profile shape.
- * @param lip_height Height of the crater rim.
- * @param lip_extent Extent of the outer rim.
- * @param lip_exp Exponent controlling rim falloff.
- * @param asym_ratio Asymmetry factor applied along the main direction.
- * @param central_peak_height Height of the central peak.
- * @param central_peak_extent Radius of the central peak region.
- * @param n_terraces Number of inner terraces.
- * @param terrace_extent Terrace spacing factor.
- * @param terrace_exp Terrace profile exponent.
- * @param terrace_persistence Terrace amplitude decay factor.
- * @param p_noise_r Optional radial noise distortion.
- * @param bbox Bounding box coordinates.
- * @param p_crater_mask Optional output crater mask.
- * @param p_inner_crater_mask Optional output inner crater mask.
- * @return Generated crater heightmap.
+ * @param  shape               Output array shape.
+ * @param  radius              Crater radius.
+ * @param  center              Crater center position.
+ * @param  angle               Main asymmetry orientation angle in degrees.
+ * @param  inner_depth         Depth of the crater cavity.
+ * @param  inner_exp           Exponent controlling the inner profile shape.
+ * @param  lip_height          Height of the crater rim.
+ * @param  lip_extent          Extent of the outer rim.
+ * @param  lip_exp             Exponent controlling rim falloff.
+ * @param  asym_ratio          Asymmetry factor applied along the main
+ *                             direction.
+ * @param  central_peak_height Height of the central peak.
+ * @param  central_peak_extent Radius of the central peak region.
+ * @param  n_terraces          Number of inner terraces.
+ * @param  terrace_extent      Terrace spacing factor.
+ * @param  terrace_exp         Terrace profile exponent.
+ * @param  terrace_persistence Terrace amplitude decay factor.
+ * @param  p_noise_r           Optional radial noise distortion.
+ * @param  bbox                Bounding box coordinates.
+ * @param  p_crater_mask       Optional output crater mask.
+ * @param  p_inner_crater_mask Optional output inner crater mask.
+ * @return                     Generated crater heightmap.
  *
  * **Example**
  * @include ex_crater.cpp

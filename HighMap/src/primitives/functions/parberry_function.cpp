@@ -5,7 +5,7 @@
 #include <random>
 
 #include "highmap/functions.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

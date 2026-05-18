@@ -6,7 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/multiscale/pyramid.hpp"
 #include "highmap/operator.hpp"
 

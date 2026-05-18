@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "highmap/geometry/point.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

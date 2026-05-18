@@ -4,7 +4,9 @@
 #include <functional>
 
 #include "highmap/authoring.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap

@@ -7,7 +7,8 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap

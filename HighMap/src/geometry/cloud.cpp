@@ -19,6 +19,7 @@
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/grids.hpp"
 #include "highmap/interpolate2d.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

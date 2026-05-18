@@ -3,7 +3,7 @@
  * this software. */
 #include "highmap/blending.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 

@@ -5,6 +5,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"

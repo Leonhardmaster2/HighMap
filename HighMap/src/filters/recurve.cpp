@@ -10,7 +10,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/interpolate1d.hpp"
 #include "highmap/kernels.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"

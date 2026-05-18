@@ -4,7 +4,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu

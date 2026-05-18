@@ -16,7 +16,7 @@
 #include "macrologger.h"
 
 #include "highmap/hydrology/drainage_basin.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/random.hpp"
 
 #include "highmap/dbg/timer.hpp"

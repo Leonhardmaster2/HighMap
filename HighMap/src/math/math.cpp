@@ -5,7 +5,8 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {
@@ -62,17 +63,6 @@ Array abs_smooth(const Array &array, float k, const Array &vshift)
   return array_out;
 }
 
-float abs_smooth(float a, float k)
-{
-  float k2 = k * k;
-  return std::sqrt(a * a + k2);
-}
-
-float almost_unit_identity(float x)
-{
-  return (2.f - x) * x * x;
-}
-
 Array almost_unit_identity(const Array &array)
 {
   Array array_out = Array(array.shape);
@@ -81,13 +71,6 @@ Array almost_unit_identity(const Array &array)
                  array_out.vector.begin(),
                  [](float v) { return almost_unit_identity(v); });
   return array_out;
-}
-
-float almost_unit_identity_c2(float x)
-{
-  // second-order derivative equals 0 at x = 1 also to avoid
-  // discontinuities in some cases
-  return x * x * (x * x - 3.f * x + 3.f);
 }
 
 Array almost_unit_identity_c2(const Array &array)
@@ -110,21 +93,16 @@ Array atan(const Array &array)
   return array_out;
 }
 
-Array atan2(const Array &y, const Array &x)
+Array atan2(const Array &y, const Array &array)
 {
-  Array array_out = Array(x.shape);
+  Array array_out = Array(array.shape);
 
   std::transform(y.vector.begin(),
                  y.vector.end(),
-                 x.vector.begin(),
+                 array.vector.begin(),
                  array_out.vector.begin(),
                  [](float y_, float x_) { return std::atan2(y_, x_); });
   return array_out;
-}
-
-int ceil_div(int a, int b)
-{
-  return (a + b - 1) / b;
 }
 
 Array cos(const Array &array)
@@ -145,33 +123,6 @@ Array exp(const Array &array)
                  array_out.vector.begin(),
                  [](float v) { return std::exp(v); });
   return array_out;
-}
-
-float fast_exp(float x)
-{
-  union
-  {
-    float   f;
-    int32_t i;
-  } u;
-  u.i = (int32_t)(12102203.f * x) + 127 * (1 << 23);
-  return u.f;
-}
-
-float fast_log(float x)
-{
-  union
-  {
-    float   f;
-    int32_t i;
-  } u = {x};
-  return (u.i - 1064866805) * 8.262958405e-8f;
-}
-
-float gain(float x, float factor)
-{
-  return x < 0.5 ? 0.5f * std::pow(2.f * x, factor)
-                 : 1.f - 0.5f * std::pow(2.f * (1.f - x), factor);
 }
 
 Array gaussian_decay(const Array &array, float sigma)
@@ -252,11 +203,6 @@ Array lerp(const Array &array1, const Array &array2, float t)
   return array_out;
 }
 
-float lerp(float a, float b, float t)
-{
-  return std::lerp(a, b, t);
-}
-
 Array log10(const Array &array)
 {
   Array array_out = Array(array.shape);
@@ -283,54 +229,6 @@ Array pow(const Array &array, float exp)
                  array_out.vector.begin(),
                  [exp](float v) { return std::pow(v, exp); });
   return array_out;
-}
-
-float power_curve(float x, float a, float b)
-{
-  // https://iquilezles.org/articles/functions/
-  float k = std::pow(a + b, a + b) / (std::pow(a, a) * std::pow(b, b));
-  return k * std::pow(x, a) * std::pow(1.f - x, b);
-}
-
-void radial_displacement_to_xy(const Array &dr,
-                               Array       &dx,
-                               Array       &dy,
-                               float        smoothing,
-                               glm::vec2    center,
-                               glm::vec4    bbox)
-{
-  glm::ivec2 shape = dr.shape;
-  dx = Array(shape);
-  dy = Array(shape);
-
-  std::vector<float> x, y;
-  grid_xy_vector(x, y, shape, bbox, false); // no endpoint
-
-  for (int j = 0; j < shape.y; j++)
-    for (int i = 0; i < shape.x; i++)
-    {
-      float xr = x[i] - center.x;
-      float yr = y[j] - center.y;
-      float r2 = smoothing * std::hypot(xr, yr);
-      float factor = r2 / (1.f + r2);
-      float theta = std::atan2(yr, xr);
-      dx(i, j) = factor * dr(i, j) * std::cos(theta);
-      dy(i, j) = factor * dr(i, j) * std::sin(theta);
-    }
-}
-
-void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy)
-{
-  const float alpha = angle / 180.f * M_PI;
-  dx = delta * std::cos(alpha);
-  dy = delta * std::sin(alpha);
-}
-
-float sigmoid(float x, float width, float vmin, float vmax, float x0)
-{
-  float v = 1.f / (1.f + std::exp(-(x - x0) / width));
-  v = (vmax - vmin) * v + vmin;
-  return v;
 }
 
 Array sigmoid(const Array &array, float width, float vmin, float vmax, float x0)
@@ -376,36 +274,21 @@ Array smoothstep3(const Array &array, float vmin, float vmax)
   return array_out;
 }
 
-float smoothstep3(float x)
+Array smoothstep3_lower(const Array &array)
 {
-  return x * x * (3.f - 2.f * x);
-}
-
-float smoothstep3_lower(float x)
-{
-  return x * (2.f * x - x * x);
-}
-
-Array smoothstep3_lower(const Array &x)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [](float v) { return smoothstep3_lower(v); });
   return array_out;
 }
 
-float smoothstep3_upper(float x)
+Array smoothstep3_upper(const Array &array)
 {
-  return x * (1.f + x - x * x);
-}
-
-Array smoothstep3_upper(const Array &x)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [](float v) { return smoothstep3_upper(v); });
   return array_out;
@@ -462,57 +345,31 @@ Array smoothstep5(const Array &array, const Array &vmin, const Array &vmax)
   return array_out;
 }
 
-float smoothstep5(float x)
+Array smoothstep5_lower(const Array &array)
 {
-  return x * x * x * (x * (x * 6.f - 15.f) + 10.f);
-}
-
-float smoothstep5_lower(float x)
-{
-  return x * x * x * (6.f - 8.f * x + 3.f * x * x);
-}
-
-Array smoothstep5_lower(const Array &x)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [](float v) { return smoothstep5_lower(v); });
   return array_out;
 }
 
-float smoothstep5_upper(float x)
+Array smoothstep5_upper(const Array &array)
 {
-  return x * (1.f + x * x * (4.f - 7.f * x + 3.f * x * x));
-}
-
-Array smoothstep5_upper(const Array &x)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [](float v) { return smoothstep5_upper(v); });
   return array_out;
 }
 
-float smoothstep7(float x)
+Array smoothstep7(const Array &array)
 {
-  float x2 = x * x;
-  float x3 = x2 * x;
-  float x4 = x3 * x;
-  float x5 = x4 * x;
-  float x6 = x5 * x;
-  float x7 = x6 * x;
-  return -20.f * x7 + 70.f * x6 - 84.f * x5 + 35.f * x4;
-}
-
-Array smoothstep7(const Array &x)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [](float v) { return smoothstep7(v); });
   return array_out;
@@ -538,48 +395,24 @@ Array sqrt_safe(const Array &array)
   return array_out;
 }
 
-float threshold(float x, float x0, float x1)
+Array threshold(const Array &array, float x0, float x1)
 {
-  if (x < x0) return 0.f;
-  if (x < x1) return (x - x0) / (x1 - x0);
-  return 1.f;
-}
-
-Array threshold(const Array &x, float x0, float x1)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [x0, x1](float v) { return threshold(v, x0, x1); });
   return array_out;
 }
 
-float threshold_smooth(float x, float x0, float x1)
+Array threshold_smooth(const Array &array, float x0, float x1)
 {
-  if (x < x0) return 0.f;
-  if (x < x1) return smoothstep3((x - x0) / (x1 - x0));
-  return 1.f;
-}
-
-Array threshold_smooth(const Array &x, float x0, float x1)
-{
-  Array array_out = Array(x.shape);
-  std::transform(x.vector.begin(),
-                 x.vector.end(),
+  Array array_out = Array(array.shape);
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
                  array_out.vector.begin(),
                  [x0, x1](float v) { return threshold_smooth(v, x0, x1); });
   return array_out;
-}
-
-float triangle(float x, float vmin, float vmax)
-{
-  if (x <= vmin || x >= vmax) return 0.f;
-
-  float mid = 0.5f * (vmin + vmax);
-  float half_width = 0.5f * (vmax - vmin);
-
-  return 1.f - std::abs((x - mid) / half_width);
 }
 
 } // namespace hmap

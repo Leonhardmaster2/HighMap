@@ -12,7 +12,8 @@
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/range.hpp"
 #include "highmap/shadows.hpp"
 

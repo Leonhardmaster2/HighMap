@@ -5,6 +5,7 @@
 
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"

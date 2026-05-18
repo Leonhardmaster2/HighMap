@@ -3,7 +3,7 @@
  * this software. */
 #include "macrologger.h"
 
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
 namespace hmap

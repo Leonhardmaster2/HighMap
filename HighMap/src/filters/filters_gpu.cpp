@@ -6,7 +6,7 @@
 #include "highmap/gradient.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"

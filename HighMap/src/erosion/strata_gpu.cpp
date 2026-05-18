@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/primitives.hpp"
 

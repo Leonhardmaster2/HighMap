@@ -4,7 +4,7 @@
 #include "macrologger.h"
 
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 #include "highmap/virtual_array/virtual_texture_storage.hpp"
 

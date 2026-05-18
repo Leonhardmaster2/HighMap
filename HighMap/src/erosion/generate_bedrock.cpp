@@ -2,7 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
 
 namespace hmap
 {

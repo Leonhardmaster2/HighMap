@@ -5,10 +5,9 @@
 
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
-
-#include "highmap/primitives.hpp"
 #include "highmap/transform.hpp"
 
 namespace hmap

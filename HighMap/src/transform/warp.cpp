@@ -10,7 +10,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/kernels.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

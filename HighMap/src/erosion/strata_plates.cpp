@@ -4,6 +4,8 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/internal/vector_utils.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"

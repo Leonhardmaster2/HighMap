@@ -5,7 +5,8 @@
 
 #include "macrologger.h"
 
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

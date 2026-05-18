@@ -8,6 +8,7 @@
 #include "highmap/features.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 

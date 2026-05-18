@@ -11,7 +11,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/point_sampling.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 

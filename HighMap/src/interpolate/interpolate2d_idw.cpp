@@ -5,6 +5,7 @@
 
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/kd_tree.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

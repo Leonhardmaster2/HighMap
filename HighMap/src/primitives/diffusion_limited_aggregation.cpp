@@ -9,7 +9,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/interpolate2d.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

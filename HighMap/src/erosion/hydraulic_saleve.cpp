@@ -8,7 +8,8 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
 #include "highmap/interpolate2d.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 

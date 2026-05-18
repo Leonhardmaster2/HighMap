@@ -10,7 +10,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/local_metrics.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap

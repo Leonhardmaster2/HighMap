@@ -11,7 +11,8 @@
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/range.hpp"
 

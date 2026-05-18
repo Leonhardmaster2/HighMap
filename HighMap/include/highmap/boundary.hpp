@@ -16,7 +16,7 @@
  */
 #pragma once
 #include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/distance_functions.hpp"
 
 namespace hmap
 {

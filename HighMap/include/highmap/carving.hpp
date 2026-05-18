@@ -5,6 +5,7 @@
 #pragma once
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {

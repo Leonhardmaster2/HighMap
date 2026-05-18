@@ -9,7 +9,8 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/primitives.hpp"
 
 namespace hmap

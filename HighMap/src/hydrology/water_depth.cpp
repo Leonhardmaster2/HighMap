@@ -8,6 +8,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/interpolate2d.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"

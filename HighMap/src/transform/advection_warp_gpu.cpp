@@ -3,7 +3,7 @@
  * this software. */
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu

@@ -3,7 +3,7 @@
  * this software. */
 #include "highmap/boundary.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"

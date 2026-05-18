@@ -3,7 +3,8 @@
  * this software. */
 #include "macrologger.h"
 
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/distance_functions.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap

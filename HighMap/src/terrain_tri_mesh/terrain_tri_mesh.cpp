@@ -19,7 +19,7 @@
 #include "macrologger.h"
 
 #include "highmap/interpolate2d.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap

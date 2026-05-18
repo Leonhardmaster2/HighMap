@@ -4,6 +4,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap

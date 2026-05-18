@@ -5,7 +5,7 @@
 
 #include "highmap/coord_frame.hpp"
 #include "highmap/interpolate_array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap

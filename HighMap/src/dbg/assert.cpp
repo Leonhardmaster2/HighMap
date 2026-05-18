@@ -5,7 +5,7 @@
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/export.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap

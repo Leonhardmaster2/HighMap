@@ -4,7 +4,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
 float f(int i, float gi)

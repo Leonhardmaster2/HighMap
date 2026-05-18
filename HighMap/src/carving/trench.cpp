@@ -10,6 +10,8 @@
 #include "highmap/geometry/kd_tree.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/internal/vector_utils.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 

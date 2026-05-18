@@ -8,15 +8,12 @@
  * @copyright Copyright (c) 2026
  */
 #pragma once
-
-namespace hmap
-{
-
-#pragma once
-
 #include <cassert>
 #include <cmath>
 #include <vector>
+
+namespace hmap
+{
 
 /**
  * @brief Evaluates a Chebyshev polynomial series using Clenshaw recurrence.

@@ -42,7 +42,7 @@
 #include "highmap/interpolate_curve.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/multiscale/downscaling.hpp"
 #include "highmap/multiscale/pyramid.hpp"

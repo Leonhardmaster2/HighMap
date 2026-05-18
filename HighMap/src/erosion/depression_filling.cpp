@@ -6,7 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

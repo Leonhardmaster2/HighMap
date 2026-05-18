@@ -6,8 +6,9 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/geometry/grids.hpp"
 #include "highmap/kernels.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/transform.hpp"
@@ -27,6 +28,33 @@ void flip_ud(Array &array)
   for (int j = 0; j < (int)(0.5f * array.shape.y); j++)
     for (int i = 0; i < array.shape.x; i++)
       std::swap(array(i, j), array(i, array.shape.y - j - 1));
+}
+
+void radial_displacement_to_xy(const Array &dr,
+                               Array       &dx,
+                               Array       &dy,
+                               float        smoothing,
+                               glm::vec2    center,
+                               glm::vec4    bbox)
+{
+  glm::ivec2 shape = dr.shape;
+  dx = Array(shape);
+  dy = Array(shape);
+
+  std::vector<float> x, y;
+  grid_xy_vector(x, y, shape, bbox, false); // no endpoint
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      float xr = x[i] - center.x;
+      float yr = y[j] - center.y;
+      float r2 = smoothing * std::hypot(xr, yr);
+      float factor = r2 / (1.f + r2);
+      float theta = std::atan2(yr, xr);
+      dx(i, j) = factor * dr(i, j) * std::cos(theta);
+      dy(i, j) = factor * dr(i, j) * std::sin(theta);
+    }
 }
 
 void rot180(Array &array)
@@ -87,6 +115,13 @@ void rotate(Array &array, float angle, bool zoom_in, bool zero_padding)
 
       array(i, j) = array_bf.get_value_bilinear_at(ib, jb, u, v);
     }
+}
+
+void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy)
+{
+  const float alpha = angle / 180.f * M_PI;
+  dx = delta * std::cos(alpha);
+  dy = delta * std::sin(alpha);
 }
 
 Array translate(const Array &array,

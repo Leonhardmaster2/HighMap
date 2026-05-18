@@ -11,6 +11,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"

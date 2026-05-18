@@ -4,7 +4,7 @@
 #include "macrologger.h"
 
 #include "highmap/geometry/grids.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 

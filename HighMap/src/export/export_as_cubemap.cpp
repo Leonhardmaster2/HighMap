@@ -8,6 +8,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/internal/string_utils.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"

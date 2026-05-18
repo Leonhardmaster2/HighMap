@@ -4,6 +4,8 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 
