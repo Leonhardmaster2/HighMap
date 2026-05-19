@@ -7,65 +7,67 @@
 \DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ this\ software.\ */}}
 \DoxyCodeLine{00004\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \textcolor{comment}{//\ for\ size\_t}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}\ \textcolor{comment}{//\ for\ vector}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <nanoflann.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
-\DoxyCodeLine{00017\ \{}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}}
-\DoxyCodeLine{00028\ \{}
-\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_aa2d01563f9bf6152bcd2a2d36b8b064c}{x}};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a8bb43ead6f533358545e9d1724b25a60}{y}};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}(\textcolor{keyword}{const}\ std::vector<float>\ \&x\_,}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a800b0aa18bbb7bb3c8bb42dc28c95b5e}{kdtree\_get\_point\_count}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a073bf9163309e6ffacc0b2acedc0328c}{kdtree\_get\_pt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ idx,\ \textcolor{keywordtype}{int}\ dim)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ BBOX>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_ac441396f32a0bd13953aed786f300dc2}{kdtree\_get\_bbox}}(BBOX\ \&)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00062\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00064\ \ \ \}}
-\DoxyCodeLine{00065\ \};}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{KDTree}}\ =\ nanoflann::KDTreeSingleIndexAdaptor<}
-\DoxyCodeLine{00071\ \ \ \ \ nanoflann::L2\_Simple\_Adaptor<float,\ NanoflannPointCloudAdaptor>,}
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}},}
-\DoxyCodeLine{00073\ \ \ \ \ 2>;}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00087\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1KDTreeContext}{KDTreeContext}}}
-\DoxyCodeLine{00088\ \{}
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1KDTreeContext_ab19ea2c588a51dc72f549de76a1a820a}{x}};}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1KDTreeContext_abe73aabad1f0036504cb49602da2324a}{y}};}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00096\ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_a4088f3e0e081971c2a10d39502bca147}{adaptor}};}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{KDTree}}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_aa7d99c52bea43261bf5323627ac47e73}{index}};}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00106\ \ \ \mbox{\hyperlink{structhmap_1_1KDTreeContext}{KDTreeContext}}(\textcolor{keyword}{const}\ std::vector<float>\ \&x\_,\ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_);}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00117\ \ \ glm::vec2\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_a934dff6853d2ca61d130ff58a781fd7d}{compte\_neighbor\_distance\_range}}(\textcolor{keywordtype}{size\_t}\ k\_neighbors)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_aad3d441a791d3aa190d4ea05a04d8e72}{neighbor\_search}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\_query,}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\_query,}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\_neighbors,}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<size\_t>\ \&indices,}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \ \&distances)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00144\ \ \ std::vector<nanoflann::ResultItem<unsigned\ int,\ float>>\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_af70cc71d3592fb9bd4a87454ecc2d844}{radius\_search}}(}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\_query,}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\_query,}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00148\ \};}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nanoflann.hpp>}\ \textcolor{comment}{//\ for\ L2\_Simple\_Adaptor,\ KDTreeSingle...}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_aa2d01563f9bf6152bcd2a2d36b8b064c}{x}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a8bb43ead6f533358545e9d1724b25a60}{y}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}(\textcolor{keyword}{const}\ std::vector<float>\ \&x\_,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a800b0aa18bbb7bb3c8bb42dc28c95b5e}{kdtree\_get\_point\_count}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_a073bf9163309e6ffacc0b2acedc0328c}{kdtree\_get\_pt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ idx,\ \textcolor{keywordtype}{int}\ dim)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ BBOX>\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor_ac441396f32a0bd13953aed786f300dc2}{kdtree\_get\_bbox}}(BBOX\ \&)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00064\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \}}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{KDTree}}\ =\ nanoflann::KDTreeSingleIndexAdaptor<}
+\DoxyCodeLine{00073\ \ \ \ \ nanoflann::L2\_Simple\_Adaptor<float,\ NanoflannPointCloudAdaptor>,}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}},}
+\DoxyCodeLine{00075\ \ \ \ \ 2>;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1KDTreeContext}{KDTreeContext}}}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1KDTreeContext_ab19ea2c588a51dc72f549de76a1a820a}{x}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&\mbox{\hyperlink{structhmap_1_1KDTreeContext_abe73aabad1f0036504cb49602da2324a}{y}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \mbox{\hyperlink{structhmap_1_1NanoflannPointCloudAdaptor}{NanoflannPointCloudAdaptor}}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_a4088f3e0e081971c2a10d39502bca147}{adaptor}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{namespacehmap_ae4a8f5c1d747f5eccbe078ab94598707}{KDTree}}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_aa7d99c52bea43261bf5323627ac47e73}{index}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \mbox{\hyperlink{structhmap_1_1KDTreeContext}{KDTreeContext}}(\textcolor{keyword}{const}\ std::vector<float>\ \&x\_,\ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00119\ \ \ glm::vec2\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_a934dff6853d2ca61d130ff58a781fd7d}{compte\_neighbor\_distance\_range}}(\textcolor{keywordtype}{size\_t}\ k\_neighbors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_aad3d441a791d3aa190d4ea05a04d8e72}{neighbor\_search}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\_query,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\_query,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\_neighbors,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<size\_t>\ \&indices,}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \ \&distances)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00146\ \ \ std::vector<nanoflann::ResultItem<unsigned\ int,\ float>>\ \mbox{\hyperlink{structhmap_1_1KDTreeContext_af70cc71d3592fb9bd4a87454ecc2d844}{radius\_search}}(}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\_query,}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\_query,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}
