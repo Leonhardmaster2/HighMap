@@ -2,10 +2,10 @@ var searchData=
 [
   ['b_0',['b',['../structhmap_1_1TerrainTriMesh_1_1Triangle.html#ae9aad7a87fbe77a3736ca6f891443bb3',1,'hmap::TerrainTriMesh::Triangle::b'],['../structhmap_1_1Vec4_3_01int_01_4.html#a5c2f3aaa713efe1df6c30e96e53935bf',1,'hmap::Vec4&lt; int &gt;::b'],['../structhmap_1_1Vec4_3_01float_01_4.html#a7c8d3b9636e42e627240ddee38bd9019',1,'hmap::Vec4&lt; float &gt;::b']]],
   ['b_5fconst_1',['b_const',['../structhmap_1_1Vec4_3_01int_01_4.html#af9712f210b5c404ca3d2e872a2e0a6b8',1,'hmap::Vec4&lt; int &gt;::b_const'],['../structhmap_1_1Vec4_3_01float_01_4.html#aff745cb50a7d106f8badc8d8e0e237e7',1,'hmap::Vec4&lt; float &gt;::b_const']]],
-  ['badlands_2',['badlands',['../namespacehmap_1_1gpu.html#a9c1f1f4997a6bc734517c77ace10aa73',1,'hmap::gpu']]],
+  ['badlands_2',['badlands',['../namespacehmap_1_1gpu.html#a54906b55a1c4e4efe938a780c1fb348e',1,'hmap::gpu']]],
   ['badlands_2ecpp_3',['badlands.cpp',['../badlands_8cpp.html',1,'']]],
   ['barycentric_4',['barycentric',['../classhmap_1_1TerrainTriMesh.html#a3da697b9cfb9dc0c8b6ff8f5759021c4',1,'hmap::TerrainTriMesh']]],
-  ['basalt_5ffield_5',['basalt_field',['../namespacehmap_1_1gpu.html#af53f1253924f0886591cdd989ccf7dbc',1,'hmap::gpu']]],
+  ['basalt_5ffield_5',['basalt_field',['../namespacehmap_1_1gpu.html#a7111b9e9f203eeaad6c912049dd25392',1,'hmap::gpu']]],
   ['basalt_5ffield_2ecpp_6',['basalt_field.cpp',['../basalt__field_8cpp.html',1,'']]],
   ['base_5felevation_7',['base_elevation',['../namespacehmap.html#ad0679d167a3129dc403e3ca7082579f8',1,'hmap']]],
   ['base_5felevation_2ecpp_8',['base_elevation.cpp',['../base__elevation_8cpp.html',1,'']]],

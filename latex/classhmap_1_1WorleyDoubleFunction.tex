@@ -32,9 +32,9 @@ Collaboration diagram for hmap\+::Worley\+Double\+Function\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a29d8fc15f950de7d69ac348f574c902e}{Worley\+Double\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classhmap_1_1NoiseFunction_a9f125dfcb60e4d9bd2b0fbc44b21d406}{seed}}, float \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a88899456b80da0d707ae74964ead8bc0}{ratio}}, float \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_af26f43647e20fe6fc3ff88ed4c1e1274}{k}})
+\mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_ac2aebea803cb8d918ebb8a449275d3df}{Worley\+Double\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}}, std\+::uint32\+\_\+t \mbox{\hyperlink{classhmap_1_1NoiseFunction_afcc0d96413b1b200fc0ec671e43dcbc3}{seed}}, float \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a88899456b80da0d707ae74964ead8bc0}{ratio}}, float \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_af26f43647e20fe6fc3ff88ed4c1e1274}{k}})
 \begin{DoxyCompactList}\small\item\em Construct a new Worley Double \doxylink{classhmap_1_1Function}{Function} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a32cec14474912671deee673440d193f1}{set\+\_\+seed}} (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} new\+\_\+seed)
+void \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a49de2019d2c8b32a194b295666588f92}{set\+\_\+seed}} (std\+::uint32\+\_\+t new\+\_\+seed)
 \begin{DoxyCompactList}\small\item\em Set the seed attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classhmap_1_1NoiseFunction}{hmap\+::\+Noise\+Function}}}
 \begin{DoxyCompactItemize}
@@ -43,11 +43,11 @@ void \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_a32cec14474912671deee673
 \begin{DoxyCompactList}\small\item\em Default constructor. Initializes with default frequency scaling and seed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1NoiseFunction_abe0bafe2cca2f6ca2679afbdc54691bb}{Noise\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}})
 \begin{DoxyCompactList}\small\item\em Constructor to initialize with specific frequency scaling. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classhmap_1_1NoiseFunction_abf2f1721e9a3b89ff4494dbe6e917cec}{Noise\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}}, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classhmap_1_1NoiseFunction_a9f125dfcb60e4d9bd2b0fbc44b21d406}{seed}})
+\mbox{\hyperlink{classhmap_1_1NoiseFunction_a9006470ba58666184760b40b3478ea68}{Noise\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}}, std\+::uint32\+\_\+t \mbox{\hyperlink{classhmap_1_1NoiseFunction_afcc0d96413b1b200fc0ec671e43dcbc3}{seed}})
 \begin{DoxyCompactList}\small\item\em Constructor to initialize with specific frequency scaling and seed. \end{DoxyCompactList}\item 
 glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a34a5caf87c5e28f92616307e1561aaa9}{get\+\_\+kw}} () const
 \begin{DoxyCompactList}\small\item\em Get the frequency scaling vector. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classhmap_1_1NoiseFunction_a40c235c115a268592312e00c383ad581}{get\+\_\+seed}} () const
+std\+::uint32\+\_\+t \mbox{\hyperlink{classhmap_1_1NoiseFunction_a8f14d149f09e4278bdb9953237e4d7a9}{get\+\_\+seed}} () const
 \begin{DoxyCompactList}\small\item\em Get the random seed. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classhmap_1_1NoiseFunction_a3c5e2cffbd3a54a0bfda918f01d2957f}{set\+\_\+kw}} (glm\+::vec2 new\+\_\+kw)
 \begin{DoxyCompactList}\small\item\em Set a new frequency scaling vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -79,7 +79,7 @@ float \mbox{\hyperlink{classhmap_1_1WorleyDoubleFunction_af26f43647e20fe6fc3ff88
 \item 
 glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e91488648cf}{kw}}
 \begin{DoxyCompactList}\small\item\em Frequency scaling vector. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{classhmap_1_1NoiseFunction_a9f125dfcb60e4d9bd2b0fbc44b21d406}{seed}}
+std\+::uint32\+\_\+t \mbox{\hyperlink{classhmap_1_1NoiseFunction_afcc0d96413b1b200fc0ec671e43dcbc3}{seed}}
 \begin{DoxyCompactList}\small\item\em Random seed for noise generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -87,11 +87,11 @@ glm\+::vec2 \mbox{\hyperlink{classhmap_1_1NoiseFunction_a332703b9642cf219cb6d6e9
 Worley (x, y) function class. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classhmap_1_1WorleyDoubleFunction_a29d8fc15f950de7d69ac348f574c902e}\label{classhmap_1_1WorleyDoubleFunction_a29d8fc15f950de7d69ac348f574c902e} 
+\Hypertarget{classhmap_1_1WorleyDoubleFunction_ac2aebea803cb8d918ebb8a449275d3df}\label{classhmap_1_1WorleyDoubleFunction_ac2aebea803cb8d918ebb8a449275d3df} 
 \index{hmap::WorleyDoubleFunction@{hmap::WorleyDoubleFunction}!WorleyDoubleFunction@{WorleyDoubleFunction}}
 \index{WorleyDoubleFunction@{WorleyDoubleFunction}!hmap::WorleyDoubleFunction@{hmap::WorleyDoubleFunction}}
 \doxysubsubsection{\texorpdfstring{WorleyDoubleFunction()}{WorleyDoubleFunction()}}
-{\footnotesize\ttfamily hmap\+::\+Worley\+Double\+Function\+::\+Worley\+Double\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{ratio,  }\item[{float}]{k }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily hmap\+::\+Worley\+Double\+Function\+::\+Worley\+Double\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{float}]{ratio,  }\item[{float}]{k }\end{DoxyParamCaption})}
 
 
 
@@ -111,11 +111,11 @@ Construct a new Worley Double \doxylink{classhmap_1_1Function}{Function} object.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classhmap_1_1WorleyDoubleFunction_a32cec14474912671deee673440d193f1}\label{classhmap_1_1WorleyDoubleFunction_a32cec14474912671deee673440d193f1} 
+\Hypertarget{classhmap_1_1WorleyDoubleFunction_a49de2019d2c8b32a194b295666588f92}\label{classhmap_1_1WorleyDoubleFunction_a49de2019d2c8b32a194b295666588f92} 
 \index{hmap::WorleyDoubleFunction@{hmap::WorleyDoubleFunction}!set\_seed@{set\_seed}}
 \index{set\_seed@{set\_seed}!hmap::WorleyDoubleFunction@{hmap::WorleyDoubleFunction}}
 \doxysubsubsection{\texorpdfstring{set\_seed()}{set\_seed()}}
-{\footnotesize\ttfamily void hmap\+::\+Worley\+Double\+Function\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{new\+\_\+seed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void hmap\+::\+Worley\+Double\+Function\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{new\+\_\+seed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
@@ -128,7 +128,7 @@ Set the seed attribute.
 \end{DoxyParams}
 
 
-Reimplemented from \mbox{\hyperlink{classhmap_1_1NoiseFunction_a75b08569040f1ce6b318d380d4967c0d}{hmap\+::\+Noise\+Function}}.
+Reimplemented from \mbox{\hyperlink{classhmap_1_1NoiseFunction_a51e1afc00318276a35ddfe0c578c5c99}{hmap\+::\+Noise\+Function}}.
 
 
 

@@ -5,6 +5,6 @@ var convolve_8hpp =
     [ "convolve2d", "convolve_8hpp.html#acf8376b5e40b4373986c9a6b41c02429", null ],
     [ "convolve2d_truncated", "convolve_8hpp.html#a6108df0909730083cb6dd7cf4a217c1b", null ],
     [ "convolve2d_svd", "convolve_8hpp.html#a15951dcd1ef3999591c757944f894e15", null ],
-    [ "convolve2d_svd_rotated_kernel", "convolve_8hpp.html#addbc812a7b7523f4e0f185fb27016469", null ],
+    [ "convolve2d_svd_rotated_kernel", "convolve_8hpp.html#a820e82bc70b4f44fb46a742a77879071", null ],
     [ "sparse_max_convolution", "convolve_8hpp.html#a8dac643af396f582c905c4a685db06d9", null ]
 ];

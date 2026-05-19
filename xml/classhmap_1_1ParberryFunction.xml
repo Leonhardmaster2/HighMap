@@ -117,10 +117,10 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classhmap_1_1ParberryFunction_1ac708bfd45ef61c1ff1b08e86fba9704f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1ParberryFunction_1a5a2f12737066907f48dd6ae90ae4cc77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>hmap::ParberryFunction::ParberryFunction</definition>
-        <argsstring>(glm::vec2 kw, uint seed, float mu)</argsstring>
+        <argsstring>(glm::vec2 kw, std::uint32_t seed, float mu)</argsstring>
         <name>ParberryFunction</name>
         <qualifiedname>hmap::ParberryFunction::ParberryFunction</qualifiedname>
         <param>
@@ -128,7 +128,7 @@
           <declname>kw</declname>
         </param>
         <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <type>std::uint32_t</type>
           <declname>seed</declname>
         </param>
         <param>
@@ -185,15 +185,15 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/functions.hpp" line="795" column="8" bodyfile="HighMap/src/primitives/functions/parberry_function.cpp" bodystart="31" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1ParberryFunction_1ab0a4935178fb5f5a74e59769c7185f10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classhmap_1_1ParberryFunction_1af9086ae3a243f6977cd7e124869bfcbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void hmap::ParberryFunction::set_seed</definition>
-        <argsstring>(uint)</argsstring>
+        <argsstring>(std::uint32_t)</argsstring>
         <name>set_seed</name>
         <qualifiedname>hmap::ParberryFunction::set_seed</qualifiedname>
-        <reimplements refid="classhmap_1_1NoiseFunction_1a75b08569040f1ce6b318d380d4967c0d">set_seed</reimplements>
+        <reimplements refid="classhmap_1_1NoiseFunction_1a51e1afc00318276a35ddfe0c578c5c99">set_seed</reimplements>
         <param>
-          <type><ref refid="array_8hpp_1a91ad9478d81a7aaf2593e8d9c3d06a14" kindref="member">uint</ref></type>
+          <type>std::uint32_t</type>
         </param>
         <briefdescription>
 <para>Set the seed attribute. </para>
@@ -263,7 +263,7 @@
       <member refid="classhmap_1_1ParberryFunction_1a66bab3c1ef20c076097e224389159888" prot="private" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>g2</name></member>
       <member refid="classhmap_1_1Function_1a32214e30c36be7650c47867fd14f6a0c" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>get_delegate</name></member>
       <member refid="classhmap_1_1NoiseFunction_1a34a5caf87c5e28f92616307e1561aaa9" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>get_kw</name></member>
-      <member refid="classhmap_1_1NoiseFunction_1a40c235c115a268592312e00c383ad581" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>get_seed</name></member>
+      <member refid="classhmap_1_1NoiseFunction_1a8f14d149f09e4278bdb9953237e4d7a9" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>get_seed</name></member>
       <member refid="classhmap_1_1Function_1a82fb7788314b339a062cb80115e2e1da" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>get_value</name></member>
       <member refid="classhmap_1_1ParberryFunction_1a4891e1931b857fb12b8da7047fb1200a" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>initialize</name></member>
       <member refid="classhmap_1_1NoiseFunction_1a332703b9642cf219cb6d6e91488648cf" prot="protected" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>kw</name></member>
@@ -271,16 +271,16 @@
       <member refid="classhmap_1_1ParberryFunction_1aa696f9cd712760f68d9aa0a376bcef9d" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>mu</name></member>
       <member refid="classhmap_1_1NoiseFunction_1a9823b1c76555631d442f52a3d768c162" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>NoiseFunction</name></member>
       <member refid="classhmap_1_1NoiseFunction_1abe0bafe2cca2f6ca2679afbdc54691bb" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>NoiseFunction</name></member>
-      <member refid="classhmap_1_1NoiseFunction_1abf2f1721e9a3b89ff4494dbe6e917cec" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>NoiseFunction</name></member>
+      <member refid="classhmap_1_1NoiseFunction_1a9006470ba58666184760b40b3478ea68" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>NoiseFunction</name></member>
       <member refid="classhmap_1_1ParberryFunction_1a12c83204773ab340d99249b131323cd4" prot="private" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>p</name></member>
-      <member refid="classhmap_1_1ParberryFunction_1ac708bfd45ef61c1ff1b08e86fba9704f" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>ParberryFunction</name></member>
+      <member refid="classhmap_1_1ParberryFunction_1a5a2f12737066907f48dd6ae90ae4cc77" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>ParberryFunction</name></member>
       <member refid="classhmap_1_1ParberryFunction_1ab3ff7743ad054f3fb38ffe39db816944" prot="private" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>perlin_b</name></member>
       <member refid="classhmap_1_1ParberryFunction_1a37a888743b30f03446b84cc9cba642a1" prot="private" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>perlin_bm</name></member>
       <member refid="classhmap_1_1ParberryFunction_1a20b3338e82b47d3496ea110ef276c641" prot="private" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>perlin_n</name></member>
-      <member refid="classhmap_1_1NoiseFunction_1a9f125dfcb60e4d9bd2b0fbc44b21d406" prot="protected" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>seed</name></member>
+      <member refid="classhmap_1_1NoiseFunction_1afcc0d96413b1b200fc0ec671e43dcbc3" prot="protected" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>seed</name></member>
       <member refid="classhmap_1_1Function_1a6163e6f231dc77a7e7d83e74d2b44abe" prot="public" virt="non-virtual"><scope>hmap::ParberryFunction</scope><name>set_delegate</name></member>
       <member refid="classhmap_1_1NoiseFunction_1a3c5e2cffbd3a54a0bfda918f01d2957f" prot="public" virt="virtual"><scope>hmap::ParberryFunction</scope><name>set_kw</name></member>
-      <member refid="classhmap_1_1ParberryFunction_1ab0a4935178fb5f5a74e59769c7185f10" prot="public" virt="virtual"><scope>hmap::ParberryFunction</scope><name>set_seed</name></member>
+      <member refid="classhmap_1_1ParberryFunction_1af9086ae3a243f6977cd7e124869bfcbf" prot="public" virt="virtual"><scope>hmap::ParberryFunction</scope><name>set_seed</name></member>
       <member refid="classhmap_1_1Function_1a8efd89e31947f2508ce45b133e30322f" prot="public" virt="virtual"><scope>hmap::ParberryFunction</scope><name>~Function</name></member>
     </listofallmembers>
   </compounddef>

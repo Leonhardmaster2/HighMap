@@ -1,8 +1,5 @@
 var NAVTREEINDEX11 =
 {
-"kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9a483c1cdf57c344c139e7aeeb826120b7":[5,0,1,0,0,29,0,6],
-"kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9a52c31358178f16aaf1e9148aa9e1c4f6":[5,0,1,0,0,29,0,4],
-"kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9a77e92279e9a89de241e361bd74b8803a":[5,0,1,0,0,29,0,0],
 "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9aa90e813d22c88c29e9effe934ce6149d":[5,0,1,0,0,29,0,7],
 "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9abd845bef8f2959d8d9e7355aa9c44d86":[5,0,1,0,0,29,0,8],
 "kernels_8hpp.html#a4b6f135c6e81d313ca54ae1efac5f2c9ac140897e531cacd604bec544a49f7ca2":[5,0,1,0,0,29,0,3],
@@ -28,8 +25,8 @@ var NAVTREEINDEX11 =
 "kernels_8hpp.html#afb6b1a073428729f0dc9afc0ba42f8b2":[5,0,1,0,0,29,4],
 "kernels_8hpp_source.html":[5,0,1,0,0,29],
 "kmeans__clustering_8cpp.html":[5,0,1,1,14,2],
-"kmeans__clustering_8cpp.html#ad55573a0def0bdf66d3637128cbf08c7":[5,0,1,1,14,2,1],
-"kmeans__clustering_8cpp.html#ae22891fe79a3745582715cf33a706d8e":[5,0,1,1,14,2,0],
+"kmeans__clustering_8cpp.html#ab1bbddddf9ab88025a85668b66d68bdf":[5,0,1,1,14,2,1],
+"kmeans__clustering_8cpp.html#ab79c564a249c41caec3367b3d82ebdbf":[5,0,1,1,14,2,0],
 "local__metrics_8cpp.html":[5,0,1,1,22,0],
 "local__metrics_8cpp.html#a85e411c67e97deb8459f25d4440546c3":[5,0,1,1,22,0,6],
 "local__metrics_8cpp.html#a941d446cad19c166f4f6c4df857dba65":[5,0,1,1,22,0,4],
@@ -249,5 +246,8 @@ var NAVTREEINDEX11 =
 "morphology_8hpp.html#a9e5600ea0195404efc56ad821e152c60":[5,0,1,0,0,32,5],
 "morphology_8hpp.html#aac6a0f72428db11736aa16539aca0a5c":[5,0,1,0,0,32,25],
 "morphology_8hpp.html#abd3024b8233a70596ff2924607221637":[5,0,1,0,0,32,20],
-"morphology_8hpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,0,0,32,28]
+"morphology_8hpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,0,0,32,28],
+"morphology_8hpp.html#ac91a2dacd050d8588b4135f02dd8f2a5":[5,0,1,0,0,32,7],
+"morphology_8hpp.html#ad1813ae47f33d026b0c3e6f7e370b5c8":[5,0,1,0,0,32,46],
+"morphology_8hpp.html#ad4ab7bb38b3ea37fa912190251c1ed76":[5,0,1,0,0,32,29]
 };

@@ -29,7 +29,7 @@
 \DoxyCodeLine{00062\ }
 \DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{classhmap_1_1Path_a2e6b68e1b725991715f052d04f902dac}{Path}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00068\ }
-\DoxyCodeLine{00077\ \ \ \mbox{\hyperlink{classhmap_1_1Path_a329ebb2e41b9036d67e9e1afe3ea2404}{Path}}(\textcolor{keywordtype}{int}\ npoints,\ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\})}
+\DoxyCodeLine{00077\ \ \ \mbox{\hyperlink{classhmap_1_1Path_a329b1d3f78808ff33ed6aeb8c0148c5c}{Path}}(\textcolor{keywordtype}{int}\ npoints,\ std::uint32\_t\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\})}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}}(npoints,\ seed,\ bbox)\{\};}
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00085\ \ \ \mbox{\hyperlink{classhmap_1_1Path_af9fcf16f7d3be2128593fe3f7a26b4f3}{Path}}(std::vector<Point>\ \mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}})\ :\ \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}}(\mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}})\{\};}
@@ -162,22 +162,22 @@
 \DoxyCodeLine{00571\ }
 \DoxyCodeLine{00594\ Path\ \mbox{\hyperlink{namespacehmap_a862fef5e0387bea9358648fc7aa5680b}{decimate\_vw}}(\textcolor{keyword}{const}\ Path\ \&path,\ \textcolor{keywordtype}{int}\ n\_points\_target\ =\ 3);}
 \DoxyCodeLine{00595\ }
-\DoxyCodeLine{00628\ Path\ \mbox{\hyperlink{namespacehmap_a5d1634064e937326c7d91f509c3d67ab}{fractalize}}(\textcolor{keyword}{const}\ Path\ \&path,}
-\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ iterations,}
-\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ seed,}
-\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ sigma\ =\ 0.2f,}
-\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ orientation\ =\ 0,}
-\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ persistence\ =\ 1.f,}
-\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ *p\_control\_field\ =\ \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{00628\ Path\ \mbox{\hyperlink{namespacehmap_a8d1bf20961ae3f8b342b341f4f541ccc}{fractalize}}(\textcolor{keyword}{const}\ Path\ \ \ \&path,}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ iterations,}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ seed,}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ sigma\ =\ 0.2f,}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ orientation\ =\ 0,}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ persistence\ =\ 1.f,}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Array\ \ \ \ \ \ \ \ *p\_control\_field\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ \ \ \ \ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00636\ }
 \DoxyCodeLine{00655\ Path\ \mbox{\hyperlink{namespacehmap_a73e4db2185a62fe2cf6bed305bafeb1f}{inflate}}(\textcolor{keyword}{const}\ Path\ \&path,\ \textcolor{keywordtype}{float}\ strength,\ \textcolor{keywordtype}{bool}\ resample\ =\ \textcolor{keyword}{true});}
 \DoxyCodeLine{00656\ }
-\DoxyCodeLine{00685\ Path\ \mbox{\hyperlink{namespacehmap_af00a9f03eed98b1993fd458beb120379}{meanderize}}(}
+\DoxyCodeLine{00685\ Path\ \mbox{\hyperlink{namespacehmap_a46a5e09cd5db9de358dd50a590215294}{meanderize}}(}
 \DoxyCodeLine{00686\ \ \ \ \ \textcolor{keyword}{const}\ Path\ \ \ \ \ \ \ \ \ \ \ \ \&path,}
 \DoxyCodeLine{00687\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ratio,}
 \DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ noise\_ratio\ =\ 0.1f,}
-\DoxyCodeLine{00689\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ 1,}
+\DoxyCodeLine{00689\ \ \ \ \ std::uint32\_t\ \ \ \ \ \ \ \ \ \ seed\ =\ 1,}
 \DoxyCodeLine{00690\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iterations\ =\ 1,}
 \DoxyCodeLine{00691\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edge\_divisions\ =\ 10,}
 \DoxyCodeLine{00692\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787}{Path::EdgeDivisionMode}}\ edm\ =\ \mbox{\hyperlink{classhmap_1_1Path_a52c62bad1cdef88e8793d9c022357787a5192c60669f946857f5bed6f43c212ee}{Path::EdgeDivisionMode::EDM\_PER\_EDGE}});}

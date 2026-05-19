@@ -36,7 +36,7 @@ Collaboration diagram for hmap\+::Cloud\+:
 \begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{classhmap_1_1Cloud}{Cloud} class. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classhmap_1_1Cloud_a37e6f8229904ba2b013fbdf25751c6d4}{\texorpdfstring{$\sim$}{\string~}\+Cloud}} ()=default
 \item 
-\mbox{\hyperlink{classhmap_1_1Cloud_a925aefe0dbdb63b552b3b44d85aa7118}{Cloud}} (int npoints, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\mbox{\hyperlink{classhmap_1_1Cloud_afb8059d73b617c8d64d288592ac273a0}{Cloud}} (int npoints, std\+::uint32\+\_\+t seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classhmap_1_1Cloud}{Cloud} object with random positions and values. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud_a76ba65d3116849aecbc2a6d90cd4d652}{Cloud}} (const std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Point}{Point}} $>$ \&\mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}})
 \begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classhmap_1_1Cloud}{Cloud} object based on a list of existing points. \end{DoxyCompactList}\item 
@@ -92,11 +92,11 @@ void \mbox{\hyperlink{classhmap_1_1Cloud_a247e64e1c0e5cb85570c0ec3aed3d774}{clea
 \begin{DoxyCompactList}\small\item\em Clear all data from the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}} ()
 \begin{DoxyCompactList}\small\item\em Print information about the cloud\textquotesingle{}s points. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}{randomize}} (\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+void \mbox{\hyperlink{classhmap_1_1Cloud_aa6f1b0089949fc2e8ed6e7e3ce465448}{randomize}} (std\+::uint32\+\_\+t seed, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Randomize the positions and values of the cloud points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}{remap\+\_\+values}} (float vmin, float vmax)
 \begin{DoxyCompactList}\small\item\em Remap the values of the cloud points to a target range. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}{shuffle}} (float dx, float dy, \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} seed, float dv=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+void \mbox{\hyperlink{classhmap_1_1Cloud_a40ce66b57cb73cbe322b1aa875021c98}{shuffle}} (float dx, float dy, std\+::uint32\+\_\+t seed, float dv=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Randomly perturbs the positions and values of all points in the cloud. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}{snap\+\_\+points\+\_\+to\+\_\+bounding\+\_\+box}} (const glm\+::vec4 \&bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, float tolerance\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Snap points to the bounding box edges and corners. \end{DoxyCompactList}\item 
@@ -147,11 +147,11 @@ Initializes an empty cloud with no points. \Hypertarget{classhmap_1_1Cloud_a37e6
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Cloud()}{\string~Cloud()}}
 {\footnotesize\ttfamily virtual hmap\+::\+Cloud\+::\texorpdfstring{$\sim$}{\string~}\+Cloud (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
-\Hypertarget{classhmap_1_1Cloud_a925aefe0dbdb63b552b3b44d85aa7118}\label{classhmap_1_1Cloud_a925aefe0dbdb63b552b3b44d85aa7118} 
+\Hypertarget{classhmap_1_1Cloud_afb8059d73b617c8d64d288592ac273a0}\label{classhmap_1_1Cloud_afb8059d73b617c8d64d288592ac273a0} 
 \index{hmap::Cloud@{hmap::Cloud}!Cloud@{Cloud}}
 \index{Cloud@{Cloud}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{Cloud()}{Cloud()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
-{\footnotesize\ttfamily hmap\+::\+Cloud\+::\+Cloud (\begin{DoxyParamCaption}\item[{int}]{npoints,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily hmap\+::\+Cloud\+::\+Cloud (\begin{DoxyParamCaption}\item[{int}]{npoints,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -608,11 +608,11 @@ Clear all data from the cloud.
 
 Print information about the cloud\textquotesingle{}s points. 
 
-\Hypertarget{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}\label{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a} 
+\Hypertarget{classhmap_1_1Cloud_aa6f1b0089949fc2e8ed6e7e3ce465448}\label{classhmap_1_1Cloud_aa6f1b0089949fc2e8ed6e7e3ce465448} 
 \index{hmap::Cloud@{hmap::Cloud}!randomize@{randomize}}
 \index{randomize@{randomize}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{randomize()}{randomize()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::randomize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::randomize (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -642,11 +642,11 @@ Remap the values of the cloud points to a target range.
 {\em vmax} & The upper bound of the target range. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}\label{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2} 
+\Hypertarget{classhmap_1_1Cloud_a40ce66b57cb73cbe322b1aa875021c98}\label{classhmap_1_1Cloud_a40ce66b57cb73cbe322b1aa875021c98} 
 \index{hmap::Cloud@{hmap::Cloud}!shuffle@{shuffle}}
 \index{shuffle@{shuffle}!hmap::Cloud@{hmap::Cloud}}
 \doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
-{\footnotesize\ttfamily void hmap\+::\+Cloud\+::shuffle (\begin{DoxyParamCaption}\item[{float}]{dx,  }\item[{float}]{dy,  }\item[{\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{seed,  }\item[{float}]{dv = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::\+Cloud\+::shuffle (\begin{DoxyParamCaption}\item[{float}]{dx,  }\item[{float}]{dy,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{float}]{dv = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
@@ -788,11 +788,11 @@ This method populates an array with interpolated values based on the positions a
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bbox);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ nx\ =\ 0.5f\ *\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ nx\ =\ 0.5f\ *\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{2.f,\ 2.f\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed++);}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ny\ =\ 0.5f\ *\ \mbox{\hyperlink{namespacehmap_acb13e7346085793fda4c94c47b75d9a9}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ ny\ =\ 0.5f\ *\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{2.f,\ 2.f\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed++);}

@@ -16,7 +16,7 @@ var classhmap_1_1Graph =
     [ "print", "classhmap_1_1Graph.html#a862b83b369721a4930917a78bd313421", null ],
     [ "remove_orphan_points", "classhmap_1_1Graph.html#ad1aeb414389af66a30d891d8fc28bc46", null ],
     [ "to_array", "classhmap_1_1Graph.html#af6518d1fa6ddec305e4e114db6f66ab9", null ],
-    [ "to_array_fractalize", "classhmap_1_1Graph.html#ad4ea1d2674313998db686e668b7b5f1e", null ],
+    [ "to_array_fractalize", "classhmap_1_1Graph.html#ac52347e3154ee87b67534d4c38d3b779", null ],
     [ "to_array_sdf", "classhmap_1_1Graph.html#ad6942a03b44d0567ee597236083416ae", null ],
     [ "to_csv", "classhmap_1_1Graph.html#a47f4e4792141971443d9dbeb714ae612", null ],
     [ "to_png", "classhmap_1_1Graph.html#a3cf9a6b56638062f4e740e642dc07c3c", null ],

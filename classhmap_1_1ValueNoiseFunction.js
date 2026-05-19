@@ -1,5 +1,5 @@
 var classhmap_1_1ValueNoiseFunction =
 [
-    [ "ValueNoiseFunction", "classhmap_1_1ValueNoiseFunction.html#a4c5917c8a237d8623a1586e00dd6f22a", null ],
-    [ "set_seed", "classhmap_1_1ValueNoiseFunction.html#afda07f7cf9e14815e31436ad10c1bf35", null ]
+    [ "ValueNoiseFunction", "classhmap_1_1ValueNoiseFunction.html#a926b603580da49c15a6f7a8d114a1507", null ],
+    [ "set_seed", "classhmap_1_1ValueNoiseFunction.html#a43928d6b684e5d9c45add31395612ded", null ]
 ];

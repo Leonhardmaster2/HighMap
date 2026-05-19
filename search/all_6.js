@@ -47,7 +47,7 @@ var searchData=
   ['expand_5fpoints_5fat_5fdomain_5fboundaries_44',['expand_points_at_domain_boundaries',['../namespacehmap.html#aaaa3b5f379755d9595ed061a17acb4f9',1,'hmap']]],
   ['expand_5fpoints_5fdomain_45',['expand_points_domain',['../namespacehmap.html#a549a837963a123060e2d7622d313fb57',1,'hmap']]],
   ['expand_5fpoints_5fdomain_5fcorners_46',['expand_points_domain_corners',['../namespacehmap.html#a65287c503ca74fa5c00201404f4e0aca',1,'hmap']]],
-  ['expand_5ftalus_47',['expand_talus',['../namespacehmap.html#a00144f277af41ed44d760f6eeb73ce99',1,'hmap']]],
+  ['expand_5ftalus_47',['expand_talus',['../namespacehmap.html#a8c437f3963887949da7f4433cf26bf96',1,'hmap']]],
   ['expand_5ftalus_2ecpp_48',['expand_talus.cpp',['../expand__talus_8cpp.html',1,'']]],
   ['expectvecnear_49',['expectVecNear',['../test__cloud_8cpp.html#afbb5b1c88e88a97044e5571bce02ddb0',1,'test_cloud.cpp']]],
   ['export_203d_20mesh_20and_20texture_50',['Asset export (3D mesh and texture)',['../index.html#autotoc_md16',1,'']]],

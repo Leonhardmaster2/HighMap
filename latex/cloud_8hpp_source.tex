@@ -32,7 +32,7 @@
 \DoxyCodeLine{00068\ }
 \DoxyCodeLine{00069\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classhmap_1_1Cloud_a37e6f8229904ba2b013fbdf25751c6d4}{\string~Cloud}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00080\ \ \ \mbox{\hyperlink{classhmap_1_1Cloud_a710bdb9a8b189d0886682dcc785c0bc5}{Cloud}}(\textcolor{keywordtype}{int}\ npoints,\ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{00080\ \ \ \mbox{\hyperlink{classhmap_1_1Cloud_a710bdb9a8b189d0886682dcc785c0bc5}{Cloud}}(\textcolor{keywordtype}{int}\ npoints,\ std::uint32\_t\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00081\ }
 \DoxyCodeLine{00087\ \ \ \mbox{\hyperlink{classhmap_1_1Cloud_a76ba65d3116849aecbc2a6d90cd4d652}{Cloud}}(\textcolor{keyword}{const}\ std::vector<Point>\ \&\mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}})\ :\ \mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}}(\mbox{\hyperlink{classhmap_1_1Cloud_aad75fb7bcfa7a2c3f139d2e3d3d6cc54}{points}})\{\};}
 \DoxyCodeLine{00088\ }
@@ -104,11 +104,11 @@
 \DoxyCodeLine{00325\ }
 \DoxyCodeLine{00329\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_aefea3d749a554df8a23ec38af5acb415}{print}}();}
 \DoxyCodeLine{00330\ }
-\DoxyCodeLine{00337\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_a5346876f8726c1604ac7decf3a69be5a}{randomize}}(\mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{00337\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_aa6f1b0089949fc2e8ed6e7e3ce465448}{randomize}}(std::uint32\_t\ seed,\ glm::vec4\ bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00338\ }
 \DoxyCodeLine{00345\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_a35d0d2e48f4063bd7b582bd24a132294}{remap\_values}}(\textcolor{keywordtype}{float}\ vmin,\ \textcolor{keywordtype}{float}\ vmax);}
 \DoxyCodeLine{00346\ }
-\DoxyCodeLine{00358\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_af8d4e873ff4ed29eb7f140db227e03a2}{shuffle}}(\textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ seed,\ \textcolor{keywordtype}{float}\ dv\ =\ 0.f);}
+\DoxyCodeLine{00358\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_a40ce66b57cb73cbe322b1aa875021c98}{shuffle}}(\textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ std::uint32\_t\ seed,\ \textcolor{keywordtype}{float}\ dv\ =\ 0.f);}
 \DoxyCodeLine{00359\ }
 \DoxyCodeLine{00371\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Cloud_a7b26dc92e0d2217b8438f1ce9376ea0d}{snap\_points\_to\_bounding\_box}}(\textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\},}
 \DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ tolerance\_ratio\ =\ 1.f);}
@@ -162,50 +162,50 @@
 \DoxyCodeLine{00541\ }
 \DoxyCodeLine{00547\ Cloud\ \mbox{\hyperlink{namespacehmap_afc6e9a8850aaebd3cca94aefb3c54114}{merge\_clouds}}(\textcolor{keyword}{const}\ std::vector<Cloud>\ \&clouds);}
 \DoxyCodeLine{00548\ }
-\DoxyCodeLine{00570\ Cloud\ \mbox{\hyperlink{namespacehmap_a85e1a2365d97c95955eaf0648a1f9073}{random\_cloud}}(}
+\DoxyCodeLine{00570\ Cloud\ \mbox{\hyperlink{namespacehmap_ac56218126b8f4fafd161848508bb040b}{random\_cloud}}(}
 \DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count,}
-\DoxyCodeLine{00572\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00572\ \ \ \ \ std::uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{00573\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77}{PointSamplingMethod}}\ \&method\ =\ \mbox{\hyperlink{namespacehmap_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957}{PointSamplingMethod::RND\_LHS}},}
 \DoxyCodeLine{00574\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \ \ \ \ \ \ \ \ \ \ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00575\ }
-\DoxyCodeLine{00599\ Cloud\ \mbox{\hyperlink{namespacehmap_a16821244f50cfacf91b3fb638e2b49f8}{random\_cloud\_density}}(\textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ count,}
+\DoxyCodeLine{00599\ Cloud\ \mbox{\hyperlink{namespacehmap_ad1c0d440da90fd4f08bb0ed691cc717c}{random\_cloud\_density}}(\textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ count,}
 \DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \&density,}
-\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00603\ }
-\DoxyCodeLine{00627\ Cloud\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{random\_cloud\_distance}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
-\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00627\ Cloud\ \mbox{\hyperlink{namespacehmap_ab95c01f14ee3cce55edb9a349d59ede0}{random\_cloud\_distance}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00630\ }
-\DoxyCodeLine{00656\ Cloud\ \mbox{\hyperlink{namespacehmap_a117f2da22e9a721e84002c801e95c2d5}{random\_cloud\_distance}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
+\DoxyCodeLine{00656\ Cloud\ \mbox{\hyperlink{namespacehmap_ab95c01f14ee3cce55edb9a349d59ede0}{random\_cloud\_distance}}(\textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ min\_dist,}
 \DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ max\_dist,}
 \DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \&density,}
-\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00661\ }
-\DoxyCodeLine{00687\ Cloud\ \mbox{\hyperlink{namespacehmap_a35817f8492f47d9d36042649cd9e5844}{random\_cloud\_distance\_power\_law}}(}
+\DoxyCodeLine{00687\ Cloud\ \mbox{\hyperlink{namespacehmap_a82932e580ffbdbf8c332ae4eb822c98d}{random\_cloud\_distance\_power\_law}}(}
 \DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ dist\_min,}
 \DoxyCodeLine{00689\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ dist\_max,}
 \DoxyCodeLine{00690\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ alpha,}
-\DoxyCodeLine{00691\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00691\ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00692\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00693\ }
-\DoxyCodeLine{00719\ Cloud\ \mbox{\hyperlink{namespacehmap_ab839262913bfd936d24cf6b96a9a3da1}{random\_cloud\_distance\_weibull}}(}
+\DoxyCodeLine{00719\ Cloud\ \mbox{\hyperlink{namespacehmap_a67333ce244d3eadae6009a5f6c24ac4c}{random\_cloud\_distance\_weibull}}(}
 \DoxyCodeLine{00720\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ dist\_min,}
 \DoxyCodeLine{00721\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ lambda,}
 \DoxyCodeLine{00722\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ k,}
-\DoxyCodeLine{00723\ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00723\ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00724\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00725\ }
-\DoxyCodeLine{00750\ Cloud\ \mbox{\hyperlink{namespacehmap_a2b567f4e49f112b51a29c0915b039bc1}{random\_cloud\_jittered}}(\textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ count,}
+\DoxyCodeLine{00750\ Cloud\ \mbox{\hyperlink{namespacehmap_aa598e1e50dd0a4171a4c8fd6cd114dd0}{random\_cloud\_jittered}}(\textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ \ \ \ \ count,}
 \DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&jitter\_amount,}
 \DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\ \&stagger\_ratio,}
-\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00755\ }
-\DoxyCodeLine{00770\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_af11ae6e40d37dbc431cf358727f82f42}{rejection\_filter\_density}}(Cloud\ \ \ \ \ \ \ \ \ \ \ \&cloud,}
+\DoxyCodeLine{00770\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_aa01ff551bebcd0540dbac8b91732c0b1}{rejection\_filter\_density}}(Cloud\ \ \ \ \ \ \ \ \ \ \ \&cloud,}
 \DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Array\ \ \ \ \ \&density\_mask,}
-\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{array_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}\ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::uint32\_t\ \ \ \ seed,}
 \DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\ \&bbox\ =\ \{0.f,\ 1.f,\ 0.f,\ 1.f\});}
 \DoxyCodeLine{00774\ }
 \DoxyCodeLine{00775\ \}\ \textcolor{comment}{//\ namespace\ hmap}}

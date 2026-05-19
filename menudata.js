@@ -211,8 +211,7 @@ var menudata={children:[
 {text:"h",url:"globals_h.html#index_h"},
 {text:"m",url:"globals_m.html#index_m"},
 {text:"s",url:"globals_s.html#index_s"},
-{text:"t",url:"globals_t.html#index_t"},
-{text:"u",url:"globals_u.html#index_u"}]},
+{text:"t",url:"globals_t.html#index_t"}]},
 {text:"Functions",url:"globals_func.html",children:[
 {text:"d",url:"globals_func.html#index_d"},
 {text:"e",url:"globals_func_e.html#index_e"},
@@ -221,6 +220,5 @@ var menudata={children:[
 {text:"h",url:"globals_func_h.html#index_h"},
 {text:"m",url:"globals_func_m.html#index_m"},
 {text:"s",url:"globals_func_s.html#index_s"},
-{text:"t",url:"globals_func_t.html#index_t"}]},
-{text:"Typedefs",url:"globals_type.html"}]}]},
+{text:"t",url:"globals_func_t.html#index_t"}]}]}]},
 {text:"Examples",url:"examples.html"}]}

@@ -5,7 +5,7 @@ var classhmap_1_1GenericFractalFunction =
     [ "set_lacunarity", "classhmap_1_1GenericFractalFunction.html#ae08ab9d6e6235037d485ccd80d5e9b8d", null ],
     [ "set_octaves", "classhmap_1_1GenericFractalFunction.html#a28608337593666bcbbf91822a28062f5", null ],
     [ "set_persistence", "classhmap_1_1GenericFractalFunction.html#a310ff66b4c0d7c3d76f6abdbd335bd18", null ],
-    [ "set_seed", "classhmap_1_1GenericFractalFunction.html#a29009b8473d71f0024685703aedb641b", null ],
+    [ "set_seed", "classhmap_1_1GenericFractalFunction.html#ae5045c9f1e03eca623df4dd08755c141", null ],
     [ "scale_amp0", "classhmap_1_1GenericFractalFunction.html#a37b6ec1a0d712dc9fbf6fb292b29001e", null ],
     [ "get_lacunarity", "classhmap_1_1GenericFractalFunction.html#a4b6d0013c636b85aaee08e40119dfab0", null ],
     [ "get_octaves", "classhmap_1_1GenericFractalFunction.html#a57b80d6a0cbdc8e14963d1417b1c0b07", null ],
