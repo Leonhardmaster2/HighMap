@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/interpolate2d.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
@@ -89,11 +90,12 @@ std::vector<hmap::ErosionProfile> check_erosion_profile_function(
  * **Result**
  * @image html ex_coastal_erosion_diffusion.png
  */
-void coastal_erosion_diffusion(Array &z,
-                               Array &water_depth,
-                               float  additional_depth,
-                               int    iterations = 10,
-                               Array *p_water_mask = nullptr);
+void coastal_erosion_diffusion(Array       &z,
+                               Array       &water_depth,
+                               float        additional_depth,
+                               int          iterations = 10,
+                               const Array *p_mask = nullptr,
+                               Array       *p_water_mask = nullptr);
 
 /**
  * @brief Applies a coastal erosion profile to a terrain elevation field.
@@ -150,7 +152,12 @@ void coastal_erosion_profile(Array &z,
                              float  slope_shore_water = 0.5f,
                              float  scarp_extent_ratio = 0.5f, // in [0, 1]
                              bool   apply_post_filter = true,
-                             Array *p_shore_mask = nullptr);
+                             int    post_filter_iterations = 3,
+                             bool   solid_shore_mask = true,
+                             float  scarp_mask_transition_ratio = 0.2f,
+                             const Array *p_noise = nullptr,
+                             Array       *p_shore_mask = nullptr,
+                             Array       *p_scarp_mask = nullptr);
 
 void coastal_erosion_profile(Array       &z,
                              const Array *p_mask,
@@ -159,9 +166,14 @@ void coastal_erosion_profile(Array       &z,
                              float        shore_water_extent,
                              float        slope_shore = 0.5f,
                              float        slope_shore_water = 0.5f,
-                             float  scarp_extent_ratio = 0.5f, // in [0, 1]
-                             bool   apply_post_filter = true,
-                             Array *p_shore_mask = nullptr);
+                             float scarp_extent_ratio = 0.5f, // in [0, 1]
+                             bool  apply_post_filter = true,
+                             int   post_filter_iterations = 3,
+                             bool  solid_shore_mask = true,
+                             float scarp_mask_transition_ratio = 0.2f,
+                             const Array *p_noise = nullptr,
+                             Array       *p_shore_mask = nullptr,
+                             Array       *p_scarp_mask = nullptr);
 
 /**
  * @brief Fill the depressions of the heightmap using the Planchon-Darboux
@@ -445,7 +457,10 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance = 1e-3f,
                       int                       max_iterations = 200,
                       float                     noise_strength = 0.f,
-                      uint                      seed = 0);
+                      uint                      seed = 0,
+                      bool  enable_post_slope_limiter = false,
+                      float post_slope_limit = 0.f,
+                      bool  enable_post_smoothing = false);
 
 /**
  * @brief Apply hydraulic erosion to a heightmap using an adaptive mesh.
@@ -477,36 +492,46 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
  * **Result**
  * @image html ex_hydraulic_saleve.png
  */
-Array hydraulic_saleve(const Array &z,
-                       uint         seed,
-                       size_t       control_points_count = 10000,
-                       float        m_exp = 0.8f,
-                       float        uplift_rate = 1.f,
-                       float        tolerance = 1e-3f,
-                       int          max_iterations = 200,
-                       float        smin = 0.f,
-                       float        smax = 6.f,
-                       float        strength = 0.5f,
-                       bool         scale_erodibility_with_z = true,
-                       float        erodibility_distrib_exp = 1.f,
-                       float        noise_strength = 0.f,
+Array hydraulic_saleve(const Array          &z,
+                       uint                  seed,
+                       size_t                control_points_count = 10000,
+                       float                 m_exp = 0.8f,
+                       float                 uplift_rate = 1.f,
+                       float                 tolerance = 1e-3f,
+                       int                   max_iterations = 200,
+                       float                 smin = 0.f,
+                       float                 smax = 6.f,
+                       float                 strength = 0.5f,
+                       bool                  scale_erodibility_with_z = true,
+                       float                 erodibility_distrib_exp = 1.f,
+                       float                 noise_strength = 0.f,
+                       bool                  enable_post_slope_limiter = false,
+                       float                 post_slope_limit = 0.f,
+                       bool                  enable_post_smoothing = false,
+                       InterpolationMethod2D interpolation_method =
+                           InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 
-Array hydraulic_saleve(const Array &z,
-                       const Array *p_mask,
-                       uint         seed,
-                       size_t       control_points_count = 10000,
-                       float        m_exp = 0.8f,
-                       float        uplift_rate = 1.f,
-                       float        tolerance = 1e-3f,
-                       int          max_iterations = 200,
-                       float        smin = 0.f,
-                       float        smax = 6.f,
-                       float        strength = 0.5f,
-                       bool         scale_erodibility_with_z = true,
-                       float        erodibility_distrib_exp = 1.f,
-                       float        noise_strength = 0.f,
+Array hydraulic_saleve(const Array          &z,
+                       const Array          *p_mask,
+                       uint                  seed,
+                       size_t                control_points_count = 10000,
+                       float                 m_exp = 0.8f,
+                       float                 uplift_rate = 1.f,
+                       float                 tolerance = 1e-3f,
+                       int                   max_iterations = 200,
+                       float                 smin = 0.f,
+                       float                 smax = 6.f,
+                       float                 strength = 0.5f,
+                       bool                  scale_erodibility_with_z = true,
+                       float                 erodibility_distrib_exp = 1.f,
+                       float                 noise_strength = 0.f,
+                       bool                  enable_post_slope_limiter = false,
+                       float                 post_slope_limit = 0.f,
+                       bool                  enable_post_smoothing = false,
+                       InterpolationMethod2D interpolation_method =
+                           InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
                        const Array *p_noise_x = nullptr,
                        const Array *p_noise_y = nullptr);
 
@@ -709,61 +734,6 @@ void hydraulic_stream_upscale_amplification(
     float  clipping_ratio = 10.f); ///< @overload
 
 /**
- * @brief Apply hydraulic erosion using the 'virtual pipes' algorithm.
- *
- * See @cite Chiba1998, @cite Isheden2022, @cite Mei2007 and @cite Stava2008.
- *
- * @param z                  Input array.
- * @param p_mask             Intensity mask, expected in [0, 1] (applied as a
- * @param iterations         Number of iterations.
- * @param p_bedrock          Lower elevation limit.
- * @param p_moisture_map     Reference to the moisture map (quantity of rain),
- *                           expected to be in [0, 1].
- * @param p_erosion_map[out] Reference to the erosion map, provided as an output
- *                           field.
- * @param p_deposition_map   [out] Reference to the deposition map, provided as
- *                           an output field.
- * @param water_height       Water height.
- * @param c_capacity         Sediment capacity.
- * @param c_deposition       Deposition coefficient.
- * @param c_erosion          Erosion coefficient.
- * @param rain_rate          Rain rate.
- * @param evap_rate          Particle evaporation rate.
- *
- * **Example**
- * @include ex_hydraulic_vpipes.cpp
- *
- * **Result**
- * @image html ex_hydraulic_vpipes.png
- */
-void hydraulic_vpipes(Array &z,
-                      Array *p_mask,
-                      int    iterations,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr,
-                      Array *p_deposition_map = nullptr,
-                      float  water_height = 0.1f,
-                      float  c_capacity = 0.1f,
-                      float  c_erosion = 0.05f,
-                      float  c_deposition = 0.05f,
-                      float  rain_rate = 0.f,
-                      float  evap_rate = 0.01f);
-
-void hydraulic_vpipes(Array &z,
-                      int    iterations,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr,
-                      Array *p_deposition_map = nullptr,
-                      float  water_height = 0.1f,
-                      float  c_capacity = 0.1f,
-                      float  c_erosion = 0.05f,
-                      float  c_deposition = 0.05f,
-                      float  rain_rate = 0.f,
-                      float  evap_rate = 0.01f); ///< @overload
-
-/**
  * @brief Stratify the heightmap by creating a series of layers with elevations
  * corrected by a gamma factor.
  *
@@ -880,214 +850,6 @@ void stratify_oblique(Array             &z,
                       float              angle,
                       Array             *p_noise = nullptr); ///< @overload
 
-/**
- * @brief Apply thermal weathering erosion.
- *
- * Based on https://www.shadertoy.com/view/XtKSWh
- *
- * @param z                Input array.
- * @param p_mask           Filter mask, expected in [0, 1].
- * @param talus            Talus limit.
- * @param p_bedrock        Lower elevation limit.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- * @param iterations       Number of iterations.
- *
- * **Example**
- * @include ex_thermal.cpp
- *
- * **Result**
- * @image html ex_thermal.png
- */
-void thermal(Array       &z,
-             Array       *p_mask,
-             const Array &talus,
-             int          iterations = 10,
-             Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
-
-void thermal(Array       &z,
-             const Array &talus,
-             int          iterations = 10,
-             Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
-
-void thermal(Array &z,
-             float  talus,
-             int    iterations = 10,
-             Array *p_bedrock = nullptr,
-             Array *p_deposition_map = nullptr); ///< @overload
-
-/**
- * @brief Apply thermal weathering erosion with automatic determination of the
- * bedrock.
- *
- * @todo more comprehensive documentation on auto-bedrock algo.
- * @todo fix hard-coded parameters.
- *
- * @see                    {@link thermal}
- *
- * @param z                Input array.
- * @param talus            Local talus limit.
- * @param iterations       Number of iterations.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- *
- * **Example**
- * @include ex_thermal_auto_bedrock.cpp
- *
- * **Result**
- * @image html ex_thermal_auto_bedrock.png
- */
-void thermal_auto_bedrock(Array       &z,
-                          const Array &talus,
-                          int          iterations = 10,
-                          Array       *p_deposition_map = nullptr);
-
-void thermal_auto_bedrock(Array &z,
-                          float  talus,
-                          int    iterations = 10,
-                          Array *p_deposition_map = nullptr); ///< @overload
-
-void thermal_auto_bedrock(Array &z,
-                          Array *p_mask,
-                          float  talus,
-                          int    iterations = 10,
-                          Array *p_deposition_map = nullptr); ///< @overload
-
-/**
- * @brief Apply modified thermal weathering of Olsen.
- *
- * Based on the algorithm of Olsen \cite Olsen2004, which "causes slopes steeper
- * than the talus threshold to remain unaffected while flatter areas are
- * levelled out".
- *
- * @param z          Input array.
- * @param talus      Local talus limit.
- * @param iterations Number of iterations.
- *
- * **Example**
- * @include ex_thermal_flatten.cpp
- *
- * **Result**
- * @image html ex_thermal_flatten.png
- */
-void thermal_flatten(Array       &z,
-                     const Array &talus,
-                     const Array &bedrock,
-                     int          iterations = 10,
-                     int          post_filter_ir = 1);
-
-void thermal_flatten(Array &z,
-                     float  talus,
-                     int    iterations = 10,
-                     int    post_filter_ir = 1); ///< @overload
-
-/**
- * @brief Apply thermal weathering erosion.
- *
- * Based on averaging over first neighbors, see \cite Olsen2004. Refer to \cite
- * Musgrave1989 for the original formulation.
- *
- * Thermal erosion refers to the process in which surface sediment weakens due
- * to temperature and detaches, falling down the slopes of the terrain until a
- * resting place is reached, where smooth plateaus tend to form
- * @cite Musgrave1989.
- *
- * @param z                Input array.
- * @param p_mask           Filter mask, expected in [0, 1].
- * @param talus            Talus limit.
- * @param p_bedrock        Lower elevation limit.
- * @param p_deposition_map [out] Reference to the deposition map, provided as an
- *                         output field.
- * @param iterations       Number of iterations.
- */
-void thermal_olsen(Array       &z,
-                   const Array &talus,
-                   int          iterations = 10,
-                   Array       *p_bedrock = nullptr,
-                   Array       *p_deposition_map = nullptr);
-
-/**
- * @brief Apply thermal erosion using a 'rib' algorithm (taken from Geomorph).
- * @param z          Input heightmap.
- * @param iterations Number of iterations.
- * @param p_bedrock  Lower elevation limit.
- *
- * **Example**
- * @include ex_thermal_rib.cpp
- *
- * **Result**
- * @image html ex_thermal_rib.png
- */
-void thermal_rib(Array &z, int iterations, Array *p_bedrock = nullptr);
-
-/**
- * @brief Applies the thermal erosion process to an array of elevation values.
- *
- * This function simulates thermal erosion by modifying the elevation values in
- * the array `z`. It compares the slope between each cell and its neighbors with
- * a specified threshold (`talus`). If the slope exceeds the threshold, material
- * is considered to move from higher to lower cells, resulting in a smoother
- * terrain.
- *
- * @param z          Reference to the array of elevation values that will be
- *                   modified.
- * @param talus      Array of threshold slope values for each cell, representing
- *                   stability criteria.
- * @param iterations Number of erosion iterations to apply.
- * @param intensity  Intensity factor controlling the amount of change per
- *                   iteration.
- *
- * **Example**
- * @include ex_thermal_schott.cpp
- *
- * **Result**
- * @image html ex_thermal_schott.png
- */
-void thermal_schott(Array       &z,
-                    const Array &talus,
-                    int          iterations = 10,
-                    float        intensity = 0.001f);
-
-void thermal_schott(Array       &z,
-                    const Array &talus,
-                    Array       *p_mask,
-                    int          iterations = 10,
-                    float        intensity = 0.001f); ///< @overload
-
-/**
- * @brief Applies the thermal erosion process with a uniform slope threshold.
- *
- * This overload of `thermal_schott` applies thermal erosion with a uniform
- * threshold value. It generates an internal talus map using the specified
- * constant `talus` value and applies the erosion process in the same manner as
- * the other overload.
- *
- * @param z          Reference to the array of elevation values that will be
- *                   modified.
- * @param talus      Constant threshold slope value used for all cells.
- * @param iterations Number of erosion iterations to apply.
- * @param intensity  Intensity factor controlling the amount of change per
- *                   iteration.
- *
- *  **Example**
- * @include ex_thermal_schott.cpp
- *
- * **Result**
- * @image html ex_thermal_schott.png
- */
-void thermal_schott(Array      &z,
-                    const float talus,
-                    int         iterations = 10,
-                    float       intensity = 0.001f);
-
-void thermal_schott(Array      &z,
-                    const float talus,
-                    Array      *p_mask,
-                    int         iterations = 10,
-                    float       intensity = 0.001f); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -1108,6 +870,12 @@ void deposition_fill_holes(Array &z,
                            int    deposition_ir,
                            float  deposition_strength,
                            int    iterations = 1);
+
+void deposition_fill_holes(Array       &z,
+                           int          deposition_ir,
+                           float        deposition_strength,
+                           const Array *p_mask,
+                           int          iterations = 1); ///< @overload
 
 /**
  * @brief Simulates hydraulic erosion on a heightmap using particle-based flow.
@@ -1925,6 +1693,42 @@ void strata_cells_fbm(Array       &z,
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Apply stratified talus projection along multiple directions.
+ *
+ * Projects the input array along several directions (sequential or random),
+ * blends the results, and optionally applies a spatial warp.
+ *
+ * @param[in,out] z                 Input/output height array.
+ * @param[in]     talus             Talus values used for projection.
+ * @param[in]     direction_offset  Offset for sequential direction selection.
+ * @param[in]     direction_count   Number of directions to use (max 8).
+ * @param[in]     random_directions Whether to use random directions.
+ * @param[in]     seed              Seed for random direction selection.
+ * @param[in]     mix_ratio         Blending factor between iterations.
+ * @param[in]     p_mask            Optional mask array.
+ * @param[in]     p_dx              Optional X displacement map for warp.
+ * @param[in]     p_dy              Optional Y displacement map for warp.
+ *
+ * **Example**
+ * @include ex_strata_plates.cpp
+ *
+ * **Result**
+ * @image html ex_strata_plates.png
+ */
+void strata_plates(Array       &z,
+                   const Array &talus,
+                   int          direction_offset = 0,
+                   int          direction_count = 3,
+                   bool         random_directions = false,
+                   uint         seed = 0,
+                   float        vmin = -FLT_MAX,
+                   float        skew = 0.f,
+                   float        mix_ratio = 0.9f,
+                   const Array *p_mask = nullptr,
+                   const Array *p_dx = nullptr,
+                   const Array *p_dy = nullptr);
+
+/**
  * @brief Applies a terrace (stratification) filter to a heightmap.
  *
  * Quantizes elevation into kz strata levels and shapes terrace transitions
@@ -1983,50 +1787,134 @@ void strata_terrace(Array       &z,
                     float        gamma_noise_ratio = 0.5f,
                     const Array *p_noise = nullptr);
 
-/*! @brief See hmap::thermal */
+/**
+ * @brief Apply thermal weathering erosion.
+ *
+ * Based on https://www.shadertoy.com/view/XtKSWh
+ *
+ * @param z                Input array.
+ * @param p_mask           Filter mask, expected in [0, 1].
+ * @param talus            Talus limit.
+ * @param p_bedrock        Lower elevation limit.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ * @param iterations       Number of iterations.
+ *
+ * **Example**
+ * @include ex_thermal.cpp
+ *
+ * **Result**
+ * @image html ex_thermal.png
+ */
 void thermal(Array       &z,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
              Array       *p_deposition_map = nullptr);
 
-/*! @brief See hmap::thermal */
 void thermal(Array       &z,
-             Array       *p_mask,
+             const Array *p_mask,
              const Array &talus,
              int          iterations = 10,
              Array       *p_bedrock = nullptr,
-             Array       *p_deposition_map = nullptr);
+             Array       *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal */
 void thermal(Array &z,
              float  talus,
              int    iterations = 10,
              Array *p_bedrock = nullptr,
-             Array *p_deposition_map = nullptr);
+             Array *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal_auto_bedrock */
+/**
+ * @brief Apply thermal weathering erosion with automatic determination of the
+ * bedrock.
+ *
+ * @todo more comprehensive documentation on auto-bedrock algo.
+ * @todo fix hard-coded parameters.
+ *
+ * @see                    {@link thermal}
+ *
+ * @param z                Input array.
+ * @param talus            Local talus limit.
+ * @param iterations       Number of iterations.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ *
+ * **Example**
+ * @include ex_thermal_auto_bedrock.cpp
+ *
+ * **Result**
+ * @image html ex_thermal_auto_bedrock.png
+ */
 void thermal_auto_bedrock(Array       &z,
                           const Array &talus,
                           int          iterations = 10,
                           Array       *p_deposition_map = nullptr);
 
-/*! @brief See hmap::thermal_auto_bedrock */
 void thermal_auto_bedrock(Array       &z,
-                          Array       *p_mask,
+                          const Array *p_mask,
                           const Array &talus,
                           int          iterations = 10,
-                          Array       *p_deposition_map = nullptr);
+                          Array *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal_auto_bedrock */
 void thermal_auto_bedrock(Array &z,
                           float,
                           int    iterations = 10,
-                          Array *p_deposition_map = nullptr);
+                          Array *p_deposition_map = nullptr); ///< @overload
 
-/*! @brief See hmap::thermal_olsen */
+/**
+ * @brief Apply iterative thermal flattening erosion on a heightmap.
+ *
+ * Material is redistributed locally according to the steepest neighbor slope
+ * and a per-cell talus threshold. Gentle and steep slopes can be relaxed
+ * independently using separate coefficients.
+ *
+ * The computation is performed on the GPU using OpenCL.
+ *
+ * @param[in,out] z          Heightmap modified in-place.
+ * @param[in]     talus      Per-cell talus threshold.
+ * @param[in]     iterations Number of iterations.
+ * @param[in]     sigma_inf  Relaxation factor for slopes below talus.
+ * @param[in]     sigma_sup  Relaxation factor for slopes above talus.
+ */
+void thermal_flatten(Array       &z,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf = 0.5f,
+                     float        sigma_sup = 0.f);
+
+void thermal_flatten(Array       &z,
+                     const Array *p_mask,
+                     const Array &talus,
+                     int          iterations,
+                     float        sigma_inf = 0.5f,
+                     float        sigma_sup = 0.f); ///< @overload
+
+/**
+ * @brief Apply thermal weathering erosion.
+ *
+ * Based on averaging over first neighbors, see \cite Olsen2004. Refer to \cite
+ * Musgrave1989 for the original formulation.
+ *
+ * Thermal erosion refers to the process in which surface sediment weakens due
+ * to temperature and detaches, falling down the slopes of the terrain until a
+ * resting place is reached, where smooth plateaus tend to form
+ * @cite Musgrave1989.
+ *
+ * @param z                Input array.
+ * @param p_mask           Filter mask, expected in [0, 1].
+ * @param talus            Talus limit.
+ * @param p_bedrock        Lower elevation limit.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ * @param iterations       Number of iterations.
+ */
 void thermal_olsen(Array &z, const Array &talus, int iterations);
-void thermal_olsen(Array &z, Array *p_mask, const Array &talus, int iterations);
+
+void thermal_olsen(Array       &z,
+                   const Array *p_mask,
+                   const Array &talus,
+                   int          iterations); ///< @overload
 
 /**
  * @brief Apply thermal weathering erosion to give a scree like effect.
@@ -2052,8 +1940,21 @@ void thermal_inflate(Array       &z,
                      const Array &talus,
                      int          iterations = 10); ///< @overload
 
-/*! @brief See hmap::thermal_rib */
-void thermal_rib(Array &z, int iterations, Array *p_bedrock = nullptr);
+/**
+ * @brief Apply thermal erosion using a 'rib' algorithm (taken from Geomorph).
+ * @param z          Input heightmap.
+ * @param iterations Number of iterations.
+ * @param p_bedrock  Lower elevation limit.
+ *
+ * **Example**
+ * @include ex_thermal_rib.cpp
+ *
+ * **Result**
+ * @image html ex_thermal_rib.png
+ */
+void thermal_rib(Array &z, int iterations);
+
+void thermal_rib(Array &z, const Array *p_mask, int iterations); ///< @overload
 
 /**
  * @brief Apply thermal weathering erosion to give a ridge like effect.
@@ -2084,6 +1985,40 @@ void thermal_ridge(Array       &z,
                    const Array &talus,
                    int          iterations = 10,
                    Array       *p_deposition_map = nullptr); ///< @overload
+
+/**
+ * @brief Applies the thermal erosion process with a uniform slope threshold.
+ *
+ * This overload of `thermal_schott` applies thermal erosion with a uniform
+ * threshold value. It generates an internal talus map using the specified
+ * constant `talus` value and applies the erosion process in the same manner as
+ * the other overload.
+ *
+ * @param z          Reference to the array of elevation values that will be
+ *                   modified.
+ * @param talus      Constant threshold slope value used for all cells.
+ * @param iterations Number of erosion iterations to apply.
+ * @param intensity  Intensity factor controlling the amount of change per
+ *                   iteration.
+ *
+ *  **Example**
+ * @include ex_thermal_schott.cpp
+ *
+ * **Result**
+ * @image html ex_thermal_schott.png
+ */
+void thermal_schott(Array       &z,
+                    const Array &talus,
+                    int          iterations = 10,
+                    float        intensity = 0.2f,
+                    Array       *p_deposition_map = nullptr);
+
+void thermal_schott(Array       &z,
+                    const Array *p_mask,
+                    const Array &talus,
+                    int          iterations = 10,
+                    float        intensity = 0.2f,
+                    Array       *p_deposition_map = nullptr); ///< @overload
 
 /**
  * @brief Performs thermal scree erosion on a heightmap.

@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/blending.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"               // for Array, operator*, operator+
+#include "highmap/blending.hpp"            // for blend_gradients
+#include "highmap/erosion.hpp"             // for hydraulic_stream_log
+#include "highmap/filters.hpp"             // for saturate, smooth_cpulse
+#include "highmap/gradient.hpp"            // for gradient_norm
+#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
+#include "highmap/local_metrics.hpp"       // for relative_elevation_square...
+#include "highmap/math/array.hpp"          // for lerp, log10, pow, smooths...
+#include "highmap/range.hpp"               // for clamp_min, remap, maximum
 
 namespace hmap::gpu
 {
@@ -52,6 +52,13 @@ void hydraulic_stream_log(Array &z,
     gn = pow(gn, gradient_power);
     gn = smoothstep5_lower(gn);
     facc *= (1.f - gradient_scaling_ratio) + gradient_scaling_ratio * gn;
+  }
+
+  // preserve local peaks
+  {
+    Array re = gpu::relative_elevation_square_kernel(z, gradient_prefilter_ir);
+    re = smoothstep3(1.f - re);
+    facc *= re;
   }
 
   if (p_moisture_map)

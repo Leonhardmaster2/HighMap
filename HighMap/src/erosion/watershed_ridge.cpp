@@ -1,17 +1,20 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <algorithm> // for clamp
+#include <cmath>     // for pow
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/array.hpp"                               // for Array
+#include "highmap/erosion.hpp"                             // for watershed...
+#include "highmap/filters.hpp"                             // for smooth_cp...
+#include "highmap/hydrology/drainage_basin_cell_based.hpp" // for DrainageB...
+#include "highmap/hydrology/hydrology.hpp"                 // for find_flow...
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
-#include "highmap/transform.hpp"
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/math/core.hpp"  // for smoothste...
+#include "highmap/morphology.hpp" // for distance_...
+#include "highmap/transform.hpp"  // for warp
 
 namespace hmap::gpu
 {

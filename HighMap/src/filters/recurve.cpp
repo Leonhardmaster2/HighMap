@@ -1,18 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <random>
+#include <algorithm> // for transform
+#include <cmath>     // for pow, exp
+#include <vector>    // for vector
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/interpolate1d.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/math.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"         // for Array
+#include "highmap/interpolate1d.hpp" // for Interpolator1D, InterpolationMe...
+#include "highmap/operator.hpp"      // for apply_with_mask
+#include "highmap/range.hpp"         // for clamp, clamp_smooth, remap
 
 namespace hmap
 {
@@ -36,16 +32,7 @@ void recurve(Array                    &array,
              const std::vector<float> &v,
              const Array              *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve(array, t, v);
-    else
-    {
-      Array array_f = array;
-      recurve(array_f, t, v);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve(a, t, v); });
 }
 
 void recurve_bexp(Array &array, float tau)
@@ -61,16 +48,7 @@ void recurve_bexp(Array &array, float tau)
 
 void recurve_bexp(Array &array, float tau, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_bexp(array, tau);
-    else
-    {
-      Array array_f = array;
-      recurve_bexp(array_f, tau);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_bexp(a, tau); });
 }
 
 void recurve_exp(Array &array, float tau)
@@ -86,16 +64,7 @@ void recurve_exp(Array &array, float tau)
 
 void recurve_exp(Array &array, float tau, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_exp(array, tau);
-    else
-    {
-      Array array_f = array;
-      recurve_exp(array_f, tau);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_exp(a, tau); });
 }
 
 void recurve_kura(Array &array, float a, float b)
@@ -111,16 +80,7 @@ void recurve_kura(Array &array, float a, float b)
 
 void recurve_kura(Array &array, float a, float b, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_kura(array, a, b);
-    else
-    {
-      Array array_f = array;
-      recurve_kura(array_f, a, b);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &ar) { recurve_kura(ar, a, b); });
 }
 
 void recurve_s(Array &array)
@@ -135,16 +95,7 @@ void recurve_s(Array &array)
 
 void recurve_s(Array &array, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_s(array);
-    else
-    {
-      Array array_f = array;
-      recurve_s(array_f);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recurve_s(a); });
 }
 
 void recurve_smoothstep_rational(Array &array, float n)
@@ -163,16 +114,9 @@ void recurve_smoothstep_rational(Array &array, float n)
 
 void recurve_smoothstep_rational(Array &array, float n, const Array *p_mask)
 {
-  {
-    if (!p_mask)
-      recurve_smoothstep_rational(array, n);
-    else
-    {
-      Array array_f = array;
-      recurve_smoothstep_rational(array_f, n);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { recurve_smoothstep_rational(a, n); });
 }
 
 void saturate(Array &array,
@@ -201,6 +145,15 @@ void saturate(Array &array, float vmin, float vmax, float k)
     clamp(array, vmin, vmax);
 
   remap(array, min_bckp, max_bckp);
+}
+
+void saturate_percentile(Array &array,
+                         float  percentile_low,
+                         float  percentile_high,
+                         float  k)
+{
+  glm::vec2 range = array.range_percentile(percentile_low, percentile_high);
+  saturate(array, range.x, range.y, k);
 }
 
 } // namespace hmap

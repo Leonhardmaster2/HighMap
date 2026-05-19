@@ -1,15 +1,58 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
+#include <algorithm>  // for max, min
+#include <functional> // for function
+#include <limits>     // for numeric_limits
+#include <map>        // for map
+#include <utility>    // for swap
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"         // for Array, operator*, count_non_zero
+#include "highmap/boundary.hpp"      // for generate_buffered_array, set_bo...
+#include "highmap/features.hpp"      // for connected_components
+#include "highmap/filters.hpp"       // for smooth_cpulse
+#include "highmap/local_metrics.hpp" // for local_max, local_min
+#include "highmap/math/array.hpp"    // for is_non_zero, is_zero, smoothstep3
 #include "highmap/morphology.hpp"
+#include "highmap/range.hpp" // for clamp, maximum_smooth, minimum_...
 
 namespace hmap
 {
+
+Array area_remove(const Array &array,
+                  float        threshold_size,
+                  float        background_value,
+                  float        fill_value)
+{
+  const glm::ivec2 &shape = array.shape;
+
+  // label connected components
+  std::map<float, float> area;
+
+  // remove background here
+  Array mask = is_non_zero(array - background_value);
+  Array labels = connected_components(mask,
+                                      /* surface_threshold */ 0.f,
+                                      /* background_value */ 0.f,
+                                      &area);
+
+  if (area.empty()) return array;
+
+  // build output
+  Array out = array;
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      if (labels(i, j) != 0.f && area[labels(i, j)] < threshold_size)
+        out(i, j) = fill_value;
+    }
+
+  return out;
+}
 
 Array border(const Array &array, int ir)
 {
@@ -21,19 +64,39 @@ Array closing(const Array &array, int ir)
   return erosion(dilation(array, ir), ir);
 }
 
+Array closing_by_reconstruction(const Array &array, int ir, float k_smooth_max)
+{
+  Array marker = dilation(array, ir);
+  return reconstruction_by_erosion(marker, array, ir, k_smooth_max);
+}
+
+Array contour_smoothing(const Array &array, int ir, float transition_ratio)
+{
+  Array edt = distance_transform(is_zero(array)) - distance_transform(array);
+  smooth_cpulse(edt, 2 * ir);
+
+  float width = transition_ratio * ir;
+  edt /= width;
+  clamp(edt, -1.f, 1.f);
+  edt = smoothstep3(0.5f * edt + 0.5f);
+
+  return edt;
+}
+
 Array dilation(const Array &array, int ir)
 {
-  return maximum_local(array, ir);
+  return local_max(array, ir);
 }
 
 Array dilation_expand_border_only(const Array &array, int ir)
 {
-  Array out = maximum_local(array, ir);
+  const glm::ivec2 &shape = array.shape;
+  Array             out = local_max(array, ir);
 
   // only keep result in the "background" to leave initial vlaues
   // untouched
-  for (int j = 0; j < array.shape.y; ++j)
-    for (int i = 0; i < array.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
       if (array(i, j) != 0.f) out(i, j) = array(i, j);
     }
@@ -43,29 +106,38 @@ Array dilation_expand_border_only(const Array &array, int ir)
 
 Array dilation_expand_min_value_border_only(const Array &array)
 {
-  Array out(array.shape);
+  const glm::ivec2 &shape = array.shape;
+  Array             out(shape);
 
-  // only keep result in the "background" to leave initial vlaues
-  // untouched
-  for (int j = 0; j < array.shape.y; ++j)
-    for (int i = 0; i < array.shape.x; ++i)
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
     {
-      float vmin = std::numeric_limits<float>::max();
-      float vmin_non_zero = std::numeric_limits<float>::max();
+      // non-background pixels are left untouched
+      if (array(i, j) != 0.f)
+      {
+        out(i, j) = array(i, j);
+        continue;
+      }
 
+      // for background pixels: find min non-zero neighbor
+      float vmin_non_zero = std::numeric_limits<float>::max();
       for (int r = -1; r <= 1; ++r)
         for (int s = -1; s <= 1; ++s)
         {
-          vmin = std::min(vmin, array(i, j));
+          if (r == 0 && s == 0) continue;
 
-          if (array(i, j) != 0.f)
-            vmin_non_zero = std::min(vmin_non_zero, array(i, j));
+          const int ni = i + r;
+          const int nj = j + s;
+
+          if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+              array(ni, nj) != 0.f)
+            vmin_non_zero = std::min(vmin_non_zero, array(ni, nj));
         }
 
-      if (vmin == 0.f && vmin_non_zero != std::numeric_limits<float>::max())
-        out(i, j) = vmin;
-      else
-        out(i, j) = array(i, j);
+      // expand only if a non-zero neighbor was found
+      out(i, j) = (vmin_non_zero != std::numeric_limits<float>::max())
+                      ? vmin_non_zero
+                      : 0.f;
     }
 
   return out;
@@ -73,7 +145,7 @@ Array dilation_expand_min_value_border_only(const Array &array)
 
 Array erosion(const Array &array, int ir)
 {
-  return minimum_local(array, ir);
+  return local_min(array, ir);
 }
 
 void flood_fill(Array &array,
@@ -82,42 +154,36 @@ void flood_fill(Array &array,
                 float  fill_value,
                 float  background_value)
 {
-  std::vector<int> queue_i = {i};
-  std::vector<int> queue_j = {j};
+  if (array(i, j) != background_value) return; // nothing to do
 
-  queue_i.reserve(array.shape.x * array.shape.y);
-  queue_j.reserve(array.shape.x * array.shape.y);
+  const glm::ivec2 &shape = array.shape;
 
-  while (queue_i.size() > 0)
+  std::vector<glm::ivec2> queue;
+  queue.reserve(shape.x * shape.y);
+
+  // mark and enqueue seed
+  array(i, j) = fill_value;
+  queue.push_back({i, j});
+
+  while (!queue.empty())
   {
-    i = queue_i.back();
-    j = queue_j.back();
-    queue_i.pop_back();
-    queue_j.pop_back();
+    auto c = queue.back();
+    queue.pop_back();
 
-    if (array(i, j) == background_value)
+    // 4-connected neighbors
+    constexpr int di[] = {-1, 1, 0, 0};
+    constexpr int dj[] = {0, 0, -1, 1};
+
+    for (int d = 0; d < 4; ++d)
     {
-      array(i, j) = fill_value;
+      const int ni = c.x + di[d];
+      const int nj = c.y + dj[d];
 
-      if (i > 0)
+      if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+          array(ni, nj) == background_value)
       {
-        queue_i.push_back(i - 1);
-        queue_j.push_back(j);
-      }
-      if (i < array.shape.x - 1)
-      {
-        queue_i.push_back(i + 1);
-        queue_j.push_back(j);
-      }
-      if (j > 0)
-      {
-        queue_i.push_back(i);
-        queue_j.push_back(j - 1);
-      }
-      if (j < array.shape.y - 1)
-      {
-        queue_i.push_back(i);
-        queue_j.push_back(j + 1);
+        array(ni, nj) = fill_value;
+        queue.push_back({ni, nj});
       }
     }
   }
@@ -130,7 +196,14 @@ Array morphological_black_hat(const Array &array, int ir)
 
 Array morphological_gradient(const Array &array, int ir)
 {
-  return dilation(array, ir) - erosion(array, ir);
+  float vmin = array.min();
+  return dilation(array - vmin, ir) - erosion(array - vmin, ir);
+}
+
+Array morphological_laplacian(const Array &array, int ir)
+{
+  float vmin = array.min();
+  return dilation(array - vmin, ir) + erosion(array - vmin, ir) - 2.f * array;
 }
 
 Array morphological_top_hat(const Array &array, int ir)
@@ -142,6 +215,119 @@ Array opening(const Array &array, int ir)
 {
   return dilation(erosion(array, ir), ir);
 }
+
+Array opening_by_reconstruction(const Array &array, int ir, float k_smooth_min)
+{
+  Array marker = erosion(array, ir);
+  return reconstruction_by_dilation(marker, array, ir, k_smooth_min);
+}
+
+Array helper_reconstruction_impl(
+    const Array                                              &marker,
+    const Array                                              &mask,
+    int                                                       ir,
+    float                                                     k_smooth,
+    std::function<Array(const Array &, int)>                  morph_op,
+    std::function<Array(const Array &, const Array &, float)> clamp_op)
+{
+  constexpr float tol = 1e-6f;
+  Array           current = marker;
+  Array           next;
+
+  while (true)
+  {
+    next = morph_op(current, ir);
+    next = clamp_op(next, mask, k_smooth);
+
+    float diff = 0.f;
+    for (int j = 0; j < current.shape.y; ++j)
+      for (int i = 0; i < current.shape.x; ++i)
+        diff = std::max(diff, std::abs(next(i, j) - current(i, j)));
+
+    std::swap(current, next);
+
+    if (diff < tol) break;
+  }
+  return current;
+}
+
+Array reconstruction_by_dilation(const Array &marker,
+                                 const Array &mask,
+                                 int          ir,
+                                 float        k_smooth_min)
+{
+  constexpr float tol = 1e-6f;
+  Array           current = marker;
+  Array           next;
+
+  while (true)
+  {
+    next = dilation(current, ir);
+    next = minimum_smooth(next, mask, k_smooth_min);
+
+    float diff = 0.f;
+    for (int j = 0; j < current.shape.y; ++j)
+      for (int i = 0; i < current.shape.x; ++i)
+        diff = std::max(diff, std::abs(next(i, j) - current(i, j)));
+
+    std::swap(current, next);
+    if (diff < tol) break;
+  }
+  return current;
+}
+
+Array reconstruction_by_erosion(const Array &marker,
+                                const Array &mask,
+                                int          ir,
+                                float        k_smooth_max)
+{
+  constexpr float tol = 1e-6f;
+  Array           current = marker;
+  Array           next;
+
+  while (true)
+  {
+    next = erosion(current, ir);
+    next = maximum_smooth(next, mask, k_smooth_max);
+
+    float diff = 0.f;
+    for (int j = 0; j < current.shape.y; ++j)
+      for (int i = 0; i < current.shape.x; ++i)
+        diff = std::max(diff, std::abs(next(i, j) - current(i, j)));
+
+    std::swap(current, next);
+    if (diff < tol) break;
+  }
+  return current;
+}
+
+// Array reconstruction_by_erosion(const Array &marker,
+//                                 const Array &mask,
+//                                 int          ir,
+//                                 float        k_smooth_max)
+// {
+//   constexpr float tol = 1e-6f;
+
+//   Array current = marker;
+//   Array next;
+
+//   while (true)
+//   {
+//     next = erosion(current, ir);
+
+//     // clamp to mask
+//     next = maximum_smooth(next, mask, k_smooth_max);
+
+//     float diff = abs(next - current).max();
+
+//     if (diff < tol) // convergence
+//       break;
+
+//     current = next;
+//   }
+
+//   return current;
+// }
 
 // helper
 
@@ -178,61 +364,112 @@ void helper_thinning(Array &in, int iter)
 }
 
 Array relative_distance_from_skeleton(const Array &array,
+                                      const Array &skeleton,
+                                      int          ir_search,
+                                      int          ir_erosion)
+{
+  const glm::ivec2 &shape = array.shape;
+  Array             border = array - erosion(array, ir_erosion);
+  Array             rdist(shape);
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      if (array(i, j) == 0.f) continue;
+
+      float dmin_sk = std::numeric_limits<float>::max();
+      float dmin_bd = std::numeric_limits<float>::max();
+
+      const int p1 = std::max(i - ir_search, 0);
+      const int p2 = std::min(i + ir_search + 1, shape.x);
+      const int q1 = std::max(j - ir_search, 0);
+      const int q2 = std::min(j + ir_search + 1, shape.y);
+
+      for (int q = q1; q < q2; q++)
+      {
+        const int dq2 = (j - q) * (j - q);
+
+        for (int p = p1; p < p2; p++)
+        {
+          const bool is_sk = skeleton(p, q) == 1.f;
+          const bool is_bd = border(p, q) == 1.f;
+
+          // skip non-feature cells early
+          if (!is_sk && !is_bd) continue;
+
+          const int d2 = (i - p) * (i - p) + dq2;
+
+          if (is_sk && d2 < dmin_sk) dmin_sk = d2;
+          if (is_bd && d2 < dmin_bd) dmin_bd = d2;
+        }
+      }
+
+      const float sum = dmin_bd + dmin_sk;
+      if (sum > 0.f) rdist(i, j) = dmin_bd / sum;
+    }
+
+  return rdist;
+}
+
+Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       bool         zero_at_borders,
                                       int          ir_erosion)
 {
-  Array border = array - erosion(array, ir_erosion);
   Array sk = skeleton(array, zero_at_borders);
+  return relative_distance_from_skeleton(array, sk, ir_search, ir_erosion);
+}
 
-  Array rdist(array.shape);
+Array remove_endpoints(const Array &array,
+                       int          iterations,
+                       float        background_value)
+{
+  const glm::ivec2 &shape = array.shape;
+  Array             wrk = array;
+  Array             out(shape);
 
-  for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < array.shape.x; i++)
-      // only work for cells within the non-zero regions
-      if (array(i, j) != 0.f)
+  for (int it = 0; it < iterations; ++it)
+  {
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
       {
-        // find the closest skeleton and border cells
-        float dmax_sk = std::numeric_limits<float>::max();
-        float dmax_bd = std::numeric_limits<float>::max();
+        // Skip background pixels immediately
+        if (wrk(i, j) == background_value)
+        {
+          out(i, j) = background_value;
+          continue;
+        }
 
-        int p1 = std::max(i - ir_search, 0);
-        int p2 = std::min(i + ir_search + 1, array.shape.x);
-        int q1 = std::max(j - ir_search, 0);
-        int q2 = std::min(j + ir_search + 1, array.shape.y);
-
-        for (int q = q1; q < q2; q++)
-          for (int p = p1; p < p2; p++)
+        int n = 0;
+        for (int r = -1; r <= 1; ++r)
+          for (int s = -1; s <= 1; ++s)
           {
-            // distance to skeleton
-            if (sk(p, q) == 1.f)
-            {
-              float d2 = (float)((i - p) * (i - p) + (j - q) * (j - q));
-              if (d2 < dmax_sk) dmax_sk = d2;
-            }
+            if (r == 0 && s == 0) continue;
 
-            // distance to border
-            if (border(p, q) == 1.f)
-            {
-              float d2 = (float)((i - p) * (i - p) + (j - q) * (j - q));
-              if (d2 < dmax_bd) dmax_bd = d2;
-            }
+            const int ni = i + r;
+            const int nj = j + s;
+
+            if (ni >= 0 && ni < shape.x && nj >= 0 && nj < shape.y &&
+                wrk(ni, nj) != background_value)
+              ++n;
           }
 
-        // relative distance (from 1.f on the skeleton to 0.f and
-        // the border)
-        float sum = dmax_bd + dmax_sk;
-        if (sum) rdist(i, j) = dmax_bd / sum;
+        // also remove "lonely" cells, with no surrounding pixels
+        out(i, j) = (n < 2) ? background_value : wrk(i, j);
       }
 
-  return rdist;
+    std::swap(wrk, out);
+  }
+
+  return wrk; // result is in wrk after the last swap
 }
 
 Array skeleton(const Array &array, bool zero_at_borders)
 {
   // https://github.com/krishraghuram/Zhang-Suen-Skeletonization
+  Array sk = generate_buffered_array(array, {1, 1, 1, 1});
+  set_borders(sk, 0.f, 1);
 
-  Array sk = array;
   Array prev;
   Array diff;
 
@@ -245,7 +482,10 @@ Array skeleton(const Array &array, bool zero_at_borders)
 
     diff = sk - prev;
 
-  } while (diff.count_non_zero() > 0);
+  } while (count_non_zero(diff) > 0);
+
+  // remove padding
+  sk = sk.extract_slice({1, sk.shape.x - 1, 1, sk.shape.y - 1});
 
   // set border to zero
   if (zero_at_borders) zeroed_borders(sk);

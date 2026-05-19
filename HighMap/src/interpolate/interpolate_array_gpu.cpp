@@ -1,10 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <vector> // for allocator, vector
 
-#include "highmap/array.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp" // for Array
 
 namespace hmap::gpu
 {

@@ -20,7 +20,7 @@ int main(void)
                                seed,
                                hmap::adjust(bbox, 0.2f, -0.2f, 0.2f, -0.2f));
   path.reorder_nns();
-  path.fractalize(8, seed);
+  path = hmap::fractalize(path, 8, seed);
   path.set_values_from_array(noise, bbox);
 
   auto zp = hmap::Array(shape);

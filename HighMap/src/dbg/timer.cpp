@@ -2,6 +2,10 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
+#include <iomanip>  // for operator<<, setw
+#include <iostream> // for basic_ostream, char_traits, cout, operator<<, endl
+#include <utility>  // for pair
+
 #include "highmap/dbg/timer.hpp"
 
 namespace hmap
@@ -53,9 +57,19 @@ void Timer::Stop(const std::string &name)
   get_instance().stop(name);
 }
 
+void Timer::Clear()
+{
+  get_instance().records.clear();
+}
+
 void Timer::Dump()
 {
   get_instance().dump();
+}
+
+std::map<std::string, float> Timer::DumpDurations()
+{
+  return get_instance().dump_durations();
 }
 
 // Private constructor to prevent instantiation
@@ -93,6 +107,16 @@ void Timer::dump()
   std::cout << "Timer dump: " << this->sid << std::endl;
   for (auto &n : records)
     n.second->dump();
+}
+
+std::map<std::string, float> Timer::dump_durations() const
+{
+  std::map<std::string, float> out;
+
+  for (auto &n : records)
+    out[n.first] = n.second->total / (float)n.second->nb_calls;
+
+  return out;
 }
 
 } // namespace hmap

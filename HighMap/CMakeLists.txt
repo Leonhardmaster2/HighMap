@@ -38,6 +38,7 @@ target_link_libraries(
   nanoflann::nanoflann
   nn-c::nn-c
   NoiseLib
+  terrain-descriptors
   OpenMP::OpenMP_CXX
   ${OpenCV_LIBS}
   point_sampler

@@ -46,6 +46,8 @@ namespace hmap
  *
  * @return    A new Array containing the divergence \f$f(x, y)\f$ for each
  *            pixel. The returned array has the same size as the inputs.
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array divergence_from_gradients(const Array &dx, const Array &dy);
 
@@ -77,6 +79,8 @@ std::vector<float> gradient1d(const std::vector<float> &v);
  *
  * **Result**
  * @image html ex_gradient_angle.png
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_angle(const Array &array, bool downward = false);
 
@@ -137,6 +141,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
  *
  * **Result**
  * @image html ex_gradient_norm.png
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_norm(const Array &array,
                     Array       *p_dx = nullptr,
@@ -161,6 +167,8 @@ Array gradient_norm(const Array &array,
  *
  * **Result**
  * @image html ex_gradient_norm.png
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_norm_prewitt(const Array &array,
                             Array       *p_dx = nullptr,
@@ -179,6 +187,8 @@ Array gradient_norm_prewitt(const Array &array,
  * @param  p_dy  Pointer to an Array where the y-gradient will be stored
  *               (optional).
  * @return       Array Gradient norm (magnitude).
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_norm_scharr(const Array &array,
                            Array       *p_dx = nullptr,
@@ -197,6 +207,8 @@ Array gradient_norm_scharr(const Array &array,
  * @param  p_dy  Pointer to an Array where the y-gradient will be stored
  *               (optional).
  * @return       Array Gradient norm (magnitude).
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_norm_sobel(const Array &array,
                           Array       *p_dx = nullptr,
@@ -213,6 +225,8 @@ Array gradient_norm_sobel(const Array &array,
  * @return       Array Gradient talus slope.
  *
  * @see          Thermal erosion: {@link thermal}.
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_talus(const Array &array);
 
@@ -224,6 +238,8 @@ Array gradient_talus(const Array &array);
  *
  * @param array Input 2D array.
  * @param talus Output array where the gradient talus slope will be stored.
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 void gradient_talus(const Array &array, Array &talus); ///< @overload
 
@@ -235,6 +251,8 @@ void gradient_talus(const Array &array, Array &talus); ///< @overload
  *
  * @param  array Input 2D array.
  * @return       Array Gradient in the x-direction.
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_x(const Array &array);
 
@@ -258,6 +276,8 @@ void gradient_x(const Array &array, Array &dx); ///< @overload
  *
  * @param  array Input 2D array.
  * @return       Array Gradient in the y-direction.
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array gradient_y(const Array &array);
 
@@ -281,6 +301,14 @@ void gradient_y(const Array &array, Array &dy); ///< @overload
  *
  * @param  array Input 2D array.
  * @return       Array Laplacian of the input array.
+ *
+ *  **Example**
+ * @include ex_laplacian.cpp
+ *
+ * **Result**
+ * @image html ex_laplacian.png
+ *
+ * See unit tests: @ref test_gradient.cpp
  */
 Array laplacian(const Array &array);
 
@@ -374,12 +402,41 @@ void solve_poisson_gauss_seidel(const Array &rhs,
  */
 Array unwrap_phase(const Array &alpha);
 
+/* See unit tests: @ref test_gradient.cpp */
 Array talus_jump_mask(const Array &z, float threshold, float sigma);
 
 } // namespace hmap
 
 namespace hmap::gpu
 {
+
+/*! @brief See hmap::gradient_angle_circular_smoothing */
+Array gradient_angle_circular_smoothing(const Array &array,
+                                        int          ir,
+                                        bool         downward = false);
+
+/*! @brief See hmap::gradient_norm */
+Array gradient_norm(const Array &array);
+
+/**
+ * @brief Compute the fractional Laplacian of an array.
+ *
+ * Approximates a non-local Laplacian of order @p s using a neighborhood of
+ * radius @p ir. The result is unnormalized.
+ *
+ * @param  array Input scalar field.
+ * @param  s     Fractional order (> 0 and 1 is the standard Laplacian).
+ * @param  ir    Neighborhood radius.
+ *
+ * @return       Array Fractional Laplacian of @p array.
+ *
+ *  **Example**
+ * @include ex_laplacian.cpp
+ *
+ * **Result**
+ * @image html ex_laplacian.png
+ */
+Array laplacian_fract(const Array &array, float s, int ir);
 
 /**
  * @brief Apply phase averaging on real and imaginary fields using a GPU kernel.
@@ -472,20 +529,11 @@ Array phase_field_angle(const Array     &angle, // rads
                         float            kp,
                         int              n_kernel_samples = 8,
                         const glm::vec2 &jitter = {0.5f, 0.5f},
-                        int              angle_filter_ir = 8,
                         const Array     *p_ctrl_param = nullptr,
                         const Array     *p_noise_x = nullptr,
                         const Array     *p_noise_y = nullptr,
                         Array           *p_modulus = nullptr,
                         Array           *p_angle_jump_mask = nullptr,
                         glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
-
-/*! @brief See hmap::gradient_angle_circular_smoothing */
-Array gradient_angle_circular_smoothing(const Array &array,
-                                        int          ir,
-                                        bool         downward = false);
-
-/*! @brief See hmap::gradient_norm */
-Array gradient_norm(const Array &array);
 
 } // namespace hmap::gpu

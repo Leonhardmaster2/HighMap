@@ -1,11 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "dkm.hpp"
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/cloud.hpp"
+#include <algorithm> // for max, fill_n
+#include <array>     // for array
+#include <cmath>     // for hypot, pow
+#include <tuple>     // for get
+#include <vector>    // for vector
+
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/point.hpp" // for Point, sort_points
+
+#include "dkm.hpp" // for clustering_parameters, kmean...
 
 namespace hmap
 {

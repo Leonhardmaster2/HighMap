@@ -2,14 +2,9 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm>
-
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/gradient.hpp"
-// #include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"    // for Array, operator*, operator-, operator/
+#include "highmap/erosion.hpp"  // for hydraulic_diffusion
+#include "highmap/gradient.hpp" // for gradient_x, gradient_y
 
 namespace hmap
 {

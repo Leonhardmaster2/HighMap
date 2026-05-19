@@ -1,14 +1,13 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <cmath> // for log, exp
 
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
+#include "highmap/array.hpp"     // for Array, operator*
+#include "highmap/curvature.hpp" // for CurvatureType, curvature_quadric
+#include "highmap/filters.hpp"   // for smooth_cpulse
+#include "highmap/range.hpp"     // for clamp, maximum, ClampMode
+#include "highmap/selector.hpp"  // for select_soil_rocks
 
 namespace hmap::gpu
 {
@@ -38,13 +37,12 @@ Array select_soil_rocks(const Array &z,
     // mean curvature on filtered field
     Array zf = z;
     gpu::smooth_cpulse(zf, ir);
-    Array cm = scale * curvature_mean(zf) * ir;
+    Array cm = -scale * gpu::curvature_quadric(zf, 0, CurvatureType::CT_MEAN) *
+               ir;
 
     clamp(cm, curvature_clamping, curvature_clamp_mode);
 
     sr = maximum(sr, cm);
-
-    // sr += cm;
 
     scale /= smaller_scales_weight;
   }

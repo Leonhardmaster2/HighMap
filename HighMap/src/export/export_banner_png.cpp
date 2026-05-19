@@ -2,8 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "highmap/array.hpp"
-#include "highmap/operator.hpp"
+#include <sys/types.h> // for uint
+
+#include <string> // for string
+#include <vector> // for vector
+
+#include "highmap/array.hpp"    // for Array
+#include "highmap/operator.hpp" // for hstack
 
 namespace hmap
 {

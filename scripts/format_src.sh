@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # directories to be formatted (recursive search)
-DIRS="HighMap/include HighMap/src examples tests"
+DIRS="HighMap/include HighMap/src examples tests benchmarks"
 FORMAT_CMD="clang-format -style=file:scripts/clang_style -i"
 
 echo "- clang-format"

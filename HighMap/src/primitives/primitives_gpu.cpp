@@ -1,13 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept>
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <algorithm> // for max
+#include <cmath>     // for cos, sin
+#include <stdexcept> // for runtime_error
+#include <vector>    // for allocator, vector
+
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/algebra.hpp"           // for adjust
+#include "highmap/array.hpp"             // for Array, operator*, operator+
+#include "highmap/functions.hpp"         // for NoiseType
+#include "highmap/geometry/cloud.hpp"    // for Cloud
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/primitives.hpp"        // for VoronoiReturnType, gavoronoise
+#include "highmap/range.hpp"             // for minimum
 
 namespace hmap::gpu
 {
@@ -496,8 +507,8 @@ Array noise(NoiseType    noise_type,
             uint         seed,
             const Array *p_noise_x,
             const Array *p_noise_y,
-            const Array *p_stretching,
-            glm::vec4    bbox)
+            const Array * /* p_stretching */,
+            glm::vec4 bbox)
 {
   Array array(shape);
 
@@ -537,8 +548,8 @@ Array noise_fbm(NoiseType    noise_type,
                 const Array *p_ctrl_param,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                const Array *p_stretching,
-                glm::vec4    bbox)
+                const Array * /* p_stretching */,
+                glm::vec4 bbox)
 {
   Array array(shape);
 

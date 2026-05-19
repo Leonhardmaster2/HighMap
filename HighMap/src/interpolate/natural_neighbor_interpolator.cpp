@@ -1,11 +1,14 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <vector> // for vector
 
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate2d.hpp" // for NaturalNeighborInterpolator
+
+#include "delaunay.h" // for delaunay_build, delaunay_destroy
+#include "nn.h"       // for (anonymous), nnai_build, nnai_d...
 
 namespace hmap
 {

@@ -4,7 +4,7 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
 
-  hmap::Array z = hmap::gaussian_pulse(shape, 32);
+  hmap::Array z = hmap::gaussian_pulse(shape, 0.2f);
   hmap::remap(z);
 
   z = hmap::select_interval(z, 0.5f, 0.55f);

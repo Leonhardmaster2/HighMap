@@ -1,22 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <vector> // for allocator, vector
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"             // for Array, operator*
+#include "highmap/filters.hpp"           // for smooth_cpulse
+#include "highmap/gradient.hpp"          // for gradient_norm
+#include "highmap/math/array.hpp"        // for lerp
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/range.hpp"             // for maximum_smooth, remap
 
 namespace hmap::gpu
 {
 
 Array blend_gradients(const Array &array1, const Array &array2, int ir)
 {
-  Array dn1 = gpu::gradient_norm(array1);
-  Array dn2 = gpu::gradient_norm(array2);
+  Array dn1 = hmap::gradient_norm(array1);
+  Array dn2 = hmap::gradient_norm(array2);
 
   gpu::smooth_cpulse(dn1, ir);
   gpu::smooth_cpulse(dn2, ir);

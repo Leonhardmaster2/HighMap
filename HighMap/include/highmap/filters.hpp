@@ -40,6 +40,30 @@ enum neighborhood : int
 };
 // clang-format on
 
+/**
+ * @brief Applies a primitive-based displacement to an array.
+ *
+ * Adds a scaled primitive pattern (optionally perturbed by noise) to the input
+ * array.
+ *
+ * @param  z              Input array.
+ * @param  primitive_type Type of primitive to generate.
+ * @param  amp            Amplitude scaling factor.
+ * @param  p_noise_x      Optional noise array for X perturbation (can be
+ *                        nullptr).
+ * @param  p_noise_y      Optional noise array for Y perturbation (can be
+ *                        nullptr).
+ * @param  center         Center of the primitive.
+ * @param  bbox           Bounding box of the primitive.
+ *
+ * @return                Resulting array after applying the displacement.
+ *
+ * **Example**
+ * @include ex_bulkify.cpp
+ *
+ * **Result**
+ * @image html ex_bulkify.png
+ */
 Array bulkify(const Array         &z,
               const PrimitiveType &primitive_type,
               float                amp = 1.f,
@@ -47,121 +71,6 @@ Array bulkify(const Array         &z,
               const Array         *p_noise_y = nullptr,
               glm::vec2            center = {0.5f, 0.5f},
               glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
- * @brief Applies diffusion retargeting by detecting local maxima and adjusting
- * based on the difference between two arrays.
- *
- * This function identifies points of interest in the `array_before` (local
- * maxima in a 3x3 neighborhood), computes the difference between the
- * corresponding points in `array_before` and `array_after`, and stores these
- * differences in a delta array. It then applies smoothing to the delta values,
- * remaps them within the original min-max range, and returns the corrected
- * array by adding the adjusted delta to `array_after`.
- *
- * @param  array_before The original 2D array used to detect local maxima for
- *                      retargeting.
- * @param  array_after  The 2D array representing the state after the diffusion
- *                      process.
- * @param  ir           The smoothing radius used in the smoothing step
- *                      (`smooth_cpulse`).
- *
- * @return              A new 2D array where the delta between the two input
- *                      arrays has been smoothed and applied as a correction to
- *                      `array_after`.
- *
- * **Example**
- * @include ex_diffusion_retargeting.cpp
- *
- * **Result**
- * @image html ex_diffusion_retargeting.png
- */
-Array diffusion_retargeting(const Array &array_before,
-                            const Array &array_after,
-                            int          ir);
-
-Array diffusion_retargeting(const Array &array_before,
-                            const Array &array_after,
-                            const Array &mask,
-                            int          iterations);
-
-/**
- * @brief Applies a directional blur to a 2D array based on a spatially varying
- * angle field.
- *
- * This function performs an anisotropic blur on the input `array`, using the
- * `angle` array to determine the direction of blur at each pixel. The blur is
- * computed by sampling values along a line in the specified direction
- * (per-pixel), using linear interpolation through an `ArrayFunction`. The
- * amount of blur is controlled by parameters for intensity, stretching, and
- * spread.
- *
- * For each pixel, the function samples values along the blur direction
- * determined by `angle(i, j)` (in degrees), applies a smooth weight profile
- * (`smoothstep3`) over a range of `2 * ir - 1` steps, and accumulates the
- * weighted values. The output is then normalized by the total weight sum.
- *
- * @param array     The input/output 2D array to be blurred (modified in-place).
- * @param ir        Blur radius: the number of samples on each side of the
- *                  center (total samples = 2 * ir - 1).
- * @param angle     A 2D array of the same shape as `array` giving blur
- *                  direction (in degrees) at each pixel. 0° points to the right
- *                  (positive X), 90° points upward (positive Y).
- * @param intensity The overall weight of the blur effect (scales the weight
- *                  profile).
- * @param stretch   A scaling factor applied to the sampling step along the blur
- *                  direction. Higher values stretch the blur further along the
- *                  direction vector.
- * @param spread    Maximum normalized distance at which blur weights are
- *                  applied (used in smoothstep weight profile).
- *
- * @note Uses linear interpolation through an `ArrayFunction`, and wraps
- * coordinates using clamping (not periodic).
- *
- * @see             smoothstep3(), ArrayFunction
- *
- * **Example**
- * @include ex_directional_blur.cpp
- *
- * **Result**
- * @image html ex_directional_blur.png
- */
-void directional_blur(Array &array,
-                      int    ir,
-                      float  angle,
-                      float  intensity,
-                      float  stretch = 1.f,
-                      float  spread = 1.f);
-
-/**
- * @brief Applies a directional blur to the provided 2D array with a constant
- * angle.
- *
- * This function is a convenience wrapper that applies a directional blur using
- * a constant angle for all pixels. Internally, it creates a uniform angle array
- * and calls the primary `directional_blur` function.
- *
- * @param array     The 2D array to be blurred.
- * @param ir        The radius of the blur operation (number of steps).
- * @param angle     The constant directional angle (in degrees) for the blur.
- * @param intensity The maximum intensity of the blur at the starting point of
- *                  the radius.
- *
- * @note The `angle` value should be in degrees, where 0° points to the right
- * (positive x-direction).
- *
- * **Example**
- * @include ex_directional_blur.cpp
- *
- * **Result**
- * @image html ex_directional_blur.png
- */
-void directional_blur(Array       &array,
-                      int          ir,
-                      const Array &angle,
-                      float        intensity,
-                      float        stretch = 1.f,
-                      float        spread = 1.f);
 
 /**
  * @brief Apply histogram equalization to the array values.
@@ -316,38 +225,6 @@ void expand_talus(Array       &z,
                   uint         seed,
                   int          ir = 1,
                   float        noise_ratio = 0.2f);
-
-/**
- * @brief Generate a faceted heightmap that retains the main features of the
- * input heightmap.
- *
- * This function processes the input heightmap to produce a new heightmap with a
- * 'faceted' appearance, where the terrain features are preserved but with a
- * more angular and planar aspect. This effect can be controlled by specifying a
- * neighborhood type and optional noise arrays for domain warping.
- *
- * @param  array        Input array representing the original heightmap.
- * @param  neighborhood Neighborhood type that defines how the faceting effect
- *                      is applied (see @ref neighborhood).
- * @param  p_noise_x    Optional reference to the input noise array used for
- *                      domain warping in the x-direction (NOT in pixels, with
- *                      respect to a unit domain).
- * @param  p_noise_y    Optional reference to the input noise array used for
- *                      domain warping in the y-direction (NOT in pixels, with
- *                      respect to a unit domain).
- * @return              Array Output array containing the faceted heightmap.
- *
- * **Example**
- * @include ex_faceted.cpp
- *
- * **Result**
- * @image html ex_faceted.png
- */
-Array faceted(const Array &array,
-              int          neighborhood = 0,
-              const Array *p_noise_x = nullptr,
-              const Array *p_noise_y = nullptr);
-
 /**
  * @brief Enforce a talus slope constraint on a height field.
  *
@@ -380,7 +257,7 @@ Array faceted(const Array &array,
  * **Result**
  * @image html ex_fill_talus.png
  *
- * @see               {@link thermal_scree}, {@link thermal_scree_fast}
+ * See unit tests: @ref test_fill_talus.cpp
  */
 void fill_talus(Array       &z,
                 float        talus,
@@ -395,50 +272,6 @@ void fill_talus(Array       &z,
                 int          ir = 1,
                 float        noise_ratio = 0.2f,
                 const Array *p_seed_mask = nullptr);
-
-/**
- * @brief Fill terrain values with a given downslope talus, optimized using a
- * coarse mesh for faster computation.
- *
- * This function performs a talus formation process on a terrain array similar
- * to `fill_talus`, but with an optimization that involves working on a coarser
- * mesh. The coarse mesh reduces the computation time while still producing
- * realistic downslope talus effects. The method starts by filling the values
- * from the cells with the highest elevations and introduces random
- * perturbations to avoid grid orientation artifacts.
- *
- * @param z            Input array representing the terrain heights. The
- *                     function modifies this array in place to introduce talus
- *                     slopes, starting from the highest values.
- * @param shape_coarse Array representing the coarser shape used for the solver,
- *                     which determines the resolution of the coarse mesh.
- * @param talus        The critical slope angle that determines where material
- *                     will move from higher elevations to lower ones. Slopes
- *                     steeper than this value will be flattened by material
- *                     transport.
- * @param seed         The seed for the random number generator, ensuring
- *                     reproducibility of the noise effects in the talus
- *                     formation process. The same seed will produce the same
- *                     terrain modifications.
- * @param noise_ratio  A parameter that controls the amount of randomness or
- *                     noise introduced in the talus formation process. The
- *                     noise helps to avoid grid orientation artifacts. The
- *                     default value is 0.2.
- *
- * **Example**
- * @include ex_fill_talus.cpp
- *
- * **Result**
- * @image html ex_fill_talus.png
- *
- * @see                {@link thermal_scree}, {@link thermal_scree_fast}
- */
-void fill_talus_fast(Array     &z,
-                     glm::ivec2 shape_coarse,
-                     float      talus,
-                     uint       seed,
-                     int        ir = 1,
-                     float      noise_ratio = 0.2f);
 
 /**
  * @brief Apply a "folding" filter (successive absolute values) to the array
@@ -863,54 +696,6 @@ void low_pass_high_order(Array &array, int order = 9, float sigma = 1.f);
 void make_binary(Array &array, float threshold = 0.f);
 
 /**
- * @brief Return the local maxima based on a maximum filter with a square
- * kernel.
- *
- * This function identifies the local maxima in the input array using a maximum
- * filter with a square kernel. The local maxima are determined based on the
- * footprint radius specified by `ir`. The result is an array where each value
- * represents the local maximum within the defined kernel size.
- *
- * @param  array Input array from which local maxima are to be extracted.
- * @param  ir    Square kernel footprint radius. The size of the kernel used to
- *               determine the local maxima.
- * @return       Array Resulting array containing the local maxima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local_disk}, {@link minimum_local}
- */
-Array maximum_local(const Array &array, int ir);
-
-/**
- * @brief Return the local maxima based on a maximum filter using a disk kernel.
- *
- * This function identifies the local maxima in the input array using a maximum
- * filter with a disk-shaped kernel. The local maxima are determined based on
- * the footprint radius specified by `ir`. The result is an array where each
- * value represents the local maximum within the disk-shaped kernel.
- *
- * @param  array Input array from which local maxima are to be extracted.
- * @param  ir    Disk kernel footprint radius. The size of the disk-shaped
- *               kernel used to determine the local maxima.
- * @return       Array Resulting array containing the local maxima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local}, {@link minimum_local_disk}, {@link
- *               minimum_local}
- */
-Array maximum_local_disk(const Array &array, int ir);
-
-/**
  * @brief Transform the input array elevation to match the histogram of a
  * reference array.
  *
@@ -1038,57 +823,9 @@ void median_3x3(Array &array);
  * **Result**
  * @image html ex_median_pseudo.png
  *
- * @see          minimum_local, maximum_local, mean_local
+ * @see          local_min, local_max, local_mean
  */
 Array median_pseudo(const Array &array, int ir);
-
-/**
- * @brief Return the local minima based on a maximum filter with a square
- * kernel.
- *
- * This function identifies the local minima in the input array using a maximum
- * filter with a square kernel. The local minima are determined based on the
- * footprint radius specified by `ir`. The result is an array where each value
- * represents the local minimum within the defined kernel size.
- *
- * @param  array Input array from which local minima are to be extracted.
- * @param  ir    Square kernel footprint radius. The size of the kernel used to
- *               determine the local minima.
- * @return       Array Resulting array containing the local minima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link minimum_local}
- */
-Array minimum_local(const Array &array, int ir);
-
-/**
- * @brief Return the local minima based on a maximum filter using a disk kernel.
- *
- * This function calculates the local minima in the input array using a maximum
- * filter with a disk-shaped kernel. The local minima are determined based on
- * the footprint radius specified by `ir`. The result is an array where each
- * value represents the local minimum within the disk-shaped kernel.
- *
- * @param  array Input array from which local minima are to be extracted.
- * @param  ir    Disk kernel footprint radius. The size of the disk-shaped
- *               kernel used to determine the local minima.
- * @return       Array Resulting array containing the local minima.
- *
- * **Example**
- * @include ex_maximum_local.cpp
- *
- * **Result**
- * @image html ex_maximum_local.png
- *
- * @see          {@link maximum_local}, {@link maximum_local_disk}, {@link
- *               minimum_local}
- */
-Array minimum_local_disk(const Array &array, int ir);
 
 /**
  * @brief Apply a displacement to the terrain along the normal direction.
@@ -1802,6 +1539,8 @@ void reverse_above_theshold(Array       &array,
  *
  * **Result**
  * @image html ex_saturate.png
+ *
+ * See unit tests: @ref test_saturate.cpp
  */
 void saturate(Array &array,
               float  vmin,
@@ -1810,7 +1549,31 @@ void saturate(Array &array,
               float  from_max,
               float  k = 0.f);
 
-void saturate(Array &array, float vmin, float vmax, float k = 0.f);
+void saturate(Array &array, float vmin, float vmax, float k = 0.f); ///<
+// @overload
+
+/**
+ * @brief Saturate values based on percentile range.
+ *
+ * Computes low/high bounds from percentiles and applies saturation scaling.
+ *
+ * @param array           Input array (modified in place).
+ * @param percentile_low  Lower percentile [0–1].
+ * @param percentile_high Upper percentile [0–1].
+ * @param k               Saturation strength.
+ *
+ * **Example**
+ * @include ex_saturate.cpp
+ *
+ * **Result**
+ * @image html ex_saturate.png
+ *
+ * See unit tests: @ref test_saturate.cpp
+ */
+void saturate_percentile(Array &array,
+                         float  percentile_low,
+                         float  percentile_high,
+                         float  k = 0.f);
 
 /**
  * @brief Apply a sharpening filter based on the Laplace operator.
@@ -1997,7 +1760,7 @@ void smooth_cone(Array &array, int ir, const Array *p_mask); ///< @overload
  * **Result**
  * @image html ex_smooth_cpulse.png
  *
- * @see          {@link smooth_gaussian}
+ * See unit tests: @ref test_smooth_cpulse.cpp
  */
 void smooth_cpulse(Array &array, int ir);
 void smooth_cpulse(Array &array, int ir, const Array *p_mask); ///< @overload
@@ -2368,94 +2131,6 @@ void terrace(Array       &array,
              float        vmin = 0.f,
              float        vmax = -1.f);
 
-/**
- * @brief Apply tessellation to the array with random node placement.
- *
- * This function applies tessellation to the input array, creating a denser mesh
- * by randomly distributing nodes based on the specified node density. The
- * `seed` parameter allows for controlling the randomness of the node placement,
- * and the `p_weight` reference is used to adjust the density distribution.
- *
- * @param  array        Input array to which tessellation will be applied.
- * @param  seed         Random seed number to initialize the node placement.
- * @param  node_density Node density as a ratio relative to the number of cells
- *                      in the input array. Determines the number of nodes to be
- *                      added.
- * @param  p_weight     Optional reference to the density distribution array,
- *                      expected in the range [0, 1]. If provided, tessellation
- *                      is influenced by this distribution.
- * @return              Array Output array after tessellation is applied.
- *
- * **Example**
- * @include ex_tessellate.cpp
- *
- * **Result**
- * @image html ex_tessellate.png
- */
-Array tessellate(Array       &array,
-                 uint         seed,
-                 float        node_density = 0.001f,
-                 const Array *p_weight = nullptr);
-
-/**
- * @brief Apply wrinkle effect to the array, creating wrinkled or bumpy
- * features.
- *
- * This function adds wrinkle-like features to the input array. The
- * `wrinkle_amplitude` controls the intensity of the wrinkling effect, while
- * other parameters such as `displacement_amplitude`, `ir`, `kw`, `seed`,
- * `octaves`, and `weight` control various aspects of the underlying noise and
- * wrinkle generation.
- *
- * @param array                  Input array to which wrinkles will be applied.
- * @param wrinkle_amplitude      Amplitude of the wrinkle effect.
- * @param p_mask                 Optional filter mask, expected in the range [0,
- *                               1]. If provided, the wrinkle effect is applied
- *                               according to this mask. If not provided, the
- *                               entire array is processed.
- * @param wrinkle_angle          Overall rotation angle (in degree).
- * @param displacement_amplitude Drives the displacement of the wrinkles.
- * @param ir                     Smooth filter radius applied during wrinkle
- *                               generation.
- * @param kw                     Underlying primitive wavenumber, affecting the
- *                               frequency of wrinkles.
- * @param seed                   Random seed number for generating underlying
- *                               primitive noise.
- * @param octaves                Number of octaves used in the underlying
- *                               primitive noise.
- * @param weight                 Weight of the underlying primitive noise.
- * @param bbox                   Bounding box for the generated wrinkles,
- *                               default is {0.f, 1.f, 0.f, 1.f}.
- *
- * **Example**
- * @include ex_wrinkle.png
- *
- * **Result**
- * @image html ex_wrinkle.png
- */
-void wrinkle(Array       &array,
-             float        wrinkle_amplitude,
-             const Array *p_mask,
-             float        wrinkle_angle = 0.f,
-             float        displacement_amplitude = 1.f,
-             int          ir = 0,
-             float        kw = 2.f,
-             uint         seed = 1,
-             int          octaves = 8,
-             float        weight = 0.7f,
-             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
-
-void wrinkle(Array    &array,
-             float     wrinkle_amplitude,
-             float     wrinkle_angle = 0.f,
-             float     displacement_amplitude = 1.f,
-             int       ir = 0,
-             float     kw = 2.f,
-             uint      seed = 1,
-             int       octaves = 8,
-             float     weight = 0.7f,
-             glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu
@@ -2516,6 +2191,35 @@ Array bilateral_filter(const Array &array,
                        int          ir,
                        float        kernel1d_value_scaling); ///< @overload
 
+/**
+ * @brief Applies a directional blur to the input array.
+ *
+ * Blurs values along a direction specified per element by the angle array,
+ * using a given radius and number of sampling steps.
+ *
+ * @param array  Input array to be blurred (modified in place).
+ * @param radius Blur radius.
+ * @param angle  Array of angles (in radians) defining blur direction per
+ *               element.
+ * @param steps  Number of samples along the blur direction (default: 32).
+ *
+ * **Example**
+ * @include ex_directional_blur.png
+ *
+ * **Result**
+ * @image html ex_directional_blur.png
+ */
+void directional_blur(Array       &array,
+                      float        radius,
+                      const Array &angle,
+                      int          steps = 32);
+
+void directional_blur(Array       &array,
+                      float        radius,
+                      const Array &angle,
+                      const Array *p_mask,
+                      int          steps = 32); ///< @overload
+
 /*! @brief See hmap::expand */
 void expand(Array &array, int ir, int iterations = 1);
 void expand(Array       &array,
@@ -2545,12 +2249,6 @@ void laplace(Array       &array,
              float        sigma = 0.2f,
              int          iterations = 3); ///< @overload
 
-/*! @brief See hmap::maximum_local */
-Array maximum_local(const Array &array, int ir);
-
-/*! @brief See hmap::maximum_local_disk */
-Array maximum_local_disk(const Array &array, int ir);
-
 /*! @brief See hmap::mean_shift */
 Array mean_shift(const Array &array,
                  int          ir,
@@ -2571,12 +2269,6 @@ void median_3x3(Array &array, const Array *p_mask); ///< @overload
 
 /*! @brief See hmap::median_pseudo */
 Array median_pseudo(const Array &array, int ir);
-
-/*! @brief See hmap::minimum_local */
-Array minimum_local(const Array &array, int ir);
-
-/*! @brief See hmap::minimum_local_disk */
-Array minimum_local_disk(const Array &array, int ir);
 
 /*! @brief See hmap::normal_displacement */
 void normal_displacement(Array &array,
@@ -2616,13 +2308,15 @@ void plateau(Array &array, int ir, float factor); ///< @overload
  * @image html ex_project_talus_along_direction.png
  */
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
-                                    int          direction = 0);
+                                    const Array &talus,
+                                    int          direction = 0,
+                                    float        vmin = -FLT_MAX);
 
 Array project_talus_along_direction(const Array &array,
-                                    float        talus,
+                                    const Array &talus,
                                     const Array *p_mask,
-                                    int          direction = 0);
+                                    int          direction = 0,
+                                    float        vmin = -FLT_MAX);
 
 /*! @brief See hmap::shrink */
 void shrink(Array &array, int ir, int iterations = 1);
@@ -2672,5 +2366,34 @@ void smooth_fill_smear_peaks(Array &array, int ir);
 void smooth_fill_smear_peaks(Array       &array,
                              int          ir,
                              const Array *p_mask); ///< @overload
+
+/**
+ * @brief Spectral equalizer for 2D fields using a multiscale Gaussian pyramid.
+ *
+ * Decomposes the input array into log-spaced frequency bands using Gaussian
+ * smoothing, then recombines them using normalized user-defined weights.
+ *
+ * @param  array   Input 2D field.
+ * @param  weights Spectral gains (mapped from low to high frequencies).
+ * @param  ir_min  Minimum Gaussian radius.
+ * @param  ir_max  Maximum Gaussian radius.
+ * @return         Filtered array with adjusted spectral content.
+ *
+ * **Example**
+ * @include ex_spectral_equalizer.png
+ *
+ * **Result**
+ * @image html ex_spectral_equalizer.png
+ */
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max);
+
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max,
+                         const Array              *p_mask); ///< @overload
 
 } // namespace hmap::gpu

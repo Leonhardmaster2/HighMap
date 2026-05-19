@@ -15,7 +15,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
@@ -120,6 +120,12 @@ struct VirtualArray
   float mean(const ComputeMode &cm) const;
   float min(const ComputeMode &cm) const;
   float sum(const ComputeMode &cm) const;
+
+  glm::vec2 range(const ComputeMode &cm) const;
+  glm::vec2 range_percentile(float              p_low,
+                             float              p_high,
+                             const ComputeMode &cm,
+                             size_t             bins = 1024) const;
 
   void inverse(const ComputeMode &cm);
   void remap(float vmin, float vmax, const ComputeMode &cm);

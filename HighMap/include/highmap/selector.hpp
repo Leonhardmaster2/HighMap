@@ -34,6 +34,8 @@ namespace hmap
  *                          as @p mask.
  * @param  max_displacement Maximum displacement magnitude in pixels applied
  *                          along the estimated boundary normal for each pixel.
+ * @param  ir               Neighborhood radius used for normal estimation and
+ *                          contour reconnection.
  *
  * @return                  A new Array representing the perturbed binary mask,
  *                          with values 0 (background) and 1 (foreground),

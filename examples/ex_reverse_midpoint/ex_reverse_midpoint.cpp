@@ -8,7 +8,7 @@ int main(void)
   glm::vec4  bbox = hmap::unit_square_bbox();
   hmap::Path path = hmap::Path(4, seed, bbox);
   path.reorder_nns();
-  path.bezier();
+  path = hmap::bezier(path);
 
   // input array, scattered non-zero values
   hmap::Array z0 = hmap::Array(shape);

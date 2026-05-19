@@ -13,10 +13,11 @@
 #include <list>
 #include <mutex>
 #include <optional>
-#include <unordered_map>
 
 #include "highmap/array.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
+
+#include <unordered_map>
 
 namespace hmap
 {

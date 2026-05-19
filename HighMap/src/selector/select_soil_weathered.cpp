@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/curvature.hpp"  // for CurvatureType, curvature_quadric
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/morphology.hpp" // for morphological_gradient
+#include "highmap/range.hpp"      // for ClampMode, clamp
+#include "highmap/selector.hpp"   // for select_soil_weathered
 
 namespace hmap::gpu
 {
@@ -50,7 +50,8 @@ Array select_soil_weathered(const Array &z,
 
   if (ir_curvature) gpu::smooth_cpulse(cm, ir_curvature);
 
-  cm = gradient_scaling_factor * curvature_mean(cm);
+  cm = -gradient_scaling_factor *
+       gpu::curvature_quadric(cm, 0, CurvatureType::CT_MEAN);
   clamp(cm, curvature_clamping, curvature_clamp_mode);
 
   return curvature_weight * cm + gradient_weight * gradient_norm;

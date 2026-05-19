@@ -1,12 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <algorithm> // for rotate, min
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/primitives.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/boundary.hpp"   // for fill_borders, extrapolate_bo...
+#include "highmap/erosion.hpp"    // for hydraulic_musgrave, HMAP_CD_INV
+#include "highmap/filters.hpp"    // for laplace
+#include "highmap/primitives.hpp" // for constant
 
 namespace hmap
 {

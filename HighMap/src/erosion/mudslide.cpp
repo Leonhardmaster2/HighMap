@@ -1,13 +1,16 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <utility> // for move
 
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"               // for Array, operator*
+#include "highmap/erosion.hpp"             // for mudslide
+#include "highmap/filters.hpp"             // for laplace, make_binary
+#include "highmap/gradient.hpp"            // for gradient_norm
+#include "highmap/hydrology/hydrology.hpp" // for flow_simulation_viscous
+#include "highmap/math/array.hpp"          // for is_zero, pow
+#include "highmap/morphology.hpp"          // for distance_transform
+#include "highmap/range.hpp"               // for remap
 
 namespace hmap::gpu
 {

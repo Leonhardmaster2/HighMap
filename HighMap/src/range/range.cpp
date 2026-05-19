@@ -1,22 +1,21 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <cmath>
+#include <bits/std_abs.h> // for abs
 
-#include "macrologger.h"
+#include <algorithm> // for transform, max, min, fill, clamp
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/convolve.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/primitives.hpp" // for slope
+#include "highmap/range.hpp"      // for ClampMode, clamp_min_smooth, clamp
 
 namespace hmap
 {
 
 void chop(Array &array, float vmin)
 {
-  auto lambda = [&vmin](float x) { return x > vmin ? x : 0.f; };
+  auto lambda = [vmin](float x) { return x > vmin ? x : 0.f; };
 
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -26,7 +25,7 @@ void chop(Array &array, float vmin)
 
 void chop_max_smooth(Array &array, float vmax)
 {
-  auto lambda = [&vmax](float x)
+  auto lambda = [vmax](float x)
   {
     if (x > vmax)
       x = 0.f;
@@ -43,7 +42,7 @@ void chop_max_smooth(Array &array, float vmax)
 
 void clamp(Array &array, float vmin, float vmax)
 {
-  auto lambda = [&vmin, &vmax](float x) { return std::clamp(x, vmin, vmax); };
+  auto lambda = [vmin, vmax](float x) { return std::clamp(x, vmin, vmax); };
 
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -78,7 +77,7 @@ void clamp(Array &array, float vmax, ClampMode mode)
 
 void clamp_max(Array &array, float vmax)
 {
-  auto lambda = [&vmax](float x) { return x < vmax ? x : vmax; };
+  auto lambda = [vmax](float x) { return x < vmax ? x : vmax; };
 
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -99,10 +98,10 @@ void clamp_max(Array &array, const Array &vmax)
 
 void clamp_max_smooth(Array &array, float vmax, float k)
 {
-  auto lambda = [&k, &vmax](float x)
+  auto lambda = [k, vmax](float x)
   {
     float h = std::max(k - std::abs(x - vmax), 0.f) / k;
-    return std::min(x, vmax) - std::pow(h, 3) * k / 6.f;
+    return std::min(x, vmax) - h * h * h * k / 6.f;
   };
 
   std::transform(array.vector.begin(),
@@ -113,10 +112,10 @@ void clamp_max_smooth(Array &array, float vmax, float k)
 
 void clamp_max_smooth(Array &array, const Array &vmax, float k)
 {
-  auto lambda = [&k](float x, float vmax)
+  auto lambda = [k](float x, float vmax)
   {
     float h = std::max(k - std::abs(x - vmax), 0.f) / k;
-    return std::min(x, vmax) - std::pow(h, 3) * k / 6.f;
+    return std::min(x, vmax) - h * h * h * k / 6.f;
   };
 
   std::transform(array.vector.begin(),
@@ -128,7 +127,7 @@ void clamp_max_smooth(Array &array, const Array &vmax, float k)
 
 void clamp_min(Array &array, float vmin)
 {
-  auto lambda = [&vmin](float x) { return x > vmin ? x : vmin; };
+  auto lambda = [vmin](float x) { return x > vmin ? x : vmin; };
 
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -149,10 +148,10 @@ void clamp_min(Array &array, const Array &vmin)
 
 void clamp_min_smooth(Array &array, float vmin, float k)
 {
-  auto lambda = [&k, &vmin](float x)
+  auto lambda = [k, vmin](float x)
   {
     float h = std::max(k - std::abs(x - vmin), 0.f) / k;
-    return std::max(x, vmin) + std::pow(h, 3) * k / 6.f;
+    return std::max(x, vmin) + h * h * h * k / 6.f;
   };
 
   std::transform(array.vector.begin(),
@@ -163,10 +162,10 @@ void clamp_min_smooth(Array &array, float vmin, float k)
 
 void clamp_min_smooth(Array &array, const Array &vmin, float k)
 {
-  auto lambda = [&k](float x, float vmin)
+  auto lambda = [k](float x, float vmin)
   {
     float h = std::max(k - std::abs(x - vmin), 0.f) / k;
-    return std::max(x, vmin) + std::pow(h, 3) * k / 6.f;
+    return std::max(x, vmin) + h * h * h * k / 6.f;
   };
 
   std::transform(array.vector.begin(),
@@ -179,7 +178,7 @@ void clamp_min_smooth(Array &array, const Array &vmin, float k)
 float clamp_min_smooth(float x, float vmin, float k)
 {
   float h = std::max(k - std::abs(x - vmin), 0.f) / k;
-  return std::max(x, vmin) + std::pow(h, 3) * k / 6.f;
+  return std::max(x, vmin) + h * h * h * k / 6.f;
 }
 
 void clamp_oblique_plane(Array    &array,
@@ -222,16 +221,17 @@ void clamp_oblique_plane(Array    &array,
 
 void clamp_smooth(Array &array, float vmin, float vmax, float k)
 {
-  auto lambda = [&k, &vmin, &vmax](float x)
-  {
-    // min smooth
-    float h = std::max(k - std::abs(x - vmin), 0.f) / k;
-    h = std::max(x, vmin) + std::pow(h, 3) * k / 6.f;
+  const float inv6k = k / 6.f;
 
-    // max smooth
-    x = h;
-    h = std::max(k - std::abs(x - vmax), 0.f) / k;
-    return std::min(x, vmax) - std::pow(h, 3) * k / 6.f;
+  auto lambda = [k, vmin, vmax, inv6k](float x)
+  {
+    // smooth min
+    float h = std::max(k - std::abs(x - vmin), 0.f) / k;
+    float lo = std::max(x, vmin) + (h * h * h) * inv6k;
+
+    // smooth max
+    h = std::max(k - std::abs(lo - vmax), 0.f) / k;
+    return std::min(lo, vmax) - (h * h * h) * inv6k;
   };
 
   std::transform(array.vector.begin(),
@@ -257,73 +257,7 @@ Array maximum(const Array &array1, const float value)
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
                  array_out.vector.begin(),
-                 [&value](float a) { return std::max(a, value); });
-  return array_out;
-}
-
-Array maximum_local(const Array &array, int ir)
-{
-  Array array_out = Array(array.shape);
-  Array array_tmp = Array(array.shape);
-
-  // row
-  for (int i = 0; i < array.shape.x; i++)
-  {
-    int i1 = std::max(0, i - ir);
-    int i2 = std::min(array.shape.x, i + ir + 1);
-
-    for (int j = 0; j < array.shape.y; j++)
-    {
-      float max = array(i, j);
-      for (int u = i1; u < i2; u++)
-        if (array(u, j) > max) max = array(u, j);
-      array_tmp(i, j) = max;
-    }
-  }
-
-  // column
-  for (int j = 0; j < array.shape.y; j++)
-  {
-    int j1 = std::max(0, j - ir);
-    int j2 = std::min(array.shape.y, j + ir + 1);
-    for (int i = 0; i < array.shape.x; i++)
-    {
-      float max = array_tmp(i, j);
-      for (int v = j1; v < j2; v++)
-        if (array_tmp(i, v) > max) max = array_tmp(i, v);
-      array_out(i, j) = max;
-    }
-  }
-
-  return array_out;
-}
-
-Array maximum_local_disk(const Array &array, int ir)
-{
-  Array array_out = array;
-
-  int ni = array.shape.x;
-  int nj = array.shape.y;
-
-  for (int j = 0; j < nj; j++)
-  {
-    int q1 = std::max(0, j - ir) - j;
-    int q2 = std::min(nj, j + ir + 1) - j;
-    for (int i = 0; i < ni; i++)
-    {
-      int p1 = std::max(0, i - ir) - i;
-      int p2 = std::min(ni, i + ir + 1) - i;
-
-      for (int q = q1; q < q2; q++)
-        for (int p = p1; p < p2; p++)
-        {
-          float r2 = (float)(p * p + q * q) / (float)ir;
-          if (r2 <= 1.f)
-            array_out(i, j) = std::max(array_out(i, j), array(i + p, j + q));
-        }
-    }
-  }
-
+                 [value](float a) { return std::max(a, value); });
   return array_out;
 }
 
@@ -333,10 +267,10 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k)
   {
     Array array_out = Array(array1.shape);
 
-    auto lambda = [&k](float a, float b)
+    auto lambda = [k](float a, float b)
     {
       float h = std::max(k - std::abs(a - b), 0.f) / k;
-      return std::max(a, b) + std::pow(h, 3) * k / 6.f;
+      return std::max(a, b) + h * h * h * k / 6.f;
     };
 
     std::transform(array1.vector.begin(),
@@ -353,7 +287,7 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k)
 float maximum_smooth(const float a, const float b, float k)
 {
   float h = std::max(k - std::abs(a - b), 0.f) / k;
-  return std::max(a, b) + std::pow(h, 3) * k / 6.f;
+  return std::max(a, b) + h * h * h * k / 6.f;
 }
 
 Array minimum(const Array &array1, const Array &array2)
@@ -373,18 +307,8 @@ Array minimum(const Array &array1, const float value)
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
                  array_out.vector.begin(),
-                 [&value](float a) { return std::min(a, value); });
+                 [value](float a) { return std::min(a, value); });
   return array_out;
-}
-
-Array minimum_local(const Array &array, int ir)
-{
-  return -maximum_local(-array, ir);
-}
-
-Array minimum_local_disk(const Array &array, int ir)
-{
-  return -maximum_local_disk(-array, ir);
 }
 
 Array minimum_smooth(const Array &array1, const Array &array2, float k)
@@ -393,10 +317,10 @@ Array minimum_smooth(const Array &array1, const Array &array2, float k)
   {
     Array array_out = Array(array1.shape);
 
-    auto lambda = [&k](float a, float b)
+    auto lambda = [k](float a, float b)
     {
       float h = std::max(k - std::abs(a - b), 0.f) / k;
-      return std::min(a, b) - std::pow(h, 3) * k / 6.f;
+      return std::min(a, b) - h * h * h * k / 6.f;
     };
 
     std::transform(array1.vector.begin(),
@@ -413,42 +337,45 @@ Array minimum_smooth(const Array &array1, const Array &array2, float k)
 float minimum_smooth(const float a, const float b, float k)
 {
   float h = std::max(k - std::abs(a - b), 0.f) / k;
-  return std::min(a, b) - std::pow(h, 3) * k / 6.f;
+  return std::min(a, b) - h * h * h * k / 6.f;
 }
 
 void remap(Array &array, float vmin, float vmax)
 {
-  float min = array.min();
-  float max = array.max();
+  // keep separate min/max (actually vectorizes better than minmax_element)
+  const float min = array.min();
+  const float max = array.max();
 
-  if (min != max)
+  if (min == max)
   {
-    auto lambda = [&min, &max, &vmin, &vmax](float x)
-    { return (x - min) / (max - min) * (vmax - vmin) + vmin; };
-
-    std::transform(array.vector.begin(),
-                   array.vector.end(),
-                   array.vector.begin(),
-                   lambda);
-  }
-  else
     std::fill(array.vector.begin(), array.vector.end(), vmin);
+    return;
+  }
+
+  const float scale = (vmax - vmin) / (max - min);
+  const float offset = vmin - min * scale;
+
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array.vector.begin(),
+                 [scale, offset](float x) { return x * scale + offset; });
 }
 
 void remap(Array &array, float vmin, float vmax, float from_min, float from_max)
 {
-  if (from_min != from_max)
+  if (from_min == from_max)
   {
-    auto lambda = [&from_min, &from_max, &vmin, &vmax](float x)
-    { return (x - from_min) / (from_max - from_min) * (vmax - vmin) + vmin; };
-
-    std::transform(array.vector.begin(),
-                   array.vector.end(),
-                   array.vector.begin(),
-                   lambda);
-  }
-  else
     std::fill(array.vector.begin(), array.vector.end(), vmin);
+    return;
+  }
+
+  const float scale = (vmax - vmin) / (from_max - from_min);
+  const float offset = vmin - from_min * scale;
+
+  std::transform(array.vector.begin(),
+                 array.vector.end(),
+                 array.vector.begin(),
+                 [scale, offset](float x) { return x * scale + offset; });
 }
 
 void rescale(Array &array, float scaling, float vref)
@@ -458,9 +385,12 @@ void rescale(Array &array, float scaling, float vref)
     array *= scaling;
   else
   {
-    array -= vref;
-    array *= scaling;
-    array += vref;
+    const float offset = vref * (1.f - scaling);
+
+    std::transform(array.vector.begin(),
+                   array.vector.end(),
+                   array.vector.begin(),
+                   [scaling, offset](float x) { return x * scaling + offset; });
   }
 }
 

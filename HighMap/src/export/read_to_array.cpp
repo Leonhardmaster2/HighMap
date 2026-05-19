@@ -1,17 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
+#include <string> // for string
 
-#include "macrologger.h"
+#include <opencv2/core/mat.hpp>  // for Mat
+#include <opencv2/imgcodecs.hpp> // for ImreadModes, imread
 
-#include "highmap/array.hpp"
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/array.hpp" // for Array, cv_mat_to_array
 
 namespace hmap
 {
 
-Array read_to_array(const std::string &fname, bool flip_j)
+Array read_to_array(const std::string &fname, bool flip_j, bool remap)
 {
   cv::Mat mat = cv::imread(fname, cv::IMREAD_GRAYSCALE | cv::IMREAD_ANYDEPTH);
 
@@ -22,7 +24,6 @@ Array read_to_array(const std::string &fname, bool flip_j)
   }
   else
   {
-    bool remap = true;
     return cv_mat_to_array(mat, remap, flip_j);
   }
 }

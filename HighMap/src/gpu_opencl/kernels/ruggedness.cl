@@ -16,14 +16,15 @@ void kernel ruggedness(read_only image2d_t  array,
                             CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
 
   float val = 0.f;
+  float center = read_imagef(array, sampler, g).x;
 
-  for (int p = g.x - ir; p < g.x + ir + 1; p++)
-    for (int q = g.y - ir; q < g.y + ir + 1; q++)
-    {
-      float delta = read_imagef(array, sampler, g).x -
-                    read_imagef(array, sampler, (int2)(p, q)).x;
-      val += delta * delta;
-    }
+  for (int i = g.x - ir; i < g.x + ir + 1; i++)
+    for (int j = g.y - ir; j < g.y + ir + 1; j++)
+      if (is_within_radius_and_inside(i, j, g.x, g.y, ir, nx, ny))
+      {
+        float delta = center - read_imagef(array, sampler, (int2)(i, j)).x;
+        val += delta * delta;
+      }
 
   write_imagef(out, g, sqrt(val));
 }

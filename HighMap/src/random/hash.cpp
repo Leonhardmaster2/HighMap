@@ -7,7 +7,7 @@
 namespace hmap
 {
 
-float hash_to_unit_float(unsigned int seed, size_t k)
+float splitmix64_to_unit_float(unsigned int seed, size_t k)
 {
   // combine seed + index into 64-bit to avoid truncation
   uint64_t x = static_cast<uint64_t>(seed) ^
@@ -22,6 +22,15 @@ float hash_to_unit_float(unsigned int seed, size_t k)
 
   // convert to float in [0,1)
   return static_cast<float>((x >> 40) & 0xFFFFFF) / static_cast<float>(1 << 24);
+}
+
+float fast_hash32_to_unit_float(unsigned int seed, size_t k)
+{
+  uint32_t x = static_cast<uint32_t>(k) ^ seed;
+  x ^= x >> 16;
+  x *= 0x45d9f3bu;
+  x ^= x >> 16;
+  return static_cast<float>((x >> 8) * (1.f / float(1 << 24)));
 }
 
 } // namespace hmap

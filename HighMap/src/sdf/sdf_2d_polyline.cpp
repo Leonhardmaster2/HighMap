@@ -1,12 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/math.hpp"
+#include <algorithm> // for clamp, min
+#include <cmath>     // for sqrt, copysign, pow, acos, cos
+#include <limits>    // for numeric_limits
+#include <vector>    // for vector
+
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/grids.hpp" // for grid_xy_vector
+#include "highmap/geometry/path.hpp"  // for Path
+#include "highmap/math/core.hpp"      // for lerp
 
 namespace hmap
 {
@@ -17,7 +25,7 @@ Array sdf_2d_polyline(const Path  &path,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
-  if (path.get_npoints() < 2)
+  if (path.size() < 2)
   {
     LOG_ERROR("at least 2 points needed in the Path to compute the SDF");
     return Array(shape);
@@ -47,7 +55,7 @@ Array sdf_2d_polyline(const Path  &path,
       // distance
       float d = std::numeric_limits<float>::max();
 
-      for (size_t k = 0; k < path.get_npoints() - 1; k++)
+      for (size_t k = 0; k < path.size() - 1; k++)
       {
         size_t    p = k + 1;
         glm::vec2 e = {xp[p] - xp[k], yp[p] - yp[k]};
@@ -68,7 +76,7 @@ Array sdf_2d_polyline_bezier(const Path  &path,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
-  if (path.get_npoints() < 3)
+  if (path.size() < 3)
   {
     LOG_ERROR("at least 3 points needed in the Path to compute the SDF");
     return Array(shape);

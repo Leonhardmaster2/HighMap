@@ -1,11 +1,21 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <sys/types.h> // for size_t, uint
 
-#include "highmap/array.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/operator.hpp"
+#include <algorithm> // for min_element
+#include <cmath>     // for floor
+#include <queue>     // for make_heap, push_heap
+#include <random>    // for uniform_real_distribution, mt19937
+#include <utility>   // for pair
+#include <vector>    // for vector
+
+#include "macrologger.h" // for LOG_DEBUG
+
+#include "highmap/algebra.hpp"  // for Mat
+#include "highmap/array.hpp"    // for Array
+#include "highmap/kernels.hpp"  // for smooth_cosine
+#include "highmap/operator.hpp" // for get_random_patch
 
 namespace hmap
 {

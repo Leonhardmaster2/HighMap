@@ -1,13 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint>
-#include <fstream>
-#include <vector>
+#include <cstdint> // for uint16_t, uint32_t
+#include <fstream> // for basic_ofstream, basic_ios, basic...
+#include <string>  // for string
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
+#include "highmap/array.hpp" // for Array
 
 namespace hmap
 {

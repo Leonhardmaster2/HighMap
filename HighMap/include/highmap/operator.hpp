@@ -18,7 +18,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/array.hpp"
 
 namespace hmap
 {
@@ -68,21 +68,24 @@ void add_kernel_maximum_smooth(Array       &array,
                                int          j);
 
 /**
- * @brief Apply linear regression for detrending of a 2D array.
- *
- * This function performs detrending on the input array by applying linear
- * regression separately to each row and column, removing trends from the data.
- *
- * @param  array Input 2D array to be detrended.
- * @return       Array The detrended output array.
+ * @brief Combines two arrays by selecting values from a or b based on a slice
+ * position.
+ * @param  a           First input array.
+ * @param  b           Second input array.
+ * @param  slice_x_pos Horizontal slice position in [0,1].
+ * @param  slice_y_pos Vertical slice position in [0,1].
+ * @return             Output array mixing a (top-left) and b (bottom-right).
  *
  * **Example**
- * @include ex_detrend.cpp
+ * @include ex_compare.cpp
  *
  * **Result**
- * @image html ex_detrend.png
+ * @image html ex_compare.png
  */
-Array detrend_reg(const Array &array);
+Array compare(const Array &a,
+              const Array &b,
+              float        slice_x_pos,
+              float        slice_y_pos);
 
 /**
  * @brief Horizontally stack two arrays side by side.
@@ -164,6 +167,22 @@ std::vector<float> linspace_jitted(float start,
                                    float ratio,
                                    int   seed,
                                    bool  endpoint = true);
+
+/**
+ * @brief Generates a logarithmically spaced vector.
+ *
+ * Values are distributed evenly in log-space between start and stop.
+ *
+ * @param  start    First value (must be > 0)
+ * @param  stop     Last value (must be > 0)
+ * @param  num      Number of samples
+ * @param  endpoint If true, includes stop as last element
+ * @return          Vector of log-spaced values
+ */
+std::vector<float> logspace(float start,
+                            float stop,
+                            int   num,
+                            bool  endpoint = true);
 
 /**
  * @brief Fill an array using a scalar function based on (x, y) coordinates.
@@ -369,5 +388,56 @@ void swap(Array &a, Array &b);
  *                `array2`.
  */
 Array vstack(const Array &array1, const Array &array2);
+
+// === HELPERS
+
+/**
+ * @brief Applies a transformation function with optional masked blending.
+ *
+ * If `p_mask` is null, the function operates directly on `array` in-place.
+ * Otherwise, the transformation is applied on a temporary copy and blended back
+ * into `array` using the mask values.
+ *
+ * @param array  Input/output array to modify.
+ * @param p_mask Optional mask controlling interpolation strength.
+ * @param fn     Transformation function operating in-place on an Array.
+ */
+template <typename Fn>
+void apply_with_mask(Array &array, const Array *p_mask, Fn &&fn)
+{
+  if (!p_mask)
+  {
+    fn(array);
+  }
+  else
+  {
+    Array result = array;
+    fn(result);
+    array = lerp(array, result, *p_mask);
+  }
+}
+
+/**
+ * @brief Applies a transformation function with optional masked blending.
+ *
+ * The function computes a transformed array using `fn(array)`. If `p_mask`
+ * is provided, the result is blended with the original array using the mask
+ * values.
+ *
+ * @param  array  Input array.
+ * @param  p_mask Optional mask controlling interpolation strength.
+ * @param  fn     Transformation function returning a new Array.
+ * @return        The transformed (and optionally blended) array.
+ */
+template <typename Fn>
+Array transform_with_mask(const Array &array, const Array *p_mask, Fn &&fn)
+{
+  Array result = fn(array);
+
+  if (p_mask)
+    return lerp(array, result, *p_mask);
+  else
+    return result;
+}
 
 } // namespace hmap

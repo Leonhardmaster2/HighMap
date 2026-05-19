@@ -123,6 +123,14 @@ struct IVec2Hash
   }
 };
 
+struct IVec2Eq
+{
+  bool operator()(const glm::ivec2 &a, const glm::ivec2 &b) const noexcept
+  {
+    return a == b;
+  }
+};
+
 // for glm::ivec4 map
 struct IVec4Hash
 {
@@ -152,6 +160,11 @@ inline glm::vec4 adjust(const glm::vec4 &v,
                         float            dw)
 {
   return glm::vec4{v.x + dx, v.y + dy, v.z + dz, v.w + dw};
+}
+
+inline glm::vec4 adjust(const glm::vec4 &v, float dr)
+{
+  return glm::vec4{v.x - dr, v.y + dr, v.z - dr, v.w + dr};
 }
 
 /**

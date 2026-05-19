@@ -2,15 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm>
-
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/range.hpp"
-
-#include "macrologger.h"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/erosion.hpp"    // for hydraulic_algebric
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/gradient.hpp"   // for gradient_talus
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/range.hpp"      // for clamp_min, maximum
 
 namespace hmap
 {

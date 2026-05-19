@@ -1,10 +1,12 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <memory> // for make_unique, uniqu...
 
-#include "highmap/math.hpp"
-#include "highmap/virtual_array/tile_storage.hpp"
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/math/core.hpp"                  // for ceil_div
+#include "highmap/virtual_array/tile_storage.hpp" // for DiskLruTileStorage
 
 namespace hmap
 {

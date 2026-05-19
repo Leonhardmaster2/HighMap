@@ -105,22 +105,22 @@ void find_flow_sinks(const Array      &z,
 /**
  * @brief Find interior flow sinks in a height field.
  *
- * A sink is a cell whose 8 neighbors all have strictly higher elevation.
- * Border cells are excluded.
+ * A sink is a cell whose 8 neighbors all have strictly higher elevation. Border
+ * cells are excluded.
  *
- * @param z Input elevation grid.
- * @return List of sink cell coordinates (i, j).
+ * @param  z Input elevation grid.
+ * @return   List of sink cell coordinates (i, j).
  */
 std::vector<glm::ivec2> find_flow_sinks(const Array &z);
 
 /**
  * @brief Find flow sinks located on the domain border.
  *
- * A border cell is considered a sink if all its valid neighbors
- * (within bounds) have strictly higher elevation.
+ * A border cell is considered a sink if all its valid neighbors (within bounds)
+ * have strictly higher elevation.
  *
- * @param z Input elevation grid.
- * @return List of border sink cell coordinates (i, j).
+ * @param  z Input elevation grid.
+ * @return   List of border sink cell coordinates (i, j).
  */
 std::vector<glm::ivec2> find_flow_sinks_border(const Array &z);
 
@@ -621,29 +621,106 @@ void water_depth_dry_out(Array       &water_depth,
                          float depth_max = std::numeric_limits<float>::max());
 
 /**
- * @brief Simulates the increase in water depth over a terrain.
+ * @brief Simulates a local increase in water depth without global reflooding.
  *
- * This function propagates additional water depth over a terrain elevation map
- * (`z`), starting from cells that already contain water. The propagation occurs
- * only in the upward direction (i.e., to higher elevation cells) and considers
- * 8-neighbor connectivity. It effectively models how water would expand when
- * its level rises by `additional_depth`.
+ * This function propagates an additional water depth over a terrain elevation
+ * map (`z`), starting only from cells that already contain water in the input
+ * `water_depth` array. The propagation is restricted to neighboring cells of
+ * higher elevation (8-connectivity), preventing the formation of entirely new
+ * flooded basins disconnected from the original water region.
  *
- * @param  water_depth      Input array representing the base water depth.
+ * Unlike water_depth_increase_with_flooding(), this function does not perform a
+ * full flooding simulation of the domain. It is primarily intended for
+ * expanding or softening an existing water mask slightly beyond the current
+ * shoreline.
+ *
+ * @param  water_depth      Input array representing the initial water depth.
  * @param  z                Elevation array corresponding to the same grid as
- *                          `water_depth`.
- * @param  additional_depth The additional water depth to simulate (e.g., a
- *                          flooding increment).
- * @return                  An Array representing the updated water depth
- *                          distribution after propagation.
+ *                         `water_depth`.
+ * @param  additional_depth Additional water depth to propagate from the
+ *                          existing water region.
+ * @return                  An Array containing the updated water depth after
+ *                          local propagation.
  *
- * @note The algorithm uses a simple flood-fill–like approach with an upward
- * constraint, ensuring that water spreads only to neighboring cells at higher
- * elevation.
+ * @note Water spreads only upward toward neighboring cells with higher
+ * elevation. Existing disconnected dry basins are not flooded.
+ *
+ * @note This function is useful for generating extended shoreline masks,
+ * erosion influence regions, or visually expanding water boundaries without
+ * performing a physically complete flooding simulation.
+ *
+ * **Example**
+ * @include ex_water_depth_increase.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_increase.png
  */
 Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth);
+
+/**
+ * @brief Simulates a physical rise in water level with full domain flooding.
+ *
+ * This function increases the water level by `additional_depth` and recomputes
+ * flooding over the terrain elevation map (`z`). Unlike water_depth_increase(),
+ * the propagation is not restricted to the vicinity of the original water
+ * region: water may spread through connected terrain and flood previously dry
+ * areas if they become reachable under the new water level.
+ *
+ * The simulation behaves more like a physical flooding process where rising
+ * water can overflow barriers, connect basins, and eventually inundate large
+ * portions of the domain depending on terrain topology.
+ *
+ * @param  water_depth      Input array representing the initial water depth.
+ * @param  z                Elevation array corresponding to the same grid as
+ *                         `water_depth`.
+ * @param  additional_depth Additional water depth used to raise the global
+ *                          water level.
+ * @return                  An Array containing the updated flooded state after
+ *                          recomputing water propagation.
+ *
+ * @note Flood propagation may extend far beyond the original water mask and can
+ * potentially inundate the entire connected terrain domain.
+ *
+ * @note This function is more physically plausible than water_depth_increase(),
+ * and is suitable for terrain flooding simulations, overflow analysis, or
+ * hydrological studies.
+ *
+ * **Example**
+ * @include ex_water_depth_increase.cpp
+ *
+ * **Result**
+ * @image html ex_water_depth_increase.png
+ */
+Array water_depth_increase_with_flooding(const Array &water_depth,
+                                         const Array &z,
+                                         float        additional_depth);
+/**
+ * @brief Compute the curvature of the water interface from a signed distance
+ * field.
+ *
+ * The interface curvature is evaluated from the level set built from the water
+ * depth mask. Optionally, curvature values can be extended away from the
+ * interface using closest-point propagation.
+ *
+ * @param  water_depth                  Water depth field.
+ * @param  prefilter_ir                 Prefilter radius used for curvature
+ *                                      evaluation.
+ * @param  extend_values_from_interface Extend interface curvature values to the
+ *                                      full domain using closest boundary
+ *                                      points.
+ * @return                              Curvature field.
+ *
+ * **Example**
+ * @include ex_water_frontier_curvature.cpp
+ *
+ * **Result**
+ * @image html ex_water_frontier_curvature.png
+ */
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool extend_values_from_interface = false);
 
 /**
  * @brief Generates a binary mask representing water presence.
@@ -693,6 +770,69 @@ Array water_mask(const Array &water_depth,
 
 namespace hmap::gpu
 {
+
+/**
+ * @brief Computes the omnidirectional coastal fetch for each cell.
+ *
+ * Casts @p ndirections evenly-spaced rays from each cell and averages the
+ * distance to the first land obstacle (or domain boundary) across all
+ * directions. High values indicate open, wave-exposed coastline;
+ * low values indicate sheltered or enclosed areas such as harbors.
+ *
+ * @param  z              Input elevation array.
+ * @param  ndirections    Number of ray directions (uniformly distributed over
+ *                        2π). Higher values improve accuracy at the cost of
+ *                        performance.
+ * @param  p_compute_mask Optional boolean mask; fetch is only evaluated where
+ *                        the mask is true. Pass nullptr to process the entire
+ *                        domain.
+ * @return                Array of mean fetch values (in grid cells).
+ *
+ * **Example**
+ * @include ex_coastal_fetch.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_fetch.png
+ */
+Array coastal_fetch(const Array &z,
+                    int          ndirections,
+                    const Array *p_compute_mask = nullptr);
+
+/**
+ * @brief Computes directional coastal fetch weighted by alignment with a
+ * prevailing wind or wave direction.
+ *
+ * Each ray's fetch contribution is weighted by
+ * @f$ \max(0,\, \cos(\theta - \alpha))^e @f$, where @f$\theta@f$ is the ray
+ * azimuth, @f$\alpha@f$ is @p angle, and
+ * @f$e@f$ is @p directional_exp. Rays in the back hemisphere are discarded.
+ * Increasing @p directional_exp narrows the effective lobe around the
+ * prevailing direction.
+ *
+ * @param  z               Input elevation array.
+ * @param  angle           Prevailing direction (radians, trigonometric
+ *                         convention: 0 = East, π/2 = North).
+ * @param  directional_exp Exponent applied to the cosine weight. Use 1 for a
+ *                         full cosine lobe, 2 to approximate wind-energy
+ *                         weighting, or higher values for a narrower
+ *                         directional response.
+ * @param  ndirections     Number of ray directions sampled over 2π.
+ * @param  p_compute_mask  Optional boolean mask. Pass nullptr to process the
+ *                         entire domain.
+ * @return                 Array of directionally-weighted fetch values (in grid
+ *                         cells).
+ *
+ * **Example**
+ * @include ex_coastal_fetch.cpp
+ *
+ * **Result**
+ * @image html ex_coastal_fetch.png
+ */
+Array coastal_fetch_directional(const Array &z,
+                                float        angle,
+                                float        directional_exp,
+                                int          ndirections,
+                                const Array *p_compute_mask = nullptr);
 
 /**
  * @brief Approximates flow accumulation from a 2D velocity field.
@@ -828,6 +968,16 @@ Array snow_simulation(const Array &z,
  * **Result**
  * @image html ex_water_depth_filter.png
  */
-void water_depth_filter(Array &depth, const Array &z, int ir);
+void water_depth_filter(Array       &depth,
+                        const Array &z,
+                        int          ir,
+                        const Array *p_water_mask = nullptr,
+                        bool         smooth_contour = false,
+                        float        transition_ratio = 0.1f);
+
+/*! @brief See hmap::water_frontier_curvature */
+Array water_frontier_curvature(const Array &water_depth,
+                               int          prefilter_ir,
+                               bool extend_values_from_interface = false);
 
 } // namespace hmap::gpu

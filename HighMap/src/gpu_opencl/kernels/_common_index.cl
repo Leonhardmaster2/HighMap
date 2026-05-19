@@ -69,6 +69,22 @@ bool is_inside_gap(const int i,
   return i >= gap && i < nx - gap && j >= gap && j < ny - gap;
 }
 
+bool is_within_radius_and_inside(const int i,
+                                 const int j,
+                                 const int ic,
+                                 const int jc,
+                                 const int ir,
+                                 const int nx,
+                                 const int ny)
+{
+  if (!is_inside(i, j, nx, ny)) return false;
+
+  int id = i - ic;
+  int jd = j - jc;
+
+  return (id * id + jd * jd <= ir * ir);
+}
+
 int linear_index(const int i, const int j, const int nx)
 {
   return j * nx + i;

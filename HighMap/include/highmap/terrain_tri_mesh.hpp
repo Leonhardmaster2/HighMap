@@ -3,7 +3,6 @@
    this software. */
 #pragma once
 #include <optional>
-#include <unordered_map>
 #include <vector>
 
 #include <glm/vec2.hpp>
@@ -11,6 +10,8 @@
 #include <glm/vec4.hpp>
 
 #include "highmap/array.hpp"
+
+#include <unordered_map>
 
 namespace hmap
 {
@@ -76,11 +77,16 @@ public:
 public:
   TerrainTriMesh() = default;
   TerrainTriMesh(const std::vector<glm::vec3> &ref_points);
+  TerrainTriMesh(const std::vector<float> &x,
+                 const std::vector<float> &y,
+                 const std::vector<float> &z);
 
   // --- Core processing ---
 
+  // in this order...
   void triangulate_delaunay();
   void compute_neighbors();
+  void compute_gradients();
 
   // --- Geometry ops ---
 
@@ -105,6 +111,33 @@ public:
                      float                     sigma = 0.1f);
 
   void subdivise();
+
+  // --- Triangle walk and interp ---
+
+  bool barycentric(const glm::vec2 &p,
+                   size_t           i0,
+                   size_t           i1,
+                   size_t           i2,
+                   float           &w0,
+                   float           &w1,
+                   float           &w2) const;
+
+  int find_triangle(const glm::vec2 &p,
+                    int              start_tri = 0,
+                    bool             linear_search = false) const;
+  int neighbor_triangle(int tri_index, int edge_index) const;
+
+  float interpolate_z_linear(const glm::vec2 &p,
+                             int             &last_tri,
+                             float            fill_value = 0.f) const;
+  float interpolate_z_linear_gradient(const glm::vec2 &p,
+                                      int             &last_tri,
+                                      float            fill_value = 0.f,
+                                      float gradient_scaling = 1.f) const;
+  float interpolate_z_nearest(const glm::vec2 &p) const;
+  float interpolate_z_nearest_approx(const glm::vec2 &p,
+                                     int             &last_tri,
+                                     float            fill_value = 0.f) const;
 
   // --- Metrics ---
 
@@ -134,12 +167,15 @@ public:
   Array       to_array(const glm::ivec2         &shape,
                        const std::vector<float> &values = {},
                        const glm::vec4          &bbox = {0.f, 1.f, 0.f, 1.f}) const;
+  void        to_csv(const std::string &fname) const;
 
 private:
   std::vector<glm::vec3> points;
   std::vector<Triangle>  triangles;
+  std::vector<size_t>    halfedges;
   std::vector<size_t>    convex_hull;
   NeighborData           neighbors;
+  std::vector<glm::vec2> gradients;
 
 private:
   glm::vec2 to_xy(const glm::vec3 &p) const;

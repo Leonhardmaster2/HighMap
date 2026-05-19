@@ -14,8 +14,9 @@
 typedef unsigned int uint;
 
 #include <functional>
-#include <opencv2/core/mat.hpp>
 #include <random>
+
+#include <opencv2/core/mat.hpp>
 
 #include "highmap/algebra.hpp"
 #include "highmap/colormaps.hpp"
@@ -60,6 +61,9 @@ public:
   Array(glm::ivec2 shape);                                 ///< @overload
   Array(glm::ivec2 shape, float value);                    ///< @overload
   Array(const std::string &filename, bool flip_j = false); ///< @overload
+  Array(const std::vector<std::vector<float>> &data);      ///< @overload
+  Array(const std::initializer_list<std::initializer_list<float>>
+            &data); ///< @overload
 
   //----------------------------------------
   // overload
@@ -99,7 +103,6 @@ public:
    * @return       Array& Reference to the current Array object.
    */
   Array &operator+=(const float value);
-
   Array &operator+=(const Array &array); ///< @overload
 
   /**
@@ -305,13 +308,6 @@ public:
   std::vector<float> col_to_vector(int j);
 
   /**
-   * @brief Return the number of non-zero elements in the array.
-   *
-   * @return int The number of non-zero elements.
-   */
-  int count_non_zero();
-
-  /**
    * @brief Distribute a value 'amount' around the four cells (i, j), (i + 1,
    * j), (i, j + 1), (i + 1, j + 1) by "reversing" the bilinear interpolation.
    *
@@ -352,7 +348,7 @@ public:
   /**
    * @brief Debug tool, dump array content as an ASCII histogram to the consol.
    */
-  void dump_histogram(const std::string &msg = "") const;
+  void dump_histogram(int bins = 32, const std::string &msg = "") const;
 
   /**
    * @brief Extracts a subarray defined by the slice indices {i1, i2, j1, j2}
@@ -639,6 +635,12 @@ public:
    * @return float The mean value of the elements in the array.
    */
   float mean() const;
+
+  /**
+   * @brief Return the median value of the elements in the array.
+   * @return float The median value of the elements in the array.
+   */
+  float median() const;
 
   /**
    * @brief Return the value of the smallest element in the array.
@@ -990,6 +992,24 @@ public:
   std::vector<float> unique_values() const;
 };
 
+// ==========================================================================
+//  Functions
+// ==========================================================================
+
+/**
+ * @brief Count the number of non-zero elements in the array.
+ * @param  array Input array.
+ * @return       Number of elements not equal to 0.
+ */
+size_t count_non_zero(const Array &array);
+
+/**
+ * @brief Count the number of zero elements in the array.
+ * @param  array Input array.
+ * @return       Number of elements equal to 0.
+ */
+size_t count_zero(const Array &array);
+
 /**
  * @brief Converts an OpenCV `cv::Mat` to a 2D `Array` with optional value
  * scaling to \[0, 1\].
@@ -1018,9 +1038,9 @@ Array cv_mat_to_array(const cv::Mat &mat,
                       bool           remap_values = true,
                       bool           flip_j = false);
 
-//-----------------------------------
+// ==========================================================================
 // per cell operations wrapper(s)
-//-----------------------------------
+// ==========================================================================
 
 /// Apply a function to every cell (mutable).
 template <typename Fn> inline void for_each_cell(Array &a, Fn &&fn)

@@ -1,2 +1,0 @@
-add_executable(ex_path_decasteljau ex_path_decasteljau.cpp)
-target_link_libraries(ex_path_decasteljau highmap)

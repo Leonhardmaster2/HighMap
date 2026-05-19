@@ -7,11 +7,13 @@
  * @brief KD-tree utilities for 2D point queries using nanoflann.
  */
 #pragma once
-#include <vector>
+#include <stddef.h> // for size_t
+
+#include <vector> // for vector
 
 #include <glm/glm.hpp>
 
-#include <nanoflann.hpp>
+#include <nanoflann.hpp> // for L2_Simple_Adaptor, KDTreeSingle...
 
 namespace hmap
 {
@@ -19,8 +21,8 @@ namespace hmap
 /**
  * @brief Adaptor exposing a 2D point cloud to nanoflann.
  *
- * This class provides the minimal interface required by nanoflann to access
- * a set of 2D points stored as separate x and y coordinate arrays.
+ * This class provides the minimal interface required by nanoflann to access a
+ * set of 2D points stored as separate x and y coordinate arrays.
  *
  * The data is not owned by the adaptor; it references external vectors.
  */
@@ -48,9 +50,9 @@ struct NanoflannPointCloudAdaptor
 
   /**
    * @brief Get a coordinate component of a point.
-   * @param idx Point index
-   * @param dim Dimension (0 = x, 1 = y)
-   * @return Coordinate value
+   * @param  idx Point index
+   * @param  dim Dimension (0 = x, 1 = y)
+   * @return     Coordinate value
    */
   inline float kdtree_get_pt(const size_t idx, int dim) const;
 
@@ -108,22 +110,22 @@ struct KDTreeContext
   /**
    * @brief Estimate the range of neighbor distances.
    *
-   * Computes the minimum and maximum distance to the k-th nearest neighbor
-   * across all points in the dataset.
+   * Computes the minimum and maximum distance to the k-th nearest
+   * neighbor across all points in the dataset.
    *
-   * @param k_neighbors Number of neighbors considered
-   * @return vec2(min_distance, max_distance)
+   * @param  k_neighbors Number of neighbors considered
+   * @return             vec2(min_distance, max_distance)
    */
   glm::vec2 compte_neighbor_distance_range(size_t k_neighbors) const;
 
   /**
    * @brief Perform a k-nearest neighbor search.
    *
-   * @param x_query Query x coordinate
-   * @param y_query Query y coordinate
-   * @param k_neighbors Number of neighbors to retrieve
-   * @param[out] indices Output indices of neighbors
-   * @param[out] distances Output squared distances to neighbors
+   * @param      x_query     Query x coordinate
+   * @param      y_query     Query y coordinate
+   * @param      k_neighbors Number of neighbors to retrieve
+   * @param[out] indices     Output indices of neighbors
+   * @param[out] distances   Output squared distances to neighbors
    */
   void neighbor_search(float                x_query,
                        float                y_query,
@@ -134,10 +136,10 @@ struct KDTreeContext
   /**
    * @brief Perform a radius-based neighbor search.
    *
-   * @param x_query Query x coordinate
-   * @param y_query Query y coordinate
-   * @param radius Search radius (Euclidean distance)
-   * @return Vector of (index, squared distance) pairs
+   * @param  x_query Query x coordinate
+   * @param  y_query Query y coordinate
+   * @param  radius  Search radius (Euclidean distance)
+   * @return         Vector of (index, squared distance) pairs
    *
    * @note Returned distances are squared distances.
    */

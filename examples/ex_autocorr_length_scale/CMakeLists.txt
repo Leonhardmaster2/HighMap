@@ -1,0 +1,2 @@
+add_executable(ex_autocorr_length_scale ex_autocorr_length_scale.cpp)
+target_link_libraries(ex_autocorr_length_scale highmap)

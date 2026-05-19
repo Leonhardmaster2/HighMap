@@ -1,6 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <vector> // for vector
+
+#include "cl_wrapper/device_manager.hpp" // for DeviceManager
+#include "cl_wrapper/kernel_manager.hpp" // for KernelManager
+
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
@@ -36,6 +41,9 @@ bool init_opencl()
 #include "kernels/advection_warp.cl"
 #include "kernels/bilateral_filter.cl"
 #include "kernels/blend_poisson_bf.cl"
+#include "kernels/coastal_fetch.cl"
+#include "kernels/curvature_quadric.cl"
+#include "kernels/directional_blur.cl"
 #include "kernels/eulerian_transport.cl"
 #include "kernels/expand.cl"
 #include "kernels/flow_direction_d8.cl"
@@ -51,9 +59,15 @@ bool init_opencl()
 #include "kernels/interpolate_array.cl"
 #include "kernels/jump_flooding.cl"
 #include "kernels/laplace.cl"
-#include "kernels/maximum_local.cl"
+#include "kernels/laplacian_fract.cl"
+#include "kernels/local_max.cl"
+#include "kernels/local_mean.cl"
+#include "kernels/local_min.cl"
+#include "kernels/local_relief.cl"
+#include "kernels/local_skewness.cl"
+#include "kernels/local_variance.cl"
+#include "kernels/local_z_score.cl"
 #include "kernels/maximum_smooth.cl"
-#include "kernels/mean_local.cl"
 #include "kernels/mean_shift.cl"
 #include "kernels/median_3x3.cl"
 #include "kernels/minimum_smooth.cl"
@@ -73,12 +87,16 @@ bool init_opencl()
 #include "kernels/skeleton.cl"
 #include "kernels/smooth_cpulse.cl"
 #include "kernels/snow_simulation.cl"
+#include "kernels/sparse_max_convolution.cl"
 #include "kernels/thermal.cl"
+#include "kernels/thermal_flatten.cl"
 #include "kernels/thermal_inflate.cl"
 #include "kernels/thermal_olsen.cl"
 #include "kernels/thermal_rib.cl"
 #include "kernels/thermal_ridge.cl"
+#include "kernels/thermal_schott.cl"
 #include "kernels/thermal_scree.cl"
+#include "kernels/topographic_position_index.cl"
 #include "kernels/vorolines.cl"
 #include "kernels/voronoi_base.cl"
 #include "kernels/voronoi_edge_distance.cl"
@@ -94,6 +112,7 @@ bool init_opencl()
 #include "kernels/strata.cl"
 #include "kernels/strata_cells.cl"
 #include "kernels/strata_terrace.cl"
+
       ;
 
   std::string opencl_build_options = "-cl-fast-relaxed-math "
@@ -104,7 +123,9 @@ bool init_opencl()
 
   clwrapper::KernelManager::get_instance().set_build_options(
       opencl_build_options);
-  clwrapper::KernelManager::get_instance().add_kernel(code);
+
+  constexpr bool clear_sources = true;
+  clwrapper::KernelManager::get_instance().add_kernel(code, clear_sources);
 
   return true;
 }

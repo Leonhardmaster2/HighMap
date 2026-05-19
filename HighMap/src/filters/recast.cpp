@@ -2,19 +2,23 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "macrologger.h"
-#include <cmath>
-#include <random>
+#include <algorithm> // for transform, min
+#include <cmath>     // for pow, M_PI
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/features.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
-#include "highmap/transform.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"         // for Array, operator*, operator+
+#include "highmap/filters.hpp"       // for smooth_cpulse, gamma_correct...
+#include "highmap/functions.hpp"     // for NoiseType
+#include "highmap/gradient.hpp"      // for gradient_norm, gradient_angle
+#include "highmap/local_metrics.hpp" // for local_mean
+#include "highmap/math/array.hpp"    // for abs_smooth, cos, lerp, pow
+#include "highmap/operator.hpp"      // for apply_with_mask
+#include "highmap/primitives.hpp"    // for noise_fbm
+#include "highmap/range.hpp"         // for clamp_min, maximum_smooth
+#include "highmap/selector.hpp"      // for select_gradient_binary
+#include "highmap/transform.hpp"     // for transpose, warp
 
 namespace hmap
 {
@@ -41,14 +45,9 @@ void recast_canyon(Array       &array,
                    const Array *p_mask,
                    float        gamma)
 {
-  if (!p_mask)
-    recast_canyon(array, vcut, gamma);
-  else
-  {
-    Array array_f = array;
-    recast_canyon(array_f, vcut, gamma);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { recast_canyon(a, vcut, gamma); });
 }
 
 void recast_canyon(Array &array, float vcut, float gamma, const Array *p_noise)
@@ -107,7 +106,7 @@ void recast_cliff(Array &array,
   clamp_min(dn, 0.f);
   smooth_cpulse(dn, ir);
 
-  Array vmin = mean_local(array, ir);
+  Array vmin = local_mean(array, ir);
   Array vmax = vmin + amplitude * dn;
 
   // apply gain filter
@@ -133,14 +132,10 @@ void recast_cliff(Array       &array,
                   const Array *p_mask,
                   float        gain)
 {
-  if (!p_mask)
-    recast_cliff(array, talus, ir, amplitude, gain);
-  else
-  {
-    Array array_f = array;
-    recast_cliff(array_f, talus, ir, amplitude, gain);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  { recast_cliff(a, talus, ir, amplitude, gain); });
 }
 
 void recast_cliff_directional(Array &array,
@@ -167,7 +162,7 @@ void recast_cliff_directional(Array &array,
   clamp_min(da, 0.f);
   smooth_cpulse(da, ir);
 
-  Array vmin = mean_local(array, ir);
+  Array vmin = local_mean(array, ir);
   Array vmax = vmin + amplitude * dn * da;
 
   // apply gain filter
@@ -194,14 +189,11 @@ void recast_cliff_directional(Array       &array,
                               const Array *p_mask,
                               float        gain)
 {
-  if (!p_mask)
-    recast_cliff_directional(array, talus, ir, amplitude, angle, gain);
-  else
-  {
-    Array array_f = array;
-    recast_cliff_directional(array_f, talus, ir, amplitude, angle, gain);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(
+      array,
+      p_mask,
+      [&](Array &a)
+      { recast_cliff_directional(a, talus, ir, amplitude, angle, gain); });
 }
 
 void recast_cracks(Array &array,
@@ -283,26 +275,18 @@ void recast_escarpment(Array       &array,
                        bool         transpose_effect,
                        float        global_scaling)
 {
-  if (!p_mask)
-    recast_escarpment(array,
-                      ir,
-                      ratio,
-                      scale,
-                      reverse,
-                      transpose_effect,
-                      global_scaling);
-  else
-  {
-    Array array_f = array;
-    recast_escarpment(array_f,
-                      ir,
-                      ratio,
-                      scale,
-                      reverse,
-                      transpose_effect,
-                      global_scaling);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    recast_escarpment(a,
+                                      ir,
+                                      ratio,
+                                      scale,
+                                      reverse,
+                                      transpose_effect,
+                                      global_scaling);
+                  });
 }
 
 void recast_peak(Array &array, int ir, float gamma, float k)
@@ -320,14 +304,9 @@ void recast_peak(Array       &array,
                  float        gamma,
                  float        k)
 {
-  if (!p_mask)
-    recast_peak(array, ir, gamma, k);
-  else
-  {
-    Array array_f = array;
-    recast_peak(array_f, ir, gamma, k);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { recast_peak(a, ir, gamma, k); });
 }
 
 void recast_rocky_slopes(Array       &array,
@@ -381,32 +360,20 @@ void recast_rocky_slopes(Array       &array,
                          const Array *p_noise,
                          glm::vec4    bbox)
 {
-  {
-    if (!p_mask)
-      recast_rocky_slopes(array,
-                          talus,
-                          ir,
-                          amplitude,
-                          seed,
-                          kw,
-                          gamma,
-                          p_noise,
-                          bbox);
-    else
-    {
-      Array array_f = array;
-      recast_rocky_slopes(array_f,
-                          talus,
-                          ir,
-                          amplitude,
-                          seed,
-                          kw,
-                          gamma,
-                          p_noise,
-                          bbox);
-      array = lerp(array, array_f, *(p_mask));
-    }
-  }
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    recast_rocky_slopes(a,
+                                        talus,
+                                        ir,
+                                        amplitude,
+                                        seed,
+                                        kw,
+                                        gamma,
+                                        p_noise,
+                                        bbox);
+                  });
 }
 
 void recast_sag(Array &array, float vref, float k)
@@ -416,14 +383,7 @@ void recast_sag(Array &array, float vref, float k)
 
 void recast_sag(Array &array, float vref, float k, const Array *p_mask)
 {
-  if (!p_mask)
-    recast_sag(array, vref, k);
-  else
-  {
-    Array array_f = array;
-    recast_sag(array_f, vref, k);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  apply_with_mask(array, p_mask, [&](Array &a) { recast_sag(a, vref, k); });
 }
 
 } // namespace hmap

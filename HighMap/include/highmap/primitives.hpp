@@ -20,6 +20,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/math/profiles.hpp"
 
 #define HMAP_GRADIENT_OFFSET 0.001f
 
@@ -411,20 +412,34 @@ Array cone_sigmoid(glm::ivec2   shape,
 Array constant(glm::ivec2 shape, float value = 0.f);
 
 /**
- * @brief Return a crater-shaped heightmap.
+ * @brief Generate a procedural impact crater heightmap.
  *
- * @param  shape                Array shape.
- * @param  radius               Crater radius.
- * @param  lip_decay            Ejecta lip decay.
- * @param  lip_height_ratio     Controls the ejecta lip relative height, in [0,
- *                              1].
- * @param  depth                Crater depth.
- * @param  p_ctrl_param         Reference to the control parameter array (acts
- *                              as a multiplier for the lip_height_ratio
- *                              parameter).
- * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
- * @param  bbox                 Domain bounding box.
- * @return                      Array New array.
+ * Creates a crater-shaped terrain with configurable inner cavity, outer lip,
+ * asymmetry, terraces, and optional central peak. Optional masks for the crater
+ * region and inner crater region can also be generated.
+ *
+ * @param  shape               Output array shape.
+ * @param  radius              Crater radius.
+ * @param  center              Crater center position.
+ * @param  angle               Main asymmetry orientation angle in degrees.
+ * @param  inner_depth         Depth of the crater cavity.
+ * @param  inner_exp           Exponent controlling the inner profile shape.
+ * @param  lip_height          Height of the crater rim.
+ * @param  lip_extent          Extent of the outer rim.
+ * @param  lip_exp             Exponent controlling rim falloff.
+ * @param  asym_ratio          Asymmetry factor applied along the main
+ *                             direction.
+ * @param  central_peak_height Height of the central peak.
+ * @param  central_peak_extent Radius of the central peak region.
+ * @param  n_terraces          Number of inner terraces.
+ * @param  terrace_extent      Terrace spacing factor.
+ * @param  terrace_exp         Terrace profile exponent.
+ * @param  terrace_persistence Terrace amplitude decay factor.
+ * @param  p_noise_r           Optional radial noise distortion.
+ * @param  bbox                Bounding box coordinates.
+ * @param  p_crater_mask       Optional output crater mask.
+ * @param  p_inner_crater_mask Optional output inner crater mask.
+ * @return                     Generated crater heightmap.
  *
  * **Example**
  * @include ex_crater.cpp
@@ -434,14 +449,24 @@ Array constant(glm::ivec2 shape, float value = 0.f);
  */
 Array crater(glm::ivec2   shape,
              float        radius,
-             float        depth,
-             float        lip_decay,
-             float        lip_height_ratio = 0.5f,
-             const Array *p_ctrl_param = nullptr,
-             const Array *p_noise_x = nullptr,
-             const Array *p_noise_y = nullptr,
              glm::vec2    center = {0.5f, 0.5f},
-             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+             float        angle = 30.f, // degs,
+             float        inner_depth = 0.1f,
+             float        inner_exp = 3.f,
+             float        lip_height = 0.02f,
+             float        lip_extent = 0.25f,
+             float        lip_exp = 2.f,
+             float        asym_ratio = 0.8f,
+             float        central_peak_height = 0.01f,
+             float        central_peak_extent = 0.4f,
+             int          n_terraces = 0,
+             float        terrace_extent = 0.1f,
+             float        terrace_exp = 2.f,
+             float        terrace_persistence = 0.5f,
+             const Array *p_noise_r = nullptr,
+             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f},
+             Array       *p_crater_mask = nullptr,
+             Array       *p_inner_crater_mask = nullptr);
 
 /**
  * @brief Generates a cubic pulse array.
@@ -575,6 +600,19 @@ Array diffusion_limited_aggregation(glm::ivec2 shape,
                                     float seeding_outer_radius_ratio = 0.2f,
                                     float slope = 8.f,
                                     float noise_ratio = 0.2f);
+
+Array diffusion_limited_aggregation_trimesh(
+    glm::ivec2            shape,
+    uint                  seed,
+    size_t                control_points_count = 5000,
+    glm::vec2             seed_position = {0.5f, 0.5f},
+    float                 ratio = 0.98f,
+    float                 stop_proba = 1.f,
+    float                 slope = 16.f,
+    InterpolationMethod2D interpolation_method =
+        InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
+    const Array *p_noise_x = nullptr,
+    const Array *p_noise_y = nullptr);
 
 /**
  * @brief Generates a disk-shaped heightmap with optional modifications.
@@ -1149,31 +1187,6 @@ Array paraboloid(glm::ivec2   shape,
                  const Array *p_stretching = nullptr,
                  glm::vec2    center = {0.5f, 0.5f},
                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
- * @brief Return a peak-shaped heightmap.
- *
- * @param  shape         Array shape.
- * @param  radius        Peak outer radius.
- * @param  p_noise       Reference to the input noise array used for domain
- *                       warping (NOT in pixels, with respect to a unit domain).
- * @param  noise_amp_r   Radial noise absolute scale (in pixels).
- * @param  noise_ratio_z Vertical noise relative scale (in [0, 1]).
- * @param  bbox          Domain bounding box.
- * @return               Array Resulting array.
- *
- * **Example**
- * @include ex_peak.cpp
- *
- * **Result**
- * @image html ex_peak.png
- */
-Array peak(glm::ivec2   shape,
-           float        radius,
-           const Array *p_noise,
-           float        noise_r_amp,
-           float        noise_z_ratio,
-           glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a rectangle-shaped heightmap with optional modifications.
@@ -2516,7 +2529,6 @@ Array noise_fbm(NoiseType    noise_type,
  * @param  angle_shift      Global phase angle offset (degrees).
  * @param  n_kernel_samples Number of kernel samples.
  * @param  jitter           Sampling jitter (x,y).
- * @param  angle_filter_ir  Angular filtering radius.
  * @param  delta            Finite difference step.
  * @param  phase_smoothing  Phase smoothing factor.
  * @param  p_angle          Optional external angle field.
@@ -2538,7 +2550,6 @@ Array phasor(PhasorProfile   phasor_profile,
              float           angle_shift = 0.f,
              int             n_kernel_samples = 8,
              const glm::vec2 jitter = {1.f, 1.f},
-             int             angle_filter_ir = 8,
              float           delta = 0.01f,
              float           phase_smoothing = 10.f,
              const Array    *p_angle = nullptr,
@@ -2563,7 +2574,6 @@ Array phasor(PhasorProfile   phasor_profile,
  * @param  lacunarity       Frequency multiplier per octave.
  * @param  n_kernel_samples Number of kernel samples.
  * @param  jitter           Sampling jitter (x,y).
- * @param  angle_filter_ir  Angular filtering radius.
  * @param  delta            Finite difference step.
  * @param  phase_smoothing  Phase smoothing factor.
  * @param  p_angle          Optional external angle field.
@@ -2589,7 +2599,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                  float           lacunarity = 2.f,
                  int             n_kernel_samples = 8,
                  const glm::vec2 jitter = {1.f, 1.f},
-                 int             angle_filter_ir = 8,
                  float           delta = 0.01f,
                  float           phase_smoothing = 10.f,
                  const Array    *p_angle = nullptr,

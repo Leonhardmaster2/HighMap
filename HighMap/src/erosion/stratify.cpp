@@ -1,15 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <functional>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <algorithm> // for max, max_element, min_element
+#include <cmath>     // for cos, sin, M_PI, ceil, exp, pow
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/blending.hpp"
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"      // for Array
+#include "highmap/blending.hpp"   // for mixer
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/operator.hpp"   // for linspace_jitted, random_vector
 
 namespace hmap
 {

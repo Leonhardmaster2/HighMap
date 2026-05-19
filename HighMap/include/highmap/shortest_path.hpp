@@ -13,9 +13,118 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/geometry/path.hpp"
 
 namespace hmap
 {
+
+/**
+ * @brief Divide the path by adding points based on the lowest elevation
+ * difference between each pair of edge endpoints.
+ *
+ * This method uses the elevation map to subdivide the path by adding
+ * intermediate points where the elevation difference between edges is minimal.
+ * The `elevation_ratio` parameter balances the influence of absolute elevation
+ * versus elevation difference in the cost function used for path finding. The
+ * `distance_exponent` affects the weight function used in Dijkstra's algorithm.
+ * Areas defined by the `p_mask_nogo` mask are avoided.
+ *
+ * **Example**
+ * @include ex_path_dijkstra.cpp
+ *
+ * **Result**
+ * @image html ex_path_dijkstra.png
+ *
+ * @param array             Elevation map used to determine elevation
+ *                          differences along the path.
+ * @param bbox              Bounding box of the domain, defining the area where
+ *                          elevation data is valid.
+ * @param edge_divisions    Number of subdivisions per edge; set to 0 for
+ *                          automatic division based on array shape.
+ * @param elevation_ratio   Ratio used to balance absolute elevation and
+ *                          elevation difference in the cost function.
+ * @param distance_exponent Exponent used in the Dijkstra weight function to
+ *                          adjust the influence of distance.
+ * @param p_mask_nogo       Optional mask array defining areas to avoid;
+ * points in these areas will not be considered.
+ *
+ * @see                     Array::find_path_dijkstra
+ */
+Path dijkstra(const Path  &path,
+              const Array &array,
+              glm::vec4    bbox,
+              float        elevation_ratio = 0.f,
+              float        distance_exponent = 0.5f,
+              float        upward_penalization = 1.f,
+              Array       *p_mask_nogo = nullptr);
+
+/**
+ * @brief Find a Dijkstra-based cut path between two domain boundaries.
+ *
+ * Selects the lowest point on the @p start and @p end boundaries of heightmap
+ * @p z, then computes a path between them using a weighted Dijkstra search. The
+ * path cost combines elevation, distance, and uphill penalization. The result
+ * is returned as normalized (x, y) coordinates and elevation samples.
+ *
+ * @param  z                        Heightmap array.
+ * @param  start                    Boundary where the path begins.
+ * @param  end                      Boundary where the path ends.
+ * @param  dijk_elevation_ratio     Weight of elevation in the cost.
+ * @param  dijk_distance_exponent   Exponent applied to distance cost.
+ * @param  dijk_upward_penalization Extra penalty for uphill moves.
+ *
+ * @return                          Path containing normalized (x, y) points and
+ *                                  elevations.
+ *
+ * **Example**
+ * @include ex_find_cut_path.cpp
+ *
+ * **Result**
+ * @image html ex_find_cut_path.png
+ */
+Path find_cut_path_dijkstra(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            float          dijk_elevation_ratio = 0.9f,
+                            float          dijk_distance_exponent = 2.f,
+                            float          dijk_upward_penalization = 100.f,
+                            uint           seed = 0,
+                            bool           favor_boundary_center = true,
+                            bool           favor_lower_elevation = true,
+                            bool           favor_sinks = true);
+
+/**
+ * @brief Generate a stochastic cut path using midpoint displacement.
+ *
+ * Creates a path between the @p start and @p end boundaries of heightmap @p z
+ * by recursively subdividing and perturbing a segment. The result is a natural,
+ * irregular path defined by normalized (x, y) coordinates and elevations.
+ *
+ * @param  z               Heightmap array.
+ * @param  start           Start boundary.
+ * @param  end             End boundary.
+ * @param  seed            Random seed.
+ * @param  midp_iterations Number of subdivision steps.
+ * @param  midp_sigma      Displacement amplitude.
+ *
+ * @return                 Path with normalized coordinates and elevations.
+ *
+ * **Example**
+ * @include ex_find_cut_path.cpp
+ *
+ * **Result**
+ * @image html ex_find_cut_path.png
+ */
+Path find_cut_path_midpoint(const Array   &z,
+                            DomainBoundary start,
+                            DomainBoundary end,
+                            uint           seed,
+                            float          offset_ratio = 0.2f,
+                            int            steps = 16,
+                            bool           favor_boundary_center = true,
+                            bool           favor_lower_elevation = true,
+                            bool           favor_sinks = true);
 
 /**
  * @brief Finds the path with the lowest elevation and elevation difference
@@ -85,14 +194,14 @@ void find_path_dijkstra(const Array                   &z,
  * perpendicular direction to locally minimize the scalar field `z`. This is a
  * fast heuristic alternative to graph-based methods (not guaranteed optimal).
  *
- * @param z              2D scalar field (weights).
- * @param ij_start       Start index.
- * @param ij_end         End index.
- * @param offset_ratio   Relative transverse displacement (per segment length).
- * @param max_it         Max iterations (0 = automatic based on distance).
- * @param steps          Number of samples for transverse search.
+ * @param  z            2D scalar field (weights).
+ * @param  ij_start     Start index.
+ * @param  ij_end       End index.
+ * @param  offset_ratio Relative transverse displacement (per segment length).
+ * @param  max_it       Max iterations (0 = automatic based on distance).
+ * @param  steps        Number of samples for transverse search.
  *
- * @return Vector of grid indices forming the path.
+ * @return              Vector of grid indices forming the path.
  *
  * **Example**
  * @include ex_find_path_midpoint.cpp

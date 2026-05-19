@@ -1,13 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <stdexcept>
+#include <algorithm>        // for transform, fill, max, copy, fill_n
+#include <filesystem>       // for path
+#include <initializer_list> // for initializer_list
+#include <string>           // for operator==, string
+#include <vector>           // for vector
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/export.hpp"
+#include "highmap/array.hpp"  // for Array, operator*, operator+, ope...
+#include "highmap/export.hpp" // for read_to_array
 
 namespace hmap
 {
@@ -29,7 +30,34 @@ Array::Array(glm::ivec2 shape, float value) : shape(shape)
 
 Array::Array(const std::string &filename, bool flip_j)
 {
-  *this = read_to_array(filename, flip_j);
+  bool remap = true;
+
+  std::filesystem::path file_path(filename);
+  std::filesystem::path ext = file_path.extension();
+  if (ext.string() == ".exr") remap = false;
+
+  *this = read_to_array(filename, flip_j, remap);
+}
+
+Array::Array(const std::vector<std::vector<float>> &data)
+{
+  this->shape = glm::ivec2(data.size(), data[0].size());
+  *this = Array(shape);
+
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+      (*this)(i, j) = data[i][j];
+}
+
+Array::Array(const std::initializer_list<std::initializer_list<float>> &data)
+{
+  std::vector<std::vector<float>> tmp;
+  tmp.reserve(data.size());
+
+  for (const auto &row : data)
+    tmp.emplace_back(row); // vector<float>(initializer_list<float>)
+
+  *this = Array(tmp);
 }
 
 glm::ivec2 Array::get_shape()

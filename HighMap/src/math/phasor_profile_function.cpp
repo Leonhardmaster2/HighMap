@@ -1,12 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept>
+#include <bits/std_abs.h> // for abs
 
-#include "macrologger.h"
+#include <cmath>      // for cos, M_PI, fmod, pow, floor
+#include <functional> // for function
+#include <stdexcept>  // for invalid_argument
+#include <vector>     // for vector
 
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/math/profiles.hpp" // for PhasorProfile, get_phasor_profi...
+#include "highmap/operator.hpp"      // for linspace
 
 namespace hmap
 {
@@ -58,7 +61,7 @@ std::function<float(float)> get_phasor_profile_function(
     break;
 
   case PhasorProfile::PP_COSINE_STD:
-    fct = [](float phi) { return std::cos(phi); };
+    fct = [](float phi) { return -std::cos(phi); };
     break;
 
   case PhasorProfile::PP_TRIANGLE:

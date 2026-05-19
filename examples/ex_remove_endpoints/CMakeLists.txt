@@ -1,0 +1,2 @@
+add_executable(ex_remove_endpoints ex_remove_endpoints.cpp)
+target_link_libraries(ex_remove_endpoints highmap)

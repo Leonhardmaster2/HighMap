@@ -9,7 +9,7 @@ int main(void)
 
   glm::vec4 bbox = {-1.f, 0.f, 0.5f, 1.5f};
 
-  hmap::Cloud cloud = hmap::Cloud(40, seed, bbox);
+  hmap::Cloud cloud = hmap::Cloud(10, seed, bbox);
   cloud.snap_points_to_bounding_box(bbox);
 
   std::vector<float> x = cloud.get_x();
@@ -21,12 +21,12 @@ int main(void)
   cloud.to_array(z0, bbox);
 
   // noise
-  hmap::Array dx = 0.05f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
-                                           shape,
-                                           {4.f, 4.f},
-                                           seed,
-                                           8,
-                                           0.f);
+  hmap::Array dx = 0.0f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                          shape,
+                                          {4.f, 4.f},
+                                          seed,
+                                          8,
+                                          0.f);
 
   // nearest
   hmap::Timer::Start("ITP2D_NEAREST");
@@ -82,12 +82,24 @@ int main(void)
                                        y,
                                        values,
                                        hmap::InterpolationMethod2D::ITP2D_NNI,
-                                       nullptr,
-                                       nullptr,
+                                       &dx,
+                                       &dx,
                                        bbox);
   hmap::Timer::Stop("ITP2D_NNI");
 
+  hmap::Timer::Start("ITP2D_CT");
+  hmap::Array z6 = hmap::interpolate2d_delaunay_gradient(
+      shape,
+      x,
+      y,
+      values,
+      // hmap::InterpolationMethod2D::ITP2D_NNI,
+      nullptr,
+      nullptr,
+      bbox);
+  hmap::Timer::Stop("ITP2D_CT");
+
   hmap::export_banner_png("ex_interpolate2d.png",
-                          {z0, z1, z2, z3, z4, z5},
+                          {z0, z1, z2, z3, z4, z5, z6},
                           hmap::Cmap::INFERNO);
 }

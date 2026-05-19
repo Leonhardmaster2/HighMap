@@ -1,18 +1,26 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "FastNoiseLite.h"
-#include "delaunator-cpp.hpp"
+#include <algorithm>  // for copy, fill_n, max
+#include <array>      // for array
+#include <functional> // for function
+#include <memory>     // for unique_ptr
+#include <stdexcept>  // for invalid_argument
+#include <vector>     // for vector
 
-#include "highmap/boundary.hpp"
-#include "highmap/functions.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/point_sampling.hpp"
-#include "highmap/math.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "FastNoiseLite.h"    // for FastNoiseLite
+#include "delaunator-cpp.hpp" // for Delaunator
+
+#include "highmap/array.hpp"                   // for Array, operator*
+#include "highmap/functions.hpp"               // for NoiseFunction, NoiseType
+#include "highmap/geometry/point_sampling.hpp" // for PointSamplingMethod
+#include "highmap/primitives.hpp"              // for white
+#include "highmap/range.hpp"                   // for clamp_min_smooth, max...
 
 namespace hmap
 {
@@ -336,6 +344,8 @@ std::unique_ptr<NoiseFunction> create_noise_function_from_type(
   switch (noise_type)
   {
     // clang-format off
+  case (NoiseType::PARBERRY):
+    throw std::invalid_argument("create_noise_function_from_type: PARBERRY noise function not available");
   case (NoiseType::PERLIN):
     return std::unique_ptr<NoiseFunction>(new PerlinFunction(kw, seed));
   case (NoiseType::PERLIN_BILLOW):

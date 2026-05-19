@@ -13,7 +13,7 @@ int main(void)
   // &z, {-0.5f, 0.f}); z *= hmap::gaussian_pulse(shape, 0.2f * shape.x);
   // hmap::gamma_correction(z, 0.7f);
 
-  // hmap::Array zb = hmap::minimum_local(z, 32);
+  // hmap::Array zb = hmap::local_min(z, 32);
   // hmap::hydraulic_stream(z, 0.02f, 10.f / shape.x, &zb);
   // hmap::hydraulic_particle(z, 100000, seed);
 

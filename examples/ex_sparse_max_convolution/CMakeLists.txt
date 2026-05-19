@@ -1,0 +1,2 @@
+add_executable(ex_sparse_max_convolution ex_sparse_max_convolution.cpp)
+target_link_libraries(ex_sparse_max_convolution highmap)

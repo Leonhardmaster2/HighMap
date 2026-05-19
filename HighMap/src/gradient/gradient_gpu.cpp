@@ -1,11 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include <vector> // for allocator, vector
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/gradient.hpp"   // for gradient_x, gradient_y, gradient...
+#include "highmap/math/array.hpp" // for atan2, hypot
+#include "highmap/range.hpp"      // for maximum
 
 namespace hmap::gpu
 {
@@ -61,6 +65,27 @@ Array gradient_norm(const Array &array)
   run.read_buffer("dm");
 
   return dm;
+}
+
+Array laplacian_fract(const Array &array, float s, int ir)
+{
+  Array out(array.shape);
+
+  auto run = clwrapper::Run("laplacian_fract");
+
+  run.bind_imagef("array",
+                  const_cast<std::vector<float> &>(array.vector),
+                  array.shape.x,
+                  array.shape.y);
+  run.bind_imagef("out", out.vector, array.shape.x, array.shape.y, true);
+
+  run.bind_arguments(array.shape.x, array.shape.y, ir, s);
+
+  run.execute({array.shape.x, array.shape.y});
+
+  run.read_imagef("out");
+
+  return out;
 }
 
 } // namespace hmap::gpu

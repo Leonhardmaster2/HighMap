@@ -14,13 +14,19 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
-#include <functional>
+#include <cmath>      // for cos, sin, M_PI
+#include <functional> // for function
+#include <memory>     // for unique_ptr
+#include <utility>    // for move
+#include <vector>     // for vector
 
-#include "FastNoiseLite.h"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "FastNoiseLite.h" // for FastNoiseLite
 #include "macrologger.h"
 
-#include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/array.hpp" // for Array
+#include "highmap/math/core.hpp"
 
 /**
  * @typedef HMAP_FCT_XY_TYPE

@@ -1,12 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
 
-#include "highmap/dbg/assert.hpp"
-#include "highmap/export.hpp"
-#include "highmap/math.hpp"
-#include "highmap/range.hpp"
+#include <algorithm> // for min
+#include <string>    // for allocator, operator+, char_traits
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"      // for Array
+#include "highmap/colormaps.hpp"  // for Cmap
+#include "highmap/dbg/assert.hpp" // for AssertResults, assert_almost_equal
+#include "highmap/export.hpp"     // for export_banner_png
+#include "highmap/math/array.hpp" // for abs
+#include "highmap/range.hpp"      // for remap
 
 namespace hmap
 {
@@ -99,6 +105,15 @@ bool assert_almost_equal(const Array       &a,
     return false;
   }
 
+  return true;
+}
+
+bool is_subset(const Array &a, const Array &b)
+{
+  // true if all non-zero pixels of a are also non-zero in b
+  for (int j = 0; j < a.shape.y; ++j)
+    for (int i = 0; i < a.shape.x; ++i)
+      if (a(i, j) != 0.f && b(i, j) == 0.f) return false;
   return true;
 }
 

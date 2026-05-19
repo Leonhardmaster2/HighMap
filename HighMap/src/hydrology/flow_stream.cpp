@@ -1,12 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/shortest_path.hpp"
+#include <initializer_list> // for initializer_list
+#include <limits>           // for numeric_limits
+#include <vector>           // for vector
+
+#include "highmap/array.hpp"               // for Array
+#include "highmap/geometry/path.hpp"       // for Path
+#include "highmap/hydrology/hydrology.hpp" // for flow_stream
+#include "highmap/shortest_path.hpp"       // for find_path_dijkstra
 
 namespace hmap
 {

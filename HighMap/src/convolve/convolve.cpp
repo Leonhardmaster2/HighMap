@@ -2,79 +2,52 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cmath>
+#include <algorithm> // for clamp
+#include <cmath>     // for ceil
+#include <vector>    // for vector
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/convolve.hpp"
+#include "highmap/array.hpp"    // for Array
+#include "highmap/boundary.hpp" // for generate_buffered_array
+#include "highmap/convolve.hpp" // for convolve1d_i, convolve1d_j, conv...
 
 namespace hmap
 {
 
-Array convolve1d_i(const Array              &array,
-                   const std::vector<float> &kernel) // private
+Array convolve1d_i(const Array &array, const std::vector<float> &kernel)
 {
-  Array array_out = Array(array.shape);
-
-  // padding extent
+  Array     array_out = Array(array.shape);
   const int nk = (int)kernel.size();
-  const int i1 = (int)ceil(0.5f * (float)nk);
+  const int i1 = nk / 2;
 
   for (int p = 0; p < nk; p++)
   {
     for (int i = 0; i < array.shape.x; i++)
     {
-      int ii;
-      // east - west
-      if (i + p - i1 < 0)
-        ii = -(i + p - i1);
-      else if (i + p - i1 > array.shape.x - 1)
-        ii = 2 * array.shape.x - 1 - (i + p - i1);
-      else
-        ii = i + p - i1;
-
-      ii = std::clamp(ii, 0, array.shape.x - 1);
-
+      const int ii = std::clamp(i + p - i1, 0, array.shape.x - 1);
       for (int j = 0; j < array.shape.y; j++)
         array_out(i, j) += array(ii, j) * kernel[p];
     }
   }
-
   return array_out;
 }
 
-Array convolve1d_j(const Array              &array,
-                   const std::vector<float> &kernel) // private
+Array convolve1d_j(const Array &array, const std::vector<float> &kernel)
 {
-  Array array_out = Array(array.shape);
-
-  // padding extent
+  Array     array_out = Array(array.shape);
   const int nk = (int)kernel.size();
-  const int j1 = (int)ceil(0.5f * (float)nk);
+  const int j1 = nk / 2;
 
-  for (int q = 0; q < nk; q++)
+  for (int p = 0; p < nk; p++)
   {
-    for (int j = 0; j < array.shape.y; j++)
+    for (int i = 0; i < array.shape.x; i++)
     {
-      int jj;
-
-      // north - south
-      if (j + q - j1 < 0)
-        jj = -(j + q - j1);
-      else if (j + q - j1 > array.shape.y - 1)
-        jj = 2 * array.shape.y - 1 - (j + q - j1);
-      else
-        jj = j + q - j1;
-
-      jj = std::clamp(jj, 0, array.shape.y - 1);
-
-      for (int i = 0; i < array.shape.x; i++)
-        array_out(i, j) += array(i, jj) * kernel[q];
+      for (int j = 0; j < array.shape.y; j++)
+      {
+        const int jj = std::clamp(j + p - j1, 0, array.shape.y - 1);
+        array_out(i, j) += array(i, jj) * kernel[p];
+      }
     }
   }
-
   return array_out;
 }
 

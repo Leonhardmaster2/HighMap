@@ -2,14 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm>
-#include <list>
-#include <numeric>
-#include <random>
-#include <stdexcept>
-#include <vector>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <algorithm> // for fill_n, max, max_element, min_element, copy
+#include <cmath>     // for log, exp
+#include <random>    // for uniform_real_distribution, mt19937
+#include <stdexcept> // for invalid_argument
+#include <vector>    // for vector
 
 namespace hmap
 {
@@ -102,6 +101,38 @@ std::vector<float> linspace_jitted(float start,
   }
 
   return v;
+}
+
+std::vector<float> logspace(float start,
+                            float stop,
+                            int   num,
+                            bool  endpoint = true)
+{
+  std::vector<float> result;
+
+  if (num <= 0) return result;
+
+  if (num == 1)
+  {
+    result.push_back(start);
+    return result;
+  }
+
+  result.resize(num);
+
+  float log_start = std::log(start);
+  float log_stop = std::log(stop);
+
+  int div = endpoint ? (num - 1) : num;
+
+  for (int i = 0; i < num; ++i)
+  {
+    float t = static_cast<float>(i) / div;
+    float value = std::exp(log_start + t * (log_stop - log_start));
+    result[i] = value;
+  }
+
+  return result;
 }
 
 std::vector<float> random_vector(float min, float max, int num, int seed)

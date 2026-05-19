@@ -1,0 +1,2 @@
+add_executable(ex_path_splines ex_path_splines.cpp)
+target_link_libraries(ex_path_splines highmap)

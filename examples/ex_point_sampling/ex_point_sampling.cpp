@@ -26,9 +26,6 @@ int main(void)
                      hmap::PointSamplingMethod::RND_HAMMERSLEY,
                      hmap::PointSamplingMethod::RND_LHS})
   {
-    // auto xy = hmap::random_points(count, seed, type);
-    // hmap::Cloud cloud(xy[0], xy[1], 1.f /* value */);
-
     hmap::Cloud cloud = hmap::random_cloud(count, seed, type);
 
     cloud.to_array(raster);
@@ -57,7 +54,7 @@ int main(void)
                                seed,
                                hmap::PointSamplingMethod::RND_HALTON);
 
-    cloud.rejection_filter_density(density, seed);
+    hmap::rejection_filter_density(cloud, density, seed);
 
     cloud.to_array(raster);
     zs.push_back(raster);
@@ -74,21 +71,15 @@ int main(void)
     float min_dist = 0.02f;
     float max_dist = 0.08f;
 
-    // auto        xy = hmap::random_points_distance(min_dist, seed);
-    // hmap::Cloud cloud(xy[0], xy[1], 1.f /* value */);
-
     hmap::Cloud cloud = hmap::random_cloud_distance(min_dist, seed);
 
     raster = 0.f;
     cloud.to_array(raster);
     zs.push_back(raster);
 
-    // auto        xy = hmap::random_points_distance(min_dist, max_dist,
-    // density, seed); cloud = hmap::Cloud(xy[0], xy[1], 1.f /* value */);
-
     cloud = hmap::random_cloud_distance(min_dist, max_dist, density, seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);
@@ -99,7 +90,7 @@ int main(void)
                                                   1.2f /* alpha */,
                                                   seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);
@@ -110,7 +101,7 @@ int main(void)
                                                 1.f /* k */,
                                                 seed);
 
-    std::cout << "count: " << cloud.get_npoints() << "\n";
+    std::cout << "count: " << cloud.size() << "\n";
 
     raster = 0.f;
     cloud.to_array(raster);
@@ -126,12 +117,6 @@ int main(void)
 
     glm::vec2 jitter_amount = {0.3f, 0.3f};
     glm::vec2 stagger_ratio = {0.5f, 0.f};
-
-    // auto        xy = hmap::random_points_jittered(count,
-    //                                        jitter_amount,
-    //                                        stagger_ratio,
-    //                                        seed);
-    // hmap::Cloud cloud(xy[0], xy[1], 1.f /* value */);
 
     hmap::Cloud cloud = hmap::random_cloud_jittered(count,
                                                     jitter_amount,

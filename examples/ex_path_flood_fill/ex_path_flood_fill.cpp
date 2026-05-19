@@ -8,11 +8,11 @@ int main(void)
   glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
   hmap::Path path = hmap::Path(5, seed, {1.2f, 1.8f, -0.3, 0.3f});
   path.reorder_nns();
-  path.closed = true;
+  path.set_closed(true);
 
   auto z1 = hmap::Array(shape);
-  path.resample(0.1f);
-  path.fractalize(8, seed);
+  path.resample_by_spacing(0.1f);
+  path = hmap::fractalize(path, 8, seed);
   path.to_array(z1, bbox);
 
   auto z2 = z1;

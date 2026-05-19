@@ -16,9 +16,16 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
-#include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
-#include "highmap/virtual_array/virtual_texture.hpp"
+#include <stdint.h> // for uint8_t
+
+#include <map>    // for map
+#include <string> // for operator<=>
+#include <vector> // for vector
+
+#include "highmap/array.hpp"                         // for Array
+#include "highmap/tensor.hpp"                        // for Tensor
+#include "highmap/virtual_array/virtual_array.hpp"   // for VirtualArray
+#include "highmap/virtual_array/virtual_texture.hpp" // for VirtualTexture
 
 namespace hmap
 {
@@ -111,9 +118,56 @@ void apply_hillshade(std::vector<uint8_t> &img,
                      float                 exponent = 1.f,
                      bool                  is_img_rgba = false);
 
-void color_adjust(VirtualTexture    &tex,
-                  ColorAdjust        param,
-                  const ComputeMode &cm);
+/**
+ * @brief Apply color correction and tonemapping to RGB arrays.
+ *
+ * Performs per-pixel adjustments including levels, exposure, tonemapping
+ * (Reinhard, ACES, or AGX), contrast, saturation, temperature, gamma, and
+ * optional dithering.
+ *
+ * @param r           Red channel array (modified in place).
+ * @param g           Green channel array (modified in place).
+ * @param b           Blue channel array (modified in place).
+ * @param param       Color adjustment parameters.
+ * @param dither_seed Seed used for dithering noise.
+ *
+ * **Example**
+ * @include ex_color_adjust.cpp
+ *
+ * **Result**
+ * @image html ex_color_adjust.png
+ */
+void color_adjust(Array      &r,
+                  Array      &g,
+                  Array      &b,
+                  ColorAdjust param,
+                  glm::ivec2  dither_seed);
+
+/**
+ * @brief Create a mask of pixels matching a target color within a tolerance.
+ *
+ * @param  r         Red channel array.
+ * @param  g         Green channel array.
+ * @param  b         Blue channel array.
+ * @param  color     Target RGB color.
+ * @param  tolerance Allowed color difference (0 = exact match).
+ *
+ * @return           Array Mask array (1 for match, 0 otherwise), same size as
+ *                   inputs.
+ *
+ * **Example**
+ * @include ex_color_match_mask.cpp
+ *
+ * **Result**
+ * @image html ex_color_match_mask.png
+ *
+ * See unit tests: @ref test_color_match_mask.cpp
+ */
+Array color_match_mask(const Array     &r,
+                       const Array     &g,
+                       const Array     &b,
+                       const glm::vec3 &color,
+                       float            tolerance = 0.f);
 
 /**
  * @brief Apply colorization to an array.

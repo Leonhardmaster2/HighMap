@@ -1,25 +1,32 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <cmath>
-#include <fstream>
-#include <iostream>
-#include <limits>
-#include <sstream>
-#include <stdexcept>
+#include <bits/std_abs.h> // for abs
+
+#include <algorithm> // for max, fill_n, clamp, min, copy
+#include <cmath>     // for copysignf, acos, hypot
+#include <cstddef>   // for size_t
+#include <fstream>   // for char_traits, basic_ostream
+#include <iostream>  // for cout
+#include <limits>    // for numeric_limits
+#include <memory>    // for allocator, make_shared
+#include <sstream>   // for basic_ostringstream
+#include <stdexcept> // for runtime_error
+#include <string>    // for string, operator<<
+#include <utility>   // for move, pair
+#include <vector>    // for vector
 
 #include <glm/geometric.hpp>
 
-#include "hmm/src/heightmap.h"
-#include "hmm/src/triangulator.h"
+#include "delaunator-cpp.hpp"     // for Delaunator
+#include "hmm/src/heightmap.h"    // for Heightmap
+#include "hmm/src/triangulator.h" // for Triangulator
 
-#include "delaunator-cpp.hpp"
+#include "highmap/array.hpp"            // for Array
+#include "highmap/interpolate2d.hpp"    // for InterpolationMethod2D, inte...
+#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh, cubic_pulse
 
-#include "macrologger.h"
-
-#include "highmap/interpolate2d.hpp"
-#include "highmap/terrain_tri_mesh.hpp"
+#include <unordered_map> // for unordered_map, operator==
 
 namespace hmap
 {
@@ -49,6 +56,118 @@ TerrainTriMesh::TerrainTriMesh(const std::vector<glm::vec3> &ref_points)
 {
   this->triangulate_delaunay();
   this->compute_neighbors();
+}
+
+TerrainTriMesh::TerrainTriMesh(const std::vector<float> &x,
+                               const std::vector<float> &y,
+                               const std::vector<float> &z)
+{
+  this->points.reserve(x.size());
+
+  for (size_t k = 0; k < x.size(); ++k)
+    this->points.push_back(glm::vec3(x[k], y[k], z[k]));
+
+  this->triangulate_delaunay();
+  this->compute_neighbors();
+}
+
+bool TerrainTriMesh::barycentric(const glm::vec2 &p,
+                                 size_t           i0,
+                                 size_t           i1,
+                                 size_t           i2,
+                                 float           &w0,
+                                 float           &w1,
+                                 float           &w2) const
+{
+  float x0 = this->points[i0].x, y0 = this->points[i0].y;
+  float x1 = this->points[i1].x, y1 = this->points[i1].y;
+  float x2 = this->points[i2].x, y2 = this->points[i2].y;
+
+  float det = (x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0);
+  if (std::abs(det) < 1e-8f) return false;
+
+  w0 = (p.x - x1) * (y2 - y1) - (p.y - y1) * (x2 - x1);
+  w1 = (p.x - x2) * (y0 - y2) - (p.y - y2) * (x0 - x2);
+  w2 = (p.x - x0) * (y1 - y0) - (p.y - y0) * (x1 - x0);
+
+  const float eps = -1e-6f;
+  if (w0 < eps || w1 < eps || w2 < eps) return false;
+
+  float inv = -1.f / det;
+  w0 *= inv;
+  w1 *= inv;
+  w2 *= inv;
+
+  return true;
+}
+
+void TerrainTriMesh::compute_gradients()
+{
+  this->gradients.clear();
+  this->gradients.resize(points.size(), {0.f, 0.f});
+  std::vector<float> weight_sum(points.size(), 0.f);
+
+  auto angle_at =
+      [](const glm::vec2 &a, const glm::vec2 &b, const glm::vec2 &c) -> float
+  {
+    glm::vec2 u = glm::normalize(b - a);
+    glm::vec2 v = glm::normalize(c - a);
+
+    float dot = glm::clamp(glm::dot(u, v), -1.0f, 1.0f);
+    return std::acos(dot);
+  };
+
+  for (const auto &tri : triangles)
+  {
+    const auto &p0 = points[tri.a];
+    const auto &p1 = points[tri.b];
+    const auto &p2 = points[tri.c];
+
+    glm::vec2 a(p0.x, p0.y);
+    glm::vec2 b(p1.x, p1.y);
+    glm::vec2 c(p2.x, p2.y);
+
+    float dx1 = p1.x - p0.x;
+    float dy1 = p1.y - p0.y;
+    float dz1 = p1.z - p0.z;
+
+    float dx2 = p2.x - p0.x;
+    float dy2 = p2.y - p0.y;
+    float dz2 = p2.z - p0.z;
+
+    float det = dx1 * dy2 - dx2 * dy1;
+    if (std::abs(det) < 1e-12f) continue;
+
+    // Triangle gradient (constant over triangle)
+    float gx = (dz1 * dy2 - dz2 * dy1) / det;
+    float gy = (dx1 * dz2 - dx2 * dz1) / det;
+
+    // Compute angles at each vertex
+    float angle0 = angle_at(a, b, c);
+    float angle1 = angle_at(b, c, a);
+    float angle2 = angle_at(c, a, b);
+
+    auto accumulate = [&](size_t i, float w)
+    {
+      this->gradients[i].x += w * gx;
+      this->gradients[i].y += w * gy;
+      weight_sum[i] += w;
+    };
+
+    accumulate(tri.a, angle0);
+    accumulate(tri.b, angle1);
+    accumulate(tri.c, angle2);
+  }
+
+  // Normalize
+  for (size_t i = 0; i < points.size(); ++i)
+  {
+    if (weight_sum[i] > 1e-12f)
+    {
+      this->gradients[i].x /= weight_sum[i];
+      this->gradients[i].y /= weight_sum[i];
+    }
+  }
 }
 
 void TerrainTriMesh::compute_neighbors()
@@ -101,6 +220,57 @@ bool TerrainTriMesh::export_obj(const std::string &filepath) const
   }
 
   return true;
+}
+
+int TerrainTriMesh::find_triangle(const glm::vec2 &p,
+                                  int              start_tri,
+                                  bool             linear_search) const
+{
+  int       tri = std::max(0, start_tri);
+  const int max_iter = int(points.size());
+
+  if (linear_search)
+  {
+    // fallback for debugging purposes: linear search
+    for (size_t k = 0; k < triangles.size(); ++k)
+    {
+      float       w0, w1, w2;
+      const auto &t = triangles[k];
+      if (barycentric(p, t.a, t.b, t.c, w0, w1, w2))
+      {
+        if (w0 >= 0 && w1 >= 0 && w2 >= 0) return int(k);
+      }
+    }
+  }
+  else
+  {
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+
+    for (int iter = 0; iter < max_iter; ++iter)
+    {
+      const auto &t = triangles[tri];
+      float       w0, w1, w2;
+      this->barycentric(p, t.a, t.b, t.c, w0, w1, w2);
+
+      if (w0 >= 0 && w1 >= 0 && w2 >= 0) return tri;
+
+      // walk to neighbor across the negative weight
+      if (w0 < 0.f)
+        tri = this->neighbor_triangle(tri, 1);
+      else if (w1 < 0.f)
+        tri = this->neighbor_triangle(tri, 2);
+      else
+        tri = this->neighbor_triangle(tri, 0);
+
+      if (tri < 0) return -1;
+    }
+
+#pragma GCC diagnostic pop
+  }
+
+  return -1;
 }
 
 TerrainTriMesh::BoundingBox TerrainTriMesh::get_bbox() const
@@ -326,6 +496,137 @@ std::string TerrainTriMesh::info_string() const
   return oss.str();
 }
 
+float TerrainTriMesh::interpolate_z_linear(const glm::vec2 &p,
+                                           int             &last_tri,
+                                           float            fill_value) const
+{
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    float w0, w1, w2;
+    if (this->barycentric(p, t.a, t.b, t.c, w0, w1, w2))
+    {
+      // interpolate z using barycentric weights
+      return w0 * this->points[t.a].z + w1 * this->points[t.b].z +
+             w2 * this->points[t.c].z;
+    }
+  }
+
+  // outside mesh or degenerate triangle
+  return fill_value;
+}
+
+float TerrainTriMesh::interpolate_z_linear_gradient(
+    const glm::vec2 &p,
+    int             &last_tri,
+    float            fill_value,
+    float            gradient_scaling) const
+{
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    float w0, w1, w2;
+    bool  ret = this->barycentric(p, t.a, t.b, t.c, w0, w1, w2);
+
+    if (!ret) return fill_value;
+
+    auto eval = [&](int idx, const glm::vec3 &vertex, float w)
+    {
+      glm::vec2 grad = gradient_scaling * this->gradients[idx];
+      glm::vec2 d = p - glm::vec2(vertex);
+      return w * (vertex.z + glm::dot(grad, d));
+    };
+
+    const auto &pa = this->points[t.a];
+    const auto &pb = this->points[t.b];
+    const auto &pc = this->points[t.c];
+
+    float value = 0.0f;
+
+    value += eval(t.a, pa, w0);
+    value += eval(t.b, pb, w1);
+    value += eval(t.c, pc, w2);
+
+    return value;
+  }
+
+  // outside mesh or degenerate triangle
+  return fill_value;
+}
+
+float TerrainTriMesh::interpolate_z_nearest(const glm::vec2 &p) const
+{
+  // "true" nearest as opposed to "nearest_approx" method
+  float best_d2 = std::numeric_limits<float>::max();
+  float best_z = 0.f;
+
+  for (const auto &pt : points)
+  {
+    glm::vec2 delta = p - to_xy(pt);
+    float     d2 = glm::dot(delta, delta);
+
+    if (d2 < best_d2)
+    {
+      best_d2 = d2;
+      best_z = pt.z;
+    }
+  }
+
+  return best_z;
+}
+
+float TerrainTriMesh::interpolate_z_nearest_approx(const glm::vec2 &p,
+                                                   int             &last_tri,
+                                                   float fill_value) const
+{
+  // not true global nearest neighbor, pick only the nearest among the
+  // 3 vertices of the containing triangle. Usually this is fine (and
+  // fast), but: near triangle edges, the actual nearest vertex might
+  // belong to a neighboring triangle and fials outside mesh
+  int tri = this->find_triangle(p, last_tri);
+
+  if (tri >= 0)
+  {
+    last_tri = tri;
+    const auto &t = this->triangles[tri];
+
+    const glm::vec2 p0 = to_xy(this->points[t.a]);
+    const glm::vec2 p1 = to_xy(this->points[t.b]);
+    const glm::vec2 p2 = to_xy(this->points[t.c]);
+
+    glm::vec2 diff0 = p - p0;
+    glm::vec2 diff1 = p - p1;
+    glm::vec2 diff2 = p - p2;
+
+    float d0 = glm::dot(diff0, diff0);
+    float d1 = glm::dot(diff1, diff1);
+    float d2 = glm::dot(diff2, diff2);
+
+    if (d0 <= d1 && d0 <= d2)
+      return this->points[t.a].z;
+    else if (d1 <= d2)
+      return this->points[t.b].z;
+    else
+      return this->points[t.c].z;
+  }
+
+  return fill_value;
+}
+
+int TerrainTriMesh::neighbor_triangle(int tri_index, int edge_index) const
+{
+  int opp = this->halfedges[3 * tri_index + edge_index];
+  return (opp < 0) ? -1 : (opp / 3);
+}
+
 void TerrainTriMesh::print_info() const
 {
   std::cout << this->info_string();
@@ -534,39 +835,39 @@ void TerrainTriMesh::slope_limiter(float max_slope, int iterations, float sigma)
 void TerrainTriMesh::subdivise()
 {
   std::unordered_map<Edge, size_t, EdgeHash> midpoint_map;
-  std::vector<Triangle>                      new_triangles;
 
+  // Reserve a bit to avoid reallocations (optional but nice)
+  this->points.reserve(this->points.size() * 2);
+
+  // Lambda to create or reuse midpoint
+  auto get_midpoint = [&](size_t i0, size_t i1) -> size_t
+  {
+    Edge e(i0, i1);
+    auto it = midpoint_map.find(e);
+    if (it != midpoint_map.end()) return it->second;
+
+    glm::vec3 mid = 0.5f * (points[i0] + points[i1]);
+    size_t    idx = points.size();
+    points.push_back(mid);
+
+    midpoint_map[e] = idx;
+    return idx;
+  };
+
+  // Only generate points — no triangles
   for (const auto &tri : triangles)
   {
-    size_t a = tri.a;
-    size_t b = tri.b;
-    size_t c = tri.c;
-
-    auto get_midpoint = [&](size_t i0, size_t i1) -> size_t
-    {
-      Edge e(i0, i1);
-      auto it = midpoint_map.find(e);
-      if (it != midpoint_map.end()) return it->second;
-
-      glm::vec3 mid = 0.5f * (points[i0] + points[i1]);
-      size_t    idx = points.size();
-      points.push_back(mid);
-      midpoint_map[e] = idx;
-      return idx;
-    };
-
-    size_t ab = get_midpoint(a, b);
-    size_t bc = get_midpoint(b, c);
-    size_t ca = get_midpoint(c, a);
-
-    // Create 4 new triangles
-    new_triangles.push_back({a, ab, ca});
-    new_triangles.push_back({b, bc, ab});
-    new_triangles.push_back({c, ca, bc});
-    new_triangles.push_back({ab, bc, ca});
+    get_midpoint(tri.a, tri.b);
+    get_midpoint(tri.b, tri.c);
+    get_midpoint(tri.c, tri.a);
   }
 
-  triangles = std::move(new_triangles);
+  // discard old topology
+  this->triangles.clear();
+
+  // rebuild triangulation from scratch and recompute adjacency
+  this->triangulate_delaunay();
+  this->compute_neighbors();
 }
 
 Array TerrainTriMesh::to_array(const glm::ivec2         &shape,
@@ -616,6 +917,24 @@ Array TerrainTriMesh::to_array(const glm::ivec2         &shape,
   return out;
 }
 
+void TerrainTriMesh::to_csv(const std::string &fname) const
+{
+  std::ofstream f(fname, std::ios::out);
+  if (!f.is_open()) return;
+
+  f << "# vertices\n";
+  f << "# "
+       "vertex_id,x,y,z\n";
+
+  for (size_t i = 0; i < static_cast<size_t>(this->get_points().size()); ++i)
+  {
+    f << i << "," << this->get_points()[i].x << "," << this->get_points()[i].y
+      << "," << this->get_points()[i].z << "\n";
+  }
+
+  f.close();
+}
+
 glm::vec2 TerrainTriMesh::to_xy(const glm::vec3 &p) const
 {
   return {p.x, p.y};
@@ -637,11 +956,21 @@ void TerrainTriMesh::triangulate_delaunay()
   // triangles
   {
     const std::vector<size_t> &tri = d.triangles;
+
     this->triangles.clear();
     this->triangles.reserve(tri.size() / 3);
 
+    this->halfedges.clear();
+    this->halfedges.reserve(tri.size());
+
     for (std::size_t k = 0; k < tri.size(); k += 3)
+    {
       this->triangles.push_back({tri[k], tri[k + 1], tri[k + 2]});
+
+      this->halfedges.push_back(d.halfedges[k]);
+      this->halfedges.push_back(d.halfedges[k + 1]);
+      this->halfedges.push_back(d.halfedges[k + 2]);
+    }
   }
 
   // chull

@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/primitives.hpp" // for get_primitive_base, PrimitiveType
 
 namespace hmap
 {

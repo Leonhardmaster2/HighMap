@@ -1,13 +1,23 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/hydrology/drainage_basin.hpp"
-#include "highmap/math.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <algorithm> // for max, min
+#include <cmath>     // for pow
+#include <vector>    // for vector
+
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"                    // for Array
+#include "highmap/erosion.hpp"                  // for hydraulic_saleve
+#include "highmap/geometry/cloud.hpp"           // for Cloud, random_cloud_...
+#include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
+#include "highmap/interpolate2d.hpp"            // for InterpolationMethod2D
+#include "highmap/math/array.hpp"               // for lerp
+#include "highmap/primitives.hpp"               // for biquad_pulse_x, biqu...
+#include "highmap/range.hpp"                    // for remap
+#include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh, cubi...
 
 namespace hmap
 {
@@ -20,7 +30,10 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance,
                       int                       max_iterations,
                       float                     noise_strength,
-                      uint                      seed)
+                      uint                      seed,
+                      bool                      enable_post_slope_limiter,
+                      float                     post_slope_limit,
+                      bool                      enable_post_smoothing)
 {
   auto db = DrainageBasin(mesh.get_points());
   db.set_outlets(find_border_sinks(db.get_mesh()));
@@ -28,37 +41,51 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
   for (int it = 0; it < max_iterations; ++it)
   {
     std::vector acc(db.size(), 0.f);
-
     db.update_stream_tree(seed, noise_strength);
 
     auto area = db.get_mesh().get_vertex_areas(true);
     db.accumulate_area_by_outlet(area, acc);
 
-    auto  response_times = db.compute_response_times(acc, erodibility, m_exp);
+    auto response_times = db.compute_response_times(acc, erodibility, m_exp);
+
     float diff = db.update_elevations(response_times, uplift_rate, max_slope);
 
     if (diff < tolerance) break;
   }
 
+  // post-treatments
+  if (enable_post_slope_limiter)
+  {
+    glm::vec2 zr = db.get_mesh().get_range_z();
+    float     zptp = zr.y - zr.x;
+    db.get_mesh().slope_limiter(post_slope_limit * zptp, 100);
+  }
+
+  if (enable_post_smoothing) db.get_mesh().relax_xyz(0.2f, 5);
+
   // override input with eroded field
   mesh = TerrainTriMesh(db.get_mesh());
 }
 
-Array hydraulic_saleve(const Array &z,
-                       uint         seed,
-                       size_t       control_points_count,
-                       float        m_exp,
-                       float        uplift_rate,
-                       float        tolerance,
-                       int          max_iterations,
-                       float        smin,
-                       float        smax,
-                       float        strength,
-                       bool         scale_erodibility_with_z,
-                       float        erodibility_distrib_exp,
-                       float        noise_strength,
-                       const Array *p_noise_x,
-                       const Array *p_noise_y)
+Array hydraulic_saleve(const Array          &z,
+                       uint                  seed,
+                       size_t                control_points_count,
+                       float                 m_exp,
+                       float                 uplift_rate,
+                       float                 tolerance,
+                       int                   max_iterations,
+                       float                 smin,
+                       float                 smax,
+                       float                 strength,
+                       bool                  scale_erodibility_with_z,
+                       float                 erodibility_distrib_exp,
+                       float                 noise_strength,
+                       bool                  enable_post_slope_limiter,
+                       float                 post_slope_limit,
+                       bool                  enable_post_smoothing,
+                       InterpolationMethod2D interpolation_method,
+                       const Array          *p_noise_x,
+                       const Array          *p_noise_y)
 {
   const glm::ivec2 shape = z.shape;
   const glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
@@ -115,11 +142,14 @@ Array hydraulic_saleve(const Array &z,
                    tolerance,
                    max_iterations,
                    noise_strength,
-                   seed);
+                   seed,
+                   enable_post_slope_limiter,
+                   post_slope_limit,
+                   enable_post_smoothing);
 
   // --- interpolate back to an heightmap
 
-  // make sure the input noise displacement do not modifiy the convex
+  // make sure the input noise displacement do not modify the convex
   // hull limits to avoid issues with the nautral neighbor
   // interpolation
   Array dx;
@@ -150,30 +180,35 @@ Array hydraulic_saleve(const Array &z,
                            xc,
                            yc,
                            zc,
-                           InterpolationMethod2D::ITP2D_NNI,
+                           interpolation_method,
                            p_noise_x,
                            p_noise_y);
+
   remap(ze, zmin, zmax);
 
   return lerp(z, ze, strength);
 }
 
-Array hydraulic_saleve(const Array &z,
-                       const Array *p_mask,
-                       uint         seed,
-                       size_t       control_points_count,
-                       float        m_exp,
-                       float        uplift_rate,
-                       float        tolerance,
-                       int          max_iterations,
-                       float        smin,
-                       float        smax,
-                       float        strength,
-                       bool         scale_erodibility_with_z,
-                       float        erodibility_distrib_exp,
-                       float        noise_strength,
-                       const Array *p_noise_x,
-                       const Array *p_noise_y)
+Array hydraulic_saleve(const Array          &z,
+                       const Array          *p_mask,
+                       uint                  seed,
+                       size_t                control_points_count,
+                       float                 m_exp,
+                       float                 uplift_rate,
+                       float                 tolerance,
+                       int                   max_iterations,
+                       float                 smin,
+                       float                 smax,
+                       float                 strength,
+                       bool                  scale_erodibility_with_z,
+                       float                 erodibility_distrib_exp,
+                       float                 noise_strength,
+                       bool                  enable_post_slope_limiter,
+                       float                 post_slope_limit,
+                       bool                  enable_post_smoothing,
+                       InterpolationMethod2D interpolation_method,
+                       const Array          *p_noise_x,
+                       const Array          *p_noise_y)
 {
   Array ze = hydraulic_saleve(z,
                               seed,
@@ -188,6 +223,10 @@ Array hydraulic_saleve(const Array &z,
                               scale_erodibility_with_z,
                               erodibility_distrib_exp,
                               noise_strength,
+                              enable_post_slope_limiter,
+                              post_slope_limit,
+                              enable_post_smoothing,
+                              interpolation_method,
                               p_noise_x,
                               p_noise_y);
 

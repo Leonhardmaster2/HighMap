@@ -1,12 +1,23 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <sys/types.h> // for size_t, uint
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math.hpp"
+#include <algorithm> // for max
+#include <cmath>     // for cos, floor, hypot, pow, sin
+#include <limits>    // for numeric_limits
+#include <queue>     // for priority_queue
+#include <random>    // for uniform_real_distribution
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"            // for Array
+#include "highmap/boundary.hpp"         // for extrapolate_borders, fill_b...
+#include "highmap/filters.hpp"          // for fill_talus
+#include "highmap/geometry/cloud.hpp"   // for Cloud, random_cloud_jittered
+#include "highmap/geometry/point.hpp"   // for Point
+#include "highmap/interpolate2d.hpp"    // for interpolate2d, Interpolatio...
+#include "highmap/primitives.hpp"       // for diffusion_limited_aggregation
+#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh
 
 namespace hmap
 {
@@ -97,6 +108,165 @@ Array diffusion_limited_aggregation(glm::ivec2 shape,
   Array z = wrk.resample_to_shape(shape); // output
 
   return z;
+}
+
+Array diffusion_limited_aggregation_trimesh(
+    glm::ivec2            shape,
+    uint                  seed,
+    size_t                control_points_count,
+    glm::vec2             seed_position,
+    float                 ratio,
+    float                 stop_proba,
+    float                 slope,
+    InterpolationMethod2D interpolation_method,
+    const Array          *p_noise_x,
+    const Array          *p_noise_y)
+{
+  // --- Generate triangle mesh
+
+  const glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f};
+
+  Cloud cloud = random_cloud_jittered(control_points_count,
+                                      {0.5f, 0.5f},
+                                      {0.f, 0.f},
+                                      seed,
+                                      bbox);
+  cloud.snap_points_to_bounding_box(bbox);
+  cloud.set_values(0.f);
+
+  // initialize seed
+  size_t kc = cloud.nearest_point(seed_position);
+  cloud.points[kc].v = 1.f;
+
+  auto        mesh = TerrainTriMesh(cloud.to_vec3());
+  const auto &nbrs_data = mesh.get_neighbors();
+  auto       &points = mesh.get_points();
+
+  // --- DLA process
+
+  std::vector<size_t> outlets = mesh.get_convex_hull();
+  size_t              nwalkers = mesh.size();
+
+  std::mt19937 gen(seed);
+
+  for (size_t k = 0; k < nwalkers; k++)
+  {
+    // pick a random outlet cell
+    int    random_index = std::uniform_int_distribution<int>(0,
+                                                          outlets.size() -
+                                                              1)(gen);
+    size_t i = outlets[random_index];
+
+    // random_walk
+    bool keep_walking = true;
+
+    while (keep_walking)
+    {
+      // check neighbors for encounter with an already cell touched
+      // by diffusion
+      for (const auto &nb : nbrs_data.adjacency[i])
+      {
+        size_t n = nb.index;
+        float  rd = std::uniform_real_distribution<float>(0.f, 1.f)(gen);
+
+        if (points[n].z > 0.f && rd < stop_proba)
+        {
+          points[i].z = ratio * points[n].z;
+          keep_walking = false;
+          break;
+        }
+      }
+
+      // next step in random direction
+      size_t n_neighbors = nbrs_data.adjacency[i].size();
+      int    random_nb = std::uniform_int_distribution<int>(0,
+                                                         n_neighbors - 1)(gen);
+      i = nbrs_data.adjacency[i][random_nb].index;
+    }
+  }
+
+  // normalize non-zero values to [0, 1]
+  float zmin = std::numeric_limits<float>::max();
+  for (const auto &p : points)
+    if (p.z > 0.f && p.z < zmin) zmin = p.z;
+
+  for (auto &p : points)
+    if (p.z > 0.f) p.z = (p.z - zmin) / (1.f - zmin);
+
+  // --- Fill zero-value with a talus
+
+  if (true)
+  {
+    struct HeapNode
+    {
+      float  h;
+      size_t node;
+
+      bool operator<(const HeapNode &o) const noexcept
+      {
+        return h < o.h; // max-heap
+      }
+    };
+
+    std::vector<HeapNode> heap_storage;
+    heap_storage.reserve(mesh.size());
+
+    std::priority_queue<HeapNode> heap; // max-heap
+
+    for (size_t k = 0; k < mesh.size(); ++k)
+    {
+      if (points[k].z > 0.f)
+      {
+        heap.push({points[k].z, k});
+      }
+    }
+
+    while (!heap.empty())
+    {
+      HeapNode top = heap.top();
+      heap.pop();
+
+      size_t i = top.node;
+
+      for (const auto &nb : nbrs_data.adjacency[i])
+      {
+        size_t j = nb.index;
+
+        if (points[j].z == 0.f)
+        {
+          glm::vec2 pi(points[i].x, points[i].y);
+          glm::vec2 pj(points[j].x, points[j].y);
+          float     dist = glm::length(pi - pj);
+
+          points[j].z = std::max(0.001f,
+                                 points[i].z - dist * slope * points[i].z);
+
+          heap.push({points[j].z, j});
+        }
+      }
+    }
+  }
+
+  // --- Interpolate back to an heightmap
+
+  // interpolate
+  std::vector<float> xc, yc, zc;
+  for (const auto &p : mesh.get_points())
+  {
+    xc.push_back(p.x);
+    yc.push_back(p.y);
+    zc.push_back(p.z);
+  }
+
+  Array ze = interpolate2d(shape,
+                           xc,
+                           yc,
+                           zc,
+                           interpolation_method,
+                           p_noise_x,
+                           p_noise_y);
+
+  return ze;
 }
 
 } // namespace hmap

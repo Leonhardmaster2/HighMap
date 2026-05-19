@@ -1,0 +1,2 @@
+add_executable(ex_pick_boundary_cell ex_pick_boundary_cell.cpp)
+target_link_libraries(ex_pick_boundary_cell highmap)

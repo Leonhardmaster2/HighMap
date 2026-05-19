@@ -3,10 +3,10 @@
 int main(void)
 {
   glm::ivec2 shape = {256, 256};
-  glm::vec2  res = {4.f, 4.f};
+  glm::vec2  kw = {4.f, 4.f};
   int        seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
 
   auto z1 = z;
   hmap::clamp(z1, -0.1f, 0.1f);

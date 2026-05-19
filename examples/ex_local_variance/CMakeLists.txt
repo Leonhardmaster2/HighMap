@@ -1,0 +1,2 @@
+add_executable(ex_local_variance ex_local_variance.cpp)
+target_link_libraries(ex_local_variance highmap)

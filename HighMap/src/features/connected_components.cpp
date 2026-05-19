@@ -1,43 +1,54 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <map>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <algorithm> // for min_element
+#include <array>     // for array
+#include <iterator>  // for operator==, reverse_iterator
+#include <limits>    // for numeric_limits
+#include <map>       // for map, _Rb_tree_iterator, operator==
+#include <utility>   // for pair, move
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
+#include "highmap/array.hpp"    // for Array
+#include "highmap/boundary.hpp" // for generate_buffered_array, set_bor...
 
 namespace hmap
 {
 
-Array connected_components(const Array                       &array,
-                           float                              surface_threshold,
-                           float                              background_value,
-                           std::vector<float>                *p_surfaces,
-                           std::vector<std::array<float, 2>> *p_centroids)
+Array connected_components(const Array            &array,
+                           float                   surface_threshold,
+                           float                   background_value,
+                           std::map<float, float> *p_surfaces,
+                           std::map<float, std::array<float, 2>> *p_centroids)
 {
+  const glm::ivec2 &shape = array.shape;
+
   // neighbor search pattern
-  const std::vector<int> di = {0, -1, -1, -1};
-  const std::vector<int> dj = {-1, -1, 0, 1};
-  const size_t           nb = di.size();
+  const float  di[4] = {0, -1, -1, -1};
+  const float  dj[4] = {-1, -1, 0, 1};
+  const size_t nb = 4;
 
   // padding: one cell with a non-background value on the borders
-  const int npi = array.shape.x + 2;
-  const int npj = array.shape.y + 2;
+  const int npi = shape.x + 2;
+  const int npj = shape.y + 2;
 
   Array labels = Array(glm::ivec2(npi, npj));
   Array array_pad = generate_buffered_array(array, {1, 1, 1, 1});
-  set_borders(array_pad, background_value + 1.f, 1);
+  set_borders(array_pad, std::numeric_limits<float>::max(), 1);
 
   // --- first pass of labelling
 
   int                                 current_label = 0;
   std::map<float, std::vector<float>> labels_mapping = {};
 
-  // /!\ i, j LOOP ORDER MATERS
-  for (int i = 0; i < npi; i++)
-    for (int j = 0; j < npj; j++)
+  // ===========================================
+  //  /!\ i, j LOOP ORDER MATERS, DO NOT CHANGE
+  // ===========================================
+
+  for (int i = 0; i < npi; i++)   // i first
+    for (int j = 0; j < npj; j++) // j second
       if (array_pad(i, j) != background_value)
       {
         // scan neighbors and count those that are "background"
@@ -99,7 +110,7 @@ Array connected_components(const Array                       &array,
   for (int j = 0; j < npj; j++)
     for (int i = 0; i < npi; i++)
     {
-      if ((labels(i, j) > 0) & (labels_mapping_reverse.contains(labels(i, j))))
+      if ((labels(i, j) > 0) && (labels_mapping_reverse.contains(labels(i, j))))
         labels(i, j) = labels_mapping_reverse[labels(i, j)];
     }
 
@@ -114,20 +125,48 @@ Array connected_components(const Array                       &array,
     }
 
   // filter
-  float smin = std::max(1.f, surface_threshold);
-
   for (int j = 0; j < labels.shape.y; j++)
     for (int i = 0; i < labels.shape.x; i++)
     {
-      if (labels_surface[labels(i, j)] <= smin) labels(i, j) = background_value;
+      if (labels_surface[labels(i, j)] <= surface_threshold)
+        labels(i, j) = background_value;
     }
 
-  // update surface and centroids
+  // --- removing padding before returning the result
+
+  labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
+
+  // --- relabeling
+
+  std::vector<float> used_labels = labels.unique_values();
+
+  // edge case of one label not to zero, add manually the background
+  // which not present in the label array
+  if (used_labels.size() == 1 && used_labels.back() != 0.f)
+    used_labels.insert(used_labels.begin(), 0.f);
+
+  // relabel...
+  size_t           max_label = size_t(used_labels.back());
+  std::vector<int> label_remap(max_label + 1, 0);
+
+  int next = 0;
+  for (const auto &v : used_labels)
+    label_remap[int(v)] = next++;
+
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
+    {
+      int lbl = int(labels(i, j));
+      if (lbl != 0) labels(i, j) = label_remap[lbl];
+    }
+
+  // --- update surface and centroids
+
   labels_surface.clear();
   std::map<float, std::array<float, 2>> labels_centroids = {};
 
-  for (int j = 0; j < npj; j++)
-    for (int i = 0; i < npi; i++)
+  for (int j = 0; j < shape.y; j++)
+    for (int i = 0; i < shape.x; i++)
     {
       if (labels(i, j) > 0)
       {
@@ -137,19 +176,10 @@ Array connected_components(const Array                       &array,
       }
     }
 
-  // removing padding before returning the result
-  labels = labels.extract_slice({1, npi - 1, 1, npj - 1});
-
   // --- outputs
 
-  for (auto &[k, v] : labels_surface)
-  {
-    if (p_surfaces) p_surfaces->push_back(v);
-
-    if (p_centroids)
-      p_centroids->push_back(
-          {labels_centroids[k][0] / v, labels_centroids[k][1] / v});
-  }
+  if (p_surfaces) *p_surfaces = std::move(labels_surface);
+  if (p_centroids) *p_centroids = std::move(labels_centroids);
 
   return labels;
 }

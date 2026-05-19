@@ -1,11 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <sys/types.h> // for uint
+
+#include <cmath> // for cos, sin, M_PI
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/filters.hpp"    // for gamma_correction, smooth_fill
+#include "highmap/functions.hpp"  // for NoiseType
+#include "highmap/primitives.hpp" // for VoronoiReturnType, gaussian_pulse
 
 namespace hmap::gpu
 {

@@ -1,9 +1,16 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
+#include <sys/types.h> // for uint
+
+#include <cmath>      // for atan, sqrt, M_PI
+#include <functional> // for function
+
+#include "highmap/array.hpp"         // for Array, operator*, operator+
+#include "highmap/gradient.hpp"      // for phase_field_angle
+#include "highmap/math/core.hpp"     // for lerp
+#include "highmap/math/profiles.hpp" // for PhasorProfile, get_phasor_profi...
+#include "highmap/range.hpp"         // for minimum
 
 namespace hmap::gpu
 {
@@ -15,7 +22,6 @@ Array phasor(PhasorProfile   phasor_profile,
              float           angle_shift,
              int             n_kernel_samples,
              const glm::vec2 jitter,
-             int             angle_filter_ir,
              float           delta,
              float           phase_smoothing,
              const Array    *p_angle,
@@ -40,7 +46,6 @@ Array phasor(PhasorProfile   phasor_profile,
                                   kp,
                                   n_kernel_samples,
                                   jitter,
-                                  angle_filter_ir,
                                   /* p_ctrl_param */ nullptr,
                                   p_noise_x,
                                   p_noise_y,
@@ -78,7 +83,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                  float           lacunarity,
                  int             n_kernel_samples,
                  const glm::vec2 jitter,
-                 int             angle_filter_ir,
                  float           delta,
                  float           phase_smoothing,
                  const Array    *p_angle,
@@ -98,7 +102,6 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                          angle_shift,
                          n_kernel_samples,
                          jitter,
-                         angle_filter_ir,
                          delta,
                          phase_smoothing,
                          p_angle,
@@ -107,6 +110,7 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                          bbox);
 
     sum += value * amp;
+    amp *= (1.f - weight) + weight * minimum(value + 1.f, 2.f) * 0.5f;
     kp_global *= lacunarity;
     amp *= persistence;
     seed++;

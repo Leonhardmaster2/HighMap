@@ -1,0 +1,2 @@
+add_executable(ex_color_match_mask ex_color_match_mask.cpp)
+target_link_libraries(ex_color_match_mask highmap)

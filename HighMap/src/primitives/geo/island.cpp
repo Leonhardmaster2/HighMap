@@ -1,14 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
+#include <sys/types.h> // for uint
+
+#include <algorithm>  // for max, min
+#include <cmath>      // for cos, atan2, sin, M_PI, exp, hypot
+#include <functional> // for function
+#include <memory>     // for unique_ptr
+#include <utility>    // for move
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/functions.hpp"  // for FbmFunction, NoiseFunction, Noi...
+#include "highmap/math/array.hpp" // for is_zero
+#include "highmap/math/core.hpp"  // for gain, lerp, smoothstep3
+#include "highmap/morphology.hpp" // for distance_transform
+#include "highmap/primitives.hpp" // for VoronoiReturnType, island, nois...
+#include "highmap/range.hpp"      // for maximum_smooth, minimum_smooth
 
 namespace hmap
 {

@@ -1,9 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/kd_tree.hpp"
-#include "highmap/operator.hpp"
+#include <stddef.h> // for size_t
+
+#include <vector> // for vector
+
+#include "highmap/array.hpp"            // for Array
+#include "highmap/geometry/grids.hpp"   // for grid_xy_vector
+#include "highmap/geometry/kd_tree.hpp" // for KDTreeContext
 
 namespace hmap
 {
@@ -22,6 +26,7 @@ Array interpolate2d_nearest(glm::ivec2                shape,
 
   // KD-tree
   KDTreeContext tree(x, y);
+
   // interpolation base grid
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);

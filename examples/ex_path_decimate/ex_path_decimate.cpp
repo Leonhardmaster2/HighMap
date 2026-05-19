@@ -4,12 +4,12 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
   int        seed = 3;
+  int        npoints = 30;
 
-  glm::vec4  bbox = {1.f, 2.f, -0.5f, 0.5f};
-  hmap::Path path = hmap::Path(20, seed, {1.2f, 1.8f, -0.3, 0.3f});
+  glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
+  hmap::Path path = hmap::Path(npoints, seed, hmap::adjust(bbox, -0.1f));
   path.reorder_nns();
-  path.fractalize(1, seed);
-  // path.closed = true;
+  path = hmap::fractalize(path, 1, seed);
 
   int ntarget = 15;
 
@@ -17,16 +17,14 @@ int main(void)
   path.to_array(z1, bbox);
 
   // Visvalingam-Whyatt algo
-  auto       z2 = hmap::Array(shape);
-  hmap::Path path2 = path;
-  path2.decimate_vw(ntarget);
-  path2.to_array(z2, bbox);
+  auto path2 = hmap::decimate_vw(path, ntarget);
+  auto z2 = path2.to_array(shape, bbox);
 
-  // similar but curvature-based
-  auto z3 = hmap::Array(shape);
-  path2 = path;
-  path2.decimate_cfit(ntarget);
-  path2.to_array(z3, bbox);
+  hmap::assert_start_end_points(path, path2);
+
+  path.set_closed(true);
+  auto path3 = hmap::decimate_vw(path, ntarget);
+  auto z3 = path3.to_array(shape, bbox);
 
   hmap::export_banner_png("ex_path_decimate.png",
                           {z1, z2, z3},

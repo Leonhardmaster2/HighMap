@@ -1,0 +1,2 @@
+add_executable(ex_water_frontier_curvature ex_water_frontier_curvature.cpp)
+target_link_libraries(ex_water_frontier_curvature highmap)

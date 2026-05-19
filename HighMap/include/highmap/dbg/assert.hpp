@@ -37,8 +37,16 @@ struct AssertResults
 
 bool assert_almost_equal(const Array       &a,
                          const Array       &b,
-                         float              tolerance,
+                         float              tolerance = 1e-6f,
                          const std::string &fname = "",
                          AssertResults     *p_results = nullptr);
+
+// true if all non-zero pixels of a are also non-zero in b
+bool is_subset(const Array &a, const Array &b);
+
+void print_array(const Array &arr,
+                 bool         show_coords = false,
+                 int          width = 6,
+                 int          precision = 2);
 
 } // namespace hmap

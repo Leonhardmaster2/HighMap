@@ -3,10 +3,7 @@ R""(
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-void kernel thermal_rib(global float *z,
-                        const int     nx,
-                        const int     ny,
-                        const int     it)
+void kernel thermal_rib(global float *z, const int nx, const int ny)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
   int  index = linear_index(g.x, g.y, nx);

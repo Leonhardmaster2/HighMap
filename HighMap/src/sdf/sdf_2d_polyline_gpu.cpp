@@ -1,13 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
+#include <vector> // for vector, allocator
+
+#include "cl_wrapper/run.hpp" // for Run
+#include "macrologger.h"      // for LOG_ERROR
+
+#include "highmap/array.hpp"             // for Array
+#include "highmap/geometry/path.hpp"     // for Path
+#include "highmap/math/core.hpp"         // for lerp
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
 
 namespace hmap::gpu
 {
@@ -18,7 +22,7 @@ Array sdf_2d_polyline(const Path  &path,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
-  if (path.get_npoints() < 2)
+  if (path.size() < 2)
   {
     LOG_ERROR("at least 2 points needed in the Path to compute the SDF");
     return Array(shape);
@@ -62,7 +66,7 @@ Array sdf_2d_polyline_bezier(const Path  &path,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
-  if (path.get_npoints() < 3)
+  if (path.size() < 3)
   {
     LOG_ERROR("at least 3 points needed in the Path to compute the SDF");
     return Array(shape);

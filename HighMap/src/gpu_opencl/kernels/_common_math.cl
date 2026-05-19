@@ -2,30 +2,6 @@ R""(
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-inline void atomic_max_float(volatile __global float *source, const float value)
-{
-  // https://stackoverflow.com/questions/18950732
-  union
-  {
-    unsigned int int_val;
-    float        float_val;
-  } new_val;
-
-  union
-  {
-    unsigned int int_val;
-    float        float_val;
-  } prev_val;
-
-  do
-  {
-    prev_val.float_val = *source;
-    new_val.float_val = max(prev_val.float_val, value);
-  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
-                          prev_val.int_val,
-                          new_val.int_val) != prev_val.int_val);
-}
-
 float pow_float(float base, float x)
 {
   return exp(x * log(base));
@@ -177,5 +153,55 @@ float smoothstep_rational(float x, float n)
 float sqrt_safe(float x)
 {
   return x > 0.f ? sqrt(x) : 0.f;
+}
+
+inline void atomic_max_float(volatile __global float *source, const float value)
+{
+  // https://stackoverflow.com/questions/18950732
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } new_val;
+
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } prev_val;
+
+  do
+  {
+    prev_val.float_val = *source;
+    new_val.float_val = max(prev_val.float_val, value);
+  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
+                          prev_val.int_val,
+                          new_val.int_val) != prev_val.int_val);
+}
+
+inline void atomic_smoothmax_float(volatile __global float *source,
+                                   const float              value,
+                                   const float              k_smooth)
+{
+  // https://stackoverflow.com/questions/18950732
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } new_val;
+
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } prev_val;
+
+  do
+  {
+    prev_val.float_val = *source;
+    new_val.float_val = smax(prev_val.float_val, value, k_smooth);
+  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
+                          prev_val.int_val,
+                          new_val.int_val) != prev_val.int_val);
 }
 )""

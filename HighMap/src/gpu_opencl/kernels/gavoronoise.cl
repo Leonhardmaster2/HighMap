@@ -3,6 +3,14 @@ R""(
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
+// Adapted from https://www.shadertoy.com/view/MtGcWh
+// Original author: Clay John
+// License: see THIRD_PARTY_LICENSES.md
+
+// Adapted from https://www.shadertoy.com/view/llsGWl
+// Original author: S.Guillitte
+// License: see THIRD_PARTY_LICENSES.md
+
 float helper_gavoronoise_base_fbm(const float2 p,
                                   const float  angle,
                                   const float  angle_spread_ratio,
@@ -21,9 +29,6 @@ float helper_gavoronoise_base_fbm(const float2 p,
   return v;
 }
 
-// from https://www.shadertoy.com/view/llsGWl
-
-// from https://www.shadertoy.com/view/MtGcWh
 float3 gavoronoise_eroder(const float2 p, const float2 dir, const float fseed)
 {
   float2 ip = floor(p);

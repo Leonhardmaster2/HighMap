@@ -2,19 +2,22 @@
 
 int main(void)
 {
+  hmap::gpu::init_opencl();
+  hmap::init_openmp();
+
   glm::ivec2 shape = {256, 256};
-  // shape = {1024, 1024};
-  glm::vec2 res = {2.f, 2.f};
+  shape = {1024, 1024};
+  glm::vec2 kw = {2.f, 2.f};
   int       seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
   auto z0 = z;
 
   float       c_erosion = 0.1f;
   float       talus_ref = 5.f / (float)shape.x;
   int         iradius = 64;
-  hmap::Array z_bedrock = hmap::minimum_local(z, iradius);
+  hmap::Array z_bedrock = hmap::local_min(z, iradius);
 
   auto z1 = z;
   hmap::hydraulic_stream(z1, c_erosion, talus_ref);
@@ -33,13 +36,11 @@ int main(void)
                          &erosion_map,
                          ir);
 
-  hmap::gpu::init_opencl();
-
   // log scale
   auto z3 = z;
   int  deposition_ir = 32;
   c_erosion = 0.2f;
-  hmap::hydraulic_stream_log(z3, c_erosion, talus_ref, deposition_ir);
+  hmap::gpu::hydraulic_stream_log(z3, c_erosion, talus_ref, deposition_ir);
 
   z3.dump();
 

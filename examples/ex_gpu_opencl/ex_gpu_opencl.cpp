@@ -1,9 +1,8 @@
-#include "highmap.hpp"
+#include <iostream>
 
+#include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/dbg/timer.hpp"
-
-#include <iostream>
 
 template <typename F1, typename F2>
 void compare(F1 fct1, F2 fct2, float tolerance, const std::string &fname)
@@ -49,9 +48,10 @@ void compare(F1 fct1, F2 fct2, float tolerance, const std::string &fname)
 
 int main(void)
 {
-  int ir = 32;
 
   hmap::gpu::init_opencl();
+
+  // int ir = 32;
 
   // clwrapper::KernelManager::get_instance().set_block_size(32);
 
@@ -59,11 +59,6 @@ int main(void)
   //         [](hmap::Array &z) { hmap::gpu::median_3x3(z); },
   //         1e-3f,
   //         "diff_median_3x3.png");
-
-  // compare([ir](hmap::Array &z) { z = hmap::unsphericity(z, ir); },
-  //         [ir](hmap::Array &z) { z = hmap::gpu::unsphericity(z, ir); },
-  //         1e-3f,
-  //         "unsphericity.png");
 
   // compare([ir](hmap::Array &z)
   //         { hmap::hydraulic_stream_log(z, 0.1f, 5.f / 512.f, 64); },

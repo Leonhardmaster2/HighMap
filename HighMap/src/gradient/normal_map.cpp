@@ -2,9 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cmath>
+#include <algorithm> // for max
+#include <cmath>     // for hypot
 
-#include "highmap/gradient.hpp"
+#include "highmap/array.hpp"    // for Array
+#include "highmap/gradient.hpp" // for divergence_from_gradients, grad...
+#include "highmap/tensor.hpp"   // for Tensor
 
 namespace hmap
 {

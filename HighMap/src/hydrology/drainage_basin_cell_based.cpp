@@ -1,12 +1,24 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <queue>
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
+#include <stdint.h>       // for uint8_t
 
-#include "macrologger.h"
+#include <algorithm>  // for fill, max
+#include <cmath>      // for M_SQRT2, pow
+#include <functional> // for greater
+#include <limits>     // for numeric_l...
+#include <queue>      // for priority_...
+#include <utility>    // for move, pair
+#include <vector>     // for vector
 
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/random.hpp"
+#include "highmap/algebra.hpp"                             // for Mat, IVec...
+#include "highmap/array.hpp"                               // for Array
+#include "highmap/hydrology/drainage_basin_cell_based.hpp" // for DrainageB...
+#include "highmap/random.hpp"                              // for fast_hash...
+
+#include <unordered_map> // for unordered...
 
 namespace hmap
 {
@@ -77,9 +89,9 @@ void DrainageBasinCellBased::compute_receivers(unsigned int seed,
         float slope = dz * cd[k];
 
         // deterministic noise in [-1, 1)
-        float noise = 2.f * hash_to_unit_float(seed,
-                                               (i * cols + j) ^
-                                                   (ni * cols + nj)) -
+        float noise = 2.f * fast_hash32_to_unit_float(seed,
+                                                      (i * cols + j) ^
+                                                          (ni * cols + nj)) -
                       1.f;
         float score = slope * (1.f + noise_strength * noise);
 

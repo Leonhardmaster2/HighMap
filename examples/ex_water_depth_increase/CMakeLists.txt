@@ -1,0 +1,2 @@
+add_executable(ex_water_depth_increase ex_water_depth_increase.cpp)
+target_link_libraries(ex_water_depth_increase highmap)

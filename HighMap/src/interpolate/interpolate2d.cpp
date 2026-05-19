@@ -1,13 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <stdexcept> // for runtime_error
+
+#include "highmap/array.hpp" // for Array
 #include "highmap/interpolate2d.hpp"
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/functions.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
 
 namespace hmap
 {
@@ -64,6 +61,17 @@ Array interpolate2d(glm::ivec2                shape,
   case InterpolationMethod2D::ITP2D_NNI:
   {
     return interpolate2d_nni(shape, x, y, values, p_noise_x, p_noise_y, bbox);
+  }
+
+  case InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT:
+  {
+    return interpolate2d_delaunay_gradient(shape,
+                                           x,
+                                           y,
+                                           values,
+                                           p_noise_x,
+                                           p_noise_y,
+                                           bbox);
   }
 
   default: throw std::runtime_error("unknown 2D interpolation method");

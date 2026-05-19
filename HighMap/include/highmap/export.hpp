@@ -17,11 +17,13 @@
 #pragma once
 #include <filesystem>
 #include <map>
+
 #include <opencv2/imgcodecs.hpp>
-#include <png.h>
 
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
+
+#include <png.h>
 
 namespace hmap
 {
@@ -163,6 +165,14 @@ bool export_asset(const std::string &fname,
                   const std::string &texture_fname = "",
                   const std::string &normal_map_fname = "",
                   float              max_error = 5e-4f);
+
+bool export_asset(const std::string &fname,
+                  const Array       &array,
+                  const Array       &mask,
+                  AssetExportFormat  export_format = AssetExportFormat::GLB2,
+                  float              elevation_scaling = 0.2f,
+                  const std::string &texture_fname = "",
+                  const std::string &normal_map_fname = "");
 
 /**
  * @brief Export a 2D array as an ASCII-art string representation.
@@ -393,7 +403,9 @@ void export_tiled(const std::string &fname_radical,
  * @return       Array A 2D array containing the pixel values of the grayscale
  *               image.
  */
-Array read_to_array(const std::string &fname, bool flip_j = false);
+Array read_to_array(const std::string &fname,
+                    bool               flip_j = false,
+                    bool               remap = true);
 
 /**
  * @brief Exports an array to a 16-bit 'raw' file format, commonly used for

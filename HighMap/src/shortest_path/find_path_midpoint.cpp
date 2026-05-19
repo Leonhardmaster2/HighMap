@@ -1,11 +1,15 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/point.hpp"
-#include "highmap/math.hpp"
+#include <algorithm> // for clamp, max
+#include <cmath>     // for round, ceil, log2, sqrt
+#include <utility>   // for move
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/point.hpp" // for Point
 
 namespace hmap
 {
@@ -85,7 +89,7 @@ std::vector<glm::ivec2> find_path_midpoint(const Array &z,
 
   if (max_it == 0) max_it = int(std::ceil(std::log2(std::max(dist, 1.f))));
 
-  int iterations = std::clamp(max_it, 2, 16);
+  int iterations = std::clamp(max_it, 2, 14);
 
   // --- midpoint
 

@@ -1,11 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <iostream>
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "highmap/geometry/point.hpp"
-#include "highmap/math.hpp"
+#include <algorithm> // for max, min, sort
+#include <cmath>     // for atan2, M_PI, copysign, hypot
+#include <iostream>  // for char_traits, basic_ostream
+#include <optional>  // for optional, nullopt
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/point.hpp" // for Point, operator*, angle, cross...
 
 namespace hmap
 {
@@ -68,6 +74,21 @@ float angle(const Point &p0, const Point &p1, const Point &p2)
   return angle;
 }
 
+float classify_point(const Point &p_prev,
+                     const Point &p,
+                     const Point &p_next,
+                     const Point &pq)
+{
+  float c = curvature_signed(p_prev, p, p_next);
+  float s = side(p_prev, p, p_next, pq);
+
+  float v = c * s;
+
+  if (v > 0.f) return 1.f;  // convex
+  if (v < 0.f) return -1.f; // concave
+  return 0.f;
+}
+
 float cross_product(const Point &p0, const Point &p1, const Point &p2)
 {
   // calculate vectors v1 = p1 - p0 and v2 = p2 - p0
@@ -87,10 +108,20 @@ float cross_product(const Point &p1, const Point &p2)
 
 float curvature(const Point &p1, const Point &p2, const Point &p3)
 {
-  float d = distance(p1, p2) * distance(p1, p3) * distance(p1, p3);
+  float d = distance(p1, p2) * distance(p2, p3) * distance(p1, p3);
 
   if (d > 0.f)
-    return 2.f * triangle_area(p1, p2, p3) / d;
+    return 4.f * triangle_area(p1, p2, p3) / d;
+  else
+    return 0.f;
+}
+
+float curvature_signed(const Point &p1, const Point &p2, const Point &p3)
+{
+  float d = distance(p1, p2) * distance(p2, p3) * distance(p1, p3);
+
+  if (d > 0.f)
+    return 4.f * triangle_area_signed(p1, p2, p3) / d;
   else
     return 0.f;
 }
@@ -249,6 +280,27 @@ bool cmp_inf(Point &a, Point &b)
          (a.x == b.x && a.y == b.y && a.v < b.v);
 }
 
+float side(const Point &p1, const Point &p2, const Point &p3, const Point &pq)
+{
+  // tangent direction at p2 (no need to normalize — only sign matters)
+  float tx = p3.x - p1.x;
+  float ty = p3.y - p1.y;
+
+  // vector from p2 to query point
+  float qx = pq.x - p2.x;
+  float qy = pq.y - p2.y;
+
+  // z-component of cross product T × Q
+  float cross = tx * qy - ty * qx;
+
+  if (cross > 0.f)
+    return 1.f; // left of curve  (CCW side)
+  else if (cross < 0.f)
+    return -1.f; // right of curve (CW side)
+  else
+    return 0.f; // on the tangent line
+}
+
 void sort_points(std::vector<Point> &points)
 {
   std::sort(points.begin(), points.end(), cmp_inf);
@@ -256,8 +308,14 @@ void sort_points(std::vector<Point> &points)
 
 float triangle_area(const Point &p1, const Point &p2, const Point &p3)
 {
-  return 0.5f * std::abs(p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) +
-                         p3.x * (p1.y - p2.y));
+  return std::abs(triangle_area_signed(p1, p2, p3));
+}
+
+float triangle_area_signed(const Point &p1, const Point &p2, const Point &p3)
+{
+  // positive = CCW, negative = CW
+  return 0.5f *
+         (p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) + p3.x * (p1.y - p2.y));
 }
 
 glm::vec4 unit_square_bbox()

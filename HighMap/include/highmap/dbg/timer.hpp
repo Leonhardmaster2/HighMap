@@ -15,11 +15,14 @@
  */
 #pragma once
 
+#include <bits/chrono.h> // for high_resolution_clock
+
 #include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <list>
-#include <map>
+#include <list>   // for list
+#include <map>    // for allocator, map
+#include <string> // for string
 
 #include "macrologger.h"
 
@@ -123,10 +126,14 @@ public:
    */
   static void Stop(const std::string &name);
 
+  static void Clear();
+
   /**
    * @brief Dumps the timing information for all recorded events to the console.
    */
   static void Dump();
+
+  static std::map<std::string, float> DumpDurations();
 
   std::map<std::string, Recorder *> get_records() const
   {
@@ -166,6 +173,8 @@ private:
    */
   void dump();
 
+  std::map<std::string, float> dump_durations() const;
+
   // Deleting the copy constructor and assignment operator to enforce singleton
   // pattern.
   Timer(const Timer &) = delete;
@@ -179,6 +188,19 @@ private:
   std::list<Recorder>
       data; ///< A list of Recorder objects that store timing information.
   int current_level = 0; ///< Current nesting level (if applicable).
+};
+
+struct ScopedTimer
+{
+  ScopedTimer(const char *id)
+  {
+    Timer::Start(id);
+  }
+  ~ScopedTimer()
+  {
+    Timer::Stop(id);
+  }
+  const char *id;
 };
 
 } // namespace hmap

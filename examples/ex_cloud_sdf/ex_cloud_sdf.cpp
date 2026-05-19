@@ -8,15 +8,12 @@ int main(void)
   auto noise = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, {2, 2}, seed);
   hmap::remap(noise, 0.f, 0.2f);
 
-  glm::vec4   bbox = {0.2f, 0.8f, 0.2f, 0.8f};
-  hmap::Cloud cloud = hmap::Cloud(5, seed, bbox);
+  glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f};
+  hmap::Cloud cloud = hmap::Cloud(5, seed, hmap::adjust(bbox, -0.1f));
 
-  glm::vec4 bbox_array = {0.f, 1.f, 0.f, 1.f};
+  hmap::Array z0 = cloud.to_array(shape, bbox);
+  hmap::Array z1 = hmap::cloud_sdf_to_array(cloud, shape, bbox);
+  hmap::Array z2 = hmap::cloud_sdf_to_array(cloud, shape, bbox, &noise, &noise);
 
-  hmap::Array z_sdf1 = cloud.to_array_sdf(shape, bbox_array);
-  hmap::Array z_sdf2 = cloud.to_array_sdf(shape, bbox_array, &noise, &noise);
-
-  hmap::export_banner_png("ex_cloud_sdf.png",
-                          {z_sdf1, z_sdf2},
-                          hmap::Cmap::JET);
+  hmap::export_banner_png("ex_cloud_sdf.png", {z0, z1, z2}, hmap::Cmap::JET);
 }

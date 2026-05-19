@@ -3,10 +3,10 @@
 int main(void)
 {
   glm::ivec2 shape = {256, 256};
-  glm::vec2  res = {2.f, 2.f};
+  glm::vec2  kw = {2.f, 2.f};
   int        seed = 1;
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   hmap::remap(z);
 
   float talus = 2.f / shape.x;
@@ -16,19 +16,15 @@ int main(void)
   float       noise_ratio = 0.01f;
   hmap::fill_talus(z1, talus, seed, ir, noise_ratio);
 
-  // same algo on a coarser mesh to spare some computational time
-  hmap::Array z2 = z;
-  hmap::fill_talus_fast(z2, glm::ivec2(64, 64), talus, seed);
-
   // with seed mask
-  hmap::Array z3 = z;
+  hmap::Array z2 = z;
   hmap::Array mask = hmap::select_valley(z, 32);
   hmap::saturate(mask, 0.01f, 1.f);
 
-  hmap::fill_talus(z3, talus, seed, ir, noise_ratio, &mask);
+  hmap::fill_talus(z2, talus, seed, ir, noise_ratio, &mask);
 
   hmap::export_banner_png("ex_fill_talus.png",
-                          {z, z1, z2, z3},
+                          {z, z1, z2},
                           hmap::Cmap::TERRAIN,
                           true);
 }

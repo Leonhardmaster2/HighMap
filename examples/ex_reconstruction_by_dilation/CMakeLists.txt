@@ -1,0 +1,2 @@
+add_executable(ex_reconstruction_by_dilation ex_reconstruction_by_dilation.cpp)
+target_link_libraries(ex_reconstruction_by_dilation highmap)

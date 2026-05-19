@@ -1,12 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/coord_frame.hpp"
-#include "highmap/interpolate_array.hpp"
-#include "highmap/math.hpp"
-#include "highmap/virtual_array/virtual_array.hpp"
+#include <vector> // for vector
+
+#include "macrologger.h" // for LOG_DEBUG
+
+#include "highmap/coord_frame.hpp"                 // for CoordFrame
+#include "highmap/interpolate_array.hpp"           // for flatten_heightmap
+#include "highmap/math/core.hpp"                   // for lerp
+#include "highmap/virtual_array/tile_region.hpp"   // for TileRegion
+#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray, Com...
 
 namespace hmap
 {

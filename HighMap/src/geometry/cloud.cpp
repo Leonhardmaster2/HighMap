@@ -1,25 +1,38 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <cmath>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <locale>
-#include <sstream>
-#include <stdexcept>
-#include <string>
+#include <bits/std_abs.h> // for abs
 
-#include "delaunator-cpp.hpp"
-#include "macrologger.h"
+#include <algorithm> // for max, copy, min, fill_n
+#include <array>     // for array
+#include <cmath>     // for round, sqrt
+#include <cstddef>   // for size_t
+#include <fstream>   // for basic_ostream, operat...
+#include <iomanip>   // for operator<<, setw, set...
+#include <iostream>  // for cout
+#include <limits>    // for numeric_limits
+#include <locale>    // for locale
+#include <random>    // for uniform_real_distribu...
+#include <sstream>   // for basic_istringstream
+#include <stdexcept> // for invalid_argument, run...
+#include <string>    // for char_traits, string
+#include <utility>   // for move
+#include <vector>    // for vector
 
-#include "highmap/functions.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/geometry/graph.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/interpolate2d.hpp"
-#include "highmap/operator.hpp"
+#include "delaunator-cpp.hpp"        // for Delaunator
+#include "macrologger.h"             // for LOG_ERROR
+#include "point_sampler/metrics.hpp" // for distance_to_boundary
+#include "point_sampler/point.hpp"   // for Point
+#include "point_sampler/utils.hpp"   // for merge_by_dimension
+
+#include "highmap/array.hpp"                   // for Array, uint
+#include "highmap/geometry/cloud.hpp"          // for Cloud, random_cloud_d...
+#include "highmap/geometry/graph.hpp"          // for Graph
+#include "highmap/geometry/point.hpp"          // for Point, distance
+#include "highmap/geometry/point_sampling.hpp" // for random_points_distance
+#include "highmap/interpolate2d.hpp"           // for interpolate2d, Interp...
+#include "highmap/math/core.hpp"               // for lerp
+#include "highmap/operator.hpp"                // for random_vector
 
 namespace hmap
 {
@@ -72,6 +85,14 @@ Cloud::Cloud(const std::vector<glm::ivec2> &indices,
 
     this->points.emplace_back(x, y, 1.f);
   }
+}
+
+Cloud::Cloud(const std::vector<glm::vec3> &xyv)
+{
+  this->points.reserve(xyv.size());
+
+  for (const auto &p : xyv)
+    this->points.emplace_back(p.x, p.y, p.z);
 }
 
 void Cloud::add_point(const Point &p)
@@ -148,6 +169,8 @@ bool Cloud::from_csv(const std::string &fname)
 
 glm::vec4 Cloud::get_bbox() const
 {
+  if (this->size() == 0) return glm::vec4();
+
   std::vector<float> x = this->get_x();
   std::vector<float> y = this->get_y();
   glm::vec4          bbox;
@@ -163,13 +186,15 @@ glm::vec4 Cloud::get_bbox() const
 
 Point Cloud::get_center() const
 {
+  if (this->size() == 0) return Point(0.f, 0.f);
+
   Point center = Point();
   for (auto &p : this->points)
     center = center + p;
   return center / (float)this->points.size();
 }
 
-std::vector<int> Cloud::get_convex_hull_point_indices() const
+std::vector<int> Cloud::get_convex_hull() const
 {
   delaunator::Delaunator d(this->get_xy());
 
@@ -185,15 +210,10 @@ std::vector<int> Cloud::get_convex_hull_point_indices() const
   return chull;
 }
 
-size_t Cloud::get_npoints() const
-{
-  return this->points.size();
-}
-
 std::vector<float> Cloud::get_values() const
 {
   std::vector<float> values;
-  values.reserve(this->get_npoints());
+  values.reserve(this->size());
   for (auto &p : this->points)
     values.push_back(p.v);
   return values;
@@ -201,7 +221,7 @@ std::vector<float> Cloud::get_values() const
 
 float Cloud::get_values_max() const
 {
-  if (this->get_npoints() == 0) return 0.f;
+  if (this->size() == 0) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::max_element(values.begin(), values.end());
@@ -209,7 +229,7 @@ float Cloud::get_values_max() const
 
 float Cloud::get_values_min() const
 {
-  if (this->get_npoints() == 0) return 0.f;
+  if (this->size() == 0) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::min_element(values.begin(), values.end());
@@ -218,7 +238,7 @@ float Cloud::get_values_min() const
 std::vector<float> Cloud::get_x() const
 {
   std::vector<float> x;
-  x.reserve(this->get_npoints());
+  x.reserve(this->size());
   for (auto &p : this->points)
     x.push_back(p.x);
   return x;
@@ -227,7 +247,7 @@ std::vector<float> Cloud::get_x() const
 std::vector<float> Cloud::get_xy() const
 {
   std::vector<float> xy;
-  xy.reserve(2 * this->get_npoints());
+  xy.reserve(2 * this->size());
   for (auto &p : this->points)
   {
     xy.push_back(p.x);
@@ -239,50 +259,30 @@ std::vector<float> Cloud::get_xy() const
 std::vector<float> Cloud::get_y() const
 {
   std::vector<float> y;
-  y.reserve(this->get_npoints());
+  y.reserve(this->size());
   for (auto &p : this->points)
     y.push_back(p.y);
   return y;
 }
 
-std::vector<float> Cloud::interpolate_values_from_array(const Array &array,
-                                                        glm::vec4    bbox)
+size_t Cloud::nearest_point(const glm::vec2 &xy) const
 {
-  const float      inv_width = 1.0f / (bbox.y - bbox.x);
-  const float      inv_height = 1.0f / (bbox.w - bbox.z);
-  const glm::ivec2 shape = {array.shape.x - 1, array.shape.y - 1};
+  size_t kn = 0;
+  float  d2max = std::numeric_limits<float>::max();
 
-  std::vector<float> values;
-  values.reserve(points.size());
-
-  for (const auto &p : points)
+  for (size_t k = 0; k < this->size(); k++)
   {
-    const float xn = (p.x - bbox.x) * inv_width;
-    const float yn = (p.y - bbox.z) * inv_height;
+    glm::vec2 diff = xy - glm::vec2(this->points[k].x, this->points[k].y);
+    float     d2 = glm::dot(diff, diff);
 
-    if (xn < 0.0f || xn > 1.0f || yn < 0.0f || yn > 1.0f)
+    if (d2 < d2max)
     {
-      values.push_back(0.0f);
-      continue;
-    }
-
-    const float x_scaled = xn * shape.x;
-    const float y_scaled = yn * shape.y;
-    const int   i = static_cast<int>(x_scaled);
-    const int   j = static_cast<int>(y_scaled);
-
-    if (i >= 0 && i < array.shape.x && j >= 0 && j < array.shape.y)
-    {
-      const float uu = x_scaled - i;
-      const float vv = y_scaled - j;
-      values.push_back(array.get_value_bilinear_at(i, j, uu, vv));
-    }
-    else
-    {
-      values.push_back(0.0f);
+      d2max = d2;
+      kn = k;
     }
   }
-  return values;
+
+  return kn;
 }
 
 void Cloud::print()
@@ -299,7 +299,7 @@ void Cloud::print()
             << std::endl;
 
   std::cout << "  - points:" << std::endl;
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     std::cout << std::setw(6) << k;
     std::cout << std::setw(12) << this->points[k].x;
@@ -311,31 +311,13 @@ void Cloud::print()
 
 void Cloud::randomize(uint seed, glm::vec4 bbox)
 {
-  Cloud cloud_rnd = random_cloud(this->get_npoints(),
+  Cloud cloud_rnd = random_cloud(this->size(),
                                  seed,
                                  PointSamplingMethod::RND_LHS,
                                  bbox);
 
-  for (size_t k = 0; k < this->get_npoints(); ++k)
+  for (size_t k = 0; k < this->size(); ++k)
     this->points[k] = cloud_rnd.points[k];
-}
-
-void Cloud::rejection_filter_density(const Array     &density_mask,
-                                     uint             seed,
-                                     const glm::vec4 &bbox)
-{
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(0.f, 1.f);
-
-  auto density_fct = make_xy_function_from_array(density_mask, bbox);
-
-  std::remove_if(this->points.begin(),
-                 this->points.end(),
-                 [&](Point p)
-                 {
-                   float rnd = dis(gen);
-                   return (rnd > density_fct(p.x, p.y));
-                 });
 }
 
 void Cloud::remap_values(float vmin, float vmax)
@@ -403,9 +385,9 @@ void Cloud::set_values_from_border_distance(const glm::vec4 &bbox)
 
 void Cloud::set_values_from_chull_distance()
 {
-  std::vector<int> chull = this->get_convex_hull_point_indices();
+  std::vector<int> chull = this->get_convex_hull();
 
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  for (size_t i = 0; i < this->size(); i++)
   {
     float dmax = std::numeric_limits<float>::max();
     for (size_t k = 0; k < chull.size(); k++)
@@ -432,16 +414,20 @@ void Cloud::set_values_from_min_distance()
   this->set_values(dist);
 }
 
+size_t Cloud::size() const
+{
+  return this->points.size();
+}
+
 void Cloud::snap_points_to_bounding_box(const glm::vec4 &bbox,
                                         float            tolerance_ratio)
 {
-  if (!this->get_npoints()) return;
+  if (!this->size()) return;
 
   // reference distance based on point density
   float lx = bbox.y - bbox.x;
   float ly = bbox.w - bbox.z;
-  float dref = tolerance_ratio *
-               std::sqrt(lx * ly / float(this->get_npoints()));
+  float dref = tolerance_ratio * std::sqrt(lx * ly / float(this->size()));
 
   // snap points to border if close enough
   for (auto &p : this->points)
@@ -529,6 +515,13 @@ void Cloud::to_array(Array &array, glm::vec4 bbox) const
   }
 }
 
+Array Cloud::to_array(glm::ivec2 shape, glm::vec4 bbox) const
+{
+  Array array(shape);
+  this->to_array(array, bbox);
+  return array;
+}
+
 void Cloud::to_array_interp(Array                &array,
                             glm::vec4             bbox,
                             InterpolationMethod2D interpolation_method,
@@ -556,42 +549,6 @@ void Cloud::to_array_interp(Array                &array,
                         p_noise_x,
                         p_noise_y,
                         bbox_array);
-}
-
-Array Cloud::to_array_sdf(glm::ivec2 shape,
-                          glm::vec4  bbox,
-                          Array     *p_noise_x,
-                          Array     *p_noise_y,
-                          glm::vec4  bbox_array) const
-{
-  // nodes
-  std::vector<float> xp = this->get_x();
-  std::vector<float> yp = this->get_y();
-
-  for (size_t k = 0; k < xp.size(); k++)
-  {
-    xp[k] = (xp[k] - bbox.x) / (bbox.y - bbox.x);
-    yp[k] = (yp[k] - bbox.z) / (bbox.w - bbox.z);
-  }
-
-  // fill heightmap
-  auto distance_fct = [&xp, &yp](float x, float y, float)
-  {
-    float d = std::numeric_limits<float>::max();
-    for (size_t i = 0; i < xp.size(); i++)
-      d = std::min(d, std::hypot(x - xp[i], y - yp[i]));
-    return std::sqrt(d);
-  };
-
-  Array z = Array(shape);
-  fill_array_using_xy_function(z,
-                               bbox_array,
-                               nullptr,
-                               p_noise_x,
-                               p_noise_y,
-                               nullptr,
-                               distance_fct);
-  return z;
 }
 
 void Cloud::to_csv(const std::string &fname) const
@@ -640,7 +597,7 @@ void Cloud::to_png(const std::string &fname,
 std::vector<glm::vec3> Cloud::to_vec3() const
 {
   std::vector<glm::vec3> vec;
-  vec.reserve(this->get_npoints());
+  vec.reserve(this->size());
 
   for (const auto &p : this->points)
     vec.push_back({p.x, p.y, p.v});
@@ -674,7 +631,7 @@ Cloud merge_clouds(const std::vector<Cloud> &clouds)
   // reserve total size to avoid reallocations
   std::size_t total_size = 0;
   for (const auto &cloud : clouds)
-    total_size += cloud.get_npoints();
+    total_size += cloud.size();
 
   x.reserve(total_size);
   y.reserve(total_size);

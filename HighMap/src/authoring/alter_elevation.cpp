@@ -1,11 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/kernels.hpp"
+#include <algorithm> // for max, min
+#include <cmath>     // for floor
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/cloud.hpp" // for Cloud
+#include "highmap/geometry/point.hpp" // for Point
+#include "highmap/kernels.hpp"        // for cubic_pulse
 
 namespace hmap
 {

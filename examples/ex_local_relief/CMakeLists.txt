@@ -1,0 +1,2 @@
+add_executable(ex_local_relief ex_local_relief.cpp)
+target_link_libraries(ex_local_relief highmap)

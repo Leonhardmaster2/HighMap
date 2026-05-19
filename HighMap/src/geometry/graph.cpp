@@ -1,32 +1,41 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <limits>
-#include <list>
+#include <algorithm>  // for max, copy, fill_n, clamp, fill
+#include <cmath>      // for sqrt
+#include <cstddef>    // for size_t
+#include <fstream>    // for basic_ostream, char_traits
+#include <functional> // for function
+#include <iomanip>    // for operator<<, setw
+#include <iostream>   // for cout
+#include <limits>     // for numeric_limits
+#include <list>       // for list, operator==, _List_ite...
+#include <map>        // for map
+#include <string>     // for string
+#include <utility>    // for pair
+#include <vector>     // for vector
 
-#include "macrologger.h"
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/graph.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/array.hpp"          // for Array
+#include "highmap/colormaps.hpp"      // for Cmap
+#include "highmap/geometry/graph.hpp" // for Graph
+#include "highmap/geometry/path.hpp"  // for Path, fractalize
+#include "highmap/geometry/point.hpp" // for Point, distance
+#include "highmap/operator.hpp"       // for fill_array_using_xy_function
 
 namespace hmap
 {
 
 std::vector<int> Graph::dijkstra(int source_point_index, int target_point_index)
 {
-  std::vector<float> dist(this->get_npoints());
-  std::vector<int>   prev(this->get_npoints());
+  std::vector<float> dist(this->size());
+  std::vector<int>   prev(this->size());
 
   // --- Dijkstra's algo
   std::list<int> queue = {};
 
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  for (size_t i = 0; i < this->size(); i++)
   {
     dist[i] = std::numeric_limits<float>::max();
     prev[i] = -1;
@@ -143,11 +152,11 @@ size_t Graph::get_nedges()
 
 Graph Graph::minimum_spanning_tree_prim()
 {
-  std::vector<int>   parent(this->get_npoints());
-  std::vector<float> key(this->get_npoints());
-  std::vector<bool>  is_point_in_mst(this->get_npoints());
+  std::vector<int>   parent(this->size());
+  std::vector<float> key(this->size());
+  std::vector<bool>  is_point_in_mst(this->size());
 
-  for (size_t i = 0; i < this->get_npoints(); i++)
+  for (size_t i = 0; i < this->size(); i++)
   {
     key[i] = std::numeric_limits<float>::max();
     is_point_in_mst[i] = false;
@@ -157,7 +166,7 @@ Graph Graph::minimum_spanning_tree_prim()
   key[0] = 0.f;
   parent[0] = -1;
 
-  for (size_t i = 0; i < this->get_npoints() - 1; i++)
+  for (size_t i = 0; i < this->size() - 1; i++)
   {
     // find point with smallest 'key' while not being in the MS tree
     int   k = 0;
@@ -171,7 +180,7 @@ Graph Graph::minimum_spanning_tree_prim()
 
     is_point_in_mst[k] = true;
 
-    for (size_t p = 0; p < this->get_npoints(); p++)
+    for (size_t p = 0; p < this->size(); p++)
     {
       if ((this->adjacency_matrix[{k, p}] > 0.f) and
           (is_point_in_mst[p] == false) and
@@ -185,7 +194,7 @@ Graph Graph::minimum_spanning_tree_prim()
 
   // build output graph
   Graph graph = Graph(this->points);
-  for (size_t i = 1; i < this->get_npoints(); i++)
+  for (size_t i = 1; i < this->size(); i++)
     graph.add_edge({(int)i, parent[i]});
 
   return graph;
@@ -194,7 +203,7 @@ Graph Graph::minimum_spanning_tree_prim()
 void Graph::print()
 {
   std::cout << "Points:" << std::endl;
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     std::cout << std::setw(6) << k;
     std::cout << std::setw(12) << this->points[k].x;
@@ -217,7 +226,7 @@ void Graph::print()
 Graph Graph::remove_orphan_points()
 {
   Graph            graph_out = Graph();
-  std::vector<int> new_point_idx(this->get_npoints());
+  std::vector<int> new_point_idx(this->size());
 
   // fill vector with '-1' to keep track of which points have already
   // been added
@@ -225,7 +234,7 @@ Graph Graph::remove_orphan_points()
 
   this->update_connectivity();
 
-  for (size_t k = 0; k < this->get_npoints(); k++)
+  for (size_t k = 0; k < this->size(); k++)
   {
     if (this->connectivity[k].size() > 0)
     {
@@ -234,7 +243,7 @@ Graph Graph::remove_orphan_points()
       if (new_point_idx[k] == -1)
       {
         graph_out.add_point(this->points[k]);
-        new_point_idx[k] = (int)graph_out.get_npoints() - 1;
+        new_point_idx[k] = (int)graph_out.size() - 1;
       }
 
       for (size_t r = 0; r < this->connectivity[k].size(); r++)
@@ -243,7 +252,7 @@ Graph Graph::remove_orphan_points()
         if ((j > (int)k) and (new_point_idx[j] == -1))
         {
           graph_out.add_point(this->points[j]);
-          new_point_idx[j] = (int)graph_out.get_npoints() - 1;
+          new_point_idx[j] = (int)graph_out.size() - 1;
         }
       }
     }
@@ -306,8 +315,8 @@ void Graph::to_array_fractalize(Array    &array,
     Point p2 = this->points[this->edges[k][1]];
     Path  path = Path({p1, p2});
 
-    path.resample(dmin);
-    path.fractalize(iterations, seed, sigma, orientation, persistence);
+    path.resample_by_spacing(dmin);
+    path = fractalize(path, iterations, seed, sigma, orientation, persistence);
     path.to_array(array, bbox);
   }
 }
@@ -366,16 +375,16 @@ void Graph::to_csv(std::string fname_xy, std::string fname_adjacency)
   f.close();
 
   f.open(fname_adjacency, std::ios::out);
-  for (int i = 0; i < (int)this->get_npoints(); i++)
+  for (int i = 0; i < (int)this->size(); i++)
   {
-    for (int j = 0; j < (int)this->get_npoints(); j++)
+    for (int j = 0; j < (int)this->size(); j++)
     {
       float v = 0.f;
       if (this->adjacency_matrix.count({i, j}))
         v = this->adjacency_matrix[{i, j}];
       f << v;
 
-      if (j < (int)this->get_npoints() - 1) f << ",";
+      if (j < (int)this->size() - 1) f << ",";
     }
     f << std::endl;
   }
@@ -406,7 +415,7 @@ void Graph::update_adjacency_matrix()
 
 void Graph::update_connectivity()
 {
-  std::vector<std::vector<int>> nbrs(this->get_npoints());
+  std::vector<std::vector<int>> nbrs(this->size());
 
   for (std::size_t k = 0; k < this->get_nedges(); k++)
   {

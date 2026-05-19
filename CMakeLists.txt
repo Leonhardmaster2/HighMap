@@ -1,30 +1,88 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(highmap-root)
+# -----------------------------------------------------------------------------
+# Optional: force clang Usage: cmake -B build -DCMAKE_C_COMPILER=clang
+# -DCMAKE_CXX_COMPILER=clang++
+# -----------------------------------------------------------------------------
+
+project(highmap-root LANGUAGES C CXX)
+
+# -----------------------------------------------------------------------------
+# Options
+# -----------------------------------------------------------------------------
 
 option(HIGHMAP_ENABLE_OPENCL "" ON)
 option(HIGHMAP_ENABLE_EXAMPLES "" ON)
 option(HIGHMAP_ENABLE_TESTS "" ON)
+option(HIGHMAP_ENABLE_BENCHMARKS "" ON)
+
+# -----------------------------------------------------------------------------
+# C++
+# -----------------------------------------------------------------------------
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  # MSVC compiler options
-  set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} /W4 /Od /D M_PI=3.14159265358979323846")
+# -----------------------------------------------------------------------------
+# Compiler flags
+# -----------------------------------------------------------------------------
 
-  message(STATUS "MSVC compiler...")
-  add_definitions("-DHMAP_MSVC")
-else()
-  # GNU compiler options
-  set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -Ofast -ffast-math -pthread -fPIC -DLOG_LEVEL=3 -Wno-free-nonheap-object -Wno-deprecated-enum-enum-conversion"
-  )
+if(MSVC)
+
+  message(STATUS "Compiler: MSVC")
+
+  add_definitions(-DHMAP_MSVC)
+
+  add_compile_options(/W4 /Od)
+
+  add_compile_definitions(M_PI=3.14159265358979323846)
+
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+
+  message(STATUS "Compiler: Clang")
+
+  add_compile_options(
+    -Wall
+    -Wextra
+    -Wpedantic
+    -O3
+    -Ofast
+    -ffast-math
+    -pthread
+    -fPIC
+    -Wno-deprecated-enum-enum-conversion)
+
+  add_compile_definitions(LOG_LEVEL=3)
+
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+
+  message(STATUS "Compiler: GCC")
+
+  add_compile_options(
+    -Wall
+    -Wextra
+    -O3
+    -Ofast
+    -ffast-math
+    -pthread
+    -fPIC
+    -Wno-free-nonheap-object
+    -Wno-deprecated-enum-enum-conversion)
+
+  add_compile_definitions(LOG_LEVEL=3)
+
 endif()
+
+# -----------------------------------------------------------------------------
+# Output
+# -----------------------------------------------------------------------------
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-# --- dependencies
+# -----------------------------------------------------------------------------
+# Dependencies
+# -----------------------------------------------------------------------------
 
 find_package(GSL REQUIRED COMPONENTS gsl gslcblas)
 find_package(assimp REQUIRED)
@@ -32,26 +90,50 @@ find_package(glm REQUIRED)
 find_package(OpenMP REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(OpenCL REQUIRED)
+
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+# OpenMP
+add_compile_options(${OpenMP_CXX_FLAGS})
 
+# OpenCL
 add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
                         CL_HPP_TARGET_OPENCL_VERSION=120)
 
+# -----------------------------------------------------------------------------
+# External libs
+# -----------------------------------------------------------------------------
+
 add_subdirectory(external)
 
-# --- library
+# -----------------------------------------------------------------------------
+# Library
+# -----------------------------------------------------------------------------
 
 add_subdirectory(HighMap)
 
-# --- everything else...
+# -----------------------------------------------------------------------------
+# Examples
+# -----------------------------------------------------------------------------
 
 if(HIGHMAP_ENABLE_EXAMPLES)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
+  add_subdirectory(examples)
 endif()
+
+# -----------------------------------------------------------------------------
+# Tests
+# -----------------------------------------------------------------------------
 
 if(HIGHMAP_ENABLE_TESTS)
   message(STATUS "HighMap tests enabled")
-  add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+  add_subdirectory(tests)
+endif()
+
+# -----------------------------------------------------------------------------
+# Benchmarks
+# -----------------------------------------------------------------------------
+
+if(HIGHMAP_ENABLE_BENCHMARKS)
+  message(STATUS "HighMap benchmarks enabled")
+  add_subdirectory(benchmarks)
 endif()

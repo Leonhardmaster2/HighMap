@@ -13,9 +13,12 @@
  *
  */
 #pragma once
-#include "cl_wrapper.hpp"
+#include <string> // for string
 
-#include "highmap/array.hpp"
+#include "cl_wrapper.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp" // for Array
 
 namespace hmap::gpu
 {

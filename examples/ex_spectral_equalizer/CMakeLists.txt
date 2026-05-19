@@ -1,0 +1,2 @@
+add_executable(ex_spectral_equalizer ex_spectral_equalizer.cpp)
+target_link_libraries(ex_spectral_equalizer highmap)

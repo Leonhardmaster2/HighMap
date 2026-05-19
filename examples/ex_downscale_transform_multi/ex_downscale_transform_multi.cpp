@@ -18,7 +18,7 @@ int main(void)
   std::vector<float> kc_list = {64.f, 96.f, 256.f};
   // std::vector<float> kc_list = {256.f, 96.f, 64.f};
 
-  auto lambda = [](hmap::Array &x, const int current_index)
+  auto lambda = [](hmap::Array &x, const int /* current_index */)
   { hmap::hydraulic_stream_log(x, 0.1f, 0.001f); };
 
   // apply the erosion to each array with different resolutions

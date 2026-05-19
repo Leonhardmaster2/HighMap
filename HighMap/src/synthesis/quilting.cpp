@@ -1,12 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
+#include <sys/types.h>    // for size_t, uint
 
-#include "highmap/array.hpp"
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/transform.hpp"
+#include <algorithm> // for min, max
+#include <cmath>     // for ceil
+#include <random>    // for uniform_int_distribution, mt19937
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"     // for Array
+#include "highmap/math/core.hpp" // for lerp
+#include "highmap/operator.hpp"  // for find_vertical_cut_path, generate...
+#include "highmap/transform.hpp" // for transpose
 
 namespace hmap
 {

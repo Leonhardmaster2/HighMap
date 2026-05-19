@@ -16,7 +16,7 @@
  */
 #pragma once
 #include "highmap/array.hpp"
-#include "highmap/math.hpp"
+#include "highmap/math/distance_functions.hpp"
 
 namespace hmap
 {
@@ -213,14 +213,50 @@ Array make_periodic_stitching(const Array &array, float overlap);
  * @return         Array A new tiled array that is periodic in both directions.
  *
  * **Example**
- * @include make_periodic_tiling.cpp
+ * @include ex_make_periodic_tiling.cpp
  *
  * **Result**
- * @image html make_periodic_tiling.png
+ * @image html ex_make_periodic_tiling.png
  */
 Array make_periodic_tiling(const Array &array,
                            float        overlap,
                            glm::ivec2   tiling);
+
+/**
+ * @brief Picks a boundary cell using weighted random selection.
+ *
+ * Selects a cell on the specified boundary, where each candidate is assigned a
+ * weight. Higher weights increase the probability of selection.
+ *
+ * Optional weighting factors:
+ * - favor_boundary_center: favors cells near the boundary center.
+ * - favor_lower_elevation: favors lower values in @p z (normalized).
+ * - favor_sinks: favors local minima (cells <= neighbors).
+ *
+ * Weights are combined multiplicatively. Selection is deterministic given @p
+ * seed.
+ *
+ * @param  z                     Input 2D scalar field.
+ * @param  boundary              Boundary to sample from.
+ * @param  seed                  Random seed.
+ * @param  favor_boundary_center Enable center bias.
+ * @param  favor_lower_elevation Enable low-value bias.
+ * @param  favor_sinks           Enable sink bias.
+ *
+ * @return                       Selected boundary cell coordinates.
+ *
+ * **Example**
+ * @include ex_pick_boundary_cell.cpp
+ *
+ * **Result**
+ * @image html ex_pick_boundary_cell.png
+ */
+glm::ivec2 pick_boundary_cell(const Array   &z,
+                              DomainBoundary boundary,
+                              uint           seed,
+                              bool           favor_boundary_center = true,
+                              bool           favor_lower_elevation = true,
+                              bool           favor_sinks = true);
 
 /**
  * @brief Enforces specific values at the boundaries of the array.

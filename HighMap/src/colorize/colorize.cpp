@@ -2,19 +2,19 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cmath>
-#include <stdint.h>
-#include <vector>
+#include <stdint.h> // for uint8_t
 
-#include "macrologger.h"
+#include <algorithm> // for clamp, max_element
+#include <utility>   // for swap
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
+#include "highmap/array.hpp" // for Array
 #include "highmap/colorize.hpp"
-#include "highmap/colormaps.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math.hpp"
-#include "highmap/range.hpp"
-#include "highmap/shadows.hpp"
+#include "highmap/colormaps.hpp"  // for get_colormap_data
+#include "highmap/gradient.hpp"   // for gradient_norm
+#include "highmap/math/array.hpp" // for pow
+#include "highmap/range.hpp"      // for clamp, remap
+#include "highmap/shadows.hpp"    // for hillshade
 
 namespace hmap
 {

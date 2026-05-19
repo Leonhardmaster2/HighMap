@@ -1,15 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <bits/std_abs.h> // for abs
 
-#include "macrologger.h"
+#include <algorithm>  // for min
+#include <cmath>      // for pow
+#include <functional> // for function
+#include <vector>     // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/transform.hpp"
+#include "highmap/array.hpp"                   // for Array
+#include "highmap/boundary.hpp"                // for PeriodicityType, fill...
+#include "highmap/math/core.hpp"               // for lerp, smoothstep3
+#include "highmap/math/distance_functions.hpp" // for get_distance_function
+#include "highmap/operator.hpp"                // for linspace, find_vertic...
+#include "highmap/transform.hpp"               // for transpose
 
 namespace hmap
 {

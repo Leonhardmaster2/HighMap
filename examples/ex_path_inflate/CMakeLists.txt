@@ -1,0 +1,2 @@
+add_executable(ex_path_inflate ex_path_inflate.cpp)
+target_link_libraries(ex_path_inflate highmap)

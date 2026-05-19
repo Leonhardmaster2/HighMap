@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept>
+#include <cmath>      // for pow, sqrt
+#include <functional> // for function
+#include <stdexcept>  // for invalid_argument
 
-#include "macrologger.h"
-
-#include "highmap/math.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/math/core.hpp"     // for smoothstep3, gain, smoothstep3_...
+#include "highmap/math/profiles.hpp" // for RadialProfile, get_radial_profi...
 
 namespace hmap
 {
@@ -39,6 +39,20 @@ std::function<float(float)> get_radial_profile_function(
 
   case RadialProfile::RP_SMOOTHSTEP_UPPER:
     fct = [](float x) { return smoothstep3_upper(x); };
+    break;
+
+  case RadialProfile::RP_FLAT_BOTTOM:
+    fct = [delta](float x)
+    {
+      if (x < 1.f - 1.f / delta)
+        return 0.f;
+      else
+        return smoothstep3(delta * (x - 1.f) + 1.f);
+    };
+    break;
+
+  case RadialProfile::RP_SQRT:
+    fct = [](float x) { return std::sqrt(x); };
     break;
 
   default:

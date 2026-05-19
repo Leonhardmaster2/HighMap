@@ -1,10 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <random> // for uniform_real_distribution
+#include <vector> // for vector
 
-#include <random>
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "highmap/array.hpp"
+#include "highmap/array.hpp" // for Array
 
 namespace hmap
 {

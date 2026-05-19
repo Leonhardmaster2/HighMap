@@ -1,11 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include <sys/types.h> // for uint
+
+#include <memory> // for allocator
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"             // for Array
+#include "highmap/boundary.hpp"          // for extrapolate_borders
+#include "highmap/erosion.hpp"           // for hydraulic_particle
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/operator.hpp"          // for apply_with_mask
+#include "highmap/range.hpp"             // for clamp_min
 
 namespace hmap::gpu
 {
@@ -99,46 +106,28 @@ void hydraulic_particle(Array       &z,
                         bool         enable_directional_bias,
                         float        angle_bias)
 {
-  if (!p_mask)
-    gpu::hydraulic_particle(z,
-                            nparticles,
-                            seed,
-                            p_bedrock,
-                            p_moisture_map,
-                            p_elevation_shift,
-                            p_erosion_map,
-                            p_deposition_map,
-                            c_capacity,
-                            c_erosion,
-                            c_deposition,
-                            c_inertia,
-                            c_gravity,
-                            drag_rate,
-                            evap_rate,
-                            enable_directional_bias,
-                            angle_bias);
-  else
-  {
-    Array z_f = z;
-    gpu::hydraulic_particle(z_f,
-                            nparticles,
-                            seed,
-                            p_bedrock,
-                            p_moisture_map,
-                            p_elevation_shift,
-                            p_erosion_map,
-                            p_deposition_map,
-                            c_capacity,
-                            c_erosion,
-                            c_deposition,
-                            c_inertia,
-                            c_gravity,
-                            drag_rate,
-                            evap_rate,
-                            enable_directional_bias,
-                            angle_bias);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    gpu::hydraulic_particle(a,
+                                            nparticles,
+                                            seed,
+                                            p_bedrock,
+                                            p_moisture_map,
+                                            p_elevation_shift,
+                                            p_erosion_map,
+                                            p_deposition_map,
+                                            c_capacity,
+                                            c_erosion,
+                                            c_deposition,
+                                            c_inertia,
+                                            c_gravity,
+                                            drag_rate,
+                                            evap_rate,
+                                            enable_directional_bias,
+                                            angle_bias);
+                  });
 }
 
 } // namespace hmap::gpu

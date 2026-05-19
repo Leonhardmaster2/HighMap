@@ -1,0 +1,2 @@
+add_executable(ex_phasor_profile ex_phasor_profile.cpp)
+target_link_libraries(ex_phasor_profile highmap)
