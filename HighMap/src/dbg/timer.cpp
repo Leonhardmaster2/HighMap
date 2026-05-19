@@ -4,6 +4,10 @@
 
 #include "highmap/dbg/timer.hpp"
 
+#include <iomanip>  // for operator<<, setw
+#include <iostream> // for basic_ostream, char_traits, cout, operator<<, endl
+#include <utility>  // for pair
+
 namespace hmap
 {
 

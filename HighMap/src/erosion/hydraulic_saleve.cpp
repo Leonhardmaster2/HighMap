@@ -1,17 +1,23 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/dbg/timer.hpp"
+#include <algorithm> // for max, min
+#include <cmath>     // for pow
+#include <vector>    // for vector
 
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/hydrology/drainage_basin.hpp"
-#include "highmap/interpolate2d.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"                    // for Array
+#include "highmap/erosion.hpp"                  // for hydraulic_saleve
+#include "highmap/geometry/cloud.hpp"           // for Cloud, random_cloud_...
+#include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
+#include "highmap/interpolate2d.hpp"            // for InterpolationMethod2D
+#include "highmap/math/array.hpp"               // for lerp
+#include "highmap/primitives.hpp"               // for biquad_pulse_x, biqu...
+#include "highmap/range.hpp"                    // for remap
+#include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh, cubi...
 
 namespace hmap
 {

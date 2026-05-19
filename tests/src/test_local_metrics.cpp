@@ -1,7 +1,7 @@
-#include <gtest/gtest.h>
-
 #include "highmap/dbg/assert.hpp"
 #include "highmap/local_metrics.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

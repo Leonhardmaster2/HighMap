@@ -1,13 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept>
+#include <cmath>      // for pow, sqrt
+#include <functional> // for function
+#include <stdexcept>  // for invalid_argument
 
-#include "macrologger.h"
-
-#include "highmap/math/core.hpp"
-#include "highmap/math/profiles.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/math/core.hpp"     // for smoothstep3, gain, smoothstep3_...
+#include "highmap/math/profiles.hpp" // for RadialProfile, get_radial_profi...
 
 namespace hmap
 {

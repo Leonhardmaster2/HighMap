@@ -1,10 +1,11 @@
 #include "macrologger.h"
-#include <gtest/gtest.h>
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/statistics.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

@@ -14,15 +14,16 @@
  */
 #pragma once
 
-#include <cassert>
 #include <utility>
+
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
 
 #include "NoiseLib/include/controlfunction.h"
 #include "NoiseLib/include/math2d.h"
 #include "NoiseLib/include/utils.h"
 
-#include "highmap/array.hpp"
-#include "highmap/functions.hpp"
+#include <cassert>
 
 namespace hmap
 {

@@ -1,15 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <vector> // for allocator, vector
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"             // for Array, operator*
+#include "highmap/filters.hpp"           // for smooth_cpulse
+#include "highmap/gradient.hpp"          // for gradient_norm
+#include "highmap/math/array.hpp"        // for lerp
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/range.hpp"             // for maximum_smooth, remap
 
 namespace hmap::gpu
 {

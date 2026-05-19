@@ -17,11 +17,13 @@
 #pragma once
 #include <filesystem>
 #include <map>
+
 #include <opencv2/imgcodecs.hpp>
-#include <png.h>
 
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
+
+#include <png.h>
 
 namespace hmap
 {

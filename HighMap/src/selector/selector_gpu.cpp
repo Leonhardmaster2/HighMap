@@ -1,11 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/curvature.hpp"  // for CurvatureType, curvature_quadric
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/morphology.hpp" // for morphological_black_hat, morpholog...
+#include "highmap/range.hpp"      // for clamp_min
 
 namespace hmap::gpu
 {

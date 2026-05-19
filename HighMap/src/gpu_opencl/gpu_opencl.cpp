@@ -3,6 +3,11 @@
  * this software. */
 #include "highmap/opencl/gpu_opencl.hpp"
 
+#include <vector> // for vector
+
+#include "cl_wrapper/device_manager.hpp" // for DeviceManager
+#include "cl_wrapper/kernel_manager.hpp" // for KernelManager
+
 namespace hmap::gpu
 {
 
@@ -107,6 +112,7 @@ bool init_opencl()
 #include "kernels/strata.cl"
 #include "kernels/strata_cells.cl"
 #include "kernels/strata_terrace.cl"
+
       ;
 
   std::string opencl_build_options = "-cl-fast-relaxed-math "

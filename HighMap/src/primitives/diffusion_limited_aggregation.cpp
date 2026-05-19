@@ -1,15 +1,23 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <queue>
+#include <sys/types.h> // for size_t, uint
 
-#include "macrologger.h"
+#include <algorithm> // for max
+#include <cmath>     // for cos, floor, hypot, pow, sin
+#include <limits>    // for numeric_limits
+#include <queue>     // for priority_queue
+#include <random>    // for uniform_real_distribution
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/interpolate2d.hpp"
-#include "highmap/math/core.hpp"
+#include "highmap/array.hpp"            // for Array
+#include "highmap/boundary.hpp"         // for extrapolate_borders, fill_b...
+#include "highmap/filters.hpp"          // for fill_talus
+#include "highmap/geometry/cloud.hpp"   // for Cloud, random_cloud_jittered
+#include "highmap/geometry/point.hpp"   // for Point
+#include "highmap/interpolate2d.hpp"    // for interpolate2d, Interpolatio...
+#include "highmap/primitives.hpp"       // for diffusion_limited_aggregation
+#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh
 
 namespace hmap
 {

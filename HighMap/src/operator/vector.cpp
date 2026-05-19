@@ -2,14 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm>
-#include <list>
-#include <numeric>
-#include <random>
-#include <stdexcept>
-#include <vector>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <algorithm> // for fill_n, max, max_element, min_element, copy
+#include <cmath>     // for log, exp
+#include <random>    // for uniform_real_distribution, mt19937
+#include <stdexcept> // for invalid_argument
+#include <vector>    // for vector
 
 namespace hmap
 {

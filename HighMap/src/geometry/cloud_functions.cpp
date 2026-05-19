@@ -1,12 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/functions.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/kd_tree.hpp"
+#include <algorithm>  // for remove_if
+#include <cmath>      // for sqrt
+#include <functional> // for function
+#include <random>     // for uniform_real_distribution
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"            // for Array, uint
+#include "highmap/functions.hpp"        // for make_xy_function_from_array
+#include "highmap/geometry/cloud.hpp"   // for Cloud, cloud_sdf_to_array
+#include "highmap/geometry/grids.hpp"   // for grid_xy_vector
+#include "highmap/geometry/kd_tree.hpp" // for KDTreeContext
+#include "highmap/geometry/point.hpp"   // for Point
 
 namespace hmap
 {

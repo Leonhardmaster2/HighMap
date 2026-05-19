@@ -1,8 +1,8 @@
-#include <gtest/gtest.h>
-
 #include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/dbg/timer.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

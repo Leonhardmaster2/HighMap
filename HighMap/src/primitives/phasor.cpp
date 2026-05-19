@@ -1,12 +1,16 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/gradient.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/math/profiles.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include <sys/types.h> // for uint
+
+#include <cmath>      // for atan, sqrt, M_PI
+#include <functional> // for function
+
+#include "highmap/array.hpp"         // for Array, operator*, operator+
+#include "highmap/gradient.hpp"      // for phase_field_angle
+#include "highmap/math/core.hpp"     // for lerp
+#include "highmap/math/profiles.hpp" // for PhasorProfile, get_phasor_profi...
+#include "highmap/range.hpp"         // for minimum
 
 namespace hmap::gpu
 {

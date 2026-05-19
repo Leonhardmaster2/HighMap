@@ -1,19 +1,29 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <limits>
-#include <list>
+#include "highmap/geometry/graph.hpp" // for Graph
 
-#include "macrologger.h"
+#include <algorithm>  // for max, copy, fill_n, clamp, fill
+#include <cmath>      // for sqrt
+#include <cstddef>    // for size_t
+#include <fstream>    // for basic_ostream, char_traits
+#include <functional> // for function
+#include <iomanip>    // for operator<<, setw
+#include <iostream>   // for cout
+#include <limits>     // for numeric_limits
+#include <list>       // for list, operator==, _List_ite...
+#include <map>        // for map
+#include <string>     // for string
+#include <utility>    // for pair
+#include <vector>     // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/graph.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/operator.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/colormaps.hpp"      // for Cmap
+#include "highmap/geometry/path.hpp"  // for Path, fractalize
+#include "highmap/geometry/point.hpp" // for Point, distance
+#include "highmap/operator.hpp"       // for fill_array_using_xy_function
 
 namespace hmap
 {

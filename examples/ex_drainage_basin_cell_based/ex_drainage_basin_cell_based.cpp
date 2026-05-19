@@ -1,5 +1,4 @@
 #include "highmap.hpp"
-
 #include "highmap/dbg/timer.hpp"
 
 int main(void)

@@ -1,11 +1,13 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept>
+#include <algorithm> // for max
+#include <cmath>     // for sqrt
+#include <stdexcept> // for invalid_argument
 
-#include "highmap/array.hpp"
-#include "highmap/range.hpp"
-#include "highmap/statistics.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/range.hpp"      // for remap
+#include "highmap/statistics.hpp" // for NormalizationMethod, variance
 
 namespace hmap
 {

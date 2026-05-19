@@ -1,10 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/operator.hpp"
+#include <cmath>      // for exp
+#include <functional> // for function
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"    // for Array, operator*
+#include "highmap/operator.hpp" // for linspace, fill_array_using_xy_f...
 
 namespace hmap
 {

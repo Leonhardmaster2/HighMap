@@ -2,9 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <random>
+#include <random> // for uniform_real_distribution
+#include <vector> // for vector
 
-#include "highmap/array.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp" // for Array
 
 namespace hmap
 {

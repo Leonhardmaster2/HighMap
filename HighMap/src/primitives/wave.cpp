@@ -2,12 +2,10 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "FastNoiseLite.h"
-
-#include "highmap/array.hpp"
-#include "highmap/functions.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/functions.hpp"  // for WaveDuneFunction, WaveSineFunction
+#include "highmap/operator.hpp"   // for fill_array_using_xy_function
+#include "highmap/primitives.hpp" // for wave_dune, wave_sine, wave_square
 
 namespace hmap
 {

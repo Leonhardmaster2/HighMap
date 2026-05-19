@@ -1,17 +1,27 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <fstream>
-#include <iomanip>
+#include <algorithm> // for copy
+#include <fstream>   // for basic_ostream, char_traits
+#include <iomanip>   // for operator<<, setfill, setprec...
+#include <iostream>  // for cout
+#include <string>    // for string, operator<<
+#include <vector>    // for vector
 
-#include "macrologger.h"
-#include "npy.hpp"
+#include <opencv2/core.hpp>             // for flip
+#include <opencv2/core/hal/interface.h> // for CV_8U
+#include <opencv2/core/mat.hpp>         // for Mat, _InputArray, _OutputArray
+#include <opencv2/imgcodecs.hpp>        // for ImwriteFlags, imwrite, Imwri...
 
-#include "highmap/array.hpp"
-#include "highmap/colorize.hpp"
-#include "highmap/export.hpp"
+#include "macrologger.h" // for LOG_DEBUG
+#include "npy.hpp"       // for npy_data, npy_data_ptr, read...
+
+#include "highmap/array.hpp"    // for Array
+#include "highmap/colorize.hpp" // for colorize
+#include "highmap/export.hpp"   // for write_raw_16bit
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/range.hpp"
+#include "highmap/range.hpp"  // for remap
+#include "highmap/tensor.hpp" // for Tensor
 
 namespace hmap
 {

@@ -1,13 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
+#include <algorithm> // for max, min
+
+#include "highmap/algebra.hpp"             // for Mat
+#include "highmap/array.hpp"               // for Array
+#include "highmap/erosion.hpp"             // for coastal_erosion_profile
+#include "highmap/filters.hpp"             // for laplace
+#include "highmap/hydrology/hydrology.hpp" // for water_mask
+#include "highmap/math/array.hpp"          // for is_zero, lerp, threshold_...
+#include "highmap/math/core.hpp"           // for lerp, smoothstep3, thresh...
+#include "highmap/morphology.hpp"          // for distance_transform_with_c...
 
 namespace hmap
 {

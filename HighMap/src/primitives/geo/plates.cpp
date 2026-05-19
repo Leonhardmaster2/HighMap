@@ -1,10 +1,13 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/filters.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/primitives.hpp"
+#include <sys/types.h> // for uint
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/filters.hpp"    // for project_talus_along_direction
+#include "highmap/functions.hpp"  // for NoiseType
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/primitives.hpp" // for VoronoiReturnType, noise_fbm
 
 namespace hmap::gpu
 {

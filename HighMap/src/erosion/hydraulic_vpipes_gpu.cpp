@@ -1,15 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
 
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+#include <vector> // for allocator, vector
 
-#include "highmap/selector.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"   // for Array, operator*
+#include "highmap/erosion.hpp" // for hydraulic_vpipes
 
 namespace hmap::gpu
 {

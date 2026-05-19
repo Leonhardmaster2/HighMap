@@ -1,21 +1,32 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint>
-#include <memory>
-#include <unordered_map>
+#include <stddef.h> // for size_t
 
-#include "hmm/src/heightmap.h"
-#include "hmm/src/triangulator.h"
-#include "macrologger.h"
-#include <assimp/Exporter.hpp>
-#include <assimp/scene.h>
+#include <map>    // for map
+#include <memory> // for allocator, make_shared
+#include <string> // for basic_string, operator+, ope...
+#include <vector> // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/dbg/assert.hpp"
-#include "highmap/export.hpp"
-#include "highmap/features.hpp"
-#include "highmap/operator.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "hmm/src/heightmap.h"    // for Heightmap
+#include "hmm/src/triangulator.h" // for Triangulator
+#include "macrologger.h"          // for LOG_DEBUG, LOG_ERROR
+
+#include "highmap/algebra.hpp"  // for IVec2Eq, IVec2Hash
+#include "highmap/array.hpp"    // for Array, count_non_zero
+#include "highmap/export.hpp"   // for asset_export_format_as_string
+#include "highmap/operator.hpp" // for linspace
+
+#include <assimp/Exporter.hpp> // for Exporter
+#include <assimp/material.h>   // for aiMaterial, AI_MATKEY_TEXTUR...
+#include <assimp/mesh.h>       // for aiMesh, aiFace, aiPrimitiveType
+#include <assimp/metadata.h>   // for aiMetadata
+#include <assimp/scene.h>      // for aiScene, aiNode
+#include <assimp/types.h>      // for aiString, aiReturn
+#include <assimp/vector3.h>    // for aiVector3D
+#include <unordered_map>       // for unordered_map
 
 namespace hmap
 {

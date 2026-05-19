@@ -1,15 +1,23 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/local_metrics.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/range.hpp"
+#include <bits/std_abs.h> // for abs
+
+#include <cmath>  // for pow, exp, sqrt
+#include <vector> // for allocator, vector
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"             // for Array
+#include "highmap/curvature.hpp"         // for CurvatureType, curvature_qu...
+#include "highmap/filters.hpp"           // for expand, make_binary, shrink
+#include "highmap/gradient.hpp"          // for gradient_norm
+#include "highmap/kernels.hpp"           // for cubic_pulse
+#include "highmap/local_metrics.hpp"     // for local_max, local_min, local...
+#include "highmap/math/array.hpp"        // for lerp, sigmoid
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/operator.hpp"          // for apply_with_mask, transform_...
+#include "highmap/range.hpp"             // for clamp_min, maximum, maximum...
 
 namespace hmap::gpu
 {

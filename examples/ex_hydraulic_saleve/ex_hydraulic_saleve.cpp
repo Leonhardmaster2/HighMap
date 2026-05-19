@@ -1,7 +1,7 @@
-#include "highmap.hpp"
-
-#include "highmap/dbg/timer.hpp"
 #include "macrologger.h"
+
+#include "highmap.hpp"
+#include "highmap/dbg/timer.hpp"
 
 #include <omp.h>
 

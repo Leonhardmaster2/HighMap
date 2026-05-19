@@ -3,7 +3,6 @@
    this software. */
 #pragma once
 #include <optional>
-#include <unordered_map>
 #include <vector>
 
 #include <glm/vec2.hpp>
@@ -11,6 +10,8 @@
 #include <glm/vec4.hpp>
 
 #include "highmap/array.hpp"
+
+#include <unordered_map>
 
 namespace hmap
 {

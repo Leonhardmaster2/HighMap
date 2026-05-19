@@ -1,8 +1,8 @@
-#include <benchmark/benchmark.h>
-
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/primitives.hpp"
+
+#include <benchmark/benchmark.h>
 
 using namespace hmap;
 

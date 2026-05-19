@@ -1,10 +1,11 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdio>
-#include <fstream>
+#include "highmap/algebra.hpp" // for to_csv
 
-#include "highmap/algebra.hpp"
+#include <fstream> // for char_traits, basic_ostream, ope...
+#include <string>  // for string
+#include <vector>  // for vector
 
 namespace hmap
 {

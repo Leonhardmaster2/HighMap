@@ -1,10 +1,9 @@
-#include <gtest/gtest.h>
-
 #include "highmap/array.hpp"
+#include "highmap/dbg/assert.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 
-#include "highmap/dbg/assert.hpp"
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

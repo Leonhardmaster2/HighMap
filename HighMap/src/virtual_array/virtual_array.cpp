@@ -1,14 +1,24 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <filesystem>
-#include <random>
+#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray, Com...
 
-#include "macrologger.h"
+#include <algorithm> // for clamp, min
+#include <cmath>     // for floor
+#include <memory>    // for unique_ptr, alloc...
+#include <sstream>   // for basic_ostream
+#include <string>    // for char_traits, oper...
+#include <utility>   // for move
+#include <vector>    // for vector
 
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/array.hpp" // for Array
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/virtual_array/virtual_array.hpp"
+#include "highmap/interpolate2d.hpp"              // for bilinear_interp
+#include "highmap/math/core.hpp"                  // for ceil_div, lerp
+#include "highmap/virtual_array/tile_region.hpp"  // for TileRegion, TileKey
+#include "highmap/virtual_array/tile_storage.hpp" // for TileStorage, Stor...
 
 namespace hmap
 {

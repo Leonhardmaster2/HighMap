@@ -2,9 +2,16 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "highmap/array.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+#include <bits/std_abs.h> // for abs
+
+#include <cmath>      // for floor
+#include <functional> // for function
+
+#include "highmap/array.hpp"      // for Array
+#include "highmap/operator.hpp"   // for fill_array_using_xy_function
+#include "highmap/primitives.hpp" // for checkerboard
+
+#include <stdlib.h> // for abs
 
 namespace hmap
 {

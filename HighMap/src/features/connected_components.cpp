@@ -1,13 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <limits>
-#include <map>
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <algorithm> // for min_element
+#include <array>     // for array
+#include <iterator>  // for operator==, reverse_iterator
+#include <limits>    // for numeric_limits
+#include <map>       // for map, _Rb_tree_iterator, operator==
+#include <utility>   // for pair, move
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
+#include "highmap/array.hpp"    // for Array
+#include "highmap/boundary.hpp" // for generate_buffered_array, set_bor...
 
 namespace hmap
 {

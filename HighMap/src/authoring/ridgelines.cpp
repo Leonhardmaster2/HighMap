@@ -1,14 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/range.hpp"
+#include <algorithm>  // for clamp, max, min
+#include <cmath>      // for sqrt, copysign, pow
+#include <functional> // for function
+#include <limits>     // for numeric_limits
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"                   // for Array
+#include "highmap/geometry/point_sampling.hpp" // for rescale_points_to_uni...
+#include "highmap/math/core.hpp"               // for almost_unit_identity_c2
+#include "highmap/operator.hpp"                // for fill_array_using_xy_f...
+#include "highmap/range.hpp"                   // for maximum_smooth, minim...
 
 namespace hmap
 {

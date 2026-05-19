@@ -1,10 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <bits/std_abs.h> // for abs
 
-#include "highmap/functions.hpp"
-#include "highmap/math/core.hpp"
+#include <algorithm>  // for min
+#include <functional> // for function
+#include <memory>     // for unique_ptr
+#include <stdexcept>  // for invalid_argument
+#include <utility>    // for move
+
+#include "highmap/functions.hpp" // for NoiseFunction, FbmJordanFunction
+#include "highmap/math/core.hpp" // for abs_smooth, smoothstep3, smooths...
 
 namespace hmap
 {

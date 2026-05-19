@@ -1,17 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <cmath>      // for M_PI, exp, atan2, hypot, cos, sqrt
+#include <filesystem> // for path
+#include <string>     // for allocator, string
+#include <vector>     // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/export.hpp"
-#include "highmap/filters.hpp"
+#include "macrologger.h" // for LOG_DEBUG
+
+#include "highmap/array.hpp"     // for Array
+#include "highmap/colormaps.hpp" // for Cmap
+#include "highmap/export.hpp"    // for export_as_cubemap
+#include "highmap/filters.hpp"   // for smooth_cpulse
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/range.hpp"
-#include "highmap/transform.hpp"
+#include "highmap/math/core.hpp" // for smoothstep3
+#include "highmap/operator.hpp"  // for linspace
+#include "highmap/range.hpp"     // for remap
+#include "highmap/transform.hpp" // for rot180
 
 namespace hmap
 {

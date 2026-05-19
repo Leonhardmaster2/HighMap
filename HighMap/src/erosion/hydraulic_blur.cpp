@@ -1,11 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <algorithm> // for max
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"   // for Array
+#include "highmap/erosion.hpp" // for hydraulic_blur
+#include "highmap/filters.hpp" // for smooth_cpulse
+#include "highmap/range.hpp"   // for clamp_min_smooth
 
 namespace hmap
 {

@@ -2,18 +2,18 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm>
+#include <algorithm> // for rotate, fill_n, max, min
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "macrologger.h"
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/boundary.hpp"   // for fill_borders, extrapolate_bo...
+#include "highmap/erosion.hpp"    // for hydraulic_benes, HMAP_DI
+#include "highmap/filters.hpp"    // for laplace
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/primitives.hpp" // for constant
+#include "highmap/range.hpp"      // for clamp_min, chop
 
 namespace hmap
 {

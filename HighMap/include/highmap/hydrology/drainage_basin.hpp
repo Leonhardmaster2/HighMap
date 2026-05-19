@@ -2,14 +2,19 @@
    Public License. The full license is in the file LICENSE, distributed with
    this software. */
 #pragma once
+#include <stddef.h> // for size_t
+
 #include <memory>
-#include <unordered_map>
-#include <vector>
+#include <string>  // for string
+#include <utility> // for make_pair, pair
+#include <vector>  // for vector
 
 #include <glm/glm.hpp>
 
-#include "highmap/array.hpp"
-#include "highmap/terrain_tri_mesh.hpp"
+#include "highmap/array.hpp"            // for Array
+#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh
+
+#include <unordered_map> // for unordered_map
 
 namespace hmap
 {

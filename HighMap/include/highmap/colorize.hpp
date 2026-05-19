@@ -16,9 +16,16 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
-#include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
-#include "highmap/virtual_array/virtual_texture.hpp"
+#include <stdint.h> // for uint8_t
+
+#include <map>    // for map
+#include <string> // for operator<=>
+#include <vector> // for vector
+
+#include "highmap/array.hpp"                         // for Array
+#include "highmap/tensor.hpp"                        // for Tensor
+#include "highmap/virtual_array/virtual_array.hpp"   // for VirtualArray
+#include "highmap/virtual_array/virtual_texture.hpp" // for VirtualTexture
 
 namespace hmap
 {

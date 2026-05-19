@@ -1,19 +1,24 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/carving.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/kd_tree.hpp"
-#include "highmap/geometry/path.hpp"
+#include <algorithm>  // for max, min, clamp, max_element
+#include <cmath>      // for copysign, sqrt
+#include <functional> // for function
+#include <utility>    // for move
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"            // for Array
+#include "highmap/carving.hpp"          // for ElevationLongitudinalProfile
+#include "highmap/geometry/grids.hpp"   // for grid_xy_vector
+#include "highmap/geometry/kd_tree.hpp" // for KDTreeContext
+#include "highmap/geometry/path.hpp"    // for Path
+#include "highmap/geometry/point.hpp"   // for Point, classify_point
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/math/profiles.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
+#include "highmap/math/core.hpp"     // for smoothstep3, lerp
+#include "highmap/math/profiles.hpp" // for get_radial_profile_function
 
 namespace hmap
 {

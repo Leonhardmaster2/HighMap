@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "highmap/algebra.hpp"
-#include "highmap/virtual_array/virtual_array.hpp"
+#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray
 
 namespace hmap
 {

@@ -1,12 +1,15 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include "highmap/interpolate_array.hpp" // for interpolate_array_bicubic
 
-#include "highmap/array.hpp"
-#include "highmap/interpolate2d.hpp"
-#include "highmap/interpolate_array.hpp"
-#include "highmap/operator.hpp"
+#include <algorithm> // for clamp, min
+#include <cmath>     // for round
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"         // for Array
+#include "highmap/interpolate2d.hpp" // for cubic_interpolate, bilinear...
+#include "highmap/operator.hpp"      // for linspace
 
 namespace hmap
 {

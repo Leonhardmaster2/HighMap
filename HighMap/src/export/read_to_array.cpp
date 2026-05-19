@@ -1,12 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
+#include <string> // for string
 
-#include "macrologger.h"
+#include <opencv2/core/mat.hpp>  // for Mat
+#include <opencv2/imgcodecs.hpp> // for ImreadModes, imread
 
-#include "highmap/array.hpp"
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/array.hpp" // for Array, cv_mat_to_array
 
 namespace hmap
 {

@@ -1,14 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <cmath> // for cos, pow, sin, M_PI
 
-#include "FastNoiseLite.h"
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/array.hpp" // for Array
 
 namespace hmap
 {

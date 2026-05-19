@@ -1,7 +1,7 @@
-#include <gtest/gtest.h>
-
 #include "highmap/colorize.hpp"
 #include "highmap/dbg/assert.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

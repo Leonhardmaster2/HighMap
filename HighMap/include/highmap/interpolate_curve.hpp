@@ -12,8 +12,9 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
-#include "highmap/geometry/point.hpp"
 #include <functional>
+
+#include "highmap/geometry/point.hpp"
 
 namespace hmap
 {

@@ -1,13 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <list>
+#include <cmath>  // for M_SQRT1_2
+#include <list>   // for list
+#include <vector> // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/primitives.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"               // for Array
+#include "highmap/boundary.hpp"            // for fill_borders
+#include "highmap/hydrology/hydrology.hpp" // for d8_compute_ndip, flow_acc...
+#include "highmap/primitives.hpp"          // for constant
 
 // neighbor pattern search based on D8 flow direction neighborhood
 // coding

@@ -1,7 +1,8 @@
 #include <random>
-#include <gtest/gtest.h>
 
 #include "highmap/math/chebyshev.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

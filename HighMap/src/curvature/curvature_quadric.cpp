@@ -1,14 +1,21 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "appMetrics/heightfield.h" // external/terrain-descriptors
+#include <stddef.h> // for size_t
 
-#include "macrologger.h"
+#include <vector> // for vector, allocator
 
-#include "highmap/boundary.hpp"
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
+#include "cl_wrapper/run.hpp" // for Run
+#include "macrologger.h"      // for LOG_DEBUG
+
+#include "highmap/array.hpp"     // for Array
+#include "highmap/boundary.hpp"  // for extrapolate_borders
+#include "highmap/curvature.hpp" // for CurvatureType, curvature_quadric
+#include "highmap/filters.hpp"   // for smooth_cpulse
+
+#include "appMetrics/core.h"        // for Box2
+#include "appMetrics/heightfield.h" // for HeightField
+#include "appMetrics/scalarfield.h" // for ScalarField2
 
 namespace hmap
 {

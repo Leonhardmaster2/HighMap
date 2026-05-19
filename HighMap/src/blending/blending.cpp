@@ -1,16 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <algorithm> // for transform
+#include <cmath>     // for fabs
+#include <vector>    // for vector
 
-#include "macrologger.h"
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"      // for Array, operator-, operator*
+#include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/gradient.hpp"   // for gradient_norm
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/math/core.hpp"  // for gain
+#include "highmap/range.hpp"      // for maximum_smooth, remap
 
 namespace hmap
 {

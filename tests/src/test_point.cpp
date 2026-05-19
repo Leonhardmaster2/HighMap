@@ -1,7 +1,8 @@
 #include <glm/glm.hpp>
-#include <gtest/gtest.h>
 
 #include "highmap/geometry/point.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

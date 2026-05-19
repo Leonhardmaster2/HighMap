@@ -2,15 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cmath>
+#include <functional> // for function
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/multiscale/upscaling.hpp"
+#include "highmap/array.hpp"                // for Array
+#include "highmap/erosion.hpp"              // for hydraulic_stream, hydrau...
+#include "highmap/math/array.hpp"           // for lerp
+#include "highmap/multiscale/upscaling.hpp" // for upscale_amplification
 
 namespace hmap
 {

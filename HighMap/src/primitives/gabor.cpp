@@ -1,15 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <vector>
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/convolve.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/convolve.hpp"   // for convolve2d_svd
+#include "highmap/kernels.hpp"    // for gabor
+#include "highmap/primitives.hpp" // for white_sparse, gabor_noise
 
 #define SVD_RANK 2
 

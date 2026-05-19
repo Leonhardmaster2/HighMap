@@ -1,8 +1,9 @@
-#include <gtest/gtest.h>
 #include <map>
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/features.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

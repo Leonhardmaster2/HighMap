@@ -2,20 +2,23 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "macrologger.h"
-#include <cmath>
-#include <random>
+#include <algorithm> // for transform, min
+#include <cmath>     // for pow, M_PI
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/local_metrics.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
-#include "highmap/transform.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"         // for Array, operator*, operator+
+#include "highmap/filters.hpp"       // for smooth_cpulse, gamma_correct...
+#include "highmap/functions.hpp"     // for NoiseType
+#include "highmap/gradient.hpp"      // for gradient_norm, gradient_angle
+#include "highmap/local_metrics.hpp" // for local_mean
+#include "highmap/math/array.hpp"    // for abs_smooth, cos, lerp, pow
+#include "highmap/operator.hpp"      // for apply_with_mask
+#include "highmap/primitives.hpp"    // for noise_fbm
+#include "highmap/range.hpp"         // for clamp_min, maximum_smooth
+#include "highmap/selector.hpp"      // for select_gradient_binary
+#include "highmap/transform.hpp"     // for transpose, warp
 
 namespace hmap
 {

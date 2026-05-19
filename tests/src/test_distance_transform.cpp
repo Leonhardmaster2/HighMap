@@ -1,11 +1,11 @@
-#include <gtest/gtest.h>
+#include "macrologger.h"
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives.hpp"
 
-#include "macrologger.h"
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

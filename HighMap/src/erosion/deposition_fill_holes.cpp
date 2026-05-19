@@ -1,11 +1,12 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/blending.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/blending.hpp"   // for blend_gradients
+#include "highmap/erosion.hpp"    // for deposition_fill_holes
+#include "highmap/filters.hpp"    // for smooth_fill_holes
+#include "highmap/math/array.hpp" // for lerp
+#include "highmap/operator.hpp"   // for apply_with_mask
 
 namespace hmap::gpu
 {

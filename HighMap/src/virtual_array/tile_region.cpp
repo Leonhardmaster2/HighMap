@@ -1,13 +1,12 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sstream>
+#include "highmap/virtual_array/tile_region.hpp" // for TileRegion, TileKey
+
+#include <sstream> // for char_traits, basic_...
+#include <string>  // for allocator, operator<<
 
 #include <glm/glm.hpp>
-
-#include "macrologger.h"
-
-#include "highmap/virtual_array/tile_region.hpp"
 
 namespace hmap
 {

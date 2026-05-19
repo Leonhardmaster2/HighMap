@@ -1,16 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/features.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/local_metrics.hpp"
-#include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
+
+#include <bits/std_abs.h> // for abs
+
+#include <algorithm>  // for max, min
+#include <functional> // for function
+#include <limits>     // for numeric_limits
+#include <map>        // for map
+#include <utility>    // for swap
+#include <vector>     // for vector
+
+#include "highmap/array.hpp"         // for Array, operator*, count_non_zero
+#include "highmap/boundary.hpp"      // for generate_buffered_array, set_bo...
+#include "highmap/features.hpp"      // for connected_components
+#include "highmap/filters.hpp"       // for smooth_cpulse
+#include "highmap/local_metrics.hpp" // for local_max, local_min
+#include "highmap/math/array.hpp"    // for is_non_zero, is_zero, smoothstep3
+#include "highmap/range.hpp"         // for clamp, maximum_smooth, minimum_...
 
 namespace hmap
 {

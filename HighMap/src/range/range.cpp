@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <cmath>
+#include "highmap/range.hpp" // for ClampMode, clamp_min_smooth, clamp
 
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
 
-#include "highmap/array.hpp"
-#include "highmap/convolve.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include <algorithm> // for transform, max, min, fill, clamp
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"      // for Array
+#include "highmap/primitives.hpp" // for slope
 
 namespace hmap
 {

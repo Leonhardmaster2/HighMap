@@ -1,10 +1,14 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/filters.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
+
+#include <cmath>  // for fmax, pow
+#include <vector> // for allocator, vector
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"               // for Array, operator*
+#include "highmap/hydrology/hydrology.hpp" // for water_depth_dry_out, flow...
 
 namespace hmap::gpu
 {

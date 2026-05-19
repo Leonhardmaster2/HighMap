@@ -1,8 +1,8 @@
-#include <gtest/gtest.h>
-
 #include "highmap/curvature.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/primitives.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 TEST(LevelSetCurvature, CpuGpuFlatField)

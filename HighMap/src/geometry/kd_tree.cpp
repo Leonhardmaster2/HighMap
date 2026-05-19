@@ -3,6 +3,11 @@
  * this software. */
 #include "highmap/geometry/kd_tree.hpp"
 
+#include <algorithm> // for max, min
+#include <limits>    // for numeric_limits
+
+#include "nanoflann.hpp" // for KNNResultSet, ResultItem, L2_Sim...
+
 namespace hmap
 {
 

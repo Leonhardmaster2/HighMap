@@ -13,11 +13,11 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
-#include <glm/vec3.hpp>
-
 #include <map>
 #include <string>
 #include <vector>
+
+#include <glm/vec3.hpp>
 
 namespace hmap
 {

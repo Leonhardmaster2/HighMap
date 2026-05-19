@@ -1,17 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <random>
+#include <cmath>  // for hypot
+#include <queue>  // for make_heap, pop_heap, push_heap
+#include <random> // for uniform_real_distribution
+#include <vector> // for vector
 
-#include "macrologger.h"
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "highmap/boundary.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/local_metrics.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"   // for Array
+#include "highmap/filters.hpp" // for fill_talus
 
 namespace hmap
 {

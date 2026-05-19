@@ -1,19 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <random>
+#include <algorithm> // for transform
+#include <cmath>     // for pow, exp
+#include <vector>    // for vector
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/interpolate1d.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"         // for Array
+#include "highmap/interpolate1d.hpp" // for Interpolator1D, InterpolationMe...
+#include "highmap/operator.hpp"      // for apply_with_mask
+#include "highmap/range.hpp"         // for clamp, clamp_smooth, remap
 
 namespace hmap
 {

@@ -1,7 +1,7 @@
-#include <benchmark/benchmark.h>
-
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+
+#include <benchmark/benchmark.h>
 
 using namespace hmap;
 

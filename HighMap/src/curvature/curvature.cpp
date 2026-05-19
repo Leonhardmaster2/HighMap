@@ -2,10 +2,9 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/curvature.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/range.hpp"
+
+#include "highmap/filters.hpp"  // for smooth_cpulse
+#include "highmap/gradient.hpp" // for gradient_x, gradient_y, gradient_norm
 
 namespace hmap
 {

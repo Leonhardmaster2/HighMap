@@ -2,12 +2,18 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "macrologger.h"
+#include <bits/std_abs.h> // for abs
+#include <stddef.h>       // for size_t
 
-#include "highmap/array.hpp"
-#include "highmap/geometry/graph.hpp"
-#include "highmap/geometry/point_sampling.hpp"
+#include <algorithm> // for max, min
+#include <map>       // for map
+#include <utility>   // for pair
+#include <vector>    // for vector
 
+#include "highmap/array.hpp"          // for Array
+#include "highmap/geometry/cloud.hpp" // for Cloud, interpolate_values_from...
+#include "highmap/geometry/graph.hpp" // for Graph
+#include "highmap/geometry/point.hpp" // for Point
 #include "highmap/internal/vector_utils.hpp"
 
 namespace hmap

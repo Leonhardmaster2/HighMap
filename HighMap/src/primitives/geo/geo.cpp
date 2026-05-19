@@ -1,14 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <cmath> // for exp, hypot
 
-#include "FastNoiseLite.h"
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/primitives.hpp" // for caldera, constant
 
 namespace hmap
 {

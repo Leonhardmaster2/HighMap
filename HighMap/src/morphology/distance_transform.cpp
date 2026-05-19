@@ -1,11 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <algorithm> // for max
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
+#include "highmap/algebra.hpp"    // for Mat
+#include "highmap/array.hpp"      // for Array
+#include "highmap/math/array.hpp" // for sqrt
 
 float f(int i, float gi)
 {

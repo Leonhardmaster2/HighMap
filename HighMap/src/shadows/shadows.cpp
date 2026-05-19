@@ -1,17 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <numeric>
+#include <algorithm> // for max
+#include <cmath>     // for M_PI, sin, cos
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/primitives.hpp"
+#include "highmap/array.hpp"      // for Array, operator*, operator-
+#include "highmap/boundary.hpp"   // for fill_borders
+#include "highmap/gradient.hpp"   // for gradient_angle, gradient_norm
+#include "highmap/math/array.hpp" // for cos, atan, sin
 
 namespace hmap
 {

@@ -2,12 +2,10 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/interpolate2d.hpp"
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/functions.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
+
+#include <stdexcept> // for runtime_error
+
+#include "highmap/array.hpp" // for Array
 
 namespace hmap
 {

@@ -1,12 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <string> // for string
 
-#include "highmap/array.hpp"
-#include "highmap/export.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/array.hpp"  // for Array
+#include "highmap/export.hpp" // for export_splatmap_png
+#include "highmap/tensor.hpp" // for Tensor
 
 namespace hmap
 {

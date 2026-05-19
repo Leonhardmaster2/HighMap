@@ -1,25 +1,26 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>
-#include <cstdio>
-#include <execution>
-#include <fstream>
-#include <limits>
-#include <queue>
-
-#include "hmm/src/heightmap.h"
-#include "hmm/src/triangulator.h"
-
-#include "delaunator-cpp.hpp"
-
-#include "macrologger.h"
-
 #include "highmap/hydrology/drainage_basin.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/random.hpp"
 
-#include "highmap/dbg/timer.hpp"
+#include <bits/std_abs.h> // for abs
+#include <stdint.h>       // for uint8_t
+
+#include <algorithm>  // for max, min, reverse
+#include <cmath>      // for pow, sqrt
+#include <cstdio>     // for size_t
+#include <fstream>    // for char_traits, basic_ostream
+#include <functional> // for greater
+#include <limits>     // for numeric_limits
+#include <memory>     // for make_shared
+#include <queue>      // for priority_queue
+
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "hmm/src/heightmap.h"    // for Heightmap
+#include "hmm/src/triangulator.h" // for Triangulator
+
+#include "highmap/random.hpp" // for fast_hash32_to_unit_float
 
 namespace hmap
 {

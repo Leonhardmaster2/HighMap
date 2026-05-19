@@ -1,14 +1,19 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/range.hpp"
-#include "highmap/transform.hpp"
+#include <sys/types.h> // for uint
+
+#include <algorithm> // for clamp
+#include <memory>    // for allocator
+
+#include "cl_wrapper/run.hpp" // for Run
+
+#include "highmap/array.hpp"             // for Array
+#include "highmap/filters.hpp"           // for laplace
+#include "highmap/gradient.hpp"          // for gradient_x, gradient_y
+#include "highmap/math/array.hpp"        // for lerp
+#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/transform.hpp"         // for advection_particle
 
 namespace hmap::gpu
 {

@@ -1,17 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include "highmap/transform.hpp" // for flip_lr, flip_ud, radial_displ...
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/kernels.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/transform.hpp"
+#include <algorithm> // for clamp, max
+#include <cmath>     // for cos, sin, fabs, M_PI, atan2
+#include <utility>   // for swap
+#include <vector>    // for vector
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/boundary.hpp"       // for generate_buffered_array
+#include "highmap/functions.hpp"      // for ArrayFunction
+#include "highmap/geometry/grids.hpp" // for grid_xy_vector
+#include "highmap/operator.hpp"       // for fill_array_using_xy_function
+#include "highmap/primitives.hpp"     // for constant
 
 namespace hmap
 {

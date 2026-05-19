@@ -1,14 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"
-#include "highmap/convolve.hpp"
-#include "highmap/curvature.hpp"
-#include "highmap/features.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/curvature.hpp"  // for CurvatureType, curvature_quadric
+#include "highmap/morphology.hpp" // for distance_transform_approx
 
 namespace hmap
 {

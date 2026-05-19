@@ -1,15 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/authoring.hpp"
-#include "highmap/geometry/cloud.hpp"
-#include "highmap/geometry/grids.hpp"
-#include "highmap/range.hpp"
-#include "highmap/transform.hpp"
+#include <algorithm>  // for max, min
+#include <functional> // for function
+#include <random>     // for uniform_real_distribu...
+#include <vector>     // for vector
 
+#include "highmap/array.hpp"                   // for Array
+#include "highmap/authoring.hpp"               // for StampingBlendMethod
+#include "highmap/geometry/point_sampling.hpp" // for rescale_points_to_uni...
 #include "highmap/internal/vector_utils.hpp"
+#include "highmap/range.hpp"     // for maximum_smooth, minim...
+#include "highmap/transform.hpp" // for flip_lr, flip_ud, rot90
 
 namespace hmap
 {

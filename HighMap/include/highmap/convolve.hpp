@@ -18,8 +18,9 @@
 
 #pragma once
 
-#include "highmap/array.hpp"
 #include "macrologger.h"
+
+#include "highmap/array.hpp"
 
 namespace hmap
 {

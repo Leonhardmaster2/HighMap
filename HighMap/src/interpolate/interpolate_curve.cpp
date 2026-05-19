@@ -1,9 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include "highmap/interpolate_curve.hpp" // for InterpolatorCurve, Interpol...
 
-#include "highmap/interpolate_curve.hpp"
+#include <stddef.h> // for size_t
+
+#include <functional> // for function
+#include <vector>     // for vector
+
+#include "highmap/geometry/point.hpp" // for Point, interp_bspline, inte...
 
 namespace hmap
 {

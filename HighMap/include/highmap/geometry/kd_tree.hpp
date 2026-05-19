@@ -7,11 +7,13 @@
  * @brief KD-tree utilities for 2D point queries using nanoflann.
  */
 #pragma once
-#include <vector>
+#include <stddef.h> // for size_t
+
+#include <vector> // for vector
 
 #include <glm/glm.hpp>
 
-#include <nanoflann.hpp>
+#include <nanoflann.hpp> // for L2_Simple_Adaptor, KDTreeSingle...
 
 namespace hmap
 {

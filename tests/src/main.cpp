@@ -1,7 +1,7 @@
+#include "highmap/opencl/gpu_opencl.hpp"
+
 #include <gtest/gtest.h>
 #include <spdlog/spdlog.h>
-
-#include "highmap/opencl/gpu_opencl.hpp"
 
 void global_init()
 {

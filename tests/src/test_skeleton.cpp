@@ -1,8 +1,9 @@
 #include "macrologger.h"
-#include <gtest/gtest.h>
 
 #include "highmap/dbg/assert.hpp"
 #include "highmap/morphology.hpp"
+
+#include <gtest/gtest.h>
 
 using namespace hmap;
 

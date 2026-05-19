@@ -1,17 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <gsl/gsl_linalg.h>
-#include <gsl/gsl_matrix.h>
+#include <algorithm> // for min
+#include <vector>    // for vector
 
-#include "macrologger.h"
+#include <gsl/gsl_linalg.h>        // for gsl_linalg_SV_decomp
+#include <gsl/gsl_matrix_double.h> // for gsl_matrix_alloc, gsl_matrix...
+#include <gsl/gsl_vector_double.h> // for gsl_vector_alloc, gsl_vector...
 
-#include "highmap/array.hpp"
-#include "highmap/convolve.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/transform.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/convolve.hpp"   // for convolve1d_i, convolve1d_j
+#include "highmap/operator.hpp"   // for linspace
+#include "highmap/primitives.hpp" // for white_sparse_binary
+#include "highmap/transform.hpp"  // for rotate
 
 namespace hmap
 {

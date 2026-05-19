@@ -1,12 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <cmath> // for copysign
 
-#include "highmap/curvature.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/morphology.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/curvature.hpp"  // for level_set_curvature
+#include "highmap/morphology.hpp" // for distance_transform, signed_curva...
 
 namespace hmap
 {

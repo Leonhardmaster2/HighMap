@@ -1,11 +1,22 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include "highmap/virtual_array/virtual_texture.hpp" // for VirtualTexture
 
-#include "highmap/virtual_array/virtual_texture.hpp"
+#include <stdint.h> // for uint8_t
 
-#include "highmap/tensor.hpp"
+#include <algorithm> // for max
+#include <memory>    // for unique_ptr
+#include <stdexcept> // for runtime_error
+#include <string>    // for string
+#include <vector>    // for vector
+
+#include "macrologger.h" // for LOG_ERROR
+
+#include "highmap/array.hpp"                       // for Array
+#include "highmap/tensor.hpp"                      // for Tensor
+#include "highmap/virtual_array/tile_storage.hpp"  // for TileStorage
+#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray
 
 namespace hmap
 {

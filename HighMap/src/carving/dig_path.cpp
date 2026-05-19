@@ -1,12 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/local_metrics.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/morphology.hpp"
+#include <stddef.h> // for size_t
+
+#include <vector> // for vector
+
+#include "highmap/array.hpp"          // for Array
+#include "highmap/filters.hpp"        // for smooth_cpulse
+#include "highmap/geometry/path.hpp"  // for Path
+#include "highmap/geometry/point.hpp" // for Point
+#include "highmap/local_metrics.hpp"  // for local_max, local_mean
+#include "highmap/math/array.hpp"     // for exp, lerp
+#include "highmap/morphology.hpp"     // for distance_transform_approx
 
 namespace hmap
 {

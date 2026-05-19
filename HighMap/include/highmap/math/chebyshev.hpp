@@ -8,9 +8,10 @@
  * @copyright Copyright (c) 2026
  */
 #pragma once
-#include <cassert>
 #include <cmath>
 #include <vector>
+
+#include <cassert>
 
 namespace hmap
 {

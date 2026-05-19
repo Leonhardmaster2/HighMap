@@ -1,14 +1,22 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <sys/types.h> // for size_t, uint
 
-#include "highmap/filters.hpp"
-#include "highmap/hydrology/hydrology.hpp"
-#include "highmap/math/array.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/range.hpp"
-#include "highmap/transform.hpp"
+#include <algorithm>        // for fill
+#include <initializer_list> // for initializer_list
+#include <queue>            // for make_heap, pop_heap, push...
+#include <vector>           // for vector
+
+#include "highmap/algebra.hpp"             // for Mat, IVec4Eq, IVec4Hash
+#include "highmap/array.hpp"               // for Array
+#include "highmap/filters.hpp"             // for laplace, expand_talus
+#include "highmap/hydrology/hydrology.hpp" // for find_flow_sinks, flow_fixing
+#include "highmap/math/array.hpp"          // for exp, lerp
+#include "highmap/morphology.hpp"          // for distance_transform
+#include "highmap/transform.hpp"           // for warp
+
+#include <unordered_map> // for unordered_map, operator==
 
 namespace hmap
 {

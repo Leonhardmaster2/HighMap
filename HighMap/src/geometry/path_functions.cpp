@@ -1,12 +1,26 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "macrologger.h"
+#include <stddef.h> // for size_t
 
-#include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/path.hpp"
-#include "highmap/interpolate_curve.hpp"
-#include "highmap/operator.hpp"
+#include <algorithm> // for min, max, clamp
+#include <array>     // for array
+#include <cmath>     // for M_PI_2, copysign, cos, sin
+#include <limits>    // for numeric_limits
+#include <optional>  // for optional
+#include <random>    // for normal_distribution, mt19937
+#include <utility>   // for move
+#include <vector>    // for vector
+
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"             // for Array
+#include "highmap/geometry/grids.hpp"    // for grid_xy_vector
+#include "highmap/geometry/path.hpp"     // for Path, bezier, bezier_round
+#include "highmap/geometry/point.hpp"    // for Point, operator*, lerp, angle
+#include "highmap/interpolate1d.hpp"     // for InterpolationMethod1D
+#include "highmap/interpolate_curve.hpp" // for InterpolationMethodCurve
+#include "highmap/operator.hpp"          // for linspace
 
 namespace hmap
 {

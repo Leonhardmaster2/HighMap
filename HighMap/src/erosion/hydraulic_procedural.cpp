@@ -1,23 +1,23 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <functional>
-#include <random>
+#include <cmath>      // for M_PI, atan
+#include <functional> // for function
 
-#include "macrologger.h"
+#include <opencv2/core/hal/interface.h> // for uint
 
-#include "highmap/array.hpp"
-#include "highmap/blending.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/filters.hpp"
-#include "highmap/gradient.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/morphology.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
-#include "highmap/operator.hpp"
-#include "highmap/primitives.hpp"
-#include "highmap/range.hpp"
-#include "highmap/selector.hpp"
+#include "highmap/array.hpp"               // for Array, operator*, operator+
+#include "highmap/blending.hpp"            // for blend_gradients
+#include "highmap/erosion.hpp"             // for ErosionProfile, get_erosi...
+#include "highmap/filters.hpp"             // for smooth_cpulse, smooth_fil...
+#include "highmap/functions.hpp"           // for NoiseType
+#include "highmap/gradient.hpp"            // for gradient_norm, phase_field
+#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
+#include "highmap/math/array.hpp"          // for lerp, cos, log10, pow
+#include "highmap/math/core.hpp"           // for lerp
+#include "highmap/morphology.hpp"          // for morphological_top_hat
+#include "highmap/primitives.hpp"          // for noise_fbm
+#include "highmap/range.hpp"               // for remap
 
 namespace hmap::gpu
 {

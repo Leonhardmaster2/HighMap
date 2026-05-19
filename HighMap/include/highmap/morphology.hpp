@@ -17,7 +17,8 @@
  */
 #pragma once
 
-#include "highmap/array.hpp"
+#include "highmap/algebra.hpp" // for Mat
+#include "highmap/array.hpp"   // for Array
 
 namespace hmap
 {

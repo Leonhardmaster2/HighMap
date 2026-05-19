@@ -1,12 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
-#include <queue>
+#include <cmath>  // for M_PI
+#include <queue>  // for queue
+#include <tuple>  // for tuple
+#include <vector> // for vector
 
-#include "macrologger.h"
-
-#include "highmap/array.hpp"
+#include "highmap/algebra.hpp" // for Mat
+#include "highmap/array.hpp"   // for Array
 
 namespace hmap
 {

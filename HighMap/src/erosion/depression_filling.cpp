@@ -1,12 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>
+#include <vector> // for vector
 
-#include "highmap/array.hpp"
-#include "highmap/boundary.hpp"
-#include "highmap/erosion.hpp"
-#include "highmap/math/core.hpp"
+#include <opencv2/core/hal/interface.h> // for uint
+
+#include "highmap/array.hpp"    // for Array
+#include "highmap/boundary.hpp" // for extrapolate_borders
+#include "highmap/erosion.hpp"  // for HMAP_CD, HMAP_DI, HMAP_DJ
 
 namespace hmap
 {
