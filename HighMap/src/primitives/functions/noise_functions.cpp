@@ -6,12 +6,11 @@
 
 #include <algorithm>  // for copy, fill_n, max
 #include <array>      // for array
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
 #include <memory>     // for unique_ptr
 #include <stdexcept>  // for invalid_argument
 #include <vector>     // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "FastNoiseLite.h"    // for FastNoiseLite
 #include "delaunator-cpp.hpp" // for Delaunator
@@ -29,7 +28,7 @@ namespace hmap
 // derived from NoiseFunction class
 //----------------------------------------------------------------------
 
-PerlinFunction::PerlinFunction(glm::vec2 kw, uint seed)
+PerlinFunction::PerlinFunction(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -41,7 +40,7 @@ PerlinFunction::PerlinFunction(glm::vec2 kw, uint seed)
       { return this->noise.GetNoise(this->kw.x * x, this->kw.y * y); });
 }
 
-PerlinBillowFunction::PerlinBillowFunction(glm::vec2 kw, uint seed)
+PerlinBillowFunction::PerlinBillowFunction(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -56,7 +55,9 @@ PerlinBillowFunction::PerlinBillowFunction(glm::vec2 kw, uint seed)
       });
 }
 
-PerlinHalfFunction::PerlinHalfFunction(glm::vec2 kw, uint seed, float k)
+PerlinHalfFunction::PerlinHalfFunction(glm::vec2     kw,
+                                       std::uint32_t seed,
+                                       float         k)
     : NoiseFunction(kw, seed), k(k)
 {
   this->set_seed(seed);
@@ -71,7 +72,7 @@ PerlinHalfFunction::PerlinHalfFunction(glm::vec2 kw, uint seed, float k)
       });
 }
 
-PerlinMixFunction::PerlinMixFunction(glm::vec2 kw, uint seed)
+PerlinMixFunction::PerlinMixFunction(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -86,7 +87,7 @@ PerlinMixFunction::PerlinMixFunction(glm::vec2 kw, uint seed)
       });
 }
 
-Simplex2Function::Simplex2Function(glm::vec2 kw, uint seed)
+Simplex2Function::Simplex2Function(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -98,7 +99,7 @@ Simplex2Function::Simplex2Function(glm::vec2 kw, uint seed)
       { return this->noise.GetNoise(this->kw.x * x, this->kw.y * y); });
 }
 
-Simplex2SFunction::Simplex2SFunction(glm::vec2 kw, uint seed)
+Simplex2SFunction::Simplex2SFunction(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -110,7 +111,7 @@ Simplex2SFunction::Simplex2SFunction(glm::vec2 kw, uint seed)
       { return this->noise.GetNoise(this->kw.x * x, this->kw.y * y); });
 }
 
-ValueNoiseFunction::ValueNoiseFunction(glm::vec2 kw, uint seed)
+ValueNoiseFunction::ValueNoiseFunction(glm::vec2 kw, std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -122,7 +123,8 @@ ValueNoiseFunction::ValueNoiseFunction(glm::vec2 kw, uint seed)
       { return this->noise.GetNoise(this->kw.x * x, this->kw.y * y); });
 }
 
-ValueCubicNoiseFunction::ValueCubicNoiseFunction(glm::vec2 kw, uint seed)
+ValueCubicNoiseFunction::ValueCubicNoiseFunction(glm::vec2     kw,
+                                                 std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -134,7 +136,8 @@ ValueCubicNoiseFunction::ValueCubicNoiseFunction(glm::vec2 kw, uint seed)
       { return 1.43f * this->noise.GetNoise(this->kw.x * x, this->kw.y * y); });
 }
 
-ValueDelaunayNoiseFunction::ValueDelaunayNoiseFunction(glm::vec2 kw, uint seed)
+ValueDelaunayNoiseFunction::ValueDelaunayNoiseFunction(glm::vec2     kw,
+                                                       std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_kw(kw);
@@ -219,7 +222,8 @@ void ValueDelaunayNoiseFunction::update_interpolation_function()
   this->set_delegate(itp_fct);
 }
 
-ValueLinearNoiseFunction::ValueLinearNoiseFunction(glm::vec2 kw, uint seed)
+ValueLinearNoiseFunction::ValueLinearNoiseFunction(glm::vec2     kw,
+                                                   std::uint32_t seed)
     : NoiseFunction(kw, seed)
 {
   this->set_kw(kw);
@@ -281,7 +285,9 @@ void ValueLinearNoiseFunction::update_interpolation_function()
   this->set_delegate(itp_fct);
 }
 
-WorleyFunction::WorleyFunction(glm::vec2 kw, uint seed, bool return_cell_value)
+WorleyFunction::WorleyFunction(glm::vec2     kw,
+                               std::uint32_t seed,
+                               bool          return_cell_value)
     : NoiseFunction(kw, seed)
 {
   this->set_seed(seed);
@@ -304,10 +310,10 @@ WorleyFunction::WorleyFunction(glm::vec2 kw, uint seed, bool return_cell_value)
       });
 }
 
-WorleyDoubleFunction::WorleyDoubleFunction(glm::vec2 kw,
-                                           uint      seed,
-                                           float     ratio,
-                                           float     k)
+WorleyDoubleFunction::WorleyDoubleFunction(glm::vec2     kw,
+                                           std::uint32_t seed,
+                                           float         ratio,
+                                           float         k)
     : NoiseFunction(kw, seed), ratio(ratio), k(k)
 {
   this->set_seed(seed);
@@ -337,9 +343,9 @@ WorleyDoubleFunction::WorleyDoubleFunction(glm::vec2 kw,
 // --- helper
 
 std::unique_ptr<NoiseFunction> create_noise_function_from_type(
-    NoiseType noise_type,
-    glm::vec2 kw,
-    uint      seed)
+    NoiseType     noise_type,
+    glm::vec2     kw,
+    std::uint32_t seed)
 {
   switch (noise_type)
   {

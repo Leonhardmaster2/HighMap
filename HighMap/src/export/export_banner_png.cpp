@@ -2,10 +2,9 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <sys/types.h> // for uint
-
-#include <string> // for string
-#include <vector> // for vector
+#include <cstdint> // for uint32_t
+#include <string>  // for string
+#include <vector>  // for vector
 
 #include "highmap/array.hpp"    // for Array
 #include "highmap/operator.hpp" // for hstack
@@ -27,13 +26,13 @@ void export_banner_png(const std::string        &fname,
     if (normalize_arrays)
     {
       banner_array = hmap::hstack(arrays[0].remapped(), arrays[1].remapped());
-      for (uint i = 2; i < arrays.size(); i++)
+      for (std::uint32_t i = 2; i < arrays.size(); i++)
         banner_array = hmap::hstack(banner_array, arrays[i].remapped());
     }
     else
     {
       banner_array = hmap::hstack(arrays[0], arrays[1]);
-      for (uint i = 2; i < arrays.size(); i++)
+      for (std::uint32_t i = 2; i < arrays.size(); i++)
         banner_array = hmap::hstack(banner_array, arrays[i]);
     }
 

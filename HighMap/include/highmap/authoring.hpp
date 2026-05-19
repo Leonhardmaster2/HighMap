@@ -156,10 +156,10 @@ Array base_elevation(glm::ivec2                             shape,
  * **Result**
  * @image html ex_reverse_midpoint.png
  */
-Array reverse_midpoint(const Array &array,
-                       uint         seed,
-                       float        noise_scale = 1.f,
-                       float        threshold = 0.f);
+Array reverse_midpoint(const Array  &array,
+                       std::uint32_t seed,
+                       float         noise_scale = 1.f,
+                       float         threshold = 0.f);
 
 /**
  * @brief Generate a heightmap based on a set of ridgelines and a specified
@@ -343,7 +343,7 @@ Array stamping(glm::ivec2                shape,
                bool                      kernel_scale_radius,
                bool                      kernel_scale_amplitude,
                StampingBlendMethod       blend_method,
-               uint                      seed,
+               std::uint32_t             seed,
                float                     k_smoothing = 0.1f,
                bool                      kernel_flip = true,
                bool                      kernel_rotate = false,

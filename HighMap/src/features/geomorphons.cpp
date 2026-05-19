@@ -1,10 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <sys/types.h> // for size_t
 
-#include <algorithm> // for max, min
-#include <vector>    // for vector
+#include <algorithm> // for max, fill_n, copy, min
+#include <cstdint>
+#include <vector> // for vector
 
 #include "highmap/algebra.hpp"  // for Mat
 #include "highmap/array.hpp"    // for Array
@@ -23,7 +24,7 @@ Array geomorphons(const Array &array, int irmin, int irmax, float epsilon)
   // neighborhood search
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
   const std::vector<int> dj = {0, 1, 1, 1, 0, -1, -1, -1};
-  const uint             nb = di.size();
+  const std::uint32_t    nb = di.size();
 
   const int dr_max = irmax - irmin + 1;
 

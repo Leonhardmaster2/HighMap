@@ -2,9 +2,9 @@
 
 int main(void)
 {
-  int         npts = 8;
-  uint        seed = 0;
-  hmap::Cloud cloud = hmap::Cloud(npts, seed);
+  int           npts = 8;
+  std::uint32_t seed = 0;
+  hmap::Cloud   cloud = hmap::Cloud(npts, seed);
 
   // create custom properties (optional)
   std::map<std::string, std::vector<float>> custom_fields;

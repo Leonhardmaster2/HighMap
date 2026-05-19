@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
-#include <cmath> // for cos, sin, M_PI
+#include <cmath>   // for cos, sin, M_PI
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array, operator*
 #include "highmap/filters.hpp"    // for gain, gamma_correction, smooth_...
@@ -14,22 +13,22 @@
 namespace hmap::gpu
 {
 
-Array mountain_stump(glm::ivec2   shape,
-                     uint         seed,
-                     float        scale,
-                     int          octaves,
-                     float        peak_kw,
-                     float        rugosity,
-                     float        angle,
-                     float        k_smoothing,
-                     float        gamma,
-                     bool         add_deposition,
-                     float        ridge_amp,
-                     float        base_noise_amp,
-                     glm::vec2    center,
-                     const Array *p_noise_x,
-                     const Array *p_noise_y,
-                     glm::vec4    bbox)
+Array mountain_stump(glm::ivec2    shape,
+                     std::uint32_t seed,
+                     float         scale,
+                     int           octaves,
+                     float         peak_kw,
+                     float         rugosity,
+                     float         angle,
+                     float         k_smoothing,
+                     float         gamma,
+                     bool          add_deposition,
+                     float         ridge_amp,
+                     float         base_noise_amp,
+                     glm::vec2     center,
+                     const Array  *p_noise_x,
+                     const Array  *p_noise_y,
+                     glm::vec4     bbox)
 {
   // apply global scaling to reference values
   const float     half_width = 0.1f * scale;

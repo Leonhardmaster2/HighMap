@@ -1,12 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>  // for hypot
+#include <cmath> // for hypot
+#include <cstdint>
 #include <queue>  // for make_heap, pop_heap, push_heap
 #include <random> // for uniform_real_distribution
 #include <vector> // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"   // for Array
 #include "highmap/filters.hpp" // for fill_talus
@@ -14,12 +13,12 @@
 namespace hmap
 {
 
-void fill_talus(Array       &z,
-                const Array &talus,
-                uint         seed,
-                int          ir,
-                float        noise_ratio,
-                const Array *p_seed_mask)
+void fill_talus(Array        &z,
+                const Array  &talus,
+                std::uint32_t seed,
+                int           ir,
+                float         noise_ratio,
+                const Array  *p_seed_mask)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(1.f - noise_ratio,
@@ -93,12 +92,12 @@ void fill_talus(Array       &z,
   }
 }
 
-void fill_talus(Array       &z,
-                float        talus,
-                uint         seed,
-                int          ir,
-                float        noise_ratio,
-                const Array *p_seed_mask)
+void fill_talus(Array        &z,
+                float         talus,
+                std::uint32_t seed,
+                int           ir,
+                float         noise_ratio,
+                const Array  *p_seed_mask)
 {
   fill_talus(z, Array(z.shape, talus), seed, ir, noise_ratio, p_seed_mask);
 }

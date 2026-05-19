@@ -4,17 +4,18 @@
 
 #include <stdint.h> // for uint8_t
 
-#include <algorithm> // for clamp, max_element
+#include <algorithm> // for clamp, max_element, fill_n
 #include <utility>   // for swap
 #include <vector>    // for vector
 
-#include "highmap/array.hpp" // for Array
-#include "highmap/colorize.hpp"
+#include "highmap/array.hpp"      // for Array
+#include "highmap/colorize.hpp"   // for apply_hillshade, colorize, colo...
 #include "highmap/colormaps.hpp"  // for get_colormap_data
 #include "highmap/gradient.hpp"   // for gradient_norm
 #include "highmap/math/array.hpp" // for pow
 #include "highmap/range.hpp"      // for clamp, remap
 #include "highmap/shadows.hpp"    // for hillshade
+#include "highmap/tensor.hpp"     // for Tensor
 
 namespace hmap
 {

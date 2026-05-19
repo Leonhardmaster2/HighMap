@@ -1,7 +1,7 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array, operator*
 #include "highmap/filters.hpp"    // for project_talus_along_direction
@@ -12,17 +12,17 @@
 namespace hmap::gpu
 {
 
-Array plates(glm::ivec2 shape,
-             glm::vec2  kw,
-             uint       seed,
-             float      talus,
-             int        direction,
-             float      mix_ratio,
-             float      base_noise_amp,
-             float      kw_multiplier,
-             int        octaves,
-             float      rugosity,
-             glm::vec4  bbox)
+Array plates(glm::ivec2    shape,
+             glm::vec2     kw,
+             std::uint32_t seed,
+             float         talus,
+             int           direction,
+             float         mix_ratio,
+             float         base_noise_amp,
+             float         kw_multiplier,
+             int           octaves,
+             float         rugosity,
+             glm::vec4     bbox)
 {
   const float persistence = 0.5f;
   const float lacunarity = 2.f;

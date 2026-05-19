@@ -178,7 +178,7 @@ Array kmeans_clustering2(const Array        &array1,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
                          glm::vec2           weights = {1.f, 1.f},
-                         uint                seed = 1);
+                         std::uint32_t       seed = 1);
 
 /**
  * @brief Performs k-means clustering on three input arrays, providing more
@@ -230,6 +230,6 @@ Array kmeans_clustering3(const Array        &array1,
                          std::vector<Array> *p_scoring = nullptr,
                          Array              *p_aggregate_scoring = nullptr,
                          glm::vec3           weights = {1.f, 1.f, 1.f},
-                         uint                seed = 1);
+                         std::uint32_t       seed = 1);
 
 } // namespace hmap

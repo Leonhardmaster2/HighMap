@@ -105,19 +105,19 @@ void dig_river(Array                   &z,
                float                    depth = 0.f,
                float                    riverbed_talus = 0.f,
                float                    noise_ratio = 0.9f,
-               uint                     seed = 0,
+               std::uint32_t            seed = 0,
                Array                   *p_mask = nullptr);
 
-void dig_river(Array      &z,
-               const Path &path,
-               float       riverbank_talus,
-               int         river_width = 0,
-               int         merging_width = 0,
-               float       depth = 0.f,
-               float       riverbed_talus = 0.f,
-               float       noise_ratio = 0.9f,
-               uint        seed = 0,
-               Array      *p_mask = nullptr);
+void dig_river(Array        &z,
+               const Path   &path,
+               float         riverbank_talus,
+               int           river_width = 0,
+               int           merging_width = 0,
+               float         depth = 0.f,
+               float         riverbed_talus = 0.f,
+               float         noise_ratio = 0.9f,
+               std::uint32_t seed = 0,
+               Array        *p_mask = nullptr);
 
 /**
  * @brief Blends a flatbed carve into an existing heightmap.

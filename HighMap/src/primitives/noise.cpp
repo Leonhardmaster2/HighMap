@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <cstdint>
 #include <memory>  // for unique_ptr
 #include <utility> // for move
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"      // for Array
 #include "highmap/functions.hpp"  // for NoiseFunction, create_noise_...
@@ -14,14 +13,14 @@
 namespace hmap
 {
 
-Array noise(NoiseType    noise_type,
-            glm::ivec2   shape,
-            glm::vec2    kw,
-            uint         seed,
-            const Array *p_noise_x,
-            const Array *p_noise_y,
-            const Array *p_stretching,
-            glm::vec4    bbox)
+Array noise(NoiseType     noise_type,
+            glm::ivec2    shape,
+            glm::vec2     kw,
+            std::uint32_t seed,
+            const Array  *p_noise_x,
+            const Array  *p_noise_y,
+            const Array  *p_stretching,
+            glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -39,19 +38,19 @@ Array noise(NoiseType    noise_type,
   return array;
 }
 
-Array noise_fbm(NoiseType    noise_type,
-                glm::ivec2   shape,
-                glm::vec2    kw,
-                uint         seed,
-                int          octaves,
-                float        weight,
-                float        persistence,
-                float        lacunarity,
-                const Array *p_ctrl_param,
-                const Array *p_noise_x,
-                const Array *p_noise_y,
-                const Array *p_stretching,
-                glm::vec4    bbox)
+Array noise_fbm(NoiseType     noise_type,
+                glm::ivec2    shape,
+                glm::vec2     kw,
+                std::uint32_t seed,
+                int           octaves,
+                float         weight,
+                float         persistence,
+                float         lacunarity,
+                const Array  *p_ctrl_param,
+                const Array  *p_noise_x,
+                const Array  *p_noise_y,
+                const Array  *p_stretching,
+                glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -75,20 +74,20 @@ Array noise_fbm(NoiseType    noise_type,
   return array;
 }
 
-Array noise_iq(NoiseType    noise_type,
-               glm::ivec2   shape,
-               glm::vec2    kw,
-               uint         seed,
-               int          octaves,
-               float        weight,
-               float        persistence,
-               float        lacunarity,
-               float        gradient_scale,
-               const Array *p_ctrl_param,
-               const Array *p_noise_x,
-               const Array *p_noise_y,
-               const Array *p_stretching,
-               glm::vec4    bbox)
+Array noise_iq(NoiseType     noise_type,
+               glm::ivec2    shape,
+               glm::vec2     kw,
+               std::uint32_t seed,
+               int           octaves,
+               float         weight,
+               float         persistence,
+               float         lacunarity,
+               float         gradient_scale,
+               const Array  *p_ctrl_param,
+               const Array  *p_noise_x,
+               const Array  *p_noise_y,
+               const Array  *p_stretching,
+               glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -113,23 +112,23 @@ Array noise_iq(NoiseType    noise_type,
   return array;
 }
 
-Array noise_jordan(NoiseType    noise_type,
-                   glm::ivec2   shape,
-                   glm::vec2    kw,
-                   uint         seed,
-                   int          octaves,
-                   float        weight,
-                   float        persistence,
-                   float        lacunarity,
-                   float        warp0,
-                   float        damp0,
-                   float        warp_scale,
-                   float        damp_scale,
-                   const Array *p_ctrl_param,
-                   const Array *p_noise_x,
-                   const Array *p_noise_y,
-                   const Array *p_stretching,
-                   glm::vec4    bbox)
+Array noise_jordan(NoiseType     noise_type,
+                   glm::ivec2    shape,
+                   glm::vec2     kw,
+                   std::uint32_t seed,
+                   int           octaves,
+                   float         weight,
+                   float         persistence,
+                   float         lacunarity,
+                   float         warp0,
+                   float         damp0,
+                   float         warp_scale,
+                   float         damp_scale,
+                   const Array  *p_ctrl_param,
+                   const Array  *p_noise_x,
+                   const Array  *p_noise_y,
+                   const Array  *p_stretching,
+                   glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -157,19 +156,19 @@ Array noise_jordan(NoiseType    noise_type,
   return array;
 }
 
-Array noise_parberry(glm::ivec2   shape,
-                     glm::vec2    kw,
-                     uint         seed,
-                     int          octaves,
-                     float        weight,
-                     float        persistence,
-                     float        lacunarity,
-                     float        mu,
-                     const Array *p_ctrl_param,
-                     const Array *p_noise_x,
-                     const Array *p_noise_y,
-                     const Array *p_stretching,
-                     glm::vec4    bbox)
+Array noise_parberry(glm::ivec2    shape,
+                     glm::vec2     kw,
+                     std::uint32_t seed,
+                     int           octaves,
+                     float         weight,
+                     float         persistence,
+                     float         lacunarity,
+                     float         mu,
+                     const Array  *p_ctrl_param,
+                     const Array  *p_noise_x,
+                     const Array  *p_noise_y,
+                     const Array  *p_stretching,
+                     glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -192,19 +191,19 @@ Array noise_parberry(glm::ivec2   shape,
   return array;
 }
 
-Array noise_pingpong(NoiseType    noise_type,
-                     glm::ivec2   shape,
-                     glm::vec2    kw,
-                     uint         seed,
-                     int          octaves,
-                     float        weight,
-                     float        persistence,
-                     float        lacunarity,
-                     const Array *p_ctrl_param,
-                     const Array *p_noise_x,
-                     const Array *p_noise_y,
-                     const Array *p_stretching,
-                     glm::vec4    bbox)
+Array noise_pingpong(NoiseType     noise_type,
+                     glm::ivec2    shape,
+                     glm::vec2     kw,
+                     std::uint32_t seed,
+                     int           octaves,
+                     float         weight,
+                     float         persistence,
+                     float         lacunarity,
+                     const Array  *p_ctrl_param,
+                     const Array  *p_noise_x,
+                     const Array  *p_noise_y,
+                     const Array  *p_stretching,
+                     glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -228,20 +227,20 @@ Array noise_pingpong(NoiseType    noise_type,
   return array;
 }
 
-Array noise_ridged(NoiseType    noise_type,
-                   glm::ivec2   shape,
-                   glm::vec2    kw,
-                   uint         seed,
-                   int          octaves,
-                   float        weight,
-                   float        persistence,
-                   float        lacunarity,
-                   float        k_smoothing,
-                   const Array *p_ctrl_param,
-                   const Array *p_noise_x,
-                   const Array *p_noise_y,
-                   const Array *p_stretching,
-                   glm::vec4    bbox)
+Array noise_ridged(NoiseType     noise_type,
+                   glm::ivec2    shape,
+                   glm::vec2     kw,
+                   std::uint32_t seed,
+                   int           octaves,
+                   float         weight,
+                   float         persistence,
+                   float         lacunarity,
+                   float         k_smoothing,
+                   const Array  *p_ctrl_param,
+                   const Array  *p_noise_x,
+                   const Array  *p_noise_y,
+                   const Array  *p_stretching,
+                   glm::vec4     bbox)
 {
   Array array = Array(shape);
 
@@ -266,20 +265,20 @@ Array noise_ridged(NoiseType    noise_type,
   return array;
 }
 
-Array noise_swiss(NoiseType    noise_type,
-                  glm::ivec2   shape,
-                  glm::vec2    kw,
-                  uint         seed,
-                  int          octaves,
-                  float        weight,
-                  float        persistence,
-                  float        lacunarity,
-                  float        warp_scale,
-                  const Array *p_ctrl_param,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  const Array *p_stretching,
-                  glm::vec4    bbox)
+Array noise_swiss(NoiseType     noise_type,
+                  glm::ivec2    shape,
+                  glm::vec2     kw,
+                  std::uint32_t seed,
+                  int           octaves,
+                  float         weight,
+                  float         persistence,
+                  float         lacunarity,
+                  float         warp_scale,
+                  const Array  *p_ctrl_param,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  const Array  *p_stretching,
+                  glm::vec4     bbox)
 {
   Array array = Array(shape);
 

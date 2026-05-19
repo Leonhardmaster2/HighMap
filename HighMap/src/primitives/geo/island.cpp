@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
 #include <algorithm>  // for max, min
 #include <cmath>      // for cos, atan2, sin, M_PI, exp, hypot
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
 #include <memory>     // for unique_ptr
 #include <utility>    // for move
@@ -23,7 +22,7 @@ namespace hmap
 
 Array island_land_mask(glm::ivec2       shape,
                        float            radius,
-                       uint             seed,
+                       std::uint32_t    seed,
                        float            displacement,
                        NoiseType        noise_type,
                        float            kw,
@@ -235,32 +234,32 @@ Array island(const Array &land_mask,
   return z_ground + z_water;
 }
 
-Array island(const Array &land_mask,
-             uint         seed,
-             float        noise_amp,
-             glm::vec2    noise_kw,
-             int          noise_octaves,
-             float        noise_rugosity,
-             float        noise_angle,
-             float        noise_k_smoothing,
-             float        apex_elevation,
-             bool         filter_distance,
-             int          filter_ir,
-             float        slope_min,
-             float        slope_max,
-             float        slope_start,
-             float        slope_end,
-             float        slope_noise_intensity,
-             float        k_smooth,
-             float        radial_noise_intensity,
-             float        helper_radial_profile_gain,
-             float        water_decay,
-             float        water_depth,
-             float        lee_angle,
-             float        lee_amp,
-             float        uplift_amp,
-             Array       *p_water_depth,
-             Array       *p_inland_mask)
+Array island(const Array  &land_mask,
+             std::uint32_t seed,
+             float         noise_amp,
+             glm::vec2     noise_kw,
+             int           noise_octaves,
+             float         noise_rugosity,
+             float         noise_angle,
+             float         noise_k_smoothing,
+             float         apex_elevation,
+             bool          filter_distance,
+             int           filter_ir,
+             float         slope_min,
+             float         slope_max,
+             float         slope_start,
+             float         slope_end,
+             float         slope_noise_intensity,
+             float         k_smooth,
+             float         radial_noise_intensity,
+             float         helper_radial_profile_gain,
+             float         water_decay,
+             float         water_depth,
+             float         lee_angle,
+             float         lee_amp,
+             float         uplift_amp,
+             Array        *p_water_depth,
+             Array        *p_inland_mask)
 {
   glm::ivec2 shape = land_mask.shape;
 

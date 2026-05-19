@@ -1,9 +1,8 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
 #include <cmath>      // for pow, cos, log, sin, M_PI, floor
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
 
 #include "highmap/array.hpp"      // for Array, operator*
@@ -85,7 +84,7 @@ namespace hmap::gpu
 
 Array multisteps(glm::ivec2       shape,
                  float            angle,
-                 uint             seed,
+                 std::uint32_t    seed,
                  glm::vec2        kw,
                  float            noise_amp,
                  float            noise_rugosity,

@@ -1,11 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>  // for M_SQRT1_2
+#include <cmath> // for M_SQRT1_2
+#include <cstdint>
 #include <list>   // for list
 #include <vector> // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"               // for Array
 #include "highmap/boundary.hpp"            // for fill_borders
@@ -33,7 +32,7 @@ Array d8_compute_ndip(const Array &d8)
 
   const std::vector<int> di = HMAP_D8_DI;
   const std::vector<int> dj = HMAP_D8_DJ;
-  const uint             nb = di.size();
+  const std::uint32_t    nb = di.size();
 
   // correspond between current neighbor index and neighbor flow
   // direction pointing to the current cell
@@ -43,7 +42,7 @@ Array d8_compute_ndip(const Array &d8)
     for (int i = 1; i < d8.shape.x - 1; i++)
       // count the number of neighbors with flow directions pointing
       // to the current cell
-      for (uint k = 0; k < nb; k++)
+      for (std::uint32_t k = 0; k < nb; k++)
         if (d8(i + di[k], j + dj[k]) == kp[k]) nidp(i, j) += 1;
 
   return nidp;
@@ -107,7 +106,7 @@ Array flow_direction_d8(const Array &z)
   const std::vector<int>   di = HMAP_D8_DI;
   const std::vector<int>   dj = HMAP_D8_DJ;
   const std::vector<float> c = HMAP_D8_C;
-  const uint               nb = di.size();
+  const std::uint32_t      nb = di.size();
 
   for (int j = 1; j < z.shape.y - 1; j++)
     for (int i = 1; i < z.shape.x - 1; i++)
@@ -115,7 +114,7 @@ Array flow_direction_d8(const Array &z)
       float dmax = 0.f;
       int   kn = 0;
 
-      for (uint k = 0; k < nb; k++)
+      for (std::uint32_t k = 0; k < nb; k++)
       {
         // elevation difference between the two cells
         float delta = (z(i, j) - z(i + di[k], j + dj[k])) * c[k];

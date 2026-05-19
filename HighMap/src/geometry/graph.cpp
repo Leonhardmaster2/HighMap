@@ -1,9 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max, copy, fill_n, clamp, fill
-#include <cmath>      // for sqrt
-#include <cstddef>    // for size_t
+#include <algorithm> // for max, copy, fill_n, clamp, fill
+#include <cmath>     // for sqrt
+#include <cstddef>   // for size_t
+#include <cstdint>
 #include <fstream>    // for basic_ostream, char_traits
 #include <functional> // for function
 #include <iomanip>    // for operator<<, setw
@@ -14,8 +15,6 @@
 #include <string>     // for string
 #include <utility>    // for pair
 #include <vector>     // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"          // for Array
 #include "highmap/colormaps.hpp"      // for Cmap
@@ -291,13 +290,13 @@ void Graph::to_array(Array &array, glm::vec4 bbox, bool color_by_edge_weight)
     }
 }
 
-void Graph::to_array_fractalize(Array    &array,
-                                glm::vec4 bbox,
-                                int       iterations,
-                                uint      seed,
-                                float     sigma,
-                                int       orientation,
-                                float     persistence)
+void Graph::to_array_fractalize(Array        &array,
+                                glm::vec4     bbox,
+                                int           iterations,
+                                std::uint32_t seed,
+                                float         sigma,
+                                int           orientation,
+                                float         persistence)
 {
   // find smallest edge length
   float dmin = std::numeric_limits<float>::max();

@@ -4,8 +4,8 @@ int main(void)
 {
   hmap::gpu::init_opencl();
 
-  glm::ivec2 shape = {256, 256};
-  uint       seed = 0;
+  glm::ivec2    shape = {256, 256};
+  std::uint32_t seed = 0;
 
   hmap::Array z = hmap::gpu::shattered_peak(shape, seed);
   hmap::remap(z);

@@ -5,9 +5,8 @@
 
 #include <algorithm> // for max, min
 #include <cmath>     // for pow
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <vector> // for vector
 
 #include "highmap/array.hpp"                    // for Array
 #include "highmap/erosion.hpp"                  // for hydraulic_saleve
@@ -30,7 +29,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance,
                       int                       max_iterations,
                       float                     noise_strength,
-                      uint                      seed,
+                      std::uint32_t             seed,
                       bool                      enable_post_slope_limiter,
                       float                     post_slope_limit,
                       bool                      enable_post_smoothing)
@@ -68,7 +67,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
 }
 
 Array hydraulic_saleve(const Array          &z,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count,
                        float                 m_exp,
                        float                 uplift_rate,
@@ -191,7 +190,7 @@ Array hydraulic_saleve(const Array          &z,
 
 Array hydraulic_saleve(const Array          &z,
                        const Array          *p_mask,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count,
                        float                 m_exp,
                        float                 uplift_rate,

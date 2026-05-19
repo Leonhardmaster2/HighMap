@@ -1,9 +1,10 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <sys/types.h> // for size_t
 
-#include <algorithm> // for min, lower_bound
+#include <algorithm> // for max, min, lower_bound, copy
+#include <cstdint>   // for uint32_t
 #include <random>    // for discrete_distribution, mt19937
 #include <vector>    // for vector
 
@@ -15,7 +16,7 @@ namespace hmap
 
 glm::ivec2 pick_boundary_cell(const Array   &z,
                               DomainBoundary boundary,
-                              uint           seed,
+                              std::uint32_t  seed,
                               bool           favor_boundary_center,
                               bool           favor_lower_elevation,
                               bool           favor_sinks)

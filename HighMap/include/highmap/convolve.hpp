@@ -148,11 +148,11 @@ Array convolve2d_svd(const Array &z, const Array &kernel, int rank = 3);
  * **Result**
  * @image html ex_convolve2d_svd.png
  */
-Array convolve2d_svd_rotated_kernel(const Array &z,
-                                    const Array &kernel,
-                                    int          rank = 3,
-                                    int          n_rotations = 6,
-                                    uint         seed = 1);
+Array convolve2d_svd_rotated_kernel(const Array  &z,
+                                    const Array  &kernel,
+                                    int           rank = 3,
+                                    int           n_rotations = 6,
+                                    std::uint32_t seed = 1);
 
 } // namespace hmap
 

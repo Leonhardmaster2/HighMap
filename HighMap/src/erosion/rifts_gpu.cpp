@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
-#include <vector> // for allocator, vector
+#include <cstdint> // for uint32_t
+#include <vector>  // for allocator, vector
 
 #include "cl_wrapper/run.hpp" // for Run
 
@@ -17,7 +16,7 @@ void rifts(Array           &z,
            const glm::vec2 &kw,
            float            angle,
            float            amplitude,
-           uint             seed,
+           std::uint32_t    seed,
            float            elevation_noise_shift,
            float            k_smooth_bottom,
            float            k_smooth_top,

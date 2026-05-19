@@ -3,9 +3,8 @@
  * this software. */
 #include <algorithm> // for transform
 #include <cmath>     // for fabs
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <vector> // for vector
 
 #include "highmap/array.hpp"      // for Array, operator-, operator*
 #include "highmap/filters.hpp"    // for smooth_cpulse
@@ -80,10 +79,10 @@ Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
             float                             gain_factor)
 {
-  Array      array_out = Array(t.shape);
-  const uint n = arrays.size();
+  Array               array_out = Array(t.shape);
+  const std::uint32_t n = arrays.size();
 
-  for (uint k = 0; k < n; k++)
+  for (std::uint32_t k = 0; k < n; k++)
   {
     float r0 = (float)k / (float)(n - 1);
 

@@ -1,9 +1,10 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <sys/types.h> // for size_t
 
-#include <algorithm>        // for fill
+#include <algorithm>        // for max, fill, fill_n, copy
+#include <cstdint>          // for uint32_t
 #include <initializer_list> // for initializer_list
 #include <queue>            // for make_heap, pop_heap, push...
 #include <vector>           // for vector
@@ -21,18 +22,18 @@
 namespace hmap
 {
 
-Array flow_fixing(const Array &z,
-                  float        riverbed_talus,
-                  int          iterations,
-                  int          prefilter_ir,
-                  bool         carve_riverbed,
-                  bool         smooth_river_bottom,
-                  float        talus_riverbank,
-                  uint         seed,
-                  float        riverbank_noise_ratio,
-                  float        merging_distance,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y)
+Array flow_fixing(const Array  &z,
+                  float         riverbed_talus,
+                  int           iterations,
+                  int           prefilter_ir,
+                  bool          carve_riverbed,
+                  bool          smooth_river_bottom,
+                  float         talus_riverbank,
+                  std::uint32_t seed,
+                  float         riverbank_noise_ratio,
+                  float         merging_distance,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y)
 {
   // local node type for heap queues
   struct Node

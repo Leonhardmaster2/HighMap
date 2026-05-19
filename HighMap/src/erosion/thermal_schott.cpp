@@ -2,7 +2,8 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <vector> // for vector
+#include <cstdint> // for uint32_t
+#include <vector>  // for vector
 
 #include "highmap/array.hpp"    // for Array
 #include "highmap/boundary.hpp" // for extrapolate_borders
@@ -21,10 +22,10 @@ void thermal_schott(Array       &z,
 {
   // https://www.shadertoy.com/view/XX2XWD
 
-  std::vector<int>   di = HMAP_DI;
-  std::vector<int>   dj = HMAP_DJ;
-  std::vector<float> c = HMAP_CD;
-  const uint         nb = di.size();
+  std::vector<int>    di = HMAP_DI;
+  std::vector<int>    dj = HMAP_DJ;
+  std::vector<float>  c = HMAP_CD;
+  const std::uint32_t nb = di.size();
 
   for (int it = 0; it < iterations; it++)
   {
@@ -37,7 +38,7 @@ void thermal_schott(Array       &z,
         int down = 0;
 
         // check neighbors
-        for (uint k = 0; k < nb; k++)
+        for (std::uint32_t k = 0; k < nb; k++)
         {
           int p = i + di[k];
           int q = j + dj[k];

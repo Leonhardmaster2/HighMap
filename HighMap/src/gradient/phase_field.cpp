@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
-#include <cmath>  // for M_PI, sqrt
-#include <vector> // for allocator, vector
+#include <cmath>   // for M_PI, sqrt
+#include <cstdint> // for uint32_t
+#include <vector>  // for allocator, vector
 
 #include "cl_wrapper/run.hpp" // for Run
 
@@ -41,7 +40,7 @@ void phase_averaging(Array &field_real, Array &field_imag, int ir)
 
 Array phase_field(const Array     &array,
                   const glm::vec2 &kw,
-                  uint             seed,
+                  std::uint32_t    seed,
                   float            kp,
                   bool             rotate90,
                   int              n_kernel_samples,
@@ -107,7 +106,7 @@ Array phase_field(const Array     &array,
 }
 
 Array phase_field(const Array     &array,
-                  uint             seed,
+                  std::uint32_t    seed,
                   float            kp_global,
                   bool             rotate90,
                   int              n_kernel_samples,
@@ -141,7 +140,7 @@ Array phase_field(const Array     &array,
 
 Array phase_field_angle(const Array     &angle,
                         const glm::vec2 &kw,
-                        uint             seed,
+                        std::uint32_t    seed,
                         float            kp,
                         int              n_kernel_samples,
                         const glm::vec2 &jitter,

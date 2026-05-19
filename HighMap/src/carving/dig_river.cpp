@@ -1,10 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint, size_t
+#include <sys/types.h> // for size_t
 
 #include <algorithm> // for min
 #include <cmath>     // for pow
+#include <cstdint>   // for uint32_t
 #include <vector>    // for vector
 
 #include "highmap/array.hpp"          // for Array, operator*
@@ -25,7 +26,7 @@ void dig_river(Array                   &z,
                float                    depth,
                float                    riverbed_talus,
                float                    noise_ratio,
-               uint                     seed,
+               std::uint32_t            seed,
                Array                   *p_mask)
 {
   // generate mask where the river path lies and dig rivers
@@ -85,16 +86,16 @@ void dig_river(Array                   &z,
   if (p_mask) *p_mask = dist;
 }
 
-void dig_river(Array      &z,
-               const Path &path,
-               float       riverbank_talus,
-               int         river_width,
-               int         merging_width,
-               float       depth,
-               float       riverbed_talus,
-               float       noise_ratio,
-               uint        seed,
-               Array      *p_mask)
+void dig_river(Array        &z,
+               const Path   &path,
+               float         riverbank_talus,
+               int           river_width,
+               int           merging_width,
+               float         depth,
+               float         riverbed_talus,
+               float         noise_ratio,
+               std::uint32_t seed,
+               Array        *p_mask)
 {
   const std::vector<Path> path_list = {path};
 

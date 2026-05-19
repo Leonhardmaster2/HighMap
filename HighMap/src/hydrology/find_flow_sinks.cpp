@@ -1,9 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <sys/types.h> // for size_t
 
-#include <vector> // for vector
+#include <cstdint> // for uint32_t
+#include <vector>  // for vector
 
 #include "highmap/array.hpp"               // for Array
 #include "highmap/hydrology/hydrology.hpp" // for d8_compute_ndip, find_flo...
@@ -40,7 +41,7 @@ void find_flow_sinks(const Array &z, std::vector<int> &is, std::vector<int> &js)
 
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
   const std::vector<int> dj = {0, 1, 1, 1, 0, -1, -1, -1};
-  const uint             nb = di.size();
+  const std::uint32_t    nb = di.size();
 
   for (int j = 1; j < z.shape.y - 1; j++)
     for (int i = 1; i < z.shape.x - 1; i++)
@@ -69,7 +70,7 @@ std::vector<glm::ivec2> find_flow_sinks(const Array &z)
 
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
   const std::vector<int> dj = {0, 1, 1, 1, 0, -1, -1, -1};
-  const uint             nb = di.size();
+  const std::uint32_t    nb = di.size();
 
   for (int j = 1; j < z.shape.y - 1; j++)
     for (int i = 1; i < z.shape.x - 1; i++)

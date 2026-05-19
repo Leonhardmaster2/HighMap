@@ -10,8 +10,6 @@
 #include <string>
 #include <vector>
 
-typedef unsigned int uint;
-
 namespace hmap
 {
 
@@ -42,7 +40,7 @@ template <typename T>
 void reindex_vector(std::vector<T> &v, std::vector<size_t> &idx)
 {
   std::vector<T> v_new(v.size());
-  for (uint k = 0; k < v.size(); k++)
+  for (std::uint32_t k = 0; k < v.size(); k++)
     v_new[k] = v[idx[k]];
   v = v_new;
 }

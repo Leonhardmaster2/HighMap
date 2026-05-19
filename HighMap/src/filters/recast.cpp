@@ -4,9 +4,8 @@
 
 #include <algorithm> // for transform, min
 #include <cmath>     // for pow, M_PI
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <vector> // for vector
 
 #include "highmap/array.hpp"         // for Array, operator*, operator+
 #include "highmap/filters.hpp"       // for smooth_cpulse, gamma_correct...
@@ -309,15 +308,15 @@ void recast_peak(Array       &array,
                   [&](Array &a) { recast_peak(a, ir, gamma, k); });
 }
 
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         float        gamma,
-                         const Array *p_noise,
-                         glm::vec4    bbox)
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         float         gamma,
+                         const Array  *p_noise,
+                         glm::vec4     bbox)
 {
   // slope-based criteria
   Array c = select_gradient_binary(array, talus);
@@ -349,16 +348,16 @@ void recast_rocky_slopes(Array       &array,
     array += amplitude * (*p_noise) * c;
 }
 
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         const Array *p_mask,
-                         float        gamma,
-                         const Array *p_noise,
-                         glm::vec4    bbox)
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         const Array  *p_mask,
+                         float         gamma,
+                         const Array  *p_noise,
+                         glm::vec4     bbox)
 {
   apply_with_mask(array,
                   p_mask,

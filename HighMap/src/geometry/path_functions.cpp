@@ -6,13 +6,12 @@
 #include <algorithm> // for min, max, clamp
 #include <array>     // for array
 #include <cmath>     // for M_PI_2, copysign, cos, sin
-#include <limits>    // for numeric_limits
-#include <optional>  // for optional
-#include <random>    // for normal_distribution, mt19937
-#include <utility>   // for move
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <limits>   // for numeric_limits
+#include <optional> // for optional
+#include <random>   // for normal_distribution, mt19937
+#include <utility>  // for move
+#include <vector>   // for vector
 
 #include "highmap/array.hpp"             // for Array
 #include "highmap/geometry/grids.hpp"    // for grid_xy_vector
@@ -245,14 +244,14 @@ Path decimate_vw(const Path &path, int n_points_target)
   return new_path;
 }
 
-Path fractalize(const Path &path,
-                int         iterations,
-                uint        seed,
-                float       sigma,
-                int         orientation,
-                float       persistence,
-                Array      *p_ctrl_array,
-                glm::vec4   bbox)
+Path fractalize(const Path   &path,
+                int           iterations,
+                std::uint32_t seed,
+                float         sigma,
+                int           orientation,
+                float         persistence,
+                Array        *p_ctrl_array,
+                glm::vec4     bbox)
 {
   Path new_path = path;
 
@@ -339,7 +338,7 @@ Path inflate(const Path &path, float radius, bool resample)
 Path meanderize(const Path            &path,
                 float                  ratio,
                 float                  noise_ratio,
-                uint                   seed,
+                std::uint32_t          seed,
                 int                    iterations,
                 int                    edge_divisions,
                 Path::EdgeDivisionMode edm)

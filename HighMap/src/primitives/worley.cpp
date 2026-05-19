@@ -2,7 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array
 #include "highmap/functions.hpp"  // for WorleyDoubleFunction
@@ -12,16 +12,16 @@
 namespace hmap
 {
 
-Array worley_double(glm::ivec2   shape,
-                    glm::vec2    kw,
-                    uint         seed,
-                    float        ratio,
-                    float        k,
-                    const Array *p_ctrl_param,
-                    const Array *p_noise_x,
-                    const Array *p_noise_y,
-                    const Array *p_stretching,
-                    glm::vec4    bbox)
+Array worley_double(glm::ivec2    shape,
+                    glm::vec2     kw,
+                    std::uint32_t seed,
+                    float         ratio,
+                    float         k,
+                    const Array  *p_ctrl_param,
+                    const Array  *p_noise_x,
+                    const Array  *p_noise_y,
+                    const Array  *p_stretching,
+                    glm::vec4     bbox)
 {
   hmap::Array                array = hmap::Array(shape);
   hmap::WorleyDoubleFunction f = hmap::WorleyDoubleFunction(kw, seed, ratio, k);

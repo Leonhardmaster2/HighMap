@@ -4,8 +4,9 @@
 #include <bits/std_abs.h> // for abs
 #include <stddef.h>       // for size_t
 
-#include <algorithm> // for clamp, max, min, transform, fill
+#include <algorithm> // for clamp, max, min, transform, copy
 #include <cmath>     // for pow, cos, sin, M_PI, exp, atan
+#include <cstdint>   // for uint32_t
 #include <limits>    // for numeric_limits
 #include <random>    // for uniform_real_distribution, mt19937
 #include <vector>    // for vector
@@ -1038,14 +1039,14 @@ void steepen_convective(Array       &array,
                   { steepen_convective(a, angle, iterations, ir, dt); });
 }
 
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             float        gain,
-             float        noise_ratio,
-             const Array *p_noise,
-             float        vmin,
-             float        vmax)
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             float         gain,
+             float         noise_ratio,
+             const Array  *p_noise,
+             float         vmin,
+             float         vmax)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-noise_ratio, noise_ratio);
@@ -1104,15 +1105,15 @@ void terrace(Array       &array,
                    lambda);
 }
 
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             const Array *p_mask,
-             float        gain,
-             float        noise_ratio,
-             const Array *p_noise,
-             float        vmin,
-             float        vmax)
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             const Array  *p_mask,
+             float         gain,
+             float         noise_ratio,
+             const Array  *p_noise,
+             float         vmin,
+             float         vmax)
 {
   apply_with_mask(
       array,

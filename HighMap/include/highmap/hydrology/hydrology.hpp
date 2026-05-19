@@ -328,12 +328,12 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref);
  * @image html ex_flow_accumulation_dinf2.png
  */
 
-Array flow_accumulation_dinf_perturbed(const Array &z,
-                                       float        talus_ref,
-                                       int          nsamples,
-                                       glm::vec2    kw,
-                                       uint         seed,
-                                       float        amp,
+Array flow_accumulation_dinf_perturbed(const Array  &z,
+                                       float         talus_ref,
+                                       int           nsamples,
+                                       glm::vec2     kw,
+                                       std::uint32_t seed,
+                                       float         amp,
                                        const Array *p_perturb_scaling = nullptr,
                                        glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -382,18 +382,18 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref);
  */
 Array flow_direction_dinf_angle(const Array &z, float talus_ref);
 
-Array flow_fixing(const Array &z,
-                  float        riverbed_talus = 0.f,
-                  int          iterations = 5,
-                  int          prefilter_ir = 8,
-                  bool         carve_riverbed = true,
-                  bool         smooth_river_bottom = true,
-                  float        talus_riverbank = 0.01f, // 4 / shape.X
-                  uint         seed = 0,
-                  float        riverbank_noise_ratio = 0.f,
-                  float        merging_distance = 8.f, // pixels
-                  const Array *p_noise_x = nullptr,
-                  const Array *p_noise_y = nullptr);
+Array flow_fixing(const Array  &z,
+                  float         riverbed_talus = 0.f,
+                  int           iterations = 5,
+                  int           prefilter_ir = 8,
+                  bool          carve_riverbed = true,
+                  bool          smooth_river_bottom = true,
+                  float         talus_riverbank = 0.01f, // 4 / shape.X
+                  std::uint32_t seed = 0,
+                  float         riverbank_noise_ratio = 0.f,
+                  float         merging_distance = 8.f, // pixels
+                  const Array  *p_noise_x = nullptr,
+                  const Array  *p_noise_y = nullptr);
 
 /**
  * @brief Computes the optimal flow path from a starting point to the boundary

@@ -3,13 +3,13 @@
  * this software. */
 #include <stdlib.h> // for RAND_MAX
 
-#include <cmath>      // for hypot
+#include <cmath> // for hypot
+#include <cstdint>
 #include <functional> // for function
-#include <random>     // for uniform_real_distribution, mt19937
+#include <random>     // for uniform_real_distribution
 #include <utility>    // for swap
 #include <vector>     // for vector
 
-#include "highmap/array.hpp"     // for uint
 #include "highmap/functions.hpp" // for ParberryFunction, NoiseFunction
 #include "highmap/math/core.hpp" // for lerp, smoothstep5
 
@@ -18,7 +18,7 @@ namespace hmap
 
 // methods
 
-ParberryFunction::ParberryFunction(glm::vec2 kw, uint seed, float mu)
+ParberryFunction::ParberryFunction(glm::vec2 kw, std::uint32_t seed, float mu)
     : NoiseFunction(kw, seed), mu(mu)
 {
   this->p.resize(this->perlin_b);

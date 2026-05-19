@@ -77,7 +77,7 @@ public:
    * @param bbox    Bounding box within which the points will be generated. The
    *                bounding box is defined as {xmin, xmax, ymin, ymax}.
    */
-  Cloud(int npoints, uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+  Cloud(int npoints, std::uint32_t seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Constructs a new Cloud object based on a list of existing points.
@@ -334,7 +334,7 @@ public:
    * @param seed Random seed number for generating positions and values.
    * @param bbox Bounding box within which the points will be randomized.
    */
-  void randomize(uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
+  void randomize(std::uint32_t seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});
 
   /**
    * @brief Remap the values of the cloud points to a target range.
@@ -355,7 +355,7 @@ public:
    * @param dv   Scale factor for the random displacement applied to the point's
    *             value component `v`.
    */
-  void shuffle(float dx, float dy, uint seed, float dv = 0.f);
+  void shuffle(float dx, float dy, std::uint32_t seed, float dv = 0.f);
 
   /**
    * @brief Snap points to the bounding box edges and corners.
@@ -569,7 +569,7 @@ Cloud merge_clouds(const std::vector<Cloud> &clouds);
  */
 Cloud random_cloud(
     size_t                     count,
-    uint                       seed,
+    std::uint32_t              seed,
     const PointSamplingMethod &method = PointSamplingMethod::RND_LHS,
     const glm::vec4           &bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -598,7 +598,7 @@ Cloud random_cloud(
  */
 Cloud random_cloud_density(size_t           count,
                            const Array     &density,
-                           uint             seed,
+                           std::uint32_t    seed,
                            const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -625,7 +625,7 @@ Cloud random_cloud_density(size_t           count,
  * @image html ex_point_sampling3.png
  */
 Cloud random_cloud_distance(float            min_dist,
-                            uint             seed,
+                            std::uint32_t    seed,
                             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -656,7 +656,7 @@ Cloud random_cloud_distance(float            min_dist,
 Cloud random_cloud_distance(float            min_dist,
                             float            max_dist,
                             const Array     &density,
-                            uint             seed,
+                            std::uint32_t    seed,
                             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -688,7 +688,7 @@ Cloud random_cloud_distance_power_law(
     float            dist_min,
     float            dist_max,
     float            alpha,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -720,7 +720,7 @@ Cloud random_cloud_distance_weibull(
     float            dist_min,
     float            lambda,
     float            k,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -750,7 +750,7 @@ Cloud random_cloud_distance_weibull(
 Cloud random_cloud_jittered(size_t           count,
                             const glm::vec2 &jitter_amount,
                             const glm::vec2 &stagger_ratio,
-                            uint             seed,
+                            std::uint32_t    seed,
                             const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -769,7 +769,7 @@ Cloud random_cloud_jittered(size_t           count,
  */
 void rejection_filter_density(Cloud           &cloud,
                               const Array     &density_mask,
-                              uint             seed,
+                              std::uint32_t    seed,
                               const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

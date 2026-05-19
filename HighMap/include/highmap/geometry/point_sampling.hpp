@@ -26,7 +26,7 @@
 #include "point_sampler.hpp"
 #include "point_sampler/point.hpp" // for Point
 
-#include "highmap/array.hpp" // for uint, Array
+#include "highmap/array.hpp" // for std::uint32_t, Array
 #include "highmap/functions.hpp"
 #include "highmap/geometry/point.hpp"
 
@@ -159,7 +159,7 @@ make_pointwise_function_from_array(const Array &array, const glm::vec4 &bbox);
  */
 std::array<std::vector<float>, 2> random_points(
     size_t                     count,
-    uint                       seed,
+    std::uint32_t              seed,
     const PointSamplingMethod &method = PointSamplingMethod::RND_RANDOM,
     const glm::vec4           &bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -180,7 +180,7 @@ std::array<std::vector<float>, 2> random_points(
 std::array<std::vector<float>, 2> random_points_density(
     size_t           count,
     const Array     &density,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -198,7 +198,7 @@ std::array<std::vector<float>, 2> random_points_density(
  */
 std::array<std::vector<float>, 2> random_points_distance(
     float            min_dist,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -221,7 +221,7 @@ std::array<std::vector<float>, 2> random_points_distance(
     float            min_dist,
     float            max_dist,
     const Array     &density,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -244,7 +244,7 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
     float            dist_min,
     float            dist_max,
     float            alpha,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -267,7 +267,7 @@ std::array<std::vector<float>, 2> random_points_distance_weibull(
     float            dist_min,
     float            lambda,
     float            k,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -289,7 +289,7 @@ std::array<std::vector<float>, 2> random_points_jittered(
     size_t           count,
     const glm::vec2 &jitter_amount,
     const glm::vec2 &stagger_ratio,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**

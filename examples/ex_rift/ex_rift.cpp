@@ -9,11 +9,11 @@ int main(void)
 
   bool sharp_bottom = false;
 
-  float kw = 4.f;
-  uint  seed = 1;
-  auto  noise = 0.2f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
+  float         kw = 4.f;
+  std::uint32_t seed = 1;
+  auto          noise = 0.2f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                       shape,
-                                       {kw, kw},
+                                               {kw, kw},
                                       seed,
                                       8,
                                       0.f);

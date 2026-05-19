@@ -1,7 +1,7 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array, operator*
 #include "highmap/filters.hpp"    // for gain
@@ -13,28 +13,28 @@
 namespace hmap::gpu
 {
 
-Array basalt_field(glm::ivec2   shape,
-                   glm::vec2    kw,
-                   uint         seed,
-                   float        warp_kw,
-                   float        large_scale_warp_amp,
-                   float        large_scale_gain,
-                   float        large_scale_amp,
-                   float        medium_scale_kw_ratio,
-                   float        medium_scale_warp_amp,
-                   float        medium_scale_gain,
-                   float        medium_scale_amp,
-                   float        small_scale_kw_ratio,
-                   float        small_scale_amp,
-                   float        small_scale_overlay_amp,
-                   float        rugosity_kw_ratio,
-                   float        rugosity_amp,
-                   bool         flatten_activate,
-                   float        flatten_kw_ratio,
-                   float        flatten_amp,
-                   const Array *p_noise_x,
-                   const Array *p_noise_y,
-                   glm::vec4    bbox)
+Array basalt_field(glm::ivec2    shape,
+                   glm::vec2     kw,
+                   std::uint32_t seed,
+                   float         warp_kw,
+                   float         large_scale_warp_amp,
+                   float         large_scale_gain,
+                   float         large_scale_amp,
+                   float         medium_scale_kw_ratio,
+                   float         medium_scale_warp_amp,
+                   float         medium_scale_gain,
+                   float         medium_scale_amp,
+                   float         small_scale_kw_ratio,
+                   float         small_scale_amp,
+                   float         small_scale_overlay_amp,
+                   float         rugosity_kw_ratio,
+                   float         rugosity_amp,
+                   bool          flatten_activate,
+                   float         flatten_kw_ratio,
+                   float         flatten_amp,
+                   const Array  *p_noise_x,
+                   const Array  *p_noise_y,
+                   glm::vec4     bbox)
 {
   // --- large scales
 

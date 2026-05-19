@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
-#include <cmath> // for cos, sin, M_PI
+#include <cmath>   // for cos, sin, M_PI
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array, operator*
 #include "highmap/functions.hpp"  // for NoiseType
@@ -12,17 +11,17 @@
 namespace hmap::gpu
 {
 
-Array badlands(glm::ivec2   shape,
-               glm::vec2    kw,
-               uint         seed,
-               int          octaves,
-               float        rugosity,
-               float        angle,
-               float        k_smoothing,
-               float        base_noise_amp,
-               const Array *p_noise_x,
-               const Array *p_noise_y,
-               glm::vec4    bbox)
+Array badlands(glm::ivec2    shape,
+               glm::vec2     kw,
+               std::uint32_t seed,
+               int           octaves,
+               float         rugosity,
+               float         angle,
+               float         k_smoothing,
+               float         base_noise_amp,
+               const Array  *p_noise_x,
+               const Array  *p_noise_y,
+               glm::vec4     bbox)
 {
   const float persistence = 0.5f;
   const float lacunarity = 2.3f;

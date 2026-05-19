@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>      // for M_PI, atan
+#include <cmath> // for M_PI, atan
+#include <cstdint>
 #include <functional> // for function
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"               // for Array, operator*, operator+
 #include "highmap/blending.hpp"            // for blend_gradients
@@ -25,7 +24,7 @@ namespace hmap::gpu
 void hydraulic_procedural(Array         &z,
                           float          kp_global,
                           float          c_erosion,
-                          uint           seed,
+                          std::uint32_t  seed,
                           ErosionProfile erosion_profile,
                           float          erosion_profile_parameter,
                           float          angle_shift,
@@ -197,7 +196,7 @@ void hydraulic_procedural(Array         &z,
 void hydraulic_procedural_fbm(Array         &z,
                               float          kp_global,
                               float          c_erosion,
-                              uint           seed,
+                              std::uint32_t  seed,
                               ErosionProfile erosion_profile,
                               int            octaves,
                               float          persistence,
@@ -268,7 +267,7 @@ void hydraulic_procedural_fbm(Array         &z,
 void hydraulic_procedural_fbm(Array         &z,
                               float          kp_global,
                               float          c_erosion,
-                              uint           seed,
+                              std::uint32_t  seed,
                               const Array   *p_mask,
                               ErosionProfile erosion_profile,
                               int            octaves,

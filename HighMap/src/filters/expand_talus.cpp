@@ -3,11 +3,10 @@
  * this software. */
 #include <algorithm> // for min
 #include <cmath>     // for hypot
-#include <queue>     // for make_heap, pop_heap, push_heap
-#include <random>    // for generate_canonical, mt19937
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <queue>  // for make_heap, pop_heap, push_heap
+#include <random> // for generate_canonical, mt19937
+#include <vector> // for vector
 
 #include "highmap/array.hpp"    // for Array
 #include "highmap/boundary.hpp" // for extrapolate_borders
@@ -16,12 +15,12 @@
 namespace hmap
 {
 
-void expand_talus(Array       &z,
-                  const Array &mask,
-                  float        talus,
-                  uint         seed,
-                  int          ir,
-                  float        noise_ratio)
+void expand_talus(Array        &z,
+                  const Array  &mask,
+                  float         talus,
+                  std::uint32_t seed,
+                  int           ir,
+                  float         noise_ratio)
 {
   // heap queue structure
   struct HeapNode

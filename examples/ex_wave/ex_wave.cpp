@@ -4,9 +4,9 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
 
-  float kw = 4.f;
-  float angle = 30.f;
-  uint  seed = 1;
+  float         kw = 4.f;
+  float         angle = 30.f;
+  std::uint32_t seed = 1;
 
   auto noise = 0.1f * hmap::noise_fbm(hmap::NoiseType::PERLIN,
                                       shape,

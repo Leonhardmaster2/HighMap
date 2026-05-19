@@ -1,9 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <sys/types.h> // for size_t
 
-#include <algorithm>  // for max, min
+#include <algorithm> // for max, copy, min
+#include <cstdint>
 #include <functional> // for function
 #include <random>     // for uniform_real_distribu...
 #include <vector>     // for vector
@@ -27,7 +28,7 @@ Array stamping(glm::ivec2                shape,
                bool                      kernel_scale_radius,
                bool                      kernel_scale_amplitude,
                StampingBlendMethod       blend_method,
-               uint                      seed,
+               std::uint32_t             seed,
                float                     k_smoothing,
                bool                      kernel_flip,
                bool                      kernel_rotate,

@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <cstdint>
 #include <vector> // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
 
 #include "highmap/array.hpp"    // for Array
 #include "highmap/boundary.hpp" // for extrapolate_borders
@@ -14,10 +13,10 @@ namespace hmap
 
 void depression_filling(Array &z, int iterations, float epsilon)
 {
-  std::vector<int>   di = HMAP_DI;
-  std::vector<int>   dj = HMAP_DJ;
-  std::vector<float> c = HMAP_CD;
-  const uint         nb = di.size();
+  std::vector<int>    di = HMAP_DI;
+  std::vector<int>    dj = HMAP_DJ;
+  std::vector<float>  c = HMAP_CD;
+  const std::uint32_t nb = di.size();
 
   Array z_new = z;
   z_new.set_slice({1, z.shape.x - 1, 1, z.shape.y - 1}, 1e6f);
@@ -29,7 +28,7 @@ void depression_filling(Array &z, int iterations, float epsilon)
       {
         if (z_new(i, j) > z(i, j))
         {
-          for (uint k = 0; k < nb; k++)
+          for (std::uint32_t k = 0; k < nb; k++)
           {
             int p = i + di[k];
             int q = j + dj[k];

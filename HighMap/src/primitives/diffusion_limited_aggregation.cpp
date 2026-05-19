@@ -1,10 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <sys/types.h> // for size_t
 
-#include <algorithm> // for max
+#include <algorithm> // for max, copy
 #include <cmath>     // for cos, floor, hypot, pow, sin
+#include <cstdint>   // for uint32_t
 #include <limits>    // for numeric_limits
 #include <queue>     // for priority_queue
 #include <random>    // for uniform_real_distribution
@@ -22,13 +23,13 @@
 namespace hmap
 {
 
-Array diffusion_limited_aggregation(glm::ivec2 shape,
-                                    float      scale,
-                                    uint       seed,
-                                    float      seeding_radius,
-                                    float      seeding_outer_radius_ratio,
-                                    float      slope,
-                                    float      noise_ratio)
+Array diffusion_limited_aggregation(glm::ivec2    shape,
+                                    float         scale,
+                                    std::uint32_t seed,
+                                    float         seeding_radius,
+                                    float         seeding_outer_radius_ratio,
+                                    float         slope,
+                                    float         noise_ratio)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
@@ -112,7 +113,7 @@ Array diffusion_limited_aggregation(glm::ivec2 shape,
 
 Array diffusion_limited_aggregation_trimesh(
     glm::ivec2            shape,
-    uint                  seed,
+    std::uint32_t         seed,
     size_t                control_points_count,
     glm::vec2             seed_position,
     float                 ratio,

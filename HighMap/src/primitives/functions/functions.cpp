@@ -3,10 +3,14 @@
  * this software. */
 #include <bits/std_abs.h> // for abs
 
-#include <algorithm> // for clamp, max, min
+#include <algorithm>  // for clamp, max, min
+#include <cmath>      // for exp, floor, hypot, pow, cos, fmod
+#include <functional> // for function
+#include <utility>    // for move
 
-#include "highmap/functions.hpp"
-#include "highmap/math/core.hpp" // for smoothstep3, smoothstep5, smoothste...
+#include "highmap/array.hpp"     // for Array
+#include "highmap/functions.hpp" // for RiftFunction, Function, WaveDun...
+#include "highmap/math/core.hpp" // for smoothstep3, smoothstep5, smoot...
 
 namespace hmap
 {

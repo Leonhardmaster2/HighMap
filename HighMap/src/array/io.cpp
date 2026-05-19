@@ -2,10 +2,11 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <algorithm> // for copy
-#include <fstream>   // for basic_ostream, char_traits
+#include <cstdint>   // for uint32_t
+#include <fstream>   // for basic_ostream, operator<<
 #include <iomanip>   // for operator<<, setfill, setprec...
 #include <iostream>  // for cout
-#include <string>    // for string, operator<<
+#include <string>    // for char_traits, string, operator<<
 #include <vector>    // for vector
 
 #include <opencv2/core.hpp>             // for flip
@@ -125,7 +126,7 @@ void Array::to_numpy(const std::string &fname) const
 {
   npy::npy_data_ptr<float> d;
   d.data_ptr = this->vector.data();
-  d.shape = {(uint)this->shape.x, (uint)this->shape.y};
+  d.shape = {(std::uint32_t)this->shape.x, (std::uint32_t)this->shape.y};
   d.fortran_order = true;
 
   npy::write_npy(fname, d);

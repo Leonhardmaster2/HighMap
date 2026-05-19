@@ -5,9 +5,8 @@
 
 #include <algorithm> // for max, max_element, min_element
 #include <cmath>     // for cos, sin, M_PI, ceil, exp, pow
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <vector> // for vector
 
 #include "highmap/array.hpp"      // for Array
 #include "highmap/blending.hpp"   // for mixer
@@ -25,7 +24,7 @@ void stratify(Array             &z,
 
   for (int j = 0; j < z.shape.y; j++)
     for (int i = 0; i < z.shape.x; i++)
-      for (uint k = 0; k < hs.size() - 1; k++)
+      for (std::uint32_t k = 0; k < hs.size() - 1; k++)
       {
         float dh = hs[k + 1] - hs[k];
 
@@ -69,7 +68,7 @@ void stratify_multiscale(Array             &z,
                          std::vector<float> strata_noise,
                          std::vector<float> gamma_list,
                          std::vector<float> gamma_noise,
-                         uint               seed,
+                         std::uint32_t      seed,
                          Array             *p_mask,
                          Array             *p_noise)
 {
@@ -141,18 +140,18 @@ void stratify(Array &z, std::vector<float> hs, float gamma, Array *p_noise)
   stratify(z, hs, gs, p_noise);
 }
 
-void stratify(Array &z,
-              Array &partition,
-              int    nstrata,
-              float  strata_noise,
-              float  gamma,
-              float  gamma_noise,
-              int    npartitions,
-              uint   seed,
-              float  mixing_gain_factor,
-              Array *p_noise,
-              float  vmin,
-              float  vmax)
+void stratify(Array        &z,
+              Array        &partition,
+              int           nstrata,
+              float         strata_noise,
+              float         gamma,
+              float         gamma_noise,
+              int           npartitions,
+              std::uint32_t seed,
+              float         mixing_gain_factor,
+              Array        *p_noise,
+              float         vmin,
+              float         vmax)
 {
   // redefine min/max if sentinels values are detected
   if (vmax < vmin)

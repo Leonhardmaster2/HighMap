@@ -2,11 +2,16 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
+#include <bits/chrono.h> // for duration, duration_cast, high_resol...
+
 #include <iomanip>  // for operator<<, setw
-#include <iostream> // for basic_ostream, char_traits, cout, operator<<, endl
+#include <iostream> // for basic_ostream, char_traits, cout
+#include <list>     // for list
+#include <map>      // for map, operator==, _Rb_tree_const_ite...
+#include <string>   // for operator<=>, string, operator<<
 #include <utility>  // for pair
 
-#include "highmap/dbg/timer.hpp"
+#include "highmap/dbg/timer.hpp" // for Recorder, Timer
 
 namespace hmap
 {

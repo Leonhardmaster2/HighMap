@@ -3,13 +3,14 @@
  * this software. */
 #include <stddef.h> // for size_t
 
-#include <algorithm>  // for remove_if
+#include <algorithm>  // for max, remove_if
 #include <cmath>      // for sqrt
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
 #include <random>     // for uniform_real_distribution
 #include <vector>     // for vector
 
-#include "highmap/array.hpp"            // for Array, uint
+#include "highmap/array.hpp"            // for Array
 #include "highmap/functions.hpp"        // for make_xy_function_from_array
 #include "highmap/geometry/cloud.hpp"   // for Cloud, cloud_sdf_to_array
 #include "highmap/geometry/grids.hpp"   // for grid_xy_vector
@@ -107,7 +108,7 @@ std::vector<float> interpolate_values_from_array(const Cloud &cloud,
 
 void rejection_filter_density(Cloud           &cloud,
                               const Array     &density_mask,
-                              uint             seed,
+                              std::uint32_t    seed,
                               const glm::vec4 &bbox)
 {
   std::mt19937                          gen(seed);

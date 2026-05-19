@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
-
-#include <cmath> // for cos, sin, M_PI
+#include <cmath>   // for cos, sin, M_PI
+#include <cstdint> // for uint32_t
 
 #include "highmap/array.hpp"      // for Array, operator*, operator+
 #include "highmap/filters.hpp"    // for gamma_correction, smooth_fill
@@ -14,22 +13,22 @@
 namespace hmap::gpu
 {
 
-Array mountain_tibesti(glm::ivec2   shape,
-                       uint         seed,
-                       float        scale,
-                       int          octaves,
-                       float        peak_kw,
-                       float        rugosity,
-                       float        angle,
-                       float        angle_spread_ratio,
-                       float        gamma,
-                       bool         add_deposition,
-                       float        bulk_amp,
-                       float        base_noise_amp,
-                       glm::vec2    center,
-                       const Array *p_noise_x,
-                       const Array *p_noise_y,
-                       glm::vec4    bbox)
+Array mountain_tibesti(glm::ivec2    shape,
+                       std::uint32_t seed,
+                       float         scale,
+                       int           octaves,
+                       float         peak_kw,
+                       float         rugosity,
+                       float         angle,
+                       float         angle_spread_ratio,
+                       float         gamma,
+                       bool          add_deposition,
+                       float         bulk_amp,
+                       float         base_noise_amp,
+                       glm::vec2     center,
+                       const Array  *p_noise_x,
+                       const Array  *p_noise_y,
+                       glm::vec4     bbox)
 {
   const float     persistence = 0.5f;
   const float     lacunarity = 2.f;

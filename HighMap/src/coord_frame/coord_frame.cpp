@@ -6,7 +6,8 @@
 #include <limits>    // for numeric_limits
 #include <utility>   // for pair
 
-#include "highmap/coord_frame.hpp"
+#include "highmap/coord_frame.hpp"                 // for CoordFrame
+#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray
 
 namespace hmap
 {

@@ -6,10 +6,9 @@
 #include <algorithm> // for max, fill_n
 #include <array>     // for array
 #include <cmath>     // for hypot, pow
-#include <tuple>     // for get
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
+#include <tuple>  // for get
+#include <vector> // for vector
 
 #include "highmap/array.hpp"          // for Array
 #include "highmap/geometry/point.hpp" // for Point, sort_points
@@ -25,7 +24,7 @@ Array kmeans_clustering2(const Array        &array1,
                          std::vector<Array> *p_scoring,
                          Array              *p_aggregate_scoring,
                          glm::vec2           weights,
-                         uint                seed)
+                         std::uint32_t       seed)
 {
   glm::ivec2 shape = array1.shape;
   Array      kmeans = Array(shape); // output
@@ -146,7 +145,7 @@ Array kmeans_clustering3(const Array        &array1,
                          std::vector<Array> *p_scoring,
                          Array              *p_aggregate_scoring,
                          glm::vec3           weights,
-                         uint                seed)
+                         std::uint32_t       seed)
 {
   glm::ivec2 shape = array1.shape;
   Array      kmeans = Array(shape); // output
