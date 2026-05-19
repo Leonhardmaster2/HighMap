@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/geometry/point_sampling.hpp"
-
 #include <algorithm> // for max, min, clamp
 #include <optional>  // for optional
 
@@ -14,6 +12,8 @@
 #include "point_sampler/random.hpp"                   // for random
 #include "point_sampler/rejection_sampling.hpp"       // for rejection_samp...
 #include "point_sampler/utils.hpp"                    // for split_by_dimen...
+
+#include "highmap/geometry/point_sampling.hpp"
 
 namespace hmap
 {

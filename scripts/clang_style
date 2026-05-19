@@ -20,9 +20,10 @@ PenaltyReturnTypeOnItsOwnLine: 1000
 
 SortIncludes: true
 IncludeBlocks: Regroup
+IncludeIsMainRegex: '$^'
 
 IncludeCategories:
-  - Regex: '^<bits/.*|sys/.*|stdint.h|stddef.h>'
+  - Regex: '^<bits/.*|sys/.*|stdint.h|stddef.h|stdlib.h>'
     Priority: 1
   - Regex: '^<(algorithm|array|atomic|bitset|chrono|cmath|complex|condition_variable|deque|exception|filesystem|forward_list|fstream|functional|future|initializer_list|iomanip|ios|iosfwd|iostream|istream|iterator|limits|list|locale|map|memory|mutex|new|numeric|optional|ostream|queue|random|ratio|regex|set|shared_mutex|sstream|stack|stdexcept|streambuf|string|string_view|system_error|thread|tuple|type_traits|utility|valarray|variant|vector|cstdio|cstdlib|cstddef|cstdint|cstring|ctime|cctype|cwchar|cwctype)>'
     Priority: 2
@@ -38,5 +39,3 @@ IncludeCategories:
     Priority: 7
   - Regex: '^".*"'
     Priority: 8
-
-# stddef.h

@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/geometry/path.hpp" // for Path
-
 #include <bits/std_abs.h> // for abs
 #include <stddef.h>       // for size_t
 
@@ -17,6 +15,7 @@
 #include "highmap/array.hpp"          // for Array, operator-
 #include "highmap/colormaps.hpp"      // for Cmap
 #include "highmap/geometry/cloud.hpp" // for Cloud
+#include "highmap/geometry/path.hpp"  // for Path
 #include "highmap/geometry/point.hpp" // for Point, distance, lerp, curv...
 #include "highmap/internal/vector_utils.hpp"
 #include "highmap/interpolate1d.hpp" // for Interpolator1D, Interpolati...

@@ -1,8 +1,6 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh, cubic_pulse
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for max, fill_n, clamp, min, copy
@@ -24,8 +22,9 @@
 #include "hmm/src/heightmap.h"    // for Heightmap
 #include "hmm/src/triangulator.h" // for Triangulator
 
-#include "highmap/array.hpp"         // for Array
-#include "highmap/interpolate2d.hpp" // for InterpolationMethod2D, inte...
+#include "highmap/array.hpp"            // for Array
+#include "highmap/interpolate2d.hpp"    // for InterpolationMethod2D, inte...
+#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh, cubic_pulse
 
 #include <unordered_map> // for unordered_map, operator==
 

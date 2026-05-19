@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/transform.hpp" // for flip_lr, flip_ud, radial_displ...
-
 #include <algorithm> // for clamp, max
 #include <cmath>     // for cos, sin, fabs, M_PI, atan2
 #include <utility>   // for swap
@@ -14,6 +12,7 @@
 #include "highmap/geometry/grids.hpp" // for grid_xy_vector
 #include "highmap/operator.hpp"       // for fill_array_using_xy_function
 #include "highmap/primitives.hpp"     // for constant
+#include "highmap/transform.hpp"      // for flip_lr, flip_ud, radial_displ...
 
 namespace hmap
 {

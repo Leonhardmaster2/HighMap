@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/geometry/cloud.hpp" // for Cloud, random_cloud_d...
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for max, copy, min, fill_n
@@ -28,6 +26,7 @@
 #include "point_sampler/utils.hpp"   // for merge_by_dimension
 
 #include "highmap/array.hpp"                   // for Array, uint
+#include "highmap/geometry/cloud.hpp"          // for Cloud, random_cloud_d...
 #include "highmap/geometry/graph.hpp"          // for Graph
 #include "highmap/geometry/point.hpp"          // for Point, distance
 #include "highmap/geometry/point_sampling.hpp" // for random_points_distance

@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/filters.hpp" // for expand, reverse_above_theshold
-
 #include <bits/std_abs.h> // for abs
 #include <stddef.h>       // for size_t
 
@@ -16,6 +14,7 @@
 #include "highmap/boundary.hpp"  // for extrapolate_borders, fill_borders
 #include "highmap/convolve.hpp"  // for convolve1d_i, convolve1d_j
 #include "highmap/curvature.hpp" // for CurvatureType, curvature_quadric
+#include "highmap/filters.hpp"   // for expand, reverse_above_theshold
 #include "highmap/gradient.hpp"  // for gradient_x, gradient_y, gradien...
 #include "highmap/internal/vector_utils.hpp"
 #include "highmap/kernels.hpp"       // for cubic_pulse_directional, biweight

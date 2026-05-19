@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/range.hpp" // for ClampMode, clamp_min_smooth, clamp
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for transform, max, min, fill, clamp
@@ -10,6 +8,7 @@
 
 #include "highmap/array.hpp"      // for Array
 #include "highmap/primitives.hpp" // for slope
+#include "highmap/range.hpp"      // for ClampMode, clamp_min_smooth, clamp
 
 namespace hmap
 {

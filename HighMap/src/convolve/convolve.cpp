@@ -2,14 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "highmap/convolve.hpp" // for convolve1d_i, convolve1d_j, conv...
-
 #include <algorithm> // for clamp
 #include <cmath>     // for ceil
 #include <vector>    // for vector
 
 #include "highmap/array.hpp"    // for Array
 #include "highmap/boundary.hpp" // for generate_buffered_array
+#include "highmap/convolve.hpp" // for convolve1d_i, convolve1d_j, conv...
 
 namespace hmap
 {

@@ -1,11 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/interpolate2d.hpp"
-
 #include <stdexcept> // for runtime_error
 
 #include "highmap/array.hpp" // for Array
+#include "highmap/interpolate2d.hpp"
 
 namespace hmap
 {

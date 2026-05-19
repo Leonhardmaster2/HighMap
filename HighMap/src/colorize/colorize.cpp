@@ -2,15 +2,14 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include "highmap/colorize.hpp"
-
 #include <stdint.h> // for uint8_t
 
 #include <algorithm> // for clamp, max_element
 #include <utility>   // for swap
 #include <vector>    // for vector
 
-#include "highmap/array.hpp"      // for Array
+#include "highmap/array.hpp" // for Array
+#include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"  // for get_colormap_data
 #include "highmap/gradient.hpp"   // for gradient_norm
 #include "highmap/math/array.hpp" // for pow

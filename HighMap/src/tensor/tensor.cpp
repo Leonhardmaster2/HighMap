@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/tensor.hpp" // for Tensor
-
 #include <stdint.h> // for uint8_t
 
 #include <algorithm> // for max, fill_n, max_element
@@ -16,7 +14,8 @@
 #include <opencv2/imgcodecs.hpp>        // for imread, imwrite, ImreadModes
 #include <opencv2/imgproc.hpp>          // for cvtColor, ColorConversionCodes
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"  // for Array
+#include "highmap/tensor.hpp" // for Tensor
 
 namespace hmap
 {

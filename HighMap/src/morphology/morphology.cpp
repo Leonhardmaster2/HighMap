@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/morphology.hpp"
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm>  // for max, min
@@ -18,7 +16,8 @@
 #include "highmap/filters.hpp"       // for smooth_cpulse
 #include "highmap/local_metrics.hpp" // for local_max, local_min
 #include "highmap/math/array.hpp"    // for is_non_zero, is_zero, smoothstep3
-#include "highmap/range.hpp"         // for clamp, maximum_smooth, minimum_...
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp" // for clamp, maximum_smooth, minimum_...
 
 namespace hmap
 {

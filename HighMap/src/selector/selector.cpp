@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/selector.hpp" // for select_elevation_slope
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for clamp, max
@@ -17,6 +15,7 @@
 #include "highmap/math/array.hpp"          // for exp, pow, smoothstep3
 #include "highmap/morphology.hpp"          // for morphological_black_hat
 #include "highmap/range.hpp"               // for clamp, remap, clamp_max
+#include "highmap/selector.hpp"            // for select_elevation_slope
 
 namespace hmap
 {

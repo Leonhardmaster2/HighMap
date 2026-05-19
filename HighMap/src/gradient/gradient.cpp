@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/gradient.hpp" // for gradient_talus, gradient_x, grad...
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for max, transform
@@ -12,6 +10,7 @@
 #include "highmap/array.hpp"      // for Array, operator*
 #include "highmap/boundary.hpp"   // for extrapolate_borders
 #include "highmap/filters.hpp"    // for smooth_cpulse
+#include "highmap/gradient.hpp"   // for gradient_talus, gradient_x, grad...
 #include "highmap/math/array.hpp" // for hypot, atan2, sigmoid
 #include "highmap/range.hpp"      // for maximum
 

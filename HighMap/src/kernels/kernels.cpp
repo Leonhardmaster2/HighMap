@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/kernels.hpp" // for KernelType, biweight, blackman
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for max
@@ -11,6 +9,7 @@
 #include <vector>    // for vector
 
 #include "highmap/array.hpp"      // for Array, operator*
+#include "highmap/kernels.hpp"    // for KernelType, biweight, blackman
 #include "highmap/math/array.hpp" // for almost_unit_identity
 #include "highmap/operator.hpp"   // for linspace
 #include "highmap/primitives.hpp" // for constant

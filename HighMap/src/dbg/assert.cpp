@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/dbg/assert.hpp" // for AssertResults, assert_almost_equal
-
 #include <bits/std_abs.h> // for abs
 
 #include <algorithm> // for min
@@ -11,6 +9,7 @@
 
 #include "highmap/array.hpp"      // for Array
 #include "highmap/colormaps.hpp"  // for Cmap
+#include "highmap/dbg/assert.hpp" // for AssertResults, assert_almost_equal
 #include "highmap/export.hpp"     // for export_banner_png
 #include "highmap/math/array.hpp" // for abs
 #include "highmap/range.hpp"      // for remap

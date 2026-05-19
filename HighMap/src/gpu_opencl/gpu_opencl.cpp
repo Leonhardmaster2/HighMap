@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/opencl/gpu_opencl.hpp"
-
 #include <vector> // for vector
 
 #include "cl_wrapper/device_manager.hpp" // for DeviceManager
 #include "cl_wrapper/kernel_manager.hpp" // for KernelManager
+
+#include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
 {

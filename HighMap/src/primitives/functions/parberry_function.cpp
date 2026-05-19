@@ -1,6 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <stdlib.h> // for RAND_MAX
+
 #include <cmath>      // for hypot
 #include <functional> // for function
 #include <random>     // for uniform_real_distribution, mt19937
@@ -10,8 +12,6 @@
 #include "highmap/array.hpp"     // for uint
 #include "highmap/functions.hpp" // for ParberryFunction, NoiseFunction
 #include "highmap/math/core.hpp" // for lerp, smoothstep5
-
-#include <stdlib.h> // for RAND_MAX
 
 namespace hmap
 {

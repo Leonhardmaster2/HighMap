@@ -1,8 +1,6 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/geometry/graph.hpp" // for Graph
-
 #include <algorithm>  // for max, copy, fill_n, clamp, fill
 #include <cmath>      // for sqrt
 #include <cstddef>    // for size_t
@@ -21,6 +19,7 @@
 
 #include "highmap/array.hpp"          // for Array
 #include "highmap/colormaps.hpp"      // for Cmap
+#include "highmap/geometry/graph.hpp" // for Graph
 #include "highmap/geometry/path.hpp"  // for Path, fractalize
 #include "highmap/geometry/point.hpp" // for Point, distance
 #include "highmap/operator.hpp"       // for fill_array_using_xy_function
