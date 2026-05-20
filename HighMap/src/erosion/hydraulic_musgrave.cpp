@@ -2,14 +2,14 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <algorithm> // for rotate, min
-#include <cstdint>
-#include <vector> // for vector
+#include <cstdint>   // for uint32_t
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/boundary.hpp"   // for fill_borders, extrapolate_bo...
-#include "highmap/erosion.hpp"    // for hydraulic_musgrave, HMAP_CD_INV
-#include "highmap/filters.hpp"    // for laplace
-#include "highmap/primitives.hpp" // for constant
+#include "highmap/array.hpp"                // for Array, operator*
+#include "highmap/boundary.hpp"             // for fill_borders, extrapolat...
+#include "highmap/erosion.hpp"              // for hydraulic_musgrave, HMAP...
+#include "highmap/filters.hpp"              // for laplace
+#include "highmap/primitives/functions.hpp" // for constant
 
 namespace hmap
 {

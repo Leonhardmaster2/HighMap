@@ -16,10 +16,10 @@
  */
 
 #pragma once
-#include <stddef.h> // for size_t
+#include <stddef.h>
 
 #include <map>
-#include <vector> // for vector
+#include <vector>
 
 extern "C" // order matters
 {
@@ -32,7 +32,7 @@ extern "C" // order matters
 #include "delaunay.h"
 }
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap
 {

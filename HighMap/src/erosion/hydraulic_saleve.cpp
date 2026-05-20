@@ -3,10 +3,10 @@
  * this software. */
 #include <stddef.h> // for size_t
 
-#include <algorithm> // for max, min
+#include <algorithm> // for max, min, copy, fill_n
 #include <cmath>     // for pow
-#include <cstdint>
-#include <vector> // for vector
+#include <cstdint>   // for uint32_t
+#include <vector>    // for vector
 
 #include "highmap/array.hpp"                    // for Array
 #include "highmap/erosion.hpp"                  // for hydraulic_saleve
@@ -14,7 +14,7 @@
 #include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
 #include "highmap/interpolate2d.hpp"            // for InterpolationMethod2D
 #include "highmap/math/array.hpp"               // for lerp
-#include "highmap/primitives.hpp"               // for biquad_pulse_x, biqu...
+#include "highmap/primitives/functions.hpp"     // for biquad_pulse_x, biqu...
 #include "highmap/range.hpp"                    // for remap
 #include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh, cubi...
 

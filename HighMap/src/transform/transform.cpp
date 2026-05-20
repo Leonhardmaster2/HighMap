@@ -6,13 +6,13 @@
 #include <utility>   // for swap
 #include <vector>    // for vector
 
-#include "highmap/array.hpp"          // for Array
-#include "highmap/boundary.hpp"       // for generate_buffered_array
-#include "highmap/functions.hpp"      // for ArrayFunction
-#include "highmap/geometry/grids.hpp" // for grid_xy_vector
-#include "highmap/operator.hpp"       // for fill_array_using_xy_function
-#include "highmap/primitives.hpp"     // for constant
-#include "highmap/transform.hpp"      // for flip_lr, flip_ud, radial_displ...
+#include "highmap/array.hpp"                // for Array
+#include "highmap/boundary.hpp"             // for generate_buffered_array
+#include "highmap/functions.hpp"            // for ArrayFunction
+#include "highmap/geometry/grids.hpp"       // for grid_xy_vector
+#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
+#include "highmap/primitives/functions.hpp" // for constant
+#include "highmap/transform.hpp"            // for flip_lr, flip_ud, radial...
 
 namespace hmap
 {

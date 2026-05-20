@@ -1,14 +1,15 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>      // for pow, cos, log, sin, M_PI, floor
+#include <cmath>      // for pow, cos, log, sin
 #include <cstdint>    // for uint32_t
 #include <functional> // for function
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/math/core.hpp"  // for lerp
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for VoronoiReturnType, multisteps
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/math/core.hpp"                 // for lerp
+#include "highmap/operator.hpp"                  // for fill_array_using_xy...
+#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
+#include "highmap/primitives/functions.hpp"      // for multisteps
 
 namespace hmap
 {

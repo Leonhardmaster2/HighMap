@@ -2,14 +2,14 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <algorithm>  // for max
-#include <cmath>      // for pow, hypot, M_PI, sin, atan2, cos
+#include <cmath>      // for pow, hypot, M_PI, sin
 #include <functional> // for function
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/erosion.hpp"    // for get_erosion_profile_function
-#include "highmap/math/core.hpp"  // for almost_unit_identity
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for cone, cone_complex, cone_sigmoid
+#include "highmap/array.hpp"                // for Array
+#include "highmap/erosion.hpp"              // for get_erosion_profile_func...
+#include "highmap/math/core.hpp"            // for almost_unit_identity
+#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
+#include "highmap/primitives/functions.hpp" // for cone, cone_complex, cone...
 
 namespace hmap
 {

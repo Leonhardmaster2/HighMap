@@ -4,12 +4,14 @@
 #include <cmath>   // for cos, sin, M_PI
 #include <cstdint> // for uint32_t
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/filters.hpp"    // for gamma_correction
-#include "highmap/functions.hpp"  // for NoiseType
-#include "highmap/math/array.hpp" // for smoothstep3_lower
-#include "highmap/primitives.hpp" // for VoronoiReturnType, cone_sigmoid
-#include "highmap/range.hpp"      // for clamp_min
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/filters.hpp"                   // for gamma_correction
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/math/array.hpp"                // for smoothstep3_lower
+#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
+#include "highmap/primitives/functions.hpp"      // for cone_sigmoid
+#include "highmap/primitives/geo.hpp"            // for mountain_cone
+#include "highmap/range.hpp"                     // for clamp_min
 
 namespace hmap::gpu
 {

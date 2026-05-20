@@ -18,7 +18,7 @@
 #include "highmap/array.hpp"                   // for Array, operator*
 #include "highmap/functions.hpp"               // for NoiseFunction, NoiseType
 #include "highmap/geometry/point_sampling.hpp" // for PointSamplingMethod
-#include "highmap/primitives.hpp"              // for white
+#include "highmap/primitives/random.hpp"       // for white
 #include "highmap/range.hpp"                   // for clamp_min_smooth, max...
 
 namespace hmap

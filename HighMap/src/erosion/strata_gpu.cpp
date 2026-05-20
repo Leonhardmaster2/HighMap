@@ -6,12 +6,12 @@
 
 #include "cl_wrapper/run.hpp" // for Run
 
-#include "highmap/array.hpp"             // for Array, operator*
-#include "highmap/erosion.hpp"           // for strata_cells, strata_cells_fbm
-#include "highmap/functions.hpp"         // for NoiseType
-#include "highmap/math/array.hpp"        // for lerp
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/primitives.hpp"        // for noise_fbm
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/erosion.hpp"                   // for strata_cells, strat...
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/math/array.hpp"                // for lerp
+#include "highmap/opencl/gpu_opencl.hpp"         // for helper_bind_optiona...
+#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
 
 namespace hmap::gpu
 {

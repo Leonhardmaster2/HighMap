@@ -3,10 +3,11 @@
  * this software. */
 #include <cstdint> // for uint32_t
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/convolve.hpp"   // for convolve2d_svd
-#include "highmap/kernels.hpp"    // for gabor
-#include "highmap/primitives.hpp" // for white_sparse, gabor_noise
+#include "highmap/array.hpp"                     // for Array
+#include "highmap/convolve.hpp"                  // for convolve2d_svd
+#include "highmap/kernels.hpp"                   // for gabor
+#include "highmap/primitives/coherent_noise.hpp" // for gabor_noise
+#include "highmap/primitives/random.hpp"         // for white_sparse
 
 #define SVD_RANK 2
 

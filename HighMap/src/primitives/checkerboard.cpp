@@ -7,9 +7,9 @@
 #include <cmath>      // for floor
 #include <functional> // for function
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for checkerboard
+#include "highmap/array.hpp"                // for Array
+#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
+#include "highmap/primitives/functions.hpp" // for checkerboard
 
 namespace hmap
 {

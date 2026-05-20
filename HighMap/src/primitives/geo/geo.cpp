@@ -3,8 +3,9 @@
  * this software. */
 #include <cmath> // for exp, hypot
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/primitives.hpp" // for caldera, constant
+#include "highmap/array.hpp"                // for Array
+#include "highmap/primitives/functions.hpp" // for constant
+#include "highmap/primitives/geo.hpp"       // for caldera
 
 namespace hmap
 {

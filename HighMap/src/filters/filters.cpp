@@ -4,28 +4,28 @@
 #include <bits/std_abs.h> // for abs
 #include <stddef.h>       // for size_t
 
-#include <algorithm> // for clamp, max, min, transform, copy
+#include <algorithm> // for clamp, max, min, transform
 #include <cmath>     // for pow, cos, sin, M_PI, exp, atan
 #include <cstdint>   // for uint32_t
 #include <limits>    // for numeric_limits
-#include <random>    // for uniform_real_distribution, mt19937
+#include <random>    // for uniform_real_distribution
 #include <vector>    // for vector
 
 #include "highmap/array.hpp"     // for Array, operator*, operator-
-#include "highmap/boundary.hpp"  // for extrapolate_borders, fill_borders
+#include "highmap/boundary.hpp"  // for extrapolate_borders, fill_b...
 #include "highmap/convolve.hpp"  // for convolve1d_i, convolve1d_j
-#include "highmap/curvature.hpp" // for CurvatureType, curvature_quadric
+#include "highmap/curvature.hpp" // for CurvatureType, curvature_qu...
 #include "highmap/filters.hpp"   // for expand, reverse_above_theshold
-#include "highmap/gradient.hpp"  // for gradient_x, gradient_y, gradien...
+#include "highmap/gradient.hpp"  // for gradient_x, gradient_y, gra...
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/kernels.hpp"       // for cubic_pulse_directional, biweight
-#include "highmap/local_metrics.hpp" // for local_max, local_min, local_mean
-#include "highmap/math/array.hpp"    // for lerp, abs, abs_smooth, sigmoid
-#include "highmap/math/core.hpp"     // for smoothstep3, lerp
-#include "highmap/operator.hpp"      // for apply_with_mask, transform_with...
-#include "highmap/primitives.hpp"    // for white
-#include "highmap/range.hpp"         // for clamp_min, clamp, maximum_smooth
-#include "highmap/transform.hpp"     // for warp
+#include "highmap/kernels.hpp"           // for cubic_pulse_directional
+#include "highmap/local_metrics.hpp"     // for local_max, local_min, local...
+#include "highmap/math/array.hpp"        // for lerp, abs, abs_smooth, sigmoid
+#include "highmap/math/core.hpp"         // for smoothstep3, lerp
+#include "highmap/operator.hpp"          // for apply_with_mask, transform_...
+#include "highmap/primitives/random.hpp" // for white
+#include "highmap/range.hpp"             // for clamp_min, clamp, maximum_s...
+#include "highmap/transform.hpp"         // for warp
 
 #define NSIGMA 2
 

@@ -4,20 +4,20 @@
 
 #include <algorithm> // for transform, min
 #include <cmath>     // for pow, M_PI
-#include <cstdint>
-#include <vector> // for vector
+#include <cstdint>   // for uint32_t
+#include <vector>    // for vector
 
-#include "highmap/array.hpp"         // for Array, operator*, operator+
-#include "highmap/filters.hpp"       // for smooth_cpulse, gamma_correct...
-#include "highmap/functions.hpp"     // for NoiseType
-#include "highmap/gradient.hpp"      // for gradient_norm, gradient_angle
-#include "highmap/local_metrics.hpp" // for local_mean
-#include "highmap/math/array.hpp"    // for abs_smooth, cos, lerp, pow
-#include "highmap/operator.hpp"      // for apply_with_mask
-#include "highmap/primitives.hpp"    // for noise_fbm
-#include "highmap/range.hpp"         // for clamp_min, maximum_smooth
-#include "highmap/selector.hpp"      // for select_gradient_binary
-#include "highmap/transform.hpp"     // for transpose, warp
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/filters.hpp"                   // for smooth_cpulse, gamm...
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/gradient.hpp"                  // for gradient_norm, grad...
+#include "highmap/local_metrics.hpp"             // for local_mean
+#include "highmap/math/array.hpp"                // for abs_smooth, cos, lerp
+#include "highmap/operator.hpp"                  // for apply_with_mask
+#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
+#include "highmap/range.hpp"                     // for clamp_min, maximum_...
+#include "highmap/selector.hpp"                  // for select_gradient_binary
+#include "highmap/transform.hpp"                 // for transpose, warp
 
 namespace hmap
 {

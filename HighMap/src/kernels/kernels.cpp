@@ -3,16 +3,16 @@
  * this software. */
 #include <bits/std_abs.h> // for abs
 
-#include <algorithm> // for max
-#include <cmath>     // for cos, M_PI, sin, hypot, pow, sqrt
+#include <algorithm> // for max, fill_n
+#include <cmath>     // for cos, M_PI, sin, hypot, pow
 #include <stdexcept> // for invalid_argument
 #include <vector>    // for vector
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/kernels.hpp"    // for KernelType, biweight, blackman
-#include "highmap/math/array.hpp" // for almost_unit_identity
-#include "highmap/operator.hpp"   // for linspace
-#include "highmap/primitives.hpp" // for constant
+#include "highmap/array.hpp"                // for Array, operator*
+#include "highmap/kernels.hpp"              // for KernelType, biweight
+#include "highmap/math/array.hpp"           // for almost_unit_identity
+#include "highmap/operator.hpp"             // for linspace
+#include "highmap/primitives/functions.hpp" // for constant
 
 namespace hmap
 {

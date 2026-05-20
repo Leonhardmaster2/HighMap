@@ -1,22 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath> // for M_PI, atan
-#include <cstdint>
+#include <cmath>      // for M_PI, atan
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
 
-#include "highmap/array.hpp"               // for Array, operator*, operator+
-#include "highmap/blending.hpp"            // for blend_gradients
-#include "highmap/erosion.hpp"             // for ErosionProfile, get_erosi...
-#include "highmap/filters.hpp"             // for smooth_cpulse, smooth_fil...
-#include "highmap/functions.hpp"           // for NoiseType
-#include "highmap/gradient.hpp"            // for gradient_norm, phase_field
-#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
-#include "highmap/math/array.hpp"          // for lerp, cos, log10, pow
-#include "highmap/math/core.hpp"           // for lerp
-#include "highmap/morphology.hpp"          // for morphological_top_hat
-#include "highmap/primitives.hpp"          // for noise_fbm
-#include "highmap/range.hpp"               // for remap
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/blending.hpp"                  // for blend_gradients
+#include "highmap/erosion.hpp"                   // for ErosionProfile, get...
+#include "highmap/filters.hpp"                   // for smooth_cpulse, smoo...
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/gradient.hpp"                  // for gradient_norm, phas...
+#include "highmap/hydrology/hydrology.hpp"       // for flow_accumulation_dinf
+#include "highmap/math/array.hpp"                // for lerp, cos, log10, pow
+#include "highmap/math/core.hpp"                 // for lerp
+#include "highmap/morphology.hpp"                // for morphological_top_hat
+#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
+#include "highmap/range.hpp"                     // for remap
 
 namespace hmap::gpu
 {

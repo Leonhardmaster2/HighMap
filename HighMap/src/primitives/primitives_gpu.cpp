@@ -3,21 +3,23 @@
  * this software. */
 #include <stddef.h> // for size_t
 
-#include <algorithm> // for max
+#include <algorithm> // for copy, max, fill_n
 #include <cmath>     // for cos, sin
-#include <cstdint>
+#include <cstdint>   // for uint32_t
 #include <stdexcept> // for runtime_error
 #include <vector>    // for allocator, vector
 
 #include "cl_wrapper/run.hpp" // for Run
 
-#include "highmap/algebra.hpp"           // for adjust
-#include "highmap/array.hpp"             // for Array, operator*, operator+
-#include "highmap/functions.hpp"         // for NoiseType
-#include "highmap/geometry/cloud.hpp"    // for Cloud
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/primitives.hpp"        // for VoronoiReturnType, gavoronoise
-#include "highmap/range.hpp"             // for minimum
+#include "highmap/algebra.hpp"                   // for adjust
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/geometry/cloud.hpp"            // for Cloud
+#include "highmap/opencl/gpu_opencl.hpp"         // for helper_bind_optiona...
+#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
+#include "highmap/primitives/functions.hpp"      // for hemisphere_field
+#include "highmap/primitives/geo.hpp"            // for mountain_range_radial
+#include "highmap/range.hpp"                     // for minimum
 
 namespace hmap::gpu
 {

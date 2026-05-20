@@ -3,8 +3,17 @@
 set -euo pipefail
 
 BUILD_DIR="build_clang"
-SRC_DIR="HighMap/src"
 TMP_LOG="/tmp/iwyu_current.log"
+
+# -----------------------------------------------------------------------------
+# Source directories
+# -----------------------------------------------------------------------------
+
+SRC_DIRS=(
+    "HighMap/src"
+    # "examples"
+    # "tests"
+)
 
 # -----------------------------------------------------------------------------
 # Configure CMake
@@ -14,19 +23,23 @@ cmake -B "${BUILD_DIR}" \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-    -DHIGHMAP_ENABLE_EXAMPLES=OFF \
-    -DHIGHMAP_ENABLE_TESTS=OFF \
-    -DHIGHMAP_ENABLE_BENCHMARKS=OFF
+    -DHIGHMAP_ENABLE_EXAMPLES=ON\
+    -DHIGHMAP_ENABLE_TESTS=ON \
+    -DHIGHMAP_ENABLE_BENCHMARKS=ON
 
 # -----------------------------------------------------------------------------
 # Run IWYU per translation unit
 # -----------------------------------------------------------------------------
 
-find "${SRC_DIR}" -type f \( \
-    -name "*.cpp" -o \
-    -name "*.cc"  -o \
-    -name "*.cxx" \
-\) | while read -r file
+for SRC_DIR in "${SRC_DIRS[@]}"
+do
+    find "${SRC_DIR}" -type f \( \
+         -name "*.hpp" -o \
+	 -name "*.cpp" -o \
+         -name "*.cc"  -o \
+         -name "*.cxx" \
+    \)
+done | while read -r file
 do
     echo "=================================================="
     echo "IWYU: ${file}"

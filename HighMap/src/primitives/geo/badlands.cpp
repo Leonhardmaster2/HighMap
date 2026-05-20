@@ -4,9 +4,10 @@
 #include <cmath>   // for cos, sin, M_PI
 #include <cstdint> // for uint32_t
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/functions.hpp"  // for NoiseType
-#include "highmap/primitives.hpp" // for VoronoiReturnType, noise_fbm
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
+#include "highmap/primitives/geo.hpp"            // for badlands
 
 namespace hmap::gpu
 {

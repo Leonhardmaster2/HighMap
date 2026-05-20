@@ -6,10 +6,11 @@
 #include <functional> // for function
 #include <vector>     // for vector
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/functions.hpp"  // for BiquadFunction, BumpFunction
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for PrimitiveType, cone, biquad_pulse
+#include "highmap/array.hpp"                // for Array
+#include "highmap/functions.hpp"            // for BiquadFunction, BumpFunc...
+#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
+#include "highmap/primitives/functions.hpp" // for PrimitiveType, cone, biq...
+#include "highmap/primitives/geo.hpp"       // for rift
 
 namespace hmap
 {

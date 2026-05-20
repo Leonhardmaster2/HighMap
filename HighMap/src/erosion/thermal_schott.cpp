@@ -9,8 +9,8 @@
 #include "highmap/boundary.hpp" // for extrapolate_borders
 #include "highmap/erosion.hpp"  // for HMAP_CD, HMAP_DI, HMAP_DJ
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/primitives.hpp" // for constant
+#include "highmap/math/array.hpp"           // for lerp
+#include "highmap/primitives/functions.hpp" // for constant
 
 namespace hmap
 {

@@ -1,17 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for copy, max
-#include <cstdint>
+#include <algorithm>  // for copy, max
+#include <cstdint>    // for uint32_t
 #include <functional> // for function
-#include <memory>     // for make_unique, unique_ptr
+#include <memory>     // for make_unique, unique...
 #include <utility>    // for move
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 
-#include "highmap/functions.hpp" // for NoiseFunction
+#include "highmap/functions.hpp"                 // for NoiseFunction
+#include "highmap/primitives/coherent_noise.hpp" // for dendry
 
 #include "NoiseLib/include/controlfunction.h" // for ControlFunction
 #include "NoiseLib/include/math2d.h"          // for Point2D
@@ -20,10 +21,9 @@
 #pragma GCC diagnostic pop
 
 #include "highmap/array.hpp"    // for Array
-#include "highmap/boundary.hpp" // for generate_buffered_array
+#include "highmap/boundary.hpp" // for generate_buffered_a...
 #include "highmap/internal/dendry_array_control_function.hpp"
-#include "highmap/operator.hpp"   // for fill_array_using_xy_fu...
-#include "highmap/primitives.hpp" // for dendry
+#include "highmap/operator.hpp" // for fill_array_using_xy...
 
 namespace hmap
 {

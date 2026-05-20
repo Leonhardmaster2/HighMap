@@ -3,12 +3,13 @@
  * this software. */
 #include <cstdint> // for uint32_t
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/filters.hpp"    // for gain
-#include "highmap/functions.hpp"  // for NoiseType
-#include "highmap/math/array.hpp" // for sqrt_safe
-#include "highmap/primitives.hpp" // for voronoi_fbm, VoronoiReturnType
-#include "highmap/range.hpp"      // for remap, maximum_smooth, maximum
+#include "highmap/array.hpp"                     // for Array, operator*
+#include "highmap/filters.hpp"                   // for gain
+#include "highmap/functions.hpp"                 // for NoiseType
+#include "highmap/math/array.hpp"                // for sqrt_safe
+#include "highmap/primitives/coherent_noise.hpp" // for voronoi_fbm, Vorono...
+#include "highmap/primitives/geo.hpp"            // for basalt_field
+#include "highmap/range.hpp"                     // for remap, maximum_smooth
 
 namespace hmap::gpu
 {

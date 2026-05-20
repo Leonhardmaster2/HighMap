@@ -9,7 +9,7 @@
 #include "highmap/array.hpp"          // for Array
 #include "highmap/geometry/grids.hpp" // for grid_xy_vector
 #include "highmap/math/core.hpp"      // for smoothstep3, lerp, power_curve
-#include "highmap/primitives.hpp"     // for crater
+#include "highmap/primitives/geo.hpp" // for crater
 
 namespace hmap
 {

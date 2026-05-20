@@ -3,12 +3,12 @@
  * this software. */
 #include <bits/std_abs.h> // for abs
 
-#include <algorithm> // for transform, max, min, fill, clamp
+#include <algorithm> // for transform, max, min, fill
 #include <vector>    // for vector
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/primitives.hpp" // for slope
-#include "highmap/range.hpp"      // for ClampMode, clamp_min_smooth, clamp
+#include "highmap/array.hpp"                // for Array
+#include "highmap/primitives/functions.hpp" // for slope
+#include "highmap/range.hpp"                // for ClampMode, clamp_min_smooth
 
 namespace hmap
 {

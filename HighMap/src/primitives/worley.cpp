@@ -4,10 +4,10 @@
 
 #include <cstdint> // for uint32_t
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/functions.hpp"  // for WorleyDoubleFunction
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for worley_double
+#include "highmap/array.hpp"                     // for Array
+#include "highmap/functions.hpp"                 // for WorleyDoubleFunction
+#include "highmap/operator.hpp"                  // for fill_array_using_xy...
+#include "highmap/primitives/coherent_noise.hpp" // for worley_double
 
 namespace hmap
 {
