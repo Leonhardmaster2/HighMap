@@ -10,6 +10,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/functions.hpp"
 
 namespace hmap
 {

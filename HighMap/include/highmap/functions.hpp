@@ -14,17 +14,17 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
-#include <cmath> // for cos, sin, M_PI
+#include <cmath>
 #include <cstdint>
-#include <functional> // for function
-#include <memory>     // for unique_ptr
-#include <utility>    // for move
-#include <vector>     // for vector
+#include <functional>
+#include <memory>
+#include <utility>
+#include <vector>
 
-#include "FastNoiseLite.h" // for FastNoiseLite
+#include "FastNoiseLite.h"
 #include "macrologger.h"
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/math/core.hpp"
 
 /**
