@@ -28,6 +28,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Compiler flags
 # -----------------------------------------------------------------------------
 
+add_definitions(-D_USE_MATH_DEFINES)
+
 if(MSVC)
 
   message(STATUS "Compiler: MSVC")
