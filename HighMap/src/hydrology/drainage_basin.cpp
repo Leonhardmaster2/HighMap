@@ -1,18 +1,17 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-
 #include <algorithm>  // for max, fill_n, copy, min
+#include <cmath>      // for abs
 #include <cmath>      // for pow, sqrt
 #include <cstdint>    // for uint32_t, uint8_t
 #include <cstdio>     // for size_t
-#include <fstream>    // for char_traits, basic_o...
+#include <fstream>    // for basic_ostream, opera...
 #include <functional> // for greater
 #include <limits>     // for numeric_limits
 #include <memory>     // for make_shared
 #include <queue>      // for priority_queue
-#include <string>     // for string
+#include <string>     // for char_traits, string
 #include <utility>    // for move, pair
 #include <vector>     // for vector
 

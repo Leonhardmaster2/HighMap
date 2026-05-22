@@ -1,11 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
-
 #include <algorithm> // for transform
+#include <cmath>     // for abs
 #include <cmath>     // for sqrt, exp, atan, atan2, cos, log10
+#include <cstddef>   // for size_t
 #include <vector>    // for vector
 
 #include "highmap/array.hpp"      // for Array

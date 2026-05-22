@@ -2,11 +2,10 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <algorithm> // for min
+#include <cmath>     // for M_SQRT2
 #include <limits>    // for numeric_limits
 
 #include "highmap/array.hpp" // for Array
-
-#include <math.h> // for M_SQRT2
 
 namespace hmap
 {

@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdint.h> // for uint8_t
-
 #include <algorithm> // for max, fill
+#include <cstdint>   // for uint8_t
 #include <limits>    // for numeric_limits
 #include <queue>     // for priority_queue
 #include <utility>   // for pair

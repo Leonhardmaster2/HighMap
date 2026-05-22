@@ -1,13 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-
+#include <cmath>      // for abs
 #include <cmath>      // for M_PI, pow, fmod, cos, sqrt, acos, sin
-#include <fstream>    // for char_traits, basic_ostream, operator<<
+#include <fstream>    // for basic_ostream, operator<<, basic_ofs...
 #include <functional> // for function
 #include <iomanip>    // for operator<<, setprecision
-#include <string>     // for operator<<, to_string
+#include <string>     // for char_traits, operator<<, to_string
 #include <vector>     // for vector
 
 #include "highmap/erosion.hpp"  // for ErosionProfile, check_erosion_profil...

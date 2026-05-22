@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-#include <stdint.h> // for uint32_t
-
 #include <algorithm> // for fill_n, max, count, minmax_element, nth_element
+#include <cstddef>   // for size_t
+#include <cstdint>   // for uint32_t
 #include <numeric>   // for iota
 #include <random>    // for mt19937, uniform_int_distribution, uniform_real...
 #include <sstream>   // for basic_ostream, operator<<, basic_ostringstream

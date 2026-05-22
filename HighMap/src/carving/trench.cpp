@@ -1,11 +1,10 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
-
 #include <algorithm>  // for max, min, clamp, max_element
+#include <cmath>      // for abs
 #include <cmath>      // for copysign, sqrt
+#include <cstddef>    // for size_t
 #include <functional> // for function
 #include <utility>    // for move
 #include <vector>     // for vector

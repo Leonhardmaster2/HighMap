@@ -1,11 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
-
 #include <algorithm> // for max, min, sort
+#include <cmath>     // for abs
 #include <cmath>     // for atan2, M_PI, copysign, hypot
+#include <cstddef>   // for size_t
 #include <iostream>  // for char_traits, basic_ostream
 #include <optional>  // for optional, nullopt
 #include <vector>    // for vector

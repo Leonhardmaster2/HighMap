@@ -10,7 +10,7 @@ TMP_LOG="/tmp/iwyu_current.log"
 # -----------------------------------------------------------------------------
 
 SRC_DIRS=(
-    "HighMap/src"
+    "HighMap/src/"
     # "examples"
     # "tests"
 )
@@ -50,6 +50,7 @@ do
     iwyu_tool -p "${BUILD_DIR}" "${file}" \
         -- \
         -Xiwyu --no_fwd_decls \
+	-Xiwyu --transitive_includes_only \
         2>&1 \
         | grep -vE "glm/|\.inl|\.cl" \
         > "${TMP_LOG}" || true
@@ -73,5 +74,19 @@ do
         < "${TMP_LOG}"
 
     echo ""
+    
+    # -------------------------------------------------------------------------
+    # Clean-up problematic headers emitted by IWYU
+    # -------------------------------------------------------------------------
 
+    sed -i \
+        -e 's|#include <bits/std_abs.h>|#include <cmath>|g' \
+        -e 's|#include <stddef.h>|#include <cstddef>|g' \
+        -e 's|#include <stdint.h>|#include <cstdint>|g' \
+        -e 's|#include <math.h>|#include <cmath>|g' \
+        -e 's|#include <sys/types.h>|#include <cstddef>|g' \
+        "${file}"
+
+    echo ""
+    
 done

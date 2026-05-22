@@ -2,9 +2,8 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <stdint.h> // for uint8_t
-
 #include <algorithm> // for clamp, max_element, fill_n
+#include <cstdint>   // for uint8_t
 #include <utility>   // for swap
 #include <vector>    // for vector
 

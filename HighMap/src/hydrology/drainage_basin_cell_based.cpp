@@ -1,12 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
-#include <stdint.h>       // for uint8_t
-
-#include <algorithm>  // for fill, max
+#include <algorithm>  // for max, fill_n
+#include <cmath>      // for abs
 #include <cmath>      // for M_SQRT2, pow
+#include <cstddef>    // for size_t
+#include <cstdint>    // for uint8_t
 #include <functional> // for greater
 #include <limits>     // for numeric_l...
 #include <queue>      // for priority_...

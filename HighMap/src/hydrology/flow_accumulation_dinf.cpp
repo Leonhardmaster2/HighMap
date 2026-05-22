@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-
 #include <algorithm> // for copy, max, fill_n
 #include <cmath>     // for M_SQRT1_2, pow, atan2
+#include <cstddef>   // for size_t
 #include <cstdint>   // for uint32_t
 #include <limits>    // for numeric_limits
 #include <vector>    // for vector

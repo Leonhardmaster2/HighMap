@@ -1,9 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-
 #include <algorithm> // for max, fill_n
+#include <cmath>     // for abs
 #include <cmath>     // for cos, M_PI, sin, hypot, pow
 #include <stdexcept> // for invalid_argument
 #include <vector>    // for vector

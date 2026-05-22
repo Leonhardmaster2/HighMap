@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stdint.h>       // for int32_t
-
-#include <cmath> // for pow, exp, lerp, sqrt
+#include <cmath>   // for abs
+#include <cmath>   // for pow, exp, lerp, sqrt
+#include <cstdint> // for int32_t
 
 #include "highmap/math/core.hpp" // for abs_smooth, almost_unit_identity
 

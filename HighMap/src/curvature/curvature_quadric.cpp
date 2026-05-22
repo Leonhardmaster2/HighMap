@@ -1,9 +1,8 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-
-#include <vector> // for vector, allocator
+#include <cstddef> // for size_t
+#include <vector>  // for vector, allocator
 
 #include "cl_wrapper/run.hpp" // for Run
 #include "macrologger.h"      // for LOG_DEBUG

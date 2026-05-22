@@ -1,9 +1,8 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t
-
 #include <algorithm> // for max, min, lower_bound, copy
+#include <cstddef>   // for size_t
 #include <cstdint>   // for uint32_t
 #include <random>    // for discrete_distribution, mt19937
 #include <vector>    // for vector

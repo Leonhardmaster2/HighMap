@@ -2,10 +2,9 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <stddef.h> // for size_t
-
 #include <algorithm> // for max, min
 #include <cmath>     // for sqrt
+#include <cstddef>   // for size_t
 #include <vector>    // for vector
 
 #include "highmap/geometry/point_sampling.hpp" // for expand_points_at_doma...

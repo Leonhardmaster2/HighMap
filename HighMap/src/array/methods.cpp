@@ -1,10 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-
 #include <algorithm> // for clamp, max, max_element, min
 #include <cmath>     // for hypot, floor
+#include <cstddef>   // for size_t
 #include <iostream>  // for char_traits, basic_ostream
 #include <limits>    // for numeric_limits
 #include <numeric>   // for accumulate

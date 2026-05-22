@@ -1,10 +1,9 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-
 #include <algorithm> // for clamp, max
 #include <cmath>     // for round, ceil, log2, sqrt
+#include <cstddef>   // for size_t
 #include <utility>   // for move
 #include <vector>    // for vector
 

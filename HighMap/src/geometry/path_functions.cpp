@@ -1,11 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
-
 #include <algorithm> // for min, max, clamp
 #include <array>     // for array
 #include <cmath>     // for M_PI_2, copysign, cos, sin
+#include <cstddef>   // for size_t
 #include <cstdint>
 #include <limits>   // for numeric_limits
 #include <optional> // for optional
