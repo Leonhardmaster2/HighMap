@@ -1,24 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for copy, fill_n, max
-#include <array>      // for array
-#include <cmath>      // for abs
-#include <cstddef>    // for size_t
-#include <cstdint>    // for uint32_t
-#include <functional> // for function
-#include <memory>     // for unique_ptr
-#include <stdexcept>  // for invalid_argument
-#include <vector>     // for vector
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <stdexcept>
+#include <vector>
 
-#include "FastNoiseLite.h"    // for FastNoiseLite
-#include "delaunator-cpp.hpp" // for Delaunator
+#include "FastNoiseLite.h"
+#include "delaunator-cpp.hpp"
 
-#include "highmap/array.hpp"                   // for Array, operator*
-#include "highmap/functions.hpp"               // for NoiseFunction, NoiseType
-#include "highmap/geometry/point_sampling.hpp" // for PointSamplingMethod
-#include "highmap/primitives/random.hpp"       // for white
-#include "highmap/range.hpp"                   // for clamp_min_smooth, max...
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/geometry/point_sampling.hpp"
+#include "highmap/primitives/random.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/curvature.hpp"  // for CurvatureType, curvature_quadric
-#include "highmap/filters.hpp"    // for smooth_cpulse
-#include "highmap/morphology.hpp" // for morphological_gradient
-#include "highmap/range.hpp"      // for ClampMode, clamp
-#include "highmap/selector.hpp"   // for select_soil_weathered
+#include "highmap/array.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
+#include "highmap/selector.hpp"
 
 namespace hmap::gpu
 {

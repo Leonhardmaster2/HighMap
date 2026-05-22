@@ -2,18 +2,18 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm> // for max, min, copy, fill_n
-#include <cmath>     // for abs
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <map>       // for map
-#include <utility>   // for pair
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <map>
+#include <utility>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/cloud.hpp" // for Cloud, interpolate_values_from...
-#include "highmap/geometry/graph.hpp" // for Graph
-#include "highmap/geometry/point.hpp" // for Point
+#include "highmap/array.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/graph.hpp"
+#include "highmap/geometry/point.hpp"
 #include "highmap/internal/vector_utils.hpp"
 
 namespace hmap

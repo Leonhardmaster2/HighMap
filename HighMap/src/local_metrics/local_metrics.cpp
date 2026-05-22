@@ -1,17 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min
-#include <cmath>     // for pow, sqrt
-#include <deque>     // for deque
-#include <limits>    // for numeric_limits
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <deque>
+#include <limits>
+#include <vector>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/convolve.hpp"   // for convolve1d_i, convolve1d_j
-#include "highmap/filters.hpp"    // for smooth_cpulse, median_pseudo
-#include "highmap/math/array.hpp" // for abs
-#include "highmap/range.hpp"      // for clamp_max, clamp_min
+#include "highmap/array.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

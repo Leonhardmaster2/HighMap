@@ -1,22 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>      // for M_PI, atan
-#include <cstdint>    // for uint32_t
-#include <functional> // for function
+#include <cmath>
+#include <cstdint>
+#include <functional>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/blending.hpp"                  // for blend_gradients
-#include "highmap/erosion.hpp"                   // for ErosionProfile, get...
-#include "highmap/filters.hpp"                   // for smooth_cpulse, smoo...
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/gradient.hpp"                  // for gradient_norm, phas...
-#include "highmap/hydrology/hydrology.hpp"       // for flow_accumulation_dinf
-#include "highmap/math/array.hpp"                // for lerp, cos, log10, pow
-#include "highmap/math/core.hpp"                 // for lerp
-#include "highmap/morphology.hpp"                // for morphological_top_hat
-#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
-#include "highmap/range.hpp"                     // for remap
+#include "highmap/array.hpp"
+#include "highmap/blending.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

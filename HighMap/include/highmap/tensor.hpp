@@ -16,7 +16,7 @@
  */
 
 #pragma once
-#include <opencv2/core/mat.hpp>
+#include <opencv2/core.hpp>
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"

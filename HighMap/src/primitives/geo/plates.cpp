@@ -1,14 +1,14 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint> // for uint32_t
+#include <cstdint>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/filters.hpp"                   // for project_talus_along...
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/math/array.hpp"                // for lerp
-#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
-#include "highmap/primitives/geo.hpp"            // for plates
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/geo.hpp"
 
 namespace hmap::gpu
 {

@@ -1,20 +1,20 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, copy
-#include <cmath>     // for abs
-#include <utility>   // for swap
-#include <vector>    // for allocator, vector
+#include <algorithm>
+#include <cmath>
+#include <utility>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"         // for Array, operator*, count_non_zero
-#include "highmap/boundary.hpp"      // for generate_buffered_array, set_bo...
-#include "highmap/filters.hpp"       // for smooth_cpulse
-#include "highmap/local_metrics.hpp" // for local_max, local_min
-#include "highmap/math/array.hpp"    // for is_zero, smoothstep3
-#include "highmap/morphology.hpp"    // for distance_transform, relative_di...
-#include "highmap/range.hpp"         // for clamp, maximum_smooth, minimum_...
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

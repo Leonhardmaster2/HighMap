@@ -1,18 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <cmath>     // for pow
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array, operator*
-#include "highmap/filters.hpp"        // for laplace, expand_talus
-#include "highmap/geometry/path.hpp"  // for Path
-#include "highmap/geometry/point.hpp" // for Point
-#include "highmap/math/array.hpp"     // for exp, lerp
-#include "highmap/morphology.hpp"     // for dilation, distance_transform_a...
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/morphology.hpp"
 
 namespace hmap
 {

@@ -1,24 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for copy, max, fill_n
-#include <cmath>     // for cos, sin
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <stdexcept> // for runtime_error
-#include <vector>    // for allocator, vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <stdexcept>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/algebra.hpp"                   // for adjust
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/geometry/cloud.hpp"            // for Cloud
-#include "highmap/opencl/gpu_opencl.hpp"         // for helper_bind_optiona...
-#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
-#include "highmap/primitives/functions.hpp"      // for hemisphere_field
-#include "highmap/primitives/geo.hpp"            // for mountain_range_radial
-#include "highmap/range.hpp"                     // for minimum
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

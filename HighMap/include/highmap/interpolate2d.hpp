@@ -16,8 +16,7 @@
  */
 
 #pragma once
-#include <stddef.h>
-
+#include <cstddef>
 #include <map>
 #include <vector>
 
@@ -25,7 +24,7 @@ extern "C" // order matters
 {
 #include "config.h"
 //
-#include "nn.h" // for delaunay, nnai
+#include "nn.h"
 //
 #include "nncommon.h"
 //

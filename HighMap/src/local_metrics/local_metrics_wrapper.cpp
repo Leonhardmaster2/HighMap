@@ -1,10 +1,10 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdexcept> // for runtime_error
+#include <stdexcept>
 
-#include "highmap/array.hpp"         // for Array
-#include "highmap/local_metrics.hpp" // for LocalMetrics, rugosity, local_a...
+#include "highmap/array.hpp"
+#include "highmap/local_metrics.hpp"
 
 namespace hmap::gpu
 {

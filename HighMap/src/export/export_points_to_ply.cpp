@@ -1,14 +1,14 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstddef> // for size_t
-#include <fstream> // for basic_ostream, operator<<, basic_ofstream
-#include <map>     // for map, operator==, _Rb_tree_const_iterator
-#include <string>  // for char_traits, operator<<, string, basic_string
-#include <utility> // for pair
-#include <vector>  // for vector
+#include <cstddef>
+#include <fstream>
+#include <map>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include "macrologger.h" // for LOG_DEBUG
+#include "macrologger.h"
 
 namespace hmap
 {

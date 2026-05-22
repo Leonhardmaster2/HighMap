@@ -1,11 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <cmath>     // for M_SQRT2
-#include <limits>    // for numeric_limits
+#include <algorithm>
+#include <cmath>
+#include <limits>
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap
 {

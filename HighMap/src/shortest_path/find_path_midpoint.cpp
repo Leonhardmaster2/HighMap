@@ -1,14 +1,14 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp, max
-#include <cmath>     // for round, ceil, log2, sqrt
-#include <cstddef>   // for size_t
-#include <utility>   // for move
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <utility>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/point.hpp" // for Point
+#include "highmap/array.hpp"
+#include "highmap/geometry/point.hpp"
 
 namespace hmap
 {

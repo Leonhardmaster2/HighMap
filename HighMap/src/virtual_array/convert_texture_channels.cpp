@@ -1,16 +1,16 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min
-#include <memory>    // for unique_ptr
-#include <stdexcept> // for runtime_error
-#include <vector>    // for vector
+#include <algorithm>
+#include <memory>
+#include <stdexcept>
+#include <vector>
 
-#include "highmap/array.hpp"                         // for Array
-#include "highmap/virtual_array/tile_region.hpp"     // for TileRegion
-#include "highmap/virtual_array/tile_storage.hpp"    // for TileStorage
-#include "highmap/virtual_array/virtual_array.hpp"   // for VirtualArray
-#include "highmap/virtual_array/virtual_texture.hpp" // for VirtualTexture
+#include "highmap/array.hpp"
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/tile_storage.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
+#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {

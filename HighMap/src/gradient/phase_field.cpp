@@ -1,16 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>   // for M_PI, sqrt
-#include <cstdint> // for uint32_t
-#include <vector>  // for allocator, vector
+#include <cmath>
+#include <cstdint>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"             // for Array
-#include "highmap/gradient.hpp"          // for talus_jump_mask, gradient_x
-#include "highmap/math/array.hpp"        // for atan2
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
+#include "highmap/array.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
 {

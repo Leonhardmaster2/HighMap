@@ -1,17 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <vector> // for allocator, vector
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
-#include "macrologger.h"      // for LOG_ERROR
+#include "cl_wrapper/run.hpp"
+#include "macrologger.h"
 
-#include "highmap/array.hpp"               // for Array
-#include "highmap/filters.hpp"             // for smooth_cpulse
-#include "highmap/geometry/path.hpp"       // for Path
-#include "highmap/hydrology/hydrology.hpp" // for generate_riverbed
-#include "highmap/opencl/gpu_opencl.hpp"   // for helper_bind_optional_buffer
-#include "highmap/sdf.hpp"                 // for sdf_2d_polyline, sdf_2d_p...
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/sdf.hpp"
 
 namespace hmap::gpu
 {

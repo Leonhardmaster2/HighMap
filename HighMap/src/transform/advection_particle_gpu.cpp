@@ -1,18 +1,18 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp
-#include <cstdint>   // for uint32_t
-#include <memory>    // for allocator
+#include <algorithm>
+#include <cstdint>
+#include <memory>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"             // for Array
-#include "highmap/filters.hpp"           // for laplace
-#include "highmap/gradient.hpp"          // for gradient_x, gradient_y
-#include "highmap/math/array.hpp"        // for lerp
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/transform.hpp"         // for advection_particle
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap::gpu
 {

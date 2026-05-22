@@ -1,27 +1,27 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max, fill_n, min
-#include <array>      // for array, swap
-#include <cstddef>    // for size_t
-#include <cstdint>    // for uint32_t
-#include <functional> // for function
-#include <optional>   // for optional
-#include <utility>    // for make_pair, pair
-#include <vector>     // for vector
+#include <algorithm>
+#include <array>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <optional>
+#include <utility>
+#include <vector>
 
-#include "point_sampler/halton.hpp"                   // for halton
-#include "point_sampler/hammersley.hpp"               // for hammersley
-#include "point_sampler/jittered_grid.hpp"            // for jittered_grid
-#include "point_sampler/latin_hypercube_sampling.hpp" // for latin_hypercub...
-#include "point_sampler/point.hpp"                    // for Point
-#include "point_sampler/poisson_disk_sampling.hpp"    // for poisson_disk_s...
-#include "point_sampler/random.hpp"                   // for random
-#include "point_sampler/rejection_sampling.hpp"       // for rejection_samp...
-#include "point_sampler/utils.hpp"                    // for split_by_dimen...
+#include "point_sampler/halton.hpp"
+#include "point_sampler/hammersley.hpp"
+#include "point_sampler/jittered_grid.hpp"
+#include "point_sampler/latin_hypercube_sampling.hpp"
+#include "point_sampler/point.hpp"
+#include "point_sampler/poisson_disk_sampling.hpp"
+#include "point_sampler/random.hpp"
+#include "point_sampler/rejection_sampling.hpp"
+#include "point_sampler/utils.hpp"
 
-#include "highmap/array.hpp"                   // for Array, operator-
-#include "highmap/geometry/point_sampling.hpp" // for PointSamplingM...
+#include "highmap/array.hpp"
+#include "highmap/geometry/point_sampling.hpp"
 
 namespace hmap
 {

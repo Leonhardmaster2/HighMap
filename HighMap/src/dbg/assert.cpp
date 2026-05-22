@@ -1,17 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min, copy
-#include <cmath>     // for abs
-#include <string>    // for allocator, operator+, char_traits
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <vector>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/colormaps.hpp"  // for Cmap
-#include "highmap/dbg/assert.hpp" // for AssertResults, assert_almost_equal
-#include "highmap/export.hpp"     // for export_banner_png
-#include "highmap/math/array.hpp" // for abs
-#include "highmap/range.hpp"      // for remap
+#include "highmap/array.hpp"
+#include "highmap/colormaps.hpp"
+#include "highmap/dbg/assert.hpp"
+#include "highmap/export.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

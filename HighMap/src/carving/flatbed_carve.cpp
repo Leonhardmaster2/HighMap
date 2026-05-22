@@ -1,15 +1,15 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max
-#include <functional> // for function
+#include <algorithm>
+#include <functional>
 
-#include "highmap/array.hpp"         // for Array
-#include "highmap/geometry/path.hpp" // for Path
-#include "highmap/math/array.hpp"    // for lerp
-#include "highmap/math/core.hpp"     // for smoothstep3
-#include "highmap/math/profiles.hpp" // for RadialProfile, get_radial_profi...
-#include "highmap/morphology.hpp"    // for distance_transform
+#include "highmap/array.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
+#include "highmap/morphology.hpp"
 
 namespace hmap
 {

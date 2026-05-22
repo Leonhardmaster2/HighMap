@@ -1,17 +1,17 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for fill_n, min
-#include <cstdint>   // for uint32_t
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"   // for Array, operator*
-#include "highmap/erosion.hpp" // for strata_plates
-#include "highmap/filters.hpp" // for project_talus_along_direction
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/math/core.hpp"  // for triangle
-#include "highmap/transform.hpp"  // for warp
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap::gpu
 {

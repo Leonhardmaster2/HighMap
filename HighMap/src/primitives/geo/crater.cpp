@@ -1,15 +1,15 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min
-#include <cmath>     // for pow, atan2, cos, sin, sqrt, M_PI
-#include <utility>   // for move
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <utility>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/grids.hpp" // for grid_xy_vector
-#include "highmap/math/core.hpp"      // for smoothstep3, lerp, power_curve
-#include "highmap/primitives/geo.hpp" // for crater
+#include "highmap/array.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/primitives/geo.hpp"
 
 namespace hmap
 {

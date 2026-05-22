@@ -1,13 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min, max
-#include <cmath>     // for cos, sin, M_PI
-#include <limits>    // for numeric_limits
-#include <utility>   // for pair
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <utility>
 
-#include "highmap/coord_frame.hpp"                 // for CoordFrame
-#include "highmap/virtual_array/virtual_array.hpp" // for VirtualArray
+#include "highmap/coord_frame.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
 
 namespace hmap
 {

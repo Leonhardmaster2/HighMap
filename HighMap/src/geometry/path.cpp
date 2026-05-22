@@ -1,26 +1,25 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, fill_n, reverse
-#include <cmath>     // for abs
-#include <cmath>     // for ceil
-#include <cstddef>   // for size_t
-#include <limits>    // for numeric_limits
-#include <list>      // for list, operator==, _List_ite...
-#include <string>    // for string
-#include <utility>   // for move
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <limits>
+#include <list>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array, operator-
-#include "highmap/colormaps.hpp"      // for Cmap
-#include "highmap/geometry/cloud.hpp" // for Cloud
-#include "highmap/geometry/path.hpp"  // for Path
-#include "highmap/geometry/point.hpp" // for Point, distance, lerp, curv...
+#include "highmap/array.hpp"
+#include "highmap/colormaps.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/geometry/point.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/interpolate1d.hpp" // for Interpolator1D, Interpolati...
-#include "highmap/morphology.hpp"    // for flood_fill
-#include "highmap/operator.hpp"      // for linspace
-#include "highmap/range.hpp"         // for maximum
+#include "highmap/interpolate1d.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

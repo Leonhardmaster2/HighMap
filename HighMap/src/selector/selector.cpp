@@ -1,20 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp, max
-#include <cmath>     // for abs
-#include <cmath>     // for M_PI, exp, pow, hypot, cos
+#include <algorithm>
+#include <cmath>
 
-#include "highmap/array.hpp"               // for Array, operator-, operator+
-#include "highmap/boundary.hpp"            // for extrapolate_borders
-#include "highmap/curvature.hpp"           // for CurvatureType, curvature_...
-#include "highmap/filters.hpp"             // for smooth_cpulse
-#include "highmap/gradient.hpp"            // for gradient_norm, gradient_a...
-#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
-#include "highmap/math/array.hpp"          // for exp, pow, smoothstep3
-#include "highmap/morphology.hpp"          // for morphological_black_hat
-#include "highmap/range.hpp"               // for clamp, remap, clamp_max
-#include "highmap/selector.hpp"            // for select_elevation_slope
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
+#include "highmap/selector.hpp"
 
 namespace hmap
 {

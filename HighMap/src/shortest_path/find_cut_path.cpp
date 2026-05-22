@@ -1,14 +1,14 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstddef> // for size_t
-#include <cstdint> // for uint32_t
-#include <vector>  // for vector
+#include <cstddef>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"         // for Array
-#include "highmap/boundary.hpp"      // for pick_boundary_cell, DomainBoundary
-#include "highmap/geometry/path.hpp" // for Path
-#include "highmap/shortest_path.hpp" // for find_path_dijkstra, find_path_m...
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/shortest_path.hpp"
 
 namespace hmap
 {

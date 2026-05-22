@@ -1,17 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint> // for uint32_t
-#include <vector>  // for allocator, vector
+#include <cstdint>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/erosion.hpp"                   // for strata_cells, strat...
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/math/array.hpp"                // for lerp
-#include "highmap/opencl/gpu_opencl.hpp"         // for helper_bind_optiona...
-#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
 
 namespace hmap::gpu
 {

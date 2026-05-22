@@ -1,23 +1,23 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, copy
-#include <cmath>     // for cos, floor, hypot, pow
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <limits>    // for numeric_limits
-#include <queue>     // for priority_queue
-#include <random>    // for uniform_real_distri...
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <queue>
+#include <random>
+#include <vector>
 
-#include "highmap/array.hpp"                     // for Array
-#include "highmap/boundary.hpp"                  // for extrapolate_borders
-#include "highmap/filters.hpp"                   // for fill_talus
-#include "highmap/geometry/cloud.hpp"            // for Cloud, random_cloud...
-#include "highmap/geometry/point.hpp"            // for Point
-#include "highmap/interpolate2d.hpp"             // for interpolate2d, Inte...
-#include "highmap/primitives/coherent_noise.hpp" // for diffusion_limited_a...
-#include "highmap/terrain_tri_mesh.hpp"          // for TerrainTriMesh
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
 {

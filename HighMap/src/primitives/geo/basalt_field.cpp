@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint> // for uint32_t
+#include <cstdint>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/filters.hpp"                   // for gain
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/math/array.hpp"                // for sqrt_safe
-#include "highmap/primitives/coherent_noise.hpp" // for voronoi_fbm, Vorono...
-#include "highmap/primitives/geo.hpp"            // for basalt_field
-#include "highmap/range.hpp"                     // for remap, maximum_smooth
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

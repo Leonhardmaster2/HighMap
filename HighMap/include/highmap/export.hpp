@@ -23,8 +23,6 @@
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
 
-#include <png.h>
-
 namespace hmap
 {
 

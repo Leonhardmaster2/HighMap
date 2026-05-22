@@ -2,13 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm> // for max, min
-#include <cmath>     // for sqrt
-#include <cstddef>   // for size_t
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <vector>
 
-#include "highmap/geometry/point_sampling.hpp" // for expand_points_at_doma...
-#include "highmap/operator.hpp"                // for linspace
+#include "highmap/geometry/point_sampling.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {

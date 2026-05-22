@@ -1,11 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp
-#include <cmath>     // for sqrt
+#include <algorithm>
+#include <cmath>
 
-#include "highmap/array.hpp"      // for Array, operator-
-#include "highmap/morphology.hpp" // for border, dilation, flood_fill
+#include "highmap/array.hpp"
+#include "highmap/morphology.hpp"
 
 namespace hmap
 {

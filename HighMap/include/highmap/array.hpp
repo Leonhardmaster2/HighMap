@@ -15,7 +15,7 @@
 #include <functional>
 #include <random>
 
-#include <opencv2/core/mat.hpp>
+#include <opencv2/core.hpp>
 
 #include "highmap/algebra.hpp"
 #include "highmap/colormaps.hpp"

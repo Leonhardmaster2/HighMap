@@ -2,12 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cstdint> // for uint32_t
+#include <cstdint>
 
-#include "highmap/array.hpp"                     // for Array
-#include "highmap/functions.hpp"                 // for WorleyDoubleFunction
-#include "highmap/operator.hpp"                  // for fill_array_using_xy...
-#include "highmap/primitives/coherent_noise.hpp" // for worley_double
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
 
 namespace hmap
 {

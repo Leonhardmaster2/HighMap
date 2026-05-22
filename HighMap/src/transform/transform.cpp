@@ -1,18 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp, max
-#include <cmath>     // for cos, sin, fabs, M_PI, atan2
-#include <utility>   // for swap
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <utility>
+#include <vector>
 
-#include "highmap/array.hpp"                // for Array
-#include "highmap/boundary.hpp"             // for generate_buffered_array
-#include "highmap/functions.hpp"            // for ArrayFunction
-#include "highmap/geometry/grids.hpp"       // for grid_xy_vector
-#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
-#include "highmap/primitives/functions.hpp" // for constant
-#include "highmap/transform.hpp"            // for flip_lr, flip_ud, radial...
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {

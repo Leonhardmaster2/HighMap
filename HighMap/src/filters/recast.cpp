@@ -2,22 +2,22 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm> // for transform, min
-#include <cmath>     // for pow, M_PI
-#include <cstdint>   // for uint32_t
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/filters.hpp"                   // for smooth_cpulse, gamm...
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/gradient.hpp"                  // for gradient_norm, grad...
-#include "highmap/local_metrics.hpp"             // for local_mean
-#include "highmap/math/array.hpp"                // for abs_smooth, cos, lerp
-#include "highmap/operator.hpp"                  // for apply_with_mask
-#include "highmap/primitives/coherent_noise.hpp" // for noise_fbm
-#include "highmap/range.hpp"                     // for clamp_min, maximum_...
-#include "highmap/selector.hpp"                  // for select_gradient_binary
-#include "highmap/transform.hpp"                 // for transpose, warp
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/range.hpp"
+#include "highmap/selector.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {

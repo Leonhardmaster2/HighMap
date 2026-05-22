@@ -1,38 +1,37 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, copy, min, fill_n
-#include <array>     // for array
-#include <cmath>     // for abs
-#include <cmath>     // for round, sqrt
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <fstream>   // for basic_ostream, operat...
-#include <iomanip>   // for operator<<, setw, set...
-#include <iostream>  // for cout
-#include <limits>    // for numeric_limits
-#include <locale>    // for locale
-#include <random>    // for uniform_real_distribu...
-#include <sstream>   // for basic_istringstream
-#include <stdexcept> // for invalid_argument, run...
-#include <string>    // for char_traits, string
-#include <utility>   // for move
-#include <vector>    // for vector
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <locale>
+#include <random>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include "delaunator-cpp.hpp"        // for Delaunator
-#include "macrologger.h"             // for LOG_ERROR
-#include "point_sampler/metrics.hpp" // for distance_to_boundary
-#include "point_sampler/point.hpp"   // for Point
-#include "point_sampler/utils.hpp"   // for merge_by_dimension
+#include "delaunator-cpp.hpp"
+#include "macrologger.h"
+#include "point_sampler/metrics.hpp"
+#include "point_sampler/point.hpp"
+#include "point_sampler/utils.hpp"
 
-#include "highmap/array.hpp"                   // for Array
-#include "highmap/geometry/cloud.hpp"          // for Cloud, random_cloud_d...
-#include "highmap/geometry/graph.hpp"          // for Graph
-#include "highmap/geometry/point.hpp"          // for Point, distance
-#include "highmap/geometry/point_sampling.hpp" // for random_points_distance
-#include "highmap/interpolate2d.hpp"           // for interpolate2d, Interp...
-#include "highmap/math/core.hpp"               // for lerp
-#include "highmap/operator.hpp"                // for random_vector
+#include "highmap/array.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/graph.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/geometry/point_sampling.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {

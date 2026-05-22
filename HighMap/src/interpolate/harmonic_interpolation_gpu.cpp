@@ -1,12 +1,12 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <vector> // for allocator, vector
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/operator.hpp" // for swap
+#include "highmap/array.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap::gpu
 {

@@ -1,16 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <cmath>     // for hypot
+#include <algorithm>
+#include <cmath>
 #include <cstdint>
-#include <queue>  // for make_heap, pop_heap, push_heap
-#include <random> // for generate_canonical, mt19937
-#include <vector> // for vector
+#include <queue>
+#include <random>
+#include <vector>
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/boundary.hpp" // for extrapolate_borders
-#include "highmap/filters.hpp"  // for expand_talus
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
 
 namespace hmap
 {

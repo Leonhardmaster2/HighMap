@@ -2,13 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cmath>  // for fmax, pow
-#include <vector> // for allocator, vector
+#include <cmath>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"               // for Array, operator*
-#include "highmap/hydrology/hydrology.hpp" // for water_depth_dry_out, flow...
+#include "highmap/array.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap::gpu
 {

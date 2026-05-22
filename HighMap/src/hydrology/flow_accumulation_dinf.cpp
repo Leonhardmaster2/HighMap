@@ -1,22 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for copy, max, fill_n
-#include <cmath>     // for M_SQRT1_2, pow, atan2
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <limits>    // for numeric_limits
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <vector>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/boundary.hpp"                  // for fill_borders
-#include "highmap/functions.hpp"                 // for NoiseType
-#include "highmap/gradient.hpp"                  // for gradient_talus
-#include "highmap/hydrology/hydrology.hpp"       // for flow_accumulation_dinf
-#include "highmap/math/core.hpp"                 // for fast_exp, fast_log
-#include "highmap/primitives/coherent_noise.hpp" // for noise
-#include "highmap/primitives/functions.hpp"      // for constant
-#include "highmap/range.hpp"                     // for clamp, clamp_max
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
 
 // neighbor pattern search based on D8 flow direction neighborhood
 // coding

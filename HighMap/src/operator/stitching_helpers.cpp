@@ -1,17 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min, max
-#include <limits>    // for numeric_limits
-#include <queue>     // for make_heap, push_heap
-#include <random>    // for uniform_int_distribution, mt19937
-#include <utility>   // for pair
-#include <vector>    // for vector
+#include <algorithm>
+#include <limits>
+#include <queue>
+#include <random>
+#include <utility>
+#include <vector>
 
-#include "highmap/algebra.hpp"   // for Mat
-#include "highmap/array.hpp"     // for Array
-#include "highmap/filters.hpp"   // for smooth_cpulse
-#include "highmap/transform.hpp" // for flip_lr, flip_ud, rot90, transpose
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {

@@ -1,10 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstddef> // for size_t
-#include <vector>  // for vector
+#include <cstddef>
+#include <vector>
 
-#include "highmap/array.hpp" // for Array, count_non_zero, count_zero
+#include "highmap/array.hpp"
 
 namespace hmap
 {

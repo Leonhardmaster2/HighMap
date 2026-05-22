@@ -1,22 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max, min
-#include <cmath>      // for cos, atan2, sin, M_PI
-#include <cstdint>    // for uint32_t
-#include <functional> // for function
-#include <memory>     // for unique_ptr
-#include <utility>    // for move
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <utility>
 
-#include "highmap/array.hpp"                     // for Array, operator*
-#include "highmap/filters.hpp"                   // for smooth_cpulse
-#include "highmap/functions.hpp"                 // for FbmFunction, NoiseF...
-#include "highmap/math/array.hpp"                // for is_zero
-#include "highmap/math/core.hpp"                 // for gain, lerp, smooths...
-#include "highmap/morphology.hpp"                // for distance_transform
-#include "highmap/primitives/coherent_noise.hpp" // for VoronoiReturnType
-#include "highmap/primitives/geo.hpp"            // for island, island_land...
-#include "highmap/range.hpp"                     // for maximum_smooth, min...
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

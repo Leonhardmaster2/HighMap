@@ -1,29 +1,28 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max, fill_n, copy, min
-#include <cmath>      // for abs
-#include <cmath>      // for pow, sqrt
-#include <cstdint>    // for uint32_t, uint8_t
-#include <cstdio>     // for size_t
-#include <fstream>    // for basic_ostream, opera...
-#include <functional> // for greater
-#include <limits>     // for numeric_limits
-#include <memory>     // for make_shared
-#include <queue>      // for priority_queue
-#include <string>     // for char_traits, string
-#include <utility>    // for move, pair
-#include <vector>     // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <cstdio>
+#include <fstream>
+#include <functional>
+#include <limits>
+#include <memory>
+#include <queue>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include "hmm/src/heightmap.h"    // for Heightmap
-#include "hmm/src/triangulator.h" // for Triangulator
+#include "hmm/src/heightmap.h"
+#include "hmm/src/triangulator.h"
 
-#include "highmap/array.hpp"                    // for Array
-#include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
-#include "highmap/random.hpp"                   // for fast_hash32_to_unit_...
-#include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh
+#include "highmap/array.hpp"
+#include "highmap/hydrology/drainage_basin.hpp"
+#include "highmap/random.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
-#include <unordered_map> // for unordered_map, opera...
+#include <unordered_map>
 
 namespace hmap
 {

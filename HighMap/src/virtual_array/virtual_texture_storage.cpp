@@ -1,13 +1,13 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <memory>  // for unique_ptr
-#include <utility> // for move
-#include <vector>  // for vector
+#include <memory>
+#include <utility>
+#include <vector>
 
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/virtual_array/tile_storage.hpp"            // for TileSto...
-#include "highmap/virtual_array/virtual_texture_storage.hpp" // for Virtual...
+#include "highmap/virtual_array/tile_storage.hpp"
+#include "highmap/virtual_array/virtual_texture_storage.hpp"
 
 namespace hmap
 {

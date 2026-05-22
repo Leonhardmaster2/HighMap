@@ -1,20 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, fill_n, max_element
-#include <cstdint>   // for uint8_t
-#include <string>    // for string
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <string>
+#include <vector>
 
-#include <opencv2/core.hpp>             // for flip
-#include <opencv2/core/hal/interface.h> // for CV_32FC3, CV_32FC1, CV_32FC2
-#include <opencv2/core/mat.hpp>         // for Mat, _OutputArray, _InputArray
-#include <opencv2/core/matx.hpp>        // for Vec3f
-#include <opencv2/imgcodecs.hpp>        // for imread, imwrite, ImreadModes
-#include <opencv2/imgproc.hpp>          // for cvtColor, ColorConversionCodes
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 
-#include "highmap/array.hpp"  // for Array
-#include "highmap/tensor.hpp" // for Tensor
+#include "highmap/array.hpp"
+#include "highmap/tensor.hpp"
 
 namespace hmap
 {

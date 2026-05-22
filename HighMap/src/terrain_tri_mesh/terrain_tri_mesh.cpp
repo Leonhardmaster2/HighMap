@@ -1,31 +1,30 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, fill_n, clamp, min, copy
-#include <cmath>     // for abs
-#include <cmath>     // for copysignf, acos, hypot
-#include <cstddef>   // for size_t
-#include <fstream>   // for basic_ostream, operator<<
-#include <iostream>  // for cout
-#include <limits>    // for numeric_limits
-#include <memory>    // for allocator, make_shared
-#include <sstream>   // for basic_ostringstream
-#include <stdexcept> // for runtime_error
-#include <string>    // for char_traits, string, operat...
-#include <utility>   // for move, pair
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <fstream>
+#include <iostream>
+#include <limits>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include <glm/geometric.hpp>
 
-#include "delaunator-cpp.hpp"     // for Delaunator
-#include "hmm/src/heightmap.h"    // for Heightmap
-#include "hmm/src/triangulator.h" // for Triangulator
+#include "delaunator-cpp.hpp"
+#include "hmm/src/heightmap.h"
+#include "hmm/src/triangulator.h"
 
-#include "highmap/array.hpp"            // for Array
-#include "highmap/interpolate2d.hpp"    // for InterpolationMethod2D, inte...
-#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh, cubic_pulse
+#include "highmap/array.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
-#include <unordered_map> // for unordered_map, operator==
+#include <unordered_map>
 
 namespace hmap
 {

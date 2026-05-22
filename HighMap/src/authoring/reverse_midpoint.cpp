@@ -3,11 +3,11 @@
  * this software. */
 
 #include <cstdint>
-#include <random> // for uniform_real_distribution
-#include <vector> // for vector
+#include <random>
+#include <vector>
 
-#include "highmap/algebra.hpp" // for Mat
-#include "highmap/array.hpp"   // for Array
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
 
 namespace hmap
 {

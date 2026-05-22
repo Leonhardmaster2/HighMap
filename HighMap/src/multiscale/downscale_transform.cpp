@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max, min
-#include <functional> // for function
-#include <vector>     // for vector
+#include <algorithm>
+#include <functional>
+#include <vector>
 
-#include "macrologger.h" // for LOG_DEBUG
+#include "macrologger.h"
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/convolve.hpp" // for convolve2d_svd
-#include "highmap/kernels.hpp"  // for blackman, sinc_separable
+#include "highmap/array.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/kernels.hpp"
 
 namespace hmap
 {

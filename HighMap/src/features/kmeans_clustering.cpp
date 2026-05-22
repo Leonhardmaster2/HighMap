@@ -1,18 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, fill_n
-#include <array>     // for array
-#include <cmath>     // for hypot, pow
-#include <cstddef>   // for size_t
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
 #include <cstdint>
-#include <tuple>  // for get
-#include <vector> // for vector
+#include <tuple>
+#include <vector>
 
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/point.hpp" // for Point, sort_points
+#include "highmap/array.hpp"
+#include "highmap/geometry/point.hpp"
 
-#include "dkm.hpp" // for clustering_parameters, kmean...
+#include "dkm.hpp"
 
 namespace hmap
 {

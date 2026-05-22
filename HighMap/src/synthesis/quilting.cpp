@@ -1,18 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for copy, max, min
-#include <cmath>     // for abs
-#include <cmath>     // for ceil
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <random>    // for uniform_int_distribution, mt19937
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <random>
+#include <vector>
 
-#include "highmap/array.hpp"     // for Array
-#include "highmap/math/core.hpp" // for lerp
-#include "highmap/operator.hpp"  // for find_vertical_cut_path, generate...
-#include "highmap/transform.hpp" // for transpose
+#include "highmap/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {

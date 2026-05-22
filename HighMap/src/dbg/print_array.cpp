@@ -1,9 +1,9 @@
-#include <iomanip>  // for operator<<, setw, setprecision
-#include <iostream> // for char_traits, basic_ostream, oper...
-#include <sstream>  // for basic_ostringstream
-#include <string>   // for allocator, operator<<
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap
 {

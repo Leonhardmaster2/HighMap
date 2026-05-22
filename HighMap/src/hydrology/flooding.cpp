@@ -1,16 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max
-#include <cstddef>   // for size_t
-#include <limits>    // for numeric_limits
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstddef>
+#include <limits>
+#include <vector>
 
-#include "highmap/array.hpp"               // for Array, operator-
-#include "highmap/erosion.hpp"             // for depression_filling_priori...
-#include "highmap/features.hpp"            // for connected_components
-#include "highmap/hydrology/hydrology.hpp" // for flooding_from_point, floo...
-#include "highmap/range.hpp"               // for maximum, clamp_min
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/features.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

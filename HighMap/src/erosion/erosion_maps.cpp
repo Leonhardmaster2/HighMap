@@ -1,9 +1,9 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"   // for Array
-#include "highmap/erosion.hpp" // for erosion_maps
-#include "highmap/range.hpp"   // for clamp_min
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

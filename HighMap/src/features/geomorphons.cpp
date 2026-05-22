@@ -1,14 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, fill_n, copy, min
-#include <cstddef>   // for size_t
+#include <algorithm>
+#include <cstddef>
 #include <cstdint>
-#include <vector> // for vector
+#include <vector>
 
-#include "highmap/algebra.hpp"  // for Mat
-#include "highmap/array.hpp"    // for Array
-#include "highmap/features.hpp" // for HMAP_PACK8, geomorphons
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/features.hpp"
 
 namespace hmap
 {

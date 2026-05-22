@@ -1,19 +1,19 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp, max
-#include <cmath>     // for cos, sin, M_PI, atan, pow
-#include <vector>    // for allocator, vector
+#include <algorithm>
+#include <cmath>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"               // for Array, operator*
-#include "highmap/boundary.hpp"            // for extrapolate_borders, fill...
-#include "highmap/erosion.hpp"             // for thermal
-#include "highmap/gradient.hpp"            // for gradient_norm, gradient_a...
-#include "highmap/hydrology/hydrology.hpp" // for snow_melting_map, snow_si...
-#include "highmap/math/core.hpp"           // for gain
-#include "highmap/range.hpp"               // for clamp_max_smooth, clamp_min
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

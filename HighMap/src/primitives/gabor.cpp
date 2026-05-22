@@ -1,13 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cstdint> // for uint32_t
+#include <cstdint>
 
-#include "highmap/array.hpp"                     // for Array
-#include "highmap/convolve.hpp"                  // for convolve2d_svd
-#include "highmap/kernels.hpp"                   // for gabor
-#include "highmap/primitives/coherent_noise.hpp" // for gabor_noise
-#include "highmap/primitives/random.hpp"         // for white_sparse
+#include "highmap/array.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/kernels.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/random.hpp"
 
 #define SVD_RANK 2
 

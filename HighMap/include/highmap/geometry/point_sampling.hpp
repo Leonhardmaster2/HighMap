@@ -14,19 +14,18 @@
  * software.
  */
 #pragma once
-#include <stddef.h> // for size_t
-
-#include <array>      // for array
-#include <functional> // for function
-#include <map>        // for map
-#include <string>     // for operator<=>, string
-#include <utility>    // for pair
-#include <vector>     // for vector
+#include <array>
+#include <cstddef>
+#include <functional>
+#include <map>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "point_sampler.hpp"
-#include "point_sampler/point.hpp" // for Point
+#include "point_sampler/point.hpp"
 
-#include "highmap/array.hpp" // for std::uint32_t, Array
+#include "highmap/array.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/point.hpp"
 

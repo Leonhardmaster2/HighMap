@@ -1,15 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for clamp, max, min
-#include <cmath>      // for abs
-#include <cmath>      // for exp, floor, hypot, pow, cos, fmod
-#include <functional> // for function
-#include <utility>    // for move
+#include <algorithm>
+#include <cmath>
+#include <functional>
+#include <utility>
 
-#include "highmap/array.hpp"     // for Array
-#include "highmap/functions.hpp" // for RiftFunction, Function, WaveDun...
-#include "highmap/math/core.hpp" // for smoothstep3, smoothstep5, smoot...
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

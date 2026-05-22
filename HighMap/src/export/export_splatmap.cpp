@@ -1,11 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <string> // for string
+#include <string>
 
-#include "highmap/array.hpp"  // for Array
-#include "highmap/export.hpp" // for export_splatmap_png
-#include "highmap/tensor.hpp" // for Tensor
+#include "highmap/array.hpp"
+#include "highmap/export.hpp"
+#include "highmap/tensor.hpp"
 
 namespace hmap
 {

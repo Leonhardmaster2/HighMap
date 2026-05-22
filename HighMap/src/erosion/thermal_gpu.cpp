@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <vector> // for allocator, vector
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/boundary.hpp"   // for extrapolate_borders
-#include "highmap/math/array.hpp" // for abs
-#include "highmap/operator.hpp"   // for apply_with_mask
-#include "highmap/range.hpp"      // for maximum
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

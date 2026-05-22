@@ -1,13 +1,13 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath>   // for exp2
-#include <cstdint> // for uint32_t
+#include <cmath>
+#include <cstdint>
 
 #include <glm/glm.hpp>
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/colorize.hpp" // for ColorAdjust, color_adjust
+#include "highmap/array.hpp"
+#include "highmap/colorize.hpp"
 
 namespace hmap
 {

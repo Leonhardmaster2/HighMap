@@ -1,21 +1,21 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min, copy, fill_n
-#include <cmath>     // for pow
-#include <cstddef>   // for size_t
-#include <cstdint>   // for uint32_t
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"                    // for Array
-#include "highmap/erosion.hpp"                  // for hydraulic_saleve
-#include "highmap/geometry/cloud.hpp"           // for Cloud, random_cloud_...
-#include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
-#include "highmap/interpolate2d.hpp"            // for InterpolationMethod2D
-#include "highmap/math/array.hpp"               // for lerp
-#include "highmap/primitives/functions.hpp"     // for biquad_pulse_x, biqu...
-#include "highmap/range.hpp"                    // for remap
-#include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh, cubi...
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/hydrology/drainage_basin.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
 {

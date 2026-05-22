@@ -2,11 +2,11 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <cstddef> // for size_t
-#include <vector>  // for vector
+#include <cstddef>
+#include <vector>
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/boundary.hpp" // for extrapolate_borders, fill_borders
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 
 namespace hmap
 {

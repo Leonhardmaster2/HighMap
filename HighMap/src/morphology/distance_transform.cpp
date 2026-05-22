@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max
-#include <vector>    // for vector
+#include <algorithm>
+#include <vector>
 
-#include "highmap/algebra.hpp"    // for Mat
-#include "highmap/array.hpp"      // for Array
-#include "highmap/math/array.hpp" // for sqrt
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/math/array.hpp"
 
 float f(int i, float gi)
 {

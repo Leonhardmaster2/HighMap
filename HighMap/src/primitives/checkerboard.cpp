@@ -1,15 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdlib.h> // for abs
+#include <cmath>
+#include <cstdlib>
+#include <functional>
 
-#include <cmath>      // for abs
-#include <cmath>      // for floor
-#include <functional> // for function
-
-#include "highmap/array.hpp"                // for Array
-#include "highmap/operator.hpp"             // for fill_array_using_xy_func...
-#include "highmap/primitives/functions.hpp" // for checkerboard
+#include "highmap/array.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/functions.hpp"
 
 namespace hmap
 {
