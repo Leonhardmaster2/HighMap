@@ -109,119 +109,118 @@ $(document).ready(function(){initNavTree('point__sampling_8hpp_source.html','');
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">   this software. */</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;stddef.h&gt;</span> <span class="comment">// for size_t</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;array&gt;</span>      <span class="comment">// for array</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;functional&gt;</span> <span class="comment">// for function</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;map&gt;</span>        <span class="comment">// for map</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;string&gt;</span>     <span class="comment">// for operator&lt;=&gt;, string</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;utility&gt;</span>    <span class="comment">// for pair</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;vector&gt;</span>     <span class="comment">// for vector</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;point_sampler.hpp&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;point_sampler/point.hpp&quot;</span> <span class="comment">// for Point</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="array_8hpp.html">highmap/array.hpp</a>&quot;</span> <span class="comment">// for std::uint32_t, Array</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="functions_8hpp.html">highmap/functions.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="point_8hpp.html">highmap/geometry/point.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">   39</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">PointSamplingMethod</a> : <span class="keywordtype">int</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">   41</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">RND_RANDOM</a>,     </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">   42</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">RND_HALTON</a>,     </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">   43</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">RND_HAMMERSLEY</a>, </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">   44</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">RND_LHS</a>,        </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;point_sampler.hpp&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;point_sampler/point.hpp&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="array_8hpp.html">highmap/array.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="functions_8hpp.html">highmap/functions.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="point_8hpp.html">highmap/geometry/point.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehmap.html">hmap</a></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">   38</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">PointSamplingMethod</a> : <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">   40</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">RND_RANDOM</a>,     </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">   41</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">RND_HALTON</a>,     </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">   42</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">RND_HAMMERSLEY</a>, </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">   43</a></span>  <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">RND_LHS</a>,        </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">static</span> std::map&lt;std::string, int&gt; point_sampling_method_as_string = {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {<span class="stringliteral">&quot;Random&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">PointSamplingMethod::RND_RANDOM</a>},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {<span class="stringliteral">&quot;Halton sequence&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">PointSamplingMethod::RND_HALTON</a>},</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {<span class="stringliteral">&quot;Hammersley sequence&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">PointSamplingMethod::RND_HAMMERSLEY</a>},</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {<span class="stringliteral">&quot;Latin Hypercube Sampling&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">PointSamplingMethod::RND_LHS</a>},</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>std::array&lt;std::pair&lt;float, float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ad47906fd3938ef2cc8dbae87ad80a4c9">bbox_to_ranges2d</a>(<span class="keyword">const</span> glm::vec4 &amp;bbox);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a549a837963a123060e2d7622d313fb57">expand_points_domain</a>(std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                          std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                          std::vector&lt;float&gt; &amp;value,</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                          glm::vec4           bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#aaaa3b5f379755d9595ed061a17acb4f9">expand_points_at_domain_boundaries</a>(std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                        std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                        std::vector&lt;float&gt; &amp;value,</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                        glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                        <span class="keywordtype">float</span>     boundary_value = 0.f);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a65287c503ca74fa5c00201404f4e0aca">expand_points_domain_corners</a>(std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  std::vector&lt;float&gt; &amp;value,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  <span class="keywordtype">float</span>     corner_value = 0.f);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>std::function&lt;float(<span class="keyword">const</span> ps::Point&lt;float, 2&gt; &amp;)&gt;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><a class="code hl_function" href="namespacehmap.html#a0d2c7cec42fe990f214a1b74da57cd00">make_pointwise_function_from_array</a>(<span class="keyword">const</span> Array &amp;array, <span class="keyword">const</span> glm::vec4 &amp;bbox);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ad8f245a50151b4e2216e97eaaa786ad7">random_points</a>(</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">size_t</span>                     count,</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    std::uint32_t              seed,</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">PointSamplingMethod</a> &amp;method = <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">PointSamplingMethod::RND_RANDOM</a>,</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keyword">const</span> glm::vec4           &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#a208e935aeb1a6e615dd9dd067afe0a62">random_points_density</a>(</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">size_t</span>           count,</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">const</span> Array     &amp;density,</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#aca9e5ce3b366a082ed8c329bf15b09d7">random_points_distance</a>(</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">float</span>            min_dist,</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#aca9e5ce3b366a082ed8c329bf15b09d7">random_points_distance</a>(</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">float</span>            min_dist,</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordtype">float</span>            max_dist,</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keyword">const</span> Array     &amp;density,</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ade5a657c15f8f2461c5300e32ca697c0">random_points_distance_power_law</a>(</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordtype">float</span>            dist_min,</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordtype">float</span>            dist_max,</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordtype">float</span>            alpha,</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#a9cd51142544036bc8ce9c679547e9c65">random_points_distance_weibull</a>(</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">float</span>            dist_min,</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordtype">float</span>            lambda,</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keywordtype">float</span>            k,</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ae392bc0ed44e2a201a9e42e28305debf">random_points_jittered</a>(</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordtype">size_t</span>           count,</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keyword">const</span> glm::vec2 &amp;jitter_amount,</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keyword">const</span> glm::vec2 &amp;stagger_ratio,</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    std::uint32_t    seed,</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="namespacehmap.html#aaab30ec56f0dbaf1879a5be0ab32280b">  302</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#aaab30ec56f0dbaf1879a5be0ab32280b">remove_points_outside_bbox</a>(std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>                                std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>                                std::vector&lt;float&gt; &amp;value,</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>                                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a22d70a0b62d7e1d8eeb9bc5e50bc5fe9">rescale_points_to_unit_square</a>(std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                                   std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                                   glm::vec4           bbox);</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">static</span> std::map&lt;std::string, int&gt; point_sampling_method_as_string = {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {<span class="stringliteral">&quot;Random&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">PointSamplingMethod::RND_RANDOM</a>},</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {<span class="stringliteral">&quot;Halton sequence&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">PointSamplingMethod::RND_HALTON</a>},</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {<span class="stringliteral">&quot;Hammersley sequence&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">PointSamplingMethod::RND_HAMMERSLEY</a>},</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {<span class="stringliteral">&quot;Latin Hypercube Sampling&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">PointSamplingMethod::RND_LHS</a>},</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>std::array&lt;std::pair&lt;float, float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ad47906fd3938ef2cc8dbae87ad80a4c9">bbox_to_ranges2d</a>(<span class="keyword">const</span> glm::vec4 &amp;bbox);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a549a837963a123060e2d7622d313fb57">expand_points_domain</a>(std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                          std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                          std::vector&lt;float&gt; &amp;value,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                          glm::vec4           bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#aaaa3b5f379755d9595ed061a17acb4f9">expand_points_at_domain_boundaries</a>(std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                        std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                        std::vector&lt;float&gt; &amp;value,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                        glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                        <span class="keywordtype">float</span>     boundary_value = 0.f);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a65287c503ca74fa5c00201404f4e0aca">expand_points_domain_corners</a>(std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                                  std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  std::vector&lt;float&gt; &amp;value,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f},</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  <span class="keywordtype">float</span>     corner_value = 0.f);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>std::function&lt;float(<span class="keyword">const</span> ps::Point&lt;float, 2&gt; &amp;)&gt;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><a class="code hl_function" href="namespacehmap.html#a0d2c7cec42fe990f214a1b74da57cd00">make_pointwise_function_from_array</a>(<span class="keyword">const</span> Array &amp;array, <span class="keyword">const</span> glm::vec4 &amp;bbox);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ad8f245a50151b4e2216e97eaaa786ad7">random_points</a>(</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">size_t</span>                     count,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    std::uint32_t              seed,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">PointSamplingMethod</a> &amp;method = <a class="code hl_enumvalue" href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">PointSamplingMethod::RND_RANDOM</a>,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">const</span> glm::vec4           &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#a208e935aeb1a6e615dd9dd067afe0a62">random_points_density</a>(</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">size_t</span>           count,</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">const</span> Array     &amp;density,</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#aca9e5ce3b366a082ed8c329bf15b09d7">random_points_distance</a>(</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">float</span>            min_dist,</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#aca9e5ce3b366a082ed8c329bf15b09d7">random_points_distance</a>(</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordtype">float</span>            min_dist,</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">float</span>            max_dist,</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keyword">const</span> Array     &amp;density,</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ade5a657c15f8f2461c5300e32ca697c0">random_points_distance_power_law</a>(</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordtype">float</span>            dist_min,</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordtype">float</span>            dist_max,</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordtype">float</span>            alpha,</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#a9cd51142544036bc8ce9c679547e9c65">random_points_distance_weibull</a>(</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordtype">float</span>            dist_min,</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">float</span>            lambda,</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordtype">float</span>            k,</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>std::array&lt;std::vector&lt;float&gt;, 2&gt; <a class="code hl_function" href="namespacehmap.html#ae392bc0ed44e2a201a9e42e28305debf">random_points_jittered</a>(</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordtype">size_t</span>           count,</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keyword">const</span> glm::vec2 &amp;jitter_amount,</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keyword">const</span> glm::vec2 &amp;stagger_ratio,</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    std::uint32_t    seed,</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keyword">const</span> glm::vec4 &amp;bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="namespacehmap.html#aaab30ec56f0dbaf1879a5be0ab32280b">  301</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#aaab30ec56f0dbaf1879a5be0ab32280b">remove_points_outside_bbox</a>(std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                                std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>                                std::vector&lt;float&gt; &amp;value,</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>                                glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f});</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacehmap.html#a22d70a0b62d7e1d8eeb9bc5e50bc5fe9">rescale_points_to_unit_square</a>(std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                                   std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                                   glm::vec4           bbox);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aarray_8hpp_html"><div class="ttname"><a href="array_8hpp.html">array.hpp</a></div><div class="ttdoc">Declaration of the Array class for 2D floating-point arrays with various mathematical operations and ...</div></div>
 <div class="ttc" id="afunctions_8hpp_html"><div class="ttname"><a href="functions_8hpp.html">functions.hpp</a></div><div class="ttdoc">Defines modular function objects for procedural generation, including noise algorithms (Perlin,...</div></div>
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:23</div></div>
@@ -233,11 +232,11 @@ $(document).ready(function(){initNavTree('point__sampling_8hpp_source.html','');
 <div class="ttc" id="anamespacehmap_html_a9cd51142544036bc8ce9c679547e9c65"><div class="ttname"><a href="namespacehmap.html#a9cd51142544036bc8ce9c679547e9c65">hmap::random_points_distance_weibull</a></div><div class="ttdeci">std::array&lt; std::vector&lt; float &gt;, 2 &gt; random_points_distance_weibull(float dist_min, float lambda, float k, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates random 2D points with distances drawn from a Weibull distribution.</div><div class="ttdef"><b>Definition</b> point_sampling.cpp:179</div></div>
 <div class="ttc" id="anamespacehmap_html_aaaa3b5f379755d9595ed061a17acb4f9"><div class="ttname"><a href="namespacehmap.html#aaaa3b5f379755d9595ed061a17acb4f9">hmap::expand_points_at_domain_boundaries</a></div><div class="ttdeci">void expand_points_at_domain_boundaries(std::vector&lt; float &gt; &amp;x, std::vector&lt; float &gt; &amp;y, std::vector&lt; float &gt; &amp;value, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, float boundary_value=0.f)</div><div class="ttdoc">Expand the grid by adding points on the boundaries of the bounding box.</div><div class="ttdef"><b>Definition</b> grid.cpp:56</div></div>
 <div class="ttc" id="anamespacehmap_html_aaab30ec56f0dbaf1879a5be0ab32280b"><div class="ttname"><a href="namespacehmap.html#aaab30ec56f0dbaf1879a5be0ab32280b">hmap::remove_points_outside_bbox</a></div><div class="ttdeci">void remove_points_outside_bbox(std::vector&lt; float &gt; &amp;x, std::vector&lt; float &gt; &amp;y, std::vector&lt; float &gt; &amp;value, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Remove grid points that are outside a given bounding box.</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">hmap::PointSamplingMethod</a></div><div class="ttdeci">PointSamplingMethod</div><div class="ttdoc">Enumeration of point sampling methods.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:40</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">hmap::RND_LHS</a></div><div class="ttdeci">@ RND_LHS</div><div class="ttdoc">Latin Hypercube Sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:44</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">hmap::RND_HALTON</a></div><div class="ttdeci">@ RND_HALTON</div><div class="ttdoc">Low-discrepancy Halton sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:42</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">hmap::RND_RANDOM</a></div><div class="ttdeci">@ RND_RANDOM</div><div class="ttdoc">Purely random uniform sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:41</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">hmap::RND_HAMMERSLEY</a></div><div class="ttdeci">@ RND_HAMMERSLEY</div><div class="ttdoc">Low-discrepancy Hammersley sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:43</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77">hmap::PointSamplingMethod</a></div><div class="ttdeci">PointSamplingMethod</div><div class="ttdoc">Enumeration of point sampling methods.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:39</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">hmap::RND_LHS</a></div><div class="ttdeci">@ RND_LHS</div><div class="ttdoc">Latin Hypercube Sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:43</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">hmap::RND_HALTON</a></div><div class="ttdeci">@ RND_HALTON</div><div class="ttdoc">Low-discrepancy Halton sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:41</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">hmap::RND_RANDOM</a></div><div class="ttdeci">@ RND_RANDOM</div><div class="ttdoc">Purely random uniform sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:40</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">hmap::RND_HAMMERSLEY</a></div><div class="ttdeci">@ RND_HAMMERSLEY</div><div class="ttdoc">Low-discrepancy Hammersley sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:42</div></div>
 <div class="ttc" id="anamespacehmap_html_aca9e5ce3b366a082ed8c329bf15b09d7"><div class="ttname"><a href="namespacehmap.html#aca9e5ce3b366a082ed8c329bf15b09d7">hmap::random_points_distance</a></div><div class="ttdeci">std::array&lt; std::vector&lt; float &gt;, 2 &gt; random_points_distance(float min_dist, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates random 2D points with a minimum separation distance.</div><div class="ttdef"><b>Definition</b> point_sampling.cpp:122</div></div>
 <div class="ttc" id="anamespacehmap_html_ad47906fd3938ef2cc8dbae87ad80a4c9"><div class="ttname"><a href="namespacehmap.html#ad47906fd3938ef2cc8dbae87ad80a4c9">hmap::bbox_to_ranges2d</a></div><div class="ttdeci">std::array&lt; std::pair&lt; float, float &gt;, 2 &gt; bbox_to_ranges2d(const glm::vec4 &amp;bbox)</div><div class="ttdoc">Converts a 2D bounding box into coordinate ranges.</div><div class="ttdef"><b>Definition</b> point_sampling.cpp:36</div></div>
 <div class="ttc" id="anamespacehmap_html_ad8f245a50151b4e2216e97eaaa786ad7"><div class="ttname"><a href="namespacehmap.html#ad8f245a50151b4e2216e97eaaa786ad7">hmap::random_points</a></div><div class="ttdeci">std::array&lt; std::vector&lt; float &gt;, 2 &gt; random_points(size_t count, std::uint32_t seed, const PointSamplingMethod &amp;method=PointSamplingMethod::RND_RANDOM, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates random 2D points within a bounding box using a sampling method.</div><div class="ttdef"><b>Definition</b> point_sampling.cpp:67</div></div>

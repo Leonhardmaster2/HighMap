@@ -8,98 +8,96 @@
 \DoxyCodeLine{00004\ }
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <bits/chrono.h>}\ \textcolor{comment}{//\ for\ high\_resolution\_clock}}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <chrono>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <iomanip>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <list>}\ \ \ \textcolor{comment}{//\ for\ list}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <map>}\ \ \ \ \textcolor{comment}{//\ for\ allocator,\ map}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <string>}\ \textcolor{comment}{//\ for\ string}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}macrologger.h"{}}}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}macrologger.h"{}}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
-\DoxyCodeLine{00030\ \{}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1Recorder}{Recorder}}}
-\DoxyCodeLine{00037\ \{}
-\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{structhmap_1_1Recorder}{Recorder}}(std::string\ \mbox{\hyperlink{structhmap_1_1Recorder_a383fac701048b5d6717ed4c007161ba3}{name}});}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_ac5bd6628a256636229047bbc12ced680}{dump}}();}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_ad758a2382f097ff1fb636744e902aa49}{start}}();}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_aba9c05c56a1c5a769f12467684735add}{stop}}();}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ std::string\ \mbox{\hyperlink{structhmap_1_1Recorder_a383fac701048b5d6717ed4c007161ba3}{name}};\ }
-\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhmap_1_1Recorder_ad553f417348e2de1e528eaacdfbf2d5e}{nb\_calls}}\ =\ 0;\ }
-\DoxyCodeLine{00064\ \ \ std::chrono::high\_resolution\_clock::time\_point}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Recorder_a0ec174294138be0e1d677a7c33011959}{t0}};\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structhmap_1_1Recorder_af6f300d4c80eabfbaf57fdbebde9062e}{total}}\ =\ 0.f;\ }
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00105\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhmap_1_1Timer}{Timer}}}
-\DoxyCodeLine{00106\ \{}
-\DoxyCodeLine{00107\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&\mbox{\hyperlink{classhmap_1_1Timer_a576626db87904b2c0937e8441fee866f}{get\_instance}}();}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00120\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_ae9248cf01bfd4d8f680a6c7d5b80f45b}{Start}}(\textcolor{keyword}{const}\ std::string\ \&name);}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Stop}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehmap}{hmap}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1Recorder}{Recorder}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{structhmap_1_1Recorder}{Recorder}}(std::string\ \mbox{\hyperlink{structhmap_1_1Recorder_a383fac701048b5d6717ed4c007161ba3}{name}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_ac5bd6628a256636229047bbc12ced680}{dump}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_ad758a2382f097ff1fb636744e902aa49}{start}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structhmap_1_1Recorder_aba9c05c56a1c5a769f12467684735add}{stop}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ std::string\ \mbox{\hyperlink{structhmap_1_1Recorder_a383fac701048b5d6717ed4c007161ba3}{name}};\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structhmap_1_1Recorder_ad553f417348e2de1e528eaacdfbf2d5e}{nb\_calls}}\ =\ 0;\ }
+\DoxyCodeLine{00062\ \ \ std::chrono::high\_resolution\_clock::time\_point}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structhmap_1_1Recorder_a0ec174294138be0e1d677a7c33011959}{t0}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structhmap_1_1Recorder_af6f300d4c80eabfbaf57fdbebde9062e}{total}}\ =\ 0.f;\ }
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhmap_1_1Timer}{Timer}}}
+\DoxyCodeLine{00104\ \{}
+\DoxyCodeLine{00105\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&\mbox{\hyperlink{classhmap_1_1Timer_a576626db87904b2c0937e8441fee866f}{get\_instance}}();}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_ae9248cf01bfd4d8f680a6c7d5b80f45b}{Start}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Stop}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3}{Clear}}();}
 \DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a315ce1e0ff2450ead4e1d704acbbe4c3}{Clear}}();}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00134\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}{Dump}}();}
+\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhmap_1_1Timer_a5bc931885a549c561740f39cea91dd5f}{Dump}}();}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \textcolor{keyword}{static}\ std::map<std::string,\ float>\ \mbox{\hyperlink{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9}{DumpDurations}}();}
 \DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \ \ \textcolor{keyword}{static}\ std::map<std::string,\ float>\ \mbox{\hyperlink{classhmap_1_1Timer_a61eaa1759a0b195fe512c276cc253eb9}{DumpDurations}}();}
-\DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ \ \ std::map<std::string,\ Recorder\ *>\ \mbox{\hyperlink{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f}{get\_records}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00139\ \textcolor{keyword}{\ \ }\{}
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>records;}
-\DoxyCodeLine{00141\ \ \ \}}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00150\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(std::string\ sid\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00155\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{\string~Timer}}();}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00162\ \ \ \textcolor{keywordtype}{void}\ start(\textcolor{keyword}{const}\ std::string\ \&name);}
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00169\ \ \ \textcolor{keywordtype}{void}\ stop(\textcolor{keyword}{const}\ std::string\ \&name);}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00174\ \ \ \textcolor{keywordtype}{void}\ dump();}
+\DoxyCodeLine{00136\ \ \ std::map<std::string,\ Recorder\ *>\ \mbox{\hyperlink{classhmap_1_1Timer_ae06258adb9e67342e56835291be5226f}{get\_records}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00137\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>records;}
+\DoxyCodeLine{00139\ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00148\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(std::string\ sid\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00153\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{\string~Timer}}();}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00160\ \ \ \textcolor{keywordtype}{void}\ start(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00167\ \ \ \textcolor{keywordtype}{void}\ stop(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00172\ \ \ \textcolor{keywordtype}{void}\ dump();}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ std::map<std::string,\ float>\ dump\_durations()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ \ \ std::map<std::string,\ float>\ dump\_durations()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00178\ \ \ \textcolor{comment}{//\ Deleting\ the\ copy\ constructor\ and\ assignment\ operator\ to\ enforce\ singleton}}
-\DoxyCodeLine{00179\ \ \ \textcolor{comment}{//\ pattern.}}
-\DoxyCodeLine{00180\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00181\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00184\ \ \ std::string\ sid;\ }
-\DoxyCodeLine{00185\ \ \ std::map<std::string,\ Recorder\ *>}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ records;\ }
-\DoxyCodeLine{00188\ \ \ std::list<Recorder>}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ data;\ }
-\DoxyCodeLine{00190\ \ \ \textcolor{keywordtype}{int}\ current\_level\ =\ 0;\ }
-\DoxyCodeLine{00191\ \};}
-\DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1ScopedTimer}{ScopedTimer}}}
-\DoxyCodeLine{00194\ \{}
-\DoxyCodeLine{00195\ \ \ \mbox{\hyperlink{structhmap_1_1ScopedTimer_ae4f87957271838e7c5a263d358ffacc2}{ScopedTimer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{id})}
-\DoxyCodeLine{00196\ \ \ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Timer_ae9248cf01bfd4d8f680a6c7d5b80f45b}{Timer::Start}}(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00198\ \ \ \}}
-\DoxyCodeLine{00199\ \ \ \mbox{\hyperlink{structhmap_1_1ScopedTimer_a2f3f39b91f3e0313debb9de8398b6194}{\string~ScopedTimer}}()}
-\DoxyCodeLine{00200\ \ \ \{}
-\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Timer::Stop}}(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00202\ \ \ \}}
-\DoxyCodeLine{00203\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structhmap_1_1ScopedTimer_ad41ee35a3544e14dbef17fe6fafd0024}{id}};}
-\DoxyCodeLine{00204\ \};}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00176\ \ \ \textcolor{comment}{//\ Deleting\ the\ copy\ constructor\ and\ assignment\ operator\ to\ enforce\ singleton}}
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{//\ pattern.}}
+\DoxyCodeLine{00178\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00179\ \ \ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Timer}{Timer}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00182\ \ \ std::string\ sid;\ }
+\DoxyCodeLine{00183\ \ \ std::map<std::string,\ Recorder\ *>}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ records;\ }
+\DoxyCodeLine{00186\ \ \ std::list<Recorder>}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ data;\ }
+\DoxyCodeLine{00188\ \ \ \textcolor{keywordtype}{int}\ current\_level\ =\ 0;\ }
+\DoxyCodeLine{00189\ \};}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhmap_1_1ScopedTimer}{ScopedTimer}}}
+\DoxyCodeLine{00192\ \{}
+\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{structhmap_1_1ScopedTimer_ae4f87957271838e7c5a263d358ffacc2}{ScopedTimer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{id})}
+\DoxyCodeLine{00194\ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Timer_ae9248cf01bfd4d8f680a6c7d5b80f45b}{Timer::Start}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00196\ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \mbox{\hyperlink{structhmap_1_1ScopedTimer_a2f3f39b91f3e0313debb9de8398b6194}{\string~ScopedTimer}}()}
+\DoxyCodeLine{00198\ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{classhmap_1_1Timer_a6054c197a10338a1bd48299be29593b5}{Timer::Stop}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00200\ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structhmap_1_1ScopedTimer_ad41ee35a3544e14dbef17fe6fafd0024}{id}};}
+\DoxyCodeLine{00202\ \};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}
