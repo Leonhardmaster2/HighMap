@@ -1,15 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for clamp
-#include <cmath>      // for cos, M_PI, hypot, sin
-#include <functional> // for function
-#include <vector>     // for vector
+#include <algorithm>
+#include <cmath>
+#include <functional>
+#include <vector>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/functions.hpp"  // for BiquadFunction, BumpFunction
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for PrimitiveType, cone, biquad_pulse
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/primitives/geo.hpp"
 
 namespace hmap
 {

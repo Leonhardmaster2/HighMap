@@ -4,9 +4,9 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  uint      seed = 0;
-  glm::vec4 bbox = hmap::unit_square_bbox();
-  glm::vec2 center = {0.f, 0.f};
+  std::uint32_t seed = 0;
+  glm::vec4     bbox = hmap::unit_square_bbox();
+  glm::vec2     center = {0.f, 0.f};
 
   // std::unique_ptr<hmap::Function> p = std::unique_ptr<hmap::Function>(
   //     new hmap::BumpFunction(gain, center));

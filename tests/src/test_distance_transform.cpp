@@ -11,8 +11,8 @@ using namespace hmap;
 
 TEST(DistanceTransform, ProducesCorrectDistances)
 {
-  glm::ivec2 shape = {128, 64};
-  uint       seed = 42;
+  glm::ivec2    shape = {128, 64};
+  std::uint32_t seed = 42;
 
   // --- Generate random mask
 
@@ -53,8 +53,8 @@ TEST(DistanceTransform, ProducesCorrectDistances)
 
 TEST(DistanceTransformManhattan, ProducesCorrectDistances)
 {
-  glm::ivec2 shape = {128, 64};
-  uint       seed = 42;
+  glm::ivec2    shape = {128, 64};
+  std::uint32_t seed = 42;
 
   // --- Generate random mask
 
@@ -91,8 +91,8 @@ TEST(DistanceTransformManhattan, ProducesCorrectDistances)
 
 TEST(DistanceTransform, SquaredDistanceConsistency)
 {
-  glm::ivec2 shape = {128, 64};
-  uint       seed = 42;
+  glm::ivec2    shape = {128, 64};
+  std::uint32_t seed = 42;
 
   Array mask = white_sparse(shape, 0.f, 1.f, 0.05f, seed);
 
@@ -216,7 +216,7 @@ TEST(DistanceTransform, VerticalLine)
 
 TEST(DistanceTransform, ConsistencyWithDistanceTransformWithClosest)
 {
-  uint            seed = 0;
+  std::uint32_t   seed = 0;
   glm::ivec2      shape = {64, 32};
   Mat<glm::ivec2> closest(shape); // not used
 
@@ -234,8 +234,8 @@ TEST(DistanceTransform, ConsistencyWithDistanceTransformWithClosest)
 
 TEST(DistanceTransform, ApproxMatchesExactWithinTolerance)
 {
-  glm::ivec2 shape = {128, 64};
-  uint       seed = 42;
+  glm::ivec2    shape = {128, 64};
+  std::uint32_t seed = 42;
 
   Array mask = white_sparse(shape, 0.f, 1.f, 0.05f, seed);
 

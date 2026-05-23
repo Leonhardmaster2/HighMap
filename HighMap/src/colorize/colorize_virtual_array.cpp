@@ -1,24 +1,23 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <functional>
+#include <initializer_list>
+#include <vector>
 
-#include <algorithm>        // for reverse, clamp
-#include <functional>       // for function
-#include <initializer_list> // for initializer_list
-#include <vector>           // for vector
+#include "macrologger.h"
 
-#include "macrologger.h" // for LOG_ERROR
-
-#include "highmap/array.hpp"                         // for Array, operator*
-#include "highmap/colorize.hpp"                      // for NormalMapBlendi...
-#include "highmap/colormaps.hpp"                     // for get_colormap_data
-#include "highmap/interpolate1d.hpp"                 // for Interpolator1D
-#include "highmap/math/array.hpp"                    // for lerp, pow
-#include "highmap/operator.hpp"                      // for linspace
-#include "highmap/virtual_array/tile_region.hpp"     // for TileRegion
-#include "highmap/virtual_array/virtual_array.hpp"   // for VirtualArray
-#include "highmap/virtual_array/virtual_texture.hpp" // for VirtualTexture
+#include "highmap/array.hpp"
+#include "highmap/colorize.hpp"
+#include "highmap/colormaps.hpp"
+#include "highmap/interpolate1d.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
+#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {

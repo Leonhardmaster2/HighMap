@@ -1,13 +1,13 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <array>  // for array
-#include <cmath>  // for cos, sin, M_PI
-#include <vector> // for allocator, vector
+#include <array>
+#include <cmath>
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap::gpu
 {

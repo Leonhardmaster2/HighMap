@@ -2,12 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <vector> // for allocator, vector
+#include <vector>
 
-#include "cl_wrapper/run.hpp" // for Run
+#include "cl_wrapper/run.hpp"
 
-#include "highmap/array.hpp"   // for Array, operator*
-#include "highmap/erosion.hpp" // for hydraulic_vpipes
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
 
 namespace hmap::gpu
 {

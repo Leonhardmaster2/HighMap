@@ -1,24 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <stdexcept>
+#include <vector>
 
-#include <algorithm> // for max
-#include <cmath>     // for cos, sin
-#include <stdexcept> // for runtime_error
-#include <vector>    // for allocator, vector
+#include "cl_wrapper/run.hpp"
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "cl_wrapper/run.hpp" // for Run
-
-#include "highmap/algebra.hpp"           // for adjust
-#include "highmap/array.hpp"             // for Array, operator*, operator+
-#include "highmap/functions.hpp"         // for NoiseType
-#include "highmap/geometry/cloud.hpp"    // for Cloud
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/primitives.hpp"        // for VoronoiReturnType, gavoronoise
-#include "highmap/range.hpp"             // for minimum
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -50,12 +50,12 @@ void helper_bind_optional_buffers(clwrapper::Run &run,
 
 // --- functions
 
-Array gabor_wave(glm::ivec2   shape,
-                 glm::vec2    kw,
-                 uint         seed,
-                 const Array &angle,
-                 float        angle_spread_ratio,
-                 glm::vec4    bbox)
+Array gabor_wave(glm::ivec2    shape,
+                 glm::vec2     kw,
+                 std::uint32_t seed,
+                 const Array  &angle,
+                 float         angle_spread_ratio,
+                 glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -78,12 +78,12 @@ Array gabor_wave(glm::ivec2   shape,
   return array;
 }
 
-Array gabor_wave(glm::ivec2 shape,
-                 glm::vec2  kw,
-                 uint       seed,
-                 float      angle,
-                 float      angle_spread_ratio,
-                 glm::vec4  bbox)
+Array gabor_wave(glm::ivec2    shape,
+                 glm::vec2     kw,
+                 std::uint32_t seed,
+                 float         angle,
+                 float         angle_spread_ratio,
+                 glm::vec4     bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -93,19 +93,19 @@ Array gabor_wave(glm::ivec2 shape,
   return array;
 }
 
-Array gabor_wave_fbm(glm::ivec2   shape,
-                     glm::vec2    kw,
-                     uint         seed,
-                     const Array &angle,
-                     float        angle_spread_ratio,
-                     int          octaves,
-                     float        weight,
-                     float        persistence,
-                     float        lacunarity,
-                     const Array *p_ctrl_param,
-                     const Array *p_noise_x,
-                     const Array *p_noise_y,
-                     glm::vec4    bbox)
+Array gabor_wave_fbm(glm::ivec2    shape,
+                     glm::vec2     kw,
+                     std::uint32_t seed,
+                     const Array  &angle,
+                     float         angle_spread_ratio,
+                     int           octaves,
+                     float         weight,
+                     float         persistence,
+                     float         lacunarity,
+                     const Array  *p_ctrl_param,
+                     const Array  *p_noise_x,
+                     const Array  *p_noise_y,
+                     glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -140,19 +140,19 @@ Array gabor_wave_fbm(glm::ivec2   shape,
   return array;
 }
 
-Array gabor_wave_fbm(glm::ivec2   shape,
-                     glm::vec2    kw,
-                     uint         seed,
-                     float        angle,
-                     float        angle_spread_ratio,
-                     int          octaves,
-                     float        weight,
-                     float        persistence,
-                     float        lacunarity,
-                     const Array *p_ctrl_param,
-                     const Array *p_noise_x,
-                     const Array *p_noise_y,
-                     glm::vec4    bbox)
+Array gabor_wave_fbm(glm::ivec2    shape,
+                     glm::vec2     kw,
+                     std::uint32_t seed,
+                     float         angle,
+                     float         angle_spread_ratio,
+                     int           octaves,
+                     float         weight,
+                     float         persistence,
+                     float         lacunarity,
+                     const Array  *p_ctrl_param,
+                     const Array  *p_noise_x,
+                     const Array  *p_noise_y,
+                     glm::vec4     bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -174,24 +174,24 @@ Array gabor_wave_fbm(glm::ivec2   shape,
   return array;
 }
 
-Array gavoronoise(glm::ivec2   shape,
-                  glm::vec2    kw,
-                  uint         seed,
-                  const Array &angle,
-                  float        amplitude,
-                  float        angle_spread_ratio,
-                  glm::vec2    kw_multiplier,
-                  float        slope_strength,
-                  float        branch_strength,
-                  float        z_cut_min,
-                  float        z_cut_max,
-                  int          octaves,
-                  float        persistence,
-                  float        lacunarity,
-                  const Array *p_ctrl_param,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  glm::vec4    bbox)
+Array gavoronoise(glm::ivec2    shape,
+                  glm::vec2     kw,
+                  std::uint32_t seed,
+                  const Array  &angle,
+                  float         amplitude,
+                  float         angle_spread_ratio,
+                  glm::vec2     kw_multiplier,
+                  float         slope_strength,
+                  float         branch_strength,
+                  float         z_cut_min,
+                  float         z_cut_max,
+                  int           octaves,
+                  float         persistence,
+                  float         lacunarity,
+                  const Array  *p_ctrl_param,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -232,24 +232,24 @@ Array gavoronoise(glm::ivec2   shape,
   return array;
 }
 
-Array gavoronoise(glm::ivec2   shape,
-                  glm::vec2    kw,
-                  uint         seed,
-                  float        angle,
-                  float        amplitude,
-                  float        angle_spread_ratio,
-                  glm::vec2    kw_multiplier,
-                  float        slope_strength,
-                  float        branch_strength,
-                  float        z_cut_min,
-                  float        z_cut_max,
-                  int          octaves,
-                  float        persistence,
-                  float        lacunarity,
-                  const Array *p_ctrl_param,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  glm::vec4    bbox)
+Array gavoronoise(glm::ivec2    shape,
+                  glm::vec2     kw,
+                  std::uint32_t seed,
+                  float         angle,
+                  float         amplitude,
+                  float         angle_spread_ratio,
+                  glm::vec2     kw_multiplier,
+                  float         slope_strength,
+                  float         branch_strength,
+                  float         z_cut_min,
+                  float         z_cut_max,
+                  int           octaves,
+                  float         persistence,
+                  float         lacunarity,
+                  const Array  *p_ctrl_param,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  glm::vec4     bbox)
 {
   Array array(shape);
   Array array_angle(shape, angle);
@@ -276,22 +276,22 @@ Array gavoronoise(glm::ivec2   shape,
   return array;
 }
 
-Array gavoronoise(const Array &base,
-                  glm::vec2    kw,
-                  uint         seed,
-                  float        amplitude,
-                  glm::vec2    kw_multiplier,
-                  float        slope_strength,
-                  float        branch_strength,
-                  float        z_cut_min,
-                  float        z_cut_max,
-                  int          octaves,
-                  float        persistence,
-                  float        lacunarity,
-                  const Array *p_ctrl_param,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  glm::vec4    bbox)
+Array gavoronoise(const Array  &base,
+                  glm::vec2     kw,
+                  std::uint32_t seed,
+                  float         amplitude,
+                  glm::vec2     kw_multiplier,
+                  float         slope_strength,
+                  float         branch_strength,
+                  float         z_cut_min,
+                  float         z_cut_max,
+                  int           octaves,
+                  float         persistence,
+                  float         lacunarity,
+                  const Array  *p_ctrl_param,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  glm::vec4     bbox)
 {
   Array array(base.shape);
 
@@ -332,21 +332,21 @@ Array gavoronoise(const Array &base,
   return array;
 }
 
-Array hemisphere_field(glm::ivec2   shape,
-                       glm::vec2    kw,
-                       uint         seed,
-                       float        rmin,
-                       float        rmax,
-                       float        amplitude_random_ratio,
-                       float        density,
-                       glm::vec2    jitter,
-                       float        shift,
-                       const Array *p_noise_x,
-                       const Array *p_noise_y,
-                       const Array *p_noise_distance,
-                       const Array *p_density_multiplier,
-                       const Array *p_size_multiplier,
-                       glm::vec4    bbox)
+Array hemisphere_field(glm::ivec2    shape,
+                       glm::vec2     kw,
+                       std::uint32_t seed,
+                       float         rmin,
+                       float         rmax,
+                       float         amplitude_random_ratio,
+                       float         density,
+                       glm::vec2     jitter,
+                       float         shift,
+                       const Array  *p_noise_x,
+                       const Array  *p_noise_y,
+                       const Array  *p_noise_distance,
+                       const Array  *p_density_multiplier,
+                       const Array  *p_size_multiplier,
+                       glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -386,24 +386,24 @@ Array hemisphere_field(glm::ivec2   shape,
   return array;
 }
 
-Array hemisphere_field_fbm(glm::ivec2   shape,
-                           glm::vec2    kw,
-                           uint         seed,
-                           float        rmin,
-                           float        rmax,
-                           float        amplitude_random_ratio,
-                           float        density,
-                           glm::vec2    jitter,
-                           float        shift,
-                           int          octaves,
-                           float        persistence,
-                           float        lacunarity,
-                           const Array *p_noise_x,
-                           const Array *p_noise_y,
-                           const Array *p_noise_distance,
-                           const Array *p_density_multiplier,
-                           const Array *p_size_multiplier,
-                           glm::vec4    bbox)
+Array hemisphere_field_fbm(glm::ivec2    shape,
+                           glm::vec2     kw,
+                           std::uint32_t seed,
+                           float         rmin,
+                           float         rmax,
+                           float         amplitude_random_ratio,
+                           float         density,
+                           glm::vec2     jitter,
+                           float         shift,
+                           int           octaves,
+                           float         persistence,
+                           float         lacunarity,
+                           const Array  *p_noise_x,
+                           const Array  *p_noise_y,
+                           const Array  *p_noise_distance,
+                           const Array  *p_density_multiplier,
+                           const Array  *p_size_multiplier,
+                           glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -446,22 +446,22 @@ Array hemisphere_field_fbm(glm::ivec2   shape,
   return array;
 }
 
-Array mountain_range_radial(glm::ivec2   shape,
-                            glm::vec2    kw,
-                            uint         seed,
-                            float        half_width,
-                            float        angle_spread_ratio,
-                            float        core_size_ratio,
-                            glm::vec2    center,
-                            int          octaves,
-                            float        weight,
-                            float        persistence,
-                            float        lacunarity,
-                            const Array *p_ctrl_param,
-                            const Array *p_noise_x,
-                            const Array *p_noise_y,
-                            const Array *p_angle,
-                            glm::vec4    bbox)
+Array mountain_range_radial(glm::ivec2    shape,
+                            glm::vec2     kw,
+                            std::uint32_t seed,
+                            float         half_width,
+                            float         angle_spread_ratio,
+                            float         core_size_ratio,
+                            glm::vec2     center,
+                            int           octaves,
+                            float         weight,
+                            float         persistence,
+                            float         lacunarity,
+                            const Array  *p_ctrl_param,
+                            const Array  *p_noise_x,
+                            const Array  *p_noise_y,
+                            const Array  *p_angle,
+                            glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -501,12 +501,12 @@ Array mountain_range_radial(glm::ivec2   shape,
   return array;
 }
 
-Array noise(NoiseType    noise_type,
-            glm::ivec2   shape,
-            glm::vec2    kw,
-            uint         seed,
-            const Array *p_noise_x,
-            const Array *p_noise_y,
+Array noise(NoiseType     noise_type,
+            glm::ivec2    shape,
+            glm::vec2     kw,
+            std::uint32_t seed,
+            const Array  *p_noise_x,
+            const Array  *p_noise_y,
             const Array * /* p_stretching */,
             glm::vec4 bbox)
 {
@@ -537,17 +537,17 @@ Array noise(NoiseType    noise_type,
   return array;
 }
 
-Array noise_fbm(NoiseType    noise_type,
-                glm::ivec2   shape,
-                glm::vec2    kw,
-                uint         seed,
-                int          octaves,
-                float        weight,
-                float        persistence,
-                float        lacunarity,
-                const Array *p_ctrl_param,
-                const Array *p_noise_x,
-                const Array *p_noise_y,
+Array noise_fbm(NoiseType     noise_type,
+                glm::ivec2    shape,
+                glm::vec2     kw,
+                std::uint32_t seed,
+                int           octaves,
+                float         weight,
+                float         persistence,
+                float         lacunarity,
+                const Array  *p_ctrl_param,
+                const Array  *p_noise_x,
+                const Array  *p_noise_y,
                 const Array * /* p_stretching */,
                 glm::vec4 bbox)
 {
@@ -584,24 +584,24 @@ Array noise_fbm(NoiseType    noise_type,
   return array;
 }
 
-Array polygon_field(glm::ivec2   shape,
-                    glm::vec2    kw,
-                    uint         seed,
-                    float        rmin,
-                    float        rmax,
-                    float        clamping_dist,
-                    float        clamping_k,
-                    int          n_vertices_min,
-                    int          n_vertices_max,
-                    float        density,
-                    glm::vec2    jitter,
-                    float        shift,
-                    const Array *p_noise_x,
-                    const Array *p_noise_y,
-                    const Array *p_noise_distance,
-                    const Array *p_density_multiplier,
-                    const Array *p_size_multiplier,
-                    glm::vec4    bbox)
+Array polygon_field(glm::ivec2    shape,
+                    glm::vec2     kw,
+                    std::uint32_t seed,
+                    float         rmin,
+                    float         rmax,
+                    float         clamping_dist,
+                    float         clamping_k,
+                    int           n_vertices_min,
+                    int           n_vertices_max,
+                    float         density,
+                    glm::vec2     jitter,
+                    float         shift,
+                    const Array  *p_noise_x,
+                    const Array  *p_noise_y,
+                    const Array  *p_noise_distance,
+                    const Array  *p_density_multiplier,
+                    const Array  *p_size_multiplier,
+                    glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -644,27 +644,27 @@ Array polygon_field(glm::ivec2   shape,
   return array;
 }
 
-Array polygon_field_fbm(glm::ivec2   shape,
-                        glm::vec2    kw,
-                        uint         seed,
-                        float        rmin,
-                        float        rmax,
-                        float        clamping_dist,
-                        float        clamping_k,
-                        int          n_vertices_min,
-                        int          n_vertices_max,
-                        float        density,
-                        glm::vec2    jitter,
-                        float        shift,
-                        int          octaves,
-                        float        persistence,
-                        float        lacunarity,
-                        const Array *p_noise_x,
-                        const Array *p_noise_y,
-                        const Array *p_noise_distance,
-                        const Array *p_density_multiplier,
-                        const Array *p_size_multiplier,
-                        glm::vec4    bbox)
+Array polygon_field_fbm(glm::ivec2    shape,
+                        glm::vec2     kw,
+                        std::uint32_t seed,
+                        float         rmin,
+                        float         rmax,
+                        float         clamping_dist,
+                        float         clamping_k,
+                        int           n_vertices_min,
+                        int           n_vertices_max,
+                        float         density,
+                        glm::vec2     jitter,
+                        float         shift,
+                        int           octaves,
+                        float         persistence,
+                        float         lacunarity,
+                        const Array  *p_noise_x,
+                        const Array  *p_noise_y,
+                        const Array  *p_noise_distance,
+                        const Array  *p_density_multiplier,
+                        const Array  *p_size_multiplier,
+                        glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -712,7 +712,7 @@ Array polygon_field_fbm(glm::ivec2   shape,
 
 Array vorolines(glm::ivec2        shape,
                 float             density,
-                uint              seed,
+                std::uint32_t     seed,
                 float             k_smoothing,
                 float             exp_sigma,
                 float             alpha,
@@ -791,7 +791,7 @@ Array vorolines(glm::ivec2        shape,
 
 Array vorolines_fbm(glm::ivec2        shape,
                     float             density,
-                    uint              seed,
+                    std::uint32_t     seed,
                     float             k_smoothing,
                     float             exp_sigma,
                     float             alpha,
@@ -836,7 +836,7 @@ Array vorolines_fbm(glm::ivec2        shape,
 
 Array voronoi(glm::ivec2        shape,
               glm::vec2         kw,
-              uint              seed,
+              std::uint32_t     seed,
               glm::vec2         jitter,
               float             k_smoothing,
               float             exp_sigma,
@@ -878,7 +878,7 @@ Array voronoi(glm::ivec2        shape,
 
 Array voronoi_fbm(glm::ivec2        shape,
                   glm::vec2         kw,
-                  uint              seed,
+                  std::uint32_t     seed,
                   glm::vec2         jitter,
                   float             k_smoothing,
                   float             exp_sigma,
@@ -926,14 +926,14 @@ Array voronoi_fbm(glm::ivec2        shape,
   return array;
 }
 
-Array voronoise(glm::ivec2   shape,
-                glm::vec2    kw,
-                float        u_param,
-                float        v_param,
-                uint         seed,
-                const Array *p_noise_x,
-                const Array *p_noise_y,
-                glm::vec4    bbox)
+Array voronoise(glm::ivec2    shape,
+                glm::vec2     kw,
+                float         u_param,
+                float         v_param,
+                std::uint32_t seed,
+                const Array  *p_noise_x,
+                const Array  *p_noise_y,
+                glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -961,19 +961,19 @@ Array voronoise(glm::ivec2   shape,
   return array;
 }
 
-Array voronoise_fbm(glm::ivec2   shape,
-                    glm::vec2    kw,
-                    float        u_param,
-                    float        v_param,
-                    uint         seed,
-                    int          octaves,
-                    float        weight,
-                    float        persistence,
-                    float        lacunarity,
-                    const Array *p_ctrl_param,
-                    const Array *p_noise_x,
-                    const Array *p_noise_y,
-                    glm::vec4    bbox)
+Array voronoise_fbm(glm::ivec2    shape,
+                    glm::vec2     kw,
+                    float         u_param,
+                    float         v_param,
+                    std::uint32_t seed,
+                    int           octaves,
+                    float         weight,
+                    float         persistence,
+                    float         lacunarity,
+                    const Array  *p_ctrl_param,
+                    const Array  *p_noise_x,
+                    const Array  *p_noise_y,
+                    glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -1007,14 +1007,14 @@ Array voronoise_fbm(glm::ivec2   shape,
   return array;
 }
 
-Array voronoi_edge_distance(glm::ivec2   shape,
-                            glm::vec2    kw,
-                            uint         seed,
-                            glm::vec2    jitter,
-                            const Array *p_ctrl_param,
-                            const Array *p_noise_x,
-                            const Array *p_noise_y,
-                            glm::vec4    bbox)
+Array voronoi_edge_distance(glm::ivec2    shape,
+                            glm::vec2     kw,
+                            std::uint32_t seed,
+                            glm::vec2     jitter,
+                            const Array  *p_ctrl_param,
+                            const Array  *p_noise_x,
+                            const Array  *p_noise_y,
+                            glm::vec4     bbox)
 {
   Array array(shape);
 
@@ -1046,7 +1046,7 @@ Array voronoi_edge_distance(glm::ivec2   shape,
 Array vororand(glm::ivec2        shape,
                float             density,
                float             variability,
-               uint              seed,
+               std::uint32_t     seed,
                float             k_smoothing,
                float             exp_sigma,
                VoronoiReturnType return_type,
@@ -1135,20 +1135,20 @@ Array vororand(glm::ivec2                shape,
   return array;
 }
 
-Array wavelet_noise(glm::ivec2   shape,
-                    glm::vec2    kw,
-                    uint         seed,
-                    float        kw_multiplier,
-                    float        vorticity,
-                    float        density,
-                    int          octaves,
-                    float        weight,
-                    float        persistence,
-                    float        lacunarity,
-                    const Array *p_ctrl_param,
-                    const Array *p_noise_x,
-                    const Array *p_noise_y,
-                    glm::vec4    bbox)
+Array wavelet_noise(glm::ivec2    shape,
+                    glm::vec2     kw,
+                    std::uint32_t seed,
+                    float         kw_multiplier,
+                    float         vorticity,
+                    float         density,
+                    int           octaves,
+                    float         weight,
+                    float         persistence,
+                    float         lacunarity,
+                    const Array  *p_ctrl_param,
+                    const Array  *p_noise_x,
+                    const Array  *p_noise_y,
+                    glm::vec4     bbox)
 {
   Array array(shape);
 

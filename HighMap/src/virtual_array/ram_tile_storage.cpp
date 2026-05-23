@@ -1,17 +1,16 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <limits>
+#include <memory>
+#include <utility>
 
-#include <limits>  // for numeric_limits
-#include <memory>  // for make_unique, uniqu...
-#include <utility> // for move, pair
+#include "highmap/array.hpp"
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/tile_storage.hpp"
 
-#include "highmap/array.hpp"                      // for Array
-#include "highmap/virtual_array/tile_region.hpp"  // for TileKey, TileRegion
-#include "highmap/virtual_array/tile_storage.hpp" // for RamTileStorage
-
-#include <unordered_map> // for unordered_map, _No...
+#include <unordered_map>
 
 namespace hmap
 {

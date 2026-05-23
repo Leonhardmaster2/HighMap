@@ -1,10 +1,10 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min
+#include <algorithm>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/statistics.hpp" // for variance, autocorr_length_scale
+#include "highmap/array.hpp"
+#include "highmap/statistics.hpp"
 
 namespace hmap
 {

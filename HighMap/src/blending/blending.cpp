@@ -1,18 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for transform
-#include <cmath>     // for fabs
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"      // for Array, operator-, operator*
-#include "highmap/filters.hpp"    // for smooth_cpulse
-#include "highmap/gradient.hpp"   // for gradient_norm
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/math/core.hpp"  // for gain
-#include "highmap/range.hpp"      // for maximum_smooth, remap
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -80,10 +79,10 @@ Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
             float                             gain_factor)
 {
-  Array      array_out = Array(t.shape);
-  const uint n = arrays.size();
+  Array               array_out = Array(t.shape);
+  const std::uint32_t n = arrays.size();
 
-  for (uint k = 0; k < n; k++)
+  for (std::uint32_t k = 0; k < n; k++)
   {
     float r0 = (float)k / (float)(n - 1);
 

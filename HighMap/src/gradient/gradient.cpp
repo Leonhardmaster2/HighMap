@@ -1,18 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
+#include <algorithm>
+#include <cmath>
+#include <vector>
 
-#include <algorithm> // for max, transform
-#include <cmath>     // for atan2
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/boundary.hpp"   // for extrapolate_borders
-#include "highmap/filters.hpp"    // for smooth_cpulse
-#include "highmap/gradient.hpp"   // for gradient_talus, gradient_x, grad...
-#include "highmap/math/array.hpp" // for hypot, atan2, sigmoid
-#include "highmap/range.hpp"      // for maximum
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

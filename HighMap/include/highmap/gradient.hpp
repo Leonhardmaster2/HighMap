@@ -473,7 +473,7 @@ void phase_averaging(Array &field_real, Array &field_imag, int ir);
  */
 Array phase_field(const Array     &array,
                   const glm::vec2 &kw,
-                  uint             seed,
+                  std::uint32_t    seed,
                   float            kp,
                   bool             rotate90 = false,
                   int              n_kernel_samples = 8,
@@ -510,7 +510,7 @@ Array phase_field(const Array     &array,
  * @image html ex_phase_field.png
  */
 Array phase_field(const Array     &array,
-                  uint             seed,
+                  std::uint32_t    seed,
                   float            kp_global,
                   bool             rotate90 = false,
                   int              n_kernel_samples = 8,
@@ -525,7 +525,7 @@ Array phase_field(const Array     &array,
 
 Array phase_field_angle(const Array     &angle, // rads
                         const glm::vec2 &kw,
-                        uint             seed,
+                        std::uint32_t    seed,
                         float            kp,
                         int              n_kernel_samples = 8,
                         const glm::vec2 &jitter = {0.5f, 0.5f},

@@ -1,23 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <iostream>
+#include <limits>
+#include <numeric>
+#include <string>
+#include <vector>
 
-#include <algorithm> // for clamp, max, max_element, min
-#include <cmath>     // for hypot, floor
-#include <iostream>  // for char_traits, basic_ostream
-#include <limits>    // for numeric_limits
-#include <numeric>   // for accumulate
-#include <string>    // for operator<<, string
-#include <vector>    // for vector
+#include <opencv2/core.hpp>
 
-#include <opencv2/core/hal/interface.h> // for CV_16U
-
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/interpolate2d.hpp"     // for cubic_interpolate
-#include "highmap/interpolate_array.hpp" // for interpolate_array_bicubic
-#include "highmap/range.hpp"             // for remap
+#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate_array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

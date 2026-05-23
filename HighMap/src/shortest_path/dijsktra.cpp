@@ -1,16 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <iterator>
+#include <vector>
 
-#include <algorithm> // for reverse, max, min_element
-#include <cmath>     // for M_SQRT2, pow
-#include <iterator>  // for distance
-#include <vector>    // for vector
-
-#include "highmap/algebra.hpp" // for Mat
-#include "highmap/array.hpp"   // for Array
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
 
 namespace hmap
 {

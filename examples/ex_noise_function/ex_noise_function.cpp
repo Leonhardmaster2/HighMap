@@ -4,8 +4,8 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  glm::vec2 kw = {2.f, 2.f};
-  uint      seed = 1;
+  glm::vec2     kw = {2.f, 2.f};
+  std::uint32_t seed = 1;
 
   hmap::Array z = hmap::Array(shape);
   glm::vec4   bbox = hmap::unit_square_bbox();

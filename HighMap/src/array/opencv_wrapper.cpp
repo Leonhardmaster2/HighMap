@@ -1,16 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdint.h> // for int16_t, int8_t, uint16_t
+#include <cstdint>
+#include <stdexcept>
+#include <vector>
 
-#include <stdexcept> // for invalid_argument
-#include <vector>    // for vector
+#include <opencv2/core.hpp>
 
-#include <opencv2/core/hal/interface.h> // for CV_16S, CV_16U, CV_32F, CV_3...
-#include <opencv2/core/mat.hpp>         // for Mat
-
-#include "highmap/array.hpp" // for Array, cv_mat_to_array
-#include "highmap/range.hpp" // for remap
+#include "highmap/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

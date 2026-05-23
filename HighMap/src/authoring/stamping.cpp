@@ -1,19 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <random>
+#include <vector>
 
-#include <algorithm>  // for max, min
-#include <functional> // for function
-#include <random>     // for uniform_real_distribu...
-#include <vector>     // for vector
-
-#include "highmap/array.hpp"                   // for Array
-#include "highmap/authoring.hpp"               // for StampingBlendMethod
-#include "highmap/geometry/point_sampling.hpp" // for rescale_points_to_uni...
+#include "highmap/array.hpp"
+#include "highmap/authoring.hpp"
+#include "highmap/geometry/point_sampling.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/range.hpp"     // for maximum_smooth, minim...
-#include "highmap/transform.hpp" // for flip_lr, flip_ud, rot90
+#include "highmap/range.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {
@@ -27,7 +27,7 @@ Array stamping(glm::ivec2                shape,
                bool                      kernel_scale_radius,
                bool                      kernel_scale_amplitude,
                StampingBlendMethod       blend_method,
-               uint                      seed,
+               std::uint32_t             seed,
                float                     k_smoothing,
                bool                      kernel_flip,
                bool                      kernel_rotate,

@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"               // for Array, operator*, operator+
-#include "highmap/blending.hpp"            // for blend_gradients
-#include "highmap/erosion.hpp"             // for hydraulic_stream_log
-#include "highmap/filters.hpp"             // for saturate, smooth_cpulse
-#include "highmap/gradient.hpp"            // for gradient_norm
-#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
-#include "highmap/local_metrics.hpp"       // for relative_elevation_square...
-#include "highmap/math/array.hpp"          // for lerp, log10, pow, smooths...
-#include "highmap/range.hpp"               // for clamp_min, remap, maximum
+#include "highmap/array.hpp"
+#include "highmap/blending.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {

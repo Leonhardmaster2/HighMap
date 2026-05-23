@@ -1,20 +1,18 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <limits>
+#include <vector>
 
-#include <algorithm> // for clamp, min
-#include <cmath>     // for sqrt, copysign, pow, acos, cos
-#include <limits>    // for numeric_limits
-#include <vector>    // for vector
+#include "macrologger.h"
 
-#include "macrologger.h" // for LOG_ERROR
-
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/grids.hpp" // for grid_xy_vector
-#include "highmap/geometry/path.hpp"  // for Path
-#include "highmap/math/core.hpp"      // for lerp
+#include "highmap/array.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

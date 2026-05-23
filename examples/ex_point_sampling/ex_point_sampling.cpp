@@ -8,7 +8,7 @@ int main(void)
   glm::ivec2               shape = {256, 256};
   hmap::Array              raster(shape);
   std::vector<hmap::Array> zs = {};
-  uint                     seed = 0;
+  std::uint32_t            seed = 0;
 
   // density field
   glm::vec2   kw = {2.f, 2.f};

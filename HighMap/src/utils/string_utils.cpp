@@ -1,12 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdint.h> // for uint64_t
-
-#include <algorithm>  // for min
-#include <filesystem> // for path, operator/, create_directory, temp_direct...
-#include <random>     // for random_device, uniform_int_distribution, mt199...
-#include <string>     // for allocator, operator+, char_traits, string, to_...
+#include <algorithm>
+#include <cstdint>
+#include <filesystem>
+#include <random>
+#include <string>
 
 namespace hmap
 {

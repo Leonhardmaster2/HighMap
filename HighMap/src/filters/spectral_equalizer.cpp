@@ -1,16 +1,15 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for max
-#include <utility>   // for move
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/filters.hpp"    // for smooth_cpulse, spectral_equalizer
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/operator.hpp"   // for logspace
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap::gpu
 {

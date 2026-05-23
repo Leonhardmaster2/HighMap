@@ -1,17 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <random> // for uniform_real_distribution
-#include <vector> // for vector
+#include <cstdint>
+#include <random>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap
 {
 
-Array white(glm::ivec2 shape, float a, float b, uint seed)
+Array white(glm::ivec2 shape, float a, float b, std::uint32_t seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
@@ -23,7 +22,7 @@ Array white(glm::ivec2 shape, float a, float b, uint seed)
   return array;
 }
 
-Array white_density_map(const Array &density_map, uint seed)
+Array white_density_map(const Array &density_map, std::uint32_t seed)
 {
   Array                                 array = Array(density_map.shape);
   std::mt19937                          gen(seed);
@@ -38,7 +37,11 @@ Array white_density_map(const Array &density_map, uint seed)
   return array;
 }
 
-Array white_sparse(glm::ivec2 shape, float a, float b, float density, uint seed)
+Array white_sparse(glm::ivec2    shape,
+                   float         a,
+                   float         b,
+                   float         density,
+                   std::uint32_t seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
@@ -52,7 +55,7 @@ Array white_sparse(glm::ivec2 shape, float a, float b, float density, uint seed)
   return array;
 }
 
-Array white_sparse_binary(glm::ivec2 shape, float density, uint seed)
+Array white_sparse_binary(glm::ivec2 shape, float density, std::uint32_t seed)
 {
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);

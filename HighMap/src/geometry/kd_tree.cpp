@@ -1,12 +1,14 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min
-#include <limits>    // for numeric_limits
+#include <algorithm>
+#include <cstddef>
+#include <limits>
+#include <vector>
 
 #include "highmap/geometry/kd_tree.hpp"
 
-#include "nanoflann.hpp" // for KNNResultSet, ResultItem, L2_Sim...
+#include "nanoflann.hpp"
 
 namespace hmap
 {

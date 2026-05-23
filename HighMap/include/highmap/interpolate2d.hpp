@@ -16,23 +16,22 @@
  */
 
 #pragma once
-#include <stddef.h> // for size_t
-
+#include <cstddef>
 #include <map>
-#include <vector> // for vector
+#include <vector>
 
 extern "C" // order matters
 {
 #include "config.h"
 //
-#include "nn.h" // for delaunay, nnai
+#include "nn.h"
 //
 #include "nncommon.h"
 //
 #include "delaunay.h"
 }
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 
 namespace hmap
 {

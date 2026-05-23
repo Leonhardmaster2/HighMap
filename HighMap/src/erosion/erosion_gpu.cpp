@@ -1,39 +1,38 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cstdint>
+#include <memory>
 
-#include <memory> // for allocator
+#include "cl_wrapper/run.hpp"
 
-#include "cl_wrapper/run.hpp" // for Run
-
-#include "highmap/array.hpp"             // for Array
-#include "highmap/boundary.hpp"          // for extrapolate_borders
-#include "highmap/erosion.hpp"           // for hydraulic_particle
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/operator.hpp"          // for apply_with_mask
-#include "highmap/range.hpp"             // for clamp_min
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
 
-void hydraulic_particle(Array       &z,
-                        int          nparticles,
-                        uint         seed,
-                        const Array *p_bedrock,
-                        const Array *p_moisture_map,
-                        const Array *p_elevation_shift,
-                        Array       *p_erosion_map,
-                        Array       *p_deposition_map,
-                        float        c_capacity,
-                        float        c_erosion,
-                        float        c_deposition,
-                        float        c_inertia,
-                        float        c_gravity,
-                        float        drag_rate,
-                        float        evap_rate,
-                        bool         enable_directional_bias,
-                        float        angle_bias)
+void hydraulic_particle(Array        &z,
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock,
+                        const Array  *p_moisture_map,
+                        const Array  *p_elevation_shift,
+                        Array        *p_erosion_map,
+                        Array        *p_deposition_map,
+                        float         c_capacity,
+                        float         c_erosion,
+                        float         c_deposition,
+                        float         c_inertia,
+                        float         c_gravity,
+                        float         drag_rate,
+                        float         evap_rate,
+                        bool          enable_directional_bias,
+                        float         angle_bias)
 {
   const glm::ivec2 shape = z.shape;
 
@@ -87,24 +86,24 @@ void hydraulic_particle(Array       &z,
   }
 }
 
-void hydraulic_particle(Array       &z,
-                        const Array *p_mask,
-                        int          nparticles,
-                        uint         seed,
-                        const Array *p_bedrock,
-                        const Array *p_moisture_map,
-                        const Array *p_elevation_shift,
-                        Array       *p_erosion_map,
-                        Array       *p_deposition_map,
-                        float        c_capacity,
-                        float        c_erosion,
-                        float        c_deposition,
-                        float        c_inertia,
-                        float        c_gravity,
-                        float        drag_rate,
-                        float        evap_rate,
-                        bool         enable_directional_bias,
-                        float        angle_bias)
+void hydraulic_particle(Array        &z,
+                        const Array  *p_mask,
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock,
+                        const Array  *p_moisture_map,
+                        const Array  *p_elevation_shift,
+                        Array        *p_erosion_map,
+                        Array        *p_deposition_map,
+                        float         c_capacity,
+                        float         c_erosion,
+                        float         c_deposition,
+                        float         c_inertia,
+                        float         c_gravity,
+                        float         drag_rate,
+                        float         evap_rate,
+                        bool          enable_directional_bias,
+                        float         angle_bias)
 {
   apply_with_mask(z,
                   p_mask,

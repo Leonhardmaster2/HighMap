@@ -1,11 +1,11 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath> // for copysign
+#include <cmath>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/curvature.hpp"  // for level_set_curvature
-#include "highmap/morphology.hpp" // for distance_transform, signed_curva...
+#include "highmap/array.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/morphology.hpp"
 
 namespace hmap
 {

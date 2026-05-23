@@ -1,15 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for max
-#include <cmath>      // for pow, hypot, M_PI, sin, atan2, cos
-#include <functional> // for function
+#include <algorithm>
+#include <cmath>
+#include <functional>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/erosion.hpp"    // for get_erosion_profile_function
-#include "highmap/math/core.hpp"  // for almost_unit_identity
-#include "highmap/operator.hpp"   // for fill_array_using_xy_function
-#include "highmap/primitives.hpp" // for cone, cone_complex, cone_sigmoid
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/functions.hpp"
 
 namespace hmap
 {

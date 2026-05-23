@@ -1,10 +1,10 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"     // for Array
-#include "highmap/curvature.hpp" // for level_set_curvature
-#include "highmap/filters.hpp"   // for smooth_cpulse
-#include "highmap/gradient.hpp"  // for gradient_x, gradient_y, gradient_norm
+#include "highmap/array.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 
 namespace hmap::gpu
 {

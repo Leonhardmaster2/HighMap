@@ -1,21 +1,21 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <algorithm>
+#include <cstddef>
+#include <cstdint>
+#include <random>
+#include <vector>
 
-#include <algorithm> // for min, lower_bound
-#include <random>    // for discrete_distribution, mt19937
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"    // for Array
-#include "highmap/boundary.hpp" // for DomainBoundary, pick_boundary_cell
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 
 namespace hmap
 {
 
 glm::ivec2 pick_boundary_cell(const Array   &z,
                               DomainBoundary boundary,
-                              uint           seed,
+                              std::uint32_t  seed,
                               bool           favor_boundary_center,
                               bool           favor_lower_elevation,
                               bool           favor_sinks)

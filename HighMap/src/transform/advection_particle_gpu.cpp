@@ -1,36 +1,35 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <algorithm>
+#include <cstdint>
+#include <memory>
 
-#include <algorithm> // for clamp
-#include <memory>    // for allocator
+#include "cl_wrapper/run.hpp"
 
-#include "cl_wrapper/run.hpp" // for Run
-
-#include "highmap/array.hpp"             // for Array
-#include "highmap/filters.hpp"           // for laplace
-#include "highmap/gradient.hpp"          // for gradient_x, gradient_y
-#include "highmap/math/array.hpp"        // for lerp
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/transform.hpp"         // for advection_particle
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap::gpu
 {
 
-Array advection_particle(const Array &z,
-                         const Array &advected_field,
-                         int          iterations,
-                         int          nparticles,
-                         uint         seed,
-                         bool         reverse,
-                         bool         post_filter,
-                         float        post_filter_sigma,
-                         float        advection_length,
-                         float        value_persistence,
-                         float        inertia,
-                         const Array *p_advection_mask,
-                         const Array *p_mask)
+Array advection_particle(const Array  &z,
+                         const Array  &advected_field,
+                         int           iterations,
+                         int           nparticles,
+                         std::uint32_t seed,
+                         bool          reverse,
+                         bool          post_filter,
+                         float         post_filter_sigma,
+                         float         advection_length,
+                         float         value_persistence,
+                         float         inertia,
+                         const Array  *p_advection_mask,
+                         const Array  *p_mask)
 {
   Array out = advected_field;
 
@@ -51,18 +50,18 @@ Array advection_particle(const Array &z,
   return out;
 }
 
-Array advection_particle(const Array &z,
-                         const Array &advected_field,
-                         int          nparticles,
-                         uint         seed,
-                         bool         reverse,
-                         bool         post_filter,
-                         float        post_filter_sigma,
-                         float        advection_length,
-                         float        value_persistence,
-                         float        inertia,
-                         const Array *p_advection_mask,
-                         const Array *p_mask)
+Array advection_particle(const Array  &z,
+                         const Array  &advected_field,
+                         int           nparticles,
+                         std::uint32_t seed,
+                         bool          reverse,
+                         bool          post_filter,
+                         float         post_filter_sigma,
+                         float         advection_length,
+                         float         value_persistence,
+                         float         inertia,
+                         const Array  *p_advection_mask,
+                         const Array  *p_mask)
 {
   Array dx = -hmap::gradient_x(z);
   Array dy = -hmap::gradient_y(z);
@@ -82,19 +81,19 @@ Array advection_particle(const Array &z,
                             p_mask);
 }
 
-Array advection_particle(const Array &dx,
-                         const Array &dy,
-                         const Array &advected_field,
-                         int          nparticles,
-                         uint         seed,
-                         bool         reverse,
-                         bool         post_filter,
-                         float        post_filter_sigma,
-                         float        advection_length,
-                         float        value_persistence,
-                         float        inertia,
-                         const Array *p_advection_mask,
-                         const Array *p_mask)
+Array advection_particle(const Array  &dx,
+                         const Array  &dy,
+                         const Array  &advected_field,
+                         int           nparticles,
+                         std::uint32_t seed,
+                         bool          reverse,
+                         bool          post_filter,
+                         float         post_filter_sigma,
+                         float         advection_length,
+                         float         value_persistence,
+                         float         inertia,
+                         const Array  *p_advection_mask,
+                         const Array  *p_mask)
 {
   auto run = clwrapper::Run("advection_particle");
 

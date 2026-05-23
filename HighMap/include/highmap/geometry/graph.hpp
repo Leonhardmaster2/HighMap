@@ -320,13 +320,13 @@ public:
    * @param persistence Noise persistence factor with respect to iteration
    * number.
    */
-  void to_array_fractalize(Array    &array,
-                           glm::vec4 bbox,
-                           int       iterations,
-                           uint      seed,
-                           float     sigma = 0.3f,
-                           int       orientation = 0.f,
-                           float     persistence = 1.f);
+  void to_array_fractalize(Array        &array,
+                           glm::vec4     bbox,
+                           int           iterations,
+                           std::uint32_t seed,
+                           float         sigma = 0.3f,
+                           int           orientation = 0.f,
+                           float         persistence = 1.f);
 
   /**
    * @brief Generate an array filled with the Signed Distance Function (SDF) to

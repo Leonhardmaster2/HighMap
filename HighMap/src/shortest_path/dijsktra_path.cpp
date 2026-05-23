@@ -1,15 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cmath>
+#include <cstddef>
+#include <vector>
 
-#include <cmath>  // for hypot
-#include <vector> // for vector
-
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/path.hpp"  // for Path
-#include "highmap/geometry/point.hpp" // for Point
-#include "highmap/shortest_path.hpp"  // for find_path_dijkstra, dijkstra
+#include "highmap/array.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/shortest_path.hpp"
 
 namespace hmap
 {

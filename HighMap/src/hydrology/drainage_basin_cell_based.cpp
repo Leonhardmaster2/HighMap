@@ -1,24 +1,22 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
-#include <stdint.h>       // for uint8_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <limits>
+#include <queue>
+#include <utility>
+#include <vector>
 
-#include <algorithm>  // for fill, max
-#include <cmath>      // for M_SQRT2, pow
-#include <functional> // for greater
-#include <limits>     // for numeric_l...
-#include <queue>      // for priority_...
-#include <utility>    // for move, pair
-#include <vector>     // for vector
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/random.hpp"
 
-#include "highmap/algebra.hpp"                             // for Mat, IVec...
-#include "highmap/array.hpp"                               // for Array
-#include "highmap/hydrology/drainage_basin_cell_based.hpp" // for DrainageB...
-#include "highmap/random.hpp"                              // for fast_hash...
-
-#include <unordered_map> // for unordered...
+#include <unordered_map>
 
 namespace hmap
 {

@@ -1,17 +1,16 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <functional>
+#include <stdexcept>
+#include <vector>
 
-#include <algorithm>  // for is_sorted, clamp, copy, max_ele...
-#include <functional> // for greater
-#include <stdexcept>  // for invalid_argument
-#include <vector>     // for vector
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
 
-#include <gsl/gsl_interp.h> // for gsl_interp_accel_alloc, gsl_int...
-#include <gsl/gsl_spline.h> // for gsl_spline_alloc, gsl_spline_eval
-
-#include "highmap/interpolate1d.hpp" // for Interpolator1D, InterpolationMe...
+#include "highmap/interpolate1d.hpp"
 
 namespace hmap
 {

@@ -1,14 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>        // for transform, fill, max, copy, fill_n
-#include <filesystem>       // for path
-#include <initializer_list> // for initializer_list
-#include <string>           // for operator==, string
-#include <vector>           // for vector
+#include <algorithm>
+#include <filesystem>
+#include <initializer_list>
+#include <string>
+#include <vector>
 
-#include "highmap/array.hpp"  // for Array, operator*, operator+, ope...
-#include "highmap/export.hpp" // for read_to_array
+#include "highmap/array.hpp"
+#include "highmap/export.hpp"
 
 namespace hmap
 {

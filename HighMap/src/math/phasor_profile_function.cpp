@@ -1,15 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
+#include <cmath>
+#include <functional>
+#include <stdexcept>
+#include <vector>
 
-#include <cmath>      // for cos, M_PI, fmod, pow, floor
-#include <functional> // for function
-#include <stdexcept>  // for invalid_argument
-#include <vector>     // for vector
-
-#include "highmap/math/profiles.hpp" // for PhasorProfile, get_phasor_profi...
-#include "highmap/operator.hpp"      // for linspace
+#include "highmap/math/profiles.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {

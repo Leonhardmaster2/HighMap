@@ -1,18 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cstdint>
+#include <vector>
 
-#include <vector> // for allocator, vector
+#include "cl_wrapper/run.hpp"
 
-#include "cl_wrapper/run.hpp" // for Run
-
-#include "highmap/array.hpp"             // for Array, operator*
-#include "highmap/erosion.hpp"           // for strata_cells, strata_cells_fbm
-#include "highmap/functions.hpp"         // for NoiseType
-#include "highmap/math/array.hpp"        // for lerp
-#include "highmap/opencl/gpu_opencl.hpp" // for helper_bind_optional_buffer
-#include "highmap/primitives.hpp"        // for noise_fbm
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
 
 namespace hmap::gpu
 {
@@ -21,7 +20,7 @@ void strata(Array           &z,
             float            angle,
             float            slope,
             float            gamma,
-            uint             seed,
+            std::uint32_t    seed,
             bool             linear_gamma,
             float            kz,
             int              octaves,
@@ -77,19 +76,19 @@ void strata(Array           &z,
   run.read_buffer("z");
 }
 
-void strata_cells(Array       &z,
-                  glm::vec2    kw,
-                  float        amp,
-                  uint         seed,
-                  float        gamma,
-                  float        gamma_lateral,
-                  float        angle,
-                  float        noise_amp,
-                  bool         absolute_displacement,
-                  float        occurence_probability,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  glm::vec4    bbox)
+void strata_cells(Array        &z,
+                  glm::vec2     kw,
+                  float         amp,
+                  std::uint32_t seed,
+                  float         gamma,
+                  float         gamma_lateral,
+                  float         angle,
+                  float         noise_amp,
+                  bool          absolute_displacement,
+                  float         occurence_probability,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  glm::vec4     bbox)
 {
   const Array *p_mask = nullptr;
 
@@ -125,20 +124,20 @@ void strata_cells(Array       &z,
   run.read_buffer("z");
 }
 
-void strata_cells(Array       &z,
-                  glm::vec2    kw,
-                  float        amp,
-                  uint         seed,
-                  const Array *p_mask,
-                  float        gamma,
-                  float        gamma_lateral,
-                  float        angle,
-                  float        noise_amp,
-                  bool         absolute_displacement,
-                  float        occurence_probability,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y,
-                  glm::vec4    bbox)
+void strata_cells(Array        &z,
+                  glm::vec2     kw,
+                  float         amp,
+                  std::uint32_t seed,
+                  const Array  *p_mask,
+                  float         gamma,
+                  float         gamma_lateral,
+                  float         angle,
+                  float         noise_amp,
+                  bool          absolute_displacement,
+                  float         occurence_probability,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y,
+                  glm::vec4     bbox)
 {
   if (!p_mask)
   {
@@ -176,23 +175,23 @@ void strata_cells(Array       &z,
   }
 }
 
-void strata_cells_fbm(Array       &z,
-                      glm::vec2    kw,
-                      float        amp,
-                      uint         seed,
-                      float        gamma,
-                      float        gamma_lateral,
-                      float        angle,
-                      bool         enable_default_noise,
-                      float        default_noise_amp,
-                      bool         absolute_displacement,
-                      float        occurence_probability,
-                      int          octaves,
-                      float        persistence,
-                      float        lacunarity,
-                      const Array *p_noise_x,
-                      const Array *p_noise_y,
-                      glm::vec4    bbox)
+void strata_cells_fbm(Array        &z,
+                      glm::vec2     kw,
+                      float         amp,
+                      std::uint32_t seed,
+                      float         gamma,
+                      float         gamma_lateral,
+                      float         angle,
+                      bool          enable_default_noise,
+                      float         default_noise_amp,
+                      bool          absolute_displacement,
+                      float         occurence_probability,
+                      int           octaves,
+                      float         persistence,
+                      float         lacunarity,
+                      const Array  *p_noise_x,
+                      const Array  *p_noise_y,
+                      glm::vec4     bbox)
 {
 
   // --- Default noise
@@ -261,24 +260,24 @@ void strata_cells_fbm(Array       &z,
   }
 }
 
-void strata_cells_fbm(Array       &z,
-                      glm::vec2    kw,
-                      float        amp,
-                      uint         seed,
-                      const Array *p_mask,
-                      float        gamma,
-                      float        gamma_lateral,
-                      float        angle,
-                      bool         enable_default_noise,
-                      float        default_noise_amp,
-                      bool         absolute_displacement,
-                      float        occurence_probability,
-                      int          octaves,
-                      float        persistence,
-                      float        lacunarity,
-                      const Array *p_noise_x,
-                      const Array *p_noise_y,
-                      glm::vec4    bbox)
+void strata_cells_fbm(Array        &z,
+                      glm::vec2     kw,
+                      float         amp,
+                      std::uint32_t seed,
+                      const Array  *p_mask,
+                      float         gamma,
+                      float         gamma_lateral,
+                      float         angle,
+                      bool          enable_default_noise,
+                      float         default_noise_amp,
+                      bool          absolute_displacement,
+                      float         occurence_probability,
+                      int           octaves,
+                      float         persistence,
+                      float         lacunarity,
+                      const Array  *p_noise_x,
+                      const Array  *p_noise_y,
+                      glm::vec4     bbox)
 {
   if (!p_mask)
   {
@@ -324,13 +323,13 @@ void strata_cells_fbm(Array       &z,
   }
 }
 
-void strata_terrace(Array       &z,
-                    float        gamma,
-                    uint         seed,
-                    float        kz,
-                    bool         linear_gamma,
-                    float        gamma_noise_ratio,
-                    const Array *p_noise)
+void strata_terrace(Array        &z,
+                    float         gamma,
+                    std::uint32_t seed,
+                    float         kz,
+                    bool          linear_gamma,
+                    float         gamma_noise_ratio,
+                    const Array  *p_noise)
 {
   auto run = clwrapper::Run("strata_terrace");
 
@@ -351,14 +350,14 @@ void strata_terrace(Array       &z,
   run.read_buffer("z");
 }
 
-void strata_terrace(Array       &z,
-                    float        gamma,
-                    uint         seed,
-                    const Array *p_mask,
-                    float        kz,
-                    bool         linear_gamma,
-                    float        gamma_noise_ratio,
-                    const Array *p_noise)
+void strata_terrace(Array        &z,
+                    float         gamma,
+                    std::uint32_t seed,
+                    const Array  *p_mask,
+                    float         kz,
+                    bool          linear_gamma,
+                    float         gamma_noise_ratio,
+                    const Array  *p_noise)
 {
   if (!p_mask)
   {

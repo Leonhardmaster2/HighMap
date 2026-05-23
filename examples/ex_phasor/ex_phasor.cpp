@@ -6,8 +6,8 @@ int main(void)
 
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  float kp = 16.f;
-  uint  seed = 0;
+  float         kp = 16.f;
+  std::uint32_t seed = 0;
 
   std::vector<hmap::PhasorProfile> profiles = {
       hmap::PhasorProfile::PP_COSINE_BULKY,

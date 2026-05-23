@@ -1,18 +1,17 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <sys/types.h>    // for size_t, uint
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <random>
+#include <vector>
 
-#include <algorithm> // for min, max
-#include <cmath>     // for ceil
-#include <random>    // for uniform_int_distribution, mt19937
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"     // for Array
-#include "highmap/math/core.hpp" // for lerp
-#include "highmap/operator.hpp"  // for find_vertical_cut_path, generate...
-#include "highmap/transform.hpp" // for transpose
+#include "highmap/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {
@@ -21,7 +20,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
                glm::ivec2                        patch_base_shape,
                glm::ivec2                        tiling,
                float                             overlap,
-               uint                              seed,
+               std::uint32_t                     seed,
                std::vector<Array *>              secondary_arrays,
                bool                              patch_flip,
                bool                              patch_rotate,
@@ -204,7 +203,7 @@ Array quilting(const std::vector<const Array *> &p_arrays,
 Array quilting_blend(const std::vector<const Array *> &p_arrays,
                      glm::ivec2                        patch_base_shape,
                      float                             overlap,
-                     uint                              seed,
+                     std::uint32_t                     seed,
                      bool                              patch_flip,
                      bool                              patch_rotate,
                      bool                              patch_transpose,
@@ -235,7 +234,7 @@ Array quilting_expand(const Array         &array,
                       float                expansion_ratio,
                       glm::ivec2           patch_base_shape,
                       float                overlap,
-                      uint                 seed,
+                      std::uint32_t        seed,
                       std::vector<Array *> secondary_arrays,
                       bool                 keep_input_shape,
                       bool                 patch_flip,
@@ -330,7 +329,7 @@ Array quilting_expand(const Array         &array,
 Array quilting_shuffle(const Array         &array,
                        glm::ivec2           patch_base_shape,
                        float                overlap,
-                       uint                 seed,
+                       std::uint32_t        seed,
                        std::vector<Array *> secondary_arrays,
                        bool                 patch_flip,
                        bool                 patch_rotate,

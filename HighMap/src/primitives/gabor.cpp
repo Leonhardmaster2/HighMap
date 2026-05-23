@@ -1,24 +1,25 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <opencv2/core/hal/interface.h> // for uint
+#include <cstdint>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/convolve.hpp"   // for convolve2d_svd
-#include "highmap/kernels.hpp"    // for gabor
-#include "highmap/primitives.hpp" // for white_sparse, gabor_noise
+#include "highmap/array.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/kernels.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/random.hpp"
 
 #define SVD_RANK 2
 
 namespace hmap
 {
 
-Array gabor_noise(glm::ivec2 shape,
-                  float      kw,
-                  float      angle,
-                  int        width,
-                  float      density,
-                  uint       seed)
+Array gabor_noise(glm::ivec2    shape,
+                  float         kw,
+                  float         angle,
+                  int           width,
+                  float         density,
+                  std::uint32_t seed)
 {
   Array weight = white_sparse(shape, 0.f, 1.f, density, seed);
   Array kernel = gabor({width, width}, kw, angle);

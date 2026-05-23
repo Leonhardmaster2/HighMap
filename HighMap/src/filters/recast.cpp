@@ -2,23 +2,22 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm> // for transform, min
-#include <cmath>     // for pow, M_PI
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"         // for Array, operator*, operator+
-#include "highmap/filters.hpp"       // for smooth_cpulse, gamma_correct...
-#include "highmap/functions.hpp"     // for NoiseType
-#include "highmap/gradient.hpp"      // for gradient_norm, gradient_angle
-#include "highmap/local_metrics.hpp" // for local_mean
-#include "highmap/math/array.hpp"    // for abs_smooth, cos, lerp, pow
-#include "highmap/operator.hpp"      // for apply_with_mask
-#include "highmap/primitives.hpp"    // for noise_fbm
-#include "highmap/range.hpp"         // for clamp_min, maximum_smooth
-#include "highmap/selector.hpp"      // for select_gradient_binary
-#include "highmap/transform.hpp"     // for transpose, warp
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/range.hpp"
+#include "highmap/selector.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {
@@ -309,15 +308,15 @@ void recast_peak(Array       &array,
                   [&](Array &a) { recast_peak(a, ir, gamma, k); });
 }
 
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         float        gamma,
-                         const Array *p_noise,
-                         glm::vec4    bbox)
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         float         gamma,
+                         const Array  *p_noise,
+                         glm::vec4     bbox)
 {
   // slope-based criteria
   Array c = select_gradient_binary(array, talus);
@@ -349,16 +348,16 @@ void recast_rocky_slopes(Array       &array,
     array += amplitude * (*p_noise) * c;
 }
 
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         const Array *p_mask,
-                         float        gamma,
-                         const Array *p_noise,
-                         glm::vec4    bbox)
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         const Array  *p_mask,
+                         float         gamma,
+                         const Array  *p_noise,
+                         glm::vec4     bbox)
 {
   apply_with_mask(array,
                   p_mask,

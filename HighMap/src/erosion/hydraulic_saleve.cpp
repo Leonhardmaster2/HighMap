@@ -1,23 +1,21 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <vector>
 
-#include <algorithm> // for max, min
-#include <cmath>     // for pow
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"                    // for Array
-#include "highmap/erosion.hpp"                  // for hydraulic_saleve
-#include "highmap/geometry/cloud.hpp"           // for Cloud, random_cloud_...
-#include "highmap/hydrology/drainage_basin.hpp" // for DrainageBasin, find_...
-#include "highmap/interpolate2d.hpp"            // for InterpolationMethod2D
-#include "highmap/math/array.hpp"               // for lerp
-#include "highmap/primitives.hpp"               // for biquad_pulse_x, biqu...
-#include "highmap/range.hpp"                    // for remap
-#include "highmap/terrain_tri_mesh.hpp"         // for TerrainTriMesh, cubi...
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/hydrology/drainage_basin.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
 {
@@ -30,7 +28,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance,
                       int                       max_iterations,
                       float                     noise_strength,
-                      uint                      seed,
+                      std::uint32_t             seed,
                       bool                      enable_post_slope_limiter,
                       float                     post_slope_limit,
                       bool                      enable_post_smoothing)
@@ -68,7 +66,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
 }
 
 Array hydraulic_saleve(const Array          &z,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count,
                        float                 m_exp,
                        float                 uplift_rate,
@@ -191,7 +189,7 @@ Array hydraulic_saleve(const Array          &z,
 
 Array hydraulic_saleve(const Array          &z,
                        const Array          *p_mask,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count,
                        float                 m_exp,
                        float                 uplift_rate,

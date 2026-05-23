@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"      // for Array
-#include "highmap/erosion.hpp"    // for thermal, sediment_deposition
-#include "highmap/filters.hpp"    // for laplace
-#include "highmap/gradient.hpp"   // for gradient_talus
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/range.hpp"      // for maximum
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/range.hpp"
 
 #define SPAWN_LOW_LIMIT 0.1f
 #define GRADIENT_MIN 0.0001f

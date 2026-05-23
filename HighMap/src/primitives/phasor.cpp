@@ -1,16 +1,15 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cmath>
+#include <cstdint>
+#include <functional>
 
-#include <cmath>      // for atan, sqrt, M_PI
-#include <functional> // for function
-
-#include "highmap/array.hpp"         // for Array, operator*, operator+
-#include "highmap/gradient.hpp"      // for phase_field_angle
-#include "highmap/math/core.hpp"     // for lerp
-#include "highmap/math/profiles.hpp" // for PhasorProfile, get_phasor_profi...
-#include "highmap/range.hpp"         // for minimum
+#include "highmap/array.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -18,7 +17,7 @@ namespace hmap::gpu
 Array phasor(PhasorProfile   phasor_profile,
              glm::ivec2      shape,
              float           kp_global,
-             uint            seed,
+             std::uint32_t   seed,
              float           angle_shift,
              int             n_kernel_samples,
              const glm::vec2 jitter,
@@ -75,7 +74,7 @@ Array phasor(PhasorProfile   phasor_profile,
 Array phasor_fbm(PhasorProfile   phasor_profile,
                  glm::ivec2      shape,
                  float           kp_global,
-                 uint            seed,
+                 std::uint32_t   seed,
                  float           angle_shift,
                  int             octaves,
                  float           weight,

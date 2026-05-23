@@ -1,17 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <iostream>
+#include <optional>
+#include <vector>
 
-#include <algorithm> // for max, min, sort
-#include <cmath>     // for atan2, M_PI, copysign, hypot
-#include <iostream>  // for char_traits, basic_ostream
-#include <optional>  // for optional, nullopt
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/point.hpp" // for Point, operator*, angle, cross...
+#include "highmap/array.hpp"
+#include "highmap/geometry/point.hpp"
 
 namespace hmap
 {

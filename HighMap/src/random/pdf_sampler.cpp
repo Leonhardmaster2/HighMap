@@ -1,16 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <cstdint>
+#include <iterator>
+#include <numeric>
+#include <random>
+#include <vector>
 
-#include <algorithm> // for lower_bound, max, fill_n
-#include <cstdint>   // for uint32_t
-#include <iterator>  // for distance
-#include <numeric>   // for accumulate
-#include <random>    // for uniform_real_distribution
-#include <vector>    // for vector
-
-#include "highmap/random.hpp" // for PdfSampler
+#include "highmap/random.hpp"
 
 namespace hmap
 {

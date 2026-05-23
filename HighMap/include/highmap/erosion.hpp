@@ -457,7 +457,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
                       float                     tolerance = 1e-3f,
                       int                       max_iterations = 200,
                       float                     noise_strength = 0.f,
-                      uint                      seed = 0,
+                      std::uint32_t             seed = 0,
                       bool  enable_post_slope_limiter = false,
                       float post_slope_limit = 0.f,
                       bool  enable_post_smoothing = false);
@@ -493,7 +493,7 @@ void hydraulic_saleve(TerrainTriMesh           &mesh,
  * @image html ex_hydraulic_saleve.png
  */
 Array hydraulic_saleve(const Array          &z,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count = 10000,
                        float                 m_exp = 0.8f,
                        float                 uplift_rate = 1.f,
@@ -515,7 +515,7 @@ Array hydraulic_saleve(const Array          &z,
 
 Array hydraulic_saleve(const Array          &z,
                        const Array          *p_mask,
-                       uint                  seed,
+                       std::uint32_t         seed,
                        size_t                control_points_count = 10000,
                        float                 m_exp = 0.8f,
                        float                 uplift_rate = 1.f,
@@ -768,18 +768,18 @@ void stratify(Array             &z,
               float              gamma = 0.5f,
               Array             *p_noise = nullptr); ///< @overload
 
-void stratify(Array &z,
-              Array &partition,
-              int    nstrata,
-              float  strata_noise,
-              float  gamma,
-              float  gamma_noise,
-              int    npartitions,
-              uint   seed,
-              float  mixing_gain_factor = 1.f,
-              Array *p_noise = nullptr,
-              float  vmin = 1.f,
-              float  vmax = 0.f); ///< @overload
+void stratify(Array        &z,
+              Array        &partition,
+              int           nstrata,
+              float         strata_noise,
+              float         gamma,
+              float         gamma_noise,
+              int           npartitions,
+              std::uint32_t seed,
+              float         mixing_gain_factor = 1.f,
+              Array        *p_noise = nullptr,
+              float         vmin = 1.f,
+              float         vmax = 0.f); ///< @overload
 
 /**
  * @brief Stratify the heightmap by creating a multiscale series of layers with
@@ -811,7 +811,7 @@ void stratify_multiscale(Array             &z,
                          std::vector<float> strata_noise,
                          std::vector<float> gamma_list,
                          std::vector<float> gamma_noise,
-                         uint               seed,
+                         std::uint32_t      seed,
                          Array             *p_mask = nullptr,
                          Array             *p_noise = nullptr);
 
@@ -909,43 +909,43 @@ void deposition_fill_holes(Array       &z,
  * **Result**
  * @image html ex_hydraulic_particle.png
  */
-void hydraulic_particle(Array       &z,
-                        int          nparticles,
-                        uint         seed,
-                        const Array *p_bedrock = nullptr,
-                        const Array *p_moisture_map = nullptr,
-                        const Array *p_elevation_shift = nullptr,
-                        Array       *p_erosion_map = nullptr,
-                        Array       *p_deposition_map = nullptr,
-                        float        c_capacity = 10.f,
-                        float        c_erosion = 0.05f,
-                        float        c_deposition = 0.05f,
-                        float        c_inertia = 0.1f,
-                        float        c_gravity = 1.f,
-                        float        drag_rate = 0.001f,
-                        float        evap_rate = 0.001f,
-                        bool         enable_directional_bias = false,
-                        float        angle_bias = 30.f);
+void hydraulic_particle(Array        &z,
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock = nullptr,
+                        const Array  *p_moisture_map = nullptr,
+                        const Array  *p_elevation_shift = nullptr,
+                        Array        *p_erosion_map = nullptr,
+                        Array        *p_deposition_map = nullptr,
+                        float         c_capacity = 10.f,
+                        float         c_erosion = 0.05f,
+                        float         c_deposition = 0.05f,
+                        float         c_inertia = 0.1f,
+                        float         c_gravity = 1.f,
+                        float         drag_rate = 0.001f,
+                        float         evap_rate = 0.001f,
+                        bool          enable_directional_bias = false,
+                        float         angle_bias = 30.f);
 
 /*! @brief See hmap::hydraulic_particle */
-void hydraulic_particle(Array       &z,
-                        const Array *p_mask,
-                        int          nparticles,
-                        uint         seed,
-                        const Array *p_bedrock = nullptr,
-                        const Array *p_moisture_map = nullptr,
-                        const Array *p_elevation_shift = nullptr,
-                        Array       *p_erosion_map = nullptr,
-                        Array       *p_deposition_map = nullptr,
-                        float        c_capacity = 10.f,
-                        float        c_erosion = 0.05f,
-                        float        c_deposition = 0.05f,
-                        float        c_inertia = 0.1f,
-                        float        c_gravity = 1.f,
-                        float        drag_rate = 0.001f,
-                        float        evap_rate = 0.001f,
-                        bool         enable_directional_bias = false,
-                        float        angle_bias = 30.f);
+void hydraulic_particle(Array        &z,
+                        const Array  *p_mask,
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock = nullptr,
+                        const Array  *p_moisture_map = nullptr,
+                        const Array  *p_elevation_shift = nullptr,
+                        Array        *p_erosion_map = nullptr,
+                        Array        *p_deposition_map = nullptr,
+                        float         c_capacity = 10.f,
+                        float         c_erosion = 0.05f,
+                        float         c_deposition = 0.05f,
+                        float         c_inertia = 0.1f,
+                        float         c_gravity = 1.f,
+                        float         drag_rate = 0.001f,
+                        float         evap_rate = 0.001f,
+                        bool          enable_directional_bias = false,
+                        float         angle_bias = 30.f);
 
 /**
  * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.
@@ -999,7 +999,7 @@ void hydraulic_procedural(
     Array         &z,
     float          kp_global,
     float          c_erosion,
-    uint           seed,
+    std::uint32_t  seed,
     ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
     float          erosion_profile_parameter = 0.01f,
     float          angle_shift = 0.f, // degs
@@ -1061,7 +1061,7 @@ void hydraulic_procedural_fbm(
     Array         &z,
     float          kp_global,
     float          c_erosion,
-    uint           seed,
+    std::uint32_t  seed,
     ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
     int            octaves = 3,
     float          persistence = 0.5f,
@@ -1088,7 +1088,7 @@ void hydraulic_procedural_fbm(
     Array         &z,
     float          kp_global,
     float          c_erosion,
-    uint           seed,
+    std::uint32_t  seed,
     const Array   *p_mask,
     ErosionProfile erosion_profile = ErosionProfile::EP_TRIANGLE_GRENIER,
     int            octaves = 3,
@@ -1349,7 +1349,7 @@ void rifts(Array           &z,
            const glm::vec2 &kw,    //  = {4.f, 1.2f},
            float            angle, // degs
            float            amplitude,
-           uint             seed,
+           std::uint32_t    seed,
            float            elevation_noise_shift = 0.f,
            float            k_smooth_bottom = 0.05f,
            float            k_smooth_top = 0.05f,
@@ -1492,7 +1492,7 @@ void strata(Array           &z,
             float            angle,
             float            slope,
             float            gamma, // e.g 0.5f or 1.5f
-            uint             seed,
+            std::uint32_t    seed,
             bool             linear_gamma = true,
             float            kz = 1.f,
             int              octaves = 4,
@@ -1538,19 +1538,19 @@ void strata(Array           &z,
  * **Result**
  * @image html ex_strata_cells.png
  */
-void strata_cells(Array       &z,
-                  glm::vec2    kw,
-                  float        amp,
-                  uint         seed,
-                  float        gamma = 0.5f,
-                  float        gamma_lateral = 0.4f,
-                  float        angle = 0.f,
-                  float        noise_amp = 0.5f,
-                  bool         absolute_displacement = true,
-                  float        occurence_probability = 0.5f,
-                  const Array *p_noise_x = nullptr,
-                  const Array *p_noise_y = nullptr,
-                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+void strata_cells(Array        &z,
+                  glm::vec2     kw,
+                  float         amp,
+                  std::uint32_t seed,
+                  float         gamma = 0.5f,
+                  float         gamma_lateral = 0.4f,
+                  float         angle = 0.f,
+                  float         noise_amp = 0.5f,
+                  bool          absolute_displacement = true,
+                  float         occurence_probability = 0.5f,
+                  const Array  *p_noise_x = nullptr,
+                  const Array  *p_noise_y = nullptr,
+                  glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies stratified cell displacement with optional masking.
@@ -1579,20 +1579,20 @@ void strata_cells(Array       &z,
  * **Result**
  * @image html ex_strata_cells.png
  */
-void strata_cells(Array       &z,
-                  glm::vec2    kw,
-                  float        amp,
-                  uint         seed,
-                  const Array *p_mask,
-                  float        gamma = 0.5f,
-                  float        gamma_lateral = 0.4f,
-                  float        angle = 0.f,
-                  float        noise_amp = 0.5f,
-                  bool         absolute_displacement = true,
-                  float        occurence_probability = 0.5f,
-                  const Array *p_noise_x = nullptr,
-                  const Array *p_noise_y = nullptr,
-                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+void strata_cells(Array        &z,
+                  glm::vec2     kw,
+                  float         amp,
+                  std::uint32_t seed,
+                  const Array  *p_mask,
+                  float         gamma = 0.5f,
+                  float         gamma_lateral = 0.4f,
+                  float         angle = 0.f,
+                  float         noise_amp = 0.5f,
+                  bool          absolute_displacement = true,
+                  float         occurence_probability = 0.5f,
+                  const Array  *p_noise_x = nullptr,
+                  const Array  *p_noise_y = nullptr,
+                  glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies multi-octave (fBm) stratified cell displacement.
@@ -1624,23 +1624,23 @@ void strata_cells(Array       &z,
  * **Result**
  * @image html ex_strata_cells.png
  */
-void strata_cells_fbm(Array       &z,
-                      glm::vec2    kw,
-                      float        amp,
-                      uint         seed,
-                      float        gamma = 0.5f,
-                      float        gamma_lateral = 0.4f,
-                      float        angle = 0.f,
-                      bool         enable_default_noise = true,
-                      float        default_noise_amp = 0.05f,
-                      bool         absolute_displacement = true,
-                      float        occurence_probability = 0.5f,
-                      int          octaves = 8,
-                      float        persistence = 0.4f,
-                      float        lacunarity = 2.2f,
-                      const Array *p_noise_x = nullptr,
-                      const Array *p_noise_y = nullptr,
-                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+void strata_cells_fbm(Array        &z,
+                      glm::vec2     kw,
+                      float         amp,
+                      std::uint32_t seed,
+                      float         gamma = 0.5f,
+                      float         gamma_lateral = 0.4f,
+                      float         angle = 0.f,
+                      bool          enable_default_noise = true,
+                      float         default_noise_amp = 0.05f,
+                      bool          absolute_displacement = true,
+                      float         occurence_probability = 0.5f,
+                      int           octaves = 8,
+                      float         persistence = 0.4f,
+                      float         lacunarity = 2.2f,
+                      const Array  *p_noise_x = nullptr,
+                      const Array  *p_noise_y = nullptr,
+                      glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies masked multi-octave stratified cell displacement.
@@ -1673,24 +1673,24 @@ void strata_cells_fbm(Array       &z,
  * **Result**
  * @image html ex_strata_cells.png
  */
-void strata_cells_fbm(Array       &z,
-                      glm::vec2    kw,
-                      float        amp,
-                      uint         seed,
-                      const Array *p_mask,
-                      float        gamma = 0.5f,
-                      float        gamma_lateral = 0.4f,
-                      float        angle = 0.f,
-                      bool         enable_default_noise = true,
-                      float        default_noise_amp = 0.05f,
-                      bool         absolute_displacement = true,
-                      float        occurence_probability = 0.5f,
-                      int          octaves = 8,
-                      float        persistence = 0.4f,
-                      float        lacunarity = 2.2f,
-                      const Array *p_noise_x = nullptr,
-                      const Array *p_noise_y = nullptr,
-                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+void strata_cells_fbm(Array        &z,
+                      glm::vec2     kw,
+                      float         amp,
+                      std::uint32_t seed,
+                      const Array  *p_mask,
+                      float         gamma = 0.5f,
+                      float         gamma_lateral = 0.4f,
+                      float         angle = 0.f,
+                      bool          enable_default_noise = true,
+                      float         default_noise_amp = 0.05f,
+                      bool          absolute_displacement = true,
+                      float         occurence_probability = 0.5f,
+                      int           octaves = 8,
+                      float         persistence = 0.4f,
+                      float         lacunarity = 2.2f,
+                      const Array  *p_noise_x = nullptr,
+                      const Array  *p_noise_y = nullptr,
+                      glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Apply stratified talus projection along multiple directions.
@@ -1715,18 +1715,18 @@ void strata_cells_fbm(Array       &z,
  * **Result**
  * @image html ex_strata_plates.png
  */
-void strata_plates(Array       &z,
-                   const Array &talus,
-                   int          direction_offset = 0,
-                   int          direction_count = 3,
-                   bool         random_directions = false,
-                   uint         seed = 0,
-                   float        vmin = -FLT_MAX,
-                   float        skew = 0.f,
-                   float        mix_ratio = 0.9f,
-                   const Array *p_mask = nullptr,
-                   const Array *p_dx = nullptr,
-                   const Array *p_dy = nullptr);
+void strata_plates(Array        &z,
+                   const Array  &talus,
+                   int           direction_offset = 0,
+                   int           direction_count = 3,
+                   bool          random_directions = false,
+                   std::uint32_t seed = 0,
+                   float         vmin = -FLT_MAX,
+                   float         skew = 0.f,
+                   float         mix_ratio = 0.9f,
+                   const Array  *p_mask = nullptr,
+                   const Array  *p_dx = nullptr,
+                   const Array  *p_dy = nullptr);
 
 /**
  * @brief Applies a terrace (stratification) filter to a heightmap.
@@ -1749,13 +1749,13 @@ void strata_plates(Array       &z,
  * **Result**
  * @image html ex_strata_terrace.png
  */
-void strata_terrace(Array       &z,
-                    float        gamma, // e.g 0.5f or 1.5f
-                    uint         seed,
-                    float        kz = 4.f, // 4-layers
-                    bool         linear_gamma = true,
-                    float        gamma_noise_ratio = 0.5f,
-                    const Array *p_noise = nullptr);
+void strata_terrace(Array        &z,
+                    float         gamma, // e.g 0.5f or 1.5f
+                    std::uint32_t seed,
+                    float         kz = 4.f, // 4-layers
+                    bool          linear_gamma = true,
+                    float         gamma_noise_ratio = 0.5f,
+                    const Array  *p_noise = nullptr);
 
 /**
  * @brief Applies a masked terrace (stratification) filter to a heightmap.
@@ -1778,14 +1778,14 @@ void strata_terrace(Array       &z,
  * **Result**
  * @image html ex_strata_terrace.png
  */
-void strata_terrace(Array       &z,
-                    float        gamma, // e.g 0.5f or 1.5f
-                    uint         seed,
-                    const Array *p_mask,
-                    float        kz = 4.f, // 4-layers
-                    bool         linear_gamma = true,
-                    float        gamma_noise_ratio = 0.5f,
-                    const Array *p_noise = nullptr);
+void strata_terrace(Array        &z,
+                    float         gamma, // e.g 0.5f or 1.5f
+                    std::uint32_t seed,
+                    const Array  *p_mask,
+                    float         kz = 4.f, // 4-layers
+                    bool          linear_gamma = true,
+                    float         gamma_noise_ratio = 0.5f,
+                    const Array  *p_noise = nullptr);
 
 /**
  * @brief Apply thermal weathering erosion.

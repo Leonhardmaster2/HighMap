@@ -15,14 +15,12 @@
  */
 #pragma once
 
-#include <bits/chrono.h> // for high_resolution_clock
-
 #include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <list>   // for list
-#include <map>    // for allocator, map
-#include <string> // for string
+#include <list>
+#include <map>
+#include <string>
 
 #include "macrologger.h"
 

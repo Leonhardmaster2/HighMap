@@ -1,22 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for fill, min
-#include <cmath>      // for log2
-#include <functional> // for function
-#include <stdexcept>  // for runtime_error
-#include <string>     // for string
-#include <vector>     // for vector
+#include <algorithm>
+#include <cmath>
+#include <functional>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
-#include "macrologger.h" // for LOG_DEBUG, LOG_ERROR
+#include "macrologger.h"
 
-#include "highmap/array.hpp"              // for Array
-#include "highmap/export.hpp"             // for export_banner_png
-#include "highmap/filters.hpp"            // for laplace
-#include "highmap/math/array.hpp"         // for lerp
-#include "highmap/math/core.hpp"          // for highest_power_of_2
-#include "highmap/multiscale/pyramid.hpp" // for PyramidDecomposition, pyra...
-#include "highmap/operator.hpp"           // for vstack
+#include "highmap/array.hpp"
+#include "highmap/export.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/multiscale/pyramid.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {

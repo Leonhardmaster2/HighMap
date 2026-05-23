@@ -14,18 +14,17 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
-#include <cmath>      // for cos, sin, M_PI
-#include <functional> // for function
-#include <memory>     // for unique_ptr
-#include <utility>    // for move
-#include <vector>     // for vector
+#include <cmath>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <utility>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "FastNoiseLite.h" // for FastNoiseLite
+#include "FastNoiseLite.h"
 #include "macrologger.h"
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/math/core.hpp"
 
 /**
@@ -719,7 +718,8 @@ public:
    * @param kw   Frequency scaling vector.
    * @param seed Random seed for noise generation.
    */
-  NoiseFunction(glm::vec2 kw, uint seed) : Function(), kw(kw), seed(seed)
+  NoiseFunction(glm::vec2 kw, std::uint32_t seed)
+      : Function(), kw(kw), seed(seed)
   {
   }
 
@@ -736,7 +736,7 @@ public:
    * @brief Get the random seed.
    * @return The current random seed.
    */
-  uint get_seed() const
+  std::uint32_t get_seed() const
   {
     return this->seed;
   }
@@ -745,7 +745,7 @@ public:
    * @brief Set a new random seed for noise generation.
    * @param new_seed The new random seed.
    */
-  virtual void set_seed(uint new_seed)
+  virtual void set_seed(std::uint32_t new_seed)
   {
     this->seed = new_seed;
   }
@@ -760,8 +760,8 @@ public:
   }
 
 protected:
-  glm::vec2 kw;   ///< Frequency scaling vector.
-  uint      seed; ///< Random seed for noise generation.
+  glm::vec2     kw;   ///< Frequency scaling vector.
+  std::uint32_t seed; ///< Random seed for noise generation.
 };
 
 //----------------------------------------
@@ -787,7 +787,7 @@ public:
    * @param seed Random seed number.
    * @param mu   Gradient magnitude exponent.
    */
-  ParberryFunction(glm::vec2 kw, uint seed, float mu);
+  ParberryFunction(glm::vec2 kw, std::uint32_t seed, float mu);
 
   /**
    * @brief Initialize generator.
@@ -799,7 +799,7 @@ public:
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint /*new_seed*/)
+  void set_seed(std::uint32_t /*new_seed*/)
   {
     // FIX ME seed cannot be changed with current implemtantion.
   }
@@ -849,14 +849,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinFunction(glm::vec2 kw, uint seed);
+  PerlinFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -882,14 +882,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinBillowFunction(glm::vec2 kw, uint seed);
+  PerlinBillowFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -918,14 +918,14 @@ public:
    * @param seed Random seed number.
    * @param k    Smoothing factor.
    */
-  PerlinHalfFunction(glm::vec2 kw, uint seed, float k);
+  PerlinHalfFunction(glm::vec2 kw, std::uint32_t seed, float k);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -951,14 +951,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  PerlinMixFunction(glm::vec2 kw, uint seed);
+  PerlinMixFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -984,14 +984,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  Simplex2Function(glm::vec2 kw, uint seed);
+  Simplex2Function(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -1017,14 +1017,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  Simplex2SFunction(glm::vec2 kw, uint seed);
+  Simplex2SFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -1050,14 +1050,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  ValueNoiseFunction(glm::vec2 kw, uint seed);
+  ValueNoiseFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -1083,14 +1083,14 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  ValueCubicNoiseFunction(glm::vec2 kw, uint seed);
+  ValueCubicNoiseFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -1115,7 +1115,7 @@ public:
    * @param kw   Noise wavenumber, with respect to a unit domain.
    * @param seed Random seed number.
    */
-  ValueDelaunayNoiseFunction(glm::vec2 kw, uint seed);
+  ValueDelaunayNoiseFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the wavenumber attribute.
@@ -1133,7 +1133,7 @@ public:
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->update_interpolation_function();
@@ -1157,7 +1157,7 @@ public:
    * @param kw   Noise wavenumber, with respect to a unit domain.
    * @param seed Random seed number.
    */
-  ValueLinearNoiseFunction(glm::vec2 kw, uint seed);
+  ValueLinearNoiseFunction(glm::vec2 kw, std::uint32_t seed);
 
   /**
    * @brief Set the wavenumber attribute.
@@ -1175,7 +1175,7 @@ public:
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->update_interpolation_function();
@@ -1200,14 +1200,16 @@ public:
    * a unit domain.
    * @param seed Random seed number.
    */
-  WorleyFunction(glm::vec2 kw, uint seed, bool return_cell_value = false);
+  WorleyFunction(glm::vec2     kw,
+                 std::uint32_t seed,
+                 bool          return_cell_value = false);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise.SetSeed(new_seed);
@@ -1245,14 +1247,14 @@ public:
    * @param ratio Amplitude ratio between each Worley noise.
    * @param k     Transition smoothing parameter.
    */
-  WorleyDoubleFunction(glm::vec2 kw, uint seed, float ratio, float k);
+  WorleyDoubleFunction(glm::vec2 kw, std::uint32_t seed, float ratio, float k);
 
   /**
    * @brief Set the seed attribute.
    *
    * @param new_seed New seed.
    */
-  void set_seed(uint new_seed)
+  void set_seed(std::uint32_t new_seed)
   {
     NoiseFunction::set_seed(new_seed);
     this->noise1.SetSeed(new_seed);
@@ -1345,7 +1347,7 @@ public:
    *
    * @param new_seed The new random seed.
    */
-  void set_seed(uint new_seed) override
+  void set_seed(std::uint32_t new_seed) override
   {
     NoiseFunction::set_seed(new_seed);
     this->p_base->set_seed(new_seed);
@@ -1771,8 +1773,8 @@ private:
  * @return            A `std::unique_ptr` to the created noise function.
  */
 std::unique_ptr<hmap::NoiseFunction> create_noise_function_from_type(
-    NoiseType noise_type,
-    glm::vec2 kw,
-    uint      seed);
+    NoiseType     noise_type,
+    glm::vec2     kw,
+    std::uint32_t seed);
 
 } // namespace hmap

@@ -1,38 +1,38 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <algorithm>
+#include <cstddef>
+#include <cstdint>
+#include <initializer_list>
+#include <queue>
+#include <vector>
 
-#include <algorithm>        // for fill
-#include <initializer_list> // for initializer_list
-#include <queue>            // for make_heap, pop_heap, push...
-#include <vector>           // for vector
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/transform.hpp"
 
-#include "highmap/algebra.hpp"             // for Mat, IVec4Eq, IVec4Hash
-#include "highmap/array.hpp"               // for Array
-#include "highmap/filters.hpp"             // for laplace, expand_talus
-#include "highmap/hydrology/hydrology.hpp" // for find_flow_sinks, flow_fixing
-#include "highmap/math/array.hpp"          // for exp, lerp
-#include "highmap/morphology.hpp"          // for distance_transform
-#include "highmap/transform.hpp"           // for warp
-
-#include <unordered_map> // for unordered_map, operator==
+#include <unordered_map>
 
 namespace hmap
 {
 
-Array flow_fixing(const Array &z,
-                  float        riverbed_talus,
-                  int          iterations,
-                  int          prefilter_ir,
-                  bool         carve_riverbed,
-                  bool         smooth_river_bottom,
-                  float        talus_riverbank,
-                  uint         seed,
-                  float        riverbank_noise_ratio,
-                  float        merging_distance,
-                  const Array *p_noise_x,
-                  const Array *p_noise_y)
+Array flow_fixing(const Array  &z,
+                  float         riverbed_talus,
+                  int           iterations,
+                  int           prefilter_ir,
+                  bool          carve_riverbed,
+                  bool          smooth_river_bottom,
+                  float         talus_riverbank,
+                  std::uint32_t seed,
+                  float         riverbank_noise_ratio,
+                  float         merging_distance,
+                  const Array  *p_noise_x,
+                  const Array  *p_noise_y)
 {
   // local node type for heap queues
   struct Node

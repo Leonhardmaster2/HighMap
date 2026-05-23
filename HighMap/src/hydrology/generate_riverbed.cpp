@@ -1,19 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for clamp, max
-#include <cmath>     // for pow
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <vector>
 
-#include "macrologger.h" // for LOG_ERROR
+#include "macrologger.h"
 
-#include "highmap/array.hpp"               // for Array
-#include "highmap/filters.hpp"             // for smooth_cpulse
-#include "highmap/geometry/grids.hpp"      // for grid_xy_vector
-#include "highmap/geometry/path.hpp"       // for Path
-#include "highmap/hydrology/hydrology.hpp" // for generate_riverbed
-#include "highmap/range.hpp"               // for minimum_smooth
-#include "highmap/sdf.hpp"                 // for sdf_2d_polyline, sdf_2d_p...
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/range.hpp"
+#include "highmap/sdf.hpp"
 
 namespace hmap
 {

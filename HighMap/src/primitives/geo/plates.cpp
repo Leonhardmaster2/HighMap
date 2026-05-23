@@ -1,28 +1,29 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cstdint>
 
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/filters.hpp"    // for project_talus_along_direction
-#include "highmap/functions.hpp"  // for NoiseType
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/primitives.hpp" // for VoronoiReturnType, noise_fbm
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/geo.hpp"
 
 namespace hmap::gpu
 {
 
-Array plates(glm::ivec2 shape,
-             glm::vec2  kw,
-             uint       seed,
-             float      talus,
-             int        direction,
-             float      mix_ratio,
-             float      base_noise_amp,
-             float      kw_multiplier,
-             int        octaves,
-             float      rugosity,
-             glm::vec4  bbox)
+Array plates(glm::ivec2    shape,
+             glm::vec2     kw,
+             std::uint32_t seed,
+             float         talus,
+             int           direction,
+             float         mix_ratio,
+             float         base_noise_amp,
+             float         kw_multiplier,
+             int           octaves,
+             float         rugosity,
+             glm::vec4     bbox)
 {
   const float persistence = 0.5f;
   const float lacunarity = 2.f;

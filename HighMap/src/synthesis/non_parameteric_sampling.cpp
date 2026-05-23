@@ -1,21 +1,21 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <queue>
+#include <random>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for min_element
-#include <cmath>     // for floor
-#include <queue>     // for make_heap, push_heap
-#include <random>    // for uniform_real_distribution, mt19937
-#include <utility>   // for pair
-#include <vector>    // for vector
+#include "macrologger.h"
 
-#include "macrologger.h" // for LOG_DEBUG
-
-#include "highmap/algebra.hpp"  // for Mat
-#include "highmap/array.hpp"    // for Array
-#include "highmap/kernels.hpp"  // for smooth_cosine
-#include "highmap/operator.hpp" // for get_random_patch
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/kernels.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {
@@ -46,10 +46,10 @@ bool cmp_queue(std::pair<int, std::pair<int, int>> &a,
 
 // --- sampling
 
-Array non_parametric_sampling(const Array &array,
-                              glm::ivec2   patch_shape,
-                              uint         seed,
-                              float        error_threshold)
+Array non_parametric_sampling(const Array  &array,
+                              glm::ivec2    patch_shape,
+                              std::uint32_t seed,
+                              float         error_threshold)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis;

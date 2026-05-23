@@ -2,8 +2,8 @@
 
 int main(void)
 {
-  glm::ivec2 shape = {256, 256};
-  uint       seed = 1;
+  glm::ivec2    shape = {256, 256};
+  std::uint32_t seed = 1;
 
   glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
   hmap::Path path = hmap::Path(15, seed, hmap::adjust(bbox, -0.1f));

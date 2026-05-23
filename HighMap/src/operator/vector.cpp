@@ -2,13 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <stddef.h> // for size_t
-
-#include <algorithm> // for fill_n, max, max_element, min_element, copy
-#include <cmath>     // for log, exp
-#include <random>    // for uniform_real_distribution, mt19937
-#include <stdexcept> // for invalid_argument
-#include <vector>    // for vector
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <random>
+#include <stdexcept>
+#include <vector>
 
 namespace hmap
 {

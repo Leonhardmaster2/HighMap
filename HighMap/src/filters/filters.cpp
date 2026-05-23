@@ -1,30 +1,29 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <random>
+#include <vector>
 
-#include <algorithm> // for clamp, max, min, transform, fill
-#include <cmath>     // for pow, cos, sin, M_PI, exp, atan
-#include <limits>    // for numeric_limits
-#include <random>    // for uniform_real_distribution, mt19937
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"     // for Array, operator*, operator-
-#include "highmap/boundary.hpp"  // for extrapolate_borders, fill_borders
-#include "highmap/convolve.hpp"  // for convolve1d_i, convolve1d_j
-#include "highmap/curvature.hpp" // for CurvatureType, curvature_quadric
-#include "highmap/filters.hpp"   // for expand, reverse_above_theshold
-#include "highmap/gradient.hpp"  // for gradient_x, gradient_y, gradien...
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/kernels.hpp"       // for cubic_pulse_directional, biweight
-#include "highmap/local_metrics.hpp" // for local_max, local_min, local_mean
-#include "highmap/math/array.hpp"    // for lerp, abs, abs_smooth, sigmoid
-#include "highmap/math/core.hpp"     // for smoothstep3, lerp
-#include "highmap/operator.hpp"      // for apply_with_mask, transform_with...
-#include "highmap/primitives.hpp"    // for white
-#include "highmap/range.hpp"         // for clamp_min, clamp, maximum_smooth
-#include "highmap/transform.hpp"     // for warp
+#include "highmap/kernels.hpp"
+#include "highmap/local_metrics.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/random.hpp"
+#include "highmap/range.hpp"
+#include "highmap/transform.hpp"
 
 #define NSIGMA 2
 
@@ -1038,14 +1037,14 @@ void steepen_convective(Array       &array,
                   { steepen_convective(a, angle, iterations, ir, dt); });
 }
 
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             float        gain,
-             float        noise_ratio,
-             const Array *p_noise,
-             float        vmin,
-             float        vmax)
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             float         gain,
+             float         noise_ratio,
+             const Array  *p_noise,
+             float         vmin,
+             float         vmax)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-noise_ratio, noise_ratio);
@@ -1104,15 +1103,15 @@ void terrace(Array       &array,
                    lambda);
 }
 
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             const Array *p_mask,
-             float        gain,
-             float        noise_ratio,
-             const Array *p_noise,
-             float        vmin,
-             float        vmax)
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             const Array  *p_mask,
+             float         gain,
+             float         noise_ratio,
+             const Array  *p_noise,
+             float         vmin,
+             float         vmax)
 {
   apply_with_mask(
       array,

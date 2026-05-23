@@ -1,32 +1,30 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <cstdint>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 
-#include <map>    // for map
-#include <memory> // for allocator, make_shared
-#include <string> // for basic_string, operator+, ope...
-#include <vector> // for vector
+#include "hmm/src/heightmap.h"
+#include "hmm/src/triangulator.h"
+#include "macrologger.h"
 
-#include <opencv2/core/hal/interface.h> // for uint
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/export.hpp"
+#include "highmap/operator.hpp"
 
-#include "hmm/src/heightmap.h"    // for Heightmap
-#include "hmm/src/triangulator.h" // for Triangulator
-#include "macrologger.h"          // for LOG_DEBUG, LOG_ERROR
-
-#include "highmap/algebra.hpp"  // for IVec2Eq, IVec2Hash
-#include "highmap/array.hpp"    // for Array, count_non_zero
-#include "highmap/export.hpp"   // for asset_export_format_as_string
-#include "highmap/operator.hpp" // for linspace
-
-#include <assimp/Exporter.hpp> // for Exporter
-#include <assimp/material.h>   // for aiMaterial, AI_MATKEY_TEXTUR...
-#include <assimp/mesh.h>       // for aiMesh, aiFace, aiPrimitiveType
-#include <assimp/metadata.h>   // for aiMetadata
-#include <assimp/scene.h>      // for aiScene, aiNode
-#include <assimp/types.h>      // for aiString, aiReturn
-#include <assimp/vector3.h>    // for aiVector3D
-#include <unordered_map>       // for unordered_map
+#include <assimp/Exporter.hpp>
+#include <assimp/material.h>
+#include <assimp/mesh.h>
+#include <assimp/metadata.h>
+#include <assimp/scene.h>
+#include <assimp/types.h>
+#include <assimp/vector3.h>
+#include <unordered_map>
 
 namespace hmap
 {
@@ -40,7 +38,7 @@ void helper_build_mesh_masked(aiMesh      *p_mesh,
   std::vector<float> y = linspace(0.f, 1.f, array.shape.y);
 
   {
-    uint n_vertices = count_non_zero(mask);
+    std::uint32_t n_vertices = count_non_zero(mask);
 
     p_mesh->mVertices = new aiVector3D[n_vertices];
     p_mesh->mNumVertices = n_vertices;
@@ -50,9 +48,9 @@ void helper_build_mesh_masked(aiMesh      *p_mesh,
 
     // --- generate vertices
 
-    std::unordered_map<glm::ivec2, uint, IVec2Hash, IVec2Eq> index_map;
+    std::unordered_map<glm::ivec2, std::uint32_t, IVec2Hash, IVec2Eq> index_map;
 
-    uint k = 0;
+    std::uint32_t k = 0;
 
     for (int j = 0; j < array.shape.y; j++)
       for (int i = 0; i < array.shape.x; i++)
@@ -73,7 +71,7 @@ void helper_build_mesh_masked(aiMesh      *p_mesh,
 
     // --- generate faces
 
-    uint n_faces = 0;
+    std::uint32_t n_faces = 0;
 
     for (int j = 0; j < array.shape.y - 1; j++)
       for (int i = 0; i < array.shape.x - 1; i++)
@@ -126,8 +124,8 @@ void helper_build_mesh(aiMesh      *p_mesh,
   {
   case hmap::MeshType::TRI:
   {
-    uint n_vertices = array.size();
-    uint n_faces = 2 * (array.shape.x - 1) * (array.shape.y - 1);
+    std::uint32_t n_vertices = array.size();
+    std::uint32_t n_faces = 2 * (array.shape.x - 1) * (array.shape.y - 1);
 
     p_mesh->mVertices = new aiVector3D[n_vertices];
     p_mesh->mNumVertices = n_vertices;
@@ -158,16 +156,16 @@ void helper_build_mesh(aiMesh      *p_mesh,
       {
         p_mesh->mFaces[k].mNumIndices = 3;
         p_mesh->mFaces[k].mIndices = new unsigned[3]{
-            (uint)array.linear_index(i, j),
-            (uint)array.linear_index(i, j + 1),
-            (uint)array.linear_index(i + 1, j)};
+            (std::uint32_t)array.linear_index(i, j),
+            (std::uint32_t)array.linear_index(i, j + 1),
+            (std::uint32_t)array.linear_index(i + 1, j)};
         k++;
 
         p_mesh->mFaces[k].mNumIndices = 3;
         p_mesh->mFaces[k].mIndices = new unsigned[3]{
-            (uint)array.linear_index(i + 1, j),
-            (uint)array.linear_index(i, j + 1),
-            (uint)array.linear_index(i + 1, j + 1)};
+            (std::uint32_t)array.linear_index(i + 1, j),
+            (std::uint32_t)array.linear_index(i, j + 1),
+            (std::uint32_t)array.linear_index(i + 1, j + 1)};
         k++;
       }
   }
@@ -193,8 +191,8 @@ void helper_build_mesh(aiMesh      *p_mesh,
     float ax = 1.f / (float)array.shape.y;
     float ay = 1.f / (float)array.shape.x;
 
-    uint n_vertices = points.size();
-    uint n_faces = triangles.size();
+    std::uint32_t n_vertices = points.size();
+    std::uint32_t n_faces = triangles.size();
 
     p_mesh->mVertices = new aiVector3D[n_vertices];
     p_mesh->mNumVertices = n_vertices;
@@ -220,9 +218,10 @@ void helper_build_mesh(aiMesh      *p_mesh,
     for (size_t k = 0; k < triangles.size(); k++)
     {
       p_mesh->mFaces[k].mNumIndices = 3;
-      p_mesh->mFaces[k].mIndices = new unsigned[3]{(uint)triangles[k].x,
-                                                   (uint)triangles[k].y,
-                                                   (uint)triangles[k].z};
+      p_mesh->mFaces[k].mIndices = new unsigned[3]{
+          (std::uint32_t)triangles[k].x,
+          (std::uint32_t)triangles[k].y,
+          (std::uint32_t)triangles[k].z};
     }
   }
   break;

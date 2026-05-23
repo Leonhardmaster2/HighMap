@@ -1,14 +1,14 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <cstddef>
+#include <cstdint>
+#include <vector>
 
-#include <vector> // for vector
-
-#include "highmap/array.hpp"         // for Array
-#include "highmap/boundary.hpp"      // for pick_boundary_cell, DomainBoundary
-#include "highmap/geometry/path.hpp" // for Path
-#include "highmap/shortest_path.hpp" // for find_path_dijkstra, find_path_m...
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/shortest_path.hpp"
 
 namespace hmap
 {
@@ -19,7 +19,7 @@ Path find_cut_path_dijkstra(const Array   &z,
                             float          dijk_elevation_ratio,
                             float          dijk_distance_exponent,
                             float          dijk_upward_penalization,
-                            uint           seed,
+                            std::uint32_t  seed,
                             bool           favor_boundary_center,
                             bool           favor_lower_elevation,
                             bool           favor_sinks)
@@ -75,7 +75,7 @@ Path find_cut_path_dijkstra(const Array   &z,
 Path find_cut_path_midpoint(const Array   &z,
                             DomainBoundary start,
                             DomainBoundary end,
-                            uint           seed,
+                            std::uint32_t  seed,
                             float          offset_ratio,
                             int            steps,
                             bool           favor_boundary_center,

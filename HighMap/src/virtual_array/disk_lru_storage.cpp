@@ -1,25 +1,24 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <filesystem>
+#include <fstream>
+#include <list>
+#include <memory>
+#include <mutex>
+#include <stdexcept>
+#include <string>
+#include <system_error>
+#include <utility>
+#include <vector>
 
-#include <filesystem>   // for path, exists, oper...
-#include <fstream>      // for basic_ios, basic_i...
-#include <list>         // for list
-#include <memory>       // for allocator, make_un...
-#include <mutex>        // for mutex, lock_guard
-#include <stdexcept>    // for runtime_error
-#include <string>       // for char_traits, opera...
-#include <system_error> // for error_code
-#include <utility>      // for move, pair
-#include <vector>       // for vector
-
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/virtual_array/tile_region.hpp"  // for TileKey, TileRegion
-#include "highmap/virtual_array/tile_storage.hpp" // for DiskLruTileStorage
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/tile_storage.hpp"
 
-#include <unordered_map> // for unordered_map, ope...
+#include <unordered_map>
 
 namespace hmap
 {

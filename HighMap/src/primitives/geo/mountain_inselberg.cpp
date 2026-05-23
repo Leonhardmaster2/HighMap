@@ -1,35 +1,36 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <cmath>
+#include <cstdint>
 
-#include <cmath> // for cos, sin, M_PI
-
-#include "highmap/array.hpp"      // for Array, operator*, operator+
-#include "highmap/filters.hpp"    // for gamma_correction, smooth_fill
-#include "highmap/functions.hpp"  // for NoiseType
-#include "highmap/primitives.hpp" // for VoronoiReturnType, gaussian_pulse
-#include "highmap/range.hpp"      // for clamp_min
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
 
-Array mountain_inselberg(glm::ivec2   shape,
-                         uint         seed,
-                         float        scale,
-                         int          octaves,
-                         float        rugosity,
-                         float        angle,
-                         float        gamma,
-                         bool         round_shape,
-                         bool         add_deposition,
-                         float        bulk_amp,
-                         float        base_noise_amp,
-                         float        k_smoothing,
-                         glm::vec2    center,
-                         const Array *p_noise_x,
-                         const Array *p_noise_y,
-                         glm::vec4    bbox)
+Array mountain_inselberg(glm::ivec2    shape,
+                         std::uint32_t seed,
+                         float         scale,
+                         int           octaves,
+                         float         rugosity,
+                         float         angle,
+                         float         gamma,
+                         bool          round_shape,
+                         bool          add_deposition,
+                         float         bulk_amp,
+                         float         base_noise_amp,
+                         float         k_smoothing,
+                         glm::vec2     center,
+                         const Array  *p_noise_x,
+                         const Array  *p_noise_y,
+                         glm::vec4     bbox)
 {
   // apply global scaling to reference values
   const float     half_width = 0.2f * scale;

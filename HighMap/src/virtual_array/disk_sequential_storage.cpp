@@ -1,23 +1,22 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <filesystem>
+#include <fstream>
+#include <memory>
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include <system_error>
+#include <vector>
 
-#include <filesystem>   // for path, exists, oper...
-#include <fstream>      // for basic_ios, basic_i...
-#include <memory>       // for allocator, make_un...
-#include <optional>     // for optional
-#include <stdexcept>    // for runtime_error, log...
-#include <string>       // for char_traits, opera...
-#include <system_error> // for error_code
-#include <vector>       // for vector
+#include "macrologger.h"
 
-#include "macrologger.h" // for LOG_ERROR
-
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/virtual_array/tile_region.hpp"  // for TileRegion, TileKey
-#include "highmap/virtual_array/tile_storage.hpp" // for DiskSequentialTile...
+#include "highmap/virtual_array/tile_region.hpp"
+#include "highmap/virtual_array/tile_storage.hpp"
 
 namespace hmap
 {

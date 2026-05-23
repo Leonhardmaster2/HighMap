@@ -1,25 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stdint.h> // for uint8_t
+#include <algorithm>
+#include <cstdint>
+#include <limits>
+#include <queue>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for max, fill
-#include <limits>    // for numeric_limits
-#include <queue>     // for priority_queue
-#include <utility>   // for pair
-#include <vector>    // for vector, allocator
+#include "cl_wrapper/run.hpp"
 
-#include "cl_wrapper/run.hpp" // for Run
-
-#include "highmap/algebra.hpp"             // for Mat
-#include "highmap/array.hpp"               // for Array, operator-
-#include "highmap/curvature.hpp"           // for level_set_curvature
-#include "highmap/filters.hpp"             // for make_binary
-#include "highmap/hydrology/hydrology.hpp" // for water_frontier_curvature
-#include "highmap/interpolate2d.hpp"       // for harmonic_interpolation
-#include "highmap/math/array.hpp"          // for is_zero, smoothstep3
-#include "highmap/morphology.hpp"          // for distance_transform_with_c...
-#include "highmap/range.hpp"               // for maximum, maximum_smooth
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
+#include "highmap/curvature.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

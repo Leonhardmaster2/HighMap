@@ -253,7 +253,7 @@ Array make_periodic_tiling(const Array &array,
  */
 glm::ivec2 pick_boundary_cell(const Array   &z,
                               DomainBoundary boundary,
-                              uint           seed,
+                              std::uint32_t  seed,
                               bool           favor_boundary_center = true,
                               bool           favor_lower_elevation = true,
                               bool           favor_sinks = true);

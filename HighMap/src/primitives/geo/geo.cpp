@@ -1,10 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <cmath> // for exp, hypot
+#include <cmath>
 
-#include "highmap/array.hpp"      // for Array
-#include "highmap/primitives.hpp" // for caldera, constant
+#include "highmap/array.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/primitives/geo.hpp"
 
 namespace hmap
 {

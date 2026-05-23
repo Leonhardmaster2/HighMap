@@ -219,12 +219,12 @@ void expand_directional(Array       &array,
  * @param ir          Neighborhood radius.
  * @param noise_ratio Amplitude of slope noise.
  */
-void expand_talus(Array       &z,
-                  const Array &mask,
-                  float        talus,
-                  uint         seed,
-                  int          ir = 1,
-                  float        noise_ratio = 0.2f);
+void expand_talus(Array        &z,
+                  const Array  &mask,
+                  float         talus,
+                  std::uint32_t seed,
+                  int           ir = 1,
+                  float         noise_ratio = 0.2f);
 /**
  * @brief Enforce a talus slope constraint on a height field.
  *
@@ -259,19 +259,19 @@ void expand_talus(Array       &z,
  *
  * See unit tests: @ref test_fill_talus.cpp
  */
-void fill_talus(Array       &z,
-                float        talus,
-                uint         seed,
-                int          ir = 1,
-                float        noise_ratio = 0.2f,
-                const Array *p_seed_mask = nullptr);
+void fill_talus(Array        &z,
+                float         talus,
+                std::uint32_t seed,
+                int           ir = 1,
+                float         noise_ratio = 0.2f,
+                const Array  *p_seed_mask = nullptr);
 
-void fill_talus(Array       &z,
-                const Array &talus,
-                uint         seed,
-                int          ir = 1,
-                float        noise_ratio = 0.2f,
-                const Array *p_seed_mask = nullptr);
+void fill_talus(Array        &z,
+                const Array  &talus,
+                std::uint32_t seed,
+                int           ir = 1,
+                float         noise_ratio = 0.2f,
+                const Array  *p_seed_mask = nullptr);
 
 /**
  * @brief Apply a "folding" filter (successive absolute values) to the array
@@ -1228,25 +1228,25 @@ void recast_peak(Array       &array,
  * **Result**
  * @image html ex_recast.png
  */
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         float        gamma = 0.5f,
-                         const Array *p_noise = nullptr,
-                         glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         float         gamma = 0.5f,
+                         const Array  *p_noise = nullptr,
+                         glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
-void recast_rocky_slopes(Array       &array,
-                         float        talus,
-                         int          ir,
-                         float        amplitude,
-                         uint         seed,
-                         float        kw,
-                         const Array *p_mask,
-                         float        gamma = 0.5f,
-                         const Array *p_noise = nullptr,
+void recast_rocky_slopes(Array        &array,
+                         float         talus,
+                         int           ir,
+                         float         amplitude,
+                         std::uint32_t seed,
+                         float         kw,
+                         const Array  *p_mask,
+                         float         gamma = 0.5f,
+                         const Array  *p_noise = nullptr,
                          glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f}); ///< @overload
 
 /**
@@ -2072,14 +2072,14 @@ void steepen_convective(Array       &array,
  * **Result**
  * @image html ex_terrace.png
  */
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             float        gain = 0.9f,
-             float        noise_ratio = 0.f,
-             const Array *p_noise = nullptr,
-             float        vmin = 0.f,
-             float        vmax = -1.f);
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             float         gain = 0.9f,
+             float         noise_ratio = 0.f,
+             const Array  *p_noise = nullptr,
+             float         vmin = 0.f,
+             float         vmax = -1.f);
 
 /**
  * @brief Applies a terrace effect to an array with optional masking.
@@ -2121,15 +2121,15 @@ void terrace(Array       &array,
  * **Result**
  * @image html ex_terrace.png
  */
-void terrace(Array       &array,
-             uint         seed,
-             int          nlevels,
-             const Array *p_mask,
-             float        gain = 0.9f,
-             float        noise_ratio = 0.f,
-             const Array *p_noise = nullptr,
-             float        vmin = 0.f,
-             float        vmax = -1.f);
+void terrace(Array        &array,
+             std::uint32_t seed,
+             int           nlevels,
+             const Array  *p_mask,
+             float         gain = 0.9f,
+             float         noise_ratio = 0.f,
+             const Array  *p_noise = nullptr,
+             float         vmin = 0.f,
+             float         vmax = -1.f);
 
 } // namespace hmap
 

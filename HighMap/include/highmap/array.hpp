@@ -11,12 +11,11 @@
  * @copyright Copyright (c) 2023
  */
 #pragma once
-typedef unsigned int uint;
 
 #include <functional>
 #include <random>
 
-#include <opencv2/core/mat.hpp>
+#include <opencv2/core.hpp>
 
 #include "highmap/algebra.hpp"
 #include "highmap/colormaps.hpp"
@@ -1082,7 +1081,7 @@ inline T reduce_cells(const Array &a, T init, Reduce &&reduce)
 {
   T acc = init;
 
-  for_each_cell(a, [&](int i, int j, float v) { acc = reduce(acc, a(i, j)); });
+  for_each_cell(a, [&](int i, int j) { acc = reduce(acc, a(i, j)); });
 
   return acc;
 }

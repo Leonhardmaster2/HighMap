@@ -1,16 +1,15 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for rotate, min
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/boundary.hpp"   // for fill_borders, extrapolate_bo...
-#include "highmap/erosion.hpp"    // for hydraulic_musgrave, HMAP_CD_INV
-#include "highmap/filters.hpp"    // for laplace
-#include "highmap/primitives.hpp" // for constant
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/primitives/functions.hpp"
 
 namespace hmap
 {
@@ -35,10 +34,10 @@ void hydraulic_musgrave(Array &z,
   Array s = constant(z.shape);          // sediment level
   Array w = water_level * moisture_map; // backup initial moisture map
 
-  std::vector<int>   di = HMAP_DI;
-  std::vector<int>   dj = HMAP_DJ;
-  std::vector<float> c = HMAP_CD_INV;
-  const uint         nb = di.size();
+  std::vector<int>    di = HMAP_DI;
+  std::vector<int>    dj = HMAP_DJ;
+  std::vector<float>  c = HMAP_CD_INV;
+  const std::uint32_t nb = di.size();
 
   for (int it = 0; it < iterations; it++)
   {
@@ -52,7 +51,7 @@ void hydraulic_musgrave(Array &z,
 
     for (int j = 1; j < z.shape.y - 1; j++)
       for (int i = 1; i < z.shape.x - 1; i++)
-        for (uint k = 0; k < nb; k++) // loop over 1st neighbors
+        for (std::uint32_t k = 0; k < nb; k++) // loop over 1st neighbors
         {
           int   p = i + di[k];
           int   q = j + dj[k];

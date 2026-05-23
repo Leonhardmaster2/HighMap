@@ -2,13 +2,12 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <random> // for uniform_real_distribution
-#include <vector> // for vector
+#include <cstdint>
+#include <random>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/algebra.hpp" // for Mat
-#include "highmap/array.hpp"   // for Array
+#include "highmap/algebra.hpp"
+#include "highmap/array.hpp"
 
 namespace hmap
 {
@@ -230,10 +229,10 @@ void square_md(Array                                &array,
     square_md(array, is_done, step, noise_scale, gen, dis);
 }
 
-Array reverse_midpoint(const Array &array,
-                       uint         seed,
-                       float        noise_scale,
-                       float        threshold)
+Array reverse_midpoint(const Array  &array,
+                       std::uint32_t seed,
+                       float         noise_scale,
+                       float         threshold)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-1.f, 1.f);

@@ -1,14 +1,13 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <vector>
 
-#include <vector> // for vector
-
-#include "highmap/array.hpp"          // for Array
-#include "highmap/boundary.hpp"       // for extrapolate_borders
-#include "highmap/geometry/grids.hpp" // for grid_xy_vector
-#include "highmap/interpolate2d.hpp"  // for NaturalNeighborInterpolator
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/interpolate2d.hpp"
 
 namespace hmap
 {

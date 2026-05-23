@@ -1,18 +1,26 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for max, min, clamp
-#include <optional>  // for optional
+#include <algorithm>
+#include <array>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <optional>
+#include <utility>
+#include <vector>
 
-#include "point_sampler/halton.hpp"                   // for halton
-#include "point_sampler/hammersley.hpp"               // for hammersley
-#include "point_sampler/jittered_grid.hpp"            // for jittered_grid
-#include "point_sampler/latin_hypercube_sampling.hpp" // for latin_hypercub...
-#include "point_sampler/poisson_disk_sampling.hpp"    // for poisson_disk_s...
-#include "point_sampler/random.hpp"                   // for random
-#include "point_sampler/rejection_sampling.hpp"       // for rejection_samp...
-#include "point_sampler/utils.hpp"                    // for split_by_dimen...
+#include "point_sampler/halton.hpp"
+#include "point_sampler/hammersley.hpp"
+#include "point_sampler/jittered_grid.hpp"
+#include "point_sampler/latin_hypercube_sampling.hpp"
+#include "point_sampler/point.hpp"
+#include "point_sampler/poisson_disk_sampling.hpp"
+#include "point_sampler/random.hpp"
+#include "point_sampler/rejection_sampling.hpp"
+#include "point_sampler/utils.hpp"
 
+#include "highmap/array.hpp"
 #include "highmap/geometry/point_sampling.hpp"
 
 namespace hmap
@@ -58,7 +66,7 @@ make_pointwise_function_from_array(const Array &array, const glm::vec4 &bbox)
 
 std::array<std::vector<float>, 2> random_points(
     size_t                     count,
-    uint                       seed,
+    std::uint32_t              seed,
     const PointSamplingMethod &method,
     const glm::vec4           &bbox)
 {
@@ -96,9 +104,9 @@ std::array<std::vector<float>, 2> random_points(
   return ps::split_by_dimension(points);
 }
 
-std::array<std::vector<float>, 2> random_points_density(size_t       count,
-                                                        const Array &density,
-                                                        uint         seed,
+std::array<std::vector<float>, 2> random_points_density(size_t        count,
+                                                        const Array  &density,
+                                                        std::uint32_t seed,
                                                         const glm::vec4 &bbox)
 {
   auto ranges = bbox_to_ranges2d(bbox);
@@ -111,8 +119,8 @@ std::array<std::vector<float>, 2> random_points_density(size_t       count,
   return ps::split_by_dimension(points);
 }
 
-std::array<std::vector<float>, 2> random_points_distance(float min_dist,
-                                                         uint  seed,
+std::array<std::vector<float>, 2> random_points_distance(float         min_dist,
+                                                         std::uint32_t seed,
                                                          const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
@@ -125,10 +133,10 @@ std::array<std::vector<float>, 2> random_points_distance(float min_dist,
   return ps::split_by_dimension(points);
 }
 
-std::array<std::vector<float>, 2> random_points_distance(float        min_dist,
-                                                         float        max_dist,
-                                                         const Array &density,
-                                                         uint         seed,
+std::array<std::vector<float>, 2> random_points_distance(float         min_dist,
+                                                         float         max_dist,
+                                                         const Array  &density,
+                                                         std::uint32_t seed,
                                                          const glm::vec4 &bbox)
 {
   auto ranges = bbox_to_ranges2d(bbox);
@@ -153,7 +161,7 @@ std::array<std::vector<float>, 2> random_points_distance_power_law(
     float            dist_min,
     float            dist_max,
     float            alpha,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
@@ -172,7 +180,7 @@ std::array<std::vector<float>, 2> random_points_distance_weibull(
     float            dist_min,
     float            lambda,
     float            k,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox)
 {
   auto   ranges = bbox_to_ranges2d(bbox);
@@ -191,7 +199,7 @@ std::array<std::vector<float>, 2> random_points_jittered(
     size_t           count,
     const glm::vec2 &jitter_amount,
     const glm::vec2 &stagger_ratio,
-    uint             seed,
+    std::uint32_t    seed,
     const glm::vec4 &bbox)
 {
   auto                 ranges = bbox_to_ranges2d(bbox);

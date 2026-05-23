@@ -1,13 +1,12 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <cstddef>
+#include <vector>
 
-#include <vector> // for vector
-
-#include "highmap/array.hpp"                               // for Array
-#include "highmap/hydrology/drainage_basin_cell_based.hpp" // for DrainageB...
-#include "highmap/hydrology/hydrology.hpp"                 // for basin_id
+#include "highmap/array.hpp"
+#include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap
 {

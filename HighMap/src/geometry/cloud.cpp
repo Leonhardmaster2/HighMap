@@ -1,43 +1,42 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <locale>
+#include <random>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for max, copy, min, fill_n
-#include <array>     // for array
-#include <cmath>     // for round, sqrt
-#include <cstddef>   // for size_t
-#include <fstream>   // for basic_ostream, operat...
-#include <iomanip>   // for operator<<, setw, set...
-#include <iostream>  // for cout
-#include <limits>    // for numeric_limits
-#include <locale>    // for locale
-#include <random>    // for uniform_real_distribu...
-#include <sstream>   // for basic_istringstream
-#include <stdexcept> // for invalid_argument, run...
-#include <string>    // for char_traits, string
-#include <utility>   // for move
-#include <vector>    // for vector
+#include "delaunator-cpp.hpp"
+#include "macrologger.h"
+#include "point_sampler/metrics.hpp"
+#include "point_sampler/point.hpp"
+#include "point_sampler/utils.hpp"
 
-#include "delaunator-cpp.hpp"        // for Delaunator
-#include "macrologger.h"             // for LOG_ERROR
-#include "point_sampler/metrics.hpp" // for distance_to_boundary
-#include "point_sampler/point.hpp"   // for Point
-#include "point_sampler/utils.hpp"   // for merge_by_dimension
-
-#include "highmap/array.hpp"                   // for Array, uint
-#include "highmap/geometry/cloud.hpp"          // for Cloud, random_cloud_d...
-#include "highmap/geometry/graph.hpp"          // for Graph
-#include "highmap/geometry/point.hpp"          // for Point, distance
-#include "highmap/geometry/point_sampling.hpp" // for random_points_distance
-#include "highmap/interpolate2d.hpp"           // for interpolate2d, Interp...
-#include "highmap/math/core.hpp"               // for lerp
-#include "highmap/operator.hpp"                // for random_vector
+#include "highmap/array.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/graph.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/geometry/point_sampling.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {
 
-Cloud::Cloud(int npoints, uint seed, glm::vec4 bbox)
+Cloud::Cloud(int npoints, std::uint32_t seed, glm::vec4 bbox)
 {
   this->points.resize(npoints);
   this->randomize(seed, bbox);
@@ -309,7 +308,7 @@ void Cloud::print()
   }
 }
 
-void Cloud::randomize(uint seed, glm::vec4 bbox)
+void Cloud::randomize(std::uint32_t seed, glm::vec4 bbox)
 {
   Cloud cloud_rnd = random_cloud(this->size(),
                                  seed,
@@ -484,7 +483,7 @@ void Cloud::snap_points_to_bounding_box(const glm::vec4 &bbox,
   }
 }
 
-void Cloud::shuffle(float dx, float dy, uint seed, float dv)
+void Cloud::shuffle(float dx, float dy, std::uint32_t seed, float dv)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-1.f, 1.f);
@@ -652,7 +651,7 @@ Cloud merge_clouds(const std::vector<Cloud> &clouds)
 }
 
 Cloud random_cloud(size_t                     count,
-                   uint                       seed,
+                   std::uint32_t              seed,
                    const PointSamplingMethod &method,
                    const glm::vec4           &bbox)
 {
@@ -663,7 +662,7 @@ Cloud random_cloud(size_t                     count,
 
 Cloud random_cloud_density(size_t           count,
                            const Array     &density,
-                           uint             seed,
+                           std::uint32_t    seed,
                            const glm::vec4 &bbox)
 {
   auto xy = random_points_density(count, density, seed, bbox);
@@ -671,7 +670,9 @@ Cloud random_cloud_density(size_t           count,
   return Cloud(xy[0], xy[1], v);
 }
 
-Cloud random_cloud_distance(float min_dist, uint seed, const glm::vec4 &bbox)
+Cloud random_cloud_distance(float            min_dist,
+                            std::uint32_t    seed,
+                            const glm::vec4 &bbox)
 {
   auto xy = random_points_distance(min_dist, seed, bbox);
   auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
@@ -681,7 +682,7 @@ Cloud random_cloud_distance(float min_dist, uint seed, const glm::vec4 &bbox)
 Cloud random_cloud_distance(float            min_dist,
                             float            max_dist,
                             const Array     &density,
-                            uint             seed,
+                            std::uint32_t    seed,
                             const glm::vec4 &bbox)
 {
   auto xy = random_points_distance(min_dist, max_dist, density, seed, bbox);
@@ -692,7 +693,7 @@ Cloud random_cloud_distance(float            min_dist,
 Cloud random_cloud_distance_power_law(float            dist_min,
                                       float            dist_max,
                                       float            alpha,
-                                      uint             seed,
+                                      std::uint32_t    seed,
                                       const glm::vec4 &bbox)
 {
   auto xy = random_points_distance_power_law(dist_min,
@@ -707,7 +708,7 @@ Cloud random_cloud_distance_power_law(float            dist_min,
 Cloud random_cloud_distance_weibull(float            dist_min,
                                     float            lambda,
                                     float            k,
-                                    uint             seed,
+                                    std::uint32_t    seed,
                                     const glm::vec4 &bbox)
 {
   auto xy = random_points_distance_weibull(dist_min, lambda, k, seed, bbox);
@@ -718,7 +719,7 @@ Cloud random_cloud_distance_weibull(float            dist_min,
 Cloud random_cloud_jittered(size_t           count,
                             const glm::vec2 &jitter_amount,
                             const glm::vec2 &stagger_ratio,
-                            uint             seed,
+                            std::uint32_t    seed,
                             const glm::vec4 &bbox)
 {
   auto xy = random_points_jittered(count,

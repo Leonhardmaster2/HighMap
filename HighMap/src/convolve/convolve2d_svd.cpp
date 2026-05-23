@@ -1,20 +1,19 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <vector>
 
-#include <gsl/gsl_linalg.h>        // for gsl_linalg_SV_decomp
-#include <gsl/gsl_matrix_double.h> // for gsl_matrix_alloc, gsl_matrix...
-#include <gsl/gsl_vector_double.h> // for gsl_vector_alloc, gsl_vector...
+#include <gsl/gsl_linalg.h>
+#include <gsl/gsl_matrix_double.h>
+#include <gsl/gsl_vector_double.h>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/convolve.hpp"   // for convolve1d_i, convolve1d_j
-#include "highmap/operator.hpp"   // for linspace
-#include "highmap/primitives.hpp" // for white_sparse_binary
-#include "highmap/transform.hpp"  // for rotate
+#include "highmap/array.hpp"
+#include "highmap/convolve.hpp"
+#include "highmap/operator.hpp"
+#include "highmap/primitives/random.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap
 {
@@ -68,11 +67,11 @@ Array convolve2d_svd(const Array &array, const Array &kernel, int rank)
   return array_out;
 }
 
-Array convolve2d_svd_rotated_kernel(const Array &array,
-                                    const Array &kernel,
-                                    int          rank,
-                                    int          n_rotations,
-                                    uint         seed)
+Array convolve2d_svd_rotated_kernel(const Array  &array,
+                                    const Array  &kernel,
+                                    int           rank,
+                                    int           n_rotations,
+                                    std::uint32_t seed)
 {
   Array array_out = Array(array.shape);
 

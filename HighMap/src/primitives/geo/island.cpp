@@ -1,29 +1,29 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for uint
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <utility>
 
-#include <algorithm>  // for max, min
-#include <cmath>      // for cos, atan2, sin, M_PI, exp, hypot
-#include <functional> // for function
-#include <memory>     // for unique_ptr
-#include <utility>    // for move
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/filters.hpp"    // for smooth_cpulse
-#include "highmap/functions.hpp"  // for FbmFunction, NoiseFunction, Noi...
-#include "highmap/math/array.hpp" // for is_zero
-#include "highmap/math/core.hpp"  // for gain, lerp, smoothstep3
-#include "highmap/morphology.hpp" // for distance_transform
-#include "highmap/primitives.hpp" // for VoronoiReturnType, island, nois...
-#include "highmap/range.hpp"      // for maximum_smooth, minimum_smooth
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/geo.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
 
 Array island_land_mask(glm::ivec2       shape,
                        float            radius,
-                       uint             seed,
+                       std::uint32_t    seed,
                        float            displacement,
                        NoiseType        noise_type,
                        float            kw,
@@ -235,32 +235,32 @@ Array island(const Array &land_mask,
   return z_ground + z_water;
 }
 
-Array island(const Array &land_mask,
-             uint         seed,
-             float        noise_amp,
-             glm::vec2    noise_kw,
-             int          noise_octaves,
-             float        noise_rugosity,
-             float        noise_angle,
-             float        noise_k_smoothing,
-             float        apex_elevation,
-             bool         filter_distance,
-             int          filter_ir,
-             float        slope_min,
-             float        slope_max,
-             float        slope_start,
-             float        slope_end,
-             float        slope_noise_intensity,
-             float        k_smooth,
-             float        radial_noise_intensity,
-             float        helper_radial_profile_gain,
-             float        water_decay,
-             float        water_depth,
-             float        lee_angle,
-             float        lee_amp,
-             float        uplift_amp,
-             Array       *p_water_depth,
-             Array       *p_inland_mask)
+Array island(const Array  &land_mask,
+             std::uint32_t seed,
+             float         noise_amp,
+             glm::vec2     noise_kw,
+             int           noise_octaves,
+             float         noise_rugosity,
+             float         noise_angle,
+             float         noise_k_smoothing,
+             float         apex_elevation,
+             bool          filter_distance,
+             int           filter_ir,
+             float         slope_min,
+             float         slope_max,
+             float         slope_start,
+             float         slope_end,
+             float         slope_noise_intensity,
+             float         k_smooth,
+             float         radial_noise_intensity,
+             float         helper_radial_profile_gain,
+             float         water_decay,
+             float         water_depth,
+             float         lee_angle,
+             float         lee_amp,
+             float         uplift_amp,
+             Array        *p_water_depth,
+             Array        *p_inland_mask)
 {
   glm::ivec2 shape = land_mask.shape;
 

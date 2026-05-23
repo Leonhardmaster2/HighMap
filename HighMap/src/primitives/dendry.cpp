@@ -1,48 +1,47 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm>  // for copy, max
-#include <functional> // for function
-#include <memory>     // for make_unique, unique_ptr
-#include <utility>    // for move
-
-#include <opencv2/core/hal/interface.h> // for uint
+#include <algorithm>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <utility>
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 
-#include "highmap/functions.hpp" // for NoiseFunction
+#include "highmap/functions.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
 
-#include "NoiseLib/include/controlfunction.h" // for ControlFunction
-#include "NoiseLib/include/math2d.h"          // for Point2D
-#include "NoiseLib/include/noise.h"           // for Noise
+#include "NoiseLib/include/controlfunction.h"
+#include "NoiseLib/include/math2d.h"
+#include "NoiseLib/include/noise.h"
 
 #pragma GCC diagnostic pop
 
-#include "highmap/array.hpp"    // for Array
-#include "highmap/boundary.hpp" // for generate_buffered_array
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
 #include "highmap/internal/dendry_array_control_function.hpp"
-#include "highmap/operator.hpp"   // for fill_array_using_xy_fu...
-#include "highmap/primitives.hpp" // for dendry
+#include "highmap/operator.hpp"
 
 namespace hmap
 {
 
-Array dendry(glm::ivec2   shape,
-             glm::vec2    kw,
-             uint         seed,
-             Array       &control_array,
-             float        eps,
-             int          resolution,
-             float        displacement,
-             int          primitives_resolution_steps,
-             float        slope_power,
-             float        noise_amplitude_proportion,
-             bool         add_control_function,
-             float        control_function_overlap,
-             const Array *p_noise_x,
-             const Array *p_noise_y,
+Array dendry(glm::ivec2    shape,
+             glm::vec2     kw,
+             std::uint32_t seed,
+             Array        &control_array,
+             float         eps,
+             int           resolution,
+             float         displacement,
+             int           primitives_resolution_steps,
+             float         slope_power,
+             float         noise_amplitude_proportion,
+             bool          add_control_function,
+             float         control_function_overlap,
+             const Array  *p_noise_x,
+             const Array  *p_noise_y,
              const Array * /* p_stretching */,
              glm::vec4 bbox,
              int       subsampling)
@@ -101,7 +100,7 @@ Array dendry(glm::ivec2   shape,
 
 Array dendry(glm::ivec2     shape,
              glm::vec2      kw,
-             uint           seed,
+             std::uint32_t  seed,
              NoiseFunction &noise_function,
              float          noise_function_offset,
              float          noise_function_scaling,

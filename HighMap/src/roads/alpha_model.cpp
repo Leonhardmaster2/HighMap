@@ -2,18 +2,18 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <map>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for max, min
-#include <map>       // for map
-#include <utility>   // for pair
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"          // for Array
-#include "highmap/geometry/cloud.hpp" // for Cloud, interpolate_values_from...
-#include "highmap/geometry/graph.hpp" // for Graph
-#include "highmap/geometry/point.hpp" // for Point
+#include "highmap/array.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/graph.hpp"
+#include "highmap/geometry/point.hpp"
 #include "highmap/internal/vector_utils.hpp"
 
 namespace hmap
@@ -24,7 +24,7 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
                                    const std::vector<float> &size,
                                    glm::vec4                 bbox,
                                    const Array              &z,
-                                   uint                      seed,
+                                   std::uint32_t             seed,
                                    float                     alpha,
                                    int                       n_dummy_nodes,
                                    float                     dz_weight,

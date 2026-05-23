@@ -2,18 +2,17 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <algorithm> // for rotate, fill_n, max, min
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <vector>
 
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"      // for Array, operator*
-#include "highmap/boundary.hpp"   // for fill_borders, extrapolate_bo...
-#include "highmap/erosion.hpp"    // for hydraulic_benes, HMAP_DI
-#include "highmap/filters.hpp"    // for laplace
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/primitives.hpp" // for constant
-#include "highmap/range.hpp"      // for clamp_min, chop
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {
@@ -35,9 +34,9 @@ void hydraulic_benes(Array &z,
                      float  evap_rate,
                      float  rain_rate)
 {
-  std::vector<int> di = HMAP_DI;
-  std::vector<int> dj = HMAP_DJ;
-  const uint       nb = di.size();
+  std::vector<int>    di = HMAP_DI;
+  std::vector<int>    dj = HMAP_DJ;
+  const std::uint32_t nb = di.size();
 
   // keep a backup of the input if the erosion / deposition maps need
   // to be computed
@@ -75,7 +74,7 @@ void hydraulic_benes(Array &z,
         int                navg = 0;
         std::vector<float> dz(nb);
 
-        for (uint k = 0; k < nb; k++)
+        for (std::uint32_t k = 0; k < nb; k++)
         {
           int ia = i + di[k];
           int ja = j + dj[k];
@@ -108,7 +107,7 @@ void hydraulic_benes(Array &z,
 
           vel(i, j) = dw_tot;
 
-          for (uint k = 0; k < nb; k++)
+          for (std::uint32_t k = 0; k < nb; k++)
           {
             if (dz[k] > 0.f)
             {
@@ -131,7 +130,7 @@ void hydraulic_benes(Array &z,
         float              dsum = 0.f;
         std::vector<float> dz(nb);
 
-        for (uint k = 0; k < nb; k++)
+        for (std::uint32_t k = 0; k < nb; k++)
         {
           int ia = i + di[k];
           int ja = j + dj[k];
@@ -156,7 +155,7 @@ void hydraulic_benes(Array &z,
           z(i, j) -= amount;
           s(i, j) += amount;
 
-          for (uint k = 0; k < nb; k++)
+          for (std::uint32_t k = 0; k < nb; k++)
           {
             if (dz[k] > 0.f)
             {

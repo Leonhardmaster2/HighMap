@@ -1,17 +1,16 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cstddef>
+#include <vector>
 
-#include <algorithm> // for min
-#include <vector>    // for vector
+#include "macrologger.h"
 
-#include "macrologger.h" // for LOG_ERROR, LOG_INFO
+#include "highmap/geometry/path.hpp"
+#include "highmap/geometry/point.hpp"
 
-#include "highmap/geometry/path.hpp"  // for Path, assert_start_end_points
-#include "highmap/geometry/point.hpp" // for Point, distance
-
-#include <float.h> // for FLT_MAX
+#include <cfloat>
 
 namespace hmap
 {

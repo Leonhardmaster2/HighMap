@@ -1,34 +1,34 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <sys/types.h> // for size_t, uint
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <queue>
+#include <random>
+#include <vector>
 
-#include <algorithm> // for max
-#include <cmath>     // for cos, floor, hypot, pow, sin
-#include <limits>    // for numeric_limits
-#include <queue>     // for priority_queue
-#include <random>    // for uniform_real_distribution
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"            // for Array
-#include "highmap/boundary.hpp"         // for extrapolate_borders, fill_b...
-#include "highmap/filters.hpp"          // for fill_talus
-#include "highmap/geometry/cloud.hpp"   // for Cloud, random_cloud_jittered
-#include "highmap/geometry/point.hpp"   // for Point
-#include "highmap/interpolate2d.hpp"    // for interpolate2d, Interpolatio...
-#include "highmap/primitives.hpp"       // for diffusion_limited_aggregation
-#include "highmap/terrain_tri_mesh.hpp" // for TerrainTriMesh
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/interpolate2d.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/terrain_tri_mesh.hpp"
 
 namespace hmap
 {
 
-Array diffusion_limited_aggregation(glm::ivec2 shape,
-                                    float      scale,
-                                    uint       seed,
-                                    float      seeding_radius,
-                                    float      seeding_outer_radius_ratio,
-                                    float      slope,
-                                    float      noise_ratio)
+Array diffusion_limited_aggregation(glm::ivec2    shape,
+                                    float         scale,
+                                    std::uint32_t seed,
+                                    float         seeding_radius,
+                                    float         seeding_outer_radius_ratio,
+                                    float         slope,
+                                    float         noise_ratio)
 {
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
@@ -112,7 +112,7 @@ Array diffusion_limited_aggregation(glm::ivec2 shape,
 
 Array diffusion_limited_aggregation_trimesh(
     glm::ivec2            shape,
-    uint                  seed,
+    std::uint32_t         seed,
     size_t                control_points_count,
     glm::vec2             seed_position,
     float                 ratio,

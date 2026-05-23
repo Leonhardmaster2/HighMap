@@ -1,16 +1,14 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
-#include <stddef.h>       // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <vector>
 
-#include <algorithm> // for transform
-#include <cmath>     // for sqrt, exp, atan, atan2, cos, log10
-#include <vector>    // for vector
-
-#include "highmap/array.hpp"      // for Array
-#include "highmap/math/array.hpp" // for abs_smooth, lerp, smoothstep5, abs
-#include "highmap/math/core.hpp"  // for almost_unit_identity, almost_unit_...
+#include "highmap/array.hpp"
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {

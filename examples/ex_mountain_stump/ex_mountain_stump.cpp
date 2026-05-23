@@ -6,7 +6,7 @@ int main(void)
 
   glm::ivec2 shape = {256, 256};
   shape = {1024, 1024};
-  uint seed = 3;
+  std::uint32_t seed = 3;
 
   hmap::Array z1 = hmap::gpu::mountain_stump(shape, seed);
 

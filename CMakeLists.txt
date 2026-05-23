@@ -28,6 +28,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Compiler flags
 # -----------------------------------------------------------------------------
 
+add_definitions(-D_USE_MATH_DEFINES)
+
 if(MSVC)
 
   message(STATUS "Compiler: MSVC")
@@ -51,7 +53,9 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     -ffast-math
     -pthread
     -fPIC
-    -Wno-deprecated-enum-enum-conversion)
+    -Wno-deprecated-enum-enum-conversion
+    -Wno-header-guard
+    -Wno-gnu-zero-variadic-macro-arguments)
 
   add_compile_definitions(LOG_LEVEL=3)
 

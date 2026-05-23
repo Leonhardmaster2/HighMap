@@ -1,26 +1,24 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <optional>
+#include <random>
+#include <utility>
+#include <vector>
 
-#include <algorithm> // for min, max, clamp
-#include <array>     // for array
-#include <cmath>     // for M_PI_2, copysign, cos, sin
-#include <limits>    // for numeric_limits
-#include <optional>  // for optional
-#include <random>    // for normal_distribution, mt19937
-#include <utility>   // for move
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"             // for Array
-#include "highmap/geometry/grids.hpp"    // for grid_xy_vector
-#include "highmap/geometry/path.hpp"     // for Path, bezier, bezier_round
-#include "highmap/geometry/point.hpp"    // for Point, operator*, lerp, angle
-#include "highmap/interpolate1d.hpp"     // for InterpolationMethod1D
-#include "highmap/interpolate_curve.hpp" // for InterpolationMethodCurve
-#include "highmap/operator.hpp"          // for linspace
+#include "highmap/array.hpp"
+#include "highmap/geometry/grids.hpp"
+#include "highmap/geometry/path.hpp"
+#include "highmap/geometry/point.hpp"
+#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate_curve.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap
 {
@@ -245,14 +243,14 @@ Path decimate_vw(const Path &path, int n_points_target)
   return new_path;
 }
 
-Path fractalize(const Path &path,
-                int         iterations,
-                uint        seed,
-                float       sigma,
-                int         orientation,
-                float       persistence,
-                Array      *p_ctrl_array,
-                glm::vec4   bbox)
+Path fractalize(const Path   &path,
+                int           iterations,
+                std::uint32_t seed,
+                float         sigma,
+                int           orientation,
+                float         persistence,
+                Array        *p_ctrl_array,
+                glm::vec4     bbox)
 {
   Path new_path = path;
 
@@ -339,7 +337,7 @@ Path inflate(const Path &path, float radius, bool resample)
 Path meanderize(const Path            &path,
                 float                  ratio,
                 float                  noise_ratio,
-                uint                   seed,
+                std::uint32_t          seed,
                 int                    iterations,
                 int                    edge_divisions,
                 Path::EdgeDivisionMode edm)

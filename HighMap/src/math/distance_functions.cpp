@@ -1,14 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <bits/std_abs.h> // for abs
+#include <cmath>
+#include <functional>
 
-#include <cmath>      // for sqrt
-#include <functional> // for function
-
-#include "highmap/math/core.hpp"               // for abs_smooth, smoothstep3
-#include "highmap/math/distance_functions.hpp" // for DistanceFunction, get...
-#include "highmap/range.hpp"                   // for maximum_smooth
+#include "highmap/math/core.hpp"
+#include "highmap/math/distance_functions.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap
 {

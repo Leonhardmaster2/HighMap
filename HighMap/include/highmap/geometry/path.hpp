@@ -74,7 +74,7 @@ public:
    * @param seed    Random seed number for generating random values.
    * @param bbox    Bounding box for random point generation.
    */
-  Path(int npoints, uint seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f})
+  Path(int npoints, std::uint32_t seed, glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f})
       : Cloud(npoints, seed, bbox){};
 
   /**
@@ -625,14 +625,14 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  * **Result**
  * @image html ex_path_fractalize.png
  */
-Path fractalize(const Path &path,
-                int         iterations,
-                uint        seed,
-                float       sigma = 0.2f,
-                int         orientation = 0,
-                float       persistence = 1.f,
-                Array      *p_control_field = nullptr,
-                glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f});
+Path fractalize(const Path   &path,
+                int           iterations,
+                std::uint32_t seed,
+                float         sigma = 0.2f,
+                int           orientation = 0,
+                float         persistence = 1.f,
+                Array        *p_control_field = nullptr,
+                glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Inflate (offset) a path along its normals using curvature.
@@ -686,7 +686,7 @@ Path meanderize(
     const Path            &path,
     float                  ratio,
     float                  noise_ratio = 0.1f,
-    uint                   seed = 1,
+    std::uint32_t          seed = 1,
     int                    iterations = 1,
     int                    edge_divisions = 10,
     Path::EdgeDivisionMode edm = Path::EdgeDivisionMode::EDM_PER_EDGE);

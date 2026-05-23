@@ -1,23 +1,22 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <stddef.h> // for size_t
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <limits>
+#include <vector>
 
-#include <algorithm> // for clamp
-#include <cmath>     // for M_SQRT1_2, pow, atan2, log
-#include <limits>    // for numeric_limits
-#include <vector>    // for vector
-
-#include <opencv2/core/hal/interface.h> // for uint
-
-#include "highmap/array.hpp"               // for Array, operator*
-#include "highmap/boundary.hpp"            // for fill_borders
-#include "highmap/functions.hpp"           // for NoiseType
-#include "highmap/gradient.hpp"            // for gradient_talus
-#include "highmap/hydrology/hydrology.hpp" // for flow_accumulation_dinf
-#include "highmap/math/core.hpp"           // for fast_exp, fast_log
-#include "highmap/primitives.hpp"          // for constant, noise
-#include "highmap/range.hpp"               // for clamp, clamp_max
+#include "highmap/array.hpp"
+#include "highmap/boundary.hpp"
+#include "highmap/functions.hpp"
+#include "highmap/gradient.hpp"
+#include "highmap/hydrology/hydrology.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
+#include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
 
 // neighbor pattern search based on D8 flow direction neighborhood
 // coding
@@ -109,14 +108,14 @@ Array flow_accumulation_dinf(const Array &z, float talus_ref)
   return facc;
 }
 
-Array flow_accumulation_dinf_perturbed(const Array &z,
-                                       float        talus_ref,
-                                       int          nsamples,
-                                       glm::vec2    kw,
-                                       uint         seed,
-                                       float        amp,
-                                       const Array *p_perturb_scaling,
-                                       glm::vec4    bbox)
+Array flow_accumulation_dinf_perturbed(const Array  &z,
+                                       float         talus_ref,
+                                       int           nsamples,
+                                       glm::vec2     kw,
+                                       std::uint32_t seed,
+                                       float         amp,
+                                       const Array  *p_perturb_scaling,
+                                       glm::vec4     bbox)
 {
   const glm::ivec2 shape = z.shape;
   Array            facc(shape);
@@ -248,7 +247,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
   const std::vector<float> c = HMAP_DINF_C;
   const std::vector<float> ecl = HMAP_DINF_ECL;
 
-  const uint nb = di.size();
+  const std::uint32_t nb = di.size();
 
   // flow-partition exponent (Qin et al. 2007)
   Array p = Array(z.shape);
@@ -263,7 +262,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
 
   std::vector<float> cell_angles;
 
-  for (uint k = 0; k < nb; k++)
+  for (std::uint32_t k = 0; k < nb; k++)
   {
     float alpha = std::atan2((float)dj[k], (float)di[k]);
     cell_angles.push_back(alpha);
@@ -274,7 +273,7 @@ Array flow_direction_dinf_angle(const Array &z, float talus_ref)
     {
       float sum = 0.f;
 
-      for (uint k = 0; k < nb; k++)
+      for (std::uint32_t k = 0; k < nb; k++)
       {
         float dz = z(i, j) - z(i + di[k], j + dj[k]);
         if (dz > 0.f)

@@ -2,8 +2,8 @@
 
 int main(void)
 {
-  glm::ivec2 shape = {256, 256};
-  uint       seed = 1;
+  glm::ivec2    shape = {256, 256};
+  std::uint32_t seed = 1;
 
   auto noise = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, {2, 2}, seed);
   hmap::remap(noise, 0.f, 0.2f);

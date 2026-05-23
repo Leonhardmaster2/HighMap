@@ -1,11 +1,11 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include "highmap/array.hpp"      // for Array, operator*, operator+
-#include "highmap/filters.hpp"    // for gamma_correction
-#include "highmap/morphology.hpp" // for morphological_gradient
-#include "highmap/range.hpp"      // for clamp_max_smooth, maximum_smooth
-#include "highmap/selector.hpp"   // for select_rivers, select_soil_flow
+#include "highmap/array.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/morphology.hpp"
+#include "highmap/range.hpp"
+#include "highmap/selector.hpp"
 
 namespace hmap::gpu
 {

@@ -1,32 +1,33 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <vector>    // for vector
+#include <algorithm>
+#include <cstdint>
+#include <vector>
 
-#include "highmap/array.hpp"   // for Array, operator*
-#include "highmap/erosion.hpp" // for strata_plates
-#include "highmap/filters.hpp" // for project_talus_along_direction
+#include "highmap/array.hpp"
+#include "highmap/erosion.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/math/array.hpp" // for lerp
-#include "highmap/math/core.hpp"  // for triangle
-#include "highmap/transform.hpp"  // for warp
+#include "highmap/math/array.hpp"
+#include "highmap/math/core.hpp"
+#include "highmap/transform.hpp"
 
 namespace hmap::gpu
 {
 
-void strata_plates(Array       &z,
-                   const Array &talus,
-                   int          direction_offset,
-                   int          direction_count,
-                   bool         random_directions,
-                   uint         seed,
-                   float        vmin,
-                   float        skew,
-                   float        mix_ratio,
-                   const Array *p_mask,
-                   const Array *p_dx,
-                   const Array *p_dy)
+void strata_plates(Array        &z,
+                   const Array  &talus,
+                   int           direction_offset,
+                   int           direction_count,
+                   bool          random_directions,
+                   std::uint32_t seed,
+                   float         vmin,
+                   float         skew,
+                   float         mix_ratio,
+                   const Array  *p_mask,
+                   const Array  *p_dx,
+                   const Array  *p_dy)
 {
   // --- List of directions to project the talus along
 

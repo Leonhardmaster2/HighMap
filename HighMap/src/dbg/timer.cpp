@@ -2,9 +2,13 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
-#include <iomanip>  // for operator<<, setw
-#include <iostream> // for basic_ostream, char_traits, cout, operator<<, endl
-#include <utility>  // for pair
+#include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <list>
+#include <map>
+#include <string>
+#include <utility>
 
 #include "highmap/dbg/timer.hpp"
 

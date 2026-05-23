@@ -1,12 +1,12 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <algorithm> // for min
-#include <string>    // for allocator, operator+, char_traits
+#include <algorithm>
+#include <string>
 
-#include "highmap/array.hpp" // for Array
+#include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
-#include "highmap/math/core.hpp" // for ceil_div
+#include "highmap/math/core.hpp"
 
 namespace hmap
 {
