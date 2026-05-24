@@ -47,7 +47,7 @@ Use `PowerShell` to clone the repository (because Visual Studio won't clone the 
 
 Install the missing OpenSource dependencies using `vcpkg`:
 ```
-vcpkg install libpng glm ocl-icd-opencl-dev assimp opencv
+vcpkg install libpng glm opencl assimp opencv[openexr]
 ```
 
 You should then be able to build the sources using Visual Studio.
