@@ -208,7 +208,9 @@ Array rift(glm::ivec2    shape,
            const Array  *p_noise_r = nullptr,
            const Array  *p_noise_offset = nullptr,
            glm::vec2     center = {0.5f, 0.5f},
-           glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+           glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
+           Array        *p_rift_mask = nullptr,
+           Array        *p_bottom_mask = nullptr);
 
 } // namespace hmap
 

@@ -30,7 +30,9 @@ Array rift(glm::ivec2    shape,
            const Array  *p_noise_r,
            const Array  *p_noise_offset,
            glm::vec2     center,
-           glm::vec4     bbox)
+           glm::vec4     bbox,
+           Array        *p_rift_mask = nullptr,
+           Array        *p_bottom_mask = nullptr)
 {
   const float alpha = angle / 180.f * M_PI;
   const float ca = std::cos(alpha);
@@ -75,8 +77,10 @@ Array rift(glm::ivec2    shape,
 
       // --- Transverse profile
 
-      float current_radius = scale_with_depth ? radius * current_depth / depth
-                                              : radius;
+      float current_radius = scale_with_depth
+                                 ? radius *
+                                       std::max(1e-3f, current_depth / depth)
+                                 : radius;
 
       float d = std::abs(ds + (-dx * sa + dy * ca) / current_radius);
       d = std::max(0.f, d + dr);
@@ -98,15 +102,15 @@ Array rift(glm::ivec2    shape,
       }
       else
       {
-        z(i, j) = outer_slope * (d - 1.f) * radius;
+        z(i, j) = outer_slope * (d - 1.f) * current_radius;
       }
 
       rift_mask(i, j) = std::min(1.f, d);
     }
 
-  z.infos();
-  rift_mask.dump("mask.png");
-  bottom_mask.dump("bottom_mask.png");
+  if (p_rift_mask) *p_rift_mask = rift_mask;
+
+  if (p_bottom_mask) *p_bottom_mask = bottom_mask;
 
   return z;
 }
