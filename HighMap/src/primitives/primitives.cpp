@@ -286,35 +286,6 @@ Array rectangle(glm::ivec2   shape,
   return array;
 }
 
-Array rift(glm::ivec2   shape,
-           float        angle,
-           float        slope,
-           float        width,
-           bool         sharp_bottom,
-           const Array *p_ctrl_param,
-           const Array *p_noise_x,
-           const Array *p_noise_y,
-           const Array *p_stretching,
-           glm::vec2    center,
-           glm::vec4    bbox)
-{
-  Array              array = Array(shape);
-  hmap::RiftFunction f = hmap::RiftFunction(angle,
-                                            slope,
-                                            width,
-                                            sharp_bottom,
-                                            center);
-
-  fill_array_using_xy_function(array,
-                               bbox,
-                               p_ctrl_param,
-                               p_noise_x,
-                               p_noise_y,
-                               p_stretching,
-                               f.get_delegate());
-  return array;
-}
-
 Array slope(glm::ivec2   shape,
             float        angle,
             float        slope,

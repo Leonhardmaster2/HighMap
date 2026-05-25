@@ -11,6 +11,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {
@@ -154,21 +155,36 @@ Array island_land_mask(glm::ivec2       shape,
                        const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
- * @brief Return a rift function (Heaviside with an optional talus slope at the
- * transition).
+ * @brief Generate a rift-shaped primitive.
  *
- * @param  shape                Array shape.
- * @param  angle                Overall rotation angle (in degree).
- * @param  slope                Step slope (assuming a unit domain).
- * @param  width                Rift width (assuming a unit domain).
- * @param  sharp_bottom         Decide whether the rift bottom is sharp or not.
- * @param  p_ctrl_param         Reference to the control parameter array (acts
- *                              as a multiplier for the width parameter).
- * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
- * @param  p_stretching         Local coordinate multiplier.
- * @param  center               Primitive reference center.
+ * Creates a longitudinal depression centered around a rotated axis. The rift
+ * shape is defined by an outer radial profile, an optional bottom profile, and
+ * configurable inner/outer slopes. Noise fields can be used to locally perturb
+ * the radius and axial offset of the structure.
+ *
+ * @param  shape                Output array shape.
+ * @param  angle                Rift orientation angle in degrees.
+ * @param  radius               Rift half-width in normalized domain units.
+ * @param  axial_slope          Longitudinal slope applied along the rift axis.
+ * @param  depth                Rift depth amplitude.
+ * @param  scale_with_depth     If true, scale radial features proportionally to
+ *                              the depth value.
+ * @param  profile              Radial profile used for the outer rift shape.
+ * @param  profile_param        Additional parameter for the outer profile.
+ * @param  bottom_extent        Relative extent of the flat or inner bottom
+ *                              region inside the rift.
+ * @param  bottom_depth         Additional depth contribution applied to the
+ *                              bottom region.
+ * @param  bottom_profile       Radial profile used for the bottom region.
+ * @param  bottom_profile_param Additional parameter for the bottom profile.
+ * @param  outer_slope          Slope factor controlling the outer falloff.
+ * @param  p_noise_r            Optional noise array used to locally modulate
+ *                              the rift radius.
+ * @param  p_noise_offset       Optional noise array used to locally offset the
+ *                              rift axis position.
+ * @param  center               Rift center in normalized coordinates.
  * @param  bbox                 Domain bounding box.
- * @return                      Array New array.
+ * @return                      Generated rift array.
  *
  * **Example**
  * @include ex_rift.cpp
@@ -176,17 +192,23 @@ Array island_land_mask(glm::ivec2       shape,
  * **Result**
  * @image html ex_rift.png
  */
-Array rift(glm::ivec2   shape,
-           float        angle,
-           float        slope,
-           float        width,
-           bool         sharp_bottom = false,
-           const Array *p_ctrl_param = nullptr,
-           const Array *p_noise_x = nullptr,
-           const Array *p_noise_y = nullptr,
-           const Array *p_stretching = nullptr,
-           glm::vec2    center = {0.5f, 0.5f},
-           glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+Array rift(glm::ivec2    shape,
+           float         angle,
+           float         radius = 0.1f,
+           float         axial_slope = 0.2f,
+           float         depth = 0.5f,
+           bool          scale_with_depth = true,
+           RadialProfile profile = RadialProfile::RP_SMOOTHSTEP,
+           float         profile_param = 0.f,
+           float         bottom_extent = 0.1,
+           float         bottom_depth = 0.05f,
+           RadialProfile bottom_profile = RadialProfile::RP_SQRT,
+           float         bottom_profile_param = 0.f,
+           float         outer_slope = 0.5f,
+           const Array  *p_noise_r = nullptr,
+           const Array  *p_noise_offset = nullptr,
+           glm::vec2     center = {0.5f, 0.5f},
+           glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
 
