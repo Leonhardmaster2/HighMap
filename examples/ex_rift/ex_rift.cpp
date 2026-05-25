@@ -3,7 +3,6 @@
 int main(void)
 {
   glm::ivec2 shape = {256, 256};
-  shape = {1024, 1024};
 
   // --- Base noise for displacement
 
