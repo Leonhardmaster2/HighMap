@@ -4,7 +4,7 @@ var geo_8hpp =
     [ "caldera", "geo_8hpp.html#aaa2b720ef7b261b4eb2f1e89838a538e", null ],
     [ "crater", "geo_8hpp.html#a2651fce70d267d4e115873dce4749ce1", null ],
     [ "island_land_mask", "geo_8hpp.html#a8f68239db7ea7bdf2177e0290f4fd250", null ],
-    [ "rift", "geo_8hpp.html#acd15d1b7a9d601a246f0b5ef3f17fb6c", null ],
+    [ "rift", "geo_8hpp.html#a9d5e5da97df0e7f943e355d2ef0875ff", null ],
     [ "badlands", "geo_8hpp.html#a54906b55a1c4e4efe938a780c1fb348e", null ],
     [ "basalt_field", "geo_8hpp.html#a7111b9e9f203eeaad6c912049dd25392", null ],
     [ "island", "geo_8hpp.html#ae20d5b7f78d4c3eb5064490a3a407533", null ],

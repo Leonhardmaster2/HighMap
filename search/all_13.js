@@ -100,7 +100,7 @@ var searchData=
   ['ridgelines_97',['ridgelines',['../namespacehmap.html#a74f6ef0464e0ec67df5179f49e14e35a',1,'hmap']]],
   ['ridgelines_2ecpp_98',['ridgelines.cpp',['../ridgelines_8cpp.html',1,'']]],
   ['ridgelines_5fbezier_99',['ridgelines_bezier',['../namespacehmap.html#a4e7db58b8b58def3b862476f18b6005e',1,'hmap']]],
-  ['rift_100',['rift',['../namespacehmap.html#acd15d1b7a9d601a246f0b5ef3f17fb6c',1,'hmap']]],
+  ['rift_100',['rift',['../namespacehmap.html#a9d5e5da97df0e7f943e355d2ef0875ff',1,'hmap']]],
   ['rift_2ecpp_101',['rift.cpp',['../rift_8cpp.html',1,'']]],
   ['riftfunction_102',['riftfunction',['../classhmap_1_1RiftFunction.html',1,'hmap::RiftFunction'],['../classhmap_1_1RiftFunction.html#a8fddcda6bebe0dd610191e6d887d7cc9',1,'hmap::RiftFunction::RiftFunction()']]],
   ['rifts_103',['rifts',['../namespacehmap_1_1gpu.html#ace06af8ac4d53033c221b1e0f7462a54',1,'hmap::gpu']]],

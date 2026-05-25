@@ -1,4 +1,4 @@
 var rift_8cpp =
 [
-    [ "rift", "rift_8cpp.html#acd15d1b7a9d601a246f0b5ef3f17fb6c", null ]
+    [ "rift", "rift_8cpp.html#a9d5e5da97df0e7f943e355d2ef0875ff", null ]
 ];
