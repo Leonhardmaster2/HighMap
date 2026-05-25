@@ -105,11 +105,10 @@ Array rift(glm::ivec2    shape,
         z(i, j) = outer_slope * (d - 1.f) * current_radius;
       }
 
-      rift_mask(i, j) = std::min(1.f, d);
+      rift_mask(i, j) = std::max(0.f, 1.f - d);
     }
 
   if (p_rift_mask) *p_rift_mask = rift_mask;
-
   if (p_bottom_mask) *p_bottom_mask = bottom_mask;
 
   return z;
