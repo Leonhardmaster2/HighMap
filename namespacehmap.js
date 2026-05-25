@@ -232,10 +232,10 @@ var namespacehmap =
       [ "warp", "namespacehmap_1_1gpu.html#a99659d06f84b0e92e6731f28ca28937c", null ],
       [ "helper_vflow_compute_adaptive_dt", "namespacehmap_1_1gpu.html#a88838a8a701facc69ddace7b1e98f837", null ],
       [ "helper_transform_bbox", "namespacehmap_1_1gpu.html#a757286c938a310c4e6046c5df9bb6302", null ],
+      [ "helper_bind_optional_buffers", "namespacehmap_1_1gpu.html#a27b70c333fc5550bcca1b96dcb0116fb", null ],
       [ "helper_radial_profile", "namespacehmap_1_1gpu.html#a8583f0ee018a30b63c9cacb4580cd3e9", null ],
       [ "helper_apply_leeward", "namespacehmap_1_1gpu.html#a04ae8a1ec2b8156be692aa690d32e1ff", null ],
-      [ "helper_apply_uplift", "namespacehmap_1_1gpu.html#a7aac37734b22ffed4807f274511861be", null ],
-      [ "helper_bind_optional_buffers", "namespacehmap_1_1gpu.html#a27b70c333fc5550bcca1b96dcb0116fb", null ]
+      [ "helper_apply_uplift", "namespacehmap_1_1gpu.html#a7aac37734b22ffed4807f274511861be", null ]
     ] ],
     [ "Array", "classhmap_1_1Array.html", "classhmap_1_1Array" ],
     [ "ArrayControlFunction", "classhmap_1_1ArrayControlFunction.html", "classhmap_1_1ArrayControlFunction" ],

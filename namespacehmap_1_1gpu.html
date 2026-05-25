@@ -746,14 +746,14 @@ Functions</h2></td></tr>
 <tr class="separator:a88838a8a701facc69ddace7b1e98f837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a757286c938a310c4e6046c5df9bb6302" id="r_a757286c938a310c4e6046c5df9bb6302"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a757286c938a310c4e6046c5df9bb6302">helper_transform_bbox</a> (const glm::vec4 &amp;bbox_source, const glm::vec4 &amp;bbox_target)</td></tr>
 <tr class="separator:a757286c938a310c4e6046c5df9bb6302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b70c333fc5550bcca1b96dcb0116fb" id="r_a27b70c333fc5550bcca1b96dcb0116fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a27b70c333fc5550bcca1b96dcb0116fb">helper_bind_optional_buffers</a> (clwrapper::Run &amp;run, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y)</td></tr>
+<tr class="separator:a27b70c333fc5550bcca1b96dcb0116fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8583f0ee018a30b63c9cacb4580cd3e9" id="r_a8583f0ee018a30b63c9cacb4580cd3e9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a8583f0ee018a30b63c9cacb4580cd3e9">helper_radial_profile</a> (float r, float slope_start, float slope_end, float apex_elevation, float k_smooth, float radial_gain)</td></tr>
 <tr class="separator:a8583f0ee018a30b63c9cacb4580cd3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04ae8a1ec2b8156be692aa690d32e1ff" id="r_a04ae8a1ec2b8156be692aa690d32e1ff"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a04ae8a1ec2b8156be692aa690d32e1ff">helper_apply_leeward</a> (float h, float r, float hs, float slope_max, float k_smooth, float lee_amp, float alpha, float lee_alpha)</td></tr>
 <tr class="separator:a04ae8a1ec2b8156be692aa690d32e1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aac37734b22ffed4807f274511861be" id="r_a7aac37734b22ffed4807f274511861be"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a7aac37734b22ffed4807f274511861be">helper_apply_uplift</a> (float h, float r, float slope_max, float uplift_amp, float k_smooth)</td></tr>
 <tr class="separator:a7aac37734b22ffed4807f274511861be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27b70c333fc5550bcca1b96dcb0116fb" id="r_a27b70c333fc5550bcca1b96dcb0116fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html#a27b70c333fc5550bcca1b96dcb0116fb">helper_bind_optional_buffers</a> (clwrapper::Run &amp;run, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y)</td></tr>
-<tr class="separator:a27b70c333fc5550bcca1b96dcb0116fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ab0737b29664736928a86f0755493895f" name="ab0737b29664736928a86f0755493895f"></a>
@@ -18249,6 +18249,40 @@ The sign of the SDF is negative inside polygons and positive outside.</dd></dl>
 
 </div>
 </div>
+<a id="a27b70c333fc5550bcca1b96dcb0116fb" name="a27b70c333fc5550bcca1b96dcb0116fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b70c333fc5550bcca1b96dcb0116fb">&#9670;&#160;</a></span>helper_bind_optional_buffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::gpu::helper_bind_optional_buffers </td>
+          <td>(</td>
+          <td class="paramtype">clwrapper::Run &amp;&#160;</td>
+          <td class="paramname"><em>run</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
+          <td class="paramname"><em>p_noise_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8583f0ee018a30b63c9cacb4580cd3e9" name="a8583f0ee018a30b63c9cacb4580cd3e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8583f0ee018a30b63c9cacb4580cd3e9">&#9670;&#160;</a></span>helper_radial_profile()</h2>
 
@@ -18431,40 +18465,6 @@ The sign of the SDF is negative inside polygons and positive outside.</dd></dl>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a27b70c333fc5550bcca1b96dcb0116fb" name="a27b70c333fc5550bcca1b96dcb0116fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27b70c333fc5550bcca1b96dcb0116fb">&#9670;&#160;</a></span>helper_bind_optional_buffers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::gpu::helper_bind_optional_buffers </td>
-          <td>(</td>
-          <td class="paramtype">clwrapper::Run &amp;&#160;</td>
-          <td class="paramname"><em>run</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_noise_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_noise_y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
 </div><div class="memdoc">
 
 </div>
