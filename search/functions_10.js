@@ -81,7 +81,7 @@ var searchData=
   ['reverse_5fmidpoint_78',['reverse_midpoint',['../namespacehmap.html#a6f7e6e0cffaf7d03cfe1eef62b1c3575',1,'hmap']]],
   ['ridgelines_79',['ridgelines',['../namespacehmap.html#a74f6ef0464e0ec67df5179f49e14e35a',1,'hmap']]],
   ['ridgelines_5fbezier_80',['ridgelines_bezier',['../namespacehmap.html#a4e7db58b8b58def3b862476f18b6005e',1,'hmap']]],
-  ['rift_81',['rift',['../namespacehmap.html#a808ede1d218fd226001c8f804bb85b97',1,'hmap']]],
+  ['rift_81',['rift',['../namespacehmap.html#acd15d1b7a9d601a246f0b5ef3f17fb6c',1,'hmap']]],
   ['riftfunction_82',['RiftFunction',['../classhmap_1_1RiftFunction.html#a8fddcda6bebe0dd610191e6d887d7cc9',1,'hmap::RiftFunction']]],
   ['rifts_83',['rifts',['../namespacehmap_1_1gpu.html#ace06af8ac4d53033c221b1e0f7462a54',1,'hmap::gpu']]],
   ['rot180_84',['rot180',['../namespacehmap.html#a5a621a9b245b5f9a4c9e5aa3ba3bbee0',1,'hmap']]],

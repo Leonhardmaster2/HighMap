@@ -10,5 +10,6 @@ var dir_53d4573766d056de5de1beaeca2ff3aa =
     [ "mountain_stump.cpp", "mountain__stump_8cpp.html", "mountain__stump_8cpp" ],
     [ "mountain_tibesti.cpp", "mountain__tibesti_8cpp.html", "mountain__tibesti_8cpp" ],
     [ "plates.cpp", "plates_8cpp.html", "plates_8cpp" ],
+    [ "rift.cpp", "rift_8cpp.html", "rift_8cpp" ],
     [ "shattered_peak.cpp", "shattered__peak_8cpp.html", "shattered__peak_8cpp" ]
 ];

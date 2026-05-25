@@ -11,6 +11,7 @@ var searchData=
   ['recurve_2ecpp_8',['recurve.cpp',['../recurve_8cpp.html',1,'']]],
   ['reverse_5fmidpoint_2ecpp_9',['reverse_midpoint.cpp',['../reverse__midpoint_8cpp.html',1,'']]],
   ['ridgelines_2ecpp_10',['ridgelines.cpp',['../ridgelines_8cpp.html',1,'']]],
-  ['rifts_5fgpu_2ecpp_11',['rifts_gpu.cpp',['../rifts__gpu_8cpp.html',1,'']]],
-  ['roads_2ehpp_12',['roads.hpp',['../roads_8hpp.html',1,'']]]
+  ['rift_2ecpp_11',['rift.cpp',['../rift_8cpp.html',1,'']]],
+  ['rifts_5fgpu_2ecpp_12',['rifts_gpu.cpp',['../rifts__gpu_8cpp.html',1,'']]],
+  ['roads_2ehpp_13',['roads.hpp',['../roads_8hpp.html',1,'']]]
 ];

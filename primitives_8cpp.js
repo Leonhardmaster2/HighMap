@@ -11,7 +11,6 @@ var primitives_8cpp =
     [ "gaussian_pulse", "primitives_8cpp.html#a7628beb3c72d94109fa4de260bd22453", null ],
     [ "paraboloid", "primitives_8cpp.html#a9bab88cc60ec72c09eec98f0fb9f452f", null ],
     [ "rectangle", "primitives_8cpp.html#adafc477ac182ce40ebf2cee1c84cb936", null ],
-    [ "rift", "primitives_8cpp.html#a808ede1d218fd226001c8f804bb85b97", null ],
     [ "slope", "primitives_8cpp.html#a79ad6fb857a38f8de9915d01992e5161", null ],
     [ "smooth_cosine", "primitives_8cpp.html#a41239b5831a88a5b2528f24e8c95a92a", null ],
     [ "step", "primitives_8cpp.html#a80b6038177b2ab3984cb18bd90f568fa", null ],
