@@ -234,7 +234,9 @@ var NAVTREEINDEX7 =
 "erosion__maps_8cpp.html":[5,0,1,1,12,6],
 "erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,6,0],
 "erosion__profile__function_8cpp.html":[5,0,1,1,24,2],
-"erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,0],
+"erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2],
+"erosion__profile__function_8cpp.html#a18d33562e8ffbb8be79e2ec87bcf285f":[5,0,1,1,24,2,0],
+"erosion__profile__function_8cpp.html#ad3535c9e25ba863fcfe5931ccc556ac8":[5,0,1,1,24,2,1],
 "examples.html":[6],
 "expand__talus_8cpp.html":[5,0,1,1,15,3],
 "expand__talus_8cpp.html#a8c437f3963887949da7f4433cf26bf96":[5,0,1,1,15,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,0,0,21,12],
 "export_8hpp.html#a7b8945745feaeaa365d965ce66b32f58":[5,0,1,0,0,21,2],
 "export_8hpp.html#a91708f107a53c4b8ef68bb1d0291c73f":[5,0,1,0,0,21,10],
-"export_8hpp.html#a9648a23e61a84a702d89159d516dd4ec":[5,0,1,0,0,21,7],
-"export_8hpp.html#ac2452e568959bc21c9b7b09202e5977a":[5,0,1,0,0,21,6],
-"export_8hpp.html#ac3d35efc6e5b596f508e2b17a5aa871b":[5,0,1,0,0,21,1]
+"export_8hpp.html#a9648a23e61a84a702d89159d516dd4ec":[5,0,1,0,0,21,7]
 };

@@ -1294,6 +1294,8 @@ var namespacehmap =
     [ "helper_find_up_downslope", "namespacehmap.html#a5acae3ca582cc9a70ad321ef484c05f2", null ],
     [ "is_monotonic", "namespacehmap.html#a567abeb8b68a281411d811987a84ee42", null ],
     [ "find_last_index_smaller_than", "namespacehmap.html#ad2cd9e279b20e6621b1daca2d2b732bf", null ],
+    [ "helper_wrap_phi", "namespacehmap.html#a18d33562e8ffbb8be79e2ec87bcf285f", null ],
+    [ "helper_make_wrapped", "namespacehmap.html#ad3535c9e25ba863fcfe5931ccc556ac8", null ],
     [ "helper_reconstruction_impl", "namespacehmap.html#af988efebdf30c6135f68af79aaa83605", null ],
     [ "helper_thinning", "namespacehmap.html#a2c98f2116e221df5f6684a7546bb233f", null ],
     [ "cmp_path", "namespacehmap.html#a5ce9334e0b274e48f7ba8bcaa9dd12a3", null ],
