@@ -98,7 +98,6 @@ $(document).ready(function(){initNavTree('erosion_8hpp.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">erosion.hpp File Reference</div></div>
 </div><!--header-->
@@ -113,31 +112,8 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacehmap_1_1gpu" id="r_namespacehmap_1_1gpu"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap_1_1gpu.html">hmap::gpu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a25a4e4775f3c0918ed75f0503f5ed0a6" id="r_a25a4e4775f3c0918ed75f0503f5ed0a6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">hmap::ErosionProfile</a> : int { <br />
-&#160;&#160;<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1">hmap::EP_COSINE</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02">hmap::EP_COSINE_BULK</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726">hmap::EP_COSINE_PEAK</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21">hmap::EP_PARABOL</a>
-, <br />
-&#160;&#160;<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f">hmap::EP_SAW_SHARP</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f">hmap::EP_SAW_SMOOTH</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f">hmap::EP_SHARP_VALLEYS</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae">hmap::EP_SQRT</a>
-, <br />
-&#160;&#160;<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::EP_TRIANGLE_GRENIER</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176">hmap::EP_TRIANGLE_SHARP</a>
-, <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e">hmap::EP_TRIANGLE_SMOOTH</a>
-<br />
- }</td></tr>
-<tr class="memdesc:a25a4e4775f3c0918ed75f0503f5ed0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procedural erosion angular profile type.  <a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">More...</a><br /></td></tr>
-<tr class="separator:a25a4e4775f3c0918ed75f0503f5ed0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a02f191e398bfc3c0e87999d8576d7c3d" id="r_a02f191e398bfc3c0e87999d8576d7c3d"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d">hmap::get_erosion_profile_function</a> (const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile, float delta, float &amp;profile_avg)</td></tr>
-<tr class="separator:a02f191e398bfc3c0e87999d8576d7c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a33814eb6bc286dfe516a9781819cf" id="r_a18a33814eb6bc286dfe516a9781819cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf">hmap::coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
 <tr class="memdesc:a18a33814eb6bc286dfe516a9781819cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
 <tr class="separator:a18a33814eb6bc286dfe516a9781819cf"><td class="memSeparator" colspan="2">&#160;</td></tr>

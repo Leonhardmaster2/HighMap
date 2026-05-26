@@ -1,19 +1,5 @@
 var erosion_8hpp =
 [
-    [ "ErosionProfile", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
-      [ "EP_COSINE", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
-      [ "EP_COSINE_BULK", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
-      [ "EP_COSINE_PEAK", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726", null ],
-      [ "EP_PARABOL", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21", null ],
-      [ "EP_SAW_SHARP", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f", null ],
-      [ "EP_SAW_SMOOTH", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f", null ],
-      [ "EP_SHARP_VALLEYS", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f", null ],
-      [ "EP_SQRT", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae", null ],
-      [ "EP_TRIANGLE_GRENIER", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f", null ],
-      [ "EP_TRIANGLE_SHARP", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176", null ],
-      [ "EP_TRIANGLE_SMOOTH", "erosion_8hpp.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e", null ]
-    ] ],
-    [ "get_erosion_profile_function", "erosion_8hpp.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "coastal_erosion_diffusion", "erosion_8hpp.html#a18a33814eb6bc286dfe516a9781819cf", null ],
     [ "coastal_erosion_profile", "erosion_8hpp.html#a4911ba93b495bd3f66b9f7185d5e0a23", null ],
     [ "coastal_erosion_profile", "erosion_8hpp.html#add0285443bb5059eca752eaf07202ef3", null ],

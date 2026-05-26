@@ -8,6 +8,22 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+enum \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{hmap\+::\+Erosion\+Profile}} \+: int \{ \newline
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1}{hmap\+::\+EP\+\_\+\+COSINE}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02}{hmap\+::\+EP\+\_\+\+COSINE\+\_\+\+BULK}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726}{hmap\+::\+EP\+\_\+\+COSINE\+\_\+\+PEAK}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21}{hmap\+::\+EP\+\_\+\+PARABOL}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f}{hmap\+::\+EP\+\_\+\+SAW\+\_\+\+SHARP}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f}{hmap\+::\+EP\+\_\+\+SAW\+\_\+\+SMOOTH}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f}{hmap\+::\+EP\+\_\+\+SHARP\+\_\+\+VALLEYS}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae}{hmap\+::\+EP\+\_\+\+SQRT}}
+, \newline
+\mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f}{hmap\+::\+EP\+\_\+\+TRIANGLE\+\_\+\+GRENIER}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176}{hmap\+::\+EP\+\_\+\+TRIANGLE\+\_\+\+SHARP}}
+, \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e}{hmap\+::\+EP\+\_\+\+TRIANGLE\+\_\+\+SMOOTH}}
+ \}
+\begin{DoxyCompactList}\small\item\em Procedural erosion angular profile type. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{hmap\+::\+Phasor\+Profile}} \+: int \{ \newline
 \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+BULKY}}
 , \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1}{hmap\+::\+PP\+\_\+\+COSINE\+\_\+\+PEAKY}}
@@ -32,6 +48,8 @@ enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{hmap\+::\
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc3c0e87999d8576d7c3d}{hmap\+::get\+\_\+erosion\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile, float delta, float \&profile\+\_\+avg)
+\begin{DoxyCompactList}\small\item\em Generates a function representing an erosion profile based on the specified type and parameters. \end{DoxyCompactList}\item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a3e2e333ca90c11a997a9ac04361b1741}{hmap\+::get\+\_\+phasor\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+Profile}} phasor\+\_\+profile, float delta, float \texorpdfstring{$\ast$}{*}p\+\_\+profile\+\_\+avg=nullptr)
 \begin{DoxyCompactList}\small\item\em Generates a function representing a phasor profile based on the specified type and parameters. \end{DoxyCompactList}\item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a6558dec0d9f57bbc8f9ef9b2fe324757}{hmap\+::get\+\_\+radial\+\_\+profile\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+Profile}} radial\+\_\+profile, float delta)

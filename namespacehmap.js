@@ -388,19 +388,6 @@ var namespacehmap =
       [ "CT_RING", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aac4f3d851c4c1680752dea7ea24fe02ed", null ],
       [ "CT_ROTOR", "namespacehmap.html#ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12", null ]
     ] ],
-    [ "ErosionProfile", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
-      [ "EP_COSINE", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
-      [ "EP_COSINE_BULK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
-      [ "EP_COSINE_PEAK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726", null ],
-      [ "EP_PARABOL", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21", null ],
-      [ "EP_SAW_SHARP", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f", null ],
-      [ "EP_SAW_SMOOTH", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f", null ],
-      [ "EP_SHARP_VALLEYS", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f", null ],
-      [ "EP_SQRT", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae", null ],
-      [ "EP_TRIANGLE_GRENIER", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f", null ],
-      [ "EP_TRIANGLE_SHARP", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176", null ],
-      [ "EP_TRIANGLE_SMOOTH", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e", null ]
-    ] ],
     [ "MeshType", "namespacehmap.html#ac81a92060b89699c4eb9826495d87250", [
       [ "TRI_OPTIMIZED", "namespacehmap.html#ac81a92060b89699c4eb9826495d87250a64d964458b2812e59ec68af2ee53a8ae", null ],
       [ "TRI", "namespacehmap.html#ac81a92060b89699c4eb9826495d87250a68dced9d7f19cbd741feae05ad17ca14", null ]
@@ -497,6 +484,19 @@ var namespacehmap =
       [ "EUCLIDIAN", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781", null ],
       [ "EUCLISHEV", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec", null ],
       [ "MANHATTAN", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63", null ]
+    ] ],
+    [ "ErosionProfile", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
+      [ "EP_COSINE", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
+      [ "EP_COSINE_BULK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
+      [ "EP_COSINE_PEAK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726", null ],
+      [ "EP_PARABOL", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21", null ],
+      [ "EP_SAW_SHARP", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a993ff6b03f892d19c56227ffbbbfd93f", null ],
+      [ "EP_SAW_SMOOTH", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a98a4bd25b2a1f7d7933942b2fca9bc0f", null ],
+      [ "EP_SHARP_VALLEYS", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a86984b9d7ea6041722ae4f3f40b3eb3f", null ],
+      [ "EP_SQRT", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6ad2cbba7068fc06688723838cc6de36ae", null ],
+      [ "EP_TRIANGLE_GRENIER", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f", null ],
+      [ "EP_TRIANGLE_SHARP", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6abd62370bad5912fe7918895b6ddb0176", null ],
+      [ "EP_TRIANGLE_SMOOTH", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e", null ]
     ] ],
     [ "PhasorProfile", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241a", [
       [ "PP_COSINE_BULKY", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa7ad40d540d30fb8f26a09ab9bd1e3ae7", null ],
@@ -650,7 +650,6 @@ var namespacehmap =
     [ "assert_almost_equal", "namespacehmap.html#a7d7c20120bea803d47a9a8394007e383", null ],
     [ "is_subset", "namespacehmap.html#a199fe70937b1653266fe9c9bedc4653d", null ],
     [ "print_array", "namespacehmap.html#a8198f43613e6d5926a01fd7e44444094", null ],
-    [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "coastal_erosion_diffusion", "namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf", null ],
     [ "coastal_erosion_profile", "namespacehmap.html#a4911ba93b495bd3f66b9f7185d5e0a23", null ],
     [ "coastal_erosion_profile", "namespacehmap.html#add0285443bb5059eca752eaf07202ef3", null ],
@@ -1053,6 +1052,7 @@ var namespacehmap =
     [ "trapeze_smooth", "namespacehmap.html#a0a3ae79b31c4eebc54ae686d5ba558a3", null ],
     [ "triangle", "namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4", null ],
     [ "get_distance_function", "namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf", null ],
+    [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "get_phasor_profile_function", "namespacehmap.html#a3e2e333ca90c11a997a9ac04361b1741", null ],
     [ "get_radial_profile_function", "namespacehmap.html#a6558dec0d9f57bbc8f9ef9b2fe324757", null ],
     [ "area_remove", "namespacehmap.html#ad5e2af6d9a9f26690998f2c26865444a", null ],
