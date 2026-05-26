@@ -1,6 +1,5 @@
 var dir_0bf1ee9fe46ee2bf62e5950819479add =
 [
-    [ "functions", "dir_8cc90c46a26b90d4af31acb1c885d7e3.html", "dir_8cc90c46a26b90d4af31acb1c885d7e3" ],
     [ "dendry.cpp", "dendry_8cpp.html", "dendry_8cpp" ],
     [ "diffusion_limited_aggregation.cpp", "diffusion__limited__aggregation_8cpp.html", "diffusion__limited__aggregation_8cpp" ],
     [ "gabor.cpp", "gabor_8cpp.html", "gabor_8cpp" ],

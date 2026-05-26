@@ -1783,7 +1783,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- all profiles</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> profiles = <a class="code hl_function" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a>();</div>
+<div class="line">  <span class="keyword">auto</span> profiles = hmap::check_erosion_profile_function();</div>
 <div class="line"> </div>
 <div class="line">  std::vector&lt;hmap::Array&gt; stack = {z0};</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ep : profiles)</div>
@@ -1802,7 +1802,6 @@ Functions</h2></td></tr>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_a99e82fd045db7e5fddd177449289c3b6"><div class="ttname"><a href="namespacehmap_1_1gpu.html#a99e82fd045db7e5fddd177449289c3b6">hmap::gpu::hydraulic_procedural</a></div><div class="ttdeci">void hydraulic_procedural(Array &amp;z, float kp_global, float c_erosion, std::uint32_t seed, ErosionProfile erosion_profile=ErosionProfile::EP_TRIANGLE_GRENIER, float erosion_profile_parameter=0.01f, float angle_shift=0.f, float phase_smoothing=0.1f, float talus_ref=0.001f, float gradient_scaling_ratio=1.f, float gradient_power=0.8f, bool exclude_ridges=true, bool apply_deposition=false, float deposition_strength=1.f, bool enable_default_noise=true, float noise_amp=0.01f, const Array *p_kp_multiplier=nullptr, const Array *p_angle_shift=nullptr, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, Array *p_ridge_mask=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Apply phase-guided hydraulic procedural erosion to a heightmap.</div><div class="ttdef"><b>Definition</b> hydraulic_procedural.cpp:24</div></div>
 <div class="ttc" id="anamespacehmap_html_a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f"><div class="ttname"><a href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a61a4a71c0e8d1a97da9657b03d51680f">hmap::EP_TRIANGLE_GRENIER</a></div><div class="ttdeci">@ EP_TRIANGLE_GRENIER</div><div class="ttdef"><b>Definition</b> erosion.hpp:43</div></div>
 <div class="ttc" id="anamespacehmap_html_ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed"><div class="ttname"><a href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195ac5113a637d69eb3c549e6d561da167ed">hmap::SIMPLEX2</a></div><div class="ttdeci">@ SIMPLEX2</div><div class="ttdoc">OpenSimplex2.</div><div class="ttdef"><b>Definition</b> functions.hpp:72</div></div>
-<div class="ttc" id="anamespacehmap_html_ac718f038155dde59fb50eb22684ed255"><div class="ttname"><a href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a></div><div class="ttdeci">std::vector&lt; hmap::ErosionProfile &gt; check_erosion_profile_function(float delta=0.01f)</div><div class="ttdef"><b>Definition</b> get_erosion_profile_function.cpp:18</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_hydraulic_procedural.png" alt=""/>
 </div>
@@ -2045,7 +2044,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// --- all profiles</span></div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> profiles = <a class="code hl_function" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">hmap::check_erosion_profile_function</a>();</div>
+<div class="line">  <span class="keyword">auto</span> profiles = hmap::check_erosion_profile_function();</div>
 <div class="line"> </div>
 <div class="line">  std::vector&lt;hmap::Array&gt; stack = {z0};</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ep : profiles)</div>

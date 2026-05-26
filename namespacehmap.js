@@ -503,7 +503,8 @@ var namespacehmap =
       [ "PP_COSINE_PEAKY", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1", null ],
       [ "PP_COSINE_SQUARE", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc", null ],
       [ "PP_COSINE_STD", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319", null ],
-      [ "PP_TRIANGLE", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2", null ]
+      [ "PP_TRIANGLE", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2", null ],
+      [ "PP_DUNE", "namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2", null ]
     ] ],
     [ "RadialProfile", "namespacehmap.html#a2affc745bc33b7555352665745741f90", [
       [ "RP_GAIN", "namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba", null ],
@@ -650,7 +651,6 @@ var namespacehmap =
     [ "is_subset", "namespacehmap.html#a199fe70937b1653266fe9c9bedc4653d", null ],
     [ "print_array", "namespacehmap.html#a8198f43613e6d5926a01fd7e44444094", null ],
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
-    [ "check_erosion_profile_function", "namespacehmap.html#ac718f038155dde59fb50eb22684ed255", null ],
     [ "coastal_erosion_diffusion", "namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf", null ],
     [ "coastal_erosion_profile", "namespacehmap.html#a4911ba93b495bd3f66b9f7185d5e0a23", null ],
     [ "coastal_erosion_profile", "namespacehmap.html#add0285443bb5059eca752eaf07202ef3", null ],

@@ -403,6 +403,7 @@ enum \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241a}{Phasor\+P
 , \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319}{PP\+\_\+\+COSINE\+\_\+\+STD}}
 , \newline
 \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}{PP\+\_\+\+TRIANGLE}}
+, \mbox{\hyperlink{namespacehmap_a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2}{PP\+\_\+\+DUNE}}
  \}
 \begin{DoxyCompactList}\small\item\em Phasor angular profile type. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespacehmap_a2affc745bc33b7555352665745741f90}{Radial\+Profile}} \+: int \{ \newline
@@ -632,8 +633,6 @@ bool \mbox{\hyperlink{namespacehmap_a199fe70937b1653266fe9c9bedc4653d}{is\+\_\+s
 void \mbox{\hyperlink{namespacehmap_a8198f43613e6d5926a01fd7e44444094}{print\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&arr, bool show\+\_\+coords=false, int width=6, int precision=2)
 \item 
 std\+::function$<$ float(float)$>$ \mbox{\hyperlink{namespacehmap_a02f191e398bfc3c0e87999d8576d7c3d}{get\+\_\+erosion\+\_\+profile\+\_\+function}} (const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&erosion\+\_\+profile, float delta, float \&profile\+\_\+avg)
-\item 
-std\+::vector$<$ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{hmap\+::\+Erosion\+Profile}} $>$ \mbox{\hyperlink{namespacehmap_ac718f038155dde59fb50eb22684ed255}{check\+\_\+erosion\+\_\+profile\+\_\+function}} (float delta=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
 void \mbox{\hyperlink{namespacehmap_a18a33814eb6bc286dfe516a9781819cf}{coastal\+\_\+erosion\+\_\+diffusion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&water\+\_\+depth, float additional\+\_\+depth, int iterations=10, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask=nullptr, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+water\+\_\+mask=nullptr)
 \begin{DoxyCompactList}\small\item\em Simulates terrain diffusion due to coastal erosion. \end{DoxyCompactList}\item 
@@ -2747,6 +2746,10 @@ PP\+\_\+\+COSINE\+\_\+\+STD&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_TRIANGLE@{PP\_TRIANGLE}!hmap@{hmap}}\index{hmap@{hmap}!PP\_TRIANGLE@{PP\_TRIANGLE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2} 
 PP\+\_\+\+TRIANGLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PP\_DUNE@{PP\_DUNE}!hmap@{hmap}}\index{hmap@{hmap}!PP\_DUNE@{PP\_DUNE}}}\Hypertarget{namespacehmap_a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2}\label{namespacehmap_a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2} 
+PP\+\_\+\+DUNE&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -6398,12 +6401,6 @@ Computes various curvature descriptors from the input array {\ttfamily z}. If {\
 \index{get\_erosion\_profile\_function@{get\_erosion\_profile\_function}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{get\_erosion\_profile\_function()}{get\_erosion\_profile\_function()}}
 {\footnotesize\ttfamily std\+::function$<$ float(float)$>$ hmap\+::get\+\_\+erosion\+\_\+profile\+\_\+function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} \&}]{erosion\+\_\+profile,  }\item[{float}]{delta,  }\item[{float \&}]{profile\+\_\+avg }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacehmap_ac718f038155dde59fb50eb22684ed255}\label{namespacehmap_ac718f038155dde59fb50eb22684ed255} 
-\index{hmap@{hmap}!check\_erosion\_profile\_function@{check\_erosion\_profile\_function}}
-\index{check\_erosion\_profile\_function@{check\_erosion\_profile\_function}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{check\_erosion\_profile\_function()}{check\_erosion\_profile\_function()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespacehmap_a25a4e4775f3c0918ed75f0503f5ed0a6}{Erosion\+Profile}} $>$ hmap\+::check\+\_\+erosion\+\_\+profile\+\_\+function (\begin{DoxyParamCaption}\item[{float}]{delta = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a18a33814eb6bc286dfe516a9781819cf}\label{namespacehmap_a18a33814eb6bc286dfe516a9781819cf} 
 \index{hmap@{hmap}!coastal\_erosion\_diffusion@{coastal\_erosion\_diffusion}}

@@ -590,6 +590,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319">PP_COSINE_STD</a>
 , <br />
 &#160;&#160;<a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2">PP_TRIANGLE</a>
+, <a class="el" href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2">PP_DUNE</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a67d6620c147710ebb09b64f0f738241a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Phasor angular profile type.  <a href="namespacehmap.html#a67d6620c147710ebb09b64f0f738241a">More...</a><br /></td></tr>
@@ -897,8 +898,6 @@ Functions</h2></td></tr>
 <tr class="separator:a8198f43613e6d5926a01fd7e44444094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02f191e398bfc3c0e87999d8576d7c3d" id="r_a02f191e398bfc3c0e87999d8576d7c3d"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d">get_erosion_profile_function</a> (const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile, float delta, float &amp;profile_avg)</td></tr>
 <tr class="separator:a02f191e398bfc3c0e87999d8576d7c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac718f038155dde59fb50eb22684ed255" id="r_ac718f038155dde59fb50eb22684ed255"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">hmap::ErosionProfile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac718f038155dde59fb50eb22684ed255">check_erosion_profile_function</a> (float delta=0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="separator:ac718f038155dde59fb50eb22684ed255"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a33814eb6bc286dfe516a9781819cf" id="r_a18a33814eb6bc286dfe516a9781819cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a18a33814eb6bc286dfe516a9781819cf">coastal_erosion_diffusion</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;water_depth, float additional_depth, int iterations=10, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask=nullptr, <a class="el" href="classhmap_1_1Array.html">Array</a> *p_water_mask=nullptr)</td></tr>
 <tr class="memdesc:a18a33814eb6bc286dfe516a9781819cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates terrain diffusion due to coastal erosion.  <br /></td></tr>
 <tr class="separator:a18a33814eb6bc286dfe516a9781819cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3392,6 +3391,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc" name="a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc"></a>PP_COSINE_SQUARE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319" name="a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319"></a>PP_COSINE_STD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2" name="a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2"></a>PP_TRIANGLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2" name="a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2"></a>PP_DUNE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -6670,7 +6670,7 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a281c9db00eef9735e8eea7bbf50f3e34"><div class="ttname"><a href="namespacehmap.html#a281c9db00eef9735e8eea7bbf50f3e34">hmap::bspline</a></div><div class="ttdeci">Path bspline(const Path &amp;path, int edge_divisions=10, Path::EdgeDivisionMode edm=Path::EdgeDivisionMode::EDM_PER_EDGE)</div><div class="ttdoc">Smooth the path using B-Spline curves.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:154</div></div>
-<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RP_GAIN</a></div><div class="ttdeci">@ RP_GAIN</div><div class="ttdef"><b>Definition</b> profiles.hpp:33</div></div>
+<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba">hmap::RP_GAIN</a></div><div class="ttdeci">@ RP_GAIN</div><div class="ttdef"><b>Definition</b> profiles.hpp:34</div></div>
 <div class="ttc" id="anamespacehmap_html_a505d334a39df55be569fbc1c1f640042"><div class="ttname"><a href="namespacehmap.html#a505d334a39df55be569fbc1c1f640042">hmap::find_cut_path_dijkstra</a></div><div class="ttdeci">Path find_cut_path_dijkstra(const Array &amp;z, DomainBoundary start, DomainBoundary end, float dijk_elevation_ratio=0.9f, float dijk_distance_exponent=2.f, float dijk_upward_penalization=100.f, std::uint32_t seed=0, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</div><div class="ttdoc">Find a Dijkstra-based cut path between two domain boundaries.</div><div class="ttdef"><b>Definition</b> find_cut_path.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_a5f979c31af1c9ee6ad499882335ca6fb"><div class="ttname"><a href="namespacehmap.html#a5f979c31af1c9ee6ad499882335ca6fb">hmap::flatbed_carve</a></div><div class="ttdeci">void flatbed_carve(Array &amp;z, const Path &amp;path, float bottom_extent=32.f, float vmin=0.1f, float depth=0.05f, float falloff_distance=128.f, float outer_slope=0.1f, bool preserve_bedshape=true, RadialProfile radial_profile=RadialProfile::RP_GAIN, float radial_profile_parameter=2.f, Array *p_falloff_mask=nullptr, const Array *p_noise_r=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Blends a flatbed carve into an existing heightmap.</div><div class="ttdef"><b>Definition</b> flatbed_carve.cpp:114</div></div>
 <div class="ttc" id="anamespacehmap_html_a862fef5e0387bea9358648fc7aa5680b"><div class="ttname"><a href="namespacehmap.html#a862fef5e0387bea9358648fc7aa5680b">hmap::decimate_vw</a></div><div class="ttdeci">Path decimate_vw(const Path &amp;path, int n_points_target=3)</div><div class="ttdoc">Simplifies the current path using the Visvalingam-Whyatt algorithm.</div><div class="ttdef"><b>Definition</b> path_functions.cpp:213</div></div>
@@ -9166,24 +9166,6 @@ template&lt;typename T , typename Fn , typename Reduce &gt; </div>
           <td></td>
           <td>)</td>
           <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac718f038155dde59fb50eb22684ed255" name="ac718f038155dde59fb50eb22684ed255"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac718f038155dde59fb50eb22684ed255">&#9670;&#160;</a></span>check_erosion_profile_function()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &gt; hmap::check_erosion_profile_function </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>delta</em> = <code>0.01<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code></td><td>)</td>
-          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -44660,8 +44642,8 @@ template&lt;typename Fn &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rift.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RP_SMOOTHSTEP</a></div><div class="ttdeci">@ RP_SMOOTHSTEP</div><div class="ttdef"><b>Definition</b> profiles.hpp:36</div></div>
-<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5">hmap::RP_SQRT</a></div><div class="ttdeci">@ RP_SQRT</div><div class="ttdef"><b>Definition</b> profiles.hpp:39</div></div>
+<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RP_SMOOTHSTEP</a></div><div class="ttdeci">@ RP_SMOOTHSTEP</div><div class="ttdef"><b>Definition</b> profiles.hpp:37</div></div>
+<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5">hmap::RP_SQRT</a></div><div class="ttdeci">@ RP_SQRT</div><div class="ttdef"><b>Definition</b> profiles.hpp:40</div></div>
 <div class="ttc" id="anamespacehmap_html_a9d5e5da97df0e7f943e355d2ef0875ff"><div class="ttname"><a href="namespacehmap.html#a9d5e5da97df0e7f943e355d2ef0875ff">hmap::rift</a></div><div class="ttdeci">Array rift(glm::ivec2 shape, float angle, float radius=0.1f, float axial_slope=0.2f, float depth=0.5f, bool scale_with_depth=true, RadialProfile profile=RadialProfile::RP_SMOOTHSTEP, float profile_param=0.f, float bottom_extent=0.1, float bottom_depth=0.05f, RadialProfile bottom_profile=RadialProfile::RP_SQRT, float bottom_profile_param=0.f, float outer_slope=0.5f, const Array *p_noise_r=nullptr, const Array *p_noise_offset=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, Array *p_rift_mask=nullptr, Array *p_bottom_mask=nullptr)</div><div class="ttdoc">Generate a rift-shaped primitive.</div><div class="ttdef"><b>Definition</b> rift.cpp:17</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_rift.png" alt=""/>

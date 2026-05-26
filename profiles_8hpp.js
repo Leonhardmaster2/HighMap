@@ -5,7 +5,8 @@ var profiles_8hpp =
       [ "PP_COSINE_PEAKY", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aa0cd4624d7ec212818cf2ef09f8540bf1", null ],
       [ "PP_COSINE_SQUARE", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aaee313a4258bc2b011fc404112db201fc", null ],
       [ "PP_COSINE_STD", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aafeda57dc66f5efb1d5f0fcc48ddb5319", null ],
-      [ "PP_TRIANGLE", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2", null ]
+      [ "PP_TRIANGLE", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aae01a073e65c99b00aa16b2023f4dcbe2", null ],
+      [ "PP_DUNE", "profiles_8hpp.html#a67d6620c147710ebb09b64f0f738241aa8e181b6c0bcf9fa8bde7285adf8504b2", null ]
     ] ],
     [ "RadialProfile", "profiles_8hpp.html#a2affc745bc33b7555352665745741f90", [
       [ "RP_GAIN", "profiles_8hpp.html#a2affc745bc33b7555352665745741f90ac0cd381f8918df73dd4bc6df1190d7ba", null ],
