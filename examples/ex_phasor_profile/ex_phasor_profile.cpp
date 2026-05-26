@@ -5,14 +5,15 @@ int main(void)
   glm::ivec2               shape = {256, 256};
   std::vector<hmap::Array> arrays;
 
-  float delta = 3.f;
+  float delta = 0.5f;
 
   std::vector<hmap::PhasorProfile> profiles = {
       hmap::PhasorProfile::PP_COSINE_BULKY,
       hmap::PhasorProfile::PP_COSINE_PEAKY,
       hmap::PhasorProfile::PP_COSINE_SQUARE,
       hmap::PhasorProfile::PP_COSINE_STD,
-      hmap::PhasorProfile::PP_TRIANGLE};
+      hmap::PhasorProfile::PP_TRIANGLE,
+      hmap::PhasorProfile::PP_DUNE};
 
   for (const auto profile : profiles)
   {

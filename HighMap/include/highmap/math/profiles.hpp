@@ -23,6 +23,7 @@ enum PhasorProfile : int
   PP_COSINE_SQUARE,
   PP_COSINE_STD,
   PP_TRIANGLE,
+  PP_DUNE,
 };
 
 /**
