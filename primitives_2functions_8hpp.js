@@ -24,6 +24,7 @@ var primitives_2functions_8hpp =
     [ "gaussian_pulse", "primitives_2functions_8hpp.html#a7628beb3c72d94109fa4de260bd22453", null ],
     [ "multisteps", "primitives_2functions_8hpp.html#aeeb8f48ea78cb59de79c16ab28d1d855", null ],
     [ "paraboloid", "primitives_2functions_8hpp.html#a9bab88cc60ec72c09eec98f0fb9f452f", null ],
+    [ "polar_shape", "primitives_2functions_8hpp.html#aa87cc983d6988499edca8311c09edd9a", null ],
     [ "rectangle", "primitives_2functions_8hpp.html#adafc477ac182ce40ebf2cee1c84cb936", null ],
     [ "slope", "primitives_2functions_8hpp.html#a79ad6fb857a38f8de9915d01992e5161", null ],
     [ "smooth_cosine", "primitives_2functions_8hpp.html#a41239b5831a88a5b2528f24e8c95a92a", null ],

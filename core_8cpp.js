@@ -19,5 +19,7 @@ var core_8cpp =
     [ "smoothstep7", "core_8cpp.html#ae7d9d43c2cd453af7a6395cbcb2ac3b2", null ],
     [ "threshold", "core_8cpp.html#a2752dc48a6d7bac9d3798033d1e7b3dd", null ],
     [ "threshold_smooth", "core_8cpp.html#ab565b6dd40d712a5ebc3170e13a1cceb", null ],
+    [ "trapeze", "core_8cpp.html#a5eaeb43a259dcdf4b0fb4632a559a1d4", null ],
+    [ "trapeze_smooth", "core_8cpp.html#a0a3ae79b31c4eebc54ae686d5ba558a3", null ],
     [ "triangle", "core_8cpp.html#adce0295b768dd046d1ddcd117cb1b8b4", null ]
 ];

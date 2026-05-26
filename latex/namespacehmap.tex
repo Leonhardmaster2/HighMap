@@ -1431,6 +1431,10 @@ float \mbox{\hyperlink{namespacehmap_a2752dc48a6d7bac9d3798033d1e7b3dd}{threshol
 \begin{DoxyCompactList}\small\item\em Linear threshold. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_ab565b6dd40d712a5ebc3170e13a1cceb}{threshold\+\_\+smooth}} (float x, float x0, float x1)
 \begin{DoxyCompactList}\small\item\em Smooth threshold using smoothstep. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a5eaeb43a259dcdf4b0fb4632a559a1d4}{trapeze}} (float x, float x0, float x1, float width)
+\begin{DoxyCompactList}\small\item\em Computes a trapezoidal pulse function. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_a0a3ae79b31c4eebc54ae686d5ba558a3}{trapeze\+\_\+smooth}} (float x, float x0, float x1, float width)
+\begin{DoxyCompactList}\small\item\em Smooth trapezoidal pulse using cubic smoothstep interpolation. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}{triangle}} (float x, float vmin, float vmax)
 \begin{DoxyCompactList}\small\item\em Triangle function between bounds. \end{DoxyCompactList}\item 
 std\+::function$<$ float(float, float)$>$ \mbox{\hyperlink{namespacehmap_a325c785e4776325f3061d9f5bd89fccf}{get\+\_\+distance\+\_\+function}} (\mbox{\hyperlink{namespacehmap_a670f50d6c08ecd639d42db9c75a5273a}{Distance\+Function}} dist\+\_\+fct)
@@ -1609,6 +1613,8 @@ void \mbox{\hyperlink{namespacehmap_a81ae845564fe0e6f2f641451c063bc65}{swap}} (\
 \begin{DoxyCompactList}\small\item\em Generate a multi-\/step height profile along a rotated axis. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9bab88cc60ec72c09eec98f0fb9f452f}{paraboloid}} (glm\+::ivec2 shape, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float a, float b, float v0=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool reverse\+\_\+x=false, bool reverse\+\_\+y=false, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Return a paraboloid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa87cc983d6988499edca8311c09edd9a}{polar\+\_\+shape}} (glm\+::ivec2 shape, float rmin=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float rmax=0.\+3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float aspect\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float smoothing\+\_\+width=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool square\+\_\+base=false, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}=15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float sector\+\_\+angle=90.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float vmin=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kt\+\_\+value=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kr\+\_\+border=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float kr\+\_\+border\+\_\+ratio=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+r=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+theta=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
+\begin{DoxyCompactList}\small\item\em Generate a polar-\/based shape mask with optional angular and radial perturbations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adafc477ac182ce40ebf2cee1c84cb936}{rectangle}} (glm\+::ivec2 shape, float rx, float ry, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}}=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Generates a rectangle-\/shaped heightmap with optional modifications. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a79ad6fb857a38f8de9915d01992e5161}{slope}} (glm\+::ivec2 shape, float \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}}, float slope, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+ctrl\+\_\+param=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -20921,6 +20927,50 @@ Smooth threshold using smoothstep.
 {\em x1} & Upper bound. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{namespacehmap_a5eaeb43a259dcdf4b0fb4632a559a1d4}\label{namespacehmap_a5eaeb43a259dcdf4b0fb4632a559a1d4} 
+\index{hmap@{hmap}!trapeze@{trapeze}}
+\index{trapeze@{trapeze}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{trapeze()}{trapeze()}}
+{\footnotesize\ttfamily float hmap\+::trapeze (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{x0,  }\item[{float}]{x1,  }\item[{float}]{width }\end{DoxyParamCaption})}
+
+
+
+Computes a trapezoidal pulse function. 
+
+Returns a value in \mbox{[}0, 1\mbox{]} with linear ramps of size {\ttfamily width} around the interval \mbox{[}x0, x1\mbox{]}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value. \\
+\hline
+{\em x0} & Start of the plateau. \\
+\hline
+{\em x1} & End of the plateau. \\
+\hline
+{\em width} & Width of the rising and falling ramps. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacehmap_a0a3ae79b31c4eebc54ae686d5ba558a3}\label{namespacehmap_a0a3ae79b31c4eebc54ae686d5ba558a3} 
+\index{hmap@{hmap}!trapeze\_smooth@{trapeze\_smooth}}
+\index{trapeze\_smooth@{trapeze\_smooth}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{trapeze\_smooth()}{trapeze\_smooth()}}
+{\footnotesize\ttfamily float hmap\+::trapeze\+\_\+smooth (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{x0,  }\item[{float}]{x1,  }\item[{float}]{width }\end{DoxyParamCaption})}
+
+
+
+Smooth trapezoidal pulse using cubic smoothstep interpolation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value. \\
+\hline
+{\em x0} & Start of the plateau. \\
+\hline
+{\em x1} & End of the plateau. \\
+\hline
+{\em width} & Width of the rising and falling ramps. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4}\label{namespacehmap_adce0295b768dd046d1ddcd117cb1b8b4} 
 \index{hmap@{hmap}!triangle@{triangle}}
 \index{triangle@{triangle}!hmap@{hmap}}
@@ -25868,6 +25918,85 @@ Output array.
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z\ =\ \mbox{\hyperlink{namespacehmap_a9bab88cc60ec72c09eec98f0fb9f452f}{hmap::paraboloid}}(shape,\ \mbox{\hyperlink{namespacehmap_aac71bb6c14edc17967957f7918acdbdd}{angle}},\ 1.f,\ 0.5f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z.to\_png(\textcolor{stringliteral}{"{}ex\_paraboloid.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_aa87cc983d6988499edca8311c09edd9a}\label{namespacehmap_aa87cc983d6988499edca8311c09edd9a} 
+\index{hmap@{hmap}!polar\_shape@{polar\_shape}}
+\index{polar\_shape@{polar\_shape}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{polar\_shape()}{polar\_shape()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::polar\+\_\+shape (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{shape,  }\item[{float}]{rmin = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{rmax = {\ttfamily 0.3\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{aspect\+\_\+ratio = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{smoothing\+\_\+width = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{square\+\_\+base = {\ttfamily false},  }\item[{float}]{angle = {\ttfamily 15.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{sector\+\_\+angle = {\ttfamily 90.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{vmin = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kt\+\_\+value = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kr\+\_\+border = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{kr\+\_\+border\+\_\+ratio = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+r = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+noise\+\_\+theta = {\ttfamily nullptr},  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}},  }\item[{glm\+::vec4}]{bbox = {\ttfamily \{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
+
+
+
+Generate a polar-\/based shape mask with optional angular and radial perturbations. 
+
+Creates a 2D scalar field defined in polar space using radial bounds, sector masking, aspect ratio deformation, and optional noise offsets on radius and angle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Output array shape. \\
+\hline
+{\em rmin} & Inner radius. \\
+\hline
+{\em rmax} & Outer radius. \\
+\hline
+{\em aspect\+\_\+ratio} & Elliptical aspect ratio applied on Y axis. \\
+\hline
+{\em smoothing\+\_\+width} & Smoothing width for radial and angular transitions. \\
+\hline
+{\em square\+\_\+base} & If true, remaps the shape toward a square profile. \\
+\hline
+{\em angle} & Global rotation angle in degrees. \\
+\hline
+{\em sector\+\_\+angle} & Angular opening removed from the shape in degrees. \\
+\hline
+{\em vmin} & Minimum angular modulation value. \\
+\hline
+{\em kt\+\_\+value} & Angular modulation frequency. \\
+\hline
+{\em kr\+\_\+border} & Angular modulation frequency for the outer border. \\
+\hline
+{\em kr\+\_\+border\+\_\+ratio} & Blend factor for outer border modulation. \\
+\hline
+{\em p\+\_\+noise\+\_\+r} & Optional radial noise offset field. \\
+\hline
+{\em p\+\_\+noise\+\_\+theta} & Optional angular noise offset field. \\
+\hline
+{\em center} & Shape center. \\
+\hline
+{\em bbox} & Bounding box used for grid generation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generated scalar field.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ \mbox{\hyperlink{namespacehmap_aa87cc983d6988499edca8311c09edd9a}{hmap::polar\_shape}}(shape);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ rmin\ =\ 0.3f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ rmax\ =\ 0.4f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ aspect\_ratio\ =\ 2.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ smoothing\_width\ =\ 0.1f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \ square\_base\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ \mbox{\hyperlink{namespacehmap_aa87cc983d6988499edca8311c09edd9a}{hmap::polar\_shape}}(shape,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rmin,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rmax,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aspect\_ratio,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smoothing\_width,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ square\_base);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_polar\_shape.png"{}},\ \{z1,\ z2\},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a744ead0b170889e33126895264f1af2c}{hmap::Cmap::MAGMA}});}
 \DoxyCodeLine{\}}
 
 \end{DoxyCodeInclude}
