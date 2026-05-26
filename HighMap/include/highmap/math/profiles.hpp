@@ -14,6 +14,24 @@ namespace hmap
 {
 
 /**
+ * @brief Procedural erosion angular profile type.
+ */
+enum ErosionProfile : int
+{
+  EP_COSINE,
+  EP_COSINE_BULK,
+  EP_COSINE_PEAK,
+  EP_PARABOL,
+  EP_SAW_SHARP,
+  EP_SAW_SMOOTH,
+  EP_SHARP_VALLEYS,
+  EP_SQRT,
+  EP_TRIANGLE_GRENIER,
+  EP_TRIANGLE_SHARP,
+  EP_TRIANGLE_SMOOTH,
+};
+
+/**
  * @brief Phasor angular profile type.
  */
 enum PhasorProfile : int
@@ -39,6 +57,33 @@ enum RadialProfile : int
   RP_FLAT_BOTTOM,
   RP_SQRT
 };
+
+/**
+ * @brief Generates a function representing an erosion profile based on the
+ * specified type and parameters.
+ *
+ * This function returns a callable object (`std::function`) that computes the
+ * value of the specified erosion profile for a given phase angle (phi).
+ * Optionally, it can compute the average value of the profile over the range
+ * [-π, π].
+ *
+ * @param  erosion_profile The type of erosion profile to generate.
+ * @param  delta           A parameter that can influence the profile (depending
+ *                         on the profile choice).
+ * @param  profile_avg     Reference to a float that will store the average
+ *                         value of the profile over the range [-π, π].
+ * @return                 A `std::function<float(float)>` that computes the
+ *                         erosion profile for a given phase angle.
+ *
+ * @throws std::invalid_argumentIf the provided `erosion_profile` is invalid.
+ *
+ * @note The average value is computed using numerical integration over 50
+ * sample points within [-π, π].
+ */
+std::function<float(float)> get_erosion_profile_function(
+    const ErosionProfile &erosion_profile,
+    float                 delta,
+    float                &profile_avg);
 
 /**
  * @brief Generates a function representing a phasor profile based on the

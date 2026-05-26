@@ -10,7 +10,6 @@
 #include "highmap/functions.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
-#include "highmap/primitives/geo.hpp"
 
 namespace hmap
 {

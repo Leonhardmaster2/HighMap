@@ -14,6 +14,7 @@
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/range.hpp"

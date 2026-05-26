@@ -2,14 +2,11 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <cmath>
-#include <fstream>
 #include <functional>
-#include <iomanip>
-#include <string>
 #include <type_traits>
 #include <vector>
 
-#include "highmap/erosion.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

@@ -6,8 +6,8 @@
 #include <functional>
 
 #include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
 #include "highmap/math/core.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
 
