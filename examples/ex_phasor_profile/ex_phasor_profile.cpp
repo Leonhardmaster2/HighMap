@@ -24,8 +24,8 @@ int main(void)
 
     for (int i = 0; i < shape.x; ++i)
     {
-      float r = float(i) / float(shape.x - 1);
-      r = M_PI * (2.f * r - 1.f); // in [0..1]
+      float r = float(i) / float(shape.x - 1); // in [0, 1]
+      r = M_PI * (2.f * r - 1.f);              // in [-pi, pi]
 
       // fct output in [-1..1] to [0..1]
       float f = 0.5f * (fct(r) + 1.f);

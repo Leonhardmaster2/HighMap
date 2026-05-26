@@ -1,0 +1,2 @@
+add_executable(ex_erosion_profile_function ex_erosion_profile_function.cpp)
+target_link_libraries(ex_erosion_profile_function highmap)

@@ -50,9 +50,6 @@ std::function<float(float)> get_erosion_profile_function(
     float                 delta,
     float                &profile_avg);
 
-std::vector<hmap::ErosionProfile> check_erosion_profile_function(
-    float delta = 0.01f);
-
 /**
  * @brief Simulates terrain diffusion due to coastal erosion.
  *

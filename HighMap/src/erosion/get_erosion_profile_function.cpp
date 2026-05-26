@@ -15,79 +15,14 @@
 namespace hmap
 {
 
-std::vector<ErosionProfile> check_erosion_profile_function(float delta)
-{
-  std::vector<ErosionProfile> profiles = {
-      ErosionProfile::EP_COSINE,
-      ErosionProfile::EP_COSINE_BULK,
-      ErosionProfile::EP_COSINE_PEAK,
-      ErosionProfile::EP_PARABOL,
-      ErosionProfile::EP_SAW_SHARP,
-      ErosionProfile::EP_SAW_SMOOTH,
-      ErosionProfile::EP_SHARP_VALLEYS,
-      ErosionProfile::EP_SQRT,
-      ErosionProfile::EP_TRIANGLE_GRENIER,
-      ErosionProfile::EP_TRIANGLE_SHARP,
-      ErosionProfile::EP_TRIANGLE_SMOOTH,
-  };
-
-  // test grid
-  int                nd = 200;
-  std::vector<float> phi = linspace(-M_PI, M_PI, nd);
-
-  // --- CSV file
-
-  // open output file
-  std::ofstream file("erosion_profiles.csv");
-  file << std::setprecision(8);
-
-  // header
-  file << "phi";
-  for (auto ep : profiles)
-    file << "," << std::to_string(ep);
-  file << "\n";
-
-  // --- Precompute functions
-
-  struct ProfileData
-  {
-    ErosionProfile              profile;
-    std::function<float(float)> func;
-  };
-
-  std::vector<ProfileData> profile_data;
-
-  for (auto ep : profiles)
-  {
-    float profile_avg = 0.f;
-    auto  fct = get_erosion_profile_function(ep, delta, profile_avg);
-    profile_data.push_back({ep, fct});
-  }
-
-  // --- Write rows
-
-  for (auto v : phi)
-  {
-    file << v;
-
-    for (auto &p : profile_data)
-      file << "," << p.func(v);
-
-    file << "\n";
-  }
-
-  file.close();
-
-  // return profile list for conveniency
-  return profiles;
-}
-
 std::function<float(float)> get_erosion_profile_function(
     const ErosionProfile &erosion_profile,
     float                 delta,
     float                &profile_avg)
 {
   std::function<float(float)> lambda_p;
+
+  // phi in [-pi, pi]
 
   switch (erosion_profile)
   {
@@ -128,14 +63,16 @@ std::function<float(float)> get_erosion_profile_function(
   {
     float n = 1.f + 0.02f / delta;
     float dn = 2.f * n;
-    float coeff = std::pow(1.f / dn, 1.f / 2.f / n) * 2.f * n / dn;
+    float coeff = std::pow(1.f / dn, 1.f / dn);
     coeff = 1.f / coeff;
 
     lambda_p = [n, coeff](float phi)
     {
       float t = phi / M_PI + 1.f;
       t = std::fmod(t + 2.f, 2.f) - 1.f;
-      t = coeff * t * (1.f - std::pow(t, 2.f * n));
+
+      float a = std::abs(t);
+      t = coeff * t * (1.f - std::pow(a, 2.f * n));
       t = 0.5f * (1.f + t);
       return t;
     };
