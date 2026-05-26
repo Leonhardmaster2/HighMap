@@ -502,6 +502,56 @@ Array paraboloid(glm::ivec2   shape,
                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Generate a polar-based shape mask with optional angular and radial
+ * perturbations.
+ *
+ * Creates a 2D scalar field defined in polar space using radial bounds, sector
+ * masking, aspect ratio deformation, and optional noise offsets on radius and
+ * angle.
+ *
+ * @param  shape           Output array shape.
+ * @param  rmin            Inner radius.
+ * @param  rmax            Outer radius.
+ * @param  aspect_ratio    Elliptical aspect ratio applied on Y axis.
+ * @param  smoothing_width Smoothing width for radial and angular transitions.
+ * @param  square_base     If true, remaps the shape toward a square profile.
+ * @param  angle           Global rotation angle in degrees.
+ * @param  sector_angle    Angular opening removed from the shape in degrees.
+ * @param  vmin            Minimum angular modulation value.
+ * @param  kt_value        Angular modulation frequency.
+ * @param  kr_border       Angular modulation frequency for the outer border.
+ * @param  kr_border_ratio Blend factor for outer border modulation.
+ * @param  p_noise_r       Optional radial noise offset field.
+ * @param  p_noise_theta   Optional angular noise offset field.
+ * @param  center          Shape center.
+ * @param  bbox            Bounding box used for grid generation.
+ *
+ * @return                 Generated scalar field.
+ *
+ * **Example**
+ * @include ex_polar_shape.cpp
+ *
+ * **Result**
+ * @image html ex_polar_shape.png
+ */
+Array polar_shape(glm::ivec2   shape,
+                  float        rmin = 0.1f,
+                  float        rmax = 0.3f,
+                  float        aspect_ratio = 1.f,
+                  float        smoothing_width = 0.1f,
+                  bool         square_base = false,
+                  float        angle = 15.f,
+                  float        sector_angle = 90.f,
+                  float        vmin = 0.5f,
+                  float        kt_value = 0.f,
+                  float        kr_border = 0.f,
+                  float        kr_border_ratio = 0.1f,
+                  const Array *p_noise_r = nullptr,
+                  const Array *p_noise_theta = nullptr,
+                  glm::vec2    center = {0.5f, 0.5f},
+                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
  * @brief Generates a rectangle-shaped heightmap with optional modifications.
  *
  * This function creates a 2D array representing a rectangle with specified
