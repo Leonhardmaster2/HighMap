@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 
 namespace hmap
 {

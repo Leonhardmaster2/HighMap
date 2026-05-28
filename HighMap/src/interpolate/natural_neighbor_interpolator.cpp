@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <vector>
 
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 
 #include "delaunay.h"
 #include "nn.h"

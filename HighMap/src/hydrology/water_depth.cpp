@@ -15,7 +15,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"

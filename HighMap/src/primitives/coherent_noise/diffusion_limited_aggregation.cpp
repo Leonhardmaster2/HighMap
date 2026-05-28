@@ -15,7 +15,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/point.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 

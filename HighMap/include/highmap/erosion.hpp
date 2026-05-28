@@ -6,7 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/profiles.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 

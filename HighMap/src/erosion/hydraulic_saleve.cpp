@@ -11,7 +11,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/range.hpp"

@@ -17,6 +17,9 @@
 namespace hmap
 {
 
+class ComputeMode;  // forward decl.
+class VirtualArray; // forward decl.
+
 void interpolate_array_bicubic(const Array &source,
                                Array       &target,
                                bool         endpoint = false,

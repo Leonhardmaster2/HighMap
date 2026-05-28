@@ -10,7 +10,7 @@
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
 
-#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate.hpp"
 
 namespace hmap
 {

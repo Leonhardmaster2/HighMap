@@ -12,7 +12,7 @@
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
-#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/virtual_array/tile_region.hpp"

@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
-#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 

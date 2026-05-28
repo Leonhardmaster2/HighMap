@@ -13,7 +13,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"

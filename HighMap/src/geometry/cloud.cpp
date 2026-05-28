@@ -29,7 +29,7 @@
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/point.hpp"
 #include "highmap/geometry/point_sampling.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
