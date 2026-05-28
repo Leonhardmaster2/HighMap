@@ -40,7 +40,18 @@ int main(void)
 
   // --- all profiles
 
-  auto profiles = hmap::check_erosion_profile_function();
+  std::vector<hmap::ErosionProfile> profiles = {
+      hmap::ErosionProfile::EP_COSINE,
+      hmap::ErosionProfile::EP_COSINE_BULK,
+      hmap::ErosionProfile::EP_COSINE_PEAK,
+      hmap::ErosionProfile::EP_PARABOL,
+      hmap::ErosionProfile::EP_SAW_SHARP,
+      hmap::ErosionProfile::EP_SAW_SMOOTH,
+      hmap::ErosionProfile::EP_SHARP_VALLEYS,
+      hmap::ErosionProfile::EP_SQRT,
+      hmap::ErosionProfile::EP_TRIANGLE_GRENIER,
+      hmap::ErosionProfile::EP_TRIANGLE_SHARP,
+      hmap::ErosionProfile::EP_TRIANGLE_SMOOTH};
 
   std::vector<hmap::Array> stack = {z0};
   for (auto ep : profiles)
