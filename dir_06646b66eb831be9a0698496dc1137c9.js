@@ -35,6 +35,7 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "local_metrics.hpp", "local__metrics_8hpp.html", "local__metrics_8hpp" ],
     [ "math.hpp", "math_8hpp.html", null ],
     [ "morphology.hpp", "morphology_8hpp.html", "morphology_8hpp" ],
+    [ "multiscale.hpp", "multiscale_8hpp.html", null ],
     [ "openmp.hpp", "openmp_8hpp.html", "openmp_8hpp" ],
     [ "operator.hpp", "operator_8hpp.html", "operator_8hpp" ],
     [ "primitives.hpp", "primitives_8hpp.html", null ],
