@@ -25,6 +25,7 @@ var dir_06646b66eb831be9a0698496dc1137c9 =
     [ "features.hpp", "features_8hpp.html", "features_8hpp" ],
     [ "filters.hpp", "filters_8hpp.html", "filters_8hpp" ],
     [ "functions.hpp", "functions_8hpp.html", "functions_8hpp" ],
+    [ "geometry.hpp", "geometry_8hpp.html", null ],
     [ "gradient.hpp", "gradient_8hpp.html", "gradient_8hpp" ],
     [ "interpolate1d.hpp", "interpolate1d_8hpp.html", "interpolate1d_8hpp" ],
     [ "interpolate2d.hpp", "interpolate2d_8hpp.html", "interpolate2d_8hpp" ],

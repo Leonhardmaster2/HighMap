@@ -220,6 +220,8 @@ var NAVTREEINDEX9 =
 "geo_8hpp.html#af9603ba2d41af899dbef9b0bd16b39bd":[5,0,1,0,0,7,2,8],
 "geo_8hpp.html#afcc3b4559a3042acadb0699666257185":[5,0,1,0,0,7,2,9],
 "geo_8hpp_source.html":[5,0,1,0,0,7,2],
+"geometry_8hpp.html":[5,0,1,0,0,25],
+"geometry_8hpp_source.html":[5,0,1,0,0,25],
 "geomorphons_8cpp.html":[5,0,1,1,14,1],
 "geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,14,1,0],
 "get__colormap__data_8cpp.html":[5,0,1,1,7,0],
@@ -229,8 +231,8 @@ var NAVTREEINDEX9 =
 "globals.html":[5,1,0],
 "globals_e.html":[5,1,0,1],
 "globals_f.html":[5,1,0,2],
-"globals_func.html":[5,1,1],
 "globals_func.html":[5,1,1,0],
+"globals_func.html":[5,1,1],
 "globals_func_e.html":[5,1,1,1],
 "globals_func_f.html":[5,1,1,2],
 "globals_func_g.html":[5,1,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "gpu__opencl_8cpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,1,18,0,0],
 "gpu__opencl_8cpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,1,18,0,1],
 "gpu__opencl_8hpp.html":[5,0,1,0,0,6,0],
-"gpu__opencl_8hpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,0,0,6,0,0],
-"gpu__opencl_8hpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,0,0,6,0,1],
-"gpu__opencl_8hpp_source.html":[5,0,1,0,0,6,0]
+"gpu__opencl_8hpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,0,0,6,0,0]
 };
