@@ -1,0 +1,2 @@
+add_executable(ex_dequantize ex_dequantize.cpp)
+target_link_libraries(ex_dequantize highmap)

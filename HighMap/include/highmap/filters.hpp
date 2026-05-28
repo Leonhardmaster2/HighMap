@@ -73,6 +73,29 @@ Array bulkify(const Array         &z,
               glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Reduce quantization artifacts using dithering and smoothing.
+ *
+ * Adds white noise dithering to the input array and applies iterative Laplacian
+ * filtering to smooth quantization steps.
+ *
+ * @param  array                Input quantized array.
+ * @param  seed                 Random seed used for dithering noise generation.
+ * @param  dither_amplitude     Amplitude of the added white noise.
+ * @param  filtering_iterations Number of Laplacian smoothing iterations.
+ * @return                      Dequantized and smoothed array.
+ *
+ * **Example**
+ * @include ex_dequantize.cpp
+ *
+ * **Result**
+ * @image html ex_dequantize.png
+ */
+Array dequantize(const Array  &array,
+                 std::uint32_t seed,
+                 float         dither_amplitude = 0.01f,
+                 int           filtering_iterations = 1);
+
+/**
  * @brief Apply histogram equalization to the array values.
  *
  * This function performs histogram equalization on the input array to enhance
@@ -889,6 +912,42 @@ void normal_displacement(Array       &array,
 void plateau(Array &array, const Array *p_mask, int ir, float factor);
 
 void plateau(Array &array, int ir, float factor); ///< @overload
+
+/**
+ * @brief Quantize array values into discrete levels.
+ *
+ * Values are clamped to the range [vmin, vmax] and remapped to `nlevels`
+ * uniformly distributed discrete values.
+ *
+ * @param  array   Input array.
+ * @param  nlevels Number of quantization levels.
+ * @param  vmin    Minimum clamp value.
+ * @param  vmax    Maximum clamp value.
+ * @return         Quantized array.
+ *
+ * **Example**
+ * @include ex_dequantize.cpp
+ *
+ * **Result**
+ * @image html ex_dequantize.png
+ */
+Array quantize(const Array &array, int nlevels, float vmin, float vmax);
+
+/**
+ * @brief Quantize array values using the array min/max range.
+ *
+ * @param  array   Input array.
+ * @param  nlevels Number of quantization levels.
+ * @return         Quantized array.
+ *
+ * **Example**
+ * @include ex_dequantize.cpp
+ *
+ * **Result**
+ * @image html ex_dequantize.png
+ */
+Array quantize(const Array &array, int nlevels);
+
 /**
  * @brief Transform heightmap to give a "billow" like appearance.
  *
