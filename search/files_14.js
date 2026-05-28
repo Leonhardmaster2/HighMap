@@ -6,7 +6,7 @@ var searchData=
   ['vector_5futils_2ecpp_3',['vector_utils.cpp',['../vector__utils_8cpp.html',1,'']]],
   ['vector_5futils_2ehpp_4',['vector_utils.hpp',['../vector__utils_8hpp.html',1,'']]],
   ['virtual_5farray_2ecpp_5',['virtual_array.cpp',['../virtual__array_8cpp.html',1,'']]],
-  ['virtual_5farray_2ehpp_6',['virtual_array.hpp',['../virtual__array_8hpp.html',1,'']]],
+  ['virtual_5farray_2ehpp_6',['virtual_array.hpp',['../virtual__array_8hpp.html',1,'(Global Namespace)'],['../virtual__array_2virtual__array_8hpp.html',1,'(Global Namespace)']]],
   ['virtual_5farray_2einl_7',['virtual_array.inl',['../virtual__array_8inl.html',1,'']]],
   ['virtual_5farray_5fprocessing_2ecpp_8',['virtual_array_processing.cpp',['../virtual__array__processing_8cpp.html',1,'']]],
   ['virtual_5ftexture_2ecpp_9',['virtual_texture.cpp',['../virtual__texture_8cpp.html',1,'']]],
