@@ -47,7 +47,7 @@ var searchData=
   ['array_2ecpp_44',['array.cpp',['../array_8cpp.html',1,'']]],
   ['array_2ehpp_45',['array.hpp',['../array_8hpp.html',1,'(Global Namespace)'],['../math_2array_8hpp.html',1,'(Global Namespace)']]],
   ['array_5ffunctions_2ecpp_46',['array_functions.cpp',['../array__functions_8cpp.html',1,'']]],
-  ['arraycontrolfunction_47',['arraycontrolfunction',['../classhmap_1_1ArrayControlFunction.html#afb1177fcaf6160bea1d86be3b16cf55d',1,'hmap::ArrayControlFunction::ArrayControlFunction()'],['../classhmap_1_1ArrayControlFunction.html',1,'hmap::ArrayControlFunction']]],
+  ['arraycontrolfunction_47',['arraycontrolfunction',['../classhmap_1_1ArrayControlFunction.html',1,'hmap::ArrayControlFunction'],['../classhmap_1_1ArrayControlFunction.html#afb1177fcaf6160bea1d86be3b16cf55d',1,'hmap::ArrayControlFunction::ArrayControlFunction()']]],
   ['arrayfunction_48',['arrayfunction',['../classhmap_1_1ArrayFunction.html#a22fab5551b294f851c55511655dc2026',1,'hmap::ArrayFunction::ArrayFunction()'],['../classhmap_1_1ArrayFunction.html',1,'hmap::ArrayFunction']]],
   ['assbin_49',['ASSBIN',['../namespacehmap.html#ac3d35efc6e5b596f508e2b17a5aa871ba332f2a26193b501879c33538df5f62e1',1,'hmap']]],
   ['assert_2ecpp_50',['assert.cpp',['../assert_8cpp.html',1,'']]],

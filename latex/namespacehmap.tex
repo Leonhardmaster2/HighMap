@@ -726,6 +726,8 @@ void \mbox{\hyperlink{namespacehmap_a466d4275bb86ca9ca603c9d4192f931a}{write\+\_
 \begin{DoxyCompactList}\small\item\em Performs k-\/means clustering on three input arrays, providing more detailed cluster analysis by considering an additional dimension. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{bulkify}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, const \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cf}{Primitive\+Type}} \&primitive\+\_\+type, float amp=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, glm\+::vec2 center=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Applies a primitive-\/based displacement to an array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a703bb7c67cc8998560798c104a46ce4d}{dequantize}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, std\+::uint32\+\_\+t seed, float dither\+\_\+amplitude=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int filtering\+\_\+iterations=1)
+\begin{DoxyCompactList}\small\item\em Reduce quantization artifacts using dithering and smoothing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a1b08d9a5d25e6bcd9d080accd077cc98}{equalize}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Apply histogram equalization to the array values. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a1470c4d74892293e4974a319c6b17267}{equalize}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+mask)
@@ -800,6 +802,10 @@ void \mbox{\hyperlink{namespacehmap_a558c273680de2328f37e5df7ee598813}{plateau}}
 \begin{DoxyCompactList}\small\item\em Apply a plateau-\/shape filter to the input array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a9f49d016a05aa8636bb0ff3c3d30aaf7}{plateau}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir, float factor)
 \begin{DoxyCompactList}\small\item\em This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a826ce248be96455e59c2caa582836eb2}{quantize}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int nlevels, float vmin, float vmax)
+\begin{DoxyCompactList}\small\item\em Quantize array values into discrete levels. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_acfacd1af8f909589d58808bb13f7e462}{quantize}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int nlevels)
+\begin{DoxyCompactList}\small\item\em Quantize array values using the array min/max range. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ad2f0b00fee1cff1a2df0049176548ea5}{recast\+\_\+billow}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vref, float k)
 \begin{DoxyCompactList}\small\item\em Transform heightmap to give a "{}billow"{} like appearance. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ae475b4f5defd09d3e566f44dd2c21575}{recast\+\_\+canyon}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&vcut, float gamma=4.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
@@ -8820,6 +8826,63 @@ Resulting array after applying the displacement.
 \end{DoxyCodeInclude}
 
 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_a703bb7c67cc8998560798c104a46ce4d}\label{namespacehmap_a703bb7c67cc8998560798c104a46ce4d} 
+\index{hmap@{hmap}!dequantize@{dequantize}}
+\index{dequantize@{dequantize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{dequantize()}{dequantize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::dequantize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{float}]{dither\+\_\+amplitude = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{filtering\+\_\+iterations = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Reduce quantization artifacts using dithering and smoothing. 
+
+Adds white noise dithering to the input array and applies iterative Laplacian filtering to smooth quantization steps.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input quantized array. \\
+\hline
+{\em seed} & Random seed used for dithering noise generation. \\
+\hline
+{\em dither\+\_\+amplitude} & Amplitude of the added white noise. \\
+\hline
+{\em filtering\+\_\+iterations} & Number of Laplacian smoothing iterations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dequantized and smoothed array.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ ++seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ mimic\ quantization}}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_a826ce248be96455e59c2caa582836eb2}{hmap::quantize}}(z,\ 64);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ try\ to\ improve}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ dither\_amplitude\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 4;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ zd\ =\ \mbox{\hyperlink{namespacehmap_a703bb7c67cc8998560798c104a46ce4d}{hmap::dequantize}}(z,\ ++seed,\ dither\_amplitude,\ iterations);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_dequantize.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
 {\bfseries{Result}}  \Hypertarget{namespacehmap_a1b08d9a5d25e6bcd9d080accd077cc98}\label{namespacehmap_a1b08d9a5d25e6bcd9d080accd077cc98} 
 \index{hmap@{hmap}!equalize@{equalize}}
 \index{equalize@{equalize}!hmap@{hmap}}
@@ -10113,7 +10176,115 @@ This function applies a plateau-\/shape filter to the input array, modifying the
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-\Hypertarget{namespacehmap_ad2f0b00fee1cff1a2df0049176548ea5}\label{namespacehmap_ad2f0b00fee1cff1a2df0049176548ea5} 
+\Hypertarget{namespacehmap_a826ce248be96455e59c2caa582836eb2}\label{namespacehmap_a826ce248be96455e59c2caa582836eb2} 
+\index{hmap@{hmap}!quantize@{quantize}}
+\index{quantize@{quantize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{quantize()}{quantize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::quantize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{nlevels,  }\item[{float}]{vmin,  }\item[{float}]{vmax }\end{DoxyParamCaption})}
+
+
+
+Quantize array values into discrete levels. 
+
+Values are clamped to the range \mbox{[}vmin, vmax\mbox{]} and remapped to {\ttfamily nlevels} uniformly distributed discrete values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em nlevels} & Number of quantization levels. \\
+\hline
+{\em vmin} & Minimum clamp value. \\
+\hline
+{\em vmax} & Maximum clamp value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Quantized array.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ ++seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ mimic\ quantization}}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_a826ce248be96455e59c2caa582836eb2}{hmap::quantize}}(z,\ 64);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ try\ to\ improve}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ dither\_amplitude\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 4;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ zd\ =\ \mbox{\hyperlink{namespacehmap_a703bb7c67cc8998560798c104a46ce4d}{hmap::dequantize}}(z,\ ++seed,\ dither\_amplitude,\ iterations);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_dequantize.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_acfacd1af8f909589d58808bb13f7e462}\label{namespacehmap_acfacd1af8f909589d58808bb13f7e462} 
+\index{hmap@{hmap}!quantize@{quantize}}
+\index{quantize@{quantize}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{quantize()}{quantize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::quantize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{array,  }\item[{int}]{nlevels }\end{DoxyParamCaption})}
+
+
+
+Quantize array values using the array min/max range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Input array. \\
+\hline
+{\em nlevels} & Number of quantization levels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Quantized array.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ ++seed);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_a2badbebec49b12d0d721970a18eb420d}{hmap::clamp\_min}}(z,\ 0.f);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap::remap}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ mimic\ quantization}}
+\DoxyCodeLine{\ \ z\ =\ \mbox{\hyperlink{namespacehmap_a826ce248be96455e59c2caa582836eb2}{hmap::quantize}}(z,\ 64);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ try\ to\ improve}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ dither\_amplitude\ =\ 0.01f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 4;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ \ zd\ =\ \mbox{\hyperlink{namespacehmap_a703bb7c67cc8998560798c104a46ce4d}{hmap::dequantize}}(z,\ ++seed,\ dither\_amplitude,\ iterations);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_dequantize.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ zd\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ad2f0b00fee1cff1a2df0049176548ea5}\label{namespacehmap_ad2f0b00fee1cff1a2df0049176548ea5} 
 \index{hmap@{hmap}!recast\_billow@{recast\_billow}}
 \index{recast\_billow@{recast\_billow}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{recast\_billow()}{recast\_billow()}}
@@ -21032,7 +21203,7 @@ A {\ttfamily std\+::function\texorpdfstring{$<$}{<}float(float)\texorpdfstring{$
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument\+If} & the provided {\ttfamily erosion\+\_\+profile} is invalid.\\
+{\em std\+::invalid\+\_\+argument\+Ifthe} & provided {\ttfamily erosion\+\_\+profile} is invalid.\\
 \hline
 \end{DoxyExceptions}
 \begin{DoxyNote}{Note}

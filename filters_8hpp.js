@@ -6,6 +6,7 @@ var filters_8hpp =
       [ "CROSS", "filters_8hpp.html#a9d00db2263b4b7b05245531c41c1b592a5a41d1fe35db5ea65c515f217e5df2af", null ]
     ] ],
     [ "bulkify", "filters_8hpp.html#ae3ecf5f88476c5d49978a130f8cab2f3", null ],
+    [ "dequantize", "filters_8hpp.html#a703bb7c67cc8998560798c104a46ce4d", null ],
     [ "equalize", "filters_8hpp.html#a1b08d9a5d25e6bcd9d080accd077cc98", null ],
     [ "equalize", "filters_8hpp.html#a1470c4d74892293e4974a319c6b17267", null ],
     [ "expand", "filters_8hpp.html#ae00605c7af4addcb5092c90260e2d61b", null ],
@@ -43,6 +44,8 @@ var filters_8hpp =
     [ "normal_displacement", "filters_8hpp.html#a8994656d85a1b9dd0f2c99a3fd45ceb1", null ],
     [ "plateau", "filters_8hpp.html#a558c273680de2328f37e5df7ee598813", null ],
     [ "plateau", "filters_8hpp.html#a9f49d016a05aa8636bb0ff3c3d30aaf7", null ],
+    [ "quantize", "filters_8hpp.html#a826ce248be96455e59c2caa582836eb2", null ],
+    [ "quantize", "filters_8hpp.html#acfacd1af8f909589d58808bb13f7e462", null ],
     [ "recast_billow", "filters_8hpp.html#ad2f0b00fee1cff1a2df0049176548ea5", null ],
     [ "recast_canyon", "filters_8hpp.html#ae475b4f5defd09d3e566f44dd2c21575", null ],
     [ "recast_canyon", "filters_8hpp.html#a21def375eb7059931a64b6cb9f628a23", null ],
