@@ -1155,7 +1155,7 @@ var namespacehmap =
     [ "caldera", "namespacehmap.html#aaa2b720ef7b261b4eb2f1e89838a538e", null ],
     [ "crater", "namespacehmap.html#a2651fce70d267d4e115873dce4749ce1", null ],
     [ "island_land_mask", "namespacehmap.html#a8f68239db7ea7bdf2177e0290f4fd250", null ],
-    [ "rift", "namespacehmap.html#a9d5e5da97df0e7f943e355d2ef0875ff", null ],
+    [ "rift", "namespacehmap.html#a0da433ef9eb80cc11084bd3adbe75051", null ],
     [ "white", "namespacehmap.html#a5db6d20fe4a5e243dc67a713cb3ac419", null ],
     [ "white_density_map", "namespacehmap.html#a77473fb1fbaeed58445c10a9cb6fae50", null ],
     [ "white_sparse", "namespacehmap.html#aedd4a3e6f5dcabc77e7e3cb10b934a9c", null ],
