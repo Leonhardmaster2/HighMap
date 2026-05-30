@@ -1063,27 +1063,4 @@ template <typename Fn> inline void for_each_cell(const Array &a, Fn &&fn)
       fn(i, j, a(i, j));
 }
 
-/// Reduce all cells to a single value.
-template <typename T, typename Fn, typename Reduce>
-inline T reduce_cells(const Array &a, T init, Fn &&fn, Reduce &&reduce)
-{
-  T acc = init;
-
-  for_each_cell(a,
-                [&](int i, int j, float v) { acc = reduce(acc, fn(i, j, v)); });
-
-  return acc;
-}
-
-/// Reduce all cells to a single value.
-template <typename T, typename Fn, typename Reduce>
-inline T reduce_cells(const Array &a, T init, Reduce &&reduce)
-{
-  T acc = init;
-
-  for_each_cell(a, [&](int i, int j) { acc = reduce(acc, a(i, j)); });
-
-  return acc;
-}
-
 } // namespace hmap
