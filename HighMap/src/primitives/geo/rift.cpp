@@ -26,6 +26,7 @@ Array rift(glm::ivec2    shape,
            float         bottom_depth,
            RadialProfile bottom_profile,
            float         bottom_profile_param,
+           bool          bottom_force_minimum_depth,
            float         outer_slope,
            const Array  *p_noise_r,
            const Array  *p_noise_offset,
@@ -51,6 +52,9 @@ Array rift(glm::ivec2    shape,
 
   // --- Generate
 
+  float bottom_depth_min = 0.f;
+  if (bottom_force_minimum_depth) bottom_depth_min = 0.1f * bottom_depth;
+
   // grid
   bool               endpoint = false;
   std::vector<float> x, y;
@@ -70,7 +74,7 @@ Array rift(glm::ivec2    shape,
 
       float da = dx * ca + dy * sa;
       float current_depth = std::max(0.f, depth - axial_slope * da);
-      float current_bottom_depth = std::max(0.f,
+      float current_bottom_depth = std::max(bottom_depth_min,
                                             bottom_depth - axial_slope * da);
 
       float ds = p_noise_offset ? (*p_noise_offset)(i, j) : 0.f;
