@@ -1,7 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"cloud_8cpp.html#abb202506f601d0ab08eb286f8d3375d6":[5,0,1,1,17,0,5],
-"cloud_8cpp.html#abd7c616c225d31eb2fd4e3ff023e3ed5":[5,0,1,1,17,0,0],
 "cloud_8cpp.html#ac56218126b8f4fafd161848508bb040b":[5,0,1,1,17,0,2],
 "cloud_8cpp.html#ad1c0d440da90fd4f08bb0ed691cc717c":[5,0,1,1,17,0,3],
 "cloud_8cpp.html#afc6e9a8850aaebd3cca94aefb3c54114":[5,0,1,1,17,0,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "curvature__quadric_8cpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767":[5,0,1,1,10,2,0],
 "curvature__quadric_8cpp.html#a7bfb7fecab3f34a73a57d7907c3ace7d":[5,0,1,1,10,2,1],
 "dendry_8cpp.html":[5,0,1,1,29,0,0],
-"dendry_8cpp.html#a16c73d1f41f27b2d7fb6c61f31e91780":[5,0,1,1,29,0,0,0]
+"dendry_8cpp.html#a16c73d1f41f27b2d7fb6c61f31e91780":[5,0,1,1,29,0,0,0],
+"dendry_8cpp.html#a9c8e5fdeaa3f2f46b2a35778cb2e3711":[5,0,1,1,29,0,0,1],
+"dendry__array__control__function_8hpp.html":[5,0,1,0,0,3,0]
 };

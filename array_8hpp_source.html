@@ -391,32 +391,7 @@ $(document).ready(function(){initNavTree('array_8hpp_source.html',''); initResiz
 <div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>}</div>
 </div>
 <div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span> </div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Fn, <span class="keyword">typename</span> Reduce&gt;</div>
-<div class="foldopen" id="foldopen01068" data-start="{" data-end="}">
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"><a class="line" href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971"> 1068</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971">reduce_cells</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Fn &amp;&amp;fn, Reduce &amp;&amp;reduce)</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>{</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>  T acc = init;</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span> </div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>  <a class="code hl_function" href="namespacehmap.html#a05ee0ea53f1a06ac43741f11e25ec2cc">for_each_cell</a>(a,</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>                [&amp;](<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keywordtype">float</span> v) { acc = reduce(acc, fn(i, j, v)); });</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span> </div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>  <span class="keywordflow">return</span> acc;</div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>}</div>
-</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span> </div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Fn, <span class="keyword">typename</span> Reduce&gt;</div>
-<div class="foldopen" id="foldopen01080" data-start="{" data-end="}">
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"><a class="line" href="namespacehmap.html#a75f07aa871c112ed5a91bd259ce0b6ed"> 1080</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971">reduce_cells</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Reduce &amp;&amp;reduce)</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>{</div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>  T acc = init;</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span> </div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>  <a class="code hl_function" href="namespacehmap.html#a05ee0ea53f1a06ac43741f11e25ec2cc">for_each_cell</a>(a, [&amp;](<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) { acc = reduce(acc, a(i, j)); });</div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span> </div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>  <span class="keywordflow">return</span> acc;</div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>}</div>
-</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span> </div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aalgebra_8hpp_html"><div class="ttname"><a href="algebra_8hpp.html">algebra.hpp</a></div><div class="ttdoc">Header file defining basic vector and matrix manipulation classes.</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a000acd474d036adfa4e5e334139788ce"><div class="ttname"><a href="classhmap_1_1Array.html#a000acd474d036adfa4e5e334139788ce">hmap::Array::from_file</a></div><div class="ttdeci">void from_file(const std::string &amp;fname)</div><div class="ttdoc">Import array data from a raw binary file.</div><div class="ttdef"><b>Definition</b> io.cpp:28</div></div>
@@ -495,7 +470,6 @@ $(document).ready(function(){initNavTree('array_8hpp_source.html',''); initResiz
 <div class="ttc" id="anamespacehmap_html"><div class="ttname"><a href="namespacehmap.html">hmap</a></div><div class="ttdef"><b>Definition</b> algebra.hpp:23</div></div>
 <div class="ttc" id="anamespacehmap_html_a05ee0ea53f1a06ac43741f11e25ec2cc"><div class="ttname"><a href="namespacehmap.html#a05ee0ea53f1a06ac43741f11e25ec2cc">hmap::for_each_cell</a></div><div class="ttdeci">void for_each_cell(Array &amp;a, Fn &amp;&amp;fn)</div><div class="ttdoc">Apply a function to every cell (mutable).</div><div class="ttdef"><b>Definition</b> array.hpp:1045</div></div>
 <div class="ttc" id="anamespacehmap_html_a518f05118e1b9704160a7c3276a2f483"><div class="ttname"><a href="namespacehmap.html#a518f05118e1b9704160a7c3276a2f483">hmap::cv_mat_to_array</a></div><div class="ttdeci">Array cv_mat_to_array(const cv::Mat &amp;mat, bool remap_values=true, bool flip_j=false)</div><div class="ttdoc">Converts an OpenCV cv::Mat to a 2D Array with optional value scaling to [0, 1].</div><div class="ttdef"><b>Definition</b> opencv_wrapper.cpp:34</div></div>
-<div class="ttc" id="anamespacehmap_html_a839a208ff16a89feb85d52ac9db5b971"><div class="ttname"><a href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971">hmap::reduce_cells</a></div><div class="ttdeci">T reduce_cells(const Array &amp;a, T init, Fn &amp;&amp;fn, Reduce &amp;&amp;reduce)</div><div class="ttdoc">Reduce all cells to a single value.</div><div class="ttdef"><b>Definition</b> array.hpp:1068</div></div>
 <div class="ttc" id="anamespacehmap_html_a98feadac2cf9a77dbaa715d5aee4803f"><div class="ttname"><a href="namespacehmap.html#a98feadac2cf9a77dbaa715d5aee4803f">hmap::count_non_zero</a></div><div class="ttdeci">size_t count_non_zero(const Array &amp;array)</div><div class="ttdoc">Count the number of non-zero elements in the array.</div><div class="ttdef"><b>Definition</b> array_functions.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_af8950d06447258f6e3fc9daf98e01737"><div class="ttname"><a href="namespacehmap.html#af8950d06447258f6e3fc9daf98e01737">hmap::count_zero</a></div><div class="ttdeci">size_t count_zero(const Array &amp;array)</div><div class="ttdoc">Count the number of zero elements in the array.</div><div class="ttdef"><b>Definition</b> array_functions.cpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->

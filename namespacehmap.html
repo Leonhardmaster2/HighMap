@@ -717,14 +717,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a8a43091b3356d69271fa6d185f5bdcbe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a8a43091b3356d69271fa6d185f5bdcbe">for_each_cell</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, Fn &amp;&amp;fn)</td></tr>
 <tr class="memdesc:a8a43091b3356d69271fa6d185f5bdcbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a function to every cell (read-only).  <br /></td></tr>
 <tr class="separator:a8a43091b3356d69271fa6d185f5bdcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a839a208ff16a89feb85d52ac9db5b971" id="r_a839a208ff16a89feb85d52ac9db5b971"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn , typename Reduce &gt; </td></tr>
-<tr class="memitem:a839a208ff16a89feb85d52ac9db5b971"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a839a208ff16a89feb85d52ac9db5b971">reduce_cells</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Fn &amp;&amp;fn, Reduce &amp;&amp;reduce)</td></tr>
-<tr class="memdesc:a839a208ff16a89feb85d52ac9db5b971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduce all cells to a single value.  <br /></td></tr>
-<tr class="separator:a839a208ff16a89feb85d52ac9db5b971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75f07aa871c112ed5a91bd259ce0b6ed" id="r_a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn , typename Reduce &gt; </td></tr>
-<tr class="memitem:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a75f07aa871c112ed5a91bd259ce0b6ed">reduce_cells</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;a, T init, Reduce &amp;&amp;reduce)</td></tr>
-<tr class="memdesc:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduce all cells to a single value.  <br /></td></tr>
-<tr class="separator:a75f07aa871c112ed5a91bd259ce0b6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6123c18788ae302332416d5d7585fd9f" id="r_a6123c18788ae302332416d5d7585fd9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a6123c18788ae302332416d5d7585fd9f">alter_elevation</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Cloud.html">Cloud</a> &amp;cloud, int ir, float footprint_ratio=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, glm::vec2 shift={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, glm::vec2 scale={1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
 <tr class="memdesc:a6123c18788ae302332416d5d7585fd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point-wise alteration: locally enforce a new elevation value while maintaining the 'shape' of the heightmap.  <br /></td></tr>
 <tr class="separator:a6123c18788ae302332416d5d7585fd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3961,104 +3953,6 @@ template&lt;typename Fn &gt; </div>
 </div><div class="memdoc">
 
 <p>Apply a function to every cell (read-only). </p>
-
-</div>
-</div>
-<a id="a839a208ff16a89feb85d52ac9db5b971" name="a839a208ff16a89feb85d52ac9db5b971"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a839a208ff16a89feb85d52ac9db5b971">&#9670;&#160;</a></span>reduce_cells() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Fn , typename Reduce &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T hmap::reduce_cells </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>init</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Fn &amp;&amp;&#160;</td>
-          <td class="paramname"><em>fn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Reduce &amp;&amp;&#160;</td>
-          <td class="paramname"><em>reduce</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reduce all cells to a single value. </p>
-
-</div>
-</div>
-<a id="a75f07aa871c112ed5a91bd259ce0b6ed" name="a75f07aa871c112ed5a91bd259ce0b6ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75f07aa871c112ed5a91bd259ce0b6ed">&#9670;&#160;</a></span>reduce_cells() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Fn , typename Reduce &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T hmap::reduce_cells </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>init</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Reduce &amp;&amp;&#160;</td>
-          <td class="paramname"><em>reduce</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reduce all cells to a single value. </p>
 
 </div>
 </div>

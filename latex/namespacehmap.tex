@@ -510,10 +510,6 @@ size\+\_\+t \mbox{\hyperlink{namespacehmap_af8950d06447258f6e3fc9daf98e01737}{co
 \begin{DoxyCompactList}\small\item\em Apply a function to every cell (mutable). \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Fn $>$ }\\void \mbox{\hyperlink{namespacehmap_a8a43091b3356d69271fa6d185f5bdcbe}{for\+\_\+each\+\_\+cell}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, Fn \&\&fn)
 \begin{DoxyCompactList}\small\item\em Apply a function to every cell (read-\/only). \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T , typename Fn , typename Reduce $>$ }\\T \mbox{\hyperlink{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}{reduce\+\_\+cells}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, T init, Fn \&\&fn, Reduce \&\&reduce)
-\begin{DoxyCompactList}\small\item\em Reduce all cells to a single value. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T , typename Fn , typename Reduce $>$ }\\T \mbox{\hyperlink{namespacehmap_a75f07aa871c112ed5a91bd259ce0b6ed}{reduce\+\_\+cells}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&a, T init, Reduce \&\&reduce)
-\begin{DoxyCompactList}\small\item\em Reduce all cells to a single value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a6123c18788ae302332416d5d7585fd9f}{alter\+\_\+elevation}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, int ir, float footprint\+\_\+ratio=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, glm\+::vec2 shift=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, glm\+::vec2 scale=\{1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Point-\/wise alteration\+: locally enforce a new elevation value while maintaining the \textquotesingle{}shape\textquotesingle{} of the heightmap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_ad0679d167a3129dc403e3ca7082579f8}{base\+\_\+elevation}} (glm\+::ivec2 shape, const std\+::vector$<$ std\+::vector$<$ float $>$ $>$ \&values, float width\+\_\+factor=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+stretching=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -3195,28 +3191,6 @@ void hmap\+::for\+\_\+each\+\_\+cell (\begin{DoxyParamCaption}\item[{const \mbox
 
 
 Apply a function to every cell (read-\/only). 
-
-\Hypertarget{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}\label{namespacehmap_a839a208ff16a89feb85d52ac9db5b971} 
-\index{hmap@{hmap}!reduce\_cells@{reduce\_cells}}
-\index{reduce\_cells@{reduce\_cells}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{reduce\_cells()}{reduce\_cells()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Fn , typename Reduce $>$ \\
-T hmap\+::reduce\+\_\+cells (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{T}]{init,  }\item[{Fn \&\&}]{fn,  }\item[{Reduce \&\&}]{reduce }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Reduce all cells to a single value. 
-
-\Hypertarget{namespacehmap_a75f07aa871c112ed5a91bd259ce0b6ed}\label{namespacehmap_a75f07aa871c112ed5a91bd259ce0b6ed} 
-\index{hmap@{hmap}!reduce\_cells@{reduce\_cells}}
-\index{reduce\_cells@{reduce\_cells}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{reduce\_cells()}{reduce\_cells()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Fn , typename Reduce $>$ \\
-T hmap\+::reduce\+\_\+cells (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{a,  }\item[{T}]{init,  }\item[{Reduce \&\&}]{reduce }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Reduce all cells to a single value. 
 
 \Hypertarget{namespacehmap_a6123c18788ae302332416d5d7585fd9f}\label{namespacehmap_a6123c18788ae302332416d5d7585fd9f} 
 \index{hmap@{hmap}!alter\_elevation@{alter\_elevation}}

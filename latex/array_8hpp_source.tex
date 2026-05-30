@@ -271,27 +271,6 @@
 \DoxyCodeLine{01063\ \ \ \ \ \ \ fn(i,\ j,\ a(i,\ j));}
 \DoxyCodeLine{01064\ \}}
 \DoxyCodeLine{01065\ }
-\DoxyCodeLine{01067\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Fn,\ \textcolor{keyword}{typename}\ Reduce>}
-\DoxyCodeLine{01068\ \textcolor{keyword}{inline}\ T\ \mbox{\hyperlink{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}{reduce\_cells}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ T\ init,\ Fn\ \&\&fn,\ Reduce\ \&\&reduce)}
-\DoxyCodeLine{01069\ \{}
-\DoxyCodeLine{01070\ \ \ T\ acc\ =\ init;}
-\DoxyCodeLine{01071\ }
-\DoxyCodeLine{01072\ \ \ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(a,}
-\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&](\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{float}\ v)\ \{\ acc\ =\ reduce(acc,\ fn(i,\ j,\ v));\ \});}
-\DoxyCodeLine{01074\ }
-\DoxyCodeLine{01075\ \ \ \textcolor{keywordflow}{return}\ acc;}
-\DoxyCodeLine{01076\ \}}
-\DoxyCodeLine{01077\ }
-\DoxyCodeLine{01079\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Fn,\ \textcolor{keyword}{typename}\ Reduce>}
-\DoxyCodeLine{01080\ \textcolor{keyword}{inline}\ T\ \mbox{\hyperlink{namespacehmap_a839a208ff16a89feb85d52ac9db5b971}{reduce\_cells}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1Array}{Array}}\ \&a,\ T\ init,\ Reduce\ \&\&reduce)}
-\DoxyCodeLine{01081\ \{}
-\DoxyCodeLine{01082\ \ \ T\ acc\ =\ init;}
-\DoxyCodeLine{01083\ }
-\DoxyCodeLine{01084\ \ \ \mbox{\hyperlink{namespacehmap_a05ee0ea53f1a06ac43741f11e25ec2cc}{for\_each\_cell}}(a,\ [\&](\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \{\ acc\ =\ reduce(acc,\ a(i,\ j));\ \});}
-\DoxyCodeLine{01085\ }
-\DoxyCodeLine{01086\ \ \ \textcolor{keywordflow}{return}\ acc;}
-\DoxyCodeLine{01087\ \}}
-\DoxyCodeLine{01088\ }
-\DoxyCodeLine{01089\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{01066\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

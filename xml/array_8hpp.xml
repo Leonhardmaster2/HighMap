@@ -284,28 +284,7 @@
 <codeline lineno="1063"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fn(i,<sp/>j,<sp/>a(i,<sp/>j));</highlight></codeline>
 <codeline lineno="1064"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1065"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1067"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Fn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Reduce&gt;</highlight></codeline>
-<codeline lineno="1068" refid="namespacehmap_1a839a208ff16a89feb85d52ac9db5b971" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>T<sp/><ref refid="namespacehmap_1a839a208ff16a89feb85d52ac9db5b971" kindref="member">reduce_cells</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array" kindref="compound">Array</ref><sp/>&amp;a,<sp/>T<sp/>init,<sp/>Fn<sp/>&amp;&amp;fn,<sp/>Reduce<sp/>&amp;&amp;reduce)</highlight></codeline>
-<codeline lineno="1069"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1070"><highlight class="normal"><sp/><sp/>T<sp/>acc<sp/>=<sp/>init;</highlight></codeline>
-<codeline lineno="1071"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1072"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" kindref="member">for_each_cell</ref>(a,</highlight></codeline>
-<codeline lineno="1073"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;](</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v)<sp/>{<sp/>acc<sp/>=<sp/>reduce(acc,<sp/>fn(i,<sp/>j,<sp/>v));<sp/>});</highlight></codeline>
-<codeline lineno="1074"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1075"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>acc;</highlight></codeline>
-<codeline lineno="1076"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1077"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1079"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Fn,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Reduce&gt;</highlight></codeline>
-<codeline lineno="1080" refid="namespacehmap_1a75f07aa871c112ed5a91bd259ce0b6ed" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>T<sp/><ref refid="namespacehmap_1a839a208ff16a89feb85d52ac9db5b971" kindref="member">reduce_cells</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array" kindref="compound">Array</ref><sp/>&amp;a,<sp/>T<sp/>init,<sp/>Reduce<sp/>&amp;&amp;reduce)</highlight></codeline>
-<codeline lineno="1081"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1082"><highlight class="normal"><sp/><sp/>T<sp/>acc<sp/>=<sp/>init;</highlight></codeline>
-<codeline lineno="1083"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1084"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a05ee0ea53f1a06ac43741f11e25ec2cc" kindref="member">for_each_cell</ref>(a,<sp/>[&amp;](</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j)<sp/>{<sp/>acc<sp/>=<sp/>reduce(acc,<sp/>a(i,<sp/>j));<sp/>});</highlight></codeline>
-<codeline lineno="1085"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1086"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>acc;</highlight></codeline>
-<codeline lineno="1087"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1088"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1089"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1066"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hmap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="HighMap/include/highmap/array.hpp"/>
   </compounddef>
