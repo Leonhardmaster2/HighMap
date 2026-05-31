@@ -1,8 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"filters_8hpp.html#ab9926efb5c9c3859a0407b8fb9dbe4f7":[5,0,1,0,0,24,71],
-"filters_8hpp.html#ab9b560067f09332a4ff50670dfef00a5":[5,0,1,0,0,24,48],
-"filters_8hpp.html#aba3674787d520af15267ee7d1e46d220":[5,0,1,0,0,24,17],
 "filters_8hpp.html#abe223a120cbca1cedc1eb8b8392a93b8":[5,0,1,0,0,24,113],
 "filters_8hpp.html#abeab23d26e0e9cb4563b221193ca6041":[5,0,1,0,0,24,88],
 "filters_8hpp.html#abf3c7485f0f6f9e56b2cec58e085dc23":[5,0,1,0,0,24,58],
@@ -195,8 +192,8 @@ var NAVTREEINDEX9 =
 "functions_~.html":[4,3,0,24],
 "gabor_8cpp.html":[5,0,1,1,29,0,2],
 "gabor_8cpp.html#a1f7e1705ee83aee82d27676cfc0308f0":[5,0,1,1,29,0,2,0],
-"generate__bedrock_8cpp.html":[5,0,1,1,12,7],
-"generate__bedrock_8cpp.html#ae80026143790cc7a8f0dd1f4c7bc8e24":[5,0,1,1,12,7,0],
+"generate__bedrock_8cpp.html":[5,0,1,1,12,6],
+"generate__bedrock_8cpp.html#ae80026143790cc7a8f0dd1f4c7bc8e24":[5,0,1,1,12,6,0],
 "generate__riverbed_8cpp.html":[5,0,1,1,20,13],
 "generate__riverbed_8cpp.html#a30d55fae5c75a1c45a005a3f9a9467eb":[5,0,1,1,20,13,0],
 "generate__riverbed__gpu_8cpp.html":[5,0,1,1,20,14],
@@ -226,8 +223,8 @@ var NAVTREEINDEX9 =
 "get__colormap__data_8cpp.html":[5,0,1,1,7,0],
 "get__colormap__data_8cpp.html#a2f2ca726f4e41128135e6c77120c66d8":[5,0,1,1,7,0,1],
 "get__colormap__data_8cpp.html#afb2677facc34ce83019137fd5a9818dd":[5,0,1,1,7,0,0],
-"globals.html":[5,1,0],
 "globals.html":[5,1,0,0],
+"globals.html":[5,1,0],
 "globals_e.html":[5,1,0,1],
 "globals_f.html":[5,1,0,2],
 "globals_func.html":[5,1,1],
@@ -249,5 +246,8 @@ var NAVTREEINDEX9 =
 "gpu__opencl_8cpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,1,18,0,1],
 "gpu__opencl_8hpp.html":[5,0,1,0,0,7,0],
 "gpu__opencl_8hpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,0,0,7,0,0],
-"gpu__opencl_8hpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,0,0,7,0,1]
+"gpu__opencl_8hpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,0,0,7,0,1],
+"gpu__opencl_8hpp_source.html":[5,0,1,0,0,7,0],
+"gradient_8cpp.html":[5,0,1,1,19,0],
+"gradient_8cpp.html#a11c1600c2d67387c1b037fadcca9a069":[5,0,1,1,19,0,10]
 };

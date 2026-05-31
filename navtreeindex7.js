@@ -231,11 +231,8 @@ var NAVTREEINDEX7 =
 "erosion_8hpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,0,0,21,5],
 "erosion_8hpp.html#af975837e0f5b169dcb6d3f5f58c95fe9":[5,0,1,0,0,21,23],
 "erosion_8hpp_source.html":[5,0,1,0,0,21],
-"erosion__gpu_8cpp.html":[5,0,1,1,12,5],
-"erosion__gpu_8cpp.html#ac3ded0c179de9782edf74dbc0b348b5d":[5,0,1,1,12,5,1],
-"erosion__gpu_8cpp.html#ac6d55fbc90b3e84de1a4b68f26873934":[5,0,1,1,12,5,0],
-"erosion__maps_8cpp.html":[5,0,1,1,12,6],
-"erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,6,0],
+"erosion__maps_8cpp.html":[5,0,1,1,12,5],
+"erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,5,0],
 "erosion__profile__function_8cpp.html":[5,0,1,1,24,2],
 "erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2],
 "erosion__profile__function_8cpp.html#a18d33562e8ffbb8be79e2ec87bcf285f":[5,0,1,1,24,2,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX7 =
 "export_8hpp.html#a2f24b35f08d0ba5cce622c8896690fbd":[5,0,1,0,0,22,4],
 "export_8hpp.html#a32464922c39713910ebeab632e0e8fd1":[5,0,1,0,0,22,8],
 "export_8hpp.html#a3aa96cd684efd827ce57ffd9fef3c950":[5,0,1,0,0,22,5],
-"export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,0,0,22,12]
+"export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,0,0,22,12],
+"export_8hpp.html#a7b8945745feaeaa365d965ce66b32f58":[5,0,1,0,0,22,2],
+"export_8hpp.html#a91708f107a53c4b8ef68bb1d0291c73f":[5,0,1,0,0,22,10],
+"export_8hpp.html#a9648a23e61a84a702d89159d516dd4ec":[5,0,1,0,0,22,7]
 };
