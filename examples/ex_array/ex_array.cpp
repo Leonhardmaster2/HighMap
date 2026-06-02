@@ -20,4 +20,7 @@ int main(void)
   glm::vec2 range_pc = z.range_percentile(0.05f, 0.95f);
   std::cout << "range_pc.x: " << range_pc.x << "\n";
   std::cout << "range_pc.y: " << range_pc.y << "\n";
+
+  std::cout << "OpenCV build info\n";
+  std::cout << hmap::get_opencv_build_information() << "\n";
 }

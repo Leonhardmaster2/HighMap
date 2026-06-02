@@ -53,4 +53,9 @@ Array cv_mat_to_array(const cv::Mat &mat, bool remap_values, bool flip_j)
   return array;
 }
 
+std::string get_opencv_build_information()
+{
+  return cv::getBuildInformation();
+}
+
 } // namespace hmap

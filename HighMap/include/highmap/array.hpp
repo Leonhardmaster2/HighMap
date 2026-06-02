@@ -1037,6 +1037,8 @@ Array cv_mat_to_array(const cv::Mat &mat,
                       bool           remap_values = true,
                       bool           flip_j = false);
 
+std::string get_opencv_build_information();
+
 // ==========================================================================
 // per cell operations wrapper(s)
 // ==========================================================================
