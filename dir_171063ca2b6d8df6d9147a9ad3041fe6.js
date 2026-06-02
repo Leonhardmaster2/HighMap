@@ -2,6 +2,7 @@ var dir_171063ca2b6d8df6d9147a9ad3041fe6 =
 [
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "test_area_remove.cpp", "test__area__remove_8cpp.html", "test__area__remove_8cpp" ],
+    [ "test_array_io.cpp", "test__array__io_8cpp.html", "test__array__io_8cpp" ],
     [ "test_autocorr_length_scale.cpp", "test__autocorr__length__scale_8cpp.html", "test__autocorr__length__scale_8cpp" ],
     [ "test_chebyshev.cpp", "test__chebyshev_8cpp.html", "test__chebyshev_8cpp" ],
     [ "test_cloud.cpp", "test__cloud_8cpp.html", "test__cloud_8cpp" ],
