@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"dendry__array__control__function_8hpp.html":[5,0,1,0,0,3,0],
 "dendry__array__control__function_8hpp_source.html":[5,0,1,0,0,3,0],
 "deposition_8cpp.html":[5,0,1,1,12,1],
 "deposition_8cpp.html#a1c2651f7a65e696e8b444364abf0b3cc":[5,0,1,1,12,1,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "export_8hpp.html#a3aa96cd684efd827ce57ffd9fef3c950":[5,0,1,0,0,22,5],
 "export_8hpp.html#a466d4275bb86ca9ca603c9d4192f931a":[5,0,1,0,0,22,12],
 "export_8hpp.html#a7b8945745feaeaa365d965ce66b32f58":[5,0,1,0,0,22,2],
-"export_8hpp.html#a91708f107a53c4b8ef68bb1d0291c73f":[5,0,1,0,0,22,10],
-"export_8hpp.html#a9648a23e61a84a702d89159d516dd4ec":[5,0,1,0,0,22,7]
+"export_8hpp.html#a91708f107a53c4b8ef68bb1d0291c73f":[5,0,1,0,0,22,10]
 };

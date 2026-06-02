@@ -1,5 +1,8 @@
 var NAVTREEINDEX21 =
 {
+"structhmap_1_1Vec3.html":[4,0,0,73],
+"structhmap_1_1Vec3.html":[3,0,0,74],
+"structhmap_1_1Vec3_3_01float_01_4.html":[4,0,0,74],
 "structhmap_1_1Vec3_3_01float_01_4.html":[3,0,0,75],
 "structhmap_1_1Vec3_3_01int_01_4.html":[3,0,0,76],
 "structhmap_1_1Vec3_3_01int_01_4.html":[4,0,0,75],
@@ -246,8 +249,5 @@ var NAVTREEINDEX21 =
 "test__distance__transform_8cpp.html#aae15b391a16e2692dd1daac06ed552b8":[5,0,2,0,8,6],
 "test__distance__transform_8cpp.html#afb62d88fe501ea63f20e72dd298a3ec4":[5,0,2,0,8,0],
 "test__erosion_8cpp.html":[5,0,2,0,9],
-"test__erosion_8cpp.html#a1382e3d989bd3718e7a084d73d7cdb1a":[5,0,2,0,9,3],
-"test__erosion_8cpp.html#a4daeba7e2c0d24db1f415b987072d9c6":[5,0,2,0,9,1],
-"test__erosion_8cpp.html#a8b502ba0361a7963fa843302373b2e6f":[5,0,2,0,9,2],
-"test__erosion_8cpp.html#aba17a5f762f6d6d008fdb3c4c5559702":[5,0,2,0,9,5]
+"test__erosion_8cpp.html#a1382e3d989bd3718e7a084d73d7cdb1a":[5,0,2,0,9,3]
 };
