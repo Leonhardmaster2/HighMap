@@ -35,7 +35,7 @@ public:
    * @brief The shape of the array {ni, nj}.
    *
    */
-  glm::ivec2 shape;
+  glm::ivec2 shape = glm::ivec2(0, 0);
 
   /**
    * @brief The underlying data storage, a vector of size shape.x * shape.y.
