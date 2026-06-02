@@ -10,6 +10,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 
+#include "macrologger.h"
+
 #include "highmap/array.hpp"
 #include "highmap/tensor.hpp"
 
@@ -32,6 +34,14 @@ Tensor::Tensor(glm::ivec2 shape_xy, int shape_z)
 Tensor::Tensor(const std::string &fname, bool flip_j)
 {
   cv::Mat mat = cv::imread(fname, cv::IMREAD_COLOR);
+
+  if (mat.data == nullptr)
+  {
+    LOG_ERROR("error while reading the image file: %s", fname.c_str());
+    *this = Tensor(glm::ivec3(0, 0, 0));
+    return;
+  }
+
   cv::cvtColor(mat, mat, cv::COLOR_BGR2RGB);
   mat.convertTo(mat, CV_32FC3, 1.f / 255.f);
 
