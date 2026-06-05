@@ -71,13 +71,20 @@ public:
    * This constructor initializes the interpolation object with the provided x
    * and y data points and the specified interpolation method.
    *
-   * @param  x      A vector of x coordinates (independent variable).
+   * Coincident x coordinates are merged (keeping the first y) so that
+   * valid-but-sloppy data still interpolates instead of crashing; GSL's
+   * abort-on-error handler is disabled so a precondition violation throws a
+   * catchable exception rather than terminating the process.
+   *
+   * @param  x      A vector of x coordinates (independent variable). Must be
+   *                sorted in increasing order.
    * @param  y      A vector of y coordinates (dependent variable).
    * @param  method The interpolation method to use (default is linear).
    *
-   * @throws std::invalid_argumentifxandyhavedifferentsizesoriftherearefewerthan
-   *                two points. An exception is also thrown if the method
-   * requires monotonic data and the provided data is not monotonic.
+   * @throws std::invalid_argument if x and y have different sizes, if there
+   *                are fewer than two points with distinct x values, if x is
+   *                not sorted in increasing order, or if the method requires
+   *                monotonic data and the provided data is not monotonic.
    */
   Interpolator1D(const std::vector<float> &x,
                  const std::vector<float> &y,
