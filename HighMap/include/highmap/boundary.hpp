@@ -17,6 +17,7 @@
 #pragma once
 #include "highmap/array.hpp"
 #include "highmap/math/distance_functions.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {
@@ -328,35 +329,36 @@ void sym_borders(Array &array, glm::ivec4 buffer_sizes);
 void zeroed_borders(Array &array);
 
 /**
- * @brief Applies a smooth transition to zero at the array borders.
+ * @brief Smoothly attenuates array values toward zero near the domain
+ * boundaries.
  *
- * This function gradually transitions the values at the borders of the array to
- * zero, using a smoothing function defined by the `sigma` parameter, which
- * controls the half-width of the transition. The transition can be further
- * customized by providing a noise array (`p_noise`) and a bounding box (`bbox`)
- * that defines the domain of the operation.
+ * Applies a radial profile centered at `center` with the specified `radius`.
+ * The effect can be shaped using `radial_profile`, `profile_param`, and an
+ * optional noise modulation array.
  *
- * @param array    Reference to the input array whose borders will be smoothly
- *                 transitioned to zero.
- * @param sigma    A float value controlling the half-width ratio of the
- *                 transition. Default is 1.0.
- * @param dist_fct Distance function used for determining the smoothing (default
- *                 is Euclidean distance).
- * @param p_noise  Optional pointer to an input noise array, which can be used
- *                 during the transition process. Default is `nullptr`.
- * @param bbox     A vector defining the domain's bounding box. Default is
- * {0.f, 1.f, 0.f, 1.f}.
+ * @param array          Input/output array.
+ * @param radial_profile Radial attenuation profile.
+ * @param profile_param  Profile-specific parameter.
+ * @param amount         Effect strength in [0, 1].
+ * @param distance       Distance function.
+ * @param dfa            Distance axes used for distance evaluation.
+ * @param center         Profile center in normalized coordinates.
+ * @param radius         Profile radius.
+ * @param p_noise_r      Optional modulation array.
+ * @param bbox           Domain bounding box.
  *
- * **Example**
  * @include ex_zeroed_edges.cpp
- *
- * **Result**
  * @image html ex_zeroed_edges.png
  */
-void zeroed_edges(Array           &array,
-                  float            sigma = 1.f,
-                  DistanceFunction dist_fct = DistanceFunction::EUCLIDIAN,
-                  const Array     *p_noise = nullptr,
-                  glm::vec4        bbox = {0.f, 1.f, 0.f, 1.f});
+void zeroed_edges(Array               &array,
+                  RadialProfile        radial_profile,
+                  float                profile_param = 0.f,
+                  float                amount = 1.f,
+                  DistanceFunction     distance = DistanceFunction::EUCLIDIAN,
+                  DistanceFunctionAxis dfa = DistanceFunctionAxis::DFA_XY,
+                  glm::vec2            center = {0.5f, 0.5f},
+                  float                radius = 0.5f,
+                  const Array         *p_noise_r = nullptr,
+                  glm::vec4            bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

@@ -138,8 +138,6 @@ void equalize(Array &array, const Array *p_mask);
  *
  * **Result**
  * @image html ex_expand.png
- *
- * @see          ex_shrink
  */
 void expand(Array &array, int ir, const Array *p_mask, int iterations = 1);
 
