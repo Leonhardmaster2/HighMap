@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="test__interpolate1d_8cpp" kind="file" language="C++">
+    <compoundname>test_interpolate1d.cpp</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="test__interpolate1d_8cpp_1aff81c164874d0d83d4b79965674e2eed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(Interpolator1D, CoincidentXDoesNotCrash)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref></type>
+        </param>
+        <param>
+          <type>CoincidentXDoesNotCrash</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/src/test_interpolate1d.cpp" line="10" column="1" bodyfile="tests/src/test_interpolate1d.cpp" bodystart="10" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="test__interpolate1d_8cpp_1a4529aa4753b7b4c372660f6668dddb4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(Interpolator1D, AllCoincidentXThrows)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref></type>
+        </param>
+        <param>
+          <type>AllCoincidentXThrows</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/src/test_interpolate1d.cpp" line="24" column="1" bodyfile="tests/src/test_interpolate1d.cpp" bodystart="24" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="test__interpolate1d_8cpp_1a9683de8c0d8b56e0168815feee563d05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(Interpolator1D, DecreasingXThrows)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref></type>
+        </param>
+        <param>
+          <type>DecreasingXThrows</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/src/test_interpolate1d.cpp" line="34" column="1" bodyfile="tests/src/test_interpolate1d.cpp" bodystart="34" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="test__interpolate1d_8cpp_1af095df6477094eaef27d12d988c81dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(Interpolator1D, MismatchedOrTooFewPointsThrows)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref></type>
+        </param>
+        <param>
+          <type>MismatchedOrTooFewPointsThrows</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tests/src/test_interpolate1d.cpp" line="44" column="1" bodyfile="tests/src/test_interpolate1d.cpp" bodystart="44" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gtest/gtest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap" kindref="compound">hmap</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Coincident<sp/>x<sp/>used<sp/>to<sp/>reach<sp/>gsl_spline_init()<sp/>and<sp/>abort()<sp/>the<sp/>whole<sp/>process</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(gsl:<sp/>interp.c:<sp/>&quot;x<sp/>values<sp/>must<sp/>be<sp/>strictly<sp/>increasing&quot;).<sp/>They<sp/>must<sp/>now<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>merged<sp/>so<sp/>the<sp/>interpolator<sp/>still<sp/>builds<sp/>and<sp/>evaluates.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><ref refid="test__interpolate1d_8cpp_1aff81c164874d0d83d4b79965674e2eed" kindref="member">TEST</ref>(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>,<sp/>CoincidentXDoesNotCrash)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>x<sp/>=<sp/>{0.f,<sp/>0.f,<sp/>0.5f,<sp/>1.f,<sp/>1.f};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>y<sp/>=<sp/>{0.f,<sp/>0.f,<sp/>0.5f,<sp/>1.f,<sp/>1.f};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>EXPECT_NO_THROW({</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref><sp/>itp(x,<sp/>y,<sp/>InterpolationMethod1D::LINEAR);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>EXPECT_NEAR(itp(0.f),<sp/>0.f,<sp/>1e-5f);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>EXPECT_NEAR(itp(0.5f),<sp/>0.5f,<sp/>1e-5f);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>EXPECT_NEAR(itp(1.f),<sp/>1.f,<sp/>1e-5f);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>});</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>After<sp/>merging<sp/>coincident<sp/>x<sp/>there<sp/>must<sp/>still<sp/>be<sp/>at<sp/>least<sp/>two<sp/>distinct<sp/>points.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="test__interpolate1d_8cpp_1aff81c164874d0d83d4b79965674e2eed" kindref="member">TEST</ref>(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>,<sp/>AllCoincidentXThrows)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>x<sp/>=<sp/>{0.5f,<sp/>0.5f,<sp/>0.5f};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>y<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>2.f};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>EXPECT_THROW(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>(x,<sp/>y,<sp/>InterpolationMethod1D::LINEAR),</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::invalid_argument);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Out-of-order<sp/>(decreasing)<sp/>x<sp/>is<sp/>unrepairable<sp/>and<sp/>must<sp/>throw,<sp/>not<sp/>abort.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="test__interpolate1d_8cpp_1aff81c164874d0d83d4b79965674e2eed" kindref="member">TEST</ref>(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>,<sp/>DecreasingXThrows)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>x<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.5f};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>std::vector&lt;float&gt;<sp/>y<sp/>=<sp/>{0.f,<sp/>1.f,<sp/>0.5f};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>EXPECT_THROW(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>(x,<sp/>y,<sp/>InterpolationMethod1D::LINEAR),</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::invalid_argument);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Existing<sp/>preconditions<sp/>remain<sp/>enforced.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><ref refid="test__interpolate1d_8cpp_1aff81c164874d0d83d4b79965674e2eed" kindref="member">TEST</ref>(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>,<sp/>MismatchedOrTooFewPointsThrows)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>EXPECT_THROW(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>(std::vector&lt;float&gt;{0.f,<sp/>1.f},</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;{0.f},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InterpolationMethod1D::LINEAR),</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::invalid_argument);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>EXPECT_THROW(<ref refid="classhmap_1_1Interpolator1D" kindref="compound">Interpolator1D</ref>(std::vector&lt;float&gt;{0.f},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;{0.f},</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InterpolationMethod1D::LINEAR),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::invalid_argument);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="tests/src/test_interpolate1d.cpp"/>
+  </compounddef>
+</doxygen>

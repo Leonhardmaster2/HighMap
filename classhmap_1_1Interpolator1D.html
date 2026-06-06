@@ -221,9 +221,10 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructs an <code><a class="el" href="classhmap_1_1Interpolator1D.html" title="A class for performing 1D interpolation using the GSL library.">Interpolator1D</a></code> object with the given data and method. </p>
 <p>This constructor initializes the interpolation object with the provided x and y data points and the specified interpolation method.</p>
+<p>Coincident x coordinates are merged (keeping the first y) so that valid-but-sloppy data still interpolates instead of crashing; GSL's abort-on-error handler is disabled so a precondition violation throws a catchable exception rather than terminating the process.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>A vector of x coordinates (independent variable). </td></tr>
+    <tr><td class="paramname">x</td><td>A vector of x coordinates (independent variable). Must be sorted in increasing order. </td></tr>
     <tr><td class="paramname">y</td><td>A vector of y coordinates (dependent variable). </td></tr>
     <tr><td class="paramname">method</td><td>The interpolation method to use (default is linear).</td></tr>
   </table>
@@ -231,7 +232,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentifxandyhavedifferentsizesoriftherearefewerthan</td><td>two points. An exception is also thrown if the method requires monotonic data and the provided data is not monotonic. </td></tr>
+    <tr><td class="paramname">std::invalid_argument</td><td>if x and y have different sizes, if there are fewer than two points with distinct x values, if x is not sorted in increasing order, or if the method requires monotonic data and the provided data is not monotonic. </td></tr>
   </table>
   </dd>
 </dl>

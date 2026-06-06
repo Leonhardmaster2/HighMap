@@ -90,9 +90,11 @@ Constructs an {\ttfamily \doxylink{classhmap_1_1Interpolator1D}{Interpolator1D}}
 
 This constructor initializes the interpolation object with the provided x and y data points and the specified interpolation method.
 
+Coincident x coordinates are merged (keeping the first y) so that valid-\/but-\/sloppy data still interpolates instead of crashing; GSL\textquotesingle{}s abort-\/on-\/error handler is disabled so a precondition violation throws a catchable exception rather than terminating the process.
+
 
 \begin{DoxyParams}{Parameters}
-{\em x} & A vector of x coordinates (independent variable). \\
+{\em x} & A vector of x coordinates (independent variable). Must be sorted in increasing order. \\
 \hline
 {\em y} & A vector of y coordinates (dependent variable). \\
 \hline
@@ -101,7 +103,7 @@ This constructor initializes the interpolation object with the provided x and y 
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argumentifxandyhavedifferentsizesoriftherearefewerthan} & two points. An exception is also thrown if the method requires monotonic data and the provided data is not monotonic. \\
+{\em std\+::invalid\+\_\+argument} & if x and y have different sizes, if there are fewer than two points with distinct x values, if x is not sorted in increasing order, or if the method requires monotonic data and the provided data is not monotonic. \\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{classhmap_1_1Interpolator1D_afce7ba6809a4c7b28a561c7c646227e3}\label{classhmap_1_1Interpolator1D_afce7ba6809a4c7b28a561c7c646227e3} 
