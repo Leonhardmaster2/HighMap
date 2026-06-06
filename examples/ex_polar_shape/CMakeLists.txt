@@ -1,0 +1,2 @@
+add_executable(ex_polar_shape ex_polar_shape.cpp)
+target_link_libraries(ex_polar_shape highmap)

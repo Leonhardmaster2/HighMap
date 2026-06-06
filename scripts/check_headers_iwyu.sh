@@ -10,6 +10,7 @@ TMP_LOG="/tmp/iwyu_current.log"
 # -----------------------------------------------------------------------------
 
 RUN_IWYU=true
+TARGET_FILE=""
 
 for arg in "$@"
 do
@@ -20,9 +21,12 @@ do
         --iwyu)
             RUN_IWYU=true
             ;;
+        --file=*)
+            TARGET_FILE="${arg#*=}"
+            ;;
         *)
             echo "Unknown option: ${arg}"
-            echo "Usage: $0 [--iwyu | --no-iwyu]"
+            echo "Usage: $0 [--iwyu | --no-iwyu] [--file=path/to/file.cpp]"
             exit 1
             ;;
     esac
@@ -52,18 +56,39 @@ cmake -B "${BUILD_DIR}" \
     -DHIGHMAP_ENABLE_BENCHMARKS=ON
 
 # -----------------------------------------------------------------------------
+# Build file list
+# -----------------------------------------------------------------------------
+
+if [[ -n "${TARGET_FILE}" ]]; then
+
+    if [[ ! -f "${TARGET_FILE}" ]]; then
+        echo "File not found: ${TARGET_FILE}"
+        exit 1
+    fi
+
+    FILES=("${TARGET_FILE}")
+
+else
+
+    mapfile -t FILES < <(
+        for SRC_DIR in "${SRC_DIRS[@]}"
+        do
+            find "${SRC_DIR}" -type f \( \
+                 -name "*.hpp" -o \
+                 -name "*.cpp" -o \
+                 -name "*.cc"  -o \
+                 -name "*.cxx" \
+            \)
+        done
+    )
+
+fi
+
+# -----------------------------------------------------------------------------
 # Process files
 # -----------------------------------------------------------------------------
 
-for SRC_DIR in "${SRC_DIRS[@]}"
-do
-    find "${SRC_DIR}" -type f \( \
-         -name "*.hpp" -o \
-         -name "*.cpp" -o \
-         -name "*.cc"  -o \
-         -name "*.cxx" \
-    \)
-done | while read -r file
+for file in "${FILES[@]}"
 do
     echo "=================================================="
     echo "FILE: ${file}"
@@ -109,11 +134,6 @@ do
     # Clean-up problematic headers emitted by IWYU
     # -------------------------------------------------------------------------
 
-    # remove existing comments after header include
-    # sed -i \
-    # 	-E 's|^(#include[[:space:]]+[<"][^>"]+[>"])[[:space:]]*//.*$|\1|g' \
-    # 	"${file}"
-    
     sed -i \
         -e 's|#include <bits/std_abs.h>|#include <cmath>|g' \
         -e 's|#include <stddef.h>|#include <cstddef>|g' \
@@ -123,12 +143,12 @@ do
         -e 's|#include <stdlib.h>|#include <cstdlib>|g' \
         -e 's|#include <bits/chrono.h>|#include <chrono>|g' \
         -e 's|#include <float.h>|#include <cfloat>|g' \
-	-e 's|#include <ext/type_traits.h>|#include <type_traits>|g' \
-	-e 's|#include <opencv2/core/hal/interface.h>|#include <opencv2/core.hpp>|g' \
-	-e 's|#include <opencv2/core/mat.hpp>|#include <opencv2/core.hpp>|g' \
-	-e 's|#include <opencv2/core/matx.hpp>|#include <opencv2/core.hpp>|g' \
+        -e 's|#include <ext/type_traits.h>|#include <type_traits>|g' \
+        -e 's|#include <opencv2/core/hal/interface.h>|#include <opencv2/core.hpp>|g' \
+        -e 's|#include <opencv2/core/mat.hpp>|#include <opencv2/core.hpp>|g' \
+        -e 's|#include <opencv2/core/matx.hpp>|#include <opencv2/core.hpp>|g' \
         "${file}"
-	
+
     echo ""
 
 done

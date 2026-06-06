@@ -1,6 +1,7 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
 
@@ -131,6 +132,24 @@ float threshold_smooth(float x, float x0, float x1)
   if (x < x0) return 0.f;
   if (x < x1) return smoothstep3((x - x0) / (x1 - x0));
   return 1.f;
+}
+
+float trapeze(float x, float x0, float x1, float width)
+{
+  if (width <= 0.0f) return (x >= x0 && x <= x1) ? 1.0f : 0.0f;
+
+  // rising edge
+  float left = (x - (x0 - width)) / width;
+
+  // falling edge
+  float right = ((x1 + width) - x) / width;
+
+  return std::clamp(std::min(left, right), 0.0f, 1.0f);
+}
+
+float trapeze_smooth(float x, float x0, float x1, float width)
+{
+  return smoothstep3(trapeze(x, x0, x1, width));
 }
 
 float triangle(float x, float vmin, float vmax)

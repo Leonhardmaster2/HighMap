@@ -7,10 +7,11 @@
 #include <stdexcept>
 #include <vector>
 
+#include <gsl/gsl_errno.h>
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
 
-#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate.hpp"
 
 namespace hmap
 {
@@ -40,6 +41,40 @@ Interpolator1D::Interpolator1D(const std::vector<float> &x,
 
   this->x_data = std::vector<double>(x.begin(), x.end());
   this->y_data = std::vector<double>(y.begin(), y.end());
+
+  // GSL requires strictly increasing x: gsl_spline_init() with coincident or
+  // out-of-order x invokes GSL's default error handler, which abort()s the
+  // whole process (SIGABRT) instead of letting the caller recover. Merge
+  // coincident x (keeping the first y) so valid-but-sloppy data - duplicate
+  // colour-gradient stops, presets, float rounding - still renders, and throw
+  // a catchable exception only when the data cannot be repaired.
+  {
+    std::vector<double> xs, ys;
+    xs.reserve(this->x_data.size());
+    ys.reserve(this->y_data.size());
+
+    for (size_t i = 0; i < this->x_data.size(); ++i)
+    {
+      if (!xs.empty() && this->x_data[i] < xs.back())
+        throw std::invalid_argument(
+            "x values must be sorted in increasing order.");
+
+      if (!xs.empty() && this->x_data[i] == xs.back())
+        continue; // drop coincident point, keep the first y
+
+      xs.push_back(this->x_data[i]);
+      ys.push_back(this->y_data[i]);
+    }
+
+    this->x_data = std::move(xs);
+    this->y_data = std::move(ys);
+  }
+
+  if (this->x_data.size() < 2)
+  {
+    throw std::invalid_argument(
+        "at least two points with distinct x values are required.");
+  }
 
   const size_t size = this->x_data.size();
 
@@ -86,7 +121,24 @@ Interpolator1D::Interpolator1D(const std::vector<float> &x,
   default: throw std::invalid_argument("Unsupported interpolation method.");
   }
 
-  gsl_spline_init(this->interp, this->x_data.data(), this->y_data.data(), size);
+  // Belt-and-braces: never let GSL abort() the host process. Disable the
+  // default (abort-on-error) handler process-wide and turn any residual GSL
+  // error into a catchable exception instead of a SIGABRT.
+  gsl_set_error_handler_off();
+
+  const int status = gsl_spline_init(this->interp,
+                                     this->x_data.data(),
+                                     this->y_data.data(),
+                                     size);
+
+  if (status != GSL_SUCCESS)
+  {
+    gsl_spline_free(this->interp);
+    gsl_interp_accel_free(this->accel_);
+    throw std::invalid_argument(
+        std::string("GSL spline initialization failed: ") +
+        gsl_strerror(status));
+  }
 }
 
 Interpolator1D::~Interpolator1D()

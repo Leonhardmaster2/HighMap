@@ -21,7 +21,7 @@
 #include "hmm/src/triangulator.h"
 
 #include "highmap/array.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 #include <unordered_map>

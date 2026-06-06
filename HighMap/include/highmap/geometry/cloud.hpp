@@ -31,7 +31,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/point.hpp"
 #include "highmap/geometry/point_sampling.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 
 namespace hmap
 {

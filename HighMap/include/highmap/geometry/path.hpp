@@ -25,7 +25,7 @@
 #pragma once
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/cloud.hpp"
-#include "highmap/interpolate1d.hpp"
+#include "highmap/interpolate/interpolate1d.hpp"
 
 namespace hmap
 {

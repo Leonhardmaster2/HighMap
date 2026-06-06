@@ -6,7 +6,8 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
+#include "highmap/math/profiles.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
@@ -26,32 +27,6 @@
 
 namespace hmap
 {
-
-/**
- * @brief Procedural erosion angular profile type.
- */
-enum ErosionProfile : int
-{
-  EP_COSINE,
-  EP_COSINE_BULK,
-  EP_COSINE_PEAK,
-  EP_PARABOL,
-  EP_SAW_SHARP,
-  EP_SAW_SMOOTH,
-  EP_SHARP_VALLEYS,
-  EP_SQRT,
-  EP_TRIANGLE_GRENIER,
-  EP_TRIANGLE_SHARP,
-  EP_TRIANGLE_SMOOTH,
-};
-
-std::function<float(float)> get_erosion_profile_function(
-    const ErosionProfile &erosion_profile,
-    float                 delta,
-    float                &profile_avg);
-
-std::vector<hmap::ErosionProfile> check_erosion_profile_function(
-    float delta = 0.01f);
 
 /**
  * @brief Simulates terrain diffusion due to coastal erosion.

@@ -10,7 +10,6 @@
 #include "highmap/functions.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
-#include "highmap/primitives/geo.hpp"
 
 namespace hmap
 {
@@ -275,35 +274,6 @@ Array rectangle(glm::ivec2   shape,
 {
   Array             array = Array(shape);
   RectangleFunction f = RectangleFunction(rx, ry, angle, slope, center);
-
-  fill_array_using_xy_function(array,
-                               bbox,
-                               p_ctrl_param,
-                               p_noise_x,
-                               p_noise_y,
-                               p_stretching,
-                               f.get_delegate());
-  return array;
-}
-
-Array rift(glm::ivec2   shape,
-           float        angle,
-           float        slope,
-           float        width,
-           bool         sharp_bottom,
-           const Array *p_ctrl_param,
-           const Array *p_noise_x,
-           const Array *p_noise_y,
-           const Array *p_stretching,
-           glm::vec2    center,
-           glm::vec4    bbox)
-{
-  Array              array = Array(shape);
-  hmap::RiftFunction f = hmap::RiftFunction(angle,
-                                            slope,
-                                            width,
-                                            sharp_bottom,
-                                            center);
 
   fill_array_using_xy_function(array,
                                bbox,

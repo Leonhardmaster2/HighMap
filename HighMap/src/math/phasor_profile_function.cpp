@@ -1,6 +1,7 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <algorithm>
 #include <cmath>
 #include <functional>
 #include <stdexcept>
@@ -19,6 +20,8 @@ std::function<float(float)> get_phasor_profile_function(
 {
 
   std::function<float(float)> fct;
+
+  // phi in [-pi, pi]
 
   switch (phasor_profile)
   {
@@ -69,6 +72,29 @@ std::function<float(float)> get_phasor_profile_function(
       t = 4.f * std::abs(0.5f * t - std::floor(0.5f * t + 0.5f)) - 1.f;
       return t;
     };
+    break;
+
+  case PhasorProfile::PP_DUNE:
+    fct = [delta](float phi)
+    {
+      float tc = std::clamp(delta, 0.f, 1.f);
+      float t = 0.5f * phi / M_PI + 0.5f; // in [0, 1]
+      float v;
+
+      if (t < tc) // dune top position
+      {
+        float r = t / tc;
+        v = r * r * (3.f - 2.f * r);
+      }
+      else
+      {
+        float r = (t - 1.f) / (tc - 1.f);
+        v = r * r * (2.f - r);
+      }
+
+      return 2.f * v - 1.f; // in [-1, 1]
+    };
+
     break;
 
   default:

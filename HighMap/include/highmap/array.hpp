@@ -35,7 +35,7 @@ public:
    * @brief The shape of the array {ni, nj}.
    *
    */
-  glm::ivec2 shape;
+  glm::ivec2 shape = glm::ivec2(0, 0);
 
   /**
    * @brief The underlying data storage, a vector of size shape.x * shape.y.
@@ -1037,6 +1037,8 @@ Array cv_mat_to_array(const cv::Mat &mat,
                       bool           remap_values = true,
                       bool           flip_j = false);
 
+std::string get_opencv_build_information();
+
 // ==========================================================================
 // per cell operations wrapper(s)
 // ==========================================================================
@@ -1061,29 +1063,6 @@ template <typename Fn> inline void for_each_cell(const Array &a, Fn &&fn)
   for (int j = 0; j < h; ++j)
     for (int i = 0; i < w; ++i)
       fn(i, j, a(i, j));
-}
-
-/// Reduce all cells to a single value.
-template <typename T, typename Fn, typename Reduce>
-inline T reduce_cells(const Array &a, T init, Fn &&fn, Reduce &&reduce)
-{
-  T acc = init;
-
-  for_each_cell(a,
-                [&](int i, int j, float v) { acc = reduce(acc, fn(i, j, v)); });
-
-  return acc;
-}
-
-/// Reduce all cells to a single value.
-template <typename T, typename Fn, typename Reduce>
-inline T reduce_cells(const Array &a, T init, Reduce &&reduce)
-{
-  T acc = init;
-
-  for_each_cell(a, [&](int i, int j) { acc = reduce(acc, a(i, j)); });
-
-  return acc;
 }
 
 } // namespace hmap

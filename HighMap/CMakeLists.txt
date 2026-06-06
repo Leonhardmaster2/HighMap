@@ -21,7 +21,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 target_compile_definitions(
   ${PROJECT_NAME} INTERFACE GLM_FORCE_SWIZZLE GLM_FORCE_INLINE
-                            GLM_ENABLE_EXPERIMENTAL _USE_MATH_DEFINES )
+                            GLM_ENABLE_EXPERIMENTAL _USE_MATH_DEFINES)
 
 target_link_libraries(
   ${PROJECT_NAME}

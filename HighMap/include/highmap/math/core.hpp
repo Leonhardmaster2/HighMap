@@ -229,6 +229,29 @@ float threshold(float x, float x0, float x1);
 float threshold_smooth(float x, float x0, float x1);
 
 /**
+ * @brief Computes a trapezoidal pulse function.
+ *
+ * Returns a value in [0, 1] with linear ramps of size `width`
+ * around the interval [x0, x1].
+ *
+ * @param x     Input value.
+ * @param x0    Start of the plateau.
+ * @param x1    End of the plateau.
+ * @param width Width of the rising and falling ramps.
+ */
+float trapeze(float x, float x0, float x1, float width);
+
+/**
+ * @brief Smooth trapezoidal pulse using cubic smoothstep interpolation.
+ *
+ * @param x     Input value.
+ * @param x0    Start of the plateau.
+ * @param x1    End of the plateau.
+ * @param width Width of the rising and falling ramps.
+ */
+float trapeze_smooth(float x, float x0, float x1, float width);
+
+/**
  * @brief Triangle function between bounds.
  *
  * @param  x    Input value.

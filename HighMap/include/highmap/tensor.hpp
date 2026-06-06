@@ -39,7 +39,7 @@ public:
   /**
    * @brief Shape of the tensor in 3D space.
    */
-  glm::ivec3 shape;
+  glm::ivec3 shape = glm::ivec3(0, 0, 0);
 
   /**
    * @brief Flattened vector containing the tensor's elements.

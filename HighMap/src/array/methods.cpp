@@ -14,8 +14,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/internal/vector_utils.hpp"
-#include "highmap/interpolate2d.hpp"
-#include "highmap/interpolate_array.hpp"
+#include "highmap/interpolate.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap

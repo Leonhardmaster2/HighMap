@@ -20,6 +20,8 @@
 namespace hmap
 {
 
+class VirtualArray; // forward decl.
+
 class CoordFrame
 {
 public:

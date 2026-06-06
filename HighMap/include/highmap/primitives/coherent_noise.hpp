@@ -11,7 +11,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
-#include "highmap/interpolate2d.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/profiles.hpp"
 
 #define HMAP_GRADIENT_OFFSET 0.001f
