@@ -1,5 +1,12 @@
 var NAVTREEINDEX19 =
 {
+"range_8cpp.html#a936453b67a394c5da8b48473540c9459":[5,0,1,1,31,0,6],
+"range_8cpp.html#a94d994f910d44a006acfae7ff453a53d":[5,0,1,1,31,0,22],
+"range_8cpp.html#a9e903d1c88db888832bea8cbafb19246":[5,0,1,1,31,0,17],
+"range_8cpp.html#aa52f3e1fcb1cad464a512c09a0c8eb54":[5,0,1,1,31,0,15],
+"range_8cpp.html#aac14c59482d141532cc055fff18c5975":[5,0,1,1,31,0,13],
+"range_8cpp.html#ab0307c51c15ac3d4162974c970bc9ea9":[5,0,1,1,31,0,12],
+"range_8cpp.html#abc5d54d0d76a86f083db977837c28d69":[5,0,1,1,31,0,0],
 "range_8cpp.html#abd5e3daeb692506c7b6350516fccb3d3":[5,0,1,1,31,0,7],
 "range_8cpp.html#ac126773f7c7af2364cfb4d7a6922ed96":[5,0,1,1,31,0,25],
 "range_8cpp.html#acd070bc49683535711ab36b5ec65c434":[5,0,1,1,31,0,3],
@@ -242,12 +249,5 @@ var NAVTREEINDEX19 =
 "strata__gpu_8cpp.html#a740cd2ba7c58126ef27bfcddcb6f00b8":[5,0,1,1,12,22,2],
 "strata__gpu_8cpp.html#a924e3d46ccfbe374d34eeaaacc2f81fe":[5,0,1,1,12,22,1],
 "strata__gpu_8cpp.html#ab8f6820b9bd796b3283e763f4d872a51":[5,0,1,1,12,22,4],
-"strata__gpu_8cpp.html#acdb08d6ebb8ddb8e5595c11278cf81e0":[5,0,1,1,12,22,0],
-"strata__plates_8cpp.html":[5,0,1,1,12,23],
-"strata__plates_8cpp.html#a9c033bf30ba815949b8d0fb01ab15eea":[5,0,1,1,12,23,0],
-"stratify_8cpp.html":[5,0,1,1,12,24],
-"stratify_8cpp.html#a06a4f7bbf99b83632ceb8a9ba5989823":[5,0,1,1,12,24,6],
-"stratify_8cpp.html#a1d3b4f4dbe769a1f71f8fcc44cfcaf8c":[5,0,1,1,12,24,5],
-"stratify_8cpp.html#a88ec8b1aef39f4e5202d1138f84f6568":[5,0,1,1,12,24,4],
-"stratify_8cpp.html#abc0ddcae8cec8a556b8a343eaafe1dc4":[5,0,1,1,12,24,1]
+"strata__gpu_8cpp.html#acdb08d6ebb8ddb8e5595c11278cf81e0":[5,0,1,1,12,22,0]
 };

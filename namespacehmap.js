@@ -485,6 +485,11 @@ var namespacehmap =
       [ "EUCLISHEV", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec", null ],
       [ "MANHATTAN", "namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63", null ]
     ] ],
+    [ "DistanceFunctionAxis", "namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b", [
+      [ "DFA_X", "namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9ba4f690d97bafd042c8faf0ce2ff6bce0c", null ],
+      [ "DFA_Y", "namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9ba55e2391ae312d57fb9545bff594938b7", null ],
+      [ "DFA_XY", "namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef", null ]
+    ] ],
     [ "ErosionProfile", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6", [
       [ "EP_COSINE", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1", null ],
       [ "EP_COSINE_BULK", "namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02", null ],
@@ -616,7 +621,7 @@ var namespacehmap =
     [ "set_borders", "namespacehmap.html#a403b405887b5cda6a1d6f8bcaeb4c5e8", null ],
     [ "sym_borders", "namespacehmap.html#a2e43da799378e294ea448a498aa1d386", null ],
     [ "zeroed_borders", "namespacehmap.html#ae8bdfc965780305d1d26ff8b84e1dced", null ],
-    [ "zeroed_edges", "namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4", null ],
+    [ "zeroed_edges", "namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725", null ],
     [ "dig_path", "namespacehmap.html#a3a29e127d53bc5b547af422da36da1cc", null ],
     [ "dig_river", "namespacehmap.html#aa0407e8bf3d06ffb4d8d1e97809d3665", null ],
     [ "dig_river", "namespacehmap.html#ada12e6cab4577326964d00fac3aa1077", null ],
@@ -1053,7 +1058,7 @@ var namespacehmap =
     [ "trapeze", "namespacehmap.html#a5eaeb43a259dcdf4b0fb4632a559a1d4", null ],
     [ "trapeze_smooth", "namespacehmap.html#a0a3ae79b31c4eebc54ae686d5ba558a3", null ],
     [ "triangle", "namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4", null ],
-    [ "get_distance_function", "namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf", null ],
+    [ "get_distance_function", "namespacehmap.html#a4ec7654348a03f333c10c005ec8231b5", null ],
     [ "get_erosion_profile_function", "namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d", null ],
     [ "get_phasor_profile_function", "namespacehmap.html#a3e2e333ca90c11a997a9ac04361b1741", null ],
     [ "get_radial_profile_function", "namespacehmap.html#a6558dec0d9f57bbc8f9ef9b2fe324757", null ],

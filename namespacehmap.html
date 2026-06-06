@@ -565,6 +565,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a670f50d6c08ecd639d42db9c75a5273a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance function type.  <a href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">More...</a><br /></td></tr>
 <tr class="separator:a670f50d6c08ecd639d42db9c75a5273a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac3576b72f3669bd39a7d6ef7d60a9b" id="r_a0ac3576b72f3669bd39a7d6ef7d60a9b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">DistanceFunctionAxis</a> : int { <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9ba4f690d97bafd042c8faf0ce2ff6bce0c">DFA_X</a>
+, <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9ba55e2391ae312d57fb9545bff594938b7">DFA_Y</a>
+, <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef">DFA_XY</a>
+ }</td></tr>
+<tr class="memdesc:a0ac3576b72f3669bd39a7d6ef7d60a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Axis used for the distance function.  <a href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">More...</a><br /></td></tr>
+<tr class="separator:a0ac3576b72f3669bd39a7d6ef7d60a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a4e4775f3c0918ed75f0503f5ed0a6" id="r_a25a4e4775f3c0918ed75f0503f5ed0a6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> : int { <br />
 &#160;&#160;<a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1">EP_COSINE</a>
 , <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02">EP_COSINE_BULK</a>
@@ -797,9 +803,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae8bdfc965780305d1d26ff8b84e1dced" id="r_ae8bdfc965780305d1d26ff8b84e1dced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ae8bdfc965780305d1d26ff8b84e1dced">zeroed_borders</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:ae8bdfc965780305d1d26ff8b84e1dced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the border values (e.g., <code>i = 0</code>, <code>j = 0</code>, etc.) of the array with zeros.  <br /></td></tr>
 <tr class="separator:ae8bdfc965780305d1d26ff8b84e1dced"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a968a55eecfa4489a79a27cfa0e1d3ae4" id="r_a968a55eecfa4489a79a27cfa0e1d3ae4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">zeroed_edges</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, float sigma=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> dist_fct=<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781">DistanceFunction::EUCLIDIAN</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
-<tr class="memdesc:a968a55eecfa4489a79a27cfa0e1d3ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a smooth transition to zero at the array borders.  <br /></td></tr>
-<tr class="separator:a968a55eecfa4489a79a27cfa0e1d3ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dea15aaafcc8b56fcb5e04fa2e53725" id="r_a4dea15aaafcc8b56fcb5e04fa2e53725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">zeroed_edges</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, <a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a> radial_profile, float profile_param=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float amount=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, <a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> <a class="el" href="namespacehmap.html#a567410971127d39a9e3c2d7b75364def">distance</a>=<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781">DistanceFunction::EUCLIDIAN</a>, <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">DistanceFunctionAxis</a> dfa=<a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef">DistanceFunctionAxis::DFA_XY</a>, glm::vec2 center={0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float radius=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_r=nullptr, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>})</td></tr>
+<tr class="memdesc:a4dea15aaafcc8b56fcb5e04fa2e53725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smoothly attenuates array values toward zero near the domain boundaries.  <br /></td></tr>
+<tr class="separator:a4dea15aaafcc8b56fcb5e04fa2e53725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a29e127d53bc5b547af422da36da1cc" id="r_a3a29e127d53bc5b547af422da36da1cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a3a29e127d53bc5b547af422da36da1cc">dig_path</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, <a class="el" href="classhmap_1_1Path.html">Path</a> &amp;path, int width=1, int decay=2, int flattening_radius=16, bool force_downhill=false, glm::vec4 bbox={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, float depth=0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
 <tr class="memdesc:a3a29e127d53bc5b547af422da36da1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dig a path on a heightmap.  <br /></td></tr>
 <tr class="separator:a3a29e127d53bc5b547af422da36da1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2070,9 +2076,9 @@ Functions</h2></td></tr>
 <tr class="memitem:adce0295b768dd046d1ddcd117cb1b8b4" id="r_adce0295b768dd046d1ddcd117cb1b8b4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#adce0295b768dd046d1ddcd117cb1b8b4">triangle</a> (float x, float vmin, float vmax)</td></tr>
 <tr class="memdesc:adce0295b768dd046d1ddcd117cb1b8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangle function between bounds.  <br /></td></tr>
 <tr class="separator:adce0295b768dd046d1ddcd117cb1b8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a325c785e4776325f3061d9f5bd89fccf" id="r_a325c785e4776325f3061d9f5bd89fccf"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float, float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf">get_distance_function</a> (<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> dist_fct)</td></tr>
-<tr class="memdesc:a325c785e4776325f3061d9f5bd89fccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the requested distance function.  <br /></td></tr>
-<tr class="separator:a325c785e4776325f3061d9f5bd89fccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ec7654348a03f333c10c005ec8231b5" id="r_a4ec7654348a03f333c10c005ec8231b5"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float, float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a4ec7654348a03f333c10c005ec8231b5">get_distance_function</a> (<a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a> dist_fct, <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">DistanceFunctionAxis</a> dfa=<a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef">DistanceFunctionAxis::DFA_XY</a>)</td></tr>
+<tr class="memdesc:a4ec7654348a03f333c10c005ec8231b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the requested distance function.  <br /></td></tr>
+<tr class="separator:a4ec7654348a03f333c10c005ec8231b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02f191e398bfc3c0e87999d8576d7c3d" id="r_a02f191e398bfc3c0e87999d8576d7c3d"><td class="memItemLeft" align="right" valign="top">std::function&lt; float(float)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a02f191e398bfc3c0e87999d8576d7c3d">get_erosion_profile_function</a> (const <a class="el" href="namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6">ErosionProfile</a> &amp;erosion_profile, float delta, float &amp;profile_avg)</td></tr>
 <tr class="memdesc:a02f191e398bfc3c0e87999d8576d7c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a function representing an erosion profile based on the specified type and parameters.  <br /></td></tr>
 <tr class="separator:a02f191e398bfc3c0e87999d8576d7c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3347,6 +3353,30 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec" name="a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec"></a>EUCLISHEV&#160;</td><td class="fielddoc"><p>Euclidian and Chebyshev mix. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63" name="a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63"></a>MANHATTAN&#160;</td><td class="fielddoc"><p>Manhattan. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0ac3576b72f3669bd39a7d6ef7d60a9b" name="a0ac3576b72f3669bd39a7d6ef7d60a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac3576b72f3669bd39a7d6ef7d60a9b">&#9670;&#160;</a></span>DistanceFunctionAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">hmap::DistanceFunctionAxis</a> : int</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Axis used for the distance function. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0ac3576b72f3669bd39a7d6ef7d60a9ba4f690d97bafd042c8faf0ce2ff6bce0c" name="a0ac3576b72f3669bd39a7d6ef7d60a9ba4f690d97bafd042c8faf0ce2ff6bce0c"></a>DFA_X&#160;</td><td class="fielddoc"><p>X-only. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0ac3576b72f3669bd39a7d6ef7d60a9ba55e2391ae312d57fb9545bff594938b7" name="a0ac3576b72f3669bd39a7d6ef7d60a9ba55e2391ae312d57fb9545bff594938b7"></a>DFA_Y&#160;</td><td class="fielddoc"><p>Y-only. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef" name="a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef"></a>DFA_XY&#160;</td><td class="fielddoc"><p>X and Y. </p>
 </td></tr>
 </table>
 
@@ -5516,8 +5546,8 @@ template&lt;typename Fn &gt; </div>
 <div class="line">  zt.to_png(<span class="stringliteral">&quot;ex_make_periodic1.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492">hmap::Cmap::VIRIDIS</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a3d23e9f95cfe4a8ceeecd6ea01d1d3e4"><div class="ttname"><a href="namespacehmap.html#a3d23e9f95cfe4a8ceeecd6ea01d1d3e4">hmap::make_periodic</a></div><div class="ttdeci">void make_periodic(Array &amp;array, int nbuffer, const PeriodicityType &amp;periodicity_type=PeriodicityType::PERIODICITY_XY)</div><div class="ttdoc">Adjusts the input array to be periodic in both directions by transitioning smoothly at the boundaries...</div><div class="ttdef"><b>Definition</b> boundary.cpp:195</div></div>
-<div class="ttc" id="anamespacehmap_html_a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f"><div class="ttname"><a href="namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f">hmap::PERIODICITY_X</a></div><div class="ttdeci">@ PERIODICITY_X</div><div class="ttdoc">Periodic only along the X axis.</div><div class="ttdef"><b>Definition</b> boundary.hpp:31</div></div>
-<div class="ttc" id="anamespacehmap_html_a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b"><div class="ttname"><a href="namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b">hmap::PERIODICITY_Y</a></div><div class="ttdeci">@ PERIODICITY_Y</div><div class="ttdoc">Periodic only along the Y axis.</div><div class="ttdef"><b>Definition</b> boundary.hpp:32</div></div>
+<div class="ttc" id="anamespacehmap_html_a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f"><div class="ttname"><a href="namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71a0676aefdc33468b2c6e93b2005b3ee9f">hmap::PERIODICITY_X</a></div><div class="ttdeci">@ PERIODICITY_X</div><div class="ttdoc">Periodic only along the X axis.</div><div class="ttdef"><b>Definition</b> boundary.hpp:32</div></div>
+<div class="ttc" id="anamespacehmap_html_a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b"><div class="ttname"><a href="namespacehmap.html#a41f6f4d40b566b87f78344d9efe71c71ae51f7482e4aaf0f953891d46f573d88b">hmap::PERIODICITY_Y</a></div><div class="ttdeci">@ PERIODICITY_Y</div><div class="ttdoc">Periodic only along the Y axis.</div><div class="ttdef"><b>Definition</b> boundary.hpp:33</div></div>
 <div class="ttc" id="anamespacehmap_html_a462f8b6ebc7b8ab79c619987e0ddfce4"><div class="ttname"><a href="namespacehmap.html#a462f8b6ebc7b8ab79c619987e0ddfce4">hmap::vstack</a></div><div class="ttdeci">Array vstack(const Array &amp;array1, const Array &amp;array2)</div><div class="ttdoc">Vertically stack two arrays.</div><div class="ttdef"><b>Definition</b> operator.cpp:94</div></div>
 <div class="ttc" id="anamespacehmap_html_ad6fc7fb24960fa6a45bc657ae2d89f80"><div class="ttname"><a href="namespacehmap.html#ad6fc7fb24960fa6a45bc657ae2d89f80">hmap::hstack</a></div><div class="ttdeci">Array hstack(const Array &amp;array1, const Array &amp;array2)</div><div class="ttdoc">Horizontally stack two arrays side by side.</div><div class="ttdef"><b>Definition</b> operator.cpp:71</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -5774,10 +5804,10 @@ template&lt;typename Fn &gt; </div>
 <div class="line">                          {z, count},</div>
 <div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8">hmap::BOUNDARY_TOP</a></div><div class="ttdeci">@ BOUNDARY_TOP</div><div class="ttdoc">j = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:46</div></div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::BOUNDARY_LEFT</a></div><div class="ttdeci">@ BOUNDARY_LEFT</div><div class="ttdoc">i = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:44</div></div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309">hmap::BOUNDARY_BOTTOM</a></div><div class="ttdeci">@ BOUNDARY_BOTTOM</div><div class="ttdoc">j = ny - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:47</div></div>
-<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::BOUNDARY_RIGHT</a></div><div class="ttdeci">@ BOUNDARY_RIGHT</div><div class="ttdoc">i = nx - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:45</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea1bda4002f204a3b745ea70dab2b6b6d8">hmap::BOUNDARY_TOP</a></div><div class="ttdeci">@ BOUNDARY_TOP</div><div class="ttdoc">j = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:47</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eea760545322569136cd3be89e004ab10d4">hmap::BOUNDARY_LEFT</a></div><div class="ttdeci">@ BOUNDARY_LEFT</div><div class="ttdoc">i = 0</div><div class="ttdef"><b>Definition</b> boundary.hpp:45</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeac7495a13a71417dd76751518cd185309">hmap::BOUNDARY_BOTTOM</a></div><div class="ttdeci">@ BOUNDARY_BOTTOM</div><div class="ttdoc">j = ny - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:48</div></div>
+<div class="ttc" id="anamespacehmap_html_a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7"><div class="ttname"><a href="namespacehmap.html#a1ba9d4ce7afe3309f8ae8e617f7154eeadb9a04ab3508704543b5dd43ae495fe7">hmap::BOUNDARY_RIGHT</a></div><div class="ttdeci">@ BOUNDARY_RIGHT</div><div class="ttdoc">i = nx - 1</div><div class="ttdef"><b>Definition</b> boundary.hpp:46</div></div>
 <div class="ttc" id="anamespacehmap_html_a7b12baa935f3ffb6a16e1809a85d0a6f"><div class="ttname"><a href="namespacehmap.html#a7b12baa935f3ffb6a16e1809a85d0a6f">hmap::pick_boundary_cell</a></div><div class="ttdeci">glm::ivec2 pick_boundary_cell(const Array &amp;z, DomainBoundary boundary, std::uint32_t seed, bool favor_boundary_center=true, bool favor_lower_elevation=true, bool favor_sinks=true)</div><div class="ttdoc">Picks a boundary cell using weighted random selection.</div><div class="ttdef"><b>Definition</b> pick_boundary_cell.cpp:16</div></div>
 <div class="ttc" id="anamespacehmap_html_ac91a2dacd050d8588b4135f02dd8f2a5"><div class="ttname"><a href="namespacehmap.html#ac91a2dacd050d8588b4135f02dd8f2a5">hmap::dilation</a></div><div class="ttdeci">Array dilation(const Array &amp;array, int ir)</div><div class="ttdoc">Apply a dilation algorithm to the input array using a square structure.</div><div class="ttdef"><b>Definition</b> morphology.cpp:85</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -5961,8 +5991,8 @@ template&lt;typename Fn &gt; </div>
 
 </div>
 </div>
-<a id="a968a55eecfa4489a79a27cfa0e1d3ae4" name="a968a55eecfa4489a79a27cfa0e1d3ae4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a968a55eecfa4489a79a27cfa0e1d3ae4">&#9670;&#160;</a></span>zeroed_edges()</h2>
+<a id="a4dea15aaafcc8b56fcb5e04fa2e53725" name="a4dea15aaafcc8b56fcb5e04fa2e53725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dea15aaafcc8b56fcb5e04fa2e53725">&#9670;&#160;</a></span>zeroed_edges()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -5976,20 +6006,50 @@ template&lt;typename Fn &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a2affc745bc33b7555352665745741f90">RadialProfile</a>&#160;</td>
+          <td class="paramname"><em>radial_profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>sigma</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+          <td class="paramname"><em>profile_param</em> = <code>0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>amount</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a>&#160;</td>
-          <td class="paramname"><em>dist_fct</em> = <code><a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781">DistanceFunction::EUCLIDIAN</a></code>, </td>
+          <td class="paramname"><em>distance</em> = <code><a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781">DistanceFunction::EUCLIDIAN</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">DistanceFunctionAxis</a>&#160;</td>
+          <td class="paramname"><em>dfa</em> = <code><a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef">DistanceFunctionAxis::DFA_XY</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec2&#160;</td>
+          <td class="paramname"><em>center</em> = <code>{0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>,&#160;0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classhmap_1_1Array.html">Array</a> *&#160;</td>
-          <td class="paramname"><em>p_noise</em> = <code>nullptr</code>, </td>
+          <td class="paramname"><em>p_noise_r</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -6005,46 +6065,45 @@ template&lt;typename Fn &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Applies a smooth transition to zero at the array borders. </p>
-<p>This function gradually transitions the values at the borders of the array to zero, using a smoothing function defined by the <code>sigma</code> parameter, which controls the half-width of the transition. The transition can be further customized by providing a noise array (<code>p_noise</code>) and a bounding box (<code>bbox</code>) that defines the domain of the operation.</p>
+<p>Smoothly attenuates array values toward zero near the domain boundaries. </p>
+<p>Applies a radial profile centered at <code>center</code> with the specified <code>radius</code>. The effect can be shaped using <code>radial_profile</code>, <code>profile_param</code>, and an optional noise modulation array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">array</td><td>Reference to the input array whose borders will be smoothly transitioned to zero. </td></tr>
-    <tr><td class="paramname">sigma</td><td>A float value controlling the half-width ratio of the transition. Default is 1.0. </td></tr>
-    <tr><td class="paramname">dist_fct</td><td>Distance function used for determining the smoothing (default is Euclidean distance). </td></tr>
-    <tr><td class="paramname">p_noise</td><td>Optional pointer to an input noise array, which can be used during the transition process. Default is <code>nullptr</code>. </td></tr>
-    <tr><td class="paramname">bbox</td><td>A vector defining the domain's bounding box. Default is {0.f, 1.f, 0.f, 1.f}.</td></tr>
+    <tr><td class="paramname">array</td><td>Input/output array. </td></tr>
+    <tr><td class="paramname">radial_profile</td><td>Radial attenuation profile. </td></tr>
+    <tr><td class="paramname">profile_param</td><td>Profile-specific parameter. </td></tr>
+    <tr><td class="paramname">amount</td><td>Effect strength in [0, 1]. </td></tr>
+    <tr><td class="paramname">distance</td><td>Distance function. </td></tr>
+    <tr><td class="paramname">dfa</td><td>Distance axes used for distance evaluation. </td></tr>
+    <tr><td class="paramname">center</td><td>Profile center in normalized coordinates. </td></tr>
+    <tr><td class="paramname">radius</td><td>Profile radius. </td></tr>
+    <tr><td class="paramname">p_noise_r</td><td>Optional modulation array. </td></tr>
+    <tr><td class="paramname">bbox</td><td>Domain bounding box.</td></tr>
   </table>
   </dd>
 </dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line">  glm::vec2  res = {4.f, 4.f};</div>
-<div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
+<div class="line">  glm::vec2  kw = {4.f, 4.f};</div>
+<div class="line">  <span class="keywordtype">int</span>        seed = 0;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a7f5b2e16a974bbfad06fbae44c8b3465">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z);</div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z0 = <a class="code hl_function" href="namespacehmap.html#a7f5b2e16a974bbfad06fbae44c8b3465">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z0);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span> sigma = 1.f;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">auto</span> z1 = z;</div>
-<div class="line">  <span class="keyword">auto</span> z2 = z;</div>
-<div class="line">  <span class="keyword">auto</span> z3 = z;</div>
-<div class="line">  <span class="keyword">auto</span> z4 = z;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z1, sigma, <a class="code hl_enumvalue" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aab5937b3ae1efaa098f517fe7c761b781">hmap::DistanceFunction::EUCLIDIAN</a>);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z2, sigma, <a class="code hl_enumvalue" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa439184a2066b21b9ba0883b29efabfec">hmap::DistanceFunction::EUCLISHEV</a>);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z3, sigma, <a class="code hl_enumvalue" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aa2a9fc119d00df5ec5de1c13a006921f2">hmap::DistanceFunction::CHEBYSHEV</a>);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(z4, sigma, <a class="code hl_enumvalue" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273aad250b63dea876f47d2b0dab1edf01b63">hmap::DistanceFunction::MANHATTAN</a>);</div>
+<div class="line">  <span class="keyword">auto</span> z1 = z0;</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(z1, <a class="code hl_enumvalue" href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RadialProfile::RP_SMOOTHSTEP</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_zeroed_edges.png&quot;</span>,</div>
-<div class="line">                          {z, z1, z2, z3, z4},</div>
-<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
+<div class="line">                          {z0, z1},</div>
+<div class="line">                          <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>,</div>
+<div class="line">                          <span class="keyword">true</span>);</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a968a55eecfa4489a79a27cfa0e1d3ae4"><div class="ttname"><a href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a></div><div class="ttdeci">void zeroed_edges(Array &amp;array, float sigma=1.f, DistanceFunction dist_fct=DistanceFunction::EUCLIDIAN, const Array *p_noise=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies a smooth transition to zero at the array borders.</div><div class="ttdef"><b>Definition</b> boundary.cpp:454</div></div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RP_SMOOTHSTEP</a></div><div class="ttdeci">@ RP_SMOOTHSTEP</div><div class="ttdef"><b>Definition</b> profiles.hpp:55</div></div>
+<div class="ttc" id="anamespacehmap_html_a4dea15aaafcc8b56fcb5e04fa2e53725"><div class="ttname"><a href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a></div><div class="ttdeci">void zeroed_edges(Array &amp;array, RadialProfile radial_profile, float profile_param=0.f, float amount=1.f, DistanceFunction distance=DistanceFunction::EUCLIDIAN, DistanceFunctionAxis dfa=DistanceFunctionAxis::DFA_XY, glm::vec2 center={0.5f, 0.5f}, float radius=0.5f, const Array *p_noise_r=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Smoothly attenuates array values toward zero near the domain boundaries.</div><div class="ttdef"><b>Definition</b> zeroed_edges.cpp:13</div></div>
+</div><!-- fragment --> <div class="image">
 <img src="ex_zeroed_edges.png" alt=""/>
 </div>
  
@@ -14080,8 +14139,7 @@ An <a class="el" href="classhmap_1_1Array.html" title="Array class, helper to ma
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_expand.png" alt=""/>
 </div>
-<dl class="section see"><dt>See also</dt><dd>ex_shrink </dd></dl>
-
+ 
 </div>
 </div>
 <a id="a49ea41f360f192a6c21efffd8b4df659" name="a49ea41f360f192a6c21efffd8b4df659"></a>
@@ -34635,8 +34693,8 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 
 </div>
 </div>
-<a id="a325c785e4776325f3061d9f5bd89fccf" name="a325c785e4776325f3061d9f5bd89fccf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a325c785e4776325f3061d9f5bd89fccf">&#9670;&#160;</a></span>get_distance_function()</h2>
+<a id="a4ec7654348a03f333c10c005ec8231b5" name="a4ec7654348a03f333c10c005ec8231b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ec7654348a03f333c10c005ec8231b5">&#9670;&#160;</a></span>get_distance_function()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -34645,8 +34703,18 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
           <td class="memname">std::function&lt; float(float, float)&gt; hmap::get_distance_function </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacehmap.html#a670f50d6c08ecd639d42db9c75a5273a">DistanceFunction</a>&#160;</td>
-          <td class="paramname"><em>dist_fct</em></td><td>)</td>
+          <td class="paramname"><em>dist_fct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9b">DistanceFunctionAxis</a>&#160;</td>
+          <td class="paramname"><em>dfa</em> = <code><a class="el" href="namespacehmap.html#a0ac3576b72f3669bd39a7d6ef7d60a9bafe1382ea7700679e1508c2dd764151ef">DistanceFunctionAxis::DFA_XY</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -34707,7 +34775,7 @@ y = v_{\min} + \frac{v_{\max} - v_{\min}}
 <dl class="section return"><dt>Returns</dt><dd>A <code>std::function&lt;float(float)&gt;</code> that computes the erosion profile for a given phase angle.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argumentIftheprovided</td><td><code>erosion_profile</code> is invalid.</td></tr>
+    <tr><td class="paramname">std::invalid_argumentIf</td><td>the provided <code>erosion_profile</code> is invalid.</td></tr>
   </table>
   </dd>
 </dl>
@@ -44596,7 +44664,7 @@ template&lt;typename Fn &gt; </div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use &quot;any&quot; noise as land mask</span></div>
 <div class="line">  <span class="keyword">auto</span> land_mask2 = <a class="code hl_function" href="namespacehmap.html#aab4e1fed5b362634652df32f832ce3f7">noise</a>;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a968a55eecfa4489a79a27cfa0e1d3ae4">hmap::zeroed_edges</a>(land_mask2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(land_mask2);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a>(land_mask2, 0.15f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zc = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a>(land_mask2, seed);</div>
 <div class="line"> </div>
@@ -44826,7 +44894,6 @@ template&lt;typename Fn &gt; </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rift.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_html_a0da433ef9eb80cc11084bd3adbe75051"><div class="ttname"><a href="namespacehmap.html#a0da433ef9eb80cc11084bd3adbe75051">hmap::rift</a></div><div class="ttdeci">Array rift(glm::ivec2 shape, float angle, float radius=0.1f, float axial_slope=0.2f, float depth=0.5f, bool scale_with_depth=true, RadialProfile profile=RadialProfile::RP_SMOOTHSTEP, float profile_param=0.f, float bottom_extent=0.1, float bottom_depth=0.05f, RadialProfile bottom_profile=RadialProfile::RP_SQRT, float bottom_profile_param=0.f, bool bottom_force_minimum_depth=true, float outer_slope=0.5f, const Array *p_noise_r=nullptr, const Array *p_noise_offset=nullptr, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, Array *p_rift_mask=nullptr, Array *p_bottom_mask=nullptr)</div><div class="ttdoc">Generate a rift-shaped primitive.</div><div class="ttdef"><b>Definition</b> rift.cpp:17</div></div>
-<div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ad18fad6ec8edf55050af29b51e14fffd">hmap::RP_SMOOTHSTEP</a></div><div class="ttdeci">@ RP_SMOOTHSTEP</div><div class="ttdef"><b>Definition</b> profiles.hpp:55</div></div>
 <div class="ttc" id="anamespacehmap_html_a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5"><div class="ttname"><a href="namespacehmap.html#a2affc745bc33b7555352665745741f90ada6f8c1c08707c0497225cca34975ca5">hmap::RP_SQRT</a></div><div class="ttdeci">@ RP_SQRT</div><div class="ttdef"><b>Definition</b> profiles.hpp:58</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_rift.png" alt=""/>

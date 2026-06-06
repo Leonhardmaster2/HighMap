@@ -45,7 +45,7 @@ var searchData=
   ['get_5fcumulative_5fdistance_42',['get_cumulative_distance',['../classhmap_1_1Path.html#a9ea0ffcf40358b7e33ff8cffc33f918a',1,'hmap::Path']]],
   ['get_5fcurvature_43',['get_curvature',['../classhmap_1_1Path.html#ab083b81103f72c7c9b9fa81451599357',1,'hmap::Path']]],
   ['get_5fdelegate_44',['get_delegate',['../classhmap_1_1Function.html#a32214e30c36be7650c47867fd14f6a0c',1,'hmap::Function']]],
-  ['get_5fdistance_5ffunction_45',['get_distance_function',['../namespacehmap.html#a325c785e4776325f3061d9f5bd89fccf',1,'hmap']]],
+  ['get_5fdistance_5ffunction_45',['get_distance_function',['../namespacehmap.html#a4ec7654348a03f333c10c005ec8231b5',1,'hmap']]],
   ['get_5fedge_5fcenters_46',['get_edge_centers',['../classhmap_1_1Path.html#a1344c82b303d10ef07d3fe9417ab2a0e',1,'hmap::Path']]],
   ['get_5fedge_5flength_47',['get_edge_length',['../classhmap_1_1Graph.html#aa04970dd704339909bcc4770fa0481ab',1,'hmap::Graph']]],
   ['get_5fedge_5fx_5fpairs_48',['get_edge_x_pairs',['../classhmap_1_1Graph.html#ab9c3f02b3a4921f785eb7f80834ed9d7',1,'hmap::Graph']]],
