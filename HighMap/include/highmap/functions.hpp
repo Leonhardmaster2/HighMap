@@ -517,12 +517,14 @@ public:
    * @param xbottom     Relative location of the foot of the dune profile (in
    * [0, 1]).
    * @param phase_shift Phase shift (in radians).
+   * @param center      Primitive reference center.
    */
   WaveDuneFunction(glm::vec2 kw,
                    float     angle,
                    float     xtop,
                    float     xbottom,
-                   float     phase_shift);
+                   float     phase_shift,
+                   glm::vec2 center = {0.5f, 0.5f});
 
   /**
    * @brief Set the angle.
@@ -542,7 +544,8 @@ protected:
   float xtop; ///< Relative location of the top of the dune profile (in [0, 1]).
   float xbottom; ///< Relative location of the foot of the dune profile (in [0,
   ///< 1]).
-  float phase_shift; ///< Phase shift (in radians).
+  float     phase_shift; ///< Phase shift (in radians).
+  glm::vec2 center;      ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -566,8 +569,12 @@ public:
    *                    respect to a unit domain.
    * @param angle       Overall rotation angle (in degrees).
    * @param phase_shift Phase shift (in radians).
+   * @param center      Primitive reference center.
    */
-  WaveSineFunction(glm::vec2 kw, float angle, float phase_shift);
+  WaveSineFunction(glm::vec2 kw,
+                   float     angle,
+                   float     phase_shift,
+                   glm::vec2 center = {0.5f, 0.5f});
 
   /**
    * @brief Set the angle.
@@ -585,6 +592,7 @@ protected:
   glm::vec2 kw;          ///< Frequency scaling vector.
   float     angle;       ///< Overall rotation angle (in degrees).
   float     phase_shift; ///< Phase shift (in radians).
+  glm::vec2 center;      ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -608,8 +616,12 @@ public:
    *                    respect to a unit domain.
    * @param angle       Overall rotation angle (in degrees).
    * @param phase_shift Phase shift (in radians).
+   * @param center      Primitive reference center.
    */
-  WaveSquareFunction(glm::vec2 kw, float angle, float phase_shift);
+  WaveSquareFunction(glm::vec2 kw,
+                     float     angle,
+                     float     phase_shift,
+                     glm::vec2 center = {0.5f, 0.5f});
 
   /**
    * @brief Set the angle.
@@ -627,6 +639,7 @@ protected:
   glm::vec2 kw;          ///< Frequency scaling vector.
   float     angle;       ///< Overall rotation angle (in degrees).
   float     phase_shift; ///< Phase shift (in radians).
+  glm::vec2 center;      ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
@@ -652,11 +665,13 @@ public:
    * @param angle       Overall rotation angle (in degrees).
    * @param slant_ratio Relative location of the triangle apex, in [0, 1].
    * @param phase_shift Phase shift (in radians).
+   * @param center      Primitive reference center.
    */
   WaveTriangularFunction(glm::vec2 kw,
                          float     angle,
                          float     slant_ratio,
-                         float     phase_shift);
+                         float     phase_shift,
+                         glm::vec2 center = {0.5f, 0.5f});
 
   /**
    * @brief Set the angle.
@@ -675,6 +690,7 @@ protected:
   float     angle;       ///< Overall rotation angle (in degrees).
   float     slant_ratio; ///< Relative location of the triangle apex, in [0, 1].
   float     phase_shift; ///< Phase shift (in radians).
+  glm::vec2 center;      ///< Primitive reference center.
 
 private:
   float ca; ///< Cached cosine of the angle.
