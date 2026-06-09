@@ -1,5 +1,13 @@
 var NAVTREEINDEX20 =
 {
+"strata__gpu_8cpp.html":[5,0,1,1,12,22],
+"strata__gpu_8cpp.html#a288ef6bf36b0f0bb7085ca04a6b0a40e":[5,0,1,1,12,22,6],
+"strata__gpu_8cpp.html#a5b29dc1e29512877770fd208cd40b971":[5,0,1,1,12,22,3],
+"strata__gpu_8cpp.html#a6c5ef6ef70ac1b265d556ce9ce4ad042":[5,0,1,1,12,22,5],
+"strata__gpu_8cpp.html#a740cd2ba7c58126ef27bfcddcb6f00b8":[5,0,1,1,12,22,2],
+"strata__gpu_8cpp.html#a924e3d46ccfbe374d34eeaaacc2f81fe":[5,0,1,1,12,22,1],
+"strata__gpu_8cpp.html#ab8f6820b9bd796b3283e763f4d872a51":[5,0,1,1,12,22,4],
+"strata__gpu_8cpp.html#acdb08d6ebb8ddb8e5595c11278cf81e0":[5,0,1,1,12,22,0],
 "strata__plates_8cpp.html":[5,0,1,1,12,23],
 "strata__plates_8cpp.html#a9c033bf30ba815949b8d0fb01ab15eea":[5,0,1,1,12,23,0],
 "stratify_8cpp.html":[5,0,1,1,12,24],
@@ -241,13 +249,5 @@ var NAVTREEINDEX20 =
 "structhmap_1_1TileRegion.html#a2160f3e52bb07aebad44bf689d5fe690":[4,0,0,63,1],
 "structhmap_1_1TileRegion.html#a49c3eebc47bb7e161fd3c6ce87f01cca":[3,0,0,64,8],
 "structhmap_1_1TileRegion.html#a49c3eebc47bb7e161fd3c6ce87f01cca":[4,0,0,63,8],
-"structhmap_1_1TileRegion.html#a525824dd7a3c589436a33b1d232a8433":[3,0,0,64,7],
-"structhmap_1_1TileRegion.html#a525824dd7a3c589436a33b1d232a8433":[4,0,0,63,7],
-"structhmap_1_1TileRegion.html#a773fcee90fae6c3950a9fa5617de2f62":[4,0,0,63,2],
-"structhmap_1_1TileRegion.html#a773fcee90fae6c3950a9fa5617de2f62":[3,0,0,64,2],
-"structhmap_1_1TileRegion.html#adfd726429cd45259258bdddb714e2414":[3,0,0,64,4],
-"structhmap_1_1TileRegion.html#adfd726429cd45259258bdddb714e2414":[4,0,0,63,4],
-"structhmap_1_1TileRegion.html#ae00731982da2e860d89cbdaec916a080":[4,0,0,63,3],
-"structhmap_1_1TileRegion.html#ae00731982da2e860d89cbdaec916a080":[3,0,0,64,3],
-"structhmap_1_1TileRegion.html#afb89981844bdc0270441e8464f00ccdc":[4,0,0,63,5]
+"structhmap_1_1TileRegion.html#a525824dd7a3c589436a33b1d232a8433":[3,0,0,64,7]
 };

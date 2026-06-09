@@ -1,5 +1,13 @@
 var NAVTREEINDEX12 =
 {
+"math_8hpp.html":[5,0,1,0,0,32],
+"math_8hpp_source.html":[5,0,1,0,0,32],
+"methods_8cpp.html":[5,0,1,1,1,3],
+"morphology_8cpp.html":[5,0,1,1,25,3],
+"morphology_8cpp.html#a01f3be1fd053428ea67030e3736d15ca":[5,0,1,1,25,3,11],
+"morphology_8cpp.html#a11ddd5ab1aa625db9419d9b65c0eaa64":[5,0,1,1,25,3,23],
+"morphology_8cpp.html#a1cf22c68188d0e35aa74983f3a01c488":[5,0,1,1,25,3,10],
+"morphology_8cpp.html#a211108a73f7ebadb6ac87621c4e47301":[5,0,1,1,25,3,13],
 "morphology_8cpp.html#a2420e66a1e851eff3503d805004495b3":[5,0,1,1,25,3,4],
 "morphology_8cpp.html#a268e133ae504eaa1b31c91d13135f4c5":[5,0,1,1,25,3,6],
 "morphology_8cpp.html#a2ac3034879fe68a7cc67d2d452a60c1a":[5,0,1,1,25,3,18],
@@ -193,6 +201,7 @@ var NAVTREEINDEX12 =
 "namespacehmap.html#a15951dcd1ef3999591c757944f894e15":[3,0,0,183],
 "namespacehmap.html#a165369392eff196af2299eafa089cd6e":[3,0,0,457],
 "namespacehmap.html#a16c73d1f41f27b2d7fb6c61f31e91780":[3,0,0,653],
+"namespacehmap.html#a16d2cec0fc361782c08bd06d0eed9f24":[3,0,0,692],
 "namespacehmap.html#a1727bd2e6f80a1762f65db5583067fa8":[3,0,0,703],
 "namespacehmap.html#a17edf2c011829f4eed9f45152b3f8eb9":[3,0,0,735],
 "namespacehmap.html#a183508644aea6442e249cfc2973fef97":[3,0,0,753],
@@ -240,14 +249,5 @@ var NAVTREEINDEX12 =
 "namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377dafd4730784e44686f7abf9a80e9d4b78f":[3,0,0,94,1],
 "namespacehmap.html#a2318944325d02f3969aa7fa58b500278":[3,0,0,445],
 "namespacehmap.html#a23ab6bc3fdc7d5c498f0b3c8bebdd4f9":[3,0,0,436],
-"namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa":[3,0,0,607],
-"namespacehmap.html#a2420e66a1e851eff3503d805004495b3":[3,0,0,602],
-"namespacehmap.html#a242e8cd55310e967e93d609cdd5a2ae7":[3,0,0,816],
-"namespacehmap.html#a2483b01656d8822247f2e01431664879":[3,0,0,298],
-"namespacehmap.html#a24e678431e227720e4acab6ee0edcddf":[3,0,0,563],
-"namespacehmap.html#a253c7aaa3976c17e0aae21b7b3f6cc9e":[3,0,0,796],
-"namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6":[3,0,0,110],
-"namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1":[3,0,0,110,0],
-"namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a32800f7d362669cd48371709a2486f21":[3,0,0,110,3],
-"namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a4ac60b8049aacabb3b5546b20cc87e9e":[3,0,0,110,10]
+"namespacehmap.html#a23fdcd258e0bab2a5fcad31d6459c3fa":[3,0,0,607]
 };

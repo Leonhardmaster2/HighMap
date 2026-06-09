@@ -1,5 +1,13 @@
 var NAVTREEINDEX7 =
 {
+"curvature__gpu_8cpp.html#a125118b55d309727ff0b46d686fd3829":[5,0,1,1,10,1,0],
+"curvature__quadric_8cpp.html":[5,0,1,1,10,2],
+"curvature__quadric_8cpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767":[5,0,1,1,10,2,0],
+"curvature__quadric_8cpp.html#a7bfb7fecab3f34a73a57d7907c3ace7d":[5,0,1,1,10,2,1],
+"dendry_8cpp.html":[5,0,1,1,29,0,0],
+"dendry_8cpp.html#a16c73d1f41f27b2d7fb6c61f31e91780":[5,0,1,1,29,0,0,0],
+"dendry_8cpp.html#a9c8e5fdeaa3f2f46b2a35778cb2e3711":[5,0,1,1,29,0,0,1],
+"dendry__array__control__function_8hpp.html":[5,0,1,0,0,3,0],
 "dendry__array__control__function_8hpp_source.html":[5,0,1,0,0,3,0],
 "deposition_8cpp.html":[5,0,1,1,12,1],
 "deposition_8cpp.html#a1c2651f7a65e696e8b444364abf0b3cc":[5,0,1,1,12,1,1],
@@ -241,13 +249,5 @@ var NAVTREEINDEX7 =
 "erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2],
 "erosion__profile__function_8cpp.html#a18d33562e8ffbb8be79e2ec87bcf285f":[5,0,1,1,24,2,0],
 "erosion__profile__function_8cpp.html#ad3535c9e25ba863fcfe5931ccc556ac8":[5,0,1,1,24,2,1],
-"examples.html":[6],
-"expand__talus_8cpp.html":[5,0,1,1,15,4],
-"expand__talus_8cpp.html#a8c437f3963887949da7f4433cf26bf96":[5,0,1,1,15,4,0],
-"export_8hpp.html":[5,0,1,0,0,22],
-"export_8hpp.html#a0892411b8f3af0942381044595a99e52":[5,0,1,0,0,22,3],
-"export_8hpp.html#a09aeebc31234cb19376836a7009054d3":[5,0,1,0,0,22,11],
-"export_8hpp.html#a2f24b35f08d0ba5cce622c8896690fbd":[5,0,1,0,0,22,4],
-"export_8hpp.html#a32464922c39713910ebeab632e0e8fd1":[5,0,1,0,0,22,8],
-"export_8hpp.html#a3aa96cd684efd827ce57ffd9fef3c950":[5,0,1,0,0,22,5]
+"examples.html":[6]
 };

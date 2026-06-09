@@ -32,7 +32,7 @@ Collaboration diagram for hmap\+::Wave\+Dune\+Function\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a9ba215fe77c4da23f08ceea49af05fd7}{Wave\+Dune\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a1a36a83da22d7e1af019667a624fbd57}{kw}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a723f11d859d984fa5655e487e993235e}{angle}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a7020902d580eccad59145bc15fd976e0}{xtop}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a6e558a2b899ac14169715049592f2edc}{xbottom}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_abc24fb97142a7688cb1c14f1f67259c3}{phase\+\_\+shift}})
+\mbox{\hyperlink{classhmap_1_1WaveDuneFunction_ae329aa6a15d2bc57ee3a9dd54c9f1387}{Wave\+Dune\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a1a36a83da22d7e1af019667a624fbd57}{kw}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a723f11d859d984fa5655e487e993235e}{angle}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a7020902d580eccad59145bc15fd976e0}{xtop}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a6e558a2b899ac14169715049592f2edc}{xbottom}}, float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_abc24fb97142a7688cb1c14f1f67259c3}{phase\+\_\+shift}}, glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a5172e81e817cfc1197c3e6106eac3734}{center}}=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Construct a new Wave Dune \doxylink{classhmap_1_1Function}{Function} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a8e7f9a3d4e10dc545609201883c52d34}{set\+\_\+angle}} (float new\+\_\+angle)
 \begin{DoxyCompactList}\small\item\em Set the angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -63,7 +63,9 @@ float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a7020902d580eccad59145bc15f
 float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a6e558a2b899ac14169715049592f2edc}{xbottom}}
 \begin{DoxyCompactList}\small\item\em 1\mbox{]}). \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_abc24fb97142a7688cb1c14f1f67259c3}{phase\+\_\+shift}}
-\begin{DoxyCompactList}\small\item\em Phase shift (in radians). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Phase shift (in radians). \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveDuneFunction_a5172e81e817cfc1197c3e6106eac3734}{center}}
+\begin{DoxyCompactList}\small\item\em Primitive reference center. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -72,11 +74,11 @@ Wave dune (x, y) function class.
 This class models a wave dune function with specific noise wavenumbers, rotation angle, slant ratio, and phase shift. It extends the base \doxylink{classhmap_1_1Function}{Function} class. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classhmap_1_1WaveDuneFunction_a9ba215fe77c4da23f08ceea49af05fd7}\label{classhmap_1_1WaveDuneFunction_a9ba215fe77c4da23f08ceea49af05fd7} 
+\Hypertarget{classhmap_1_1WaveDuneFunction_ae329aa6a15d2bc57ee3a9dd54c9f1387}\label{classhmap_1_1WaveDuneFunction_ae329aa6a15d2bc57ee3a9dd54c9f1387} 
 \index{hmap::WaveDuneFunction@{hmap::WaveDuneFunction}!WaveDuneFunction@{WaveDuneFunction}}
 \index{WaveDuneFunction@{WaveDuneFunction}!hmap::WaveDuneFunction@{hmap::WaveDuneFunction}}
 \doxysubsubsection{\texorpdfstring{WaveDuneFunction()}{WaveDuneFunction()}}
-{\footnotesize\ttfamily hmap\+::\+Wave\+Dune\+Function\+::\+Wave\+Dune\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{float}]{angle,  }\item[{float}]{xtop,  }\item[{float}]{xbottom,  }\item[{float}]{phase\+\_\+shift }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily hmap\+::\+Wave\+Dune\+Function\+::\+Wave\+Dune\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{float}]{angle,  }\item[{float}]{xtop,  }\item[{float}]{xbottom,  }\item[{float}]{phase\+\_\+shift,  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -93,6 +95,8 @@ Construct a new Wave Dune \doxylink{classhmap_1_1Function}{Function} object.
 {\em xbottom} & Relative location of the foot of the dune profile (in \mbox{[}0, 1\mbox{]}). \\
 \hline
 {\em phase\+\_\+shift} & Phase shift (in radians). \\
+\hline
+{\em center} & Primitive reference center. \\
 \hline
 \end{DoxyParams}
 
@@ -165,6 +169,16 @@ Relative location of the foot of the dune profile (in \mbox{[}0, \Hypertarget{cl
 
 
 Phase shift (in radians). 
+
+\Hypertarget{classhmap_1_1WaveDuneFunction_a5172e81e817cfc1197c3e6106eac3734}\label{classhmap_1_1WaveDuneFunction_a5172e81e817cfc1197c3e6106eac3734} 
+\index{hmap::WaveDuneFunction@{hmap::WaveDuneFunction}!center@{center}}
+\index{center@{center}!hmap::WaveDuneFunction@{hmap::WaveDuneFunction}}
+\doxysubsubsection{\texorpdfstring{center}{center}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Wave\+Dune\+Function\+::center\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Primitive reference center. 
 
 
 

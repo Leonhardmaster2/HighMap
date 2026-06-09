@@ -32,7 +32,7 @@ Collaboration diagram for hmap\+::Wave\+Sine\+Function\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmap_1_1WaveSineFunction_ac975f7a5655f700e20029b5d4572e118}{Wave\+Sine\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a092bf348107917e0362e104b4adb5dc7}{kw}}, float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_ad0496b0ee859ae3023efc51a0dc75577}{angle}}, float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_afeb64dcd835089aca43509acd96d07e3}{phase\+\_\+shift}})
+\mbox{\hyperlink{classhmap_1_1WaveSineFunction_a3534e811da80dd7ffecebc5bcb54bed4}{Wave\+Sine\+Function}} (glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a092bf348107917e0362e104b4adb5dc7}{kw}}, float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_ad0496b0ee859ae3023efc51a0dc75577}{angle}}, float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_afeb64dcd835089aca43509acd96d07e3}{phase\+\_\+shift}}, glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a4c4d2bd307d27f55f5e9275462fdd286}{center}}=\{0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
 \begin{DoxyCompactList}\small\item\em Construct a new Wave Sine \doxylink{classhmap_1_1Function}{Function} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a845338cc3209181684466e0d49584b9c}{set\+\_\+angle}} (float new\+\_\+angle)
 \begin{DoxyCompactList}\small\item\em Set the angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -59,7 +59,9 @@ glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a092bf348107917e0362e
 float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_ad0496b0ee859ae3023efc51a0dc75577}{angle}}
 \begin{DoxyCompactList}\small\item\em Overall rotation angle (in degrees). \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classhmap_1_1WaveSineFunction_afeb64dcd835089aca43509acd96d07e3}{phase\+\_\+shift}}
-\begin{DoxyCompactList}\small\item\em Phase shift (in radians). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Phase shift (in radians). \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classhmap_1_1WaveSineFunction_a4c4d2bd307d27f55f5e9275462fdd286}{center}}
+\begin{DoxyCompactList}\small\item\em Primitive reference center. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -68,11 +70,11 @@ Wave sine (x, y) function class.
 This class models a wave sine function with specific noise wavenumbers, rotation angle, and phase shift. It extends the base \doxylink{classhmap_1_1Function}{Function} class. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classhmap_1_1WaveSineFunction_ac975f7a5655f700e20029b5d4572e118}\label{classhmap_1_1WaveSineFunction_ac975f7a5655f700e20029b5d4572e118} 
+\Hypertarget{classhmap_1_1WaveSineFunction_a3534e811da80dd7ffecebc5bcb54bed4}\label{classhmap_1_1WaveSineFunction_a3534e811da80dd7ffecebc5bcb54bed4} 
 \index{hmap::WaveSineFunction@{hmap::WaveSineFunction}!WaveSineFunction@{WaveSineFunction}}
 \index{WaveSineFunction@{WaveSineFunction}!hmap::WaveSineFunction@{hmap::WaveSineFunction}}
 \doxysubsubsection{\texorpdfstring{WaveSineFunction()}{WaveSineFunction()}}
-{\footnotesize\ttfamily hmap\+::\+Wave\+Sine\+Function\+::\+Wave\+Sine\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{float}]{angle,  }\item[{float}]{phase\+\_\+shift }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily hmap\+::\+Wave\+Sine\+Function\+::\+Wave\+Sine\+Function (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{kw,  }\item[{float}]{angle,  }\item[{float}]{phase\+\_\+shift,  }\item[{glm\+::vec2}]{center = {\ttfamily \{0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}},~0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}} }\end{DoxyParamCaption})}
 
 
 
@@ -85,6 +87,8 @@ Construct a new Wave Sine \doxylink{classhmap_1_1Function}{Function} object.
 {\em angle} & Overall rotation angle (in degrees). \\
 \hline
 {\em phase\+\_\+shift} & Phase shift (in radians). \\
+\hline
+{\em center} & Primitive reference center. \\
 \hline
 \end{DoxyParams}
 
@@ -137,6 +141,16 @@ Overall rotation angle (in degrees).
 
 
 Phase shift (in radians). 
+
+\Hypertarget{classhmap_1_1WaveSineFunction_a4c4d2bd307d27f55f5e9275462fdd286}\label{classhmap_1_1WaveSineFunction_a4c4d2bd307d27f55f5e9275462fdd286} 
+\index{hmap::WaveSineFunction@{hmap::WaveSineFunction}!center@{center}}
+\index{center@{center}!hmap::WaveSineFunction@{hmap::WaveSineFunction}}
+\doxysubsubsection{\texorpdfstring{center}{center}}
+{\footnotesize\ttfamily glm\+::vec2 hmap\+::\+Wave\+Sine\+Function\+::center\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Primitive reference center. 
 
 
 

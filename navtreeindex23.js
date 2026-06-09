@@ -1,5 +1,13 @@
 var NAVTREEINDEX23 =
 {
+"thermal__gpu_8cpp.html#a72c9d220589d2724b4e48e9c37ff55ad":[5,0,1,1,12,25,9],
+"thermal__gpu_8cpp.html#a812be167a39917ce8c869f7399dee231":[5,0,1,1,12,25,13],
+"thermal__gpu_8cpp.html#aac5f0e0045cf767611fb8d2def2c4cb5":[5,0,1,1,12,25,2],
+"thermal__gpu_8cpp.html#ab753c4abd819aa6945c1cfc5e25ccec4":[5,0,1,1,12,25,18],
+"thermal__gpu_8cpp.html#ac87a6d725bf0751510f6b1f426a8af27":[5,0,1,1,12,25,4],
+"thermal__gpu_8cpp.html#acfe28321531d2c03721588054da1446a":[5,0,1,1,12,25,19],
+"thermal__gpu_8cpp.html#ad0a05ed0beea669300d62197a0dadaf2":[5,0,1,1,12,25,15],
+"thermal__gpu_8cpp.html#ae3402d591c3b13ef13cece96cdab85b4":[5,0,1,1,12,25,5],
 "thermal__gpu_8cpp.html#ae57a1e9bd94f218d4be17c9d8be012c3":[5,0,1,1,12,25,8],
 "thermal__schott_8cpp.html":[5,0,1,1,12,26],
 "thermal__schott_8cpp.html#a242e8cd55310e967e93d609cdd5a2ae7":[5,0,1,1,12,26,2],
@@ -177,10 +185,10 @@ var NAVTREEINDEX23 =
 "watershed__ridge_8cpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,1,12,28,1],
 "watershed__ridge_8cpp.html#a52a653b3b3be84e8ff2330f30a6b5bf3":[5,0,1,1,12,28,0],
 "wave_8cpp.html":[5,0,1,1,29,1,6],
-"wave_8cpp.html#a6f66325f4146ebb7e9e20cf4a4882fc3":[5,0,1,1,29,1,6,0],
-"wave_8cpp.html#ae692921d08ee6f12bf9fdf099b6bb8a8":[5,0,1,1,29,1,6,3],
-"wave_8cpp.html#ae762ec389b313e1ae038583b2aa6ba46":[5,0,1,1,29,1,6,2],
-"wave_8cpp.html#af19f27b4e6de391ec8873af6143034ce":[5,0,1,1,29,1,6,1],
+"wave_8cpp.html#a16d2cec0fc361782c08bd06d0eed9f24":[5,0,1,1,29,1,6,3],
+"wave_8cpp.html#a78cc5af980a4293034ada80f6d9f9128":[5,0,1,1,29,1,6,2],
+"wave_8cpp.html#ab65bafec6ae70464c76b6bb3c992a0b9":[5,0,1,1,29,1,6,0],
+"wave_8cpp.html#af078f88ffcdc87ffbdb713e0ea8dbf3e":[5,0,1,1,29,1,6,1],
 "white_8cpp.html":[5,0,1,1,29,3,0],
 "white_8cpp.html#a5db6d20fe4a5e243dc67a713cb3ac419":[5,0,1,1,29,3,0,0],
 "white_8cpp.html#a77473fb1fbaeed58445c10a9cb6fae50":[5,0,1,1,29,3,0,1],
@@ -192,6 +200,6 @@ var NAVTREEINDEX23 =
 "wrapper_8cpp.html#ad6e4d1cf34786ef4065fbc0a5fa03d6d":[5,0,1,1,25,6,0],
 "wrapper_8cpp.html#af427123c185935335c9d2e108c833c67":[5,0,1,1,25,6,1],
 "zeroed__edges_8cpp.html":[5,0,1,1,4,2],
-"zeroed__edges_8cpp.html#a4dea15aaafcc8b56fcb5e04fa2e53725":[5,0,1,1,4,2,0],
+"zeroed__edges_8cpp.html#a8e2364315f5b159daae10f508dd1d2a8":[5,0,1,1,4,2,0],
 "zfill-example.html":[6,1]
 };

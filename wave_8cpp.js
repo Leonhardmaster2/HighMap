@@ -1,7 +1,7 @@
 var wave_8cpp =
 [
-    [ "wave_dune", "wave_8cpp.html#a6f66325f4146ebb7e9e20cf4a4882fc3", null ],
-    [ "wave_sine", "wave_8cpp.html#af19f27b4e6de391ec8873af6143034ce", null ],
-    [ "wave_square", "wave_8cpp.html#ae762ec389b313e1ae038583b2aa6ba46", null ],
-    [ "wave_triangular", "wave_8cpp.html#ae692921d08ee6f12bf9fdf099b6bb8a8", null ]
+    [ "wave_dune", "wave_8cpp.html#ab65bafec6ae70464c76b6bb3c992a0b9", null ],
+    [ "wave_sine", "wave_8cpp.html#af078f88ffcdc87ffbdb713e0ea8dbf3e", null ],
+    [ "wave_square", "wave_8cpp.html#a78cc5af980a4293034ada80f6d9f9128", null ],
+    [ "wave_triangular", "wave_8cpp.html#a16d2cec0fc361782c08bd06d0eed9f24", null ]
 ];

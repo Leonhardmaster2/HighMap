@@ -3259,7 +3259,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = 1.f +</div>
 <div class="line">                   <a class="code hl_function" href="namespacehmap.html#a7f5b2e16a974bbfad06fbae44c8b3465">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a8e2364315f5b159daae10f508dd1d2a8">hmap::zeroed_edges</a>(z1);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
@@ -3274,7 +3274,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_rifts.png&quot;</span>, {z1, z2}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9">hmap::Cmap::TERRAIN</a>, <span class="keyword">true</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacehmap_1_1gpu_html_ace06af8ac4d53033c221b1e0f7462a54"><div class="ttname"><a href="namespacehmap_1_1gpu.html#ace06af8ac4d53033c221b1e0f7462a54">hmap::gpu::rifts</a></div><div class="ttdeci">void rifts(Array &amp;z, const glm::vec2 &amp;kw, float angle, float amplitude, std::uint32_t seed, float elevation_noise_shift=0.f, float k_smooth_bottom=0.05f, float k_smooth_top=0.05f, float radial_spread_amp=0.2f, float elevation_noise_amp=0.1f, float clamp_vmin=0.f, float remap_vmin=0.f, bool apply_mask=true, bool reverse_mask=false, float mask_gamma=1.f, const Array *p_noise_x=nullptr, const Array *p_noise_y=nullptr, const Array *p_mask=nullptr, const glm::vec2 &amp;center={0.5f, 0.5f}, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Applies a &quot;rift&quot; deformation effect to a heightmap array.</div><div class="ttdef"><b>Definition</b> rifts_gpu.cpp:15</div></div>
-<div class="ttc" id="anamespacehmap_html_a4dea15aaafcc8b56fcb5e04fa2e53725"><div class="ttname"><a href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a></div><div class="ttdeci">void zeroed_edges(Array &amp;array, RadialProfile radial_profile, float profile_param=0.f, float amount=1.f, DistanceFunction distance=DistanceFunction::EUCLIDIAN, DistanceFunctionAxis dfa=DistanceFunctionAxis::DFA_XY, glm::vec2 center={0.5f, 0.5f}, float radius=0.5f, const Array *p_noise_r=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Smoothly attenuates array values toward zero near the domain boundaries.</div><div class="ttdef"><b>Definition</b> zeroed_edges.cpp:17</div></div>
+<div class="ttc" id="anamespacehmap_html_a8e2364315f5b159daae10f508dd1d2a8"><div class="ttname"><a href="namespacehmap.html#a8e2364315f5b159daae10f508dd1d2a8">hmap::zeroed_edges</a></div><div class="ttdeci">void zeroed_edges(Array &amp;array, RadialProfile radial_profile=RadialProfile::RP_SMOOTHSTEP, float profile_param=0.f, float amount=1.f, DistanceFunction distance=DistanceFunction::EUCLIDIAN, DistanceFunctionAxis dfa=DistanceFunctionAxis::DFA_XY, glm::vec2 center={0.5f, 0.5f}, float radius=0.5f, const Array *p_noise_r=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Smoothly attenuates array values toward zero near the domain boundaries.</div><div class="ttdef"><b>Definition</b> zeroed_edges.cpp:17</div></div>
 <div class="ttc" id="anamespacehmap_html_aac71bb6c14edc17967957f7918acdbdd"><div class="ttname"><a href="namespacehmap.html#aac71bb6c14edc17967957f7918acdbdd">hmap::angle</a></div><div class="ttdeci">float angle(const Point &amp;p1, const Point &amp;p2)</div><div class="ttdoc">Computes the angle between two points relative to the x-axis.</div><div class="ttdef"><b>Definition</b> points.cpp:46</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_rifts.png" alt=""/>
@@ -3736,7 +3736,7 @@ Only available if OpenCL is enabled.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z1 = 1.f +</div>
 <div class="line">                   <a class="code hl_function" href="namespacehmap.html#a7f5b2e16a974bbfad06fbae44c8b3465">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, shape, kw, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a8e2364315f5b159daae10f508dd1d2a8">hmap::zeroed_edges</a>(z1);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z2 = z1;</div>
@@ -15646,7 +15646,7 @@ The sign of the SDF is negative inside polygons and positive outside.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use &quot;any&quot; noise as land mask</span></div>
 <div class="line">  <span class="keyword">auto</span> land_mask2 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa12b6622c198885bd6879dfafab602c5">noise</a>;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(land_mask2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a8e2364315f5b159daae10f508dd1d2a8">hmap::zeroed_edges</a>(land_mask2);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a>(land_mask2, 0.15f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zc = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a>(land_mask2, seed);</div>
 <div class="line"> </div>
@@ -15905,7 +15905,7 @@ The sign of the SDF is negative inside polygons and positive outside.</dd></dl>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// use &quot;any&quot; noise as land mask</span></div>
 <div class="line">  <span class="keyword">auto</span> land_mask2 = <a class="code hl_function" href="namespacehmap_1_1gpu.html#aa12b6622c198885bd6879dfafab602c5">noise</a>;</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a4dea15aaafcc8b56fcb5e04fa2e53725">hmap::zeroed_edges</a>(land_mask2);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a8e2364315f5b159daae10f508dd1d2a8">hmap::zeroed_edges</a>(land_mask2);</div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#a4799d3f029d45240a5b40b4853583a58">hmap::make_binary</a>(land_mask2, 0.15f);</div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> zc = <a class="code hl_function" href="namespacehmap_1_1gpu.html#ae20d5b7f78d4c3eb5064490a3a407533">hmap::gpu::island</a>(land_mask2, seed);</div>
 <div class="line"> </div>

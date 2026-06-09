@@ -1,5 +1,13 @@
 var NAVTREEINDEX9 =
 {
+"filters_8hpp.html#aa8ca09c4db0795d0d7a4a8341e7f1159":[5,0,1,0,0,24,46],
+"filters_8hpp.html#aae4699340c68bc39efae13b0e81eea3d":[5,0,1,0,0,24,80],
+"filters_8hpp.html#aae53d6bf5f363d9a108b55004e8fb68f":[5,0,1,0,0,24,86],
+"filters_8hpp.html#aafd7a642dabfbcf2ab2981b229a30e15":[5,0,1,0,0,24,36],
+"filters_8hpp.html#ab10a6dc3d92519c7bd3244571bcd6429":[5,0,1,0,0,24,140],
+"filters_8hpp.html#ab1e1b26c0c1eb51d0b256db94d6ca22e":[5,0,1,0,0,24,15],
+"filters_8hpp.html#ab2bb3f78e7b0943ad185213d52ab53b3":[5,0,1,0,0,24,123],
+"filters_8hpp.html#ab46e625ea919327a4e2899dd53fff18d":[5,0,1,0,0,24,107],
 "filters_8hpp.html#ab79b21593238cc836f4dd32fecf63a58":[5,0,1,0,0,24,72],
 "filters_8hpp.html#ab9926efb5c9c3859a0407b8fb9dbe4f7":[5,0,1,0,0,24,71],
 "filters_8hpp.html#ab9b560067f09332a4ff50670dfef00a5":[5,0,1,0,0,24,48],
@@ -148,8 +156,8 @@ var NAVTREEINDEX9 =
 "functions_e.html":[4,3,0,4],
 "functions_enum.html":[4,3,4],
 "functions_f.html":[4,3,0,5],
-"functions_func.html":[4,3,1,0],
 "functions_func.html":[4,3,1],
+"functions_func.html":[4,3,1,0],
 "functions_func_b.html":[4,3,1,1],
 "functions_func_c.html":[4,3,1,2],
 "functions_func_d.html":[4,3,1,3],
@@ -231,8 +239,8 @@ var NAVTREEINDEX9 =
 "globals.html":[5,1,0,0],
 "globals_e.html":[5,1,0,1],
 "globals_f.html":[5,1,0,2],
-"globals_func.html":[5,1,1,0],
 "globals_func.html":[5,1,1],
+"globals_func.html":[5,1,1,0],
 "globals_func_e.html":[5,1,1,1],
 "globals_func_f.html":[5,1,1,2],
 "globals_func_g.html":[5,1,1,3],
@@ -241,13 +249,5 @@ var NAVTREEINDEX9 =
 "globals_func_s.html":[5,1,1,6],
 "globals_func_t.html":[5,1,1,7],
 "globals_g.html":[5,1,0,3],
-"globals_h.html":[5,1,0,4],
-"globals_m.html":[5,1,0,5],
-"globals_s.html":[5,1,0,6],
-"globals_t.html":[5,1,0,7],
-"gpu__opencl_8cpp.html":[5,0,1,1,18,0],
-"gpu__opencl_8cpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,1,18,0,0],
-"gpu__opencl_8cpp.html#adb8336ed4d83c15500872185dee45d50":[5,0,1,1,18,0,1],
-"gpu__opencl_8hpp.html":[5,0,1,0,0,7,0],
-"gpu__opencl_8hpp.html#aae6131a978635eb515958f41584bcbfc":[5,0,1,0,0,7,0,0]
+"globals_h.html":[5,1,0,4]
 };

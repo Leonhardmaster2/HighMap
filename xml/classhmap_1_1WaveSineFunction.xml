@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="585" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="585" bodyend="-1"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="592" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="592" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classhmap_1_1WaveSineFunction_1ad0496b0ee859ae3023efc51a0dc75577" prot="protected" static="no" mutable="no">
         <type>float</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="586" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="586" bodyend="-1"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="593" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="593" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classhmap_1_1WaveSineFunction_1afeb64dcd835089aca43509acd96d07e3" prot="protected" static="no" mutable="no">
         <type>float</type>
@@ -48,7 +48,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="587" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="587" bodyend="-1"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="594" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="594" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhmap_1_1WaveSineFunction_1a4c4d2bd307d27f55f5e9275462fdd286" prot="protected" static="no" mutable="no">
+        <type>glm::vec2</type>
+        <definition>glm::vec2 hmap::WaveSineFunction::center</definition>
+        <argsstring></argsstring>
+        <name>center</name>
+        <qualifiedname>hmap::WaveSineFunction::center</qualifiedname>
+        <briefdescription>
+<para>Primitive reference center. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/include/highmap/functions.hpp" line="595" column="13" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="595" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -65,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="590" column="9" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="590" bodyend="-1"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="598" column="9" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="598" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classhmap_1_1WaveSineFunction_1ae401e11d922e21d40079b1f93122d625" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -80,14 +95,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="591" column="9" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="591" bodyend="-1"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="599" column="9" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="599" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classhmap_1_1WaveSineFunction_1ac975f7a5655f700e20029b5d4572e118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1WaveSineFunction_1a3534e811da80dd7ffecebc5bcb54bed4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>hmap::WaveSineFunction::WaveSineFunction</definition>
-        <argsstring>(glm::vec2 kw, float angle, float phase_shift)</argsstring>
+        <argsstring>(glm::vec2 kw, float angle, float phase_shift, glm::vec2 center={0.5f, 0.5f})</argsstring>
         <name>WaveSineFunction</name>
         <qualifiedname>hmap::WaveSineFunction::WaveSineFunction</qualifiedname>
         <param>
@@ -101,6 +116,11 @@
         <param>
           <type>float</type>
           <declname>phase_shift</declname>
+        </param>
+        <param>
+          <type>glm::vec2</type>
+          <declname>center</declname>
+          <defval>{0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
         </param>
         <briefdescription>
 <para>Construct a new Wave Sine <ref refid="classhmap_1_1Function" kindref="compound">Function</ref> object. </para>
@@ -130,12 +150,20 @@
 <para>Phase shift (in radians). </para>
 </parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primitive reference center. </para>
+</parameterdescription>
+</parameteritem>
 </parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="570" column="3" bodyfile="HighMap/src/functions/functions.cpp" bodystart="369" bodyend="380"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="574" column="3" bodyfile="HighMap/src/functions/functions.cpp" bodystart="376" bodyend="391"/>
       </memberdef>
       <memberdef kind="function" id="classhmap_1_1WaveSineFunction_1a845338cc3209181684466e0d49584b9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -164,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/include/highmap/functions.hpp" line="577" column="8" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="577" bodyend="582"/>
+        <location file="HighMap/include/highmap/functions.hpp" line="584" column="8" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="584" bodyend="589"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -197,10 +225,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="HighMap/include/highmap/functions.hpp" line="559" column="1" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="560" bodyend="592"/>
+    <location file="HighMap/include/highmap/functions.hpp" line="562" column="1" bodyfile="HighMap/include/highmap/functions.hpp" bodystart="563" bodyend="600"/>
     <listofallmembers>
       <member refid="classhmap_1_1WaveSineFunction_1ad0496b0ee859ae3023efc51a0dc75577" prot="protected" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>angle</name></member>
       <member refid="classhmap_1_1WaveSineFunction_1a50992ac6bde7a01c04fca5a354369040" prot="private" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>ca</name></member>
+      <member refid="classhmap_1_1WaveSineFunction_1a4c4d2bd307d27f55f5e9275462fdd286" prot="protected" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>center</name></member>
       <member refid="classhmap_1_1Function_1a1f77a2faa84c84fb147f48af0bfbc96e" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>Function</name></member>
       <member refid="classhmap_1_1Function_1ae1f9e64626fb671ed37a45d09cf551e8" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>Function</name></member>
       <member refid="classhmap_1_1Function_1a32214e30c36be7650c47867fd14f6a0c" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>get_delegate</name></member>
@@ -210,7 +239,7 @@
       <member refid="classhmap_1_1WaveSineFunction_1ae401e11d922e21d40079b1f93122d625" prot="private" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>sa</name></member>
       <member refid="classhmap_1_1WaveSineFunction_1a845338cc3209181684466e0d49584b9c" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>set_angle</name></member>
       <member refid="classhmap_1_1Function_1a6163e6f231dc77a7e7d83e74d2b44abe" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>set_delegate</name></member>
-      <member refid="classhmap_1_1WaveSineFunction_1ac975f7a5655f700e20029b5d4572e118" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>WaveSineFunction</name></member>
+      <member refid="classhmap_1_1WaveSineFunction_1a3534e811da80dd7ffecebc5bcb54bed4" prot="public" virt="non-virtual"><scope>hmap::WaveSineFunction</scope><name>WaveSineFunction</name></member>
       <member refid="classhmap_1_1Function_1a8efd89e31947f2508ce45b133e30322f" prot="public" virt="virtual"><scope>hmap::WaveSineFunction</scope><name>~Function</name></member>
     </listofallmembers>
   </compounddef>
