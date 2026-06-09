@@ -18,6 +18,7 @@ Array wave_dune(glm::ivec2   shape,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
+                glm::vec2    center,
                 glm::vec4    bbox)
 {
   Array                  array = Array(shape);
@@ -25,7 +26,8 @@ Array wave_dune(glm::ivec2   shape,
                                                     angle,
                                                     xtop,
                                                     xbottom,
-                                                    phase_shift);
+                                                    phase_shift,
+                                                    center);
 
   fill_array_using_xy_function(array,
                                bbox,
@@ -44,12 +46,14 @@ Array wave_sine(glm::ivec2   shape,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
                 const Array *p_stretching,
+                glm::vec2    center,
                 glm::vec4    bbox)
 {
   Array                  array = Array(shape);
   hmap::WaveSineFunction f = hmap::WaveSineFunction({kw, kw},
                                                     angle,
-                                                    phase_shift);
+                                                    phase_shift,
+                                                    center);
 
   fill_array_using_xy_function(array,
                                bbox,
@@ -68,12 +72,14 @@ Array wave_square(glm::ivec2   shape,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
                   const Array *p_stretching,
+                  glm::vec2    center,
                   glm::vec4    bbox)
 {
   Array                    array = Array(shape);
   hmap::WaveSquareFunction f = hmap::WaveSquareFunction({kw, kw},
                                                         angle,
-                                                        phase_shift);
+                                                        phase_shift,
+                                                        center);
 
   fill_array_using_xy_function(array,
                                bbox,
@@ -93,13 +99,15 @@ Array wave_triangular(glm::ivec2   shape,
                       const Array *p_noise_x,
                       const Array *p_noise_y,
                       const Array *p_stretching,
+                      glm::vec2    center,
                       glm::vec4    bbox)
 {
   Array                        array = Array(shape);
   hmap::WaveTriangularFunction f = hmap::WaveTriangularFunction({kw, kw},
                                                                 angle,
                                                                 slant_ratio,
-                                                                phase_shift);
+                                                                phase_shift,
+                                                                center);
 
   fill_array_using_xy_function(array,
                                bbox,

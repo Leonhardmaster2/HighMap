@@ -338,15 +338,18 @@ WaveDuneFunction::WaveDuneFunction(glm::vec2 kw,
                                    float     angle,
                                    float     xtop,
                                    float     xbottom,
-                                   float     phase_shift)
-    : Function(), kw(kw), xtop(xtop), xbottom(xbottom), phase_shift(phase_shift)
+                                   float     phase_shift,
+                                   glm::vec2 center)
+    : Function(), kw(kw), xtop(xtop), xbottom(xbottom), phase_shift(phase_shift),
+      center(center)
 {
   this->set_angle(angle);
 
   this->set_delegate(
       [this](float x, float y, float)
       {
-        float r = ca * this->kw.x * x + sa * this->kw.y * y;
+        float r = ca * this->kw.x * (x - this->center.x) +
+                  sa * this->kw.y * (y - this->center.y);
         float xp = std::fmod(r + this->phase_shift +
                                  10.f * (this->kw.x + this->kw.y),
                              1.f);
@@ -366,30 +369,36 @@ WaveDuneFunction::WaveDuneFunction(glm::vec2 kw,
       });
 }
 
-WaveSineFunction::WaveSineFunction(glm::vec2 kw, float angle, float phase_shift)
-    : Function(), kw(kw), phase_shift(phase_shift)
+WaveSineFunction::WaveSineFunction(glm::vec2 kw,
+                                   float     angle,
+                                   float     phase_shift,
+                                   glm::vec2 center)
+    : Function(), kw(kw), phase_shift(phase_shift), center(center)
 {
   this->set_angle(angle);
 
   this->set_delegate(
       [this](float x, float y, float)
       {
-        float r = ca * this->kw.x * x + sa * this->kw.y * y;
+        float r = ca * this->kw.x * (x - this->center.x) +
+                  sa * this->kw.y * (y - this->center.y);
         return std::cos(2.f * M_PI * r + this->phase_shift);
       });
 }
 
 WaveSquareFunction::WaveSquareFunction(glm::vec2 kw,
                                        float     angle,
-                                       float     phase_shift)
-    : Function(), kw(kw), phase_shift(phase_shift)
+                                       float     phase_shift,
+                                       glm::vec2 center)
+    : Function(), kw(kw), phase_shift(phase_shift), center(center)
 {
   this->set_angle(angle);
 
   this->set_delegate(
       [this](float x, float y, float)
       {
-        float r = ca * this->kw.x * x + sa * this->kw.y * y + this->phase_shift;
+        float r = ca * this->kw.x * (x - this->center.x) +
+                  sa * this->kw.y * (y - this->center.y) + this->phase_shift;
         return r = 2.f * std::floor(r) - std::floor(2.f * r) + 1.f;
       });
 }
@@ -397,15 +406,18 @@ WaveSquareFunction::WaveSquareFunction(glm::vec2 kw,
 WaveTriangularFunction::WaveTriangularFunction(glm::vec2 kw,
                                                float     angle,
                                                float     slant_ratio,
-                                               float     phase_shift)
-    : Function(), kw(kw), slant_ratio(slant_ratio), phase_shift(phase_shift)
+                                               float     phase_shift,
+                                               glm::vec2 center)
+    : Function(), kw(kw), slant_ratio(slant_ratio), phase_shift(phase_shift),
+      center(center)
 {
   this->set_angle(angle);
 
   this->set_delegate(
       [this](float x, float y, float)
       {
-        float r = ca * this->kw.x * x + sa * this->kw.y * y + this->phase_shift;
+        float r = ca * this->kw.x * (x - this->center.x) +
+                  sa * this->kw.y * (y - this->center.y) + this->phase_shift;
 
         r = r - std::floor(r);
         if (r < this->slant_ratio)
