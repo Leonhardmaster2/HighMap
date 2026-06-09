@@ -5,18 +5,38 @@ R""(
 
 // --- BASE NOISE
 
-float base_perlin(const float2 p, const float fseed)
+// Wrap a lattice coordinate modulo a period so the noise tiles seamlessly.
+// A non-positive period component disables wrapping on that axis (default,
+// non-periodic behaviour). Lattice coordinates are integer-valued floats, so
+// the result is exact at the period boundary.
+float2 wrap_lattice(float2 c, const int2 period)
+{
+  if (period.x > 0) c.x = c.x - (float)period.x * floor(c.x / (float)period.x);
+  if (period.y > 0) c.y = c.y - (float)period.y * floor(c.y / (float)period.y);
+  return c;
+}
+
+// Scale a lattice period for the next fbm octave. Tiling stays exact only for
+// integer lacunarity (the default is 2); the round keeps the period integral.
+int2 scale_period(int2 period, const float lacunarity)
+{
+  if (period.x > 0) period.x = (int)(period.x * lacunarity + 0.5f);
+  if (period.y > 0) period.y = (int)(period.y * lacunarity + 0.5f);
+  return period;
+}
+
+float base_perlin(const float2 p, const float fseed, const int2 period)
 {
   // lattice points
   float2 i = floor(p);
   float2 pi;
   float2 f = fract(p, &pi);
 
-  // gradients at lattice corners
-  float2 g00 = grad22f(i + (float2)(0.0f, 0.0f), fseed);
-  float2 g10 = grad22f(i + (float2)(1.0f, 0.0f), fseed);
-  float2 g01 = grad22f(i + (float2)(0.0f, 1.0f), fseed);
-  float2 g11 = grad22f(i + (float2)(1.0f, 1.0f), fseed);
+  // gradients at lattice corners (lattice indices wrapped for tileability)
+  float2 g00 = grad22f(wrap_lattice(i + (float2)(0.0f, 0.0f), period), fseed);
+  float2 g10 = grad22f(wrap_lattice(i + (float2)(1.0f, 0.0f), period), fseed);
+  float2 g01 = grad22f(wrap_lattice(i + (float2)(0.0f, 1.0f), period), fseed);
+  float2 g11 = grad22f(wrap_lattice(i + (float2)(1.0f, 1.0f), period), fseed);
 
   // offset vectors to corners
   float2 d00 = f - (float2)(0.0f, 0.0f);
@@ -78,16 +98,16 @@ float base_simplex2(const float2 p, const float fseed)
   return 100.f * (n0 + n1 + n2);
 }
 
-float base_value(const float2 p, const float fseed)
+float base_value(const float2 p, const float fseed, const int2 period)
 {
   float2 i = floor(p);
   float2 pi;
   float2 f = fract(p, &pi);
 
-  float v00 = hash12f(i + (float2)(0.0f, 0.0f), fseed);
-  float v10 = hash12f(i + (float2)(1.0f, 0.0f), fseed);
-  float v01 = hash12f(i + (float2)(0.0f, 1.0f), fseed);
-  float v11 = hash12f(i + (float2)(1.0f, 1.0f), fseed);
+  float v00 = hash12f(wrap_lattice(i + (float2)(0.0f, 0.0f), period), fseed);
+  float v10 = hash12f(wrap_lattice(i + (float2)(1.0f, 0.0f), period), fseed);
+  float v01 = hash12f(wrap_lattice(i + (float2)(0.0f, 1.0f), period), fseed);
+  float v11 = hash12f(wrap_lattice(i + (float2)(1.0f, 1.0f), period), fseed);
 
   float2 u = smoothstep3_f2(f);
 
@@ -98,7 +118,7 @@ float base_value(const float2 p, const float fseed)
   return 2.f * nxy - 1.f;
 }
 
-float base_value_cubic(const float2 p, const float fseed)
+float base_value_cubic(const float2 p, const float fseed, const int2 period)
 {
   float2 i = floor(p);
   float2 pi;
@@ -108,7 +128,9 @@ float base_value_cubic(const float2 p, const float fseed)
   float v[4][4];
   for (int dy = -1; dy <= 2; dy++)
     for (int dx = -1; dx <= 2; dx++)
-      v[dy + 1][dx + 1] = hash12f(i + (float2)(dx, dy), fseed);
+      v[dy + 1][dx + 1] = hash12f(
+          wrap_lattice(i + (float2)(dx, dy), period),
+          fseed);
 
   // cubic interpolation in the x-direction for each row
   float interp_row[4];
@@ -125,16 +147,16 @@ float base_value_cubic(const float2 p, const float fseed)
   return 1.43f * (value - 0.5f);
 }
 
-float base_value_linear(const float2 p, const float fseed)
+float base_value_linear(const float2 p, const float fseed, const int2 period)
 {
   float2 i = floor(p);
   float2 pi;
   float2 f = fract(p, &pi);
 
-  float v00 = hash12f(i + (float2)(0.0f, 0.0f), fseed);
-  float v10 = hash12f(i + (float2)(1.0f, 0.0f), fseed);
-  float v01 = hash12f(i + (float2)(0.0f, 1.0f), fseed);
-  float v11 = hash12f(i + (float2)(1.0f, 1.0f), fseed);
+  float v00 = hash12f(wrap_lattice(i + (float2)(0.0f, 0.0f), period), fseed);
+  float v10 = hash12f(wrap_lattice(i + (float2)(1.0f, 0.0f), period), fseed);
+  float v01 = hash12f(wrap_lattice(i + (float2)(0.0f, 1.0f), period), fseed);
+  float v11 = hash12f(wrap_lattice(i + (float2)(1.0f, 1.0f), period), fseed);
 
   float nx0 = lerp(v00, v10, f.x);
   float nx1 = lerp(v01, v11, f.x);
@@ -143,7 +165,7 @@ float base_value_linear(const float2 p, const float fseed)
   return 2.f * nxy - 1.f;
 }
 
-float base_worley(const float2 p, const float fseed)
+float base_worley(const float2 p, const float fseed, const int2 period)
 {
   float2 i = floor(p);
   float2 pi;
@@ -155,7 +177,8 @@ float base_worley(const float2 p, const float fseed)
     for (int dy = -1; dy <= 1; dy++)
     {
       float2 dr = (float2)(dx, dy);
-      float2 feature_point = dr + hash22f(i + dr, fseed);
+      float2 feature_point = dr +
+                             hash22f(wrap_lattice(i + dr, period), fseed);
       float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 
@@ -173,18 +196,21 @@ float base_perlin_fbm(const float2 p,
                       const float  weight,
                       const float  persistence,
                       const float  lacunarity,
-                      const float  fseed)
+                      const float  fseed,
+                      const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = base_perlin(p * nf, fseed);
+    float v = base_perlin(p * nf, fseed, per);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -194,18 +220,21 @@ float base_perlin_billow_fbm(const float2 p,
                              const float  weight,
                              const float  persistence,
                              const float  lacunarity,
-                             const float  fseed)
+                             const float  fseed,
+                             const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = 2.f * fabs(base_perlin(p * nf, fseed)) - 1.f;
+    float v = 2.f * fabs(base_perlin(p * nf, fseed, per)) - 1.f;
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -215,18 +244,21 @@ float base_perlin_half_fbm(const float2 p,
                            const float  weight,
                            const float  persistence,
                            const float  lacunarity,
-                           const float  fseed)
+                           const float  fseed,
+                           const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = max_smooth(base_perlin(p * nf, fseed), 0.f, 0.5f);
+    float v = max_smooth(base_perlin(p * nf, fseed, per), 0.f, 0.5f);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -257,18 +289,21 @@ float base_value_fbm(const float2 p,
                      const float  weight,
                      const float  persistence,
                      const float  lacunarity,
-                     const float  fseed)
+                     const float  fseed,
+                     const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = base_value(p * nf, fseed);
+    float v = base_value(p * nf, fseed, per);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -278,18 +313,21 @@ float base_value_cubic_fbm(const float2 p,
                            const float  weight,
                            const float  persistence,
                            const float  lacunarity,
-                           const float  fseed)
+                           const float  fseed,
+                           const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = base_value_cubic(p * nf, fseed);
+    float v = base_value_cubic(p * nf, fseed, per);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -299,18 +337,21 @@ float base_value_linear_fbm(const float2 p,
                             const float  weight,
                             const float  persistence,
                             const float  lacunarity,
-                            const float  fseed)
+                            const float  fseed,
+                            const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = base_value_linear(p * nf, fseed);
+    float v = base_value_linear(p * nf, fseed, per);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -320,18 +361,21 @@ float base_worley_fbm(const float2 p,
                       const float  weight,
                       const float  persistence,
                       const float  lacunarity,
-                      const float  fseed)
+                      const float  fseed,
+                      const int2   period)
 {
   float n = 0.f;
   float nf = 1.f;
   float na = 0.6f;
+  int2  per = period;
   for (int i = 0; i < octaves; i++)
   {
-    float v = base_worley(p * nf, fseed);
+    float v = base_worley(p * nf, fseed, per);
     n += v * na;
     na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
     na *= persistence;
     nf *= lacunarity;
+    per = scale_period(per, lacunarity);
   }
   return n;
 }
@@ -349,6 +393,8 @@ void kernel noise(global float *output,
                   const uint    seed,
                   const int     has_noise_x,
                   const int     has_noise_y,
+                  const int     period_x,
+                  const int     period_y,
                   const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -363,20 +409,22 @@ void kernel noise(global float *output,
   float dx = has_noise_x > 0 ? noise_x[index] : 0.f;
   float dy = has_noise_y > 0 ? noise_y[index] : 0.f;
 
+  int2 period = {period_x, period_y};
+
   float2 pos = g_to_xy(g, nx, ny, kx, ky, dx, dy, bbox);
 
   if (noise_id == 1)
   {
-    output[index] = base_perlin(pos, fseed);
+    output[index] = base_perlin(pos, fseed, period);
   }
   else if (noise_id == 2)
   {
-    float value = base_perlin(pos, fseed);
+    float value = base_perlin(pos, fseed, period);
     output[index] = 2.f * fabs(value) - 1.f;
   }
   else if (noise_id == 3)
   {
-    float value = base_perlin(pos, fseed);
+    float value = base_perlin(pos, fseed, period);
     output[index] = max_smooth(value, 0.f, 0.5f);
   }
   else if (noise_id == 4)
@@ -385,19 +433,19 @@ void kernel noise(global float *output,
   }
   else if (noise_id == 6)
   {
-    output[index] = base_value(pos, fseed);
+    output[index] = base_value(pos, fseed, period);
   }
   else if (noise_id == 7)
   {
-    output[index] = base_value_cubic(pos, fseed);
+    output[index] = base_value_cubic(pos, fseed, period);
   }
   else if (noise_id == 9)
   {
-    output[index] = base_value_linear(pos, fseed);
+    output[index] = base_value_linear(pos, fseed, period);
   }
   else if (noise_id == 10)
   {
-    output[index] = base_worley(pos, fseed);
+    output[index] = base_worley(pos, fseed, period);
   }
   else
   {
@@ -422,6 +470,8 @@ void kernel noise_fbm(global float *output,
                       const int     has_ctrl_param,
                       const int     has_noise_x,
                       const int     has_noise_y,
+                      const int     period_x,
+                      const int     period_y,
                       const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
@@ -437,6 +487,8 @@ void kernel noise_fbm(global float *output,
   float dx = has_noise_x > 0 ? noise_x[index] : 0.f;
   float dy = has_noise_y > 0 ? noise_y[index] : 0.f;
 
+  int2 period = {period_x, period_y};
+
   float  new_weight = (1.f - ct) + ct * weight;
   float2 pos = g_to_xy(g, nx, ny, kx, ky, dx, dy, bbox);
 
@@ -447,7 +499,8 @@ void kernel noise_fbm(global float *output,
                                     new_weight,
                                     persistence,
                                     lacunarity,
-                                    fseed);
+                                    fseed,
+                                    period);
   }
   else if (noise_id == 2)
   {
@@ -456,7 +509,8 @@ void kernel noise_fbm(global float *output,
                                            new_weight,
                                            persistence,
                                            lacunarity,
-                                           fseed);
+                                           fseed,
+                                           period);
   }
   else if (noise_id == 3)
   {
@@ -465,7 +519,8 @@ void kernel noise_fbm(global float *output,
                                          new_weight,
                                          persistence,
                                          lacunarity,
-                                         fseed);
+                                         fseed,
+                                         period);
   }
   else if (noise_id == 4)
   {
@@ -483,7 +538,8 @@ void kernel noise_fbm(global float *output,
                                    new_weight,
                                    persistence,
                                    lacunarity,
-                                   fseed);
+                                   fseed,
+                                   period);
   }
   else if (noise_id == 7)
   {
@@ -492,7 +548,8 @@ void kernel noise_fbm(global float *output,
                                          new_weight,
                                          persistence,
                                          lacunarity,
-                                         fseed);
+                                         fseed,
+                                         period);
   }
   else if (noise_id == 9)
   {
@@ -501,7 +558,8 @@ void kernel noise_fbm(global float *output,
                                           new_weight,
                                           persistence,
                                           lacunarity,
-                                          fseed);
+                                          fseed,
+                                          period);
   }
   else if (noise_id == 10)
   {
@@ -510,7 +568,8 @@ void kernel noise_fbm(global float *output,
                                     new_weight,
                                     persistence,
                                     lacunarity,
-                                    fseed);
+                                    fseed,
+                                    period);
   }
   else
   {

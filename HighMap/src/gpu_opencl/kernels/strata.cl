@@ -90,7 +90,13 @@ void kernel strata(global float *output,
   float shift = slope * dr;
 
   // TODO hardcoded
-  float noise = base_perlin_fbm(noise_kw * pos, 6, 1.f, 0.99f, 2.f, fseed);
+  float noise = base_perlin_fbm(noise_kw * pos,
+                                6,
+                                1.f,
+                                0.99f,
+                                2.f,
+                                fseed,
+                                (int2)(0, 0)); // non-periodic
 
   // ridges
   float  dr_p = dot(pos, (float2)(cos(alpha_ridge), sin(alpha_ridge)));
