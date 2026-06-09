@@ -340,7 +340,11 @@ WaveDuneFunction::WaveDuneFunction(glm::vec2 kw,
                                    float     xbottom,
                                    float     phase_shift,
                                    glm::vec2 center)
-    : Function(), kw(kw), xtop(xtop), xbottom(xbottom), phase_shift(phase_shift),
+    : Function(),
+      kw(kw),
+      xtop(xtop),
+      xbottom(xbottom),
+      phase_shift(phase_shift),
       center(center)
 {
   this->set_angle(angle);
@@ -408,7 +412,10 @@ WaveTriangularFunction::WaveTriangularFunction(glm::vec2 kw,
                                                float     slant_ratio,
                                                float     phase_shift,
                                                glm::vec2 center)
-    : Function(), kw(kw), slant_ratio(slant_ratio), phase_shift(phase_shift),
+    : Function(),
+      kw(kw),
+      slant_ratio(slant_ratio),
+      phase_shift(phase_shift),
       center(center)
 {
   this->set_angle(angle);

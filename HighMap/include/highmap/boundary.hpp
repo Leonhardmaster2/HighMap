@@ -350,10 +350,10 @@ void zeroed_borders(Array &array);
  * @include ex_zeroed_edges.cpp
  * @image html ex_zeroed_edges.png
  */
-void zeroed_edges(Array               &array,
-                  RadialProfile        radial_profile,
-                  float                profile_param = 0.f,
-                  float                amount = 1.f,
+void zeroed_edges(Array        &array,
+                  RadialProfile radial_profile = RadialProfile::RP_SMOOTHSTEP,
+                  float         profile_param = 0.f,
+                  float         amount = 1.f,
                   DistanceFunction     distance = DistanceFunction::EUCLIDIAN,
                   DistanceFunctionAxis dfa = DistanceFunctionAxis::DFA_XY,
                   glm::vec2            center = {0.5f, 0.5f},

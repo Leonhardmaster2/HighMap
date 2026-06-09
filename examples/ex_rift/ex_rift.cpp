@@ -30,6 +30,7 @@ int main(void)
   float bottom_depth = 0.05f;
   auto  bottom_profile = hmap::RadialProfile::RP_SQRT;
   float bottom_profile_param = 0.f;
+  bool  bottom_force_minimum_depth = true;
   float outer_slope = 0.5f;
 
   auto z2 = hmap::rift(shape,
@@ -44,6 +45,7 @@ int main(void)
                        bottom_depth,
                        bottom_profile,
                        bottom_profile_param,
+                       bottom_force_minimum_depth,
                        outer_slope,
                        &dr,
                        &ds);
