@@ -706,6 +706,7 @@ void swirl(Array       &dx,
  * @param  phase_shift          Phase shift (in radians).
  * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
  * @param  p_stretching         Local wavenumber multiplier.
+ * @param  center               Primitive reference center.
  * @param  bbox                 Domain bounding box.
  * @return                      Array New array.
  */
@@ -718,6 +719,7 @@ Array wave_dune(glm::ivec2   shape,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
                 const Array *p_stretching = nullptr,
+                glm::vec2    center = {0.5f, 0.5f},
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -729,6 +731,7 @@ Array wave_dune(glm::ivec2   shape,
  * @param  phase_shift          Phase shift (in radians).
  * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
  * @param  p_stretching         Local wavenumber multiplier.
+ * @param  center               Primitive reference center.
  * @param  bbox                 Domain bounding box.
  * @return                      Array New array.
  *
@@ -747,6 +750,7 @@ Array wave_sine(glm::ivec2   shape,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
                 const Array *p_stretching = nullptr,
+                glm::vec2    center = {0.5f, 0.5f},
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -758,6 +762,7 @@ Array wave_sine(glm::ivec2   shape,
  * @param  phase_shift          Phase shift (in radians).
  * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
  * @param  p_stretching         Local wavenumber multiplier.
+ * @param  center               Primitive reference center.
  * @param  bbox                 Domain bounding box.
  * @return                      Array New array.
  *
@@ -775,6 +780,7 @@ Array wave_square(glm::ivec2   shape,
                   const Array *p_noise_x = nullptr,
                   const Array *p_noise_y = nullptr,
                   const Array *p_stretching = nullptr,
+                  glm::vec2    center = {0.5f, 0.5f},
                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -788,6 +794,7 @@ Array wave_square(glm::ivec2   shape,
  * @param  phase_shift          Phase shift (in radians).
  * @param  p_noise_x, p_noise_y Reference to the input noise arrays.
  * @param  p_stretching         Local wavenumber multiplier.
+ * @param  center               Primitive reference center.
  * @param  bbox                 Domain bounding box.
  * @return                      Array New array.
  *
@@ -806,6 +813,7 @@ Array wave_triangular(glm::ivec2   shape,
                       const Array *p_noise_x = nullptr,
                       const Array *p_noise_y = nullptr,
                       const Array *p_stretching = nullptr,
+                      glm::vec2    center = {0.5f, 0.5f},
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap

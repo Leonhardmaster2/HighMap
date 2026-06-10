@@ -49,4 +49,7 @@ void print_array(const Array &arr,
                  int          width = 6,
                  int          precision = 2);
 
+void dump_visual_check(const Array       &array,
+                       const std::string &fname = "check.png");
+
 } // namespace hmap

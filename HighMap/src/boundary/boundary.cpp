@@ -451,43 +451,4 @@ void zeroed_borders(Array &array)
   }
 }
 
-void zeroed_edges(Array           &array,
-                  float            sigma,
-                  DistanceFunction dist_fct,
-                  const Array     *p_noise,
-                  glm::vec4        bbox)
-{
-  glm::vec2 shift = {bbox.x, bbox.z};
-  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
-
-  std::vector<float> x = linspace(shift.x - 0.5f,
-                                  shift.x - 0.5f + scale.x,
-                                  array.shape.x,
-                                  false);
-  std::vector<float> y = linspace(shift.y - 0.5f,
-                                  shift.y - 0.5f + scale.y,
-                                  array.shape.y,
-                                  false);
-
-  std::function<float(float, float)> r_fct = get_distance_function(dist_fct);
-
-  if (!p_noise)
-    for (int j = 0; j < array.shape.y; j++)
-      for (int i = 0; i < array.shape.x; i++)
-      {
-        float r = r_fct(2.f * x[i], 2.f * y[j]);
-        float ra = r < 1.f ? std::pow(1.f - r, sigma) : 0.f;
-        array(i, j) *= ra / (ra + std::pow(r, sigma));
-      }
-  else
-    for (int j = 0; j < array.shape.y; j++)
-      for (int i = 0; i < array.shape.x; i++)
-      {
-        float r = r_fct(2.f * x[i], 2.f * y[j]);
-        r += (*p_noise)(i, j) * (*p_noise)(i, j);
-        float ra = r < 1.f ? std::pow(1.f - r, sigma) : 0.f;
-        array(i, j) *= ra / (ra + std::pow(1.f, sigma));
-      }
-}
-
 } // namespace hmap

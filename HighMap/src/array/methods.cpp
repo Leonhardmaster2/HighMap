@@ -290,10 +290,11 @@ void Array::normalize()
 {
   float sum = this->sum();
 
-  std::transform(this->vector.begin(),
-                 this->vector.end(),
-                 this->vector.begin(),
-                 [&sum](float v) { return v / sum; });
+  if (sum != 0.f)
+  {
+    for (float &v : this->vector)
+      v /= sum;
+  }
 }
 
 float Array::ptp() const
