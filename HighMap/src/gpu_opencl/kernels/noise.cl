@@ -128,8 +128,9 @@ float base_value_cubic(const float2 p, const float fseed, const int2 period)
   float v[4][4];
   for (int dy = -1; dy <= 2; dy++)
     for (int dx = -1; dx <= 2; dx++)
-      v[dy + 1][dx + 1] = hash12f(wrap_lattice(i + (float2)(dx, dy), period),
-                                  fseed);
+      v[dy + 1][dx + 1] = hash12f(
+          wrap_lattice(i + (float2)(dx, dy), period),
+          fseed);
 
   // cubic interpolation in the x-direction for each row
   float interp_row[4];
@@ -176,7 +177,8 @@ float base_worley(const float2 p, const float fseed, const int2 period)
     for (int dy = -1; dy <= 1; dy++)
     {
       float2 dr = (float2)(dx, dy);
-      float2 feature_point = dr + hash22f(wrap_lattice(i + dr, period), fseed);
+      float2 feature_point = dr +
+                             hash22f(wrap_lattice(i + dr, period), fseed);
       float2 diff = f - feature_point;
       float  dist = dot(diff, diff);
 

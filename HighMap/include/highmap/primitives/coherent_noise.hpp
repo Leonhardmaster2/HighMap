@@ -794,10 +794,13 @@ Array gavoronoise(const Array  &base,
                   const Array  *p_noise_y = nullptr,
                   glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
-/*! @brief See hmap::noise. @p period sets the tiling period in lattice cells
- * (typically round(kw)); a non-positive component disables wrapping on that
- * axis (default: non-periodic). Tiling is exact only for lattice noise types
- * with integer kw; simplex is never wrapped. */
+/*! @brief See hmap::noise. @p period sets the tiling period in lattice cells.
+ * For the heightmap to be periodic with respect to the full domain, @p period
+ * must be equal to the wavenumber @p kw, i.e. period = {round(kw.x),
+ * round(kw.y)}; a smaller period makes the pattern repeat within the domain.
+ * A component <= 0 disables wrapping on that axis (default {0, 0}:
+ * non-periodic). Tiling is exact only for lattice noise types with integer
+ * kw; simplex is never wrapped. */
 Array noise(NoiseType     noise_type,
             glm::ivec2    shape,
             glm::vec2     kw,
@@ -809,8 +812,11 @@ Array noise(NoiseType     noise_type,
             glm::ivec2    period = {0, 0});
 
 /*! @brief See hmap::noise_fbm. @p period sets the tiling period in lattice
- * cells (typically round(kw)); a non-positive component disables wrapping on
- * that axis (default: non-periodic). Seamless tiling additionally requires an
+ * cells for the base octave. For the heightmap to be periodic with respect to
+ * the full domain, @p period must be equal to the wavenumber @p kw, i.e.
+ * period = {round(kw.x), round(kw.y)}; a smaller period makes the pattern
+ * repeat within the domain. A component <= 0 disables wrapping on that axis
+ * (default {0, 0}: non-periodic). Seamless tiling additionally requires an
  * integer lacunarity (the default 2); simplex is never wrapped. */
 Array noise_fbm(NoiseType     noise_type,
                 glm::ivec2    shape,
