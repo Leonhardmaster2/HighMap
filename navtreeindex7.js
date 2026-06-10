@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"curvature__gpu_8cpp.html":[5,0,1,1,10,1],
 "curvature__gpu_8cpp.html#a125118b55d309727ff0b46d686fd3829":[5,0,1,1,10,1,0],
 "curvature__quadric_8cpp.html":[5,0,1,1,10,2],
 "curvature__quadric_8cpp.html#a4e2b7df70a18f94ad7f4d7cd934ec767":[5,0,1,1,10,2,0],
@@ -159,6 +160,8 @@ var NAVTREEINDEX7 =
 "drainage__basin__cell__based_8hpp.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894":[5,0,1,0,0,2,1,1,0],
 "drainage__basin__cell__based_8hpp.html#a6d5ae7cdae4d3db7507517699fb44ed7":[5,0,1,0,0,2,1,2],
 "drainage__basin__cell__based_8hpp_source.html":[5,0,1,0,0,2,1],
+"dump__visual__check_8cpp.html":[5,0,1,1,11,1],
+"dump__visual__check_8cpp.html#aa162bbea6fc85aa1403204af49364230":[5,0,1,1,11,1,0],
 "erosion_8hpp.html":[5,0,1,0,0,21],
 "erosion_8hpp.html#a00b54f4e60a8fbd6ed5213600d598869":[5,0,1,0,0,21,66],
 "erosion_8hpp.html#a04047f16ece68b32c1c8e68b4780f0df":[5,0,1,0,0,21,81],
@@ -246,8 +249,5 @@ var NAVTREEINDEX7 =
 "erosion__maps_8cpp.html":[5,0,1,1,12,5],
 "erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,5,0],
 "erosion__profile__function_8cpp.html":[5,0,1,1,24,2],
-"erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2],
-"erosion__profile__function_8cpp.html#a18d33562e8ffbb8be79e2ec87bcf285f":[5,0,1,1,24,2,0],
-"erosion__profile__function_8cpp.html#ad3535c9e25ba863fcfe5931ccc556ac8":[5,0,1,1,24,2,1],
-"examples.html":[6]
+"erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2]
 };
