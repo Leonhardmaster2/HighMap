@@ -806,7 +806,7 @@ Array noise(NoiseType     noise_type,
             const Array  *p_noise_y = nullptr,
             const Array  *p_stretching = nullptr,
             glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
-            glm::ivec2    period = {-1, -1});
+            glm::ivec2    period = {0, 0});
 
 /*! @brief See hmap::noise_fbm. @p period sets the tiling period in lattice
  * cells (typically round(kw)); a non-positive component disables wrapping on
@@ -825,7 +825,7 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_noise_y = nullptr,
                 const Array  *p_stretching = nullptr,
                 glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
-                glm::ivec2    period = {-1, -1});
+                glm::ivec2    period = {0, 0});
 
 /**
  * @brief Generates a procedural phasor-based pattern.
