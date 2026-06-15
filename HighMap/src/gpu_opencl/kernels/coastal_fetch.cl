@@ -14,7 +14,7 @@ void kernel coastal_fetch(read_only image2d_t  z,
   if (g.x >= nx || g.y >= ny) return;
 
   const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
-                            CLK_ADDRESS_MIRRORED_REPEAT | CLK_FILTER_LINEAR;
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_LINEAR;
 
   // early skip if requested
   if (read_imagef(compute_mask, sampler, g).x <= 0.f)

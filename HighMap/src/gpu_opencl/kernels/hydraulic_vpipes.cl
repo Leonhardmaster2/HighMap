@@ -199,7 +199,7 @@ void kernel hydraulic_vpipes_sediment_transport_pass(read_only image2d_t  u,
                             CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
 
   const sampler_t sampler_itp = CLK_NORMALIZED_COORDS_FALSE |
-                                CLK_ADDRESS_MIRRORED_REPEAT | CLK_FILTER_LINEAR;
+                                CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_LINEAR;
 
   const int i = g.x;
   const int j = g.y;
