@@ -11,6 +11,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/geometry/path.hpp"
 #include "highmap/math/profiles.hpp"
 
 namespace hmap
@@ -195,6 +196,59 @@ Array island_land_mask(glm::ivec2       shape,
                        float            lacunarity = 2.f,
                        const glm::vec2 &center = {0.5f, 0.5f},
                        const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a land mask of an island chain scattered along a path.
+ *
+ * Spawns `island_count` islands along the input path. Each island is an
+ * fbm-perturbed radial blob (same construction as `island_land_mask`).
+ * Island positions follow the path arc length, optionally jittered along and
+ * across the path by `scatter`. Island sizes follow a signed falloff:
+ * `size_falloff = 0` gives uniform sizes, `+1` shrinks the islands toward the
+ * path end (hotspot-chain look, largest island at the head), `-1` shrinks
+ * them toward the start; `size_jitter` adds per-island random variation.
+ *
+ * @param  shape         Output array shape.
+ * @param  path          Input path (at least two points), in normalized
+ *                       domain coordinates.
+ * @param  seed          Random seed number.
+ * @param  island_count  Number of islands spawned along the path.
+ * @param  island_radius Base island radius in normalized domain units.
+ * @param  size_falloff  Signed size falloff along the path, in [-1, 1].
+ * @param  size_jitter   Per-island random radius variation ratio.
+ * @param  scatter       Random island displacement along and across the path.
+ * @param  displacement  Amplitude of the fbm boundary perturbation.
+ * @param  noise_type    Noise type used for the boundary perturbation.
+ * @param  kw            Noise wavenumber.
+ * @param  octaves       Number of fbm octaves.
+ * @param  weight        Octave weighting.
+ * @param  persistence   Octave persistence.
+ * @param  lacunarity    Defines the wavenumber ratio between octaves.
+ * @param  bbox          Domain bounding box.
+ * @return               Binary land mask (0 or 1).
+ *
+ * **Example**
+ * @include ex_island_chain.cpp
+ *
+ * **Result**
+ * @image html ex_island_chain.png
+ */
+Array island_chain_land_mask(glm::ivec2    shape,
+                             const Path   &path,
+                             std::uint32_t seed,
+                             int           island_count = 5,
+                             float         island_radius = 0.1f,
+                             float         size_falloff = 0.5f,
+                             float         size_jitter = 0.3f,
+                             float         scatter = 0.f,
+                             float         displacement = 0.2f,
+                             NoiseType     noise_type = NoiseType::SIMPLEX2S,
+                             float         kw = 4.f,
+                             int           octaves = 8,
+                             float         weight = 0.f,
+                             float         persistence = 0.5f,
+                             float         lacunarity = 2.f,
+                             glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generate a rift-shaped primitive.
