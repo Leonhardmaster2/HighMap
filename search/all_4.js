@@ -5,7 +5,7 @@ var searchData=
   ['caldera_2',['caldera',['../namespacehmap.html#a9ee91a0c5ac4f49f1e40aa54ab69cb2f',1,'hmap::caldera(glm::ivec2 shape, float radius, float sigma_inner, float sigma_outer, float z_bottom, const Array *p_noise, float noise_amp_r, float noise_ratio_z, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})'],['../namespacehmap.html#aaa2b720ef7b261b4eb2f1e89838a538e',1,'hmap::caldera(glm::ivec2 shape, float radius, float sigma_inner, float sigma_outer, float z_bottom, glm::vec2 center={0.5f, 0.5f}, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})']]],
   ['caldera_2ecpp_3',['caldera.cpp',['../caldera_8cpp.html',1,'']]],
   ['carving_2ehpp_4',['carving.hpp',['../carving_8hpp.html',1,'']]],
-  ['catmullrom_5',['catmullrom',['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8ade9a39922b4750c41f14969a3686fc29',1,'hmap::CATMULLROM'],['../namespacehmap.html#a9b14eb25556ef745f1e606bbe8d41dcb',1,'hmap::catmullrom(const Path &amp;path, int edge_divisions=10, Path::EdgeDivisionMode edm=Path::EdgeDivisionMode::EDM_PER_EDGE)']]],
+  ['catmullrom_5',['catmullrom',['../namespacehmap.html#a9b14eb25556ef745f1e606bbe8d41dcb',1,'hmap::catmullrom(const Path &amp;path, int edge_divisions=10, Path::EdgeDivisionMode edm=Path::EdgeDivisionMode::EDM_PER_EDGE)'],['../namespacehmap.html#aa78bf111867e13c63d8bd2ec005ad6c8ade9a39922b4750c41f14969a3686fc29',1,'hmap::CATMULLROM']]],
   ['ceil_5fdiv_6',['ceil_div',['../namespacehmap.html#a6294951db2b05d8b1081e4d865c11244',1,'hmap']]],
   ['cell_5fcenter_7',['cell_center',['../structhmap_1_1TileRegion.html#a2160f3e52bb07aebad44bf689d5fe690',1,'hmap::TileRegion']]],
   ['cell_5fcorner_8',['cell_corner',['../structhmap_1_1TileRegion.html#a773fcee90fae6c3950a9fa5617de2f62',1,'hmap::TileRegion']]],

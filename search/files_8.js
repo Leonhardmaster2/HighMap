@@ -20,5 +20,6 @@ var searchData=
   ['interpolate_5fcurve_2ehpp_17',['interpolate_curve.hpp',['../interpolate__curve_8hpp.html',1,'']]],
   ['interpolate_5fheightmap_5fvirtual_5farray_2ecpp_18',['interpolate_heightmap_virtual_array.cpp',['../interpolate__heightmap__virtual__array_8cpp.html',1,'']]],
   ['io_2ecpp_19',['io.cpp',['../io_8cpp.html',1,'']]],
-  ['island_2ecpp_20',['island.cpp',['../island_8cpp.html',1,'']]]
+  ['island_2ecpp_20',['island.cpp',['../island_8cpp.html',1,'']]],
+  ['island_5fchain_2ecpp_21',['island_chain.cpp',['../island__chain_8cpp.html',1,'']]]
 ];

@@ -9,6 +9,7 @@ var primitives_2functions_8hpp =
       [ "PRIM_SMOOTH_COSINE", "primitives_2functions_8hpp.html#a55542a66f890ef9ecf5f82af2c23a0cfad8c75d88dbfd854dbcedfaf3a4b9c65c", null ]
     ] ],
     [ "get_primitive_base", "primitives_2functions_8hpp.html#aac2bd27e550ca991c67d8df2df6f0999", null ],
+    [ "band", "primitives_2functions_8hpp.html#a9b7b17b540fbec1501ba0e996897c1e5", null ],
     [ "biquad_pulse", "primitives_2functions_8hpp.html#a2b69f27ab2ce6c9bdd87cdc630a0a1d5", null ],
     [ "biquad_pulse_x", "primitives_2functions_8hpp.html#a05f15dbf656e6f7ae36542c48a7d2980", null ],
     [ "biquad_pulse_y", "primitives_2functions_8hpp.html#aeffedc90714bfcfed6a5f18d780b1094", null ],

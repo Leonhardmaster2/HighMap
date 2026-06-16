@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b":[5,0,1,0,0,20,0,9],
+"curvature_8hpp_source.html":[5,0,1,0,0,20],
 "curvature__gpu_8cpp.html":[5,0,1,1,10,1],
 "curvature__gpu_8cpp.html#a125118b55d309727ff0b46d686fd3829":[5,0,1,1,10,1,0],
 "curvature__quadric_8cpp.html":[5,0,1,1,10,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "erosion_8hpp.html#af975837e0f5b169dcb6d3f5f58c95fe9":[5,0,1,0,0,21,23],
 "erosion_8hpp_source.html":[5,0,1,0,0,21],
 "erosion__maps_8cpp.html":[5,0,1,1,12,5],
-"erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,5,0],
-"erosion__profile__function_8cpp.html":[5,0,1,1,24,2],
-"erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2]
+"erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,5,0]
 };
