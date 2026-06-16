@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "highmap.hpp"
+
+#include <gtest/gtest.h>
 
 TEST(Band, CoreIsOneFalloffToZero)
 {
@@ -32,8 +32,8 @@ TEST(Band, LatitudeBandPolarCap)
 
   // long horizontal band hugging the bottom domain edge -> polar cap
   hmap::Array z = hmap::band(shape,
-                             0.f,  // angle
-                             4.f,  // length >> domain: infinite strip
+                             0.f, // angle
+                             4.f, // length >> domain: infinite strip
                              0.25f,
                              hmap::RadialProfile::RP_SMOOTHSTEP,
                              0.f,

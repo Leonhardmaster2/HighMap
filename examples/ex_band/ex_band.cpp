@@ -40,5 +40,8 @@ int main(void)
                        nullptr,
                        {0.5f, 0.f});
 
-  hmap::export_banner_png("ex_band.png", {z1, z2, z3}, hmap::Cmap::TERRAIN, true);
+  hmap::export_banner_png("ex_band.png",
+                          {z1, z2, z3},
+                          hmap::Cmap::TERRAIN,
+                          true);
 }

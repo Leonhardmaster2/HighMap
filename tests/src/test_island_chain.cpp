@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "highmap.hpp"
+
+#include <gtest/gtest.h>
 
 TEST(IslandChain, DeterministicCentersNoNoise)
 {

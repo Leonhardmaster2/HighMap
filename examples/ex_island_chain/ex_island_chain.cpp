@@ -23,7 +23,5 @@ int main(void)
                                          0.04f, // scatter
                                          0.15f);
 
-  hmap::export_banner_png("ex_island_chain.png",
-                          {m1, m2},
-                          hmap::Cmap::GRAY);
+  hmap::export_banner_png("ex_island_chain.png", {m1, m2}, hmap::Cmap::GRAY);
 }

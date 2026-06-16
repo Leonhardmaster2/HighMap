@@ -18,48 +18,6 @@ namespace hmap
 {
 
 /**
- * @brief Generate a bounded band (capsule) mask.
- *
- * Creates a 0 to 1 mask shaped as a capsule: the value is 1 on a core
- * segment defined by `center`, `angle` and `length`, and falls off to 0 at a
- * distance `width` from the segment, following the requested radial profile.
- * Typical uses: mountain-range envelopes, island-chain arc envelopes and,
- * with a length larger than the domain, latitude bands / polar caps (place
- * `center` on or beyond a domain edge).
- *
- * @param  shape          Output array shape.
- * @param  angle          Band orientation angle in degrees.
- * @param  length         Core segment length in normalized domain units. A
- *                        zero length degenerates to a radial bump.
- * @param  width          Falloff half-width in normalized domain units.
- * @param  profile        Radial profile used for the falloff.
- * @param  profile_param  Additional parameter for the profile.
- * @param  p_noise_r      Optional noise array used to locally perturb the
- *                        falloff distance (edge displacement).
- * @param  p_noise_offset Optional noise array used to locally offset the band
- *                        axis position (normalized by `width`).
- * @param  center         Band center in normalized coordinates.
- * @param  bbox           Domain bounding box.
- * @return                Generated band mask in [0, 1].
- *
- * **Example**
- * @include ex_band.cpp
- *
- * **Result**
- * @image html ex_band.png
- */
-Array band(glm::ivec2    shape,
-           float         angle,
-           float         length = 0.5f,
-           float         width = 0.1f,
-           RadialProfile profile = RadialProfile::RP_SMOOTHSTEP,
-           float         profile_param = 0.f,
-           const Array  *p_noise_r = nullptr,
-           const Array  *p_noise_offset = nullptr,
-           glm::vec2     center = {0.5f, 0.5f},
-           glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
-
-/**
  * @brief Return a caldera-shaped heightmap.
  *
  * @param  shape         Array shape.
@@ -201,16 +159,16 @@ Array island_land_mask(glm::ivec2       shape,
  * @brief Generates a land mask of an island chain scattered along a path.
  *
  * Spawns `island_count` islands along the input path. Each island is an
- * fbm-perturbed radial blob (same construction as `island_land_mask`).
- * Island positions follow the path arc length, optionally jittered along and
- * across the path by `scatter`. Island sizes follow a signed falloff:
+ * fbm-perturbed radial blob (same construction as `island_land_mask`). Island
+ * positions follow the path arc length, optionally jittered along and across
+ * the path by `scatter`. Island sizes follow a signed falloff:
  * `size_falloff = 0` gives uniform sizes, `+1` shrinks the islands toward the
- * path end (hotspot-chain look, largest island at the head), `-1` shrinks
- * them toward the start; `size_jitter` adds per-island random variation.
+ * path end (hotspot-chain look, largest island at the head), `-1` shrinks them
+ * toward the start; `size_jitter` adds per-island random variation.
  *
  * @param  shape         Output array shape.
- * @param  path          Input path (at least two points), in normalized
- *                       domain coordinates.
+ * @param  path          Input path (at least two points), in normalized domain
+ *                       coordinates.
  * @param  seed          Random seed number.
  * @param  island_count  Number of islands spawned along the path.
  * @param  island_radius Base island radius in normalized domain units.

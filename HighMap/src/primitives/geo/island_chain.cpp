@@ -102,7 +102,8 @@ Array island_chain_land_mask(glm::ivec2    shape,
     // signed size falloff: +1 shrinks toward the path end, -1 toward start
     float fall = size_falloff >= 0.f ? 1.f - size_falloff * t
                                      : 1.f + size_falloff * (1.f - t);
-    float rk = island_radius * std::max(0.f, fall) * (1.f + size_jitter * jr);
+    float radius_factor = std::max(0.f, fall) * (1.f + size_jitter * jr);
+    float rk = island_radius * radius_factor;
 
     if (rk <= 0.f) continue;
 
@@ -148,7 +149,7 @@ Array island_chain_land_mask(glm::ivec2    shape,
         float r = std::hypot(x, y);
         float theta = std::atan2(y, x);
 
-        float dr = displacement *
+        float dr = radius_factor * displacement *
                    f.get_delegate()(std::cos(theta), std::sin(theta), 0.f);
 
         if (r < rk + dr) mask(i, j) = 1.f;
