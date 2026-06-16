@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aad171888e3143edfa1d5916611c9a9f7f":[5,0,1,0,0,20,0,2],
+"curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aae43a8928c7c1f96f56419e4d4197ec12":[5,0,1,0,0,20,0,11],
 "curvature_8hpp.html#ad4d5e191ca7dd12e389c842188bde88aafbccd8dd0feaaab8de0cf747cd5f837b":[5,0,1,0,0,20,0,9],
 "curvature_8hpp_source.html":[5,0,1,0,0,20],
 "curvature__gpu_8cpp.html":[5,0,1,1,10,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "erosion_8hpp.html#aec782e6aba3f4cfbbd97aafa46cc700b":[5,0,1,0,0,21,49],
 "erosion_8hpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,0,0,21,5],
 "erosion_8hpp.html#af975837e0f5b169dcb6d3f5f58c95fe9":[5,0,1,0,0,21,23],
-"erosion_8hpp_source.html":[5,0,1,0,0,21],
-"erosion__maps_8cpp.html":[5,0,1,1,12,5],
-"erosion__maps_8cpp.html#af91e2b8638aab2c4357ce37812b8a99c":[5,0,1,1,12,5,0]
+"erosion_8hpp_source.html":[5,0,1,0,0,21]
 };

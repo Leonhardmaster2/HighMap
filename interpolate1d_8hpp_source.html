@@ -135,27 +135,27 @@ $(document).ready(function(){initNavTree('interpolate1d_8hpp_source.html',''); i
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classhmap_1_1Interpolator1D.html">   64</a></span><span class="keyword">class </span><a class="code hl_class" href="classhmap_1_1Interpolator1D.html">Interpolator1D</a></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <a class="code hl_class" href="classhmap_1_1Interpolator1D.html">Interpolator1D</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;x,</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                 <span class="keyword">const</span> std::vector&lt;float&gt; &amp;y,</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                 <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#afce7ba6809a4c7b28a561c7c646227e3">~Interpolator1D</a>();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#a47dab539e9e8ce30c350278d01dfb1aa">operator()</a>(<span class="keywordtype">float</span> x) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#a1ab067195430386cae3158bfccf4847f">interpolate</a>(<span class="keywordtype">float</span> x) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  gsl_spline         *interp; </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  gsl_interp_accel   *accel_; </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  std::vector&lt;double&gt; x_data; </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  std::vector&lt;double&gt; y_data; </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keywordtype">double</span>              xmin;   </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">double</span>              xmax;   </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>};</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <a class="code hl_class" href="classhmap_1_1Interpolator1D.html">Interpolator1D</a>(<span class="keyword">const</span> std::vector&lt;float&gt; &amp;x,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                 <span class="keyword">const</span> std::vector&lt;float&gt; &amp;y,</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                 <a class="code hl_enumeration" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6b">InterpolationMethod1D</a> method = <a class="code hl_enumvalue" href="namespacehmap.html#a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84">InterpolationMethod1D::LINEAR</a>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#afce7ba6809a4c7b28a561c7c646227e3">~Interpolator1D</a>();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#a47dab539e9e8ce30c350278d01dfb1aa">operator()</a>(<span class="keywordtype">float</span> x) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classhmap_1_1Interpolator1D.html#a1ab067195430386cae3158bfccf4847f">interpolate</a>(<span class="keywordtype">float</span> x) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  gsl_spline         *interp; </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  gsl_interp_accel   *accel_; </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  std::vector&lt;double&gt; x_data; </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  std::vector&lt;double&gt; y_data; </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">double</span>              xmin;   </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">double</span>              xmax;   </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>};</div>
 </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>} <span class="comment">// namespace hmap</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>} <span class="comment">// namespace hmap</span></div>
 <div class="ttc" id="aclasshmap_1_1Interpolator1D_html"><div class="ttname"><a href="classhmap_1_1Interpolator1D.html">hmap::Interpolator1D</a></div><div class="ttdoc">A class for performing 1D interpolation using the GSL library.</div><div class="ttdef"><b>Definition</b> interpolate1d.hpp:65</div></div>
 <div class="ttc" id="aclasshmap_1_1Interpolator1D_html_a1ab067195430386cae3158bfccf4847f"><div class="ttname"><a href="classhmap_1_1Interpolator1D.html#a1ab067195430386cae3158bfccf4847f">hmap::Interpolator1D::interpolate</a></div><div class="ttdeci">float interpolate(float x) const</div><div class="ttdoc">Interpolates the value at the specified x coordinate.</div><div class="ttdef"><b>Definition</b> interpolate1d.cpp:155</div></div>
 <div class="ttc" id="aclasshmap_1_1Interpolator1D_html_a47dab539e9e8ce30c350278d01dfb1aa"><div class="ttname"><a href="classhmap_1_1Interpolator1D.html#a47dab539e9e8ce30c350278d01dfb1aa">hmap::Interpolator1D::operator()</a></div><div class="ttdeci">float operator()(float x) const</div><div class="ttdoc">Function call operator for performing interpolation.</div><div class="ttdef"><b>Definition</b> interpolate1d.cpp:150</div></div>

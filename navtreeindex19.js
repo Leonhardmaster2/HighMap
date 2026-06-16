@@ -1,5 +1,7 @@
 var NAVTREEINDEX19 =
 {
+"quilting_8cpp.html":[5,0,1,1,38,1],
+"quilting_8cpp.html#a8407611dc51d0372c4626c6c6fa94acd":[5,0,1,1,38,1,1],
 "quilting_8cpp.html#aad762d7a12d68d42ffd90e07be88fcb3":[5,0,1,1,38,1,2],
 "quilting_8cpp.html#ada12bd91a1719f64ff4b652bf1462d2a":[5,0,1,1,38,1,0],
 "quilting_8cpp.html#adb1405cd7f9a219c82c149bcaa55cafc":[5,0,1,1,38,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX19 =
 "statistics_8hpp.html":[5,0,1,0,0,45],
 "statistics_8hpp.html#a000840cf4916102db68d6428c8c8c7e2":[5,0,1,0,0,45,3],
 "statistics_8hpp.html#a27faed8c5c8f89f271b6882c8a7cc81b":[5,0,1,0,0,45,4],
-"statistics_8hpp.html#a3d6212896d8cd828bd5bd827d24a0344":[5,0,1,0,0,45,5],
-"statistics_8hpp.html#a414c6fe47e8dadbab8ad532a0538be40":[5,0,1,0,0,45,1],
-"statistics_8hpp.html#ab83b1277c6a2909787cd39988d9f762b":[5,0,1,0,0,45,2]
+"statistics_8hpp.html#a3d6212896d8cd828bd5bd827d24a0344":[5,0,1,0,0,45,5]
 };

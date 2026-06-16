@@ -93,6 +93,8 @@ void \mbox{\hyperlink{classhmap_1_1Path_afe00587a87fc52524487b197818404f0}{resam
 \begin{DoxyCompactList}\small\item\em Resamples the path using cubic interpolation along arc length. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a84e0832a3c3a4c9e1f9bcefdc6d32cd0}{resample\+\_\+uniform}} (\mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6b}{Interpolation\+Method1D}} itp\+\_\+method=\mbox{\hyperlink{namespacehmap_a46291bb4766800deacc1ce9b45a9ea6ba26ec6481025765e03b9c750137bd9d84}{Interpolation\+Method1\+D\+::\+LINEAR}})
 \begin{DoxyCompactList}\small\item\em Resample the path to achieve fairly uniform distance between consecutive points. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classhmap_1_1Path_abed9b04c8138125196946f7453e4aea9}{sample\+\_\+at}} (float t, const std\+::vector$<$ float $>$ \texorpdfstring{$\ast$}{*}p\+\_\+arc=nullptr, glm\+::vec2 \texorpdfstring{$\ast$}{*}p\+\_\+tangent=nullptr) const
+\begin{DoxyCompactList}\small\item\em Sample the path using normalized arc-\/length parameterization. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68}{subsample}} (int \mbox{\hyperlink{namespacehmap_a80b6038177b2ab3984cb18bd90f568fa}{step}})
 \begin{DoxyCompactList}\small\item\em Subsample the path by keeping only every n-\/th point. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classhmap_1_1Path_a4d1e1e63fea24bf8f23bc3343f8b746e}{to\+\_\+array}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, bool filled=false) const
@@ -775,6 +777,30 @@ This method adjusts the path so that the distance between each consecutive point
 {\em itp\+\_\+method} & Interpolation method used for resampling. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classhmap_1_1Path_abed9b04c8138125196946f7453e4aea9}\label{classhmap_1_1Path_abed9b04c8138125196946f7453e4aea9} 
+\index{hmap::Path@{hmap::Path}!sample\_at@{sample\_at}}
+\index{sample\_at@{sample\_at}!hmap::Path@{hmap::Path}}
+\doxysubsubsection{\texorpdfstring{sample\_at()}{sample\_at()}}
+{\footnotesize\ttfamily glm\+::vec3 hmap\+::\+Path\+::sample\+\_\+at (\begin{DoxyParamCaption}\item[{float}]{t,  }\item[{const std\+::vector$<$ float $>$ \texorpdfstring{$\ast$}{*}}]{p\+\_\+arc = {\ttfamily nullptr},  }\item[{glm\+::vec2 \texorpdfstring{$\ast$}{*}}]{p\+\_\+tangent = {\ttfamily nullptr} }\end{DoxyParamCaption}) const}
+
+
+
+Sample the path using normalized arc-\/length parameterization. 
+
+Interpolates position and value at parameter {\ttfamily t} in \mbox{[}0, 1\mbox{]}. Optionally uses a precomputed cumulative arc-\/length vector and returns the local unit tangent at the sampled point.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Normalized arc-\/length parameter. \\
+\hline
+{\em p\+\_\+arc} & Optional cumulative arc-\/length vector to avoid recomputation. \\
+\hline
+{\em p\+\_\+tangent} & Optional output pointer receiving the unit tangent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sampled position (x, y) and interpolated value (z). 
+\end{DoxyReturn}
 \Hypertarget{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68}\label{classhmap_1_1Path_a9816b231362dd1ca5208a839626f1f68} 
 \index{hmap::Path@{hmap::Path}!subsample@{subsample}}
 \index{subsample@{subsample}!hmap::Path@{hmap::Path}}
