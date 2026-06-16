@@ -90,7 +90,9 @@ std::vector<float> Path::get_cumulative_distance() const
 
   for (size_t k = 1; k < this->size() + ke; k++)
   {
-    size_t knext = (k + 1) % this->size();
+    // distance of the segment between consecutive points k-1 and k; the modulo
+    // wraps only the closing segment of a closed path (k == size).
+    size_t knext = k % this->size();
     float  dist = distance(this->points[k - 1], this->points[knext]);
     dacc[k] = dacc[k - 1] + dist;
   }
