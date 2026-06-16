@@ -75,7 +75,8 @@ enum RadialProfile : int
  * @return                 A `std::function<float(float)>` that computes the
  *                         erosion profile for a given phase angle.
  *
- * @throws std::invalid_argumentIfthe provided `erosion_profile` is invalid.
+ * @throws std::invalid_argument
+ * @details `erosion_profile` is invalid.
  *
  * @note The average value is computed using numerical integration over 50
  * sample points within [-π, π].

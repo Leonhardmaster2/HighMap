@@ -81,10 +81,11 @@ public:
    * @param  y      A vector of y coordinates (dependent variable).
    * @param  method The interpolation method to use (default is linear).
    *
-   * @throws std::invalid_argumentifx and y have different sizes, if there are
-   *                fewer than two points with distinct x values, if x is not
-   *                sorted in increasing order, or if the method requires
-   *                monotonic data and the provided data is not monotonic.
+   * @throws std::invalid_argument
+   * @details If x and y have different sizes, if there are fewer than two
+   * points with distinct x values, if x is not sorted in increasing order, or
+   * if the method requires monotonic data and the provided data is not
+   * monotonic.
    */
   Interpolator1D(const std::vector<float> &x,
                  const std::vector<float> &y,
