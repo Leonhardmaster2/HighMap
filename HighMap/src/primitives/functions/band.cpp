@@ -8,7 +8,6 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
-#include "highmap/math/core.hpp"
 #include "highmap/math/profiles.hpp"
 
 namespace hmap

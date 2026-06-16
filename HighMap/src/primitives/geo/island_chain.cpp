@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
+#include <functional>
 #include <memory>
 #include <random>
 #include <utility>
@@ -12,8 +13,6 @@
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/path.hpp"
-#include "highmap/math/core.hpp"
-#include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/geo.hpp"
 
 namespace hmap
