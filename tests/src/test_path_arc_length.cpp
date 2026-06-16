@@ -1,6 +1,6 @@
-#include "highmap.hpp"
-
 #include <cmath>
+
+#include "highmap.hpp"
 
 #include <gtest/gtest.h>
 

@@ -40,22 +40,8 @@ Array island_chain_land_mask(glm::ivec2    shape,
 
   if (path.size() < 2 || island_count < 1) return mask;
 
-  // Cumulative normalized arc length over the path control points, computed
-  // locally. Path::get_arc_length() / resample_uniform() mis-handle open paths
-  // (get_cumulative_distance wraps the final segment via a modulo), collapsing
-  // the arc to zero for short paths. Piecewise-linear sampling over the control
-  // points yields exact arc-length positions for a polyline.
   const std::vector<Point> &pts = path.points;
-  std::vector<float>        arc(pts.size(), 0.f);
-  for (size_t k = 1; k < pts.size(); k++)
-    arc[k] = arc[k - 1] +
-             std::hypot(pts[k].x - pts[k - 1].x, pts[k].y - pts[k - 1].y);
-
-  const float total = arc.back();
-  if (total <= 0.f) return mask; // degenerate path (coincident points)
-
-  for (float &a : arc)
-    a /= total;
+  const std::vector<float>  arc = path.get_cumulative_distance();
 
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-1.f, 1.f);

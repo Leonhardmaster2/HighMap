@@ -377,5 +377,4 @@ float base_worley_fbm(const float2 p,
   }
   return n;
 }
-
 )""
