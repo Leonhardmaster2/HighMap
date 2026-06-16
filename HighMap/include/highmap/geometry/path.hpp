@@ -354,6 +354,23 @@ public:
       InterpolationMethod1D itp_method = InterpolationMethod1D::LINEAR);
 
   /**
+   * @brief Sample the path using normalized arc-length parameterization.
+   *
+   * Interpolates position and value at parameter @p t in [0, 1]. Optionally
+   * uses a precomputed cumulative arc-length vector and returns the local unit
+   * tangent at the sampled point.
+   *
+   * @param  t         Normalized arc-length parameter.
+   * @param  p_arc     Optional cumulative arc-length vector to avoid
+   *                   recomputation.
+   * @param  p_tangent Optional output pointer receiving the unit tangent.
+   * @return           Sampled position (x, y) and interpolated value (z).
+   */
+  glm::vec3 sample_at(float                     t,
+                      const std::vector<float> *p_arc = nullptr,
+                      glm::vec2                *p_tangent = nullptr) const;
+
+  /**
    * @brief Subsample the path by keeping only every n-th point.
    *
    * This method reduces the number of points in the path by retaining only

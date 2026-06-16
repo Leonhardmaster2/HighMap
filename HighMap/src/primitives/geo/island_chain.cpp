@@ -40,34 +40,10 @@ Array island_chain_land_mask(glm::ivec2    shape,
 
   if (path.size() < 2 || island_count < 1) return mask;
 
-  const std::vector<Point> &pts = path.points;
-  const std::vector<float>  arc = path.get_cumulative_distance();
+  const std::vector<float> arc = path.get_arc_length();
 
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-1.f, 1.f);
-
-  // position and unit tangent at a normalized arc position t
-  auto sample_at = [&pts, &arc](float t, glm::vec2 &pos, glm::vec2 &tg)
-  {
-    t = std::clamp(t, 0.f, 1.f);
-
-    size_t k = 1;
-    while (k < arc.size() - 1 && arc[k] < t)
-      k++;
-
-    float span = std::max(arc[k] - arc[k - 1], 1e-9f);
-    float r = (t - arc[k - 1]) / span;
-
-    const Point &p0 = pts[k - 1];
-    const Point &p1 = pts[k];
-
-    pos = {(1.f - r) * p0.x + r * p1.x, (1.f - r) * p0.y + r * p1.y};
-
-    float ddx = p1.x - p0.x;
-    float ddy = p1.y - p0.y;
-    float dn = std::hypot(ddx, ddy);
-    tg = dn > 0.f ? glm::vec2(ddx / dn, ddy / dn) : glm::vec2(1.f, 0.f);
-  };
 
   for (int k = 0; k < island_count; k++)
   {
@@ -80,7 +56,8 @@ Array island_chain_land_mask(glm::ivec2    shape,
     t += scatter * jt;
 
     glm::vec2 pos, tg;
-    sample_at(t, pos, tg);
+    glm::vec3 point = path.sample_at(t, &arc, &tg);
+    pos = {point.x, point.y};
 
     glm::vec2 normal = {-tg.y, tg.x};
     pos += scatter * jn * normal;

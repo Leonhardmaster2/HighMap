@@ -352,6 +352,42 @@ void Path::reverse()
   std::reverse(this->points.begin(), this->points.end());
 }
 
+glm::vec3 Path::sample_at(float                     t,
+                          const std::vector<float> *p_arc,
+                          glm::vec2                *p_tangent) const
+{
+  // recompute of use the provided arc length (to avoid recomputing it
+  // at every sampling call) - no failsafe, p_arc size must be checked
+  // before-hand
+  const std::vector<float>  arc = p_arc ? *p_arc : this->get_arc_length();
+  const std::vector<Point> &pts = this->points;
+
+  t = std::clamp(t, 0.f, 1.f);
+
+  size_t k = 1;
+  while (k < arc.size() - 1 && arc[k] < t)
+    k++;
+
+  float span = std::max(arc[k] - arc[k - 1], 1e-9f);
+  float r = (t - arc[k - 1]) / span;
+
+  const Point &p0 = pts[k - 1];
+  const Point &p1 = pts[k];
+
+  glm::vec2 pos = {(1.f - r) * p0.x + r * p1.x, (1.f - r) * p0.y + r * p1.y};
+  float     value = lerp(p0.v, p1.v, r);
+
+  if (p_tangent)
+  {
+    float ddx = p1.x - p0.x;
+    float ddy = p1.y - p0.y;
+    float dn = std::hypot(ddx, ddy);
+    *p_tangent = dn > 0.f ? glm::vec2(ddx / dn, ddy / dn) : glm::vec2(1.f, 0.f);
+  }
+
+  return glm::vec3(pos.x, pos.y, value);
+}
+
 void Path::set_closed(bool new_value)
 {
   this->path_closure = new_value ? PathClosure::PT_CLOSE : PathClosure::PT_OPEN;
