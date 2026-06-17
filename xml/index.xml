@@ -1084,7 +1084,7 @@
     <member refid="classhmap_1_1XyControlFunction_1acfe5c441363f35d36a13084fb56c6dca" kind="function"><name>MinimumImpl</name></member>
     <member refid="classhmap_1_1XyControlFunction_1ab32abc0861325b3ea6f547b938a9225d" kind="function"><name>MaximumImpl</name></member>
   </compound>
-  <compound refid="namespace_0d332" kind="namespace"><name>@332</name>
+  <compound refid="namespace_0d335" kind="namespace"><name>@335</name>
   </compound>
   <compound refid="namespaceglm" kind="namespace"><name>glm</name>
   </compound>
@@ -1856,6 +1856,11 @@
     <member refid="namespacehmap_1a462f8b6ebc7b8ab79c619987e0ddfce4" kind="function"><name>vstack</name></member>
     <member refid="namespacehmap_1a2091b67a724a6eb280a4ca99553b6edb" kind="function"><name>apply_with_mask</name></member>
     <member refid="namespacehmap_1a7f6f419f3cc6f376344611faef5ad440" kind="function"><name>transform_with_mask</name></member>
+    <member refid="namespacehmap_1ad7c71deabcf6e48d3f40804ef1938d19" kind="function"><name>spawn_borders</name></member>
+    <member refid="namespacehmap_1a3422ba41de7725000577effbfd9189b5" kind="function"><name>spawn_disc</name></member>
+    <member refid="namespacehmap_1a3c4b047d5c32729f3833e5c190c0a1bb" kind="function"><name>spawn_gaussian</name></member>
+    <member refid="namespacehmap_1a2b8cded11b92020a1eb168ed690540f1" kind="function"><name>spawn_ring</name></member>
+    <member refid="namespacehmap_1ad7228f4cfeb3e850cefcd14028cfe7a4" kind="function"><name>spawn_uniform</name></member>
     <member refid="namespacehmap_1a16c73d1f41f27b2d7fb6c61f31e91780" kind="function"><name>dendry</name></member>
     <member refid="namespacehmap_1a9c8e5fdeaa3f2f46b2a35778cb2e3711" kind="function"><name>dendry</name></member>
     <member refid="namespacehmap_1a43cf2b960fc4f48be0548d87e78cdcb2" kind="function"><name>diffusion_limited_aggregation</name></member>
@@ -2074,9 +2079,11 @@
     <member refid="namespacehmap_1_1gpu_1a3a43696b1d6b8f0d966f9f05e5085edf" kind="function"><name>blend_gradients</name></member>
     <member refid="namespacehmap_1_1gpu_1a65a176508b404f80e5f5abd31456712e" kind="function"><name>blend_poisson_bf</name></member>
     <member refid="namespacehmap_1_1gpu_1acff6d6d559781cdeba565ed795bb81d8" kind="function"><name>transfer</name></member>
-    <member refid="namespacehmap_1_1gpu_1a8dac643af396f582c905c4a685db06d9" kind="function"><name>sparse_max_convolution</name></member>
+    <member refid="namespacehmap_1_1gpu_1a0020f712944fdb63ee2894c19eaa27ca" kind="function"><name>sparse_max_convolution</name></member>
+    <member refid="namespacehmap_1_1gpu_1a3070705e0a58ac06120981a963e17e0d" kind="function"><name>sparse_max_convolution</name></member>
     <member refid="namespacehmap_1_1gpu_1a125118b55d309727ff0b46d686fd3829" kind="function"><name>level_set_curvature</name></member>
     <member refid="namespacehmap_1_1gpu_1a7bfb7fecab3f34a73a57d7907c3ace7d" kind="function"><name>curvature_quadric</name></member>
+    <member refid="namespacehmap_1_1gpu_1ae9e15dab7a1d649bc833098a88ea5b8c" kind="function"><name>conv_erosion</name></member>
     <member refid="namespacehmap_1_1gpu_1a8497e2fce595293ea07e68eac1e5bce2" kind="function"><name>deposition_fill_holes</name></member>
     <member refid="namespacehmap_1_1gpu_1a67fee4e11fb0b003d0ebb091e85533fe" kind="function"><name>deposition_fill_holes</name></member>
     <member refid="namespacehmap_1_1gpu_1ac6d55fbc90b3e84de1a4b68f26873934" kind="function"><name>hydraulic_particle</name></member>
@@ -2285,6 +2292,7 @@
     <member refid="namespacehmap_1_1gpu_1a0c43413a89b330fc5f4051112d6a2a85" kind="function"><name>advection_warp</name></member>
     <member refid="namespacehmap_1_1gpu_1aab128e15988875b5d350d6f156612aa5" kind="function"><name>rotate</name></member>
     <member refid="namespacehmap_1_1gpu_1a99659d06f84b0e92e6731f28ca28937c" kind="function"><name>warp</name></member>
+    <member refid="namespacehmap_1_1gpu_1afd1e43227fa8126847097029597c1573" kind="function"><name>compute_particle_path</name></member>
     <member refid="namespacehmap_1_1gpu_1a88838a8a701facc69ddace7b1e98f837" kind="function"><name>helper_vflow_compute_adaptive_dt</name></member>
     <member refid="namespacehmap_1_1gpu_1a757286c938a310c4e6046c5df9bb6302" kind="function"><name>helper_transform_bbox</name></member>
     <member refid="namespacehmap_1_1gpu_1a27b70c333fc5550bcca1b96dcb0116fb" kind="function"><name>helper_bind_optional_buffers</name></member>
@@ -2411,6 +2419,8 @@
   <compound refid="openmp_8hpp" kind="file"><name>openmp.hpp</name>
   </compound>
   <compound refid="operator_8hpp" kind="file"><name>operator.hpp</name>
+  </compound>
+  <compound refid="particles_8hpp" kind="file"><name>particles.hpp</name>
   </compound>
   <compound refid="primitives_8hpp" kind="file"><name>primitives.hpp</name>
   </compound>
@@ -2545,6 +2555,8 @@
   <compound refid="timer_8cpp" kind="file"><name>timer.cpp</name>
   </compound>
   <compound refid="coastal__erosion_8cpp" kind="file"><name>coastal_erosion.cpp</name>
+  </compound>
+  <compound refid="conv__erosion_8cpp" kind="file"><name>conv_erosion.cpp</name>
   </compound>
   <compound refid="deposition_8cpp" kind="file"><name>deposition.cpp</name>
   </compound>
@@ -2817,6 +2829,8 @@
   <compound refid="vector_8cpp" kind="file"><name>vector.cpp</name>
   </compound>
   <compound refid="vector__utils_8cpp" kind="file"><name>vector_utils.cpp</name>
+  </compound>
+  <compound refid="spawner_8cpp" kind="file"><name>spawner.cpp</name>
   </compound>
   <compound refid="dendry_8cpp" kind="file"><name>dendry.cpp</name>
   </compound>
@@ -3423,6 +3437,8 @@
   <compound refid="dir_6aa7d1044acc45fe3c709a8e34773f94" kind="dir"><name>HighMap/src/openmp</name>
   </compound>
   <compound refid="dir_9a51bbdebcf80687f6531d96614427fc" kind="dir"><name>HighMap/src/operator</name>
+  </compound>
+  <compound refid="dir_3961423d922fc63bab3aec0bc4c44789" kind="dir"><name>HighMap/src/particles</name>
   </compound>
   <compound refid="dir_1a98231a3a7703aece9d92406c51e7de" kind="dir"><name>HighMap/include/highmap/primitives</name>
   </compound>
