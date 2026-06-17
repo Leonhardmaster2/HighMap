@@ -189,7 +189,6 @@ void conv_erosion(Array        &z,
     for (int k = 0; k < particle_count; ++k)
     {
       glm::ivec2 spawn = spawn_uniform(rng, shape);
-      // glm::ivec2 spawn = spawn_gaussian(rng, center, radius / 2, shape);
 
       std::vector<float>      dz;
       std::vector<glm::ivec2> path = compute_particle_path(
@@ -208,9 +207,7 @@ void conv_erosion(Array        &z,
       rescale_vector(dz, 0.f, 1.f);
 
       const float size_factor = std::pow(rand01(rng), size_distrib_exp);
-
       const float local_size = lerp(size_scale, 1.f, size_factor);
-
       const float inv_sum = 1.f / static_cast<float>(path.size());
 
       for (size_t i = 0; i < path.size(); ++i)
@@ -232,7 +229,6 @@ void conv_erosion(Array        &z,
     // --- kernel (can also be made parameterizable if needed)
 
     glm::ivec2 kernel_shape = {2 * ir_max + 1, 2 * ir_max + 1};
-
     Array kernel = cone(kernel_shape, 2.f);
 
     Array dz = gpu::sparse_max_convolution(mask, size, kernel, 0.f);
