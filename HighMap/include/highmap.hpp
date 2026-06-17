@@ -39,6 +39,7 @@
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/openmp.hpp"
 #include "highmap/operator.hpp"
+#include "highmap/particles.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/random.hpp"
 #include "highmap/range.hpp"

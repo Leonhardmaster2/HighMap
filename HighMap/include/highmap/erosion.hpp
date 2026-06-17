@@ -831,6 +831,43 @@ namespace hmap::gpu
 {
 
 /**
+ * @brief Performs iterative particle-based convolution erosion on a heightmap.
+ *
+ * This function simulates erosion by spawning particles, tracing their paths
+ * over the heightmap, accumulating a mask and size field, and applying a
+ * kernel-based convolution to compute erosion deltas.
+ *
+ * The process is repeated for a number of iterations to refine the result.
+ *
+ * @param z                 Heightmap to be eroded (modified in-place).
+ * @param seed              RNG seed for deterministic behavior.
+ * @param iterations        Number of erosion iterations.
+ * @param particle_count    Number of particles per iteration.
+ * @param ir_min            Minimum kernel radius scale.
+ * @param ir_max            Maximum kernel radius scale.
+ * @param size_distrib_exp  Exponent controlling particle size bias.
+ * @param erosion_strength  Global strength of erosion applied per iteration.
+ * @param path_step         Step size used in particle path computation.
+ * @param jitter_seed_scale Controls randomness in particle trajectories.
+ *
+ *  **Example**
+ * @include ex_conv_erosion.cpp
+ *
+ * **Result**
+ * @image html ex_conv_erosion.png
+ */
+void conv_erosion(Array        &z,
+                  std::uint32_t seed,
+                  int           iterations = 20,
+                  int           particle_count = 1000,
+                  int           ir_min = 8,
+                  int           ir_max = 64,
+                  float         size_distrib_exp = 1.f,
+                  float         erosion_strength = 0.02f,
+                  float         path_step = 0.01f,
+                  float         jitter_seed_scale = 0.05f);
+
+/**
  * @brief Fill holes using Gaussian-based deposition.
  *
  * Applies a smoothing/deposition pass that fills local depressions while
