@@ -84,34 +84,36 @@
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depth\ =\ CV\_8U)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a91219834a1eafb8bdb0070b02219aa43}{to\_tensor}}(\textcolor{keyword}{const}\ glm::ivec2\ \&img\_shape,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ \ \ std::vector<float>\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a5104213e63d15089f933f6153483889c}{to\_raw}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm,\ \textcolor{keywordtype}{bool}\ flip\_y\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Members}}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a91219834a1eafb8bdb0070b02219aa43}{to\_tensor}}(\textcolor{keyword}{const}\ glm::ivec2\ \&img\_shape,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ glm::ivec2\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_ae999f1abfe76819639a319ce795924b7}{shape}};}
-\DoxyCodeLine{00093\ \ \ glm::vec4\ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a9502a27aecf9f89a52e8939bcc7d6a6f}{bbox}};}
-\DoxyCodeLine{00094\ \ \ glm::ivec2\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a5715cc1c46c0d01c6d12648c49c7c3ba}{tile\_shape}};}
-\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a086adf51b2d8005792bc505045a1974c}{halo}};}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00098\ \ \ std::vector<VirtualArray>\ arrays;}
-\DoxyCodeLine{00099\ \};}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \textcolor{comment}{//\ functions}}
+\DoxyCodeLine{00092\ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Members}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ glm::ivec2\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_ae999f1abfe76819639a319ce795924b7}{shape}};}
+\DoxyCodeLine{00095\ \ \ glm::vec4\ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a9502a27aecf9f89a52e8939bcc7d6a6f}{bbox}};}
+\DoxyCodeLine{00096\ \ \ glm::ivec2\ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a5715cc1c46c0d01c6d12648c49c7c3ba}{tile\_shape}};}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classhmap_1_1VirtualTexture_a086adf51b2d8005792bc505045a1974c}{halo}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00100\ \ \ std::vector<VirtualArray>\ arrays;}
+\DoxyCodeLine{00101\ \};}
 \DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \mbox{\hyperlink{namespacehmap_af66b37de86e8de6261ab902110b118a0}{convert\_texture\_channels}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&src,}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dst\_channels,}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fill\_value,}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \&cm);}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Func>}
-\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{for\_each\_tile}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ Func\ \&\&func,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Func>}
-\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{for\_each\_pixel}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ Func\ \&\&func,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{virtual__texture_8inl}{highmap/virtual\_array/virtual\_texture.inl}}"{}}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ functions}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \mbox{\hyperlink{namespacehmap_af66b37de86e8de6261ab902110b118a0}{convert\_texture\_channels}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&src,}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dst\_channels,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fill\_value,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \ \ \ \&cm);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Func>}
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a1025088e008bb5709c8f88bc025ab1cb}{for\_each\_tile}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ Func\ \&\&func,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Func>}
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacehmap_a6bbca26bba2f2faac320f59df0ae8d8a}{for\_each\_pixel}}(\mbox{\hyperlink{classhmap_1_1VirtualTexture}{VirtualTexture}}\ \&tex,\ Func\ \&\&func,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhmap_1_1ComputeMode}{ComputeMode}}\ \&cm);}
 \DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{virtual__texture_8inl}{highmap/virtual\_array/virtual\_texture.inl}}"{}}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \}\ \textcolor{comment}{//\ namespace\ hmap}}
 
 \end{DoxyCode}

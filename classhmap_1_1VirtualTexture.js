@@ -17,6 +17,7 @@ var classhmap_1_1VirtualTexture =
     [ "to_img_8bit", "classhmap_1_1VirtualTexture.html#a1bfe8a01c2605b6a464d1e2f96165452", null ],
     [ "to_png", "classhmap_1_1VirtualTexture.html#ac63588628e2189680a479c6779bc93fe", null ],
     [ "to_png", "classhmap_1_1VirtualTexture.html#a377675bfed09cf8dc2d9cb91cd408c3a", null ],
+    [ "to_raw", "classhmap_1_1VirtualTexture.html#a5104213e63d15089f933f6153483889c", null ],
     [ "to_tensor", "classhmap_1_1VirtualTexture.html#a91219834a1eafb8bdb0070b02219aa43", null ],
     [ "shape", "classhmap_1_1VirtualTexture.html#ae999f1abfe76819639a319ce795924b7", null ],
     [ "bbox", "classhmap_1_1VirtualTexture.html#a9502a27aecf9f89a52e8939bcc7d6a6f", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"signed__curvature__from__distance_8cpp.html":[5,0,1,1,25,5],
+"signed__curvature__from__distance_8cpp.html#a76cfd96b971a288964561449d83e21aa":[5,0,1,1,25,5,3],
 "signed__curvature__from__distance_8cpp.html#ac56515202b30368216c7324b819cc838":[5,0,1,1,25,5,0],
 "signed__curvature__from__distance_8cpp.html#ad4ab7bb38b3ea37fa912190251c1ed76":[5,0,1,1,25,5,1],
 "signed__curvature__from__distance_8cpp.html#afffb85b7bc6b9884cd00254c122da8e6":[5,0,1,1,25,5,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX20 =
 "structhmap_1_1TerrainTriMesh_1_1EdgeHash.html#a2e1e1c6cab60e06b91a62200367cbff9":[3,0,0,61,2,0],
 "structhmap_1_1TerrainTriMesh_1_1Neighbor.html":[4,0,0,60,3],
 "structhmap_1_1TerrainTriMesh_1_1Neighbor.html":[3,0,0,61,3],
-"structhmap_1_1TerrainTriMesh_1_1Neighbor.html#a0cd8f7fd250b772c4c3445280a37a2b6":[3,0,0,61,3,0],
-"structhmap_1_1TerrainTriMesh_1_1Neighbor.html#a0cd8f7fd250b772c4c3445280a37a2b6":[4,0,0,60,3,0],
-"structhmap_1_1TerrainTriMesh_1_1Neighbor.html#a1d8844b86573fc6e3e0037a6f9d4632c":[4,0,0,60,3,1]
+"structhmap_1_1TerrainTriMesh_1_1Neighbor.html#a0cd8f7fd250b772c4c3445280a37a2b6":[3,0,0,61,3,0]
 };
