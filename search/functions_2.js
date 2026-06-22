@@ -70,7 +70,7 @@ var searchData=
   ['constant_67',['constant',['../namespacehmap.html#a2b25a71f7da0b8324df986e01e5b08dc',1,'hmap']]],
   ['contains_68',['contains',['../structhmap_1_1TerrainTriMesh_1_1BoundingBox.html#aa6890766fe5088242981462b35944b7e',1,'hmap::TerrainTriMesh::BoundingBox']]],
   ['contour_5fsmoothing_69',['contour_smoothing',['../namespacehmap.html#a2420e66a1e851eff3503d805004495b3',1,'hmap::contour_smoothing()'],['../namespacehmap_1_1gpu.html#a792221afc46ff3986ecde59d52592ecb',1,'hmap::gpu::contour_smoothing(const Array &amp;array, int ir, float transition_ratio=0.1f)']]],
-  ['conv_5ferosion_70',['conv_erosion',['../namespacehmap_1_1gpu.html#ae9e15dab7a1d649bc833098a88ea5b8c',1,'hmap::gpu']]],
+  ['conv_5ferosion_70',['conv_erosion',['../namespacehmap_1_1gpu.html#a6e09a459c9b6d040dde9271f50b618dd',1,'hmap::gpu']]],
   ['convert_5flength_5fto_5fpixel_71',['convert_length_to_pixel',['../namespacehmap.html#ab085d07bc0e897729ca16c0dd2035fe1',1,'hmap']]],
   ['convert_5fmat_5fto_5farray_72',['convert_mat_to_array',['../namespacehmap.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb',1,'hmap']]],
   ['convert_5ftexture_5fchannels_73',['convert_texture_channels',['../namespacehmap.html#af66b37de86e8de6261ab902110b118a0',1,'hmap']]],
