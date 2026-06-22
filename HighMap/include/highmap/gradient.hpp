@@ -149,6 +149,25 @@ Array gradient_norm(const Array &array,
                     Array       *p_dy = nullptr);
 
 /**
+ * @brief Compute a smoothed gradient magnitude map.
+ *
+ * The input array is downsampled by a factor of @p ir, the gradient norm is
+ * computed on the lower-resolution array, scaled back to the original units,
+ * and finally upsampled to the original resolution using bicubic interpolation.
+ *
+ * @param  array Input array.
+ * @param  ir    Downsampling factor (> 0).
+ * @return       Gradient norm filtered at a larger spatial scale.
+ *
+ * **Example**
+ * @include ex_gradient_norm_filtered.cpp
+ *
+ * **Result**
+ * @image html ex_gradient_norm_filtered.png
+ */
+Array gradient_norm_filtered(const Array &array, int ir);
+
+/**
  * @brief Compute the gradient norm of a 2D array using the Prewitt filter.
  *
  * This function calculates the gradient norm (magnitude) using the Prewitt

@@ -14,10 +14,14 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/filters.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/particles.hpp"
+#include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -167,8 +171,11 @@ void conv_erosion(Array        &z,
                   int           ir_max,
                   float         size_distrib_exp,
                   float         erosion_strength,
-                  float         path_step,
-                  float         jitter_seed_scale)
+                  float         randomness,
+                  float         exit_forcing,
+                  int           gradient_ir,
+                  float         gradient_exp,
+                  float         gradient_strength_min)
 {
   const glm::ivec2 &shape = z.shape;
 
@@ -178,33 +185,43 @@ void conv_erosion(Array        &z,
   const float size_scale = static_cast<float>(ir_min) /
                            static_cast<float>(ir_max);
 
-  const glm::ivec2 center = {shape.x / 2, shape.y / 2};
-  const int        radius = shape.x / 4;
-
   for (int it = 0; it < iterations; ++it)
   {
     Array mask(shape);
     Array size(shape);
+    Array deposit(shape);
 
     for (int k = 0; k < particle_count; ++k)
     {
       glm::ivec2 spawn = spawn_uniform(rng, shape);
 
+      const int           border_margin = 1;
+      const std::uint32_t particle_seed = k * (seed + 1 + it);
+
       std::vector<float>      dz;
-      std::vector<glm::ivec2> path = compute_particle_path(
-          z,
-          spawn,
-          true,
-          path_step,
-          k * (seed + 1 + it), // iteration-aware jitter
-          0.f,
-          jitter_seed_scale,
-          1,
-          dz);
+      std::vector<glm::ivec2> path = compute_particle_path(z,
+                                                           spawn,
+                                                           true,
+                                                           randomness,
+                                                           particle_seed,
+                                                           /* intertia */ 0.f,
+                                                           exit_forcing,
+                                                           border_margin,
+                                                           dz);
 
       if (path.empty()) continue;
 
-      rescale_vector(dz, 0.f, 1.f);
+      // check if path reaches the domain frontier
+      glm::ivec2 &end = path.back();
+
+      bool reach_border = (end.x <= border_margin ||
+                           end.x >= shape.x - 1 - border_margin ||
+                           end.y <= border_margin ||
+                           end.y >= shape.y - 1 - border_margin);
+
+      // float kw = 16.f * float(path.size()) / float(shape.x);
+      // float amp = 0.f;
+      // add_noise(path, particle_seed, kw, amp, shape, NoiseType::PERLIN, 1);
 
       const float size_factor = std::pow(rand01(rng), size_distrib_exp);
       const float local_size = lerp(size_scale, 1.f, size_factor);
@@ -219,6 +236,8 @@ void conv_erosion(Array        &z,
         float v0 = mask(p);
         float v1 = lerp(0.1f, 1.f, t);
 
+        if (!reach_border) v1 = smoothstep3(triangle(v1, 0.f, 1.f));
+
         float vsize = local_size * v1;
 
         mask(p) = std::max(v0, v1);
@@ -229,10 +248,19 @@ void conv_erosion(Array        &z,
     // --- kernel (can also be made parameterizable if needed)
 
     glm::ivec2 kernel_shape = {2 * ir_max + 1, 2 * ir_max + 1};
-    Array kernel = cone(kernel_shape, 2.f);
+    Array      kernel = cone(kernel_shape, 2.f);
+
+    kernel = smoothstep3_lower(kernel);
 
     Array dz = gpu::sparse_max_convolution(mask, size, kernel, 0.f);
 
+    // gradient scaling
+    Array gn = gradient_norm_filtered(z, gradient_ir);
+    remap(gn, gradient_strength_min, 1.f);
+    dz *= pow(gn, gradient_exp);
+
+    hmap::laplace(dz, 0.125f, 1);
+  
     z -= erosion_strength * dz;
   }
 }

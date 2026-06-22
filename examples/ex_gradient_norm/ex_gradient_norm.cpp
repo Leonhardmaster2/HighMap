@@ -13,7 +13,10 @@ int main(void)
   auto dz_c = hmap::gradient_norm_scharr(z);
   auto dz_s = hmap::gradient_norm_sobel(z);
 
+  int  ir = 6;
+  auto dz_f = hmap::gradient_norm_filtered(z, ir);
+
   hmap::export_banner_png("ex_gradient_norm.png",
-                          {dz, dz_p, dz_c, dz_s},
+                          {dz, dz_p, dz_c, dz_s, dz_f},
                           hmap::Cmap::VIRIDIS);
 }

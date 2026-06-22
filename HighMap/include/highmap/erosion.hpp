@@ -839,16 +839,16 @@ namespace hmap::gpu
  *
  * The process is repeated for a number of iterations to refine the result.
  *
- * @param z                 Heightmap to be eroded (modified in-place).
- * @param seed              RNG seed for deterministic behavior.
- * @param iterations        Number of erosion iterations.
- * @param particle_count    Number of particles per iteration.
- * @param ir_min            Minimum kernel radius scale.
- * @param ir_max            Maximum kernel radius scale.
- * @param size_distrib_exp  Exponent controlling particle size bias.
- * @param erosion_strength  Global strength of erosion applied per iteration.
- * @param path_step         Step size used in particle path computation.
- * @param jitter_seed_scale Controls randomness in particle trajectories.
+ * @param z                Heightmap to be eroded (modified in-place).
+ * @param seed             RNG seed for deterministic behavior.
+ * @param iterations       Number of erosion iterations.
+ * @param particle_count   Number of particles per iteration.
+ * @param ir_min           Minimum kernel radius scale.
+ * @param ir_max           Maximum kernel radius scale.
+ * @param size_distrib_exp Exponent controlling particle size bias.
+ * @param erosion_strength Global strength of erosion applied per iteration.
+ * @param randomness       Controls randomness in particle trajectories.
+ * @param exit_forcing     Forcing strength towards the domain frontier.
  *
  *  **Example**
  * @include ex_conv_erosion.cpp
@@ -864,8 +864,11 @@ void conv_erosion(Array        &z,
                   int           ir_max = 64,
                   float         size_distrib_exp = 1.f,
                   float         erosion_strength = 0.02f,
-                  float         path_step = 0.01f,
-                  float         jitter_seed_scale = 0.05f);
+                  float         randomness = 0.01f,
+                  float         exit_forcing = 0.05f,
+                  int           gradient_ir = 64,
+                  float         gradient_exp = 0.5f,
+                  float         gradient_strength_min = 0.1f);
 
 /**
  * @brief Fill holes using Gaussian-based deposition.

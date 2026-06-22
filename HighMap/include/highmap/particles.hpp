@@ -13,9 +13,69 @@
 #include <glm/glm.hpp>
 
 #include "highmap/array.hpp"
+#include "highmap/functions.hpp"
 
 namespace hmap
 {
+
+/**
+ * @brief Rasterizes a segment between two integer points using Bresenham's
+ * algorithm.
+ *
+ * Ensures full grid connectivity by filling all intermediate integer cells
+ * between points a and b.
+ *
+ * @param out Output container receiving the rasterized points.
+ * @param a   Start point.
+ * @param b   End point.
+ */
+void add_line_bresenham(std::vector<glm::ivec2> &out,
+                        glm::ivec2               a,
+                        glm::ivec2               b);
+
+/**
+ * @brief Applies transverse noise displacement along an integer path.
+ *
+ * The function computes a global direction from first to last point, derives a
+ * perpendicular axis, and displaces each point using procedural noise.
+ *
+ * @param ipath       Input/output integer path to deform.
+ * @param seed        Random seed for noise generation.
+ * @param kw          Noise spatial frequency (scale).
+ * @param amp         Maximum displacement amplitude.
+ * @param shape       Optional domain scaling / bounds for noise sampling.
+ * @param noise_type  Type of procedural noise to use.
+ * @param octaves     Number of noise octaves for fractal noise.
+ * @param weight      Blend factor between octaves.
+ * @param persistence Amplitude decay per octave.
+ * @param lacunarity  Frequency increase per octave.
+ *
+ * **Example**
+ * @include ex_add_noise_ipath.cpp
+ *
+ * **Result**
+ * @image html ex_add_noise_ipath.png
+ */
+void add_noise(std::vector<glm::ivec2> &ipath,
+               std::uint32_t            seed,
+               float                    kw,
+               float                    amp,
+               const glm::ivec2        &shape,
+               NoiseType                noise_type = NoiseType::PERLIN,
+               int                      octaves = 8,
+               float                    weight = 0.7f,
+               float                    persistence = 0.5f,
+               float                    lacunarity = 2.f);
+
+/**
+ * @brief Ensures that an integer path is grid-adjacent and gap-free.
+ *
+ * Reconstructs the path so that every consecutive step moves to a neighboring
+ * grid cell (8-connected), filling missing cells if needed.
+ *
+ * @param ipath Input/output path to repair and densify.
+ */
+void enforce_path_adjacency(std::vector<glm::ivec2> &ipath);
 
 /**
  * @brief Spawn a point uniformly along the border of a 2D grid.
