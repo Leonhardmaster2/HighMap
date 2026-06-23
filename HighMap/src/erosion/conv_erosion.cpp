@@ -260,7 +260,7 @@ void conv_erosion(Array        &z,
     dz *= pow(gn, gradient_exp);
 
     hmap::laplace(dz, 0.125f, 1);
-  
+
     z -= erosion_strength * dz;
   }
 }

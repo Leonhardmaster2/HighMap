@@ -1639,7 +1639,11 @@ void strata_plates(Array        &z,
  * @param kz                Number of strata levels.
  * @param linear_gamma      If true, uses linear terrace transitions.
  * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param slope             Width of the inclined terrace face in [0, 1] (0 =
+ *                          vertical step, 1 = fully sloped transition).
+ * @param angle             Direction of the terrace inclination in radians.
  * @param p_noise           Optional noise map for profile modulation.
+ * @param bbox              Bounding box used to evaluate the terrace direction.
  *
  * **Example**
  * @include ex_strata_terrace.cpp
@@ -1653,7 +1657,10 @@ void strata_terrace(Array        &z,
                     float         kz = 4.f, // 4-layers
                     bool          linear_gamma = true,
                     float         gamma_noise_ratio = 0.5f,
-                    const Array  *p_noise = nullptr);
+                    float         slope = 0.f,
+                    float         angle = 0.f,
+                    const Array  *p_noise = nullptr,
+                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies a masked terrace (stratification) filter to a heightmap.
@@ -1668,7 +1675,11 @@ void strata_terrace(Array        &z,
  * @param kz                Number of strata levels.
  * @param linear_gamma      If true, uses linear terrace transitions.
  * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param slope             Width of the inclined terrace face in [0, 1] (0 =
+ *                          vertical step, 1 = fully sloped transition).
+ * @param angle             Direction of the terrace inclination in radians.
  * @param p_noise           Optional noise map for profile modulation.
+ * @param bbox              Bounding box used to evaluate the terrace direction.
  *
  * **Example**
  * @include ex_strata_terrace.cpp
@@ -1683,7 +1694,10 @@ void strata_terrace(Array        &z,
                     float         kz = 4.f, // 4-layers
                     bool          linear_gamma = true,
                     float         gamma_noise_ratio = 0.5f,
-                    const Array  *p_noise = nullptr);
+                    float         slope = 0.f,
+                    float         angle = 0.f,
+                    const Array  *p_noise = nullptr,
+                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Apply thermal weathering erosion.

@@ -54,25 +54,38 @@ void kernel strata_terrace(global float *output,
                            const int     use_linear_gamma,
                            const float   kz,
                            const float   gamma_noise_ratio,
-                           const int     has_noise)
+                           const float   slope,
+                           const float   angle,
+                           const int     has_noise,
+                           const float4  bbox)
 {
   int2 g = {get_global_id(0), get_global_id(1)};
 
   if (g.x >= nx || g.y >= ny) return;
 
-  int index = linear_index(g.x, g.y, nx);
+  int    index = linear_index(g.x, g.y, nx);
+  float2 pos = g_to_xy(g, nx, ny, 1.f, 1.f, 0.f, 0.f, bbox);
 
   // parameters
-  const bool  linear_gamma = use_linear_gamma == 0 ? false : true;
-  const float shift = has_noise > 0 ? noise[index] : 0.f;
+  const bool linear_gamma = use_linear_gamma == 0 ? false : true;
+  float      shift = has_noise > 0 ? noise[index] : 0.f;
+
+  float  alpha = angle / 180.f * 3.141592f;
+  float2 dir = (float2)(cos(alpha), sin(alpha));
+  float  dr = dot(pos, dir);
+  shift += slope * dr;
 
   uint  rng_state = wang_hash(seed);
   float fseed = rand(&rng_state);
 
+  // correct wavenumber with slope to avoid very high-frequencies for
+  // high slopes
+  float kz_corrected = kz / (1.f + slope);
+
   float val = output[index];
   val = stratify_rand(val,
                       shift,
-                      kz,
+                      kz_corrected,
                       gamma,
                       linear_gamma,
                       gamma_noise_ratio,

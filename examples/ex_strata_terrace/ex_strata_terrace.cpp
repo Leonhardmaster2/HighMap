@@ -15,6 +15,8 @@ int main(void)
   float kz = 8.f; // 8-layers
   bool  linear_gamma = false;
   float gamma_noise_ratio = 0.1f;
+  float slope = 8.f;
+  float angle = 15.f;
 
   hmap::Array z2 = z1;
   hmap::gpu::strata_terrace(z2,
@@ -36,10 +38,23 @@ int main(void)
                             kz,
                             linear_gamma,
                             gamma_noise_ratio,
+                            0.f,
+                            0.f,
                             &noise);
 
+  auto z4 = z1;
+
+  hmap::gpu::strata_terrace(z4,
+                            gamma,
+                            seed,
+                            kz,
+                            linear_gamma,
+                            gamma_noise_ratio,
+                            slope,
+                            angle);
+
   hmap::export_banner_png("ex_strata_terrace.png",
-                          {z1, z2, z3},
+                          {z1, z2, z3, z4},
                           hmap::Cmap::TERRAIN,
                           true);
 }
