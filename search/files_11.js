@@ -23,7 +23,7 @@ var searchData=
   ['statistics_2ecpp_20',['statistics.cpp',['../statistics_8cpp.html',1,'']]],
   ['statistics_2ehpp_21',['statistics.hpp',['../statistics_8hpp.html',1,'']]],
   ['stitching_5fhelpers_2ecpp_22',['stitching_helpers.cpp',['../stitching__helpers_8cpp.html',1,'']]],
-  ['strata_5fgpu_2ecpp_23',['strata_gpu.cpp',['../strata__gpu_8cpp.html',1,'']]],
+  ['strata_2ecpp_23',['strata.cpp',['../strata_8cpp.html',1,'']]],
   ['strata_5fplates_2ecpp_24',['strata_plates.cpp',['../strata__plates_8cpp.html',1,'']]],
   ['string_5futils_2ecpp_25',['string_utils.cpp',['../string__utils_8cpp.html',1,'']]],
   ['string_5futils_2ehpp_26',['string_utils.hpp',['../string__utils_8hpp.html',1,'']]],

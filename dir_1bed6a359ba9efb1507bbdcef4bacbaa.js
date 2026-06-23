@@ -23,7 +23,7 @@ var dir_1bed6a359ba9efb1507bbdcef4bacbaa =
     [ "hydraulic_vpipes_gpu.cpp", "hydraulic__vpipes__gpu_8cpp.html", "hydraulic__vpipes__gpu_8cpp" ],
     [ "mudslide.cpp", "mudslide_8cpp.html", "mudslide_8cpp" ],
     [ "rifts_gpu.cpp", "rifts__gpu_8cpp.html", "rifts__gpu_8cpp" ],
-    [ "strata_gpu.cpp", "strata__gpu_8cpp.html", "strata__gpu_8cpp" ],
+    [ "strata.cpp", "strata_8cpp.html", "strata_8cpp" ],
     [ "strata_plates.cpp", "strata__plates_8cpp.html", "strata__plates_8cpp" ],
     [ "thermal_gpu.cpp", "thermal__gpu_8cpp.html", "thermal__gpu_8cpp" ],
     [ "thermal_schott.cpp", "thermal__schott_8cpp.html", "thermal__schott_8cpp" ],
