@@ -1,12 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"geomorphons_8cpp.html":[5,0,1,1,14,1],
-"geomorphons_8cpp.html#aa60fa2d3f02d1e064b520fa1623200d0":[5,0,1,1,14,1,0],
-"get__colormap__data_8cpp.html":[5,0,1,1,7,0],
-"get__colormap__data_8cpp.html#a2f2ca726f4e41128135e6c77120c66d8":[5,0,1,1,7,0,1],
-"get__colormap__data_8cpp.html#afb2677facc34ce83019137fd5a9818dd":[5,0,1,1,7,0,0],
-"globals.html":[5,1,0,0],
-"globals.html":[5,1,0],
 "globals_e.html":[5,1,0,1],
 "globals_f.html":[5,1,0,2],
 "globals_func.html":[5,1,1,0],
@@ -249,5 +242,12 @@ var NAVTREEINDEX10 =
 "interpolate2d__delaunay_8cpp.html":[5,0,1,1,21,4],
 "interpolate2d__delaunay_8cpp.html#acf40e21f779a67c8cfb0569fb728d797":[5,0,1,1,21,4,0],
 "interpolate2d__delaunay__gradient_8cpp.html":[5,0,1,1,21,5],
-"interpolate2d__delaunay__gradient_8cpp.html#a6dc3a429456ae7d9910ddcbbb32ce041":[5,0,1,1,21,5,0]
+"interpolate2d__delaunay__gradient_8cpp.html#a6dc3a429456ae7d9910ddcbbb32ce041":[5,0,1,1,21,5,0],
+"interpolate2d__gaussian_8cpp.html":[5,0,1,1,21,6],
+"interpolate2d__gaussian_8cpp.html#a0a14f8ea250312a1c2392dd26d34805f":[5,0,1,1,21,6,0],
+"interpolate2d__idw_8cpp.html":[5,0,1,1,21,7],
+"interpolate2d__idw_8cpp.html#a304d2b2e755c4a1fea14ac8dc6d44082":[5,0,1,1,21,7,0],
+"interpolate2d__nearest_8cpp.html":[5,0,1,1,21,8],
+"interpolate2d__nearest_8cpp.html#a4cb51937d8283468bc540129d491222b":[5,0,1,1,21,8,0],
+"interpolate2d__nni_8cpp.html":[5,0,1,1,21,9]
 };
