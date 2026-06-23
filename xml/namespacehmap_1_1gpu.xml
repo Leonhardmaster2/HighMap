@@ -3777,7 +3777,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="19" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="19" bodyend="77" declfile="HighMap/include/highmap/erosion.hpp" declline="1389" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="20" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="20" bodyend="78" declfile="HighMap/include/highmap/erosion.hpp" declline="1389" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a924e3d46ccfbe374d34eeaaacc2f81fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4032,7 +4032,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="79" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="79" bodyend="125" declfile="HighMap/include/highmap/erosion.hpp" declline="1439" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="80" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="80" bodyend="126" declfile="HighMap/include/highmap/erosion.hpp" declline="1439" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a740cd2ba7c58126ef27bfcddcb6f00b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4299,7 +4299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="127" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="127" bodyend="176" declfile="HighMap/include/highmap/erosion.hpp" declline="1480" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="128" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="128" bodyend="161" declfile="HighMap/include/highmap/erosion.hpp" declline="1480" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5b29dc1e29512877770fd208cd40b971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4606,7 +4606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="178" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="178" bodyend="261" declfile="HighMap/include/highmap/erosion.hpp" declline="1525" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="163" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="163" bodyend="246" declfile="HighMap/include/highmap/erosion.hpp" declline="1525" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab8f6820b9bd796b3283e763f4d872a51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -4925,7 +4925,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="263" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="263" bodyend="324" declfile="HighMap/include/highmap/erosion.hpp" declline="1574" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="248" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="248" bodyend="289" declfile="HighMap/include/highmap/erosion.hpp" declline="1574" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a9c033bf30ba815949b8d0fb01ab15eea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5107,10 +5107,10 @@
         </inbodydescription>
         <location file="HighMap/src/erosion/strata_plates.cpp" line="19" column="6" bodyfile="HighMap/src/erosion/strata_plates.cpp" bodystart="19" bodyend="72" declfile="HighMap/include/highmap/erosion.hpp" declline="1616" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::strata_terrace</definition>
-        <argsstring>(Array &amp;z, float gamma, std::uint32_t seed, float kz=4.f, bool linear_gamma=true, float gamma_noise_ratio=0.5f, const Array *p_noise=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, float gamma, std::uint32_t seed, float kz=4.f, bool linear_gamma=true, float gamma_noise_ratio=0.5f, float slope=0.f, float angle=0.f, const Array *p_noise=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>strata_terrace</name>
         <qualifiedname>hmap::gpu::strata_terrace</qualifiedname>
         <param>
@@ -5141,9 +5141,24 @@
           <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
+          <type>float</type>
+          <declname>slope</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_noise</declname>
           <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
         </param>
         <briefdescription>
 <para>Applies a terrace (stratification) filter to a heightmap. </para>
@@ -5200,10 +5215,34 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>slope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of the inclined terrace face in [0, 1] (0 = vertical step, 1 = fully sloped transition). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction of the terrace inclination in radians. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>p_noise</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Optional noise map for profile modulation.</para>
+<para>Optional noise map for profile modulation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box used to evaluate the terrace direction.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -5224,9 +5263,11 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>kz<sp/>=<sp/>8.f;<sp/></highlight><highlight class="comment">//<sp/>8-layers</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>linear_gamma<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>gamma_noise_ratio<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref><sp/>=<sp/>8.f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref><sp/>=<sp/>15.f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/>z1;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" kindref="member">hmap::gpu::strata_terrace</ref>(z2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z2,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
@@ -5239,16 +5280,29 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{16.f,<sp/>16.f},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>+<sp/>1);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" kindref="member">hmap::gpu::strata_terrace</ref>(z3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z3,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linear_gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma_noise_ratio,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="namespacehmap_1_1gpu_1a973f7c0949d4802d2e4b2c42335aa145" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z4<sp/>=<sp/>z1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linear_gamma,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma_noise_ratio,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_strata_terrace.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3,<sp/>z4},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -5258,12 +5312,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="326" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="326" bodyend="351" declfile="HighMap/include/highmap/erosion.hpp" declline="1650" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="291" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="291" bodyend="322" declfile="HighMap/include/highmap/erosion.hpp" declline="1654" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="namespacehmap_1_1gpu_1a288ef6bf36b0f0bb7085ca04a6b0a40e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacehmap_1_1gpu_1a05cc60e4654cd2f0dbb5021bf7602bb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::gpu::strata_terrace</definition>
-        <argsstring>(Array &amp;z, float gamma, std::uint32_t seed, const Array *p_mask, float kz=4.f, bool linear_gamma=true, float gamma_noise_ratio=0.5f, const Array *p_noise=nullptr)</argsstring>
+        <argsstring>(Array &amp;z, float gamma, std::uint32_t seed, const Array *p_mask, float kz=4.f, bool linear_gamma=true, float gamma_noise_ratio=0.5f, float slope=0.f, float angle=0.f, const Array *p_noise=nullptr, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f})</argsstring>
         <name>strata_terrace</name>
         <qualifiedname>hmap::gpu::strata_terrace</qualifiedname>
         <param>
@@ -5298,15 +5352,30 @@
           <defval>0.5<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <param>
+          <type>float</type>
+          <declname>slope</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
           <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> *</type>
           <declname>p_noise</declname>
           <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>glm::vec4</type>
+          <declname>bbox</declname>
+          <defval>{0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>, 1.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref>}</defval>
         </param>
         <briefdescription>
 <para>Applies a masked terrace (stratification) filter to a heightmap. </para>
         </briefdescription>
         <detaileddescription>
-<para>Same as <ref refid="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" kindref="member">strata_terrace()</ref>, but only affects regions defined by p_mask.</para>
+<para>Same as <ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">strata_terrace()</ref>, but only affects regions defined by p_mask.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>z</parametername>
@@ -5365,10 +5434,34 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>slope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of the inclined terrace face in [0, 1] (0 = vertical step, 1 = fully sloped transition). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction of the terrace inclination in radians. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>p_noise</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Optional noise map for profile modulation.</para>
+<para>Optional noise map for profile modulation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bounding box used to evaluate the terrace direction.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -5389,9 +5482,11 @@
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>kz<sp/>=<sp/>8.f;<sp/></highlight><highlight class="comment">//<sp/>8-layers</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>linear_gamma<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>gamma_noise_ratio<sp/>=<sp/>0.1f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref><sp/>=<sp/>8.f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref><sp/>=<sp/>15.f;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z2<sp/>=<sp/>z1;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" kindref="member">hmap::gpu::strata_terrace</ref>(z2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z2,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
@@ -5404,16 +5499,29 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{16.f,<sp/>16.f},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>+<sp/>1);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a6c5ef6ef70ac1b265d556ce9ce4ad042" kindref="member">hmap::gpu::strata_terrace</ref>(z3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z3,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linear_gamma,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma_noise_ratio,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.f,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="namespacehmap_1_1gpu_1a973f7c0949d4802d2e4b2c42335aa145" kindref="member">noise</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>z4<sp/>=<sp/>z1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7bfb87c4fc0f9f4fe3a043cb18e7f8fa" kindref="member">hmap::gpu::strata_terrace</ref>(z4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kz,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linear_gamma,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gamma_noise_ratio,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a79ad6fb857a38f8de9915d01992e5161" kindref="member">slope</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1aac71bb6c14edc17967957f7918acdbdd" kindref="member">angle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_strata_terrace.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z1,<sp/>z2,<sp/>z3,<sp/>z4},</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9" kindref="member">hmap::Cmap::TERRAIN</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -5423,7 +5531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/strata.cpp" line="353" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="353" bodyend="384" declfile="HighMap/include/highmap/erosion.hpp" declline="1679" declcolumn="6"/>
+        <location file="HighMap/src/erosion/strata.cpp" line="324" column="6" bodyfile="HighMap/src/erosion/strata.cpp" bodystart="324" bodyend="351" declfile="HighMap/include/highmap/erosion.hpp" declline="1690" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2eb4bdf2d7dc4441e56865027764425e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5533,7 +5641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="17" bodyend="72" declfile="HighMap/include/highmap/erosion.hpp" declline="1707" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="17" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="17" bodyend="72" declfile="HighMap/include/highmap/erosion.hpp" declline="1721" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0cd57e6ed132067e5768937fe84f1f46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5575,7 +5683,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="74" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="74" bodyend="86" declfile="HighMap/include/highmap/erosion.hpp" declline="1713" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="74" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="74" bodyend="86" declfile="HighMap/include/highmap/erosion.hpp" declline="1727" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aac5f0e0045cf767611fb8d2def2c4cb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5613,7 +5721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="88" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="88" bodyend="96" declfile="HighMap/include/highmap/erosion.hpp" declline="1720" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="88" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="88" bodyend="96" declfile="HighMap/include/highmap/erosion.hpp" declline="1734" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a36a2eba6d158e44d0ef917d9582987fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5707,7 +5815,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="98" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="98" bodyend="130" declfile="HighMap/include/highmap/erosion.hpp" declline="1747" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="98" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="98" bodyend="130" declfile="HighMap/include/highmap/erosion.hpp" declline="1761" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae3402d591c3b13ef13cece96cdab85b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5744,7 +5852,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="141" bodyend="152" declfile="HighMap/include/highmap/erosion.hpp" declline="1752" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="141" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="141" bodyend="152" declfile="HighMap/include/highmap/erosion.hpp" declline="1766" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ac87a6d725bf0751510f6b1f426a8af27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5777,7 +5885,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="132" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="132" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="1758" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="132" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="132" bodyend="139" declfile="HighMap/include/highmap/erosion.hpp" declline="1772" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a5a5275d0f2588dbbd766e2c5b1a8d55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5858,7 +5966,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="154" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="154" bodyend="176" declfile="HighMap/include/highmap/erosion.hpp" declline="1778" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="154" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="154" bodyend="176" declfile="HighMap/include/highmap/erosion.hpp" declline="1792" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a13e5b18eb4ff1cf1f7357a9b29bf9368" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5899,7 +6007,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="178" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="178" bodyend="190" declfile="HighMap/include/highmap/erosion.hpp" declline="1784" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="178" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="178" bodyend="190" declfile="HighMap/include/highmap/erosion.hpp" declline="1798" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a00b54f4e60a8fbd6ed5213600d598869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -5978,7 +6086,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="221" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="221" bodyend="237" declfile="HighMap/include/highmap/erosion.hpp" declline="1810" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="221" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="221" bodyend="237" declfile="HighMap/include/highmap/erosion.hpp" declline="1824" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a2bb49a523386fcb8fc34f27741c520a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6009,7 +6117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="239" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="239" bodyend="247" declfile="HighMap/include/highmap/erosion.hpp" declline="1812" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="239" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="239" bodyend="247" declfile="HighMap/include/highmap/erosion.hpp" declline="1826" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae57a1e9bd94f218d4be17c9d8be012c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6108,7 +6216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="192" bodyend="208" declfile="HighMap/include/highmap/erosion.hpp" declline="1834" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="192" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="192" bodyend="208" declfile="HighMap/include/highmap/erosion.hpp" declline="1848" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a72c9d220589d2724b4e48e9c37ff55ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6140,7 +6248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="210" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="210" bodyend="219" declfile="HighMap/include/highmap/erosion.hpp" declline="1836" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="210" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="210" bodyend="219" declfile="HighMap/include/highmap/erosion.hpp" declline="1850" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a435a38880a6bcabfb8991d5834a0f786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6211,7 +6319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="265" declfile="HighMap/include/highmap/erosion.hpp" declline="1853" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="249" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="249" bodyend="265" declfile="HighMap/include/highmap/erosion.hpp" declline="1867" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a812be167a39917ce8c869f7399dee231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6238,7 +6346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="267" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="267" bodyend="272" declfile="HighMap/include/highmap/erosion.hpp" declline="1855" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="267" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="267" bodyend="272" declfile="HighMap/include/highmap/erosion.hpp" declline="1869" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a1489150d5e1af976a9f814b9911b3ea0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6344,7 +6452,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="274" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="274" bodyend="298" declfile="HighMap/include/highmap/erosion.hpp" declline="1876" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="274" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="274" bodyend="298" declfile="HighMap/include/highmap/erosion.hpp" declline="1890" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad0a05ed0beea669300d62197a0dadaf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6381,7 +6489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="300" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="300" bodyend="311" declfile="HighMap/include/highmap/erosion.hpp" declline="1881" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="300" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="300" bodyend="311" declfile="HighMap/include/highmap/erosion.hpp" declline="1895" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a525c9818a95840ee8dfaa0c4e0d4f779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6488,7 +6596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="313" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="313" bodyend="338" declfile="HighMap/include/highmap/erosion.hpp" declline="1908" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="313" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="313" bodyend="338" declfile="HighMap/include/highmap/erosion.hpp" declline="1922" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a659c9749a413a9042480f0de9c4133cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6530,7 +6638,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="340" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="340" bodyend="353" declfile="HighMap/include/highmap/erosion.hpp" declline="1914" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="340" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="340" bodyend="353" declfile="HighMap/include/highmap/erosion.hpp" declline="1928" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ab753c4abd819aa6945c1cfc5e25ccec4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6610,7 +6718,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="355" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="355" bodyend="382" declfile="HighMap/include/highmap/erosion.hpp" declline="1940" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="355" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="355" bodyend="382" declfile="HighMap/include/highmap/erosion.hpp" declline="1954" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1acfe28321531d2c03721588054da1446a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6651,7 +6759,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="384" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="384" bodyend="396" declfile="HighMap/include/highmap/erosion.hpp" declline="1946" declcolumn="6"/>
+        <location file="HighMap/src/erosion/thermal_gpu.cpp" line="384" column="6" bodyfile="HighMap/src/erosion/thermal_gpu.cpp" bodystart="384" bodyend="396" declfile="HighMap/include/highmap/erosion.hpp" declline="1960" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ae8a8da3d95deb978d813ce782a1492bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6801,7 +6909,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="13" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="13" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="1973" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="13" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="13" bodyend="64" declfile="HighMap/include/highmap/erosion.hpp" declline="1987" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa7ce5c44914d54ec7fa0162c5ccbab86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -6872,7 +6980,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/valley_fill.cpp" line="66" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="66" bodyend="109" declfile="HighMap/include/highmap/erosion.hpp" declline="1985" declcolumn="6"/>
+        <location file="HighMap/src/erosion/valley_fill.cpp" line="66" column="6" bodyfile="HighMap/src/erosion/valley_fill.cpp" bodystart="66" bodyend="109" declfile="HighMap/include/highmap/erosion.hpp" declline="1999" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a52a653b3b3be84e8ff2330f30a6b5bf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7015,7 +7123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="22" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="22" bodyend="83" declfile="HighMap/include/highmap/erosion.hpp" declline="2019" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="22" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="22" bodyend="83" declfile="HighMap/include/highmap/erosion.hpp" declline="2033" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a04047f16ece68b32c1c8e68b4780f0df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -7077,7 +7185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="85" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="85" bodyend="119" declfile="HighMap/include/highmap/erosion.hpp" declline="2030" declcolumn="7"/>
+        <location file="HighMap/src/erosion/watershed_ridge.cpp" line="85" column="7" bodyfile="HighMap/src/erosion/watershed_ridge.cpp" bodystart="85" bodyend="119" declfile="HighMap/include/highmap/erosion.hpp" declline="2044" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1ad6240ccabf3a0f858698dc0b77ab619e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
