@@ -1,8 +1,5 @@
 var particles_8hpp =
 [
-    [ "add_line_bresenham", "particles_8hpp.html#a79765f4d29b53c1e41310dd90ab3ebcf", null ],
-    [ "add_noise", "particles_8hpp.html#a0d7cda24ab28f88826cabffd9b119c2a", null ],
-    [ "enforce_path_adjacency", "particles_8hpp.html#a173ce38a17dee76ac3e478ec1dab3954", null ],
     [ "spawn_borders", "particles_8hpp.html#ad7c71deabcf6e48d3f40804ef1938d19", null ],
     [ "spawn_disc", "particles_8hpp.html#a3422ba41de7725000577effbfd9189b5", null ],
     [ "spawn_gaussian", "particles_8hpp.html#a3c4b047d5c32729f3833e5c190c0a1bb", null ],

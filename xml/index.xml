@@ -137,6 +137,14 @@
     <member refid="classhmap_1_1BumpFunction_1a6db192329b79ff8751857f4ff4fcb4b6" kind="variable"><name>center</name></member>
     <member refid="classhmap_1_1BumpFunction_1a80e2476cc674ff1e15c5135829484c68" kind="function"><name>BumpFunction</name></member>
   </compound>
+  <compound refid="classhmap_1_1CellPath" kind="class"><name>hmap::CellPath</name>
+    <member refid="classhmap_1_1CellPath_1a678fcf903dd8fa71b1eaa522eac92fe6" kind="variable"><name>indices</name></member>
+    <member refid="classhmap_1_1CellPath_1a892e2c4f529242cc49737ca83800d5a7" kind="function"><name>CellPath</name></member>
+    <member refid="classhmap_1_1CellPath_1a617a6cbde5e238e5967cb5fe74aab6d1" kind="function"><name>CellPath</name></member>
+    <member refid="classhmap_1_1CellPath_1aba916a5a73f1ee3745c5a0e41be3da89" kind="function"><name>CellPath</name></member>
+    <member refid="classhmap_1_1CellPath_1ae888860f5ce2ec3e3d8d216535b157bf" kind="function"><name>get_indices</name></member>
+    <member refid="classhmap_1_1CellPath_1ad3ff976c2c460574d5697ea2a4f8f3c5" kind="function"><name>get_indices</name></member>
+  </compound>
   <compound refid="classhmap_1_1ChebyshevEvaluator" kind="class"><name>hmap::ChebyshevEvaluator</name>
     <member refid="classhmap_1_1ChebyshevEvaluator_1af03a91cb9465e6f40e308f258fa8c031" kind="typedef"><name>value_type</name></member>
     <member refid="classhmap_1_1ChebyshevEvaluator_1aaf7aad73218fa684e5a3a83a99236c14" kind="variable"><name>m_coefficients</name></member>
@@ -1085,7 +1093,7 @@
     <member refid="classhmap_1_1XyControlFunction_1acfe5c441363f35d36a13084fb56c6dca" kind="function"><name>MinimumImpl</name></member>
     <member refid="classhmap_1_1XyControlFunction_1ab32abc0861325b3ea6f547b938a9225d" kind="function"><name>MaximumImpl</name></member>
   </compound>
-  <compound refid="namespace_0d335" kind="namespace"><name>@335</name>
+  <compound refid="namespace_0d337" kind="namespace"><name>@337</name>
   </compound>
   <compound refid="namespaceglm" kind="namespace"><name>glm</name>
   </compound>
@@ -1544,6 +1552,10 @@
     <member refid="namespacehmap_1a12781eab09d5662bd5490c167c03c8d5" kind="function"><name>terrace</name></member>
     <member refid="namespacehmap_1a84ca1f41de32e4beacb10787127b4b8a" kind="function"><name>make_xy_function_from_array</name></member>
     <member refid="namespacehmap_1a0139c2cbbb516591c54fe8a743dc139d" kind="function"><name>create_noise_function_from_type</name></member>
+    <member refid="namespacehmap_1a79765f4d29b53c1e41310dd90ab3ebcf" kind="function"><name>add_line_bresenham</name></member>
+    <member refid="namespacehmap_1a05996c063dedad696c29b73855dc4311" kind="function"><name>add_noise</name></member>
+    <member refid="namespacehmap_1ac6946a57676cf1b3fef0bc7cb0221789" kind="function"><name>enforce_path_adjacency</name></member>
+    <member refid="namespacehmap_1a1f55b3e36f46f0c821fb093bca24ca5f" kind="function"><name>is_path_adjacent</name></member>
     <member refid="namespacehmap_1aad6694d36e91a15ded7373064d15b88c" kind="function"><name>cloud_sdf_to_array</name></member>
     <member refid="namespacehmap_1ab62e174cd14e34aa08ec4c5f00c14df8" kind="function"><name>interpolate_values_from_array</name></member>
     <member refid="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" kind="function"><name>merge_cloud</name></member>
@@ -1851,9 +1863,6 @@
     <member refid="namespacehmap_1a462f8b6ebc7b8ab79c619987e0ddfce4" kind="function"><name>vstack</name></member>
     <member refid="namespacehmap_1a2091b67a724a6eb280a4ca99553b6edb" kind="function"><name>apply_with_mask</name></member>
     <member refid="namespacehmap_1a7f6f419f3cc6f376344611faef5ad440" kind="function"><name>transform_with_mask</name></member>
-    <member refid="namespacehmap_1a79765f4d29b53c1e41310dd90ab3ebcf" kind="function"><name>add_line_bresenham</name></member>
-    <member refid="namespacehmap_1a0d7cda24ab28f88826cabffd9b119c2a" kind="function"><name>add_noise</name></member>
-    <member refid="namespacehmap_1a173ce38a17dee76ac3e478ec1dab3954" kind="function"><name>enforce_path_adjacency</name></member>
     <member refid="namespacehmap_1ad7c71deabcf6e48d3f40804ef1938d19" kind="function"><name>spawn_borders</name></member>
     <member refid="namespacehmap_1a3422ba41de7725000577effbfd9189b5" kind="function"><name>spawn_disc</name></member>
     <member refid="namespacehmap_1a3c4b047d5c32729f3833e5c190c0a1bb" kind="function"><name>spawn_gaussian</name></member>
@@ -2346,6 +2355,8 @@
   </compound>
   <compound refid="geometry_8hpp" kind="file"><name>geometry.hpp</name>
   </compound>
+  <compound refid="cell__path_8hpp" kind="file"><name>cell_path.hpp</name>
+  </compound>
   <compound refid="cloud_8hpp" kind="file"><name>cloud.hpp</name>
   </compound>
   <compound refid="graph_8hpp" kind="file"><name>graph.hpp</name>
@@ -2668,6 +2679,10 @@
   </compound>
   <compound refid="parberry__function_8cpp" kind="file"><name>parberry_function.cpp</name>
   </compound>
+  <compound refid="add__noise_8cpp" kind="file"><name>add_noise.cpp</name>
+  </compound>
+  <compound refid="cell__path_8cpp" kind="file"><name>cell_path.cpp</name>
+  </compound>
   <compound refid="cloud_8cpp" kind="file"><name>cloud.cpp</name>
   </compound>
   <compound refid="cloud__functions_8cpp" kind="file"><name>cloud_functions.cpp</name>
@@ -2825,8 +2840,6 @@
   <compound refid="vector_8cpp" kind="file"><name>vector.cpp</name>
   </compound>
   <compound refid="vector__utils_8cpp" kind="file"><name>vector_utils.cpp</name>
-  </compound>
-  <compound refid="add__noise_8cpp" kind="file"><name>add_noise.cpp</name>
   </compound>
   <compound refid="spawner_8cpp" kind="file"><name>spawner.cpp</name>
   </compound>
@@ -3359,6 +3372,8 @@
   <compound refid="dir_5eb738532fe3deb7c865076500576c96" kind="dir"><name>HighMap/src/boundary</name>
   </compound>
   <compound refid="dir_f8eb721606e4259556b93247b998bbbb" kind="dir"><name>HighMap/src/carving</name>
+  </compound>
+  <compound refid="dir_b84418400d8b1c814bca2b279b22151e" kind="dir"><name>HighMap/src/geometry/cell_path</name>
   </compound>
   <compound refid="dir_0bf1ee9fe46ee2bf62e5950819479add" kind="dir"><name>HighMap/src/primitives/coherent_noise</name>
   </compound>

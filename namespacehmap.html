@@ -129,6 +129,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1BumpFunction.html">BumpFunction</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bump (x, y) function class.  <a href="classhmap_1_1BumpFunction.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1CellPath.html">CellPath</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ordered path of grid cell indices.  <a href="classhmap_1_1CellPath.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1ChebyshevEvaluator.html">ChebyshevEvaluator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates a Chebyshev polynomial series using Clenshaw recurrence.  <a href="classhmap_1_1ChebyshevEvaluator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1339,6 +1342,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a0139c2cbbb516591c54fe8a743dc139d" id="r_a0139c2cbbb516591c54fe8a743dc139d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classhmap_1_1NoiseFunction.html">hmap::NoiseFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0139c2cbbb516591c54fe8a743dc139d">create_noise_function_from_type</a> (<a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a> noise_type, glm::vec2 kw, std::uint32_t seed)</td></tr>
 <tr class="memdesc:a0139c2cbbb516591c54fe8a743dc139d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a noise function based on the specified noise type.  <br /></td></tr>
 <tr class="separator:a0139c2cbbb516591c54fe8a743dc139d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79765f4d29b53c1e41310dd90ab3ebcf" id="r_a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a79765f4d29b53c1e41310dd90ab3ebcf">add_line_bresenham</a> (std::vector&lt; glm::ivec2 &gt; &amp;out, glm::ivec2 a, glm::ivec2 b)</td></tr>
+<tr class="memdesc:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rasterizes a segment between two integer points using Bresenham's algorithm.  <br /></td></tr>
+<tr class="separator:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05996c063dedad696c29b73855dc4311" id="r_a05996c063dedad696c29b73855dc4311"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a05996c063dedad696c29b73855dc4311">add_noise</a> (std::vector&lt; glm::ivec2 &gt; &amp;indices, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, <a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a> noise_type=<a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a>, int octaves=8, float weight=0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float persistence=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a05996c063dedad696c29b73855dc4311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies transverse noise displacement along an integer path.  <br /></td></tr>
+<tr class="separator:a05996c063dedad696c29b73855dc4311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6946a57676cf1b3fef0bc7cb0221789" id="r_ac6946a57676cf1b3fef0bc7cb0221789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac6946a57676cf1b3fef0bc7cb0221789">enforce_path_adjacency</a> (std::vector&lt; glm::ivec2 &gt; &amp;indices)</td></tr>
+<tr class="memdesc:ac6946a57676cf1b3fef0bc7cb0221789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that an integer path is grid-adjacent and gap-free.  <br /></td></tr>
+<tr class="separator:ac6946a57676cf1b3fef0bc7cb0221789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f55b3e36f46f0c821fb093bca24ca5f" id="r_a1f55b3e36f46f0c821fb093bca24ca5f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a1f55b3e36f46f0c821fb093bca24ca5f">is_path_adjacent</a> (const std::vector&lt; glm::ivec2 &gt; &amp;indices)</td></tr>
+<tr class="memdesc:a1f55b3e36f46f0c821fb093bca24ca5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a grid path has no gaps (8-connectivity).  <br /></td></tr>
+<tr class="separator:a1f55b3e36f46f0c821fb093bca24ca5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad6694d36e91a15ded7373064d15b88c" id="r_aad6694d36e91a15ded7373064d15b88c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aad6694d36e91a15ded7373064d15b88c">cloud_sdf_to_array</a> (const <a class="el" href="classhmap_1_1Cloud.html">Cloud</a> &amp;cloud, glm::ivec2 shape, glm::vec4 bbox_array={0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 0.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, 1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>}, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_x=nullptr, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_noise_y=nullptr)</td></tr>
 <tr class="memdesc:aad6694d36e91a15ded7373064d15b88c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a distance field from a point cloud.  <br /></td></tr>
 <tr class="separator:aad6694d36e91a15ded7373064d15b88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2235,15 +2250,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a7f6f419f3cc6f376344611faef5ad440"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1Array.html">Array</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a7f6f419f3cc6f376344611faef5ad440">transform_with_mask</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array, const <a class="el" href="classhmap_1_1Array.html">Array</a> *p_mask, Fn &amp;&amp;fn)</td></tr>
 <tr class="memdesc:a7f6f419f3cc6f376344611faef5ad440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a transformation function with optional masked blending.  <br /></td></tr>
 <tr class="separator:a7f6f419f3cc6f376344611faef5ad440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79765f4d29b53c1e41310dd90ab3ebcf" id="r_a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a79765f4d29b53c1e41310dd90ab3ebcf">add_line_bresenham</a> (std::vector&lt; glm::ivec2 &gt; &amp;out, glm::ivec2 a, glm::ivec2 b)</td></tr>
-<tr class="memdesc:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rasterizes a segment between two integer points using Bresenham's algorithm.  <br /></td></tr>
-<tr class="separator:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d7cda24ab28f88826cabffd9b119c2a" id="r_a0d7cda24ab28f88826cabffd9b119c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0d7cda24ab28f88826cabffd9b119c2a">add_noise</a> (std::vector&lt; glm::ivec2 &gt; &amp;ipath, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, <a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a> noise_type=<a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a>, int octaves=8, float weight=0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float persistence=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a0d7cda24ab28f88826cabffd9b119c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies transverse noise displacement along an integer path.  <br /></td></tr>
-<tr class="separator:a0d7cda24ab28f88826cabffd9b119c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173ce38a17dee76ac3e478ec1dab3954" id="r_a173ce38a17dee76ac3e478ec1dab3954"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a173ce38a17dee76ac3e478ec1dab3954">enforce_path_adjacency</a> (std::vector&lt; glm::ivec2 &gt; &amp;ipath)</td></tr>
-<tr class="memdesc:a173ce38a17dee76ac3e478ec1dab3954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that an integer path is grid-adjacent and gap-free.  <br /></td></tr>
-<tr class="separator:a173ce38a17dee76ac3e478ec1dab3954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c71deabcf6e48d3f40804ef1938d19" id="r_ad7c71deabcf6e48d3f40804ef1938d19"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ad7c71deabcf6e48d3f40804ef1938d19">spawn_borders</a> (std::mt19937 &amp;rng, int nbuffer, const glm::ivec2 &amp;shape)</td></tr>
 <tr class="memdesc:ad7c71deabcf6e48d3f40804ef1938d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawn a point uniformly along the border of a 2D grid.  <br /></td></tr>
 <tr class="separator:ad7c71deabcf6e48d3f40804ef1938d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4114,9 +4120,9 @@ template&lt;typename Fn &gt; </div>
 <div class="ttc" id="aclasshmap_1_1Array_html"><div class="ttname"><a href="classhmap_1_1Array.html">hmap::Array</a></div><div class="ttdoc">Array class, helper to manipulate 2D float array with &quot;(i, j)&quot; indexing.</div><div class="ttdef"><b>Definition</b> array.hpp:32</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a0a68f43a6e0cf3a2b0392a161ea18339"><div class="ttname"><a href="classhmap_1_1Array.html#a0a68f43a6e0cf3a2b0392a161ea18339">hmap::Array::infos</a></div><div class="ttdeci">void infos(const std::string &amp;msg=&quot;&quot;) const</div><div class="ttdoc">Display various information about the array.</div><div class="ttdef"><b>Definition</b> io.cpp:68</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:133</div></div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html"><div class="ttname"><a href="classhmap_1_1Cloud.html">hmap::Cloud</a></div><div class="ttdoc">Represents a collection of unordered points in 2D space.</div><div class="ttdef"><b>Definition</b> cloud.hpp:54</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html"><div class="ttname"><a href="classhmap_1_1Cloud.html">hmap::Cloud</a></div><div class="ttdoc">Represents a collection of unordered points in 2D space.</div><div class="ttdef"><b>Definition</b> cloud.hpp:49</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_ab1149531131111567d9f8760162d90ff"><div class="ttname"><a href="classhmap_1_1Cloud.html#ab1149531131111567d9f8760162d90ff">hmap::Cloud::add_point</a></div><div class="ttdeci">void add_point(const Point &amp;p)</div><div class="ttdoc">Add a new point to the cloud.</div><div class="ttdef"><b>Definition</b> cloud.cpp:97</div></div>
-<div class="ttc" id="aclasshmap_1_1Point_html"><div class="ttname"><a href="classhmap_1_1Point.html">hmap::Point</a></div><div class="ttdoc">A class to represent and manipulate 2D points that can carry a value.</div><div class="ttdef"><b>Definition</b> point.hpp:23</div></div>
+<div class="ttc" id="aclasshmap_1_1Point_html"><div class="ttname"><a href="classhmap_1_1Point.html">hmap::Point</a></div><div class="ttdoc">A class to represent and manipulate 2D points that can carry a value.</div><div class="ttdef"><b>Definition</b> point.hpp:25</div></div>
 <div class="ttc" id="ahighmap_8hpp_html"><div class="ttname"><a href="highmap_8hpp.html">highmap.hpp</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition</b> main.cpp:12</div></div>
 <div class="ttc" id="anamespacehmap_html_a6123c18788ae302332416d5d7585fd9f"><div class="ttname"><a href="namespacehmap.html#a6123c18788ae302332416d5d7585fd9f">hmap::alter_elevation</a></div><div class="ttdeci">void alter_elevation(Array &amp;array, const Cloud &amp;cloud, int ir, float footprint_ratio=1.f, glm::vec2 shift={0.f, 0.f}, glm::vec2 scale={1.f, 1.f})</div><div class="ttdoc">Point-wise alteration: locally enforce a new elevation value while maintaining the 'shape' of the hei...</div><div class="ttdef"><b>Definition</b> alter_elevation.cpp:16</div></div>
@@ -4306,7 +4312,7 @@ template&lt;typename Fn &gt; </div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_reverse_midpoint.png&quot;</span>, {z0, z1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:51</div></div>
+<div class="ttc" id="aclasshmap_1_1Path_html"><div class="ttname"><a href="classhmap_1_1Path.html">hmap::Path</a></div><div class="ttdoc">Represents an ordered set of points in 2D, forming a polyline (open or closed).</div><div class="ttdef"><b>Definition</b> path.hpp:43</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_a4d1e1e63fea24bf8f23bc3343f8b746e"><div class="ttname"><a href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">hmap::Path::to_array</a></div><div class="ttdeci">void to_array(Array &amp;array, glm::vec4 bbox={0.f, 1.f, 0.f, 1.f}, bool filled=false) const</div><div class="ttdoc">Project path points to an array.</div><div class="ttdef"><b>Definition</b> path.cpp:413</div></div>
 <div class="ttc" id="aclasshmap_1_1Path_html_ad68abaa80879402c3758e24626acfb53"><div class="ttname"><a href="classhmap_1_1Path.html#ad68abaa80879402c3758e24626acfb53">hmap::Path::reorder_nns</a></div><div class="ttdeci">void reorder_nns(int start_index=0)</div><div class="ttdoc">Reorder points using a nearest neighbor search.</div><div class="ttdef"><b>Definition</b> path.cpp:230</div></div>
 <div class="ttc" id="anamespacehmap_html_a6f7e6e0cffaf7d03cfe1eef62b1c3575"><div class="ttname"><a href="namespacehmap.html#a6f7e6e0cffaf7d03cfe1eef62b1c3575">hmap::reverse_midpoint</a></div><div class="ttdeci">Array reverse_midpoint(const Array &amp;array, std::uint32_t seed, float noise_scale=1.f, float threshold=0.f)</div><div class="ttdoc">Apply the reverse midpoint displacement algorithm to the input array.</div><div class="ttdef"><b>Definition</b> reverse_midpoint.cpp:232</div></div>
@@ -20628,6 +20634,239 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 
 </div>
 </div>
+<a id="a79765f4d29b53c1e41310dd90ab3ebcf" name="a79765f4d29b53c1e41310dd90ab3ebcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79765f4d29b53c1e41310dd90ab3ebcf">&#9670;&#160;</a></span>add_line_bresenham()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::add_line_bresenham </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::ivec2&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rasterizes a segment between two integer points using Bresenham's algorithm. </p>
+<p>Ensures full grid connectivity by filling all intermediate integer cells between points a and b.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>Output container receiving the rasterized points. </td></tr>
+    <tr><td class="paramname">a</td><td>Start point. </td></tr>
+    <tr><td class="paramname">b</td><td>End point. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05996c063dedad696c29b73855dc4311" name="a05996c063dedad696c29b73855dc4311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05996c063dedad696c29b73855dc4311">&#9670;&#160;</a></span>add_noise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::add_noise </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint32_t&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>kw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>amp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::ivec2 &amp;&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a>&#160;</td>
+          <td class="paramname"><em>noise_type</em> = <code><a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>octaves</em> = <code>8</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>weight</em> = <code>0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>persistence</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lacunarity</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies transverse noise displacement along an integer path. </p>
+<p>The function computes a global direction from first to last point, derives a perpendicular axis, and displaces each point using procedural noise.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>Input/output integer path to deform. </td></tr>
+    <tr><td class="paramname">seed</td><td>Random seed for noise generation. </td></tr>
+    <tr><td class="paramname">kw</td><td>Noise spatial frequency (scale). </td></tr>
+    <tr><td class="paramname">amp</td><td>Maximum displacement amplitude. </td></tr>
+    <tr><td class="paramname">shape</td><td>Optional domain scaling / bounds for noise sampling. </td></tr>
+    <tr><td class="paramname">noise_type</td><td>Type of procedural noise to use. </td></tr>
+    <tr><td class="paramname">octaves</td><td>Number of noise octaves for fractal noise. </td></tr>
+    <tr><td class="paramname">weight</td><td>Blend factor between octaves. </td></tr>
+    <tr><td class="paramname">persistence</td><td>Amplitude decay per octave. </td></tr>
+    <tr><td class="paramname">lacunarity</td><td>Frequency increase per octave.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">  glm::ivec2 shape = {256, 256};</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> kw = 4.f;</div>
+<div class="line">  <span class="keywordtype">int</span>   seed = 0;</div>
+<div class="line">  <span class="keywordtype">float</span> amp = 128.f;</div>
+<div class="line"> </div>
+<div class="line">  std::vector&lt;glm::ivec2&gt; ipath;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> i0 = 32;</div>
+<div class="line">  <span class="keywordtype">int</span> i1 = shape.x - i0;</div>
+<div class="line">  <span class="keywordtype">int</span> j0 = 32;</div>
+<div class="line">  <span class="keywordtype">int</span> j1 = 3 * j0;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = i0; i &lt; i1; ++i)</div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordtype">int</span> j = int(<span class="keywordtype">float</span>(i - i0) / (i1 - i0) * (j1 - j0) + j0);</div>
+<div class="line">    ipath.push_back({i, j});</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a0(shape);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : ipath)</div>
+<div class="line">    a0(p) = 1.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a05996c063dedad696c29b73855dc4311">hmap::add_noise</a>(ipath, seed, kw, amp, shape);</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a1(shape);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : ipath)</div>
+<div class="line">    a1(p) = 1.f;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_add_noise_ipath.png&quot;</span>, {a0, a1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacehmap_html_a05996c063dedad696c29b73855dc4311"><div class="ttname"><a href="namespacehmap.html#a05996c063dedad696c29b73855dc4311">hmap::add_noise</a></div><div class="ttdeci">void add_noise(std::vector&lt; glm::ivec2 &gt; &amp;indices, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, NoiseType noise_type=NoiseType::PERLIN, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f)</div><div class="ttdoc">Applies transverse noise displacement along an integer path.</div><div class="ttdef"><b>Definition</b> add_noise.cpp:56</div></div>
+</div><!-- fragment --><p><b>Result</b> </p><div class="image">
+<img src="ex_add_noise_ipath.png" alt=""/>
+</div>
+ 
+</div>
+</div>
+<a id="ac6946a57676cf1b3fef0bc7cb0221789" name="ac6946a57676cf1b3fef0bc7cb0221789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6946a57676cf1b3fef0bc7cb0221789">&#9670;&#160;</a></span>enforce_path_adjacency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::enforce_path_adjacency </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ensures that an integer path is grid-adjacent and gap-free. </p>
+<p>Reconstructs the path so that every consecutive step moves to a neighboring grid cell (8-connected), filling missing cells if needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>Input/output path to repair and densify. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f55b3e36f46f0c821fb093bca24ca5f" name="a1f55b3e36f46f0c821fb093bca24ca5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f55b3e36f46f0c821fb093bca24ca5f">&#9670;&#160;</a></span>is_path_adjacent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hmap::is_path_adjacent </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a grid path has no gaps (8-connectivity). </p>
+<p>Verifies that each consecutive cell is adjacent using Moore neighborhood (max |dx| &lt;= 1 and max |dy| &lt;= 1).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>Input path of grid cells. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the path is fully 8-connected, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="aad6694d36e91a15ded7373064d15b88c" name="aad6694d36e91a15ded7373064d15b88c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad6694d36e91a15ded7373064d15b88c">&#9670;&#160;</a></span>cloud_sdf_to_array()</h2>
 
@@ -20985,10 +21224,10 @@ A_{i,j}^{t+1} = A_{i,j}^{t} + \sigma \cdot
 <div class="ttc" id="anamespacehmap_html_aa01ff551bebcd0540dbac8b91732c0b1"><div class="ttname"><a href="namespacehmap.html#aa01ff551bebcd0540dbac8b91732c0b1">hmap::rejection_filter_density</a></div><div class="ttdeci">void rejection_filter_density(Cloud &amp;cloud, const Array &amp;density_mask, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Filter a point cloud using rejection sampling based on a density mask.</div><div class="ttdef"><b>Definition</b> cloud_functions.cpp:108</div></div>
 <div class="ttc" id="anamespacehmap_html_aa598e1e50dd0a4171a4c8fd6cd114dd0"><div class="ttname"><a href="namespacehmap.html#aa598e1e50dd0a4171a4c8fd6cd114dd0">hmap::random_cloud_jittered</a></div><div class="ttdeci">Cloud random_cloud_jittered(size_t count, const glm::vec2 &amp;jitter_amount, const glm::vec2 &amp;stagger_ratio, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a jittered grid cloud of points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:719</div></div>
 <div class="ttc" id="anamespacehmap_html_ab95c01f14ee3cce55edb9a349d59ede0"><div class="ttname"><a href="namespacehmap.html#ab95c01f14ee3cce55edb9a349d59ede0">hmap::random_cloud_distance</a></div><div class="ttdeci">Cloud random_cloud_distance(float min_dist, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points separated by at least a given minimum distance.</div><div class="ttdef"><b>Definition</b> cloud.cpp:673</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">hmap::RND_LHS</a></div><div class="ttdeci">@ RND_LHS</div><div class="ttdoc">Latin Hypercube Sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:43</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">hmap::RND_HALTON</a></div><div class="ttdeci">@ RND_HALTON</div><div class="ttdoc">Low-discrepancy Halton sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:41</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">hmap::RND_RANDOM</a></div><div class="ttdeci">@ RND_RANDOM</div><div class="ttdoc">Purely random uniform sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:40</div></div>
-<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">hmap::RND_HAMMERSLEY</a></div><div class="ttdeci">@ RND_HAMMERSLEY</div><div class="ttdoc">Low-discrepancy Hammersley sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:42</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a8943dd2a2e3993c1e0cff37be3f65957">hmap::RND_LHS</a></div><div class="ttdeci">@ RND_LHS</div><div class="ttdoc">Latin Hypercube Sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:36</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77a99ca15104343ff0356c6fc0ffe4f837d">hmap::RND_HALTON</a></div><div class="ttdeci">@ RND_HALTON</div><div class="ttdoc">Low-discrepancy Halton sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:34</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aea0acc8d27d5a8a13e107f49120c084e">hmap::RND_RANDOM</a></div><div class="ttdeci">@ RND_RANDOM</div><div class="ttdoc">Purely random uniform sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:33</div></div>
+<div class="ttc" id="anamespacehmap_html_aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5"><div class="ttname"><a href="namespacehmap.html#aba758c4143b6e499ec6f4385467a6d77aeebf5714b383e3b3be100ceba46d8fe5">hmap::RND_HAMMERSLEY</a></div><div class="ttdeci">@ RND_HAMMERSLEY</div><div class="ttdoc">Low-discrepancy Hammersley sequence sampling.</div><div class="ttdef"><b>Definition</b> point_sampling.hpp:35</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a4eb53d94f58e93c3bdb554d8cca7f306">hmap::BONE</a></div><div class="ttdeci">@ BONE</div><div class="ttdef"><b>Definition</b> colormaps.hpp:84</div></div>
 <div class="ttc" id="anamespacehmap_html_ad1c0d440da90fd4f08bb0ed691cc717c"><div class="ttname"><a href="namespacehmap.html#ad1c0d440da90fd4f08bb0ed691cc717c">hmap::random_cloud_density</a></div><div class="ttdeci">Cloud random_cloud_density(size_t count, const Array &amp;density, std::uint32_t seed, const glm::vec4 &amp;bbox={0.f, 1.f, 0.f, 1.f})</div><div class="ttdoc">Generates a random cloud of points based on a spatial density map.</div><div class="ttdef"><b>Definition</b> cloud.cpp:663</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
@@ -23799,7 +24038,7 @@ false If there are no duplicate points in the path. </dd></dl>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Path.html">hmap::Path</a>(points_catmullrom).<a class="code hl_function" href="classhmap_1_1Path.html#a4d1e1e63fea24bf8f23bc3343f8b746e">to_array</a>(z, bbox);</div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_point_interp.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::Cmap::INFERNO</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Cloud_html_aad75fb7bcfa7a2c3f139d2e3d3d6cc54"><div class="ttname"><a href="classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54">hmap::Cloud::points</a></div><div class="ttdeci">std::vector&lt; Point &gt; points</div><div class="ttdoc">Points of the cloud.</div><div class="ttdef"><b>Definition</b> cloud.hpp:56</div></div>
+<div class="ttc" id="aclasshmap_1_1Cloud_html_aad75fb7bcfa7a2c3f139d2e3d3d6cc54"><div class="ttname"><a href="classhmap_1_1Cloud.html#aad75fb7bcfa7a2c3f139d2e3d3d6cc54">hmap::Cloud::points</a></div><div class="ttdeci">std::vector&lt; Point &gt; points</div><div class="ttdoc">Points of the cloud.</div><div class="ttdef"><b>Definition</b> cloud.hpp:51</div></div>
 <div class="ttc" id="aclasshmap_1_1Cloud_html_aefea3d749a554df8a23ec38af5acb415"><div class="ttname"><a href="classhmap_1_1Cloud.html#aefea3d749a554df8a23ec38af5acb415">hmap::Cloud::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">Print information about the cloud's points.</div><div class="ttdef"><b>Definition</b> cloud.cpp:287</div></div>
 <div class="ttc" id="anamespacehmap_html_a3957ac4ae673f8ad402b5dd71e99b015"><div class="ttname"><a href="namespacehmap.html#a3957ac4ae673f8ad402b5dd71e99b015">hmap::linspace</a></div><div class="ttdeci">std::vector&lt; float &gt; linspace(float start, float stop, int num, bool endpoint=true)</div><div class="ttdoc">Generate a vector of evenly spaced numbers over a specified interval.</div><div class="ttdef"><b>Definition</b> vector.cpp:45</div></div>
 <div class="ttc" id="anamespacehmap_html_ac5cbdd19410027f3d4e26fd68fd9bdb7"><div class="ttname"><a href="namespacehmap.html#ac5cbdd19410027f3d4e26fd68fd9bdb7">hmap::interp_bezier</a></div><div class="ttdeci">Point interp_bezier(const Point &amp;p_start, const Point &amp;p_ctrl_start, const Point &amp;p_ctrl_end, const Point &amp;p_end, float t)</div><div class="ttdoc">Performs a cubic Bezier interpolation.</div><div class="ttdef"><b>Definition</b> points.cpp:134</div></div>
@@ -38339,211 +38578,6 @@ template&lt;typename Fn &gt; </div>
 
 </div>
 </div>
-<a id="a79765f4d29b53c1e41310dd90ab3ebcf" name="a79765f4d29b53c1e41310dd90ab3ebcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79765f4d29b53c1e41310dd90ab3ebcf">&#9670;&#160;</a></span>add_line_bresenham()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::add_line_bresenham </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">glm::ivec2&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">glm::ivec2&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Rasterizes a segment between two integer points using Bresenham's algorithm. </p>
-<p>Ensures full grid connectivity by filling all intermediate integer cells between points a and b.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>Output container receiving the rasterized points. </td></tr>
-    <tr><td class="paramname">a</td><td>Start point. </td></tr>
-    <tr><td class="paramname">b</td><td>End point. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a0d7cda24ab28f88826cabffd9b119c2a" name="a0d7cda24ab28f88826cabffd9b119c2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d7cda24ab28f88826cabffd9b119c2a">&#9670;&#160;</a></span>add_noise()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::add_noise </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>ipath</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::uint32_t&#160;</td>
-          <td class="paramname"><em>seed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>kw</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>amp</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const glm::ivec2 &amp;&#160;</td>
-          <td class="paramname"><em>shape</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a>&#160;</td>
-          <td class="paramname"><em>noise_type</em> = <code><a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>octaves</em> = <code>8</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>weight</em> = <code>0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>persistence</em> = <code>0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>lacunarity</em> = <code>2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Applies transverse noise displacement along an integer path. </p>
-<p>The function computes a global direction from first to last point, derives a perpendicular axis, and displaces each point using procedural noise.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipath</td><td>Input/output integer path to deform. </td></tr>
-    <tr><td class="paramname">seed</td><td>Random seed for noise generation. </td></tr>
-    <tr><td class="paramname">kw</td><td>Noise spatial frequency (scale). </td></tr>
-    <tr><td class="paramname">amp</td><td>Maximum displacement amplitude. </td></tr>
-    <tr><td class="paramname">shape</td><td>Optional domain scaling / bounds for noise sampling. </td></tr>
-    <tr><td class="paramname">noise_type</td><td>Type of procedural noise to use. </td></tr>
-    <tr><td class="paramname">octaves</td><td>Number of noise octaves for fractal noise. </td></tr>
-    <tr><td class="paramname">weight</td><td>Blend factor between octaves. </td></tr>
-    <tr><td class="paramname">persistence</td><td>Amplitude decay per octave. </td></tr>
-    <tr><td class="paramname">lacunarity</td><td>Frequency increase per octave.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p><b>Example</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="highmap_8hpp.html">highmap.hpp</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">void</span>)</div>
-<div class="line">{</div>
-<div class="line">  glm::ivec2 shape = {256, 256};</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordtype">float</span> kw = 4.f;</div>
-<div class="line">  <span class="keywordtype">int</span>   seed = 0;</div>
-<div class="line">  <span class="keywordtype">float</span> amp = 128.f;</div>
-<div class="line"> </div>
-<div class="line">  std::vector&lt;glm::ivec2&gt; ipath;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordtype">int</span> i0 = 32;</div>
-<div class="line">  <span class="keywordtype">int</span> i1 = shape.x - i0;</div>
-<div class="line">  <span class="keywordtype">int</span> j0 = 32;</div>
-<div class="line">  <span class="keywordtype">int</span> j1 = 3 * j0;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = i0; i &lt; i1; ++i)</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keywordtype">int</span> j = int(<span class="keywordtype">float</span>(i - i0) / (i1 - i0) * (j1 - j0) + j0);</div>
-<div class="line">    ipath.push_back({i, j});</div>
-<div class="line">  }</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a0(shape);</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : ipath)</div>
-<div class="line">    a0(p) = 1.f;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#a0d7cda24ab28f88826cabffd9b119c2a">hmap::add_noise</a>(ipath, seed, kw, amp, shape);</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> a1(shape);</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : ipath)</div>
-<div class="line">    a1(p) = 1.f;</div>
-<div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a>(<span class="stringliteral">&quot;ex_add_noise_ipath.png&quot;</span>, {a0, a1}, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
-<div class="line">}</div>
-<div class="ttc" id="anamespacehmap_html_a0d7cda24ab28f88826cabffd9b119c2a"><div class="ttname"><a href="namespacehmap.html#a0d7cda24ab28f88826cabffd9b119c2a">hmap::add_noise</a></div><div class="ttdeci">void add_noise(std::vector&lt; glm::ivec2 &gt; &amp;ipath, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, NoiseType noise_type=NoiseType::PERLIN, int octaves=8, float weight=0.7f, float persistence=0.5f, float lacunarity=2.f)</div><div class="ttdoc">Applies transverse noise displacement along an integer path.</div><div class="ttdef"><b>Definition</b> add_noise.cpp:56</div></div>
-</div><!-- fragment --><p><b>Result</b> </p><div class="image">
-<img src="ex_add_noise_ipath.png" alt=""/>
-</div>
- 
-</div>
-</div>
-<a id="a173ce38a17dee76ac3e478ec1dab3954" name="a173ce38a17dee76ac3e478ec1dab3954"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a173ce38a17dee76ac3e478ec1dab3954">&#9670;&#160;</a></span>enforce_path_adjacency()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hmap::enforce_path_adjacency </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; glm::ivec2 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>ipath</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ensures that an integer path is grid-adjacent and gap-free. </p>
-<p>Reconstructs the path so that every consecutive step moves to a neighboring grid cell (8-connected), filling missing cells if needed.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipath</td><td>Input/output path to repair and densify. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ad7c71deabcf6e48d3f40804ef1938d19" name="ad7c71deabcf6e48d3f40804ef1938d19"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7c71deabcf6e48d3f40804ef1938d19">&#9670;&#160;</a></span>spawn_borders()</h2>
 
@@ -46891,7 +46925,7 @@ off" values that fall below the threshold, which can be useful for filtering out
 <div class="line">  network.to_array(g, bbox);</div>
 <div class="line">  g.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;ex_generate_network_alpha_model2.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclasshmap_1_1Graph_html"><div class="ttname"><a href="classhmap_1_1Graph.html">hmap::Graph</a></div><div class="ttdoc">Graph class, to manipulate graphs in 2D.</div><div class="ttdef"><b>Definition</b> graph.hpp:58</div></div>
+<div class="ttc" id="aclasshmap_1_1Graph_html"><div class="ttname"><a href="classhmap_1_1Graph.html">hmap::Graph</a></div><div class="ttdoc">Graph class, to manipulate graphs in 2D.</div><div class="ttdef"><b>Definition</b> graph.hpp:50</div></div>
 <div class="ttc" id="anamespacehmap_html_a286e4e74e6495802dba7f873c06ccb20"><div class="ttname"><a href="namespacehmap.html#a286e4e74e6495802dba7f873c06ccb20">hmap::generate_network_alpha_model</a></div><div class="ttdeci">Graph generate_network_alpha_model(const std::vector&lt; float &gt; &amp;xc, const std::vector&lt; float &gt; &amp;yc, const std::vector&lt; float &gt; &amp;size, glm::vec4 bbox, const Array &amp;z, std::uint32_t seed, float alpha=0.7f, int n_dummy_nodes=2500, float dz_weight=1.f, const Array *p_weight=nullptr)</div><div class="ttdoc">Generate a large scale road network between &quot;nodes&quot; (or cities) using the alpha model.</div><div class="ttdef"><b>Definition</b> alpha_model.cpp:22</div></div>
 </div><!-- fragment --><p><b>Result</b> </p><div class="image">
 <img src="ex_generate_network_alpha_model0.png" alt=""/>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HighMap library (C++): HighMap/src/particles/add_noise.cpp File Reference</title>
+<title>HighMap library (C++): HighMap/src/geometry/cell_path/add_noise.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -113,19 +113,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a79765f4d29b53c1e41310dd90ab3ebcf" id="r_a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a79765f4d29b53c1e41310dd90ab3ebcf">hmap::add_line_bresenham</a> (std::vector&lt; glm::ivec2 &gt; &amp;out, glm::ivec2 a, glm::ivec2 b)</td></tr>
 <tr class="memdesc:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rasterizes a segment between two integer points using Bresenham's algorithm.  <br /></td></tr>
 <tr class="separator:a79765f4d29b53c1e41310dd90ab3ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d7cda24ab28f88826cabffd9b119c2a" id="r_a0d7cda24ab28f88826cabffd9b119c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a0d7cda24ab28f88826cabffd9b119c2a">hmap::add_noise</a> (std::vector&lt; glm::ivec2 &gt; &amp;ipath, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, <a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a> noise_type=<a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a>, int octaves=8, float weight=0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float persistence=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
-<tr class="memdesc:a0d7cda24ab28f88826cabffd9b119c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies transverse noise displacement along an integer path.  <br /></td></tr>
-<tr class="separator:a0d7cda24ab28f88826cabffd9b119c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173ce38a17dee76ac3e478ec1dab3954" id="r_a173ce38a17dee76ac3e478ec1dab3954"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a173ce38a17dee76ac3e478ec1dab3954">hmap::enforce_path_adjacency</a> (std::vector&lt; glm::ivec2 &gt; &amp;ipath)</td></tr>
-<tr class="memdesc:a173ce38a17dee76ac3e478ec1dab3954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that an integer path is grid-adjacent and gap-free.  <br /></td></tr>
-<tr class="separator:a173ce38a17dee76ac3e478ec1dab3954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05996c063dedad696c29b73855dc4311" id="r_a05996c063dedad696c29b73855dc4311"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a05996c063dedad696c29b73855dc4311">hmap::add_noise</a> (std::vector&lt; glm::ivec2 &gt; &amp;indices, std::uint32_t seed, float kw, float amp, const glm::ivec2 &amp;shape, <a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195">NoiseType</a> noise_type=<a class="el" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">NoiseType::PERLIN</a>, int octaves=8, float weight=0.7<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float persistence=0.5<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>, float lacunarity=2.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>)</td></tr>
+<tr class="memdesc:a05996c063dedad696c29b73855dc4311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies transverse noise displacement along an integer path.  <br /></td></tr>
+<tr class="separator:a05996c063dedad696c29b73855dc4311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6946a57676cf1b3fef0bc7cb0221789" id="r_ac6946a57676cf1b3fef0bc7cb0221789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#ac6946a57676cf1b3fef0bc7cb0221789">hmap::enforce_path_adjacency</a> (std::vector&lt; glm::ivec2 &gt; &amp;indices)</td></tr>
+<tr class="memdesc:ac6946a57676cf1b3fef0bc7cb0221789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that an integer path is grid-adjacent and gap-free.  <br /></td></tr>
+<tr class="separator:ac6946a57676cf1b3fef0bc7cb0221789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f55b3e36f46f0c821fb093bca24ca5f" id="r_a1f55b3e36f46f0c821fb093bca24ca5f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a1f55b3e36f46f0c821fb093bca24ca5f">hmap::is_path_adjacent</a> (const std::vector&lt; glm::ivec2 &gt; &amp;indices)</td></tr>
+<tr class="memdesc:a1f55b3e36f46f0c821fb093bca24ca5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a grid path has no gaps (8-connectivity).  <br /></td></tr>
+<tr class="separator:a1f55b3e36f46f0c821fb093bca24ca5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_3961423d922fc63bab3aec0bc4c44789.html">particles</a></li><li class="navelem"><a class="el" href="add__noise_8cpp.html">add_noise.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d1628ce034b494ec45a6557150a1be1b.html">HighMap</a></li><li class="navelem"><a class="el" href="dir_f63c6611b1023abbeb7e0b5a0bccaf92.html">src</a></li><li class="navelem"><a class="el" href="dir_180bcd2bac99fc5b4a48aa19ac3c5b63.html">geometry</a></li><li class="navelem"><a class="el" href="dir_b84418400d8b1c814bca2b279b22151e.html">cell_path</a></li><li class="navelem"><a class="el" href="add__noise_8cpp.html">add_noise.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

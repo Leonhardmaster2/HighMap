@@ -15,7 +15,7 @@ var searchData=
   ['elp_5fincreasing_12',['ELP_INCREASING',['../namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377dab5d3567f29e73ff4a65b0ac46f55d1a3',1,'hmap']]],
   ['elp_5funchanged_13',['ELP_UNCHANGED',['../namespacehmap.html#a22e54d4ecd4b37d658c1d9ac9531377daabf84cadf529b762c633c095e327a04f',1,'hmap']]],
   ['enforce_5fmonotonic_5fvalues_14',['enforce_monotonic_values',['../classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75',1,'hmap::Path']]],
-  ['enforce_5fpath_5fadjacency_15',['enforce_path_adjacency',['../namespacehmap.html#a173ce38a17dee76ac3e478ec1dab3954',1,'hmap']]],
+  ['enforce_5fpath_5fadjacency_15',['enforce_path_adjacency',['../namespacehmap.html#ac6946a57676cf1b3fef0bc7cb0221789',1,'hmap']]],
   ['ep_5fcosine_16',['EP_COSINE',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a0f02f3dc5c8d286f8586965cf4633cd1',1,'hmap']]],
   ['ep_5fcosine_5fbulk_17',['EP_COSINE_BULK',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6a856508f652cc10eede30d7080659bc02',1,'hmap']]],
   ['ep_5fcosine_5fpeak_18',['EP_COSINE_PEAK',['../namespacehmap.html#a25a4e4775f3c0918ed75f0503f5ed0a6aa0e93408dd618a51c4f52260215bb726',1,'hmap']]],

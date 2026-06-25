@@ -2,7 +2,7 @@ var searchData=
 [
   ['edge_0',['Edge',['../structhmap_1_1TerrainTriMesh_1_1Edge.html#a6a47d9f0ff2b4ae570e1d110d920b48f',1,'hmap::TerrainTriMesh::Edge']]],
   ['enforce_5fmonotonic_5fvalues_1',['enforce_monotonic_values',['../classhmap_1_1Path.html#a4934980f265ae283c847fc091fe45c75',1,'hmap::Path']]],
-  ['enforce_5fpath_5fadjacency_2',['enforce_path_adjacency',['../namespacehmap.html#a173ce38a17dee76ac3e478ec1dab3954',1,'hmap']]],
+  ['enforce_5fpath_5fadjacency_2',['enforce_path_adjacency',['../namespacehmap.html#ac6946a57676cf1b3fef0bc7cb0221789',1,'hmap']]],
   ['equalize_3',['equalize',['../namespacehmap.html#a1b08d9a5d25e6bcd9d080accd077cc98',1,'hmap::equalize(Array &amp;array)'],['../namespacehmap.html#a1470c4d74892293e4974a319c6b17267',1,'hmap::equalize(Array &amp;array, const Array *p_mask)']]],
   ['erosion_4',['erosion',['../namespacehmap.html#a9cf7773f6141162bf60708a93acdfcee',1,'hmap::erosion()'],['../namespacehmap_1_1gpu.html#aed5416971461ddb7fb6427bdeb5cae86',1,'hmap::gpu::erosion()']]],
   ['erosion_5fmaps_5',['erosion_maps',['../namespacehmap.html#af91e2b8638aab2c4357ce37812b8a99c',1,'hmap']]],

@@ -7,6 +7,7 @@ var annotated_dup =
       [ "AssertResults", "structhmap_1_1AssertResults.html", "structhmap_1_1AssertResults" ],
       [ "BiquadFunction", "classhmap_1_1BiquadFunction.html", "classhmap_1_1BiquadFunction" ],
       [ "BumpFunction", "classhmap_1_1BumpFunction.html", "classhmap_1_1BumpFunction" ],
+      [ "CellPath", "classhmap_1_1CellPath.html", "classhmap_1_1CellPath" ],
       [ "ChebyshevEvaluator", "classhmap_1_1ChebyshevEvaluator.html", "classhmap_1_1ChebyshevEvaluator" ],
       [ "Cloud", "classhmap_1_1Cloud.html", "classhmap_1_1Cloud" ],
       [ "ColorAdjust", "structhmap_1_1ColorAdjust.html", "structhmap_1_1ColorAdjust" ],
