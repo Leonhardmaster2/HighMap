@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "highmap/functions.hpp"
-#include "highmap/particles.hpp"
+#include "highmap/geometry/cell_path.hpp"
 
 namespace hmap
 {
@@ -53,7 +53,7 @@ void add_line_bresenham(std::vector<glm::ivec2> &out,
   }
 }
 
-void add_noise(std::vector<glm::ivec2> &ipath,
+void add_noise(std::vector<glm::ivec2> &indices,
                std::uint32_t            seed,
                float                    kw,
                float                    amp,
@@ -64,7 +64,7 @@ void add_noise(std::vector<glm::ivec2> &ipath,
                float                    persistence,
                float                    lacunarity)
 {
-  if (ipath.size() < 2) return;
+  if (indices.size() < 2) return;
 
   std::unique_ptr<NoiseFunction> p = create_noise_function_from_type(noise_type,
                                                                      {kw, kw},
@@ -79,8 +79,8 @@ void add_noise(std::vector<glm::ivec2> &ipath,
   auto noise_fct = f.get_delegate();
 
   // Direction from first to last point
-  glm::vec2 p0 = glm::vec2(ipath.front());
-  glm::vec2 p1 = glm::vec2(ipath.back());
+  glm::vec2 p0 = glm::vec2(indices.front());
+  glm::vec2 p1 = glm::vec2(indices.back());
 
   glm::vec2 dir = p1 - p0;
   float     len = glm::length(dir);
@@ -94,9 +94,9 @@ void add_noise(std::vector<glm::ivec2> &ipath,
   // Prevent zero division / stable sampling scale
   float inv_len = 1.0f / len;
 
-  for (size_t i = 0; i < ipath.size(); ++i)
+  for (size_t i = 0; i < indices.size(); ++i)
   {
-    glm::vec2 p = glm::vec2(ipath[i]);
+    glm::vec2 p = glm::vec2(indices[i]);
 
     // projection along main direction (0 → 1)
     float t = glm::dot(p - p0, dir) * inv_len;
@@ -110,32 +110,45 @@ void add_noise(std::vector<glm::ivec2> &ipath,
     p.x = std::clamp(int(p.x), 0, shape.x - 1);
     p.y = std::clamp(int(p.y), 0, shape.y - 1);
 
-    ipath[i] = glm::ivec2(p);
+    indices[i] = glm::ivec2(p);
   }
 
-  enforce_path_adjacency(ipath);
+  enforce_path_adjacency(indices);
 }
 
-void enforce_path_adjacency(std::vector<glm::ivec2> &ipath)
+void enforce_path_adjacency(std::vector<glm::ivec2> &indices)
 {
-  if (ipath.size() < 2) return;
+  if (indices.size() < 2) return;
 
   std::vector<glm::ivec2> corrected;
-  corrected.reserve(ipath.size() * 2);
+  corrected.reserve(indices.size() * 2);
 
-  corrected.push_back(ipath.front());
+  corrected.push_back(indices.front());
 
-  for (size_t i = 1; i < ipath.size(); ++i)
+  for (size_t i = 1; i < indices.size(); ++i)
   {
     glm::ivec2 prev = corrected.back();
-    glm::ivec2 curr = ipath[i];
+    glm::ivec2 curr = indices[i];
 
     if (prev == curr) continue;
 
     add_line_bresenham(corrected, prev, curr);
   }
 
-  ipath = std::move(corrected);
+  indices = std::move(corrected);
+}
+
+bool is_path_adjacent(const std::vector<glm::ivec2> &indices)
+{
+  if (indices.size() < 2) return true;
+
+  for (size_t i = 1; i < indices.size(); ++i)
+  {
+    const glm::ivec2 delta = indices[i] - indices[i - 1];
+    if (std::abs(delta.x) > 1 || std::abs(delta.y) > 1) return false;
+  }
+
+  return true;
 }
 
 } // namespace hmap

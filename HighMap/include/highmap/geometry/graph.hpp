@@ -4,7 +4,6 @@
 
 /**
  * @file graph.hpp
- * @author  Otto Link (otto.link.bv@gmail.com)
  * @brief Definition of the `Graph` class for manipulating 2D graphs.
  *
  * This file contains the definition of the `Graph` class, which extends from
@@ -18,14 +17,7 @@
  * functionalities for exporting the graph data to CSV and PNG formats, as well
  * as for calculating Signed Distance Functions (SDF) of the graph.
  *
- * @version 0.1 Initial version.
- * @date 2023-06-18
- *
  * @copyright Copyright (c) 2023 Otto Link
- *
- * This software is distributed under the terms of the GNU General Public
- * License. The full license is available in the LICENSE file distributed with
- * this software.
  */
 #pragma once
 #include <cmath>

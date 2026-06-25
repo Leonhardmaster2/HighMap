@@ -4,7 +4,6 @@
 
 /**
  * @file path.hpp
- * @author  Otto Link (otto.link.bv@gmail.com)
  * @brief Path class for manipulating and analyzing paths in 2D space.
  *
  * This file defines the `Path` class, which extends the `Cloud` class to
@@ -13,14 +12,7 @@
  * with various curves, resampling, and performing operations like meandering
  * and fractalizing.
  *
- * @version 0.1
- * @date 2023-06-18
- *
  * @copyright Copyright (c) 2023 Otto Link
- *
- * This software is distributed under the terms of the GNU General Public
- * License. The full license is in the file LICENSE, distributed with this
- * software.
  */
 #pragma once
 #include "highmap/boundary.hpp"

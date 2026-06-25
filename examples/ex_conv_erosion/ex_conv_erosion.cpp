@@ -8,7 +8,7 @@ int main(void)
   glm::vec2  kw = {4.f, 4.f};
   int        seed = 0;
 
-  shape = {1024, 1024};
+  // shape = {1024, 1024};
 
   hmap::Array z0 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, kw, seed);
   // z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CUBIC_PULSE, 1.f);
@@ -19,7 +19,7 @@ int main(void)
   int   iterations = 40;
   int   particle_count = 500;
   int   ir_min = 1;
-  int   ir_max = 16;
+  int   ir_max = 4;
   float size_distrib_exp = 1.f;
   float erosion_strength = 0.005f;
   float randomness = 0.02f;
