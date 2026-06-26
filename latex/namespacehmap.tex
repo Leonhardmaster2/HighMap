@@ -647,7 +647,7 @@ void \mbox{\hyperlink{namespacehmap_add0285443bb5059eca752eaf07202ef3}{coastal\+
 \item 
 void \mbox{\hyperlink{namespacehmap_aa64448e4b5640d90570e53249907c98a}{depression\+\_\+filling}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int iterations=1000, float epsilon=1e-\/4\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Fill the depressions of the heightmap using the Planchon-\/\+Darboux algorithm. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_acd726fbea3f38f8052289866302cbeec}{depression\+\_\+filling\+\_\+priority\+\_\+flood}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+void \mbox{\hyperlink{namespacehmap_ae55614038f40b4069a09a2993d195a6e}{depression\+\_\+filling\+\_\+priority\+\_\+flood}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, bool apply\+\_\+post\+\_\+filter=false)
 \item 
 void \mbox{\hyperlink{namespacehmap_af91e2b8638aab2c4357ce37812b8a99c}{erosion\+\_\+maps}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+before, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z\+\_\+after, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&erosion\+\_\+map, \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&deposition\+\_\+map, float tolerance=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \item 
@@ -6664,7 +6664,7 @@ Fill heightmap depressions to ensure that every cell can be connected to the bou
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_aa64448e4b5640d90570e53249907c98a}{hmap::depression\_filling}}(z1);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z2\ =\ z0;}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_acd726fbea3f38f8052289866302cbeec}{hmap::depression\_filling\_priority\_flood}}(z2);\ \textcolor{comment}{//\ much\ faster}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ae55614038f40b4069a09a2993d195a6e}{hmap::depression\_filling\_priority\_flood}}(z2);\ \textcolor{comment}{//\ much\ faster}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_depression\_filling.png"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z0,\ z1,\ z2\},}
@@ -6675,11 +6675,11 @@ Fill heightmap depressions to ensure that every cell can be connected to the bou
 \end{DoxyCodeInclude}
 
 
-{\bfseries{Result}}  \Hypertarget{namespacehmap_acd726fbea3f38f8052289866302cbeec}\label{namespacehmap_acd726fbea3f38f8052289866302cbeec} 
+{\bfseries{Result}}  \Hypertarget{namespacehmap_ae55614038f40b4069a09a2993d195a6e}\label{namespacehmap_ae55614038f40b4069a09a2993d195a6e} 
 \index{hmap@{hmap}!depression\_filling\_priority\_flood@{depression\_filling\_priority\_flood}}
 \index{depression\_filling\_priority\_flood@{depression\_filling\_priority\_flood}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{depression\_filling\_priority\_flood()}{depression\_filling\_priority\_flood()}}
-{\footnotesize\ttfamily void hmap\+::depression\+\_\+filling\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::depression\+\_\+filling\+\_\+priority\+\_\+flood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{bool}]{apply\+\_\+post\+\_\+filter = {\ttfamily false} }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_af91e2b8638aab2c4357ce37812b8a99c}\label{namespacehmap_af91e2b8638aab2c4357ce37812b8a99c} 
 \index{hmap@{hmap}!erosion\_maps@{erosion\_maps}}

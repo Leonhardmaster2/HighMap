@@ -40,7 +40,7 @@ enum \mbox{\hyperlink{namespacehmap_1_1gpu_ab0737b29664736928a86f0755493895f}{Lo
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{hmap\+::level\+\_\+set\+\_\+curvature}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_1_1gpu_a7bfb7fecab3f34a73a57d7907c3ace7d}{curvature\+\_\+quadric}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int ir, \mbox{\hyperlink{namespacehmap_ad4d5e191ca7dd12e389c842188bde88a}{Curvature\+Type}} curvature\+\_\+type, bool approx\+\_\+algo=false)
 \begin{DoxyCompactList}\small\item\em See \doxylink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{hmap\+::curvature\+\_\+quadric}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_1_1gpu_a6e09a459c9b6d040dde9271f50b618dd}{conv\+\_\+erosion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::uint32\+\_\+t seed, int iterations=20, int particle\+\_\+count=1000, int ir\+\_\+min=8, int ir\+\_\+max=64, float size\+\_\+distrib\+\_\+exp=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float erosion\+\_\+strength=0.\+02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float randomness=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float exit\+\_\+forcing=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int gradient\+\_\+ir=64, float gradient\+\_\+exp=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float gradient\+\_\+strength\+\_\+min=0.\+1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
+void \mbox{\hyperlink{namespacehmap_1_1gpu_a453995ce289c0c3dad0f34fe10a54d74}{conv\+\_\+erosion}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, std\+::uint32\+\_\+t seed, int iterations=20, int particle\+\_\+count=1000, int ir\+\_\+min=8, int ir\+\_\+max=64, float size\+\_\+distrib\+\_\+exp=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float erosion\+\_\+strength=0.\+02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float randomness=0.\+01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float exit\+\_\+forcing=0.\+05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, int gradient\+\_\+ir=16, float gradient\+\_\+exp=0.\+5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float gradient\+\_\+strength\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Performs iterative particle-\/based convolution erosion on a heightmap. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_1_1gpu_a8497e2fce595293ea07e68eac1e5bce2}{deposition\+\_\+fill\+\_\+holes}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int deposition\+\_\+ir, float deposition\+\_\+strength, int iterations=1)
 \begin{DoxyCompactList}\small\item\em Fill holes using Gaussian-\/based deposition. \end{DoxyCompactList}\item 
@@ -711,11 +711,11 @@ See \doxylink{namespacehmap_aa1f2e119a09d246fe0cf27e859ddb2e6}{hmap\+::level\+\_
 
 See \doxylink{namespacehmap_a4e2b7df70a18f94ad7f4d7cd934ec767}{hmap\+::curvature\+\_\+quadric}. 
 
-\Hypertarget{namespacehmap_1_1gpu_a6e09a459c9b6d040dde9271f50b618dd}\label{namespacehmap_1_1gpu_a6e09a459c9b6d040dde9271f50b618dd} 
+\Hypertarget{namespacehmap_1_1gpu_a453995ce289c0c3dad0f34fe10a54d74}\label{namespacehmap_1_1gpu_a453995ce289c0c3dad0f34fe10a54d74} 
 \index{hmap::gpu@{hmap::gpu}!conv\_erosion@{conv\_erosion}}
 \index{conv\_erosion@{conv\_erosion}!hmap::gpu@{hmap::gpu}}
 \doxysubsubsection{\texorpdfstring{conv\_erosion()}{conv\_erosion()}}
-{\footnotesize\ttfamily void hmap\+::gpu\+::conv\+\_\+erosion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{int}]{iterations = {\ttfamily 20},  }\item[{int}]{particle\+\_\+count = {\ttfamily 1000},  }\item[{int}]{ir\+\_\+min = {\ttfamily 8},  }\item[{int}]{ir\+\_\+max = {\ttfamily 64},  }\item[{float}]{size\+\_\+distrib\+\_\+exp = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{erosion\+\_\+strength = {\ttfamily 0.02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{randomness = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{exit\+\_\+forcing = {\ttfamily 0.05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{gradient\+\_\+ir = {\ttfamily 64},  }\item[{float}]{gradient\+\_\+exp = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{gradient\+\_\+strength\+\_\+min = {\ttfamily 0.1\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void hmap\+::gpu\+::conv\+\_\+erosion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{std\+::uint32\+\_\+t}]{seed,  }\item[{int}]{iterations = {\ttfamily 20},  }\item[{int}]{particle\+\_\+count = {\ttfamily 1000},  }\item[{int}]{ir\+\_\+min = {\ttfamily 8},  }\item[{int}]{ir\+\_\+max = {\ttfamily 64},  }\item[{float}]{size\+\_\+distrib\+\_\+exp = {\ttfamily 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{erosion\+\_\+strength = {\ttfamily 0.02\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{randomness = {\ttfamily 0.01\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{exit\+\_\+forcing = {\ttfamily 0.05\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{int}]{gradient\+\_\+ir = {\ttfamily 16},  }\item[{float}]{gradient\+\_\+exp = {\ttfamily 0.5\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{float}]{gradient\+\_\+strength\+\_\+min = {\ttfamily 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
 
@@ -758,26 +758,26 @@ The process is repeated for a number of iterations to refine the result.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
 \DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{4.f,\ 4.f\};}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 4;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{1024,\ 1024\};}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ shape\ =\ \{512,\ 512\};}}
+\DoxyCodeLine{\ \ shape\ =\ \{1024,\ 1024\};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z0\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ z0\ =\ hmap::bulkify(z0,\ hmap::PrimitiveType::PRIM\_CUBIC\_PULSE,\ 1.f);}}
-\DoxyCodeLine{\ \ z0\ =\ \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{hmap::bulkify}}(z0,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}{hmap::PrimitiveType::PRIM\_CONE\_SMOOTH}},\ 3.f);}
+\DoxyCodeLine{\ \ z0\ =\ \mbox{\hyperlink{namespacehmap_ae3ecf5f88476c5d49978a130f8cab2f3}{hmap::bulkify}}(z0,\ \mbox{\hyperlink{namespacehmap_a55542a66f890ef9ecf5f82af2c23a0cfa71a3d57896b6c2d066433962e74e8961}{hmap::PrimitiveType::PRIM\_CONE\_SMOOTH}},\ 0.5f);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ z1\ =\ z0;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ iterations\ =\ 40;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ particle\_count\ =\ 500;}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\_min\ =\ 1;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\_max\ =\ 4;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ size\_distrib\_exp\ =\ 1.f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ erosion\_strength\ =\ 0.005f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ randomness\ =\ 0.02f;}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ exit\_forcing\ =\ 0.05f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ ir\_max\ =\ 1;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ size\_distrib\_exp\ =\ 2.f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ erosion\_strength\ =\ 0.002f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ randomness\ =\ 0.002f;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{float}\ exit\_forcing\ =\ 0.01f;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a6e09a459c9b6d040dde9271f50b618dd}{hmap::gpu::conv\_erosion}}(z1,}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_a453995ce289c0c3dad0f34fe10a54d74}{hmap::gpu::conv\_erosion}}(z1,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iterations,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ particle\_count,}
@@ -787,6 +787,8 @@ The process is repeated for a number of iterations to refine the result.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erosion\_strength,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ randomness,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit\_forcing);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ hmap::gpu::deposition\_fill\_holes(z1,\ 4,\ 1.f);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ z1.dump(\textcolor{stringliteral}{"{}out.png"{}});}
 \DoxyCodeLine{}
