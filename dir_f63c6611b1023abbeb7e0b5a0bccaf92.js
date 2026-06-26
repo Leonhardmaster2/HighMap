@@ -44,5 +44,6 @@ var dir_f63c6611b1023abbeb7e0b5a0bccaf92 =
     [ "terrain_tri_mesh", "dir_28d1f6f5761f5c8b206221dff91b5473.html", "dir_28d1f6f5761f5c8b206221dff91b5473" ],
     [ "transform", "dir_cf7059bcc3c8d9d07f321966fb202cdc.html", "dir_cf7059bcc3c8d9d07f321966fb202cdc" ],
     [ "utils", "dir_05ca16f795cd0e013c5ff4457fc64f86.html", "dir_05ca16f795cd0e013c5ff4457fc64f86" ],
+    [ "vectors", "dir_63ce6eb1f8b81a6b3b5e63b1cef5907c.html", "dir_63ce6eb1f8b81a6b3b5e63b1cef5907c" ],
     [ "virtual_array", "dir_f3face59d46858be97e2b2d179788010.html", "dir_f3face59d46858be97e2b2d179788010" ]
 ];

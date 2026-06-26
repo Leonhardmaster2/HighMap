@@ -28,9 +28,9 @@
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="array_8hpp" kindref="compound">highmap/array.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="colorize_8hpp" kindref="compound">highmap/colorize.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="export_8hpp" kindref="compound">highmap/export.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vector__utils_8hpp" kindref="compound">highmap/internal/vector_utils.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="range_8hpp" kindref="compound">highmap/range.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor_8hpp" kindref="compound">highmap/tensor.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="range_8hpp" kindref="compound">highmap/range.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor_8hpp" kindref="compound">highmap/tensor.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vectors_8hpp" kindref="compound">highmap/vectors.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehmap" kindref="compound">hmap</ref></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">{</highlight></codeline>
@@ -162,9 +162,9 @@
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vmin<sp/>&gt;=<sp/>vmax)</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">remap</ref>(array_copy);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">remap</ref>(array_copy,<sp/>0.f,<sp/>1.f,<sp/>vmin,<sp/>vmax);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy,<sp/>0.f,<sp/>1.f,<sp/>vmin,<sp/>vmax);</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>scale_factor<sp/>=<sp/>(depth<sp/>==<sp/>CV_8U)<sp/>?<sp/>255<sp/>:<sp/>65535;</highlight></codeline>
@@ -181,7 +181,7 @@
 <codeline lineno="171"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classhmap_1_1Array_1a75da0609f64b9410741d198330dde33b" kindref="member">Array::to_tiff</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fname)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="172"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array_1a96b9bd19d1212e61b4ac4eb21931b298" kindref="member">Array</ref><sp/>array_copy<sp/>=<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">remap</ref>(array_copy);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(array_copy);</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/>cv::Mat<sp/>mat<sp/>=<sp/>array_copy.to_cv_mat();</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>

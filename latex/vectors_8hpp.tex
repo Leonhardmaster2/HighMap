@@ -1,5 +1,5 @@
-\doxysection{High\+Map/src/operator/vector\+\_\+utils.cpp File Reference}
-\hypertarget{vector__utils_8cpp}{}\label{vector__utils_8cpp}\index{HighMap/src/operator/vector\_utils.cpp@{HighMap/src/operator/vector\_utils.cpp}}
+\doxysection{High\+Map/include/highmap/vectors.hpp File Reference}
+\hypertarget{vectors_8hpp}{}\label{vectors_8hpp}\index{HighMap/include/highmap/vectors.hpp@{HighMap/include/highmap/vectors.hpp}}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,13 +24,15 @@ std\+::string \mbox{\hyperlink{namespacehmap_a47f7c4ead587ead4a75c9c7f4fc4b079}{
 \begin{DoxyCompactList}\small\item\em Generates an ASCII histogram representation of values. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a31a4797a24a40eff0c53d17040327abe}{hmap\+::moving\+\_\+average}} (const std\+::vector$<$ float $>$ \&input, int radius)
 \begin{DoxyCompactList}\small\item\em Smooths a vector using a centered moving average. \end{DoxyCompactList}\item 
-size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{hmap\+::upperbound\+\_\+right}} (const std\+::vector$<$ float $>$ \&v, float value)
-\begin{DoxyCompactList}\small\item\em Returns the index of the first element greater than a given value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacehmap_ac1fdc0ac0b6e1024faeaddcd30ebe2fe}{hmap\+::reindex\+\_\+vector}} (std\+::vector$<$ int $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
-\item 
-void \mbox{\hyperlink{namespacehmap_a5cca080874e8af74fa03a3f0f0d2f307}{hmap\+::reindex\+\_\+vector}} (std\+::vector$<$ float $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
-\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacehmap_ad122242a8f8cf308215faee96c9471ee}{hmap\+::reindex\+\_\+vector}} (std\+::vector$<$ T $>$ \&v, std\+::vector$<$ size\+\_\+t $>$ \&idx)
+\begin{DoxyCompactList}\small\item\em Reorders a vector using a given index mapping. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab80da2376c6212eb9cb2899c0a5114ad}{hmap\+::remap}} (const std\+::vector$<$ float $>$ \&data, float new\+\_\+min=0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, float new\+\_\+max=1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Remaps values of a vector to a given range \mbox{[}new\+\_\+min, new\+\_\+max\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacehmap_ad465af1e2c3cc465b53657b457bf68a5}{hmap\+::shuffle\+\_\+vector}} (std\+::vector$<$ T $>$ \&values, std\+::uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Shuffles a vector in-\/place using a deterministic seed. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{namespacehmap_a0520c7ad885d5776f6e06ec12e7f1729}{hmap\+::shuffled\+\_\+vector}} (const std\+::vector$<$ T $>$ \&values, std\+::uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Returns a shuffled copy of a vector. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{namespacehmap_a0b7db6f8ce57fcdeca7ca1e3b7d1e686}{hmap\+::upperbound\+\_\+right}} (const std\+::vector$<$ float $>$ \&v, float value)
+\begin{DoxyCompactList}\small\item\em Returns the index of the first element greater than a given value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_ac95d63662a6878f27011c0b4c7c70078}{hmap\+::vector\+\_\+unique\+\_\+values}} (std\+::vector$<$ float $>$ \&v)
 \begin{DoxyCompactList}\small\item\em Removes duplicate values from a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}

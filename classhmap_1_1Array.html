@@ -479,7 +479,7 @@ Friends</h2></td></tr>
 <div class="line">                                   res,</div>
 <div class="line">                                   seed,</div>
 <div class="line">                                   8);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;out_rgb.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_8bit.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_16bit.png&quot;</span>, CV_16U);</div>
@@ -495,7 +495,7 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclasshmap_1_1Array_html_a9ff7b2c0be8f2b5dd9fc33085cd647d1"><div class="ttname"><a href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">hmap::Array::to_png</a></div><div class="ttdeci">void to_png(const std::string &amp;fname, int cmap, bool hillshading=false, int depth=CV_8U) const</div><div class="ttdoc">Export the array as a PNG image file with a specified colormap and hillshading.</div><div class="ttdef"><b>Definition</b> io.cpp:133</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_ab2c7afe05160d85b0997d733cbb7d286"><div class="ttname"><a href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">hmap::Array::to_png_grayscale</a></div><div class="ttdeci">void to_png_grayscale(const std::string &amp;fname, int depth=CV_8U, float vmin=0.f, float vmax=0.f) const</div><div class="ttdoc">Export the array as a grayscale PNG image file with specified bit depth.</div><div class="ttdef"><b>Definition</b> io.cpp:147</div></div>
 <div class="ttc" id="aclasshmap_1_1Array_html_abc72128c4c460e993d877cab54e17454"><div class="ttname"><a href="classhmap_1_1Array.html#abc72128c4c460e993d877cab54e17454">hmap::Array::to_raw_16bit</a></div><div class="ttdeci">void to_raw_16bit(const std::string &amp;fname) const</div><div class="ttdoc">Export the array as a 16-bit raw file for Unity terrain import.</div><div class="ttdef"><b>Definition</b> io.cpp:166</div></div>
-<div class="ttc" id="anamespacehmap_html_ab80da2376c6212eb9cb2899c0a5114ad"><div class="ttname"><a href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a></div><div class="ttdeci">std::vector&lt; float &gt; remap(const std::vector&lt; float &gt; &amp;data, float new_min=0.f, float new_max=1.f)</div><div class="ttdoc">Remaps values of a vector to a given range [new_min, new_max].</div><div class="ttdef"><b>Definition</b> vector_utils.cpp:251</div></div>
+<div class="ttc" id="anamespacehmap_html_a262e6495cb2d02598f36a2b46114b2b4"><div class="ttname"><a href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a></div><div class="ttdeci">void remap(Array &amp;array, float vmin, float vmax, float from_min, float from_max)</div><div class="ttdoc">Remap array elements from a starting range to a target range.</div><div class="ttdef"><b>Definition</b> range.cpp:363</div></div>
 <div class="ttc" id="anamespacehmap_html_ac2452e568959bc21c9b7b09202e5977a"><div class="ttname"><a href="namespacehmap.html#ac2452e568959bc21c9b7b09202e5977a">hmap::export_banner_png</a></div><div class="ttdeci">void export_banner_png(const std::string &amp;fname, const std::vector&lt; Array &gt; &amp;arrays, int cmap, bool hillshading=false, bool normalize_arrays=false)</div><div class="ttdoc">Exports a set of arrays as a banner PNG image file.</div><div class="ttdef"><b>Definition</b> export_banner_png.cpp:15</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::JET</a></div><div class="ttdeci">@ JET</div><div class="ttdef"><b>Definition</b> colormaps.hpp:88</div></div>
 <div class="ttc" id="anamespacehmap_html_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143"><div class="ttname"><a href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143">hmap::INFERNO</a></div><div class="ttdeci">@ INFERNO</div><div class="ttdef"><b>Definition</b> colormaps.hpp:87</div></div>
@@ -2908,7 +2908,7 @@ Friends</h2></td></tr>
 <div class="line">  <span class="keywordtype">int</span>        seed = 1;</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_class" href="classhmap_1_1Array.html">hmap::Array</a> z = <a class="code hl_function" href="namespacehmap.html#a7f5b2e16a974bbfad06fbae44c8b3465">hmap::noise_fbm</a>(<a class="code hl_enumvalue" href="namespacehmap.html#ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581">hmap::NoiseType::PERLIN</a>, <a class="code hl_variable" href="classhmap_1_1Array.html#a9ee3e85888021b80660357e73f35a5ea">shape</a>, res, seed);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z, 0.f, 1.f);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z, 0.f, 1.f);</div>
 <div class="line"> </div>
 <div class="line">  z.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;out.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a233f5593cf083495332bafd2607d154d">hmap::Cmap::GRAY</a>);</div>
 <div class="line"> </div>
@@ -3115,7 +3115,7 @@ Friends</h2></td></tr>
 <div class="line">                                   res,</div>
 <div class="line">                                   seed,</div>
 <div class="line">                                   8);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;out_rgb.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_8bit.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_16bit.png&quot;</span>, CV_16U);</div>
@@ -3193,7 +3193,7 @@ Friends</h2></td></tr>
 <div class="line">                                   res,</div>
 <div class="line">                                   seed,</div>
 <div class="line">                                   8);</div>
-<div class="line">  <a class="code hl_function" href="namespacehmap.html#ab80da2376c6212eb9cb2899c0a5114ad">hmap::remap</a>(z1);</div>
+<div class="line">  <a class="code hl_function" href="namespacehmap.html#a262e6495cb2d02598f36a2b46114b2b4">hmap::remap</a>(z1);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#a9ff7b2c0be8f2b5dd9fc33085cd647d1">to_png</a>(<span class="stringliteral">&quot;out_rgb.png&quot;</span>, <a class="code hl_enumvalue" href="namespacehmap.html#ac70fe3cbb32e0340d5dd3e15cdcf9369a65146260717d07e4773aec50520b9ced">hmap::Cmap::JET</a>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_8bit.png&quot;</span>);</div>
 <div class="line">  z1.<a class="code hl_function" href="classhmap_1_1Array.html#ab2c7afe05160d85b0997d733cbb7d286">to_png_grayscale</a>(<span class="stringliteral">&quot;out_16bit.png&quot;</span>, CV_16U);</div>

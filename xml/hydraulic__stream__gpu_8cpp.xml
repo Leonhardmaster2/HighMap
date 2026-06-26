@@ -48,7 +48,7 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>flow<sp/>accumulation<sp/>to<sp/>determine<sp/>erosion<sp/>intensity</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/>Array<sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a58ba4910af868f70849f343e0c73adf3" kindref="member">flow_accumulation_dinf</ref>(z,<sp/>talus_ref);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/>facc<sp/>=<sp/><ref refid="namespacehmap_1a75475b6109023ce0ad64f6f9f7c4c525" kindref="member">log10</ref>(facc);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">remap</ref>(facc);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(facc);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(saturation_ratio<sp/>&lt;<sp/>1.f)</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a2e4283dd5da8add89788c5023c73042c" kindref="member">saturate</ref>(facc,<sp/>0.f,<sp/>saturation_ratio,<sp/>0.1f<sp/>*<sp/>saturation_ratio);</highlight></codeline>
@@ -59,7 +59,7 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>next<sp/>operations<sp/>in<sp/>one<sp/>local<sp/>pass</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1_1gpu_1a7d2aae253f1f67bbdbc718859f83ef0a" kindref="member">gpu::smooth_cpulse</ref>(gn,<sp/>gradient_prefilter_ir);</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ab80da2376c6212eb9cb2899c0a5114ad" kindref="member">remap</ref>(gn);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">remap</ref>(gn);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>gn<sp/>=<sp/><ref refid="namespacehmap_1a105e497c433e14b4235534ae6d2b87b9" kindref="member">pow</ref>(gn,<sp/>gradient_power);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>gn<sp/>=<sp/><ref refid="namespacehmap_1a9a1737227fa77975c69a2e5bea897cc1" kindref="member">smoothstep5_lower</ref>(gn);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>facc<sp/>*=<sp/>(1.f<sp/>-<sp/>gradient_scaling_ratio)<sp/>+<sp/>gradient_scaling_ratio<sp/>*<sp/>gn;</highlight></codeline>
