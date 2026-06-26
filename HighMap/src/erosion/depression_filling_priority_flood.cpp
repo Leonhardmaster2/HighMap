@@ -7,13 +7,16 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 
 namespace hmap
 {
 
-void depression_filling_priority_flood(Array &z)
+void depression_filling_priority_flood(Array &z, bool apply_post_filter)
 {
+  Array z_bckp = apply_post_filter ? z : Array();
+
   auto db = DrainageBasinCellBased(z);
 
   db.compute_receivers_priority_flood();
@@ -30,6 +33,13 @@ void depression_filling_priority_flood(Array &z)
       float new_z = std::max(z(i), z(r));
       z(i) = new_z;
     }
+
+  if (apply_post_filter)
+  {
+    Array deposition = z - z_bckp;
+    laplace(deposition);
+    z = z_bckp + deposition;
+  }
 }
 
 } // namespace hmap

@@ -169,7 +169,8 @@ void coastal_erosion_profile(Array       &z,
  */
 void depression_filling(Array &z, int iterations = 1000, float epsilon = 1e-4f);
 
-void depression_filling_priority_flood(Array &z);
+void depression_filling_priority_flood(Array &z,
+                                       bool   apply_post_filter = false);
 
 /**
  * @brief
@@ -749,9 +750,9 @@ void conv_erosion(Array        &z,
                   float         erosion_strength = 0.02f,
                   float         randomness = 0.01f,
                   float         exit_forcing = 0.05f,
-                  int           gradient_ir = 64,
+                  int           gradient_ir = 16,
                   float         gradient_exp = 0.5f,
-                  float         gradient_strength_min = 0.1f);
+                  float         gradient_strength_min = 0.f);
 
 /**
  * @brief Fill holes using Gaussian-based deposition.
