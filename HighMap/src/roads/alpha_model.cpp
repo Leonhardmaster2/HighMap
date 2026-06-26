@@ -14,7 +14,7 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/point.hpp"
-#include "highmap/internal/vector_utils.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {

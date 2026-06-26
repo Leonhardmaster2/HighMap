@@ -10,11 +10,11 @@
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap::gpu
 {

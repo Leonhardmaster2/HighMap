@@ -11,9 +11,9 @@
 #include "highmap/array.hpp"
 #include "highmap/authoring.hpp"
 #include "highmap/geometry/point_sampling.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {

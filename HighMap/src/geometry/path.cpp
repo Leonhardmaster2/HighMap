@@ -15,12 +15,12 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/interpolate/interpolate1d.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {

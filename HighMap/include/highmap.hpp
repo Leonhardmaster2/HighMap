@@ -53,4 +53,5 @@
 #include "highmap/tensor.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/vectors.hpp"
 #include "highmap/virtual_array.hpp"

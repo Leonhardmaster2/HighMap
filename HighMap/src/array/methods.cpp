@@ -13,9 +13,9 @@
 #include <opencv2/core.hpp>
 
 #include "highmap/array.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/interpolate.hpp"
 #include "highmap/range.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {

@@ -8,9 +8,9 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {
