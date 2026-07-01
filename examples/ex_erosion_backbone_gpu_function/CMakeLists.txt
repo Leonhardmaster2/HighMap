@@ -1,0 +1,2 @@
+add_executable(ex_erosion_backbone_gpu_function ex_erosion_backbone_gpu_function.cpp)
+target_link_libraries(ex_erosion_backbone_gpu_function highmap)

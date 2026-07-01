@@ -714,6 +714,10 @@ void hydraulic_stream_upscale_amplification(
 namespace hmap::gpu
 {
 
+void erosion_backbone_gpu_function_buffer(Array &z, float some_parameter);
+
+void erosion_backbone_gpu_function_image(Array &z, float some_parameter);
+
 /**
  * @brief Performs iterative particle-based convolution erosion on a heightmap.
  *

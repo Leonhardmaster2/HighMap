@@ -72,6 +72,9 @@ bool init_opencl()
 #include "kernels/directional_blur.cl"
       ;
   code +=
+#include "kernels/erosion_backbone_functions.cl"
+      ;
+  code +=
 #include "kernels/eulerian_transport.cl"
       ;
   code +=
