@@ -85,6 +85,8 @@ public:
               const ComputeMode &cm,
               int                depth = CV_8U) const;
 
+  std::vector<float> to_raw(const ComputeMode &cm, bool flip_y = false);
+
   Tensor to_tensor(const glm::ivec2 &img_shape, const ComputeMode &cm) const;
 
   // --- Members

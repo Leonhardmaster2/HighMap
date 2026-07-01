@@ -15,7 +15,6 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
@@ -24,6 +23,7 @@
 #include "highmap/primitives/random.hpp"
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/vectors.hpp"
 
 #define NSIGMA 2
 

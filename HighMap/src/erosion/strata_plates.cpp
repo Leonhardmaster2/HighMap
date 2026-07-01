@@ -8,10 +8,10 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/transform.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap::gpu
 {

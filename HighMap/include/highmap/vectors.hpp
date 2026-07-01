@@ -13,10 +13,6 @@
 namespace hmap
 {
 
-// ============================================================
-// Indexing / Sorting
-// ============================================================
-
 /**
  * @brief Returns the indices that would sort the vector.
  *
@@ -28,37 +24,22 @@ namespace hmap
 std::vector<size_t> argsort(const std::vector<float> &v);
 
 /**
- * @brief Reorders a vector using a given index mapping.
- *
- * @tparam T Type of the vector elements.
- * @param v   Vector to reorder.
- * @param idx Index mapping (typically from argsort).
- *
- * @note idx[k] indicates the source index of the k-th element in the result.
+ * @brief Computes the median value of a set of floats.
+ * @param  values Input values (copied and partially reordered).
+ * @return        Median of the input values.
  */
-template <typename T>
-void reindex_vector(std::vector<T> &v, std::vector<size_t> &idx)
-{
-  std::vector<T> v_new(v.size());
-  for (std::uint32_t k = 0; k < v.size(); k++)
-    v_new[k] = v[idx[k]];
-  v = v_new;
-}
+float compute_median(std::vector<float> values);
 
 /**
- * @brief Returns the index of the first element greater than a given value.
+ * @brief Returns indices where a sign change occurs in the input vector.
  *
- * Equivalent to std::upper_bound but returns the index instead of an iterator.
+ * A sign change is detected between i-1 and i when values have opposite signs.
  *
- * @param  v     Sorted input vector.
- * @param  value Value to compare.
- * @return       Index of the first element greater than value.
+ * @param  data Input vector.
+ * @return      Indices i where a sign change occurs between data[i-1] and
+ *              data[i].
  */
-size_t upperbound_right(const std::vector<float> &v, float value);
-
-// ============================================================
-// Random / Shuffling
-// ============================================================
+std::vector<size_t> find_sign_changes(const std::vector<float> &data);
 
 /**
  * @brief Generate a vector of random floating-point values within a given
@@ -118,6 +99,63 @@ std::vector<int> generate_unique_random_vector(size_t   size,
                                                uint32_t seed);
 
 /**
+ * @brief Generates an ASCII histogram representation of values.
+ *
+ * @param  values      Input data.
+ * @param  bin_count   Number of bins.
+ * @param  hist_height Height of the histogram in characters.
+ * @return             String representing the histogram.
+ */
+std::string make_histogram(const std::vector<float> &values,
+                           int                       bin_count,
+                           int                       hist_height);
+
+/**
+ * @brief Smooths a vector using a centered moving average.
+ *
+ * Each value is replaced by the average of its neighbors within a given radius.
+ *
+ * @param  input  Input vector.
+ * @param  radius Number of elements on each side to include in the average.
+ * @return        Smoothed vector of the same size.
+ *
+ * @note Borders are handled by clamping (no wrapping).
+ */
+std::vector<float> moving_average(const std::vector<float> &input, int radius);
+
+/**
+ * @brief Reorders a vector using a given index mapping.
+ *
+ * @tparam T Type of the vector elements.
+ * @param v   Vector to reorder.
+ * @param idx Index mapping (typically from argsort).
+ *
+ * @note idx[k] indicates the source index of the k-th element in the result.
+ */
+template <typename T>
+void reindex_vector(std::vector<T> &v, std::vector<size_t> &idx)
+{
+  std::vector<T> v_new(v.size());
+  for (std::uint32_t k = 0; k < v.size(); k++)
+    v_new[k] = v[idx[k]];
+  v = v_new;
+}
+
+/**
+ * @brief Remaps values of a vector to a given range [new_min, new_max].
+ *
+ * @param  data    Input vector.
+ * @param  new_min Target minimum value.
+ * @param  new_max Target maximum value.
+ * @return         Remapped vector.
+ *
+ * @note If input values are constant, all outputs are set to new_min.
+ */
+std::vector<float> remap(const std::vector<float> &data,
+                         float                     new_min = 0.f,
+                         float                     new_max = 1.f);
+
+/**
  * @brief Shuffles a vector in-place using a deterministic seed.
  *
  * @tparam T Type of the vector elements.
@@ -147,40 +185,16 @@ std::vector<T> shuffled_vector(const std::vector<T> &values, std::uint32_t seed)
   return result;
 }
 
-// ============================================================
-// Value Processing
-// ============================================================
-
 /**
- * @brief Returns indices where a sign change occurs in the input vector.
+ * @brief Returns the index of the first element greater than a given value.
  *
- * A sign change is detected between i-1 and i when values have opposite signs.
+ * Equivalent to std::upper_bound but returns the index instead of an iterator.
  *
- * @param  data Input vector.
- * @return      Indices i where a sign change occurs between data[i-1] and
- *              data[i].
+ * @param  v     Sorted input vector.
+ * @param  value Value to compare.
+ * @return       Index of the first element greater than value.
  */
-std::vector<size_t> find_sign_changes(const std::vector<float> &data);
-
-/**
- * @brief Computes the median value of a set of floats.
- * @param  values Input values (copied and partially reordered).
- * @return        Median of the input values.
- */
-float compute_median(std::vector<float> values);
-
-/**
- * @brief Smooths a vector using a centered moving average.
- *
- * Each value is replaced by the average of its neighbors within a given radius.
- *
- * @param  input  Input vector.
- * @param  radius Number of elements on each side to include in the average.
- * @return        Smoothed vector of the same size.
- *
- * @note Borders are handled by clamping (no wrapping).
- */
-std::vector<float> moving_average(const std::vector<float> &input, int radius);
+size_t upperbound_right(const std::vector<float> &v, float value);
 
 /**
  * @brief Removes duplicate values from a vector.
@@ -191,35 +205,5 @@ std::vector<float> moving_average(const std::vector<float> &input, int radius);
  * @note The resulting order is not guaranteed to be preserved.
  */
 void vector_unique_values(std::vector<float> &v);
-
-/**
- * @brief Remaps values of a vector to a given range [new_min, new_max].
- *
- * @param  data    Input vector.
- * @param  new_min Target minimum value.
- * @param  new_max Target maximum value.
- * @return         Remapped vector.
- *
- * @note If input values are constant, all outputs are set to new_min.
- */
-std::vector<float> remap(const std::vector<float> &data,
-                         float                     new_min = 0.f,
-                         float                     new_max = 1.f);
-
-// ============================================================
-// Analysis / Visualization
-// ============================================================
-
-/**
- * @brief Generates an ASCII histogram representation of values.
- *
- * @param  values      Input data.
- * @param  bin_count   Number of bins.
- * @param  hist_height Height of the histogram in characters.
- * @return             String representing the histogram.
- */
-std::string make_histogram(const std::vector<float> &values,
-                           int                       bin_count,
-                           int                       hist_height);
 
 } // namespace hmap

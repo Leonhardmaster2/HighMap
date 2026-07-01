@@ -6,8 +6,8 @@
 #include <vector>
 
 #include "highmap/array.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/range.hpp"
+#include "highmap/vectors.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 

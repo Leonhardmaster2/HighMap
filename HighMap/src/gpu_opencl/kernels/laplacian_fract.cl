@@ -17,8 +17,8 @@ void kernel laplacian_fract(read_only image2d_t  img_in,
 
   if (g.x >= nx || g.y >= ny) return;
 
-  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE | CLK_ADDRESS_CLAMP |
-                            CLK_FILTER_NEAREST;
+  const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE |
+                            CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST;
 
   float sum = 0.f;
 

@@ -170,11 +170,17 @@ namespace hmap::gpu
  * The operation is conceptually similar to a sparse morphological dilation or a
  * max-convolution.
  *
- * @param  array       Input sparse scalar field.
- * @param  kernel      Propagation kernel.
- * @param  k_smoothmax Smooth maximum factor.
+ * @param  array                   Input sparse scalar field.
+ * @param  kernel                  Propagation kernel.
+ * @param  scale_kernel_with_value If true, the effective kernel size is scaled
+ *                                 according to the local input value. Larger
+ *                                 values propagate over a larger neighborhood,
+ *                                 while smaller values use a reduced kernel
+ *                                 support. If false, the full kernel size is
+ *                                 used everywhere.
+ * @param  k_smoothmax             Smooth maximum factor.
  *
- * @return             Sparse max-convolved array.
+ * @return                         Sparse max-convolved array.
  *
  * **Example**
  * @include ex_sparse_max_convolution.cpp
@@ -183,6 +189,12 @@ namespace hmap::gpu
  * @image html ex_sparse_max_convolution.png
  */
 Array sparse_max_convolution(const Array &array,
+                             const Array &kernel,
+                             bool         scale_kernel_with_value = true,
+                             float        k_smoothmax = 0.f);
+
+Array sparse_max_convolution(const Array &array_values,
+                             const Array &array_sizes,
                              const Array &kernel,
                              float        k_smoothmax = 0.f);
 

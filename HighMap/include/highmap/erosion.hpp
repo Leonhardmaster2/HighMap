@@ -169,7 +169,8 @@ void coastal_erosion_profile(Array       &z,
  */
 void depression_filling(Array &z, int iterations = 1000, float epsilon = 1e-4f);
 
-void depression_filling_priority_flood(Array &z);
+void depression_filling_priority_flood(Array &z,
+                                       bool   apply_post_filter = false);
 
 /**
  * @brief
@@ -708,127 +709,50 @@ void hydraulic_stream_upscale_amplification(
     int    ir = 1,
     float  clipping_ratio = 10.f); ///< @overload
 
-/**
- * @brief Stratify the heightmap by creating a series of layers with elevations
- * corrected by a gamma factor.
- *
- * @param z      Input array.
- * @param p_mask Intensity mask, expected in [0, 1] (applied as a
- *               post-processing).
- * @param hs     Layer elevations. For 'n' layers, 'n + 1' values must be
- *               provided.
- * @param gamma  Layer gamma correction factors, 'n' values.
- *
- * @see          gamma_correction.
- *
- * **Example**
- * @include ex_stratify.cpp
- *
- * **Result**
- * @image html ex_stratify.png
- */
-void stratify(Array             &z,
-              Array             *p_mask,
-              std::vector<float> hs,
-              std::vector<float> gamma,
-              Array             *p_noise = nullptr);
-
-void stratify(Array             &z,
-              std::vector<float> hs,
-              std::vector<float> gamma,
-              Array             *p_noise = nullptr); ///< @overload
-
-void stratify(Array             &z,
-              std::vector<float> hs,
-              float              gamma = 0.5f,
-              Array             *p_noise = nullptr); ///< @overload
-
-void stratify(Array        &z,
-              Array        &partition,
-              int           nstrata,
-              float         strata_noise,
-              float         gamma,
-              float         gamma_noise,
-              int           npartitions,
-              std::uint32_t seed,
-              float         mixing_gain_factor = 1.f,
-              Array        *p_noise = nullptr,
-              float         vmin = 1.f,
-              float         vmax = 0.f); ///< @overload
-
-/**
- * @brief Stratify the heightmap by creating a multiscale series of layers with
- * elevations corrected by a gamma factor.
- *
- * @param z            Input array.
- * @param zmin         Minimum elevation for the strata
- * @param zmax         Maximum elevation for the strata
- * @param n_strata     Number of strata for each stratification iteration.
- * @param strata_noise Elevation relative noise.
- * @param gamma_list   Gamma value for each stratification iteration.
- * @param gamma_noise  Gamma relative noise.
- * @param seed         Random seed number.
- * @param p_mask       Intensity mask, expected in [0, 1] (applied as a
- *                     post-processing).
- * @param p_noise      Local elevation noise.
- *
- *
- * **Example**
- * @include ex_stratify_multiscale.cpp
- *
- * **Result**
- * @image html ex_stratify_multiscale.png
- */
-void stratify_multiscale(Array             &z,
-                         float              zmin,
-                         float              zmax,
-                         std::vector<int>   n_strata,
-                         std::vector<float> strata_noise,
-                         std::vector<float> gamma_list,
-                         std::vector<float> gamma_noise,
-                         std::uint32_t      seed,
-                         Array             *p_mask = nullptr,
-                         Array             *p_noise = nullptr);
-
-/**
- * @brief Stratify the heightmap by creating a series of oblique layers with
- * elevations corrected by a gamma factor.
- *
- * @param z       Input array.
- * @param p_mask  Intensity mask, expected in [0, 1] (applied as a
- *                post-processing).
- * @param hs      Layer elevations. For 'n' layers, 'n + 1' values must be
- *                provided.
- * @param gamma   Layer gamma correction factors, 'n' values.
- * @param talus   Layer talus value (slope).
- * @param angle   Slope orientation (in degrees).
- * @param p_noise Local elevation noise.
- *
- * **Example**
- * @include ex_stratify.cpp
- *
- * **Result**
- * @image html ex_stratify.png
- */
-void stratify_oblique(Array             &z,
-                      Array             *p_mask,
-                      std::vector<float> hs,
-                      std::vector<float> gamma,
-                      float              talus,
-                      float              angle,
-                      Array             *p_noise = nullptr);
-
-void stratify_oblique(Array             &z,
-                      std::vector<float> hs,
-                      std::vector<float> gamma,
-                      float              talus,
-                      float              angle,
-                      Array             *p_noise = nullptr); ///< @overload
-
 } // namespace hmap
 
 namespace hmap::gpu
 {
+
+/**
+ * @brief Performs iterative particle-based convolution erosion on a heightmap.
+ *
+ * This function simulates erosion by spawning particles, tracing their paths
+ * over the heightmap, accumulating a mask and size field, and applying a
+ * kernel-based convolution to compute erosion deltas.
+ *
+ * The process is repeated for a number of iterations to refine the result.
+ *
+ * @param z                Heightmap to be eroded (modified in-place).
+ * @param seed             RNG seed for deterministic behavior.
+ * @param iterations       Number of erosion iterations.
+ * @param particle_count   Number of particles per iteration.
+ * @param ir_min           Minimum kernel radius scale.
+ * @param ir_max           Maximum kernel radius scale.
+ * @param size_distrib_exp Exponent controlling particle size bias.
+ * @param erosion_strength Global strength of erosion applied per iteration.
+ * @param randomness       Controls randomness in particle trajectories.
+ * @param exit_forcing     Forcing strength towards the domain frontier.
+ *
+ *  **Example**
+ * @include ex_conv_erosion.cpp
+ *
+ * **Result**
+ * @image html ex_conv_erosion.png
+ */
+void conv_erosion(Array        &z,
+                  std::uint32_t seed,
+                  int           iterations = 20,
+                  int           particle_count = 1000,
+                  int           ir_min = 8,
+                  int           ir_max = 64,
+                  float         size_distrib_exp = 1.f,
+                  float         erosion_strength = 0.02f,
+                  float         randomness = 0.01f,
+                  float         exit_forcing = 0.05f,
+                  int           gradient_ir = 16,
+                  float         gradient_exp = 0.5f,
+                  float         gradient_strength_min = 0.f);
 
 /**
  * @brief Fill holes using Gaussian-based deposition.
@@ -1716,7 +1640,11 @@ void strata_plates(Array        &z,
  * @param kz                Number of strata levels.
  * @param linear_gamma      If true, uses linear terrace transitions.
  * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param slope             Width of the inclined terrace face in [0, 1] (0 =
+ *                          vertical step, 1 = fully sloped transition).
+ * @param angle             Direction of the terrace inclination in radians.
  * @param p_noise           Optional noise map for profile modulation.
+ * @param bbox              Bounding box used to evaluate the terrace direction.
  *
  * **Example**
  * @include ex_strata_terrace.cpp
@@ -1730,7 +1658,10 @@ void strata_terrace(Array        &z,
                     float         kz = 4.f, // 4-layers
                     bool          linear_gamma = true,
                     float         gamma_noise_ratio = 0.5f,
-                    const Array  *p_noise = nullptr);
+                    float         slope = 0.f,
+                    float         angle = 0.f,
+                    const Array  *p_noise = nullptr,
+                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Applies a masked terrace (stratification) filter to a heightmap.
@@ -1745,7 +1676,11 @@ void strata_terrace(Array        &z,
  * @param kz                Number of strata levels.
  * @param linear_gamma      If true, uses linear terrace transitions.
  * @param gamma_noise_ratio Influence of noise on the terrace profile.
+ * @param slope             Width of the inclined terrace face in [0, 1] (0 =
+ *                          vertical step, 1 = fully sloped transition).
+ * @param angle             Direction of the terrace inclination in radians.
  * @param p_noise           Optional noise map for profile modulation.
+ * @param bbox              Bounding box used to evaluate the terrace direction.
  *
  * **Example**
  * @include ex_strata_terrace.cpp
@@ -1760,7 +1695,10 @@ void strata_terrace(Array        &z,
                     float         kz = 4.f, // 4-layers
                     bool          linear_gamma = true,
                     float         gamma_noise_ratio = 0.5f,
-                    const Array  *p_noise = nullptr);
+                    float         slope = 0.f,
+                    float         angle = 0.f,
+                    const Array  *p_noise = nullptr,
+                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Apply thermal weathering erosion.

@@ -1,0 +1,2 @@
+add_executable(ex_island_chain ex_island_chain.cpp)
+target_link_libraries(ex_island_chain highmap)

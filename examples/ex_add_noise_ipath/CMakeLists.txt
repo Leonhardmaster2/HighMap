@@ -1,0 +1,2 @@
+add_executable(ex_add_noise_ipath ex_add_noise_ipath.cpp)
+target_link_libraries(ex_add_noise_ipath highmap)

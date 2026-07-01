@@ -196,6 +196,32 @@ void VirtualTexture::to_png(const std::string &fname,
   this->to_png(this->shape, fname, cm, depth);
 }
 
+std::vector<float> VirtualTexture::to_raw(const ComputeMode &cm, bool flip_y)
+{
+  std::vector<float> raw;
+  raw.reserve(this->shape.x * this->shape.y * this->channels());
+
+  // brute force
+  Tensor t = this->to_tensor(this->shape, cm);
+
+  if (flip_y)
+  {
+    for (int j = 0; j < this->shape.y; ++j)
+      for (int i = 0; i < this->shape.x; ++i)
+        for (int c = 0; c < int(this->channels()); ++c)
+          raw.push_back(t(i, this->shape.y - 1 - j, c));
+  }
+  else
+  {
+    for (int j = 0; j < this->shape.y; ++j)
+      for (int i = 0; i < this->shape.x; ++i)
+        for (int c = 0; c < int(this->channels()); ++c)
+          raw.push_back(t(i, j, c));
+  }
+
+  return raw;
+}
+
 Tensor VirtualTexture::to_tensor(const glm::ivec2  &img_shape,
                                  const ComputeMode &cm) const
 {

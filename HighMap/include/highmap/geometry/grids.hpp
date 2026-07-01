@@ -4,16 +4,7 @@
 
 /**
  * @file grid.hpp
- * @author  Otto Link (otto.link.bv@gmail.com)
- * @brief
- * @version 0.1 Initial version.
- * @date 2023-06-18
- *
  * @copyright Copyright (c) 2023 Otto Link
- *
- * This software is distributed under the terms of the GNU General Public
- * License. The full license is available in the LICENSE file distributed with
- * this software.
  */
 
 #pragma once

@@ -11,6 +11,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "highmap/operator.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 
 namespace hmap::gpu
@@ -139,40 +140,24 @@ void strata_cells(Array        &z,
                   const Array  *p_noise_y,
                   glm::vec4     bbox)
 {
-  if (!p_mask)
-  {
-    strata_cells(z,
-                 kw,
-                 amp,
-                 seed,
-                 gamma,
-                 gamma_lateral,
-                 angle,
-                 noise_amp,
-                 absolute_displacement,
-                 occurence_probability,
-                 p_noise_x,
-                 p_noise_y,
-                 bbox);
-  }
-  else
-  {
-    Array z_f = z;
-    strata_cells(z_f,
-                 kw,
-                 amp,
-                 seed,
-                 gamma,
-                 gamma_lateral,
-                 angle,
-                 noise_amp,
-                 absolute_displacement,
-                 occurence_probability,
-                 p_noise_x,
-                 p_noise_y,
-                 bbox);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    strata_cells(a,
+                                 kw,
+                                 amp,
+                                 seed,
+                                 gamma,
+                                 gamma_lateral,
+                                 angle,
+                                 noise_amp,
+                                 absolute_displacement,
+                                 occurence_probability,
+                                 p_noise_x,
+                                 p_noise_y,
+                                 bbox);
+                  });
 }
 
 void strata_cells_fbm(Array        &z,
@@ -279,48 +264,28 @@ void strata_cells_fbm(Array        &z,
                       const Array  *p_noise_y,
                       glm::vec4     bbox)
 {
-  if (!p_mask)
-  {
-    strata_cells_fbm(z,
-                     kw,
-                     amp,
-                     seed,
-                     gamma,
-                     gamma_lateral,
-                     angle,
-                     enable_default_noise,
-                     default_noise_amp,
-                     absolute_displacement,
-                     occurence_probability,
-                     octaves,
-                     persistence,
-                     lacunarity,
-                     p_noise_x,
-                     p_noise_y,
-                     bbox);
-  }
-  else
-  {
-    Array z_f = z;
-    strata_cells_fbm(z_f,
-                     kw,
-                     amp,
-                     seed,
-                     gamma,
-                     gamma_lateral,
-                     angle,
-                     enable_default_noise,
-                     default_noise_amp,
-                     absolute_displacement,
-                     occurence_probability,
-                     octaves,
-                     persistence,
-                     lacunarity,
-                     p_noise_x,
-                     p_noise_y,
-                     bbox);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    strata_cells_fbm(a,
+                                     kw,
+                                     amp,
+                                     seed,
+                                     gamma,
+                                     gamma_lateral,
+                                     angle,
+                                     enable_default_noise,
+                                     default_noise_amp,
+                                     absolute_displacement,
+                                     occurence_probability,
+                                     octaves,
+                                     persistence,
+                                     lacunarity,
+                                     p_noise_x,
+                                     p_noise_y,
+                                     bbox);
+                  });
 }
 
 void strata_terrace(Array        &z,
@@ -329,7 +294,10 @@ void strata_terrace(Array        &z,
                     float         kz,
                     bool          linear_gamma,
                     float         gamma_noise_ratio,
-                    const Array  *p_noise)
+                    float         slope,
+                    float         angle,
+                    const Array  *p_noise,
+                    glm::vec4     bbox)
 {
   auto run = clwrapper::Run("strata_terrace");
 
@@ -343,7 +311,10 @@ void strata_terrace(Array        &z,
                      linear_gamma ? 1 : 0,
                      kz,
                      gamma_noise_ratio,
-                     p_noise ? 1 : 0);
+                     slope,
+                     angle,
+                     p_noise ? 1 : 0,
+                     bbox);
 
   run.write_buffer("z");
   run.execute({z.shape.x, z.shape.y});
@@ -357,30 +328,26 @@ void strata_terrace(Array        &z,
                     float         kz,
                     bool          linear_gamma,
                     float         gamma_noise_ratio,
-                    const Array  *p_noise)
+                    float         slope,
+                    float         angle,
+                    const Array  *p_noise,
+                    glm::vec4     bbox)
 {
-  if (!p_mask)
-  {
-    strata_terrace(z,
-                   gamma,
-                   seed,
-                   kz,
-                   linear_gamma,
-                   gamma_noise_ratio,
-                   p_noise);
-  }
-  else
-  {
-    Array z_f = z;
-    strata_terrace(z_f,
-                   gamma,
-                   seed,
-                   kz,
-                   linear_gamma,
-                   gamma_noise_ratio,
-                   p_noise);
-    z = lerp(z, z_f, *(p_mask));
-  }
+  apply_with_mask(z,
+                  p_mask,
+                  [&](Array &a)
+                  {
+                    strata_terrace(a,
+                                   gamma,
+                                   seed,
+                                   kz,
+                                   linear_gamma,
+                                   gamma_noise_ratio,
+                                   slope,
+                                   angle,
+                                   p_noise,
+                                   bbox);
+                  });
 }
 
 } // namespace hmap::gpu

@@ -4,7 +4,6 @@
 
 /**
  * @file cloud.hpp
- * @author Otto Link (otto.link.bv@gmail.com)
  * @brief Definition of the `Cloud` class for manipulating sets of 2D points.
  *
  * This file contains the definition of the `Cloud` class, which is used to
@@ -20,10 +19,6 @@
  * (SDF) and projecting point clouds onto arrays.
  *
  * @copyright Copyright (c) 2023 Otto Link
- *
- * This software is distributed under the terms of the GNU General Public
- * License. The full license is available in the LICENSE file distributed with
- * this software.
  */
 #pragma once
 #include <cmath>

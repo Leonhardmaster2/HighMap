@@ -18,9 +18,9 @@
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
-#include "highmap/internal/vector_utils.hpp"
 #include "highmap/range.hpp"
 #include "highmap/tensor.hpp"
+#include "highmap/vectors.hpp"
 
 namespace hmap
 {

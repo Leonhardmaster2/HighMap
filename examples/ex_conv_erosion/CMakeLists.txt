@@ -1,0 +1,2 @@
+add_executable(ex_conv_erosion ex_conv_erosion.cpp)
+target_link_libraries(ex_conv_erosion highmap)

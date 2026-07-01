@@ -134,6 +134,19 @@ Array gradient_norm(const Array &array, Array *p_dx, Array *p_dy)
   return dm;
 }
 
+Array gradient_norm_filtered(const Array &array, int ir)
+{
+  const glm::ivec2 &shape = array.shape;
+  const glm::ivec2  shape_f = {int(float(shape.x) / ir),
+                               int(float(shape.y) / ir)};
+
+  Array array_f = array.resample_to_shape_nearest(shape_f);
+  Array gn_f = gradient_norm(array_f) / ir;
+  Array gn = gn_f.resample_to_shape_bicubic(shape);
+
+  return gn;
+}
+
 Array gradient_norm_prewitt(const Array &array, Array *p_dx, Array *p_dy)
 {
   float x_coeff[3] = {1.0f, 1.0f, 1.0f};

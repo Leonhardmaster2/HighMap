@@ -24,7 +24,8 @@ void kernel thinning(read_only image2d_t  in,
 
   if (i >= nx || j >= ny) return;
 
-  sampler_t s = CLK_NORMALIZED_COORDS_FALSE | CLK_FILTER_NEAREST;
+  sampler_t s = CLK_NORMALIZED_COORDS_FALSE | CLK_ADDRESS_CLAMP_TO_EDGE |
+                CLK_FILTER_NEAREST;
 
   if (i == 0 || j == 0 || i == nx - 1 || j == ny - 1)
   {
