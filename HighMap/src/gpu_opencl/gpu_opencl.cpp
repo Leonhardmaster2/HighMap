@@ -263,7 +263,7 @@ bool init_opencl()
   code +=
 #include "kernels/wavelet_noise.cl"
       ;
-//
+  //
   code +=
 #include "kernels/rifts.cl"
       ;
