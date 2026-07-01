@@ -34,89 +34,247 @@ bool init_opencl()
   if (!clwrapper::DeviceManager::get_instance().is_ready()) return false;
 
   // load and build kernels
-  const std::string code =
-#include "kernels/_common_index.cl"
-#include "kernels/_common_math.cl"
-#include "kernels/_common_rand.cl"
-#include "kernels/_common_sort.cl"
-  //
-#include "kernels/advection_particle.cl"
-#include "kernels/advection_warp.cl"
-#include "kernels/bilateral_filter.cl"
-#include "kernels/blend_poisson_bf.cl"
-#include "kernels/coastal_fetch.cl"
-#include "kernels/curvature_quadric.cl"
-#include "kernels/directional_blur.cl"
-#include "kernels/eulerian_transport.cl"
-#include "kernels/expand.cl"
-#include "kernels/flow_direction_d8.cl"
-#include "kernels/gabor_wave.cl"
-#include "kernels/gavoronoise.cl"
-#include "kernels/generate_riverbed.cl"
-#include "kernels/gradient_norm.cl"
-#include "kernels/harmonic_interpolation.cl"
-#include "kernels/hemisphere_field.cl"
-#include "kernels/hydraulic_particle.cl"
-#include "kernels/hydraulic_schott.cl"
-#include "kernels/hydraulic_vpipes.cl"
-#include "kernels/interpolate_array.cl"
-#include "kernels/jump_flooding.cl"
-#include "kernels/laplace.cl"
-#include "kernels/laplacian_fract.cl"
-#include "kernels/local_max.cl"
-#include "kernels/local_mean.cl"
-#include "kernels/local_min.cl"
-#include "kernels/local_relief.cl"
-#include "kernels/local_skewness.cl"
-#include "kernels/local_variance.cl"
-#include "kernels/local_z_score.cl"
-#include "kernels/maximum_smooth.cl"
-#include "kernels/mean_shift.cl"
-#include "kernels/median_3x3.cl"
-#include "kernels/minimum_smooth.cl"
-#include "kernels/mountain_range_radial.cl"
-#include "kernels/noise_a.cl"
-#include "kernels/noise_b.cl"
-#include "kernels/normal_displacement.cl"
-#include "kernels/phase_averaging.cl"
-#include "kernels/phase_field.cl"
-#include "kernels/plateau.cl"
-#include "kernels/polygon_field.cl"
-#include "kernels/project_slope_along_direction.cl"
-#include "kernels/rotate.cl"
-#include "kernels/ruggedness.cl"
-#include "kernels/rugosity.cl"
-#include "kernels/sdf_2d_polyline.cl"
-#include "kernels/shallow_viscous_flow.cl"
-#include "kernels/skeleton.cl"
-#include "kernels/smooth_cpulse.cl"
-#include "kernels/snow_simulation.cl"
-#include "kernels/sparse_max_convolution.cl"
-#include "kernels/thermal.cl"
-#include "kernels/thermal_flatten.cl"
-#include "kernels/thermal_inflate.cl"
-#include "kernels/thermal_olsen.cl"
-#include "kernels/thermal_rib.cl"
-#include "kernels/thermal_ridge.cl"
-#include "kernels/thermal_schott.cl"
-#include "kernels/thermal_scree.cl"
-#include "kernels/topographic_position_index.cl"
-#include "kernels/vorolines.cl"
-#include "kernels/voronoi_base.cl"
-#include "kernels/voronoi_edge_distance.cl"
-#include "kernels/voronoi_fbm.cl"
-#include "kernels/voronoi_main.cl"
-#include "kernels/voronoise.cl"
-#include "kernels/vororand_main.cl"
-#include "kernels/warp.cl"
-#include "kernels/water_depth_filter.cl"
-#include "kernels/wavelet_noise.cl"
-//
-#include "kernels/rifts.cl"
-#include "kernels/strata.cl"
-#include "kernels/strata_cells.cl"
-#include "kernels/strata_terrace.cl"
+  std::string code;
+  code.reserve(270000);
 
+  code +=
+#include "kernels/_common_index.cl"
+      ;
+  code +=
+#include "kernels/_common_math.cl"
+      ;
+  code +=
+#include "kernels/_common_rand.cl"
+      ;
+  code +=
+#include "kernels/_common_sort.cl"
+      ;
+  //
+  code +=
+#include "kernels/advection_particle.cl"
+      ;
+  code +=
+#include "kernels/advection_warp.cl"
+      ;
+  code +=
+#include "kernels/bilateral_filter.cl"
+      ;
+  code +=
+#include "kernels/blend_poisson_bf.cl"
+      ;
+  code +=
+#include "kernels/coastal_fetch.cl"
+      ;
+  code +=
+#include "kernels/curvature_quadric.cl"
+      ;
+  code +=
+#include "kernels/directional_blur.cl"
+      ;
+  code +=
+#include "kernels/eulerian_transport.cl"
+      ;
+  code +=
+#include "kernels/expand.cl"
+      ;
+  code +=
+#include "kernels/flow_direction_d8.cl"
+      ;
+  code +=
+#include "kernels/gabor_wave.cl"
+      ;
+  code +=
+#include "kernels/gavoronoise.cl"
+      ;
+  code +=
+#include "kernels/generate_riverbed.cl"
+      ;
+  code +=
+#include "kernels/gradient_norm.cl"
+      ;
+  code +=
+#include "kernels/harmonic_interpolation.cl"
+      ;
+  code +=
+#include "kernels/hemisphere_field.cl"
+      ;
+  code +=
+#include "kernels/hydraulic_particle.cl"
+      ;
+  code +=
+#include "kernels/hydraulic_schott.cl"
+      ;
+  code +=
+#include "kernels/hydraulic_vpipes.cl"
+      ;
+  code +=
+#include "kernels/interpolate_array.cl"
+      ;
+  code +=
+#include "kernels/jump_flooding.cl"
+      ;
+  code +=
+#include "kernels/laplace.cl"
+      ;
+  code +=
+#include "kernels/laplacian_fract.cl"
+      ;
+  code +=
+#include "kernels/local_max.cl"
+      ;
+  code +=
+#include "kernels/local_mean.cl"
+      ;
+  code +=
+#include "kernels/local_min.cl"
+      ;
+  code +=
+#include "kernels/local_relief.cl"
+      ;
+  code +=
+#include "kernels/local_skewness.cl"
+      ;
+  code +=
+#include "kernels/local_variance.cl"
+      ;
+  code +=
+#include "kernels/local_z_score.cl"
+      ;
+  code +=
+#include "kernels/maximum_smooth.cl"
+      ;
+  code +=
+#include "kernels/mean_shift.cl"
+      ;
+  code +=
+#include "kernels/median_3x3.cl"
+      ;
+  code +=
+#include "kernels/minimum_smooth.cl"
+      ;
+  code +=
+#include "kernels/mountain_range_radial.cl"
+      ;
+  code +=
+#include "kernels/noise_a.cl"
+      ;
+  code +=
+#include "kernels/noise_b.cl"
+      ;
+  code +=
+#include "kernels/normal_displacement.cl"
+      ;
+  code +=
+#include "kernels/phase_averaging.cl"
+      ;
+  code +=
+#include "kernels/phase_field.cl"
+      ;
+  code +=
+#include "kernels/plateau.cl"
+      ;
+  code +=
+#include "kernels/polygon_field.cl"
+      ;
+  code +=
+#include "kernels/project_slope_along_direction.cl"
+      ;
+  code +=
+#include "kernels/rotate.cl"
+      ;
+  code +=
+#include "kernels/ruggedness.cl"
+      ;
+  code +=
+#include "kernels/rugosity.cl"
+      ;
+  code +=
+#include "kernels/sdf_2d_polyline.cl"
+      ;
+  code +=
+#include "kernels/shallow_viscous_flow.cl"
+      ;
+  code +=
+#include "kernels/skeleton.cl"
+      ;
+  code +=
+#include "kernels/smooth_cpulse.cl"
+      ;
+  code +=
+#include "kernels/snow_simulation.cl"
+      ;
+  code +=
+#include "kernels/sparse_max_convolution.cl"
+      ;
+  code +=
+#include "kernels/thermal.cl"
+      ;
+  code +=
+#include "kernels/thermal_flatten.cl"
+      ;
+  code +=
+#include "kernels/thermal_inflate.cl"
+      ;
+  code +=
+#include "kernels/thermal_olsen.cl"
+      ;
+  code +=
+#include "kernels/thermal_rib.cl"
+      ;
+  code +=
+#include "kernels/thermal_ridge.cl"
+      ;
+  code +=
+#include "kernels/thermal_schott.cl"
+      ;
+  code +=
+#include "kernels/thermal_scree.cl"
+      ;
+  code +=
+#include "kernels/topographic_position_index.cl"
+      ;
+  code +=
+#include "kernels/vorolines.cl"
+      ;
+  code +=
+#include "kernels/voronoi_base.cl"
+      ;
+  code +=
+#include "kernels/voronoi_edge_distance.cl"
+      ;
+  code +=
+#include "kernels/voronoi_fbm.cl"
+      ;
+  code +=
+#include "kernels/voronoi_main.cl"
+      ;
+  code +=
+#include "kernels/voronoise.cl"
+      ;
+  code +=
+#include "kernels/vororand_main.cl"
+      ;
+  code +=
+#include "kernels/warp.cl"
+      ;
+  code +=
+#include "kernels/water_depth_filter.cl"
+      ;
+  code +=
+#include "kernels/wavelet_noise.cl"
+      ;
+//
+  code +=
+#include "kernels/rifts.cl"
+      ;
+  code +=
+#include "kernels/strata.cl"
+      ;
+  code +=
+#include "kernels/strata_cells.cl"
+      ;
+  code +=
+#include "kernels/strata_terrace.cl"
       ;
 
   std::string opencl_build_options = "-cl-fast-relaxed-math "
