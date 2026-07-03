@@ -10,7 +10,6 @@
 #include "highmap/erosion.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
-#include "highmap/vectors.hpp"
 
 namespace hmap
 {

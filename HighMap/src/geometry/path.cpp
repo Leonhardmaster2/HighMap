@@ -20,7 +20,6 @@
 #include "highmap/morphology.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
-#include "highmap/vectors.hpp"
 
 namespace hmap
 {

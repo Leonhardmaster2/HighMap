@@ -5,13 +5,15 @@
 #include <cstddef>
 #include <functional>
 #include <stdexcept>
+#include <string>
+#include <utility>
 #include <vector>
 
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
 
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate1d.hpp"
 
 namespace hmap
 {

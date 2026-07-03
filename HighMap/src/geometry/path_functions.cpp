@@ -16,7 +16,8 @@
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate1d.hpp"
+#include "highmap/interpolate/interpolate_curve.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap

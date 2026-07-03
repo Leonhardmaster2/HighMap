@@ -20,7 +20,6 @@
 #include "highmap/export.hpp"
 #include "highmap/range.hpp"
 #include "highmap/tensor.hpp"
-#include "highmap/vectors.hpp"
 
 namespace hmap
 {

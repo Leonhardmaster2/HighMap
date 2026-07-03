@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "highmap/geometry/point.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate_curve.hpp"
 
 namespace hmap
 {

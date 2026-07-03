@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -21,8 +22,8 @@
 #include "hmm/src/triangulator.h"
 
 #include "highmap/array.hpp"
-#include "highmap/geometry.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/geometry/cloud.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
 #include <unordered_map>

@@ -1,9 +1,12 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <string>
+
 #include "highmap/array.hpp"
-#include "highmap/export.hpp"
+#include "highmap/colormaps.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
 

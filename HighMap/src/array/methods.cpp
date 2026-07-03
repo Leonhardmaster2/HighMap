@@ -13,7 +13,8 @@
 #include <opencv2/core.hpp>
 
 #include "highmap/array.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
+#include "highmap/interpolate/interpolate_array.hpp"
 #include "highmap/range.hpp"
 #include "highmap/vectors.hpp"
 

@@ -14,7 +14,6 @@
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/transform.hpp"
-#include "highmap/vectors.hpp"
 
 namespace hmap::gpu
 {

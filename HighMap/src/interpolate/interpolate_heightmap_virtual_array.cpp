@@ -7,7 +7,7 @@
 #include "macrologger.h"
 
 #include "highmap/coord_frame.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate_array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"

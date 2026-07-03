@@ -3,9 +3,11 @@
  * this software. */
 #include <cstdint>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 #include <opencv2/core.hpp>
+#include <opencv2/core/utility.hpp>
 
 #include "highmap/array.hpp"
 #include "highmap/range.hpp"

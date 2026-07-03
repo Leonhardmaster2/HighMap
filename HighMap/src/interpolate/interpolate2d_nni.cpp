@@ -7,7 +7,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/grids.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 
 namespace hmap
 {

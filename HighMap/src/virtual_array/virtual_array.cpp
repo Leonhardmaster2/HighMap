@@ -12,9 +12,8 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/interpolate.hpp"
+#include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/core.hpp"
-#include "highmap/vectors.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"

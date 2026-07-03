@@ -9,7 +9,6 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/functions.hpp"
-#include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/coherent_noise.hpp"

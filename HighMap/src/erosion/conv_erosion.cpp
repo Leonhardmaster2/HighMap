@@ -16,14 +16,12 @@
 #include "highmap/convolve.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
-#include "highmap/geometry.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/particles.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/range.hpp"
-#include "highmap/vectors.hpp"
 
 namespace hmap::gpu
 {
