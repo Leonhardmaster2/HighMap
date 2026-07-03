@@ -21,6 +21,7 @@
 #include "hmm/src/triangulator.h"
 
 #include "highmap/array.hpp"
+#include "highmap/geometry.hpp"
 #include "highmap/interpolate.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
@@ -949,6 +950,7 @@ void TerrainTriMesh::triangulate_delaunay()
     xy.push_back(p.x);
     xy.push_back(p.y);
   }
+
   delaunator::Delaunator d(xy);
 
   // triangles
@@ -1045,6 +1047,25 @@ TerrainTriMesh generate_terrain_tri_mesh_from_heightmap(const Array &z,
     xyz.push_back({ay * p.y, ax * p.x, p.z});
 
   return TerrainTriMesh(xyz);
+}
+
+TerrainTriMesh generate_terrain_tri_mesh_from_heightmap_random(
+    const Array  &z,
+    int           control_points_count,
+    std::uint32_t seed)
+{
+  const glm::ivec2 &shape = z.shape;
+  const glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f};
+
+  Cloud cloud = random_cloud_jittered(control_points_count,
+                                      {0.5f, 0.5f},
+                                      {0.f, 0.f},
+                                      seed,
+                                      bbox);
+  cloud.snap_points_to_bounding_box(bbox);
+  cloud.set_values_from_array(z, bbox);
+
+  return TerrainTriMesh(cloud.to_vec3());
 }
 
 } // namespace hmap

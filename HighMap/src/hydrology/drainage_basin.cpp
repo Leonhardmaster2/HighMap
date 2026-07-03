@@ -320,6 +320,82 @@ std::pair<std::vector<size_t>, bool> DrainageBasin::find_subroots()
   return {subroot, has_lake};
 }
 
+void DrainageBasin::flow_breach()
+{
+  auto &pts = this->mesh.get_points();
+
+  for (const auto &[outlet, traversal] : this->traversals)
+  {
+    if (traversal.empty()) continue;
+
+    // traversal is upstream -> downstream
+    size_t p = traversal.front();
+    float  zc = pts[p].z; // current
+
+    // follow receivers downstream to outlet
+    while (true)
+    {
+      const size_t &r = this->receivers[p];
+
+      if (r == p) break; // reached outlet
+
+      if (pts[p].z < zc)
+        zc = pts[p].z;
+      else
+        pts[p].z = zc;
+
+      p = r;
+    }
+  }
+}
+
+std::vector<std::vector<glm::vec3>> DrainageBasin::flow_breach_paths()
+{
+  auto &pts = this->mesh.get_points();
+
+  std::vector<std::vector<glm::vec3>> paths;
+  paths.reserve(this->traversals.size());
+
+  for (const auto &[outlet, traversal] : this->traversals)
+  {
+    if (traversal.empty())
+    {
+      paths.emplace_back();
+      continue;
+    }
+
+    std::vector<glm::vec3> path;
+    path.reserve(traversal.size());
+
+    // traversal is upstream -> downstream
+    size_t p = traversal.front();
+    float  zc = pts[p].z; // current
+
+    path.push_back(pts[p]);
+
+    // follow receivers downstream to outlet
+    while (true)
+    {
+      const size_t &r = this->receivers[p];
+
+      if (r == p) break; // reached outlet
+
+      if (pts[p].z < zc)
+        zc = pts[p].z;
+      else
+        pts[p].z = zc;
+
+      path.push_back(pts[p]);
+
+      p = r;
+    }
+
+    paths.push_back(std::move(path));
+  }
+
+  return paths;
+}
+
 const std::vector<size_t> &DrainageBasin::for_each_upstream(size_t outlet) const
 {
   return traversals.at(outlet);
@@ -341,7 +417,7 @@ std::vector<std::vector<size_t>> DrainageBasin::get_main_channels() const
     std::vector<size_t> channel;
     channel.reserve(traversal.size());
 
-    // traversal is upstream -> downstream
+    // traversal is downstream -> upstream
     size_t p = traversal.front();
     channel.push_back(p);
 

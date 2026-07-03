@@ -506,6 +506,16 @@ Array cloud_sdf_to_array(const Cloud &cloud,
                          const Array *p_noise_y = nullptr);
 
 /**
+ * @brief Checks whether the point cloud contains duplicate points.
+ *
+ * @param cloud Input point cloud.
+ * @param eps Distance tolerance for considering two points identical.
+ * @param xy_only If true, compares only the X and Y coordinates.
+ * @return True if duplicate points are found, false otherwise.
+ */
+bool has_duplicates(const Cloud &cloud, float eps = 1e-9f, bool xy_only = true);
+
+/**
  * @brief Interpolate values from an array at the points' `(x, y)` locations.
  *
  * This method computes interpolated values for each point in the cloud based on

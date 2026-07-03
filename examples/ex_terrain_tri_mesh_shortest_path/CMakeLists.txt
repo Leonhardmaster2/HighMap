@@ -1,0 +1,2 @@
+add_executable(ex_terrain_tri_mesh_shortest_path ex_terrain_tri_mesh_shortest_path.cpp)
+target_link_libraries(ex_terrain_tri_mesh_shortest_path highmap)

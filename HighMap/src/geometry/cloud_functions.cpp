@@ -64,6 +64,34 @@ Array cloud_sdf_to_array(const Cloud &cloud,
   return array;
 }
 
+bool has_duplicates(const Cloud &cloud, float eps, bool xy_only)
+{
+  std::vector<glm::vec3> pts = cloud.to_vec3();
+
+  std::sort(pts.begin(),
+            pts.end(),
+            [](const auto &a, const auto &b)
+            { return a.x < b.x || (a.x == b.x && a.y < b.y); });
+
+  if (xy_only)
+  {
+    for (size_t i = 1; i < pts.size(); ++i)
+    {
+      glm::vec2 p0 = {pts[i].x, pts[i].y};
+      glm::vec2 p1 = {pts[i - 1].x, pts[i - 1].y};
+
+      if (glm::distance(p0, p1) < eps) return true;
+    }
+  }
+  else
+  {
+    for (size_t i = 1; i < pts.size(); ++i)
+      if (glm::distance(pts[i], pts[i - 1]) < eps) return true;
+  }
+
+  return false;
+}
+
 std::vector<float> interpolate_values_from_array(const Cloud &cloud,
                                                  const Array &array,
                                                  glm::vec4    bbox)

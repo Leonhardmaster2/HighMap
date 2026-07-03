@@ -33,6 +33,7 @@ public:
   void compute_receivers(unsigned int seed = 0, float noise_strength = 0.f);
   void compute_receivers_priority_flood();
   void update_stream_tree(unsigned int seed, float noise_strength);
+  void update_stream_tree();
   void update_traversals();
 
   std::vector<glm::ivec2> get_outlets() const;
@@ -58,6 +59,8 @@ public:
                           const Array &max_slope);
 
   void accumulate_area_by_outlet(Array &acc) const;
+
+  void flow_breach();
 
   // --- Members ---
 

@@ -74,6 +74,12 @@ public:
     }
   };
 
+  struct ShortestPathResult
+  {
+    std::vector<float>  distance;
+    std::vector<size_t> parent;
+  };
+
 public:
   TerrainTriMesh() = default;
   TerrainTriMesh(const std::vector<glm::vec3> &ref_points);
@@ -111,6 +117,8 @@ public:
                      float                     sigma = 0.1f);
 
   void subdivise();
+
+  void flow_breach(float epsilon);
 
   // --- Triangle walk and interp ---
 
@@ -151,6 +159,24 @@ public:
 
   size_t size() const;
 
+  // --- Shortest path ---
+
+  ShortestPathResult compute_shortest_paths_to_hull(
+      bool  use_delta_z = false,
+      float elevation_weight = 1.f) const;
+
+  ShortestPathResult compute_shortest_paths(size_t start,
+                                            bool   use_delta_z = false,
+                                            float elevation_weight = 1.f) const;
+
+  std::vector<size_t> shortest_path(size_t start,
+                                    size_t end,
+                                    bool   use_delta_z = false,
+                                    float  elevation_weight = 1.f) const;
+
+  std::vector<size_t> path_to_hull(size_t                    start,
+                                   const ShortestPathResult &result) const;
+
   // --- Accessors ---
 
   const std::vector<glm::vec3> &get_points() const;
@@ -189,5 +215,10 @@ TerrainTriMesh generate_terrain_tri_mesh_from_heightmap(const Array &z,
                                                         float        max_error,
                                                         int max_triangles = 0,
                                                         int max_points = 0);
+
+TerrainTriMesh generate_terrain_tri_mesh_from_heightmap_random(
+    const Array  &z,
+    int           control_points_count,
+    std::uint32_t seed);
 
 } // namespace hmap

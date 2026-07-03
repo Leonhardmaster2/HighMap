@@ -64,6 +64,10 @@ public:
       const std::vector<float> &erodibility,
       float                     m_exp) const;
 
+  void flow_breach();
+
+  std::vector<std::vector<glm::vec3>> flow_breach_paths();
+
   float update_elevations(const std::vector<float> &response_times,
                           float                     uplift_rate,
                           const std::vector<float> &max_slope);

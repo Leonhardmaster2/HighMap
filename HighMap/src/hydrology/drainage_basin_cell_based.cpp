@@ -293,6 +293,33 @@ std::pair<Mat<glm::ivec2>, bool> DrainageBasinCellBased::find_subroots()
   return {subroot, has_lake};
 }
 
+void DrainageBasinCellBased::flow_breach()
+{
+  for (const auto &[outlet, traversal] : traversals)
+  {
+    if (traversal.empty()) continue;
+
+    // traversal is upstream -> downstream
+    glm::ivec2 p = traversal.front();
+    float      zc = z(p);
+
+    // follow receivers downstream to outlet
+    while (true)
+    {
+      const glm::ivec2 &r = receivers(p.x, p.y);
+
+      if (r == p) break; // reached outlet
+
+      if (z(p) < zc)
+        zc = z(p);
+      else
+        z(p) = zc;
+
+      p = r;
+    }
+  }
+}
+
 std::vector<std::vector<glm::ivec2>> DrainageBasinCellBased::get_main_channels()
     const
 {
@@ -515,6 +542,11 @@ void DrainageBasinCellBased::update_stream_tree(unsigned int seed,
   if (has_lake) this->remove_lakes(subroots);
 
   this->update_traversals();
+}
+
+void DrainageBasinCellBased::update_stream_tree()
+{
+  this->update_stream_tree(0, 0.f);
 }
 
 void DrainageBasinCellBased::update_traversals()
