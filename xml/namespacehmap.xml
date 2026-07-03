@@ -21692,6 +21692,63 @@ This function:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/geometry/cloud_functions.cpp" line="22" column="7" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="22" bodyend="65" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="502" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a248e8293399d0a3ae57265562aecd659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hmap::has_duplicates</definition>
+        <argsstring>(const Cloud &amp;cloud, float eps=1e-9f, bool xy_only=true)</argsstring>
+        <name>has_duplicates</name>
+        <qualifiedname>hmap::has_duplicates</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref> &amp;</type>
+          <declname>cloud</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>eps</declname>
+          <defval>1e-9<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>xy_only</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Checks whether the point cloud contains duplicate points. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cloud</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input point cloud. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Distance tolerance for considering two points identical. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xy_only</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, compares only the X and Y coordinates. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if duplicate points are found, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="67" column="6" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="67" bodyend="93" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="516" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab62e174cd14e34aa08ec4c5f00c14df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
         <definition>std::vector&lt; float &gt; hmap::interpolate_values_from_array</definition>
@@ -21738,7 +21795,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud_functions.cpp" line="67" column="13" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="67" bodyend="106" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="520" declcolumn="13"/>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="95" column="13" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="95" bodyend="134" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="530" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21781,7 +21838,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="607" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="607" bodyend="622" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="535" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="607" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="607" bodyend="622" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="545" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1afc6e9a8850aaebd3cca94aefb3c54114" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -21810,7 +21867,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="624" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="624" bodyend="651" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="542" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="624" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="624" bodyend="651" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="552" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac56218126b8f4fafd161848508bb040b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22017,7 +22074,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="653" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="653" bodyend="661" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="565" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="653" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="653" bodyend="661" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="575" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ad1c0d440da90fd4f08bb0ed691cc717c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22224,7 +22281,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="663" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="663" bodyend="671" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="594" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="663" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="663" bodyend="671" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="604" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab95c01f14ee3cce55edb9a349d59ede0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22419,7 +22476,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="673" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="673" bodyend="680" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="622" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="673" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="673" bodyend="680" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="632" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abb202506f601d0ab08eb286f8d3375d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22638,7 +22695,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="682" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="682" bodyend="691" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="651" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="682" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="682" bodyend="691" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="661" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a82932e580ffbdbf8c332ae4eb822c98d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -22857,7 +22914,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="693" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="693" bodyend="706" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="682" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="693" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="693" bodyend="706" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="692" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a67333ce244d3eadae6009a5f6c24ac4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23076,7 +23133,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="708" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="708" bodyend="717" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="714" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="708" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="708" bodyend="717" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="724" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa598e1e50dd0a4171a4c8fd6cd114dd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Cloud" kindref="compound">Cloud</ref></type>
@@ -23295,7 +23352,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud.cpp" line="719" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="719" bodyend="732" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="745" declcolumn="7"/>
+        <location file="HighMap/src/geometry/cloud.cpp" line="719" column="7" bodyfile="HighMap/src/geometry/cloud.cpp" bodystart="719" bodyend="732" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="755" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa01ff551bebcd0540dbac8b91732c0b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -23354,7 +23411,7 @@ This function:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/geometry/cloud_functions.cpp" line="108" column="6" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="108" bodyend="125" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="765" declcolumn="6"/>
+        <location file="HighMap/src/geometry/cloud_functions.cpp" line="136" column="6" bodyfile="HighMap/src/geometry/cloud_functions.cpp" bodystart="136" bodyend="153" declfile="HighMap/include/highmap/geometry/cloud.hpp" declline="775" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab085d07bc0e897729ca16c0dd2035fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -28183,7 +28240,7 @@ See unit tests: <ref refid="test__gradient_8cpp" kindref="compound">test_gradien
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="706" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="706" bodyend="763" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="110" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="782" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="782" bodyend="839" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="114" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a7c49b9b92f0badad7ace856e897de1f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; size_t &gt;</type>
@@ -28206,7 +28263,7 @@ See unit tests: <ref refid="test__gradient_8cpp" kindref="compound">test_gradien
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="765" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="765" bodyend="809" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="113" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="841" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="841" bodyend="885" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="117" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a23ab6bc3fdc7d5c498f0b3c8bebdd4f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::vec3 &gt;</type>
@@ -28238,7 +28295,7 @@ See unit tests: <ref refid="test__gradient_8cpp" kindref="compound">test_gradien
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="871" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="871" bodyend="897" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="115" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="947" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="947" bodyend="973" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="119" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1abbc07969594bdb8632f96c9ec893872e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; size_t &gt;</type>
@@ -28260,7 +28317,7 @@ See unit tests: <ref refid="test__gradient_8cpp" kindref="compound">test_gradien
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="811" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="811" bodyend="869" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="120" declcolumn="13"/>
+        <location file="HighMap/src/hydrology/drainage_basin.cpp" line="887" column="13" bodyfile="HighMap/src/hydrology/drainage_basin.cpp" bodystart="887" bodyend="945" declfile="HighMap/include/highmap/hydrology/drainage_basin.hpp" declline="124" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a6d5ae7cdae4d3db7507517699fb44ed7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhmap_1_1Mat" kindref="compound">Mat</ref>&lt; std::vector&lt; glm::ivec2 &gt; &gt;</type>
@@ -28278,7 +28335,7 @@ See unit tests: <ref refid="test__gradient_8cpp" kindref="compound">test_gradien
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/hydrology/drainage_basin_cell_based.cpp" line="550" column="5" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="550" bodyend="568" declfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" declline="83" declcolumn="5"/>
+        <location file="HighMap/src/hydrology/drainage_basin_cell_based.cpp" line="582" column="5" bodyfile="HighMap/src/hydrology/drainage_basin_cell_based.cpp" bodystart="582" bodyend="600" declfile="HighMap/include/highmap/hydrology/drainage_basin_cell_based.hpp" declline="86" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a8284b00f1f460f1d5a406ee45587dcd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -55728,7 +55785,7 @@ See unit tests: <ref refid="test__variance_8cpp" kindref="compound">test_varianc
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" line="992" column="13" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="992" bodyend="1020" declfile="HighMap/include/highmap/terrain_tri_mesh.hpp" declline="186" declcolumn="13"/>
+        <location file="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" line="994" column="13" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="994" bodyend="1022" declfile="HighMap/include/highmap/terrain_tri_mesh.hpp" declline="212" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af9fdabd692817be603ff5c44e68ea619" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1TerrainTriMesh" kindref="compound">TerrainTriMesh</ref></type>
@@ -55760,7 +55817,33 @@ See unit tests: <ref refid="test__variance_8cpp" kindref="compound">test_varianc
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" line="1022" column="16" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="1022" bodyend="1048" declfile="HighMap/include/highmap/terrain_tri_mesh.hpp" declline="188" declcolumn="16"/>
+        <location file="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" line="1024" column="16" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="1024" bodyend="1050" declfile="HighMap/include/highmap/terrain_tri_mesh.hpp" declline="214" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a5078af3eb73fb47ab1aad6cc872ab29a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1TerrainTriMesh" kindref="compound">TerrainTriMesh</ref></type>
+        <definition>TerrainTriMesh hmap::generate_terrain_tri_mesh_from_heightmap_random</definition>
+        <argsstring>(const Array &amp;z, int control_points_count, std::uint32_t seed)</argsstring>
+        <name>generate_terrain_tri_mesh_from_heightmap_random</name>
+        <qualifiedname>hmap::generate_terrain_tri_mesh_from_heightmap_random</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>control_points_count</declname>
+        </param>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" line="1052" column="16" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="1052" bodyend="1069" declfile="HighMap/include/highmap/terrain_tri_mesh.hpp" declline="219" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a19dec938e688ef4b73cf27ff3934043b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

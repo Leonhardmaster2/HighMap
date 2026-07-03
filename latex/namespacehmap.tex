@@ -949,6 +949,8 @@ bool \mbox{\hyperlink{namespacehmap_a1f55b3e36f46f0c821fb093bca24ca5f}{is\+\_\+p
 \begin{DoxyCompactList}\small\item\em Checks if a grid path has no gaps (8-\/connectivity). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad6694d36e91a15ded7373064d15b88c}{cloud\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Compute a distance field from a point cloud. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacehmap_a248e8293399d0a3ae57265562aecd659}{has\+\_\+duplicates}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, float eps=1e-\/9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool xy\+\_\+only=true)
+\begin{DoxyCompactList}\small\item\em Checks whether the point cloud contains duplicate points. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}{interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
 \begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}{merge\+\_\+cloud}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud1, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud2)
@@ -1800,6 +1802,8 @@ float \mbox{\hyperlink{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}{variance
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_aad6a39e70bf2ff70f8367e663d3027cf}{cubic\+\_\+pulse}} (const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&mesh)
 \item 
 \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_af9fdabd692817be603ff5c44e68ea619}{generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
+\item 
+\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a}{generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap\+\_\+random}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int control\+\_\+points\+\_\+count, std\+::uint32\+\_\+t seed)
 \item 
 void \mbox{\hyperlink{namespacehmap_a19dec938e688ef4b73cf27ff3934043b}{flip\+\_\+lr}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Flip the array horizontally (left/right). \end{DoxyCompactList}\item 
@@ -12992,6 +12996,28 @@ Compute a distance field from a point cloud.
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} of distances to the nearest point. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a248e8293399d0a3ae57265562aecd659}\label{namespacehmap_a248e8293399d0a3ae57265562aecd659} 
+\index{hmap@{hmap}!has\_duplicates@{has\_duplicates}}
+\index{has\_duplicates@{has\_duplicates}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool hmap\+::has\+\_\+duplicates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&}]{cloud,  }\item[{float}]{eps = {\ttfamily 1e-\/9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{xy\+\_\+only = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Checks whether the point cloud contains duplicate points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cloud} & Input point cloud. \\
+\hline
+{\em eps} & Distance tolerance for considering two points identical. \\
+\hline
+{\em xy\+\_\+only} & If true, compares only the X and Y coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if duplicate points are found, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}\label{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8} 
 \index{hmap@{hmap}!interpolate\_values\_from\_array@{interpolate\_values\_from\_array}}
 \index{interpolate\_values\_from\_array@{interpolate\_values\_from\_array}!hmap@{hmap}}
@@ -14879,7 +14905,7 @@ Calculate the chamfer distance between two paths.
 \Hypertarget{namespacehmap_adb224131a9c75491b105b67801e0fe20}\label{namespacehmap_adb224131a9c75491b105b67801e0fe20} 
 \index{hmap@{hmap}!has\_duplicates@{has\_duplicates}}
 \index{has\_duplicates@{has\_duplicates}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}}
+\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily bool hmap\+::has\+\_\+duplicates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{tol = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
@@ -30525,6 +30551,12 @@ This function generates a new heightmap by reshuffling patches of the input heig
 \index{generate\_terrain\_tri\_mesh\_from\_heightmap@{generate\_terrain\_tri\_mesh\_from\_heightmap}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{generate\_terrain\_tri\_mesh\_from\_heightmap()}{generate\_terrain\_tri\_mesh\_from\_heightmap()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+error,  }\item[{int}]{max\+\_\+triangles = {\ttfamily 0},  }\item[{int}]{max\+\_\+points = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a}\label{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a} 
+\index{hmap@{hmap}!generate\_terrain\_tri\_mesh\_from\_heightmap\_random@{generate\_terrain\_tri\_mesh\_from\_heightmap\_random}}
+\index{generate\_terrain\_tri\_mesh\_from\_heightmap\_random@{generate\_terrain\_tri\_mesh\_from\_heightmap\_random}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{generate\_terrain\_tri\_mesh\_from\_heightmap\_random()}{generate\_terrain\_tri\_mesh\_from\_heightmap\_random()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap\+\_\+random (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{control\+\_\+points\+\_\+count,  }\item[{std\+::uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacehmap_a19dec938e688ef4b73cf27ff3934043b}\label{namespacehmap_a19dec938e688ef4b73cf27ff3934043b} 
 \index{hmap@{hmap}!flip\_lr@{flip\_lr}}

@@ -318,6 +318,8 @@
     <member refid="classhmap_1_1DrainageBasin_1ad753fddf932df91b9de63dd9222a79a9" kind="function"><name>get_main_channels</name></member>
     <member refid="classhmap_1_1DrainageBasin_1a81376d87a5f35274d6a541c9c9832bda" kind="function"><name>remove_lakes</name></member>
     <member refid="classhmap_1_1DrainageBasin_1a97ae87db86facdff8c4955454553766a" kind="function"><name>compute_response_times</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a68cd031a86f51ed6107652ce336a51fa" kind="function"><name>flow_breach</name></member>
+    <member refid="classhmap_1_1DrainageBasin_1a4ec0c83521a03550a6824890b23a1311" kind="function"><name>flow_breach_paths</name></member>
     <member refid="classhmap_1_1DrainageBasin_1a61c39bccd602d2c04dfed14e653d01a6" kind="function"><name>update_elevations</name></member>
     <member refid="classhmap_1_1DrainageBasin_1a6864378e3110c92b84c033b3579d58d3" kind="function"><name>accumulate_area_by_outlet</name></member>
     <member refid="classhmap_1_1DrainageBasin_1a7b01ca0613368f0fd3dde8812e326ff1" kind="function"><name>for_each_upstream</name></member>
@@ -340,6 +342,7 @@
     <member refid="classhmap_1_1DrainageBasinCellBased_1a1e9f6c5c336799e2072e60737e200c06" kind="function"><name>compute_receivers</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1a803b4ddeebc535ae0d84153dbd173077" kind="function"><name>compute_receivers_priority_flood</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1a016b44f32bfa7b4efba7b0e2972559d5" kind="function"><name>update_stream_tree</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1a7724732019dbdd0f1c990c70abfe5cb7" kind="function"><name>update_stream_tree</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1ad06fd0817a6e10df178faabc42114f82" kind="function"><name>update_traversals</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1a517f9509d3e56b99362ba1daf1416c52" kind="function"><name>get_outlets</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1ace4e6f0f22a79f022cea7a3aa55c14da" kind="function"><name>set_outlets</name></member>
@@ -350,6 +353,7 @@
     <member refid="classhmap_1_1DrainageBasinCellBased_1a8c2fd86212124f8c3c02c6824706e39b" kind="function"><name>compute_response_times</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1ad007ada3b51c9f0f98e2509c8b7afec8" kind="function"><name>update_elevations</name></member>
     <member refid="classhmap_1_1DrainageBasinCellBased_1a9e828a65ed3c3995aa235ee269eb6e7f" kind="function"><name>accumulate_area_by_outlet</name></member>
+    <member refid="classhmap_1_1DrainageBasinCellBased_1ac9fa3176b0f4a388c4ca269efb26c328" kind="function"><name>flow_breach</name></member>
   </compound>
   <compound refid="structhmap_1_1TerrainTriMesh_1_1Edge" kind="struct"><name>hmap::TerrainTriMesh::Edge</name>
     <member refid="structhmap_1_1TerrainTriMesh_1_1Edge_1a73341f8d9c9398b96e078037ddd01c52" kind="variable"><name>v0</name></member>
@@ -739,6 +743,10 @@
     <member refid="structhmap_1_1ScopedTimer_1ae4f87957271838e7c5a263d358ffacc2" kind="function"><name>ScopedTimer</name></member>
     <member refid="structhmap_1_1ScopedTimer_1a2f3f39b91f3e0313debb9de8398b6194" kind="function"><name>~ScopedTimer</name></member>
   </compound>
+  <compound refid="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult" kind="struct"><name>hmap::TerrainTriMesh::ShortestPathResult</name>
+    <member refid="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult_1ad9901b3bb269976ef8b20b4d596eb06f" kind="variable"><name>distance</name></member>
+    <member refid="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult_1a4d65ede19369b6c448a06f920861539a" kind="variable"><name>parent</name></member>
+  </compound>
   <compound refid="classhmap_1_1Simplex2Function" kind="class"><name>hmap::Simplex2Function</name>
     <member refid="classhmap_1_1Simplex2Function_1ad1b360f696bd9d8db359120fae7dbdfb" kind="variable"><name>noise</name></member>
     <member refid="classhmap_1_1Simplex2Function_1a48c6cd24b29bc67ccc42f66b504d5ad6" kind="function"><name>Simplex2Function</name></member>
@@ -805,6 +813,7 @@
     <member refid="classhmap_1_1TerrainTriMesh_1a294e7c2d93fad24a25300028fe3937b3" kind="function"><name>slope_limiter</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a4a9987cc3413e52602717c0b6d2d5ab5" kind="function"><name>slope_limiter</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a8fa381ce42de945e2aff8944e2061def" kind="function"><name>subdivise</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1ad9e5fd21171dc0de0b67f11838bc1f01" kind="function"><name>flow_breach</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a3da697b9cfb9dc0c8b6ff8f5759021c4" kind="function"><name>barycentric</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1ae5d88ed0cc61c8606bed76faabb77e11" kind="function"><name>find_triangle</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a402e4d126734c83cc388c35736a35a6a" kind="function"><name>neighbor_triangle</name></member>
@@ -819,6 +828,10 @@
     <member refid="classhmap_1_1TerrainTriMesh_1a3e9d39039a00946a48cac2b9afea937c" kind="function"><name>get_reference_area_xy</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a11aca8515dbf3f60d71d0debf5f4308f" kind="function"><name>get_reference_area</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a9dc6c3e9a3a765e3cd16f1f490da636a" kind="function"><name>size</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1a572d32bcabab1879831bcfc490bf5532" kind="function"><name>compute_shortest_paths_to_hull</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1abd339d80c47d53e74e4f42966f994d48" kind="function"><name>compute_shortest_paths</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1aec20825d2885d94e151fd073a1cdc23f" kind="function"><name>shortest_path</name></member>
+    <member refid="classhmap_1_1TerrainTriMesh_1ad7c875682dd45ac1626bdfe6046fc5ca" kind="function"><name>path_to_hull</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1a9702d210cd3c967a066eb5ae6919476b" kind="function"><name>get_points</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1aae715400b4086c69d625a00a9bd4fd17" kind="function"><name>get_points</name></member>
     <member refid="classhmap_1_1TerrainTriMesh_1af3fc2aebc71077496e7d794005032887" kind="function"><name>get_triangles</name></member>
@@ -1093,7 +1106,7 @@
     <member refid="classhmap_1_1XyControlFunction_1acfe5c441363f35d36a13084fb56c6dca" kind="function"><name>MinimumImpl</name></member>
     <member refid="classhmap_1_1XyControlFunction_1ab32abc0861325b3ea6f547b938a9225d" kind="function"><name>MaximumImpl</name></member>
   </compound>
-  <compound refid="namespace_0d337" kind="namespace"><name>@337</name>
+  <compound refid="namespace_0d339" kind="namespace"><name>@339</name>
   </compound>
   <compound refid="namespaceglm" kind="namespace"><name>glm</name>
   </compound>
@@ -1557,6 +1570,7 @@
     <member refid="namespacehmap_1ac6946a57676cf1b3fef0bc7cb0221789" kind="function"><name>enforce_path_adjacency</name></member>
     <member refid="namespacehmap_1a1f55b3e36f46f0c821fb093bca24ca5f" kind="function"><name>is_path_adjacent</name></member>
     <member refid="namespacehmap_1aad6694d36e91a15ded7373064d15b88c" kind="function"><name>cloud_sdf_to_array</name></member>
+    <member refid="namespacehmap_1a248e8293399d0a3ae57265562aecd659" kind="function"><name>has_duplicates</name></member>
     <member refid="namespacehmap_1ab62e174cd14e34aa08ec4c5f00c14df8" kind="function"><name>interpolate_values_from_array</name></member>
     <member refid="namespacehmap_1abd7c616c225d31eb2fd4e3ff023e3ed5" kind="function"><name>merge_cloud</name></member>
     <member refid="namespacehmap_1afc6e9a8850aaebd3cca94aefb3c54114" kind="function"><name>merge_clouds</name></member>
@@ -1983,6 +1997,7 @@
     <member refid="namespacehmap_1adb1405cd7f9a219c82c149bcaa55cafc" kind="function"><name>quilting_shuffle</name></member>
     <member refid="namespacehmap_1aad6a39e70bf2ff70f8367e663d3027cf" kind="function"><name>cubic_pulse</name></member>
     <member refid="namespacehmap_1af9fdabd692817be603ff5c44e68ea619" kind="function"><name>generate_terrain_tri_mesh_from_heightmap</name></member>
+    <member refid="namespacehmap_1a5078af3eb73fb47ab1aad6cc872ab29a" kind="function"><name>generate_terrain_tri_mesh_from_heightmap_random</name></member>
     <member refid="namespacehmap_1a19dec938e688ef4b73cf27ff3934043b" kind="function"><name>flip_lr</name></member>
     <member refid="namespacehmap_1a2c304fc0d8cefe164e3070c885b43aaa" kind="function"><name>flip_ud</name></member>
     <member refid="namespacehmap_1af9ae05bbdab06ce61f1385ef4231d03b" kind="function"><name>radial_displacement_to_xy</name></member>
@@ -2948,6 +2963,10 @@
   <compound refid="quilting_8cpp" kind="file"><name>quilting.cpp</name>
   </compound>
   <compound refid="tensor_8cpp" kind="file"><name>tensor.cpp</name>
+  </compound>
+  <compound refid="flow__breach_8cpp" kind="file"><name>flow_breach.cpp</name>
+  </compound>
+  <compound refid="shortest__path_8cpp" kind="file"><name>shortest_path.cpp</name>
   </compound>
   <compound refid="terrain__tri__mesh_8cpp" kind="file"><name>terrain_tri_mesh.cpp</name>
   </compound>

@@ -118,6 +118,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1NeighborData.html">NeighborData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">ShortestPathResult</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1Triangle.html">Triangle</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -149,6 +151,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4a9987cc3413e52602717c0b6d2d5ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fa381ce42de945e2aff8944e2061def" id="r_a8fa381ce42de945e2aff8944e2061def"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a8fa381ce42de945e2aff8944e2061def">subdivise</a> ()</td></tr>
 <tr class="separator:a8fa381ce42de945e2aff8944e2061def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e5fd21171dc0de0b67f11838bc1f01" id="r_ad9e5fd21171dc0de0b67f11838bc1f01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad9e5fd21171dc0de0b67f11838bc1f01">flow_breach</a> (float epsilon)</td></tr>
+<tr class="separator:ad9e5fd21171dc0de0b67f11838bc1f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da697b9cfb9dc0c8b6ff8f5759021c4" id="r_a3da697b9cfb9dc0c8b6ff8f5759021c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a3da697b9cfb9dc0c8b6ff8f5759021c4">barycentric</a> (const glm::vec2 &amp;p, size_t i0, size_t i1, size_t i2, float &amp;w0, float &amp;w1, float &amp;w2) const</td></tr>
 <tr class="separator:a3da697b9cfb9dc0c8b6ff8f5759021c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5d88ed0cc61c8606bed76faabb77e11" id="r_ae5d88ed0cc61c8606bed76faabb77e11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ae5d88ed0cc61c8606bed76faabb77e11">find_triangle</a> (const glm::vec2 &amp;p, int start_tri=0, bool linear_search=false) const</td></tr>
@@ -177,6 +181,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a11aca8515dbf3f60d71d0debf5f4308f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dc6c3e9a3a765e3cd16f1f490da636a" id="r_a9dc6c3e9a3a765e3cd16f1f490da636a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a9dc6c3e9a3a765e3cd16f1f490da636a">size</a> () const</td></tr>
 <tr class="separator:a9dc6c3e9a3a765e3cd16f1f490da636a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572d32bcabab1879831bcfc490bf5532" id="r_a572d32bcabab1879831bcfc490bf5532"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">ShortestPathResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a572d32bcabab1879831bcfc490bf5532">compute_shortest_paths_to_hull</a> (bool use_delta_z=false, float elevation_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:a572d32bcabab1879831bcfc490bf5532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd339d80c47d53e74e4f42966f994d48" id="r_abd339d80c47d53e74e4f42966f994d48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">ShortestPathResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#abd339d80c47d53e74e4f42966f994d48">compute_shortest_paths</a> (size_t start, bool use_delta_z=false, float elevation_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:abd339d80c47d53e74e4f42966f994d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec20825d2885d94e151fd073a1cdc23f" id="r_aec20825d2885d94e151fd073a1cdc23f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#aec20825d2885d94e151fd073a1cdc23f">shortest_path</a> (size_t start, size_t end, bool use_delta_z=false, float elevation_weight=1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a>) const</td></tr>
+<tr class="separator:aec20825d2885d94e151fd073a1cdc23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c875682dd45ac1626bdfe6046fc5ca" id="r_ad7c875682dd45ac1626bdfe6046fc5ca"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#ad7c875682dd45ac1626bdfe6046fc5ca">path_to_hull</a> (size_t start, const <a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">ShortestPathResult</a> &amp;result) const</td></tr>
+<tr class="separator:ad7c875682dd45ac1626bdfe6046fc5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9702d210cd3c967a066eb5ae6919476b" id="r_a9702d210cd3c967a066eb5ae6919476b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; glm::vec3 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#a9702d210cd3c967a066eb5ae6919476b">get_points</a> () const</td></tr>
 <tr class="separator:a9702d210cd3c967a066eb5ae6919476b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae715400b4086c69d625a00a9bd4fd17" id="r_aae715400b4086c69d625a00a9bd4fd17"><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html#aae715400b4086c69d625a00a9bd4fd17">get_points</a> ()</td></tr>
@@ -542,6 +554,24 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void hmap::TerrainTriMesh::subdivise </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9e5fd21171dc0de0b67f11838bc1f01" name="ad9e5fd21171dc0de0b67f11838bc1f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e5fd21171dc0de0b67f11838bc1f01">&#9670;&#160;</a></span>flow_breach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hmap::TerrainTriMesh::flow_breach </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>epsilon</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -915,6 +945,136 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a572d32bcabab1879831bcfc490bf5532" name="a572d32bcabab1879831bcfc490bf5532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572d32bcabab1879831bcfc490bf5532">&#9670;&#160;</a></span>compute_shortest_paths_to_hull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">TerrainTriMesh::ShortestPathResult</a> hmap::TerrainTriMesh::compute_shortest_paths_to_hull </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_delta_z</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>elevation_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd339d80c47d53e74e4f42966f994d48" name="abd339d80c47d53e74e4f42966f994d48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd339d80c47d53e74e4f42966f994d48">&#9670;&#160;</a></span>compute_shortest_paths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">TerrainTriMesh::ShortestPathResult</a> hmap::TerrainTriMesh::compute_shortest_paths </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_delta_z</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>elevation_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec20825d2885d94e151fd073a1cdc23f" name="aec20825d2885d94e151fd073a1cdc23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec20825d2885d94e151fd073a1cdc23f">&#9670;&#160;</a></span>shortest_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; hmap::TerrainTriMesh::shortest_path </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_delta_z</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>elevation_weight</em> = <code>1.<a class="el" href="distance__transform_8cpp.html#abcb9259cf91bfd25e92a72cdf18c285e">f</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7c875682dd45ac1626bdfe6046fc5ca" name="ad7c875682dd45ac1626bdfe6046fc5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c875682dd45ac1626bdfe6046fc5ca">&#9670;&#160;</a></span>path_to_hull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; hmap::TerrainTriMesh::path_to_hull </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structhmap_1_1TerrainTriMesh_1_1ShortestPathResult.html">ShortestPathResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9702d210cd3c967a066eb5ae6919476b" name="a9702d210cd3c967a066eb5ae6919476b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9702d210cd3c967a066eb5ae6919476b">&#9670;&#160;</a></span>get_points() <span class="overload">[1/2]</span></h2>
 
@@ -1106,6 +1266,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>HighMap/include/highmap/<a class="el" href="terrain__tri__mesh_8hpp_source.html">terrain_tri_mesh.hpp</a></li>
+<li>HighMap/src/terrain_tri_mesh/<a class="el" href="flow__breach_8cpp.html">flow_breach.cpp</a></li>
+<li>HighMap/src/terrain_tri_mesh/<a class="el" href="shortest__path_8cpp.html">shortest_path.cpp</a></li>
 <li>HighMap/src/terrain_tri_mesh/<a class="el" href="terrain__tri__mesh_8cpp.html">terrain_tri_mesh.cpp</a></li>
 </ul>
 </div><!-- contents -->
