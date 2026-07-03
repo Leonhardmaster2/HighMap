@@ -279,6 +279,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class to represent a multi-dimensional tensor.  <a href="classhmap_1_1Tensor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structhmap_1_1TerrainTriMesh_1_1Triangle.html" title="Triangle defined by three vertex indices.">Triangle</a> mesh representation of a terrain surface.  <a href="classhmap_1_1TerrainTriMesh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmap_1_1TileKey.html">TileKey</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2598,10 +2599,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:adb1405cd7f9a219c82c149bcaa55cafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synthesize a new heightmap by reshuffling patches of the input heightmap.  <br /></td></tr>
 <tr class="separator:adb1405cd7f9a219c82c149bcaa55cafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad6a39e70bf2ff70f8367e663d3027cf" id="r_aad6a39e70bf2ff70f8367e663d3027cf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#aad6a39e70bf2ff70f8367e663d3027cf">cubic_pulse</a> (const <a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a> &amp;mesh)</td></tr>
+<tr class="memdesc:aad6a39e70bf2ff70f8367e663d3027cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a cubic pulse value for each mesh vertex.  <br /></td></tr>
 <tr class="separator:aad6a39e70bf2ff70f8367e663d3027cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9fdabd692817be603ff5c44e68ea619" id="r_af9fdabd692817be603ff5c44e68ea619"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#af9fdabd692817be603ff5c44e68ea619">generate_terrain_tri_mesh_from_heightmap</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, float max_error, int max_triangles=0, int max_points=0)</td></tr>
+<tr class="memdesc:af9fdabd692817be603ff5c44e68ea619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a terrain mesh from a heightmap.  <br /></td></tr>
 <tr class="separator:af9fdabd692817be603ff5c44e68ea619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5078af3eb73fb47ab1aad6cc872ab29a" id="r_a5078af3eb73fb47ab1aad6cc872ab29a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhmap_1_1TerrainTriMesh.html">TerrainTriMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a5078af3eb73fb47ab1aad6cc872ab29a">generate_terrain_tri_mesh_from_heightmap_random</a> (const <a class="el" href="classhmap_1_1Array.html">Array</a> &amp;z, int control_points_count, std::uint32_t seed)</td></tr>
+<tr class="memdesc:a5078af3eb73fb47ab1aad6cc872ab29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random terrain mesh from a heightmap.  <br /></td></tr>
 <tr class="separator:a5078af3eb73fb47ab1aad6cc872ab29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19dec938e688ef4b73cf27ff3934043b" id="r_a19dec938e688ef4b73cf27ff3934043b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmap.html#a19dec938e688ef4b73cf27ff3934043b">flip_lr</a> (<a class="el" href="classhmap_1_1Array.html">Array</a> &amp;array)</td></tr>
 <tr class="memdesc:a19dec938e688ef4b73cf27ff3934043b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flip the array horizontally (left/right).  <br /></td></tr>
@@ -50354,6 +50358,8 @@ off" values that fall below the threshold, which can be useful for filtering out
       </table>
 </div><div class="memdoc">
 
+<p>Compute a cubic pulse value for each mesh vertex. </p>
+
 </div>
 </div>
 <a id="af9fdabd692817be603ff5c44e68ea619" name="af9fdabd692817be603ff5c44e68ea619"></a>
@@ -50394,6 +50400,8 @@ off" values that fall below the threshold, which can be useful for filtering out
       </table>
 </div><div class="memdoc">
 
+<p>Generate a terrain mesh from a heightmap. </p>
+
 </div>
 </div>
 <a id="a5078af3eb73fb47ab1aad6cc872ab29a" name="a5078af3eb73fb47ab1aad6cc872ab29a"></a>
@@ -50427,6 +50435,8 @@ off" values that fall below the threshold, which can be useful for filtering out
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Generate a random terrain mesh from a heightmap. </p>
 
 </div>
 </div>
