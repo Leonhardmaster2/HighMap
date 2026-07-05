@@ -148,7 +148,7 @@ public:
   void subdivise();
 
   /** @brief Breach terrain depressions for flow routing. */
-  void flow_breach(float epsilon);
+  void flow_breach(float epsilon, float uphill_tolerance = 0.f);
 
   /** @brief Compute barycentric coordinates. */
   bool barycentric(const glm::vec2 &p,

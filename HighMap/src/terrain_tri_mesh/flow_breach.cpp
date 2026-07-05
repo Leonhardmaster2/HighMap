@@ -9,7 +9,7 @@
 namespace hmap
 {
 
-void TerrainTriMesh::flow_breach(float epsilon)
+void TerrainTriMesh::flow_breach(float epsilon, float uphill_tolerance)
 {
   auto paths = compute_shortest_paths_to_hull(true);
 
@@ -24,7 +24,7 @@ void TerrainTriMesh::flow_breach(float epsilon)
     {
       size_t child = path[i + 1];
       size_t parent = path[i];
-      float  required = points[parent].z - epsilon;
+      float  required = points[parent].z - epsilon + uphill_tolerance;
       if (points[child].z > required) points[child].z = required;
     }
   }
