@@ -396,15 +396,20 @@
         </inbodydescription>
         <location file="HighMap/include/highmap/terrain_tri_mesh.hpp" line="148" column="8" bodyfile="HighMap/src/terrain_tri_mesh/terrain_tri_mesh.cpp" bodystart="835" bodyend="871"/>
       </memberdef>
-      <memberdef kind="function" id="classhmap_1_1TerrainTriMesh_1ad9e5fd21171dc0de0b67f11838bc1f01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classhmap_1_1TerrainTriMesh_1a1b251e7616ce7c913b148475548b080b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hmap::TerrainTriMesh::flow_breach</definition>
-        <argsstring>(float epsilon)</argsstring>
+        <argsstring>(float epsilon, float uphill_tolerance=0.f)</argsstring>
         <name>flow_breach</name>
         <qualifiedname>hmap::TerrainTriMesh::flow_breach</qualifiedname>
         <param>
           <type>float</type>
           <declname>epsilon</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>uphill_tolerance</declname>
+          <defval>0.<ref refid="distance__transform_8cpp_1abcb9259cf91bfd25e92a72cdf18c285e" kindref="member">f</ref></defval>
         </param>
         <briefdescription>
 <para>Breach terrain depressions for flow routing. </para>
@@ -1046,7 +1051,7 @@
       <member refid="classhmap_1_1TerrainTriMesh_1ad3839fa27b374fee7a95c1d3e63ccc27" prot="private" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>convex_hull</name></member>
       <member refid="classhmap_1_1TerrainTriMesh_1aff20c6cfb3730b3c55d6d1c803057bd3" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>export_obj</name></member>
       <member refid="classhmap_1_1TerrainTriMesh_1ae5d88ed0cc61c8606bed76faabb77e11" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>find_triangle</name></member>
-      <member refid="classhmap_1_1TerrainTriMesh_1ad9e5fd21171dc0de0b67f11838bc1f01" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>flow_breach</name></member>
+      <member refid="classhmap_1_1TerrainTriMesh_1a1b251e7616ce7c913b148475548b080b" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>flow_breach</name></member>
       <member refid="classhmap_1_1TerrainTriMesh_1abe70758d6b941cbca110db0ac66f167c" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>get_bbox</name></member>
       <member refid="classhmap_1_1TerrainTriMesh_1a023c617be776b6643ceccf8dd2ca22ec" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>get_convex_hull</name></member>
       <member refid="classhmap_1_1TerrainTriMesh_1adab683cb7235023ccd24630f401f6755" prot="public" virt="non-virtual"><scope>hmap::TerrainTriMesh</scope><name>get_neighbors</name></member>
