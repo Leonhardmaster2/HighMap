@@ -508,10 +508,10 @@ Array cloud_sdf_to_array(const Cloud &cloud,
 /**
  * @brief Checks whether the point cloud contains duplicate points.
  *
- * @param cloud Input point cloud.
- * @param eps Distance tolerance for considering two points identical.
- * @param xy_only If true, compares only the X and Y coordinates.
- * @return True if duplicate points are found, false otherwise.
+ * @param  cloud   Input point cloud.
+ * @param  eps     Distance tolerance for considering two points identical.
+ * @param  xy_only If true, compares only the X and Y coordinates.
+ * @return         True if duplicate points are found, false otherwise.
  */
 bool has_duplicates(const Cloud &cloud, float eps = 1e-9f, bool xy_only = true);
 

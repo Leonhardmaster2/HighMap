@@ -14,6 +14,36 @@ namespace hmap
 {
 
 /**
+ * @brief Computes the downstream path length to the domain outlet.
+ *
+ * For each cell, follows the steepest-descending flow path and returns the
+ * number of downstream cells required to leave the domain. Cells whose flow
+ * terminates in an internal sink have a path length of 0.
+ *
+ * **Example**
+ * @include ex_path_length_to_sink.cpp
+ *
+ * **Result**
+ * @image html ex_path_length_to_sink.png
+ */
+Array path_length_to_outlet(const Array &z);
+
+/**
+ * @brief Computes the downstream path length to the nearest sink.
+ *
+ * For each cell, follows the steepest-descending flow path and returns the
+ * number of downstream cells required to reach a sink. Sink cells have a path
+ * length of 0.
+ *
+ * **Example**
+ * @include ex_path_length_to_sink.cpp
+ *
+ * **Result**
+ * @image html ex_path_length_to_sink.png
+ */
+Array path_length_to_sink(const Array &z);
+
+/**
  * @brief Return the local maxima based on a maximum filter with a square
  * kernel.
  *

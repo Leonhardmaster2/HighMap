@@ -1,0 +1,2 @@
+add_executable(ex_path_length_to_sink ex_path_length_to_sink.cpp)
+target_link_libraries(ex_path_length_to_sink highmap)
