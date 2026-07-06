@@ -268,6 +268,45 @@ Array flooding_lake_system(const Array &z, float surface_threshold = 0);
 Array flow_accumulation_d8(const Array &z);
 
 /**
+ * @brief Computes flow accumulation using a stochastic (Monte-Carlo)
+ * transport estimator.
+ *
+ * Particles are spawned uniformly, advected along the downhill gradient
+ * field with exact voxel traversal, attenuated by an optional decay term,
+ * and deposit flux into every cell they exit. A final analytic
+ * normalization yields the steady-state flux, including for cells no
+ * particle visited. Compared to flow_accumulation_d8, the result is
+ * smooth and free of axis-aligned artifacts.
+ *
+ * Port of the reference implementation of "Stochastic Geomorphological
+ * Transport for Terrain Erosion Simulation" (N. McDonald, G. Cordonnier),
+ * https://github.com/erosiv/geotransport (MIT).
+ *
+ * @param  z         Input array representing the heightmap values.
+ * @param  n_samples Number of Monte-Carlo samples (particles).
+ * @param  seed      Random seed number (deterministic for fixed inputs).
+ * @param  p_source  Optional per-cell source term (default: uniform 1).
+ * @param  p_decay   Optional per-cell decay rate (default: 0, pure
+ *                   accumulation).
+ * @return           Array Per-cell steady-state flux.
+ *
+ * **Example**
+ * @include ex_flow_accumulation_stochastic.cpp
+ *
+ * **Result**
+ * @image html ex_flow_accumulation_stochastic0.png
+ * @image html ex_flow_accumulation_stochastic1.png
+ * @image html ex_flow_accumulation_stochastic2.png
+ *
+ * @see      flow_accumulation_d8
+ */
+Array flow_accumulation_stochastic(const Array &z,
+                                   int          n_samples = 1 << 19,
+                                   uint         seed = 0,
+                                   const Array *p_source = nullptr,
+                                   const Array *p_decay = nullptr);
+
+/**
  * @brief Computes the flow accumulation for each cell using the Multiple Flow
  * Direction (MFD) model.
  *

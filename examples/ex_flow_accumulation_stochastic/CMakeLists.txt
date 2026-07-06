@@ -1,0 +1,2 @@
+add_executable(ex_flow_accumulation_stochastic ex_flow_accumulation_stochastic.cpp)
+target_link_libraries(ex_flow_accumulation_stochastic highmap)
