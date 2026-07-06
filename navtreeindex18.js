@@ -1,5 +1,9 @@
 var NAVTREEINDEX18 =
 {
+"normalize_8cpp.html#a3d6212896d8cd828bd5bd827d24a0344":[5,0,1,1,38,2,1],
+"opencv__wrapper_8cpp.html":[5,0,1,1,1,4],
+"opencv__wrapper_8cpp.html#a4fca3ce1ffb84dbc8a627b3313b1d1fb":[5,0,1,1,1,4,0],
+"opencv__wrapper_8cpp.html#a518f05118e1b9704160a7c3276a2f483":[5,0,1,1,1,4,1],
 "opencv__wrapper_8cpp.html#a9c60eb4b1dddad23a27fe2ffc9507a2b":[5,0,1,1,1,4,2],
 "openmp_8cpp.html":[5,0,1,1,27,0],
 "openmp_8cpp.html#aab86375877f77e5c6fd396c339d8cbea":[5,0,1,1,27,0,0],
@@ -77,6 +81,9 @@ var NAVTREEINDEX18 =
 "path__functions_8cpp.html#acb8406087111cf178e5721b45b995db4":[5,0,1,1,17,7,0],
 "path__functions_8cpp.html#ad81052648d6008d2b7b4a5a36a2d7830":[5,0,1,1,17,7,12],
 "path__functions_8cpp.html#af9b55527f8d0f1c01d110b3144ee7d91":[5,0,1,1,17,7,5],
+"path__length__to__sink_8cpp.html":[5,0,1,1,23,3],
+"path__length__to__sink_8cpp.html#a6c42198d3612cdfd232c900f427bd103":[5,0,1,1,23,3,0],
+"path__length__to__sink_8cpp.html#af5117ffbcd95bf910f3b70b095bee604":[5,0,1,1,23,3,1],
 "path__verification_8cpp.html":[5,0,1,1,17,8],
 "path__verification_8cpp.html#a5944fc905be512784a9caceb527703d4":[5,0,1,1,17,8,0],
 "path__verification_8cpp.html#aba24d09d6f4a3eab8c1522536088f39e":[5,0,1,1,17,8,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX18 =
 "primitives_8cpp.html#a80b6038177b2ab3984cb18bd90f568fa":[5,0,1,1,30,1,5,13],
 "primitives_8cpp.html#a8fc658165f2be0a1ef89bf24f828a762":[5,0,1,1,30,1,5,6],
 "primitives_8cpp.html#a9bab88cc60ec72c09eec98f0fb9f452f":[5,0,1,1,30,1,5,9],
-"primitives_8cpp.html#aac2bd27e550ca991c67d8df2df6f0999":[5,0,1,1,30,1,5,14],
-"primitives_8cpp.html#adafc477ac182ce40ebf2cee1c84cb936":[5,0,1,1,30,1,5,10],
-"primitives_8cpp.html#aeffedc90714bfcfed6a5f18d780b1094":[5,0,1,1,30,1,5,2],
-"primitives_8hpp.html":[5,0,1,0,0,38],
-"primitives_8hpp_source.html":[5,0,1,0,0,38],
-"primitives__gpu_8cpp.html":[5,0,1,1,30,0,5],
-"primitives__gpu_8cpp.html#a041f105aa505b9f94c9d526e5d0978cc":[5,0,1,1,30,0,5,2],
-"primitives__gpu_8cpp.html#a0b06b24568140dc46bacb4132cd35e4a":[5,0,1,1,30,0,5,13]
+"primitives_8cpp.html#aac2bd27e550ca991c67d8df2df6f0999":[5,0,1,1,30,1,5,14]
 };

@@ -33172,6 +33172,90 @@ The output path consists of:<itemizedlist>
         </inbodydescription>
         <location file="HighMap/src/kernels/kernels.cpp" line="455" column="7" bodyfile="HighMap/src/kernels/kernels.cpp" bodystart="455" bodyend="471" declfile="HighMap/include/highmap/kernels.hpp" declline="419" declcolumn="7"/>
       </memberdef>
+      <memberdef kind="function" id="namespacehmap_1a6c42198d3612cdfd232c900f427bd103" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::path_length_to_outlet</definition>
+        <argsstring>(const Array &amp;z)</argsstring>
+        <name>path_length_to_outlet</name>
+        <qualifiedname>hmap::path_length_to_outlet</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Computes the downstream path length to the domain outlet. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For each cell, follows the steepest-descending flow path and returns the number of downstream cells required to leave the domain. Cells whose flow terminates in an internal sink have a path length of 0.</para>
+<para><bold>Example</bold> <programlisting filename="ex_path_length_to_sink.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a7f5b2e16a974bbfad06fbae44c8b3465" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>k_sink<sp/>=<sp/><ref refid="namespacehmap_1af5117ffbcd95bf910f3b70b095bee604" kindref="member">hmap::path_length_to_sink</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>k_outlet<sp/>=<sp/><ref refid="namespacehmap_1a6c42198d3612cdfd232c900f427bd103" kindref="member">hmap::path_length_to_outlet</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_path_length_to_sink.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>k_sink,<sp/>k_outlet},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_path_length_to_sink.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/local_metrics/path_length_to_sink.cpp" line="9" column="7" bodyfile="HighMap/src/local_metrics/path_length_to_sink.cpp" bodystart="9" bodyend="99" declfile="HighMap/include/highmap/local_metrics.hpp" declline="29" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehmap_1af5117ffbcd95bf910f3b70b095bee604" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
+        <definition>Array hmap::path_length_to_sink</definition>
+        <argsstring>(const Array &amp;z)</argsstring>
+        <name>path_length_to_sink</name>
+        <qualifiedname>hmap::path_length_to_sink</qualifiedname>
+        <param>
+          <type>const <ref refid="classhmap_1_1Array" kindref="compound">Array</ref> &amp;</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Computes the downstream path length to the nearest sink. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For each cell, follows the steepest-descending flow path and returns the number of downstream cells required to reach a sink. Sink cells have a path length of 0.</para>
+<para><bold>Example</bold> <programlisting filename="ex_path_length_to_sink.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{2.f,<sp/>2.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1a7f5b2e16a974bbfad06fbae44c8b3465" kindref="member">hmap::noise_fbm</ref>(<ref refid="namespacehmap_1ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581" kindref="member">hmap::NoiseType::PERLIN</ref>,<sp/>shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>k_sink<sp/>=<sp/><ref refid="namespacehmap_1af5117ffbcd95bf910f3b70b095bee604" kindref="member">hmap::path_length_to_sink</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>k_outlet<sp/>=<sp/><ref refid="namespacehmap_1a6c42198d3612cdfd232c900f427bd103" kindref="member">hmap::path_length_to_outlet</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1ac2452e568959bc21c9b7b09202e5977a" kindref="member">hmap::export_banner_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_path_length_to_sink.png&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{z,<sp/>k_sink,<sp/>k_outlet},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143" kindref="member">hmap::Cmap::INFERNO</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><bold>Result</bold> <image type="html" name="ex_path_length_to_sink.png"></image>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="HighMap/src/local_metrics/path_length_to_sink.cpp" line="101" column="7" bodyfile="HighMap/src/local_metrics/path_length_to_sink.cpp" bodystart="101" bodyend="168" declfile="HighMap/include/highmap/local_metrics.hpp" declline="44" declcolumn="7"/>
+      </memberdef>
       <memberdef kind="function" id="namespacehmap_1adac2e2b20d0c2720e2dc068641bcd922" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
         <definition>Array hmap::local_max</definition>
@@ -33219,7 +33303,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="19" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="19" bodyend="82" declfile="HighMap/include/highmap/local_metrics.hpp" declline="38" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="19" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="19" bodyend="82" declfile="HighMap/include/highmap/local_metrics.hpp" declline="68" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a9b6a1d2ca8ef58a4a0605d04bcbff038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33295,7 +33379,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="103" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="103" bodyend="108" declfile="HighMap/include/highmap/local_metrics.hpp" declline="67" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="103" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="103" bodyend="108" declfile="HighMap/include/highmap/local_metrics.hpp" declline="97" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1aa7ab501bae56bac2236a74ade5cd34a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33344,7 +33428,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="98" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="98" bodyend="101" declfile="HighMap/include/highmap/local_metrics.hpp" declline="91" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="98" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="98" bodyend="101" declfile="HighMap/include/highmap/local_metrics.hpp" declline="121" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ac297b8711e186ee1e5cdc7d1fc6a7972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33409,7 +33493,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="84" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="84" bodyend="96" declfile="HighMap/include/highmap/local_metrics.hpp" declline="116" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="84" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="84" bodyend="96" declfile="HighMap/include/highmap/local_metrics.hpp" declline="146" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a941d446cad19c166f4f6c4df857dba65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33478,7 +33562,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="110" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="110" bodyend="116" declfile="HighMap/include/highmap/local_metrics.hpp" declline="143" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="110" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="110" bodyend="116" declfile="HighMap/include/highmap/local_metrics.hpp" declline="173" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1af4ec8b5be149e6749fdf09759daf1e9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33542,7 +33626,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="118" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="118" bodyend="143" declfile="HighMap/include/highmap/local_metrics.hpp" declline="166" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="118" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="118" bodyend="143" declfile="HighMap/include/highmap/local_metrics.hpp" declline="196" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a85e411c67e97deb8459f25d4440546c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33617,7 +33701,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="145" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="145" bodyend="186" declfile="HighMap/include/highmap/local_metrics.hpp" declline="192" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/local_metrics.cpp" line="145" column="7" bodyfile="HighMap/src/local_metrics/local_metrics.cpp" bodystart="145" bodyend="186" declfile="HighMap/include/highmap/local_metrics.hpp" declline="222" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1ab4d8048b79080012b8e60c270de8137f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -33704,7 +33788,7 @@ The output path consists of:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/local_metrics/valley_width.cpp" line="11" column="7" bodyfile="HighMap/src/local_metrics/valley_width.cpp" bodystart="11" bodyend="21" declfile="HighMap/include/highmap/local_metrics.hpp" declline="228" declcolumn="7"/>
+        <location file="HighMap/src/local_metrics/valley_width.cpp" line="11" column="7" bodyfile="HighMap/src/local_metrics/valley_width.cpp" bodystart="11" bodyend="21" declfile="HighMap/include/highmap/local_metrics.hpp" declline="258" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1a527cfdcf7f7e2ca0e270875526c9b1ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>

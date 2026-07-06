@@ -982,6 +982,8 @@ var namespacehmap =
     [ "smooth_cosine", "namespacehmap.html#ace7038aa10105fd2f3d1aa9eb3dd83f1", null ],
     [ "square", "namespacehmap.html#ae4d60feebbef618bd7a6fb4dcf9431a1", null ],
     [ "tricube", "namespacehmap.html#af79b0d6faf3275a80f3948dfff6adaf5", null ],
+    [ "path_length_to_outlet", "namespacehmap.html#a6c42198d3612cdfd232c900f427bd103", null ],
+    [ "path_length_to_sink", "namespacehmap.html#af5117ffbcd95bf910f3b70b095bee604", null ],
     [ "local_max", "namespacehmap.html#adac2e2b20d0c2720e2dc068641bcd922", null ],
     [ "local_median_deviation", "namespacehmap.html#a9b6a1d2ca8ef58a4a0605d04bcbff038", null ],
     [ "local_min", "namespacehmap.html#aa7ab501bae56bac2236a74ade5cd34a4", null ],
