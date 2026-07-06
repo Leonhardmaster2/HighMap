@@ -179,6 +179,31 @@ inline void atomic_max_float(volatile __global float *source, const float value)
                           new_val.int_val) != prev_val.int_val);
 }
 
+inline void atomic_add_float(volatile __global float *source, const float value)
+{
+  // https://stackoverflow.com/questions/18950732 (same idiom as
+  // atomic_max_float above)
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } new_val;
+
+  union
+  {
+    unsigned int int_val;
+    float        float_val;
+  } prev_val;
+
+  do
+  {
+    prev_val.float_val = *source;
+    new_val.float_val = prev_val.float_val + value;
+  } while (atomic_cmpxchg((volatile __global unsigned int *)source,
+                          prev_val.int_val,
+                          new_val.int_val) != prev_val.int_val);
+}
+
 inline void atomic_smoothmax_float(volatile __global float *source,
                                    const float              value,
                                    const float              k_smooth)

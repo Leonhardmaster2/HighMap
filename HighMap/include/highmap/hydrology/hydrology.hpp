@@ -894,6 +894,16 @@ Array flow_accumulation_from_velocity_field(const Array &u,
 Array flow_direction_d8(const Array &z);
 
 /**
+ * @brief GPU (OpenCL) variant of hmap::flow_accumulation_stochastic — see
+ * the CPU declaration for the algorithm description and parameters.
+ */
+Array flow_accumulation_stochastic(const Array &z,
+                                   int          n_samples = 1 << 19,
+                                   uint         seed = 0,
+                                   const Array *p_source = nullptr,
+                                   const Array *p_decay = nullptr);
+
+/**
  * @brief GPU hydraulic flow simulation using a virtual-pipes model; simulates
  * shallow-water transport over a height field using iterative flux computation
  * and water transport passes, with optional flux diffusion and post-simulation

@@ -78,6 +78,9 @@ bool init_opencl()
 #include "kernels/expand.cl"
       ;
   code +=
+#include "kernels/flow_accum_stochastic.cl"
+      ;
+  code +=
 #include "kernels/flow_direction_d8.cl"
       ;
   code +=

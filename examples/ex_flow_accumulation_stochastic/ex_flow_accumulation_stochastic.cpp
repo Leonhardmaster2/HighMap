@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 
 #include "highmap.hpp"
@@ -13,8 +14,29 @@ int main(void)
   auto facc_d8 = hmap::flow_accumulation_d8(z);
   auto facc_st = hmap::flow_accumulation_stochastic(z, 1 << 18, 1);
 
+  hmap::gpu::init_opencl();
+  auto facc_gpu = hmap::gpu::flow_accumulation_stochastic(z, 1 << 18, 1);
+
+  // CPU/GPU agreement: Pearson correlation on log(1 + flux)
+  double sx = 0, sy = 0, sxx = 0, syy = 0, sxy = 0;
+  int    ncells = shape.x * shape.y;
+  for (int k = 0; k < ncells; ++k)
+  {
+    double a = std::log1p((double)facc_st.vector[k]);
+    double b = std::log1p((double)facc_gpu.vector[k]);
+    sx += a;
+    sy += b;
+    sxx += a * a;
+    syy += b * b;
+    sxy += a * b;
+  }
+  double corr = (ncells * sxy - sx * sy) /
+                (std::sqrt(ncells * sxx - sx * sx) *
+                 std::sqrt(ncells * syy - sy * sy));
+
   std::cout << "stochastic flow acc. min/max: " << facc_st.min() << " "
             << facc_st.max() << "\n";
+  std::cout << "CPU/GPU log-flux correlation: " << corr << "\n";
 
   // flux spans many orders of magnitude, so log-scale before rendering to
   // PNG (linear scaling makes the image mostly black with a few blown-out
