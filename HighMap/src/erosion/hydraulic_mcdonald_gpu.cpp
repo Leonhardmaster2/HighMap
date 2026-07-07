@@ -8,13 +8,14 @@
  * flow runs in the same solver loop against a separate sediment layer. */
 
 #include <algorithm>
+#include <cstddef>
+#include <cstdint>
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
 {
@@ -25,30 +26,30 @@ namespace detail
 // Runs `steps` erosion iterations on the given model state (all arrays same
 // shape). State lives in the host vectors between kernel invocations
 // (CLWrapper Runs own their device buffers).
-void mcdonald_run_steps(Array &bed,
-                        Array &sed,
-                        Array &dis,
-                        Array &mx,
-                        Array &my,
-                        int    steps,
+void mcdonald_run_steps(Array        &bed,
+                        Array        &sed,
+                        Array        &dis,
+                        Array        &mx,
+                        Array        &my,
+                        int           steps,
                         std::uint32_t seed,
-                        float  world_extent_km,
-                        float  z_scale_km,
-                        int    samples,
-                        int    maxage,
-                        float  lrate,
-                        float  time_step,
-                        float  rainfall,
-                        float  evap_rate,
-                        float  gravity,
-                        float  viscosity,
-                        float  bed_shear,
-                        float  crit_slope,
-                        float  settle_rate,
-                        float  thermal_rate,
-                        float  deposition_rate,
-                        float  suspension_rate,
-                        float  exit_slope)
+                        float         world_extent_km,
+                        float         z_scale_km,
+                        int           samples,
+                        int           maxage,
+                        float         lrate,
+                        float         time_step,
+                        float         rainfall,
+                        float         evap_rate,
+                        float         gravity,
+                        float         viscosity,
+                        float         bed_shear,
+                        float         crit_slope,
+                        float         settle_rate,
+                        float         thermal_rate,
+                        float         deposition_rate,
+                        float         suspension_rate,
+                        float         exit_slope)
 {
   int nx = bed.shape.x;
   int ny = bed.shape.y;
@@ -182,11 +183,29 @@ void hydraulic_mcdonald(Array        &z,
 {
   Array sed(z.shape), dis(z.shape), mx(z.shape), my(z.shape);
 
-  detail::mcdonald_run_steps(z, sed, dis, mx, my, steps, seed,
-                             world_extent_km, z_scale_km, samples, maxage,
-                             lrate, time_step, rainfall, evap_rate, gravity,
-                             viscosity, bed_shear, crit_slope, settle_rate,
-                             thermal_rate, deposition_rate, suspension_rate,
+  detail::mcdonald_run_steps(z,
+                             sed,
+                             dis,
+                             mx,
+                             my,
+                             steps,
+                             seed,
+                             world_extent_km,
+                             z_scale_km,
+                             samples,
+                             maxage,
+                             lrate,
+                             time_step,
+                             rainfall,
+                             evap_rate,
+                             gravity,
+                             viscosity,
+                             bed_shear,
+                             crit_slope,
+                             settle_rate,
+                             thermal_rate,
+                             deposition_rate,
+                             suspension_rate,
                              exit_slope);
 
   if (p_sediment_map) *p_sediment_map = sed;
@@ -228,7 +247,8 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
   for (int i = 0; i < nlevels; ++i)
   {
     int shift = nlevels - 1 - i;
-    ladder[i] = {std::max(2, z.shape.x >> shift), std::max(2, z.shape.y >> shift)};
+    ladder[i] = {std::max(2, z.shape.x >> shift),
+                 std::max(2, z.shape.y >> shift)};
   }
 
   Array bed = z.resample_to_shape(ladder[0]);
@@ -245,13 +265,30 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
       my = my.resample_to_shape(ladder[i]);
     }
 
-    detail::mcdonald_run_steps(bed, sed, dis, mx, my, steps_per_level[i],
-                               seed + (std::uint32_t)i, world_extent_km,
-                               z_scale_km, samples, maxage, lrate, time_step,
-                               rainfall, evap_rate, gravity, viscosity,
-                               bed_shear, crit_slope, settle_rate,
-                               thermal_rate, deposition_rate,
-                               suspension_rate, exit_slope);
+    detail::mcdonald_run_steps(bed,
+                               sed,
+                               dis,
+                               mx,
+                               my,
+                               steps_per_level[i],
+                               seed + (std::uint32_t)i,
+                               world_extent_km,
+                               z_scale_km,
+                               samples,
+                               maxage,
+                               lrate,
+                               time_step,
+                               rainfall,
+                               evap_rate,
+                               gravity,
+                               viscosity,
+                               bed_shear,
+                               crit_slope,
+                               settle_rate,
+                               thermal_rate,
+                               deposition_rate,
+                               suspension_rate,
+                               exit_slope);
   }
 
   if (p_sediment_map) *p_sediment_map = sed;

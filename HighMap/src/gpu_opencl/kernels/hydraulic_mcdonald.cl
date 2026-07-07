@@ -9,9 +9,13 @@ R""(
  * flow runs in the same solver loop against a separate sediment layer. */
 
 /* one deterministic uniform in [0,1) per (seed, step, sample, salt) */
-float mcd_uniform(const uint seed, const uint step, const uint n, const uint salt)
+float mcd_uniform(const uint seed,
+                  const uint step,
+                  const uint n,
+                  const uint salt)
 {
-  return (float)(hash21u(n ^ (step * 0x9e3779b9u), seed + salt) >> 8) / 16777216.f;
+  return (float)(hash21u(n ^ (step * 0x9e3779b9u), seed + salt) >> 8) /
+         16777216.f;
 }
 
 /* 5-point one-sided-aware gradient of (bed + sed), port of soillib
@@ -128,8 +132,8 @@ void kernel mcdonald_solve(global float       *bed,
 
   float2 pos = (float2)(mcd_uniform(seed, step, (uint)n, 0u) * (float)nx,
                         mcd_uniform(seed, step, (uint)n, 1u) * (float)ny);
-  int ci = (int)pos.x;
-  int cj = (int)pos.y;
+  int    ci = (int)pos.x;
+  int    cj = (int)pos.y;
   if (ci >= nx || cj >= ny) return;
   int find = linear_index(ci, cj, nx);
 
@@ -156,8 +160,10 @@ void kernel mcdonald_solve(global float       *bed,
   for (int age = 0; age < maxage; ++age)
   {
     atomic_add_float(&tr_d[find], (1.f / P / (float)n_samples) * vol);
-    atomic_add_float(&tr_mx[find], (1.f / P / (float)n_samples) * vol * dspeed.x);
-    atomic_add_float(&tr_my[find], (1.f / P / (float)n_samples) * vol * dspeed.y);
+    atomic_add_float(&tr_mx[find],
+                     (1.f / P / (float)n_samples) * vol * dspeed.x);
+    atomic_add_float(&tr_my[find],
+                     (1.f / P / (float)n_samples) * vol * dspeed.y);
 
     float discharge = dis[find];
     float slope = -exit_slope;
@@ -266,7 +272,8 @@ void kernel mcdonald_debris(global float *bed,
                             const float   thermal_rate)
 {
   int n = get_global_id(0);
-  if (n >= n_samples) return; /* reference guards ind >= elem; identical while samples <= cells */
+  if (n >= n_samples)
+    return; /* reference guards ind >= elem; identical while samples <= cells */
 
   const float2 cl = (float2)(cell_m, cell_m);
   const float  Ac = cell_m * cell_m;
