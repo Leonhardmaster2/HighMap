@@ -6,78 +6,21 @@
  * Erosion Simulation", N. McDonald & G. Cordonnier. Adapted to HighMap
  * conventions: unit cell scale, hash-based deterministic RNG, clamped
  * normalization (reference yields inf on zero-velocity cells). */
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
+#include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/random.hpp"
 
 namespace hmap
 {
 
-// Downhill velocity field: central difference with one-sided fallback at
-// the boundaries (matches geotransport gradient.cu as shipped), negated so
-// the field points downhill. Shared with the GPU wrapper.
-void downhill_velocity(const Array &z, Array &vx, Array &vy)
-{
-  int nx = z.shape.x;
-  int ny = z.shape.y;
-
-  for (int j = 0; j < ny; ++j)
-    for (int i = 0; i < nx; ++i)
-    {
-      float gx, gy;
-
-      if (i > 0 && i < nx - 1)
-        gx = 0.5f * (z(i + 1, j) - z(i - 1, j));
-      else if (i > 0)
-        gx = z(i, j) - z(i - 1, j);
-      else if (i < nx - 1)
-        gx = z(i + 1, j) - z(i, j);
-      else
-        gx = 0.f;
-
-      if (j > 0 && j < ny - 1)
-        gy = 0.5f * (z(i, j + 1) - z(i, j - 1));
-      else if (j > 0)
-        gy = z(i, j) - z(i, j - 1);
-      else if (j < ny - 1)
-        gy = z(i, j + 1) - z(i, j);
-      else
-        gy = 0.f;
-
-      vx(i, j) = -gx;
-      vy(i, j) = -gy;
-    }
-}
-
 namespace
 {
-
-// SplitMix64 — deterministic per-sample uniforms
-uint64_t splitmix64(uint64_t x)
-{
-  x += 0x9e3779b97f4a7c15ULL;
-  x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
-  x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
-  return x ^ (x >> 31);
-}
-
-float uniform01(uint64_t h)
-{
-  return (float)(h >> 40) / 16777216.f; // 24-bit mantissa in [0, 1)
-}
-
-float bilinear(const Array &a, float x, float y)
-{
-  int nx = a.shape.x, ny = a.shape.y;
-  int i = (int)x, j = (int)y;
-  if (i > nx - 2) i = nx - 2;
-  if (j > ny - 2) j = ny - 2;
-  float u = x - (float)i, v = y - (float)j;
-  return (1.f - u) * (1.f - v) * a(i, j) + u * (1.f - v) * a(i + 1, j) +
-         (1.f - u) * v * a(i, j + 1) + u * v * a(i + 1, j + 1);
-}
 
 // distance to the next cell-boundary intersection midpoint along d
 // (port of geotransport __stepsize; d must be normalized)
@@ -96,23 +39,23 @@ float voxel_stepsize(float px, float py, float dx, float dy)
 
 } // namespace
 
-Array flow_accumulation_stochastic(const Array   &z,
-                                   int            n_samples,
-                                   std::uint32_t  seed,
-                                   const Array   *p_source,
-                                   const Array   *p_decay)
+Array flow_accumulation_stochastic(const Array  &z,
+                                   int           n_samples,
+                                   std::uint32_t seed,
+                                   const Array  *p_source,
+                                   const Array  *p_decay)
 {
   int nx = z.shape.x;
   int ny = z.shape.y;
 
-  Array vx(z.shape), vy(z.shape);
-  downhill_velocity(z, vx, vy);
+  Array vx = -gradient_x(z);
+  Array vy = -gradient_y(z);
 
   Array flux(z.shape);
 
   const float eps = 1e-16f;
-  const int   max_step = nx + ny;              // Manhattan bound
-  const float p_inv = (float)nx * (float)ny;   // 1/P with unit cell area
+  const int   max_step = nx + ny;            // Manhattan bound
+  const float p_inv = (float)nx * (float)ny; // 1/P with unit cell area
 
 #pragma omp parallel for schedule(dynamic, 256)
   for (int n = 0; n < n_samples; ++n)
@@ -146,8 +89,14 @@ Array flow_accumulation_stochastic(const Array   &z,
         flux.vector[cind] += dep;
       }
 
-      float v_x = bilinear(vx, px, py);
-      float v_y = bilinear(vy, px, py);
+      // bilinear interpolation params
+      int   ip = (int)px;
+      int   jp = (int)py;
+      float up = px - ip;
+      float vp = py - jp;
+
+      float v_x = vx.get_value_bilinear_at(ip, jp, up, vp);
+      float v_y = vy.get_value_bilinear_at(ip, jp, up, vp);
       float v_len = std::hypot(v_x, v_y);
       if (v_len < eps) break;
 
