@@ -154,13 +154,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## Project: 
+## Project: soillib
 - URL: https://github.com/erosiv/soillib
 - License: LGPL-3.0 license
+- Copyright: Nicholas McDonald / erosiv
 
 ### Notes
-This project uses portions of the code from this repository.
-Some files have been modified.
+Reference for HighMap's `hydraulic_mcdonald` flow-coupled particle erosion model
+(persistent discharge/momentum fields coupling particles through the mean flow, and
+a bank-stability debris flow). Reimplemented for HighMap from the model / published
+math; no upstream source code copied.
 
 ### License Text
 ```
@@ -329,4 +332,39 @@ whether future versions of the GNU Lesser General Public License shall
 apply, that proxy's public statement of acceptance of any version is
 permanent authorization for you to choose that version for the
 Library.
+```
+## Project: geotransport
+- URL: https://github.com/erosiv/geotransport
+- License: MIT License
+- Copyright: Copyright (c) 2026 erosiv Studio GmbH
+
+### Notes
+Reference for HighMap's `flow_accumulation_stochastic` Monte-Carlo transport
+estimator, from "Stochastic Geomorphological Transport for Terrain Erosion
+Simulation" (Nicholas McDonald & Guillaume Cordonnier). Reimplemented for
+HighMap; no upstream source code copied.
+
+### License Text
+```
+MIT License
+
+Copyright (c) 2026 erosiv Studio GmbH
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
