@@ -7,14 +7,9 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
-
-namespace hmap
-{
-// defined in flow_accumulation_stochastic.cpp
-void downhill_velocity(const Array &z, Array &vx, Array &vy);
-} // namespace hmap
 
 namespace hmap::gpu
 {
@@ -25,8 +20,10 @@ Array flow_accumulation_stochastic(const Array  &z,
                                    const Array  *p_source,
                                    const Array  *p_decay)
 {
-  Array vx(z.shape), vy(z.shape);
-  hmap::downhill_velocity(z, vx, vy);
+  Array vx = -gradient_x(z);
+  Array vy = -gradient_y(z);
+
+  // hmap::downhill_velocity(z, vx, vy);
 
   Array flux(z.shape); // zero-initialized
 

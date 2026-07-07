@@ -1,6 +1,7 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+
 /* Port of the stochastic transport estimator from erosiv/geotransport
  * (MIT license) — "Stochastic Geomorphological Transport for Terrain
  * Erosion Simulation", N. McDonald & G. Cordonnier. Adapted to HighMap
@@ -10,46 +11,11 @@
 #include <cstdint>
 
 #include "highmap/array.hpp"
+#include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 
 namespace hmap
 {
-
-// Downhill velocity field: central difference with one-sided fallback at
-// the boundaries (matches geotransport gradient.cu as shipped), negated so
-// the field points downhill. Shared with the GPU wrapper.
-void downhill_velocity(const Array &z, Array &vx, Array &vy)
-{
-  int nx = z.shape.x;
-  int ny = z.shape.y;
-
-  for (int j = 0; j < ny; ++j)
-    for (int i = 0; i < nx; ++i)
-    {
-      float gx, gy;
-
-      if (i > 0 && i < nx - 1)
-        gx = 0.5f * (z(i + 1, j) - z(i - 1, j));
-      else if (i > 0)
-        gx = z(i, j) - z(i - 1, j);
-      else if (i < nx - 1)
-        gx = z(i + 1, j) - z(i, j);
-      else
-        gx = 0.f;
-
-      if (j > 0 && j < ny - 1)
-        gy = 0.5f * (z(i, j + 1) - z(i, j - 1));
-      else if (j > 0)
-        gy = z(i, j) - z(i, j - 1);
-      else if (j < ny - 1)
-        gy = z(i, j + 1) - z(i, j);
-      else
-        gy = 0.f;
-
-      vx(i, j) = -gx;
-      vy(i, j) = -gy;
-    }
-}
 
 namespace
 {
@@ -105,8 +71,8 @@ Array flow_accumulation_stochastic(const Array  &z,
   int nx = z.shape.x;
   int ny = z.shape.y;
 
-  Array vx(z.shape), vy(z.shape);
-  downhill_velocity(z, vx, vy);
+  Array vx = -gradient_x(z);
+  Array vy = -gradient_y(z);
 
   Array flux(z.shape);
 

@@ -11,9 +11,9 @@ int main(void)
 
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
+  // Dinf for visual reference
   auto facc_d8 = hmap::flow_accumulation_d8(z);
-  auto facc_dinf = hmap::flow_accumulation_dinf(z,
-                                                1.f / shape.x); // for reference
+  auto facc_dinf = hmap::flow_accumulation_dinf(z, 1.f / shape.x);
   auto facc_st = hmap::flow_accumulation_stochastic(z, 1 << 18, 1);
 
   hmap::gpu::init_opencl();
