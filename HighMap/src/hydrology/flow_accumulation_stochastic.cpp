@@ -2,13 +2,16 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
+#include <cmath>
 /* Port of the stochastic transport estimator from erosiv/geotransport
  * (MIT license) — "Stochastic Geomorphological Transport for Terrain
  * Erosion Simulation", N. McDonald & G. Cordonnier. Adapted to HighMap
  * conventions: unit cell scale, hash-based deterministic RNG, clamped
  * normalization (reference yields inf on zero-velocity cells). */
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
+#include <vector>
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
