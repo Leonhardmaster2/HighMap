@@ -7,6 +7,7 @@
 
 namespace hmap
 {
+
 /**
  * @brief Generates a fast deterministic uniform float in [0,1) using a 32-bit
  * hash.
@@ -19,14 +20,45 @@ namespace hmap
 float fast_hash32_to_unit_float(unsigned int seed, size_t k);
 
 /**
- * @brief Generates a deterministic uniform float in [0,1) using a
- * SplitMix64-style hash.
+ * @brief Computes a deterministic 64-bit hash using the SplitMix64 algorithm.
+ *
+ * This function is used to generate reproducible pseudo-random values from
+ * integer inputs without maintaining any internal state. It is suitable for
+ * generating deterministic per-sample random seeds.
+ *
+ * @param  x Input 64-bit value.
+ * @return   64-bit hashed value.
+ */
+uint64_t splitmix64(uint64_t x);
+
+/**
+ * @brief Generates a deterministic uniform float in [0,1) from a seed and
+ * sample index.
+ *
+ * The function combines the base seed and sample index, hashes the result using
+ * SplitMix64, and converts the generated bits into a floating-point value in
+ * the range [0,1). The output is deterministic and independent for each sample
+ * index.
  *
  * @param  seed Base seed value.
  * @param  k    Sample index.
  * @return      Pseudo-random float in [0,1).
  */
 float splitmix64_to_unit_float(unsigned int seed, size_t k);
+
+/**
+ * @brief Converts a 64-bit hash value into a deterministic uniform float in [0,
+ * 1).
+ *
+ * Extracts the upper 24 bits of the input hash and scales them to produce a
+ * single-precision floating-point value. The 24-bit resolution matches the
+ * mantissa precision of a `float`, providing a deterministic pseudo-random
+ * uniform distribution.
+ *
+ * @param h 64-bit hash value.
+ * @return Uniform floating-point value in the range [0, 1).
+ */
+float uniform01(uint64_t h);
 
 // === PdfSampler class ===
 

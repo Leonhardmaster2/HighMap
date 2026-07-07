@@ -7,6 +7,23 @@
 namespace hmap
 {
 
+float fast_hash32_to_unit_float(unsigned int seed, size_t k)
+{
+  uint32_t x = static_cast<uint32_t>(k) ^ seed;
+  x ^= x >> 16;
+  x *= 0x45d9f3bu;
+  x ^= x >> 16;
+  return static_cast<float>((x >> 8) * (1.f / float(1 << 24)));
+}
+
+uint64_t splitmix64(uint64_t x)
+{
+  x += 0x9e3779b97f4a7c15ULL;
+  x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
+  x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
+  return x ^ (x >> 31);
+}
+
 float splitmix64_to_unit_float(unsigned int seed, size_t k)
 {
   // combine seed + index into 64-bit to avoid truncation
@@ -24,13 +41,9 @@ float splitmix64_to_unit_float(unsigned int seed, size_t k)
   return static_cast<float>((x >> 40) & 0xFFFFFF) / static_cast<float>(1 << 24);
 }
 
-float fast_hash32_to_unit_float(unsigned int seed, size_t k)
+float uniform01(uint64_t h)
 {
-  uint32_t x = static_cast<uint32_t>(k) ^ seed;
-  x ^= x >> 16;
-  x *= 0x45d9f3bu;
-  x ^= x >> 16;
-  return static_cast<float>((x >> 8) * (1.f / float(1 << 24)));
+  return (float)(h >> 40) / 16777216.f; // 24-bit mantissa in [0, 1)
 }
 
 } // namespace hmap

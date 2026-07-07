@@ -269,15 +269,15 @@ Array flooding_lake_system(const Array &z, float surface_threshold = 0);
 Array flow_accumulation_d8(const Array &z);
 
 /**
- * @brief Computes flow accumulation using a stochastic (Monte-Carlo)
- * transport estimator.
+ * @brief Computes flow accumulation using a stochastic (Monte-Carlo) transport
+ * estimator.
  *
- * Particles are spawned uniformly, advected along the downhill gradient
- * field with exact voxel traversal, attenuated by an optional decay term,
- * and deposit flux into every cell they exit. A final analytic
- * normalization yields the steady-state flux, including for cells no
- * particle visited. Compared to flow_accumulation_d8, the result is
- * smooth and free of axis-aligned artifacts.
+ * Particles are spawned uniformly, advected along the downhill gradient field
+ * with exact voxel traversal, attenuated by an optional decay term, and deposit
+ * flux into every cell they exit. A final analytic normalization yields the
+ * steady-state flux, including for cells no particle visited. Compared to
+ * flow_accumulation_d8, the result is smooth and free of axis-aligned
+ * artifacts.
  *
  * Port of the reference implementation of "Stochastic Geomorphological
  * Transport for Terrain Erosion Simulation" (N. McDonald, G. Cordonnier),
@@ -302,7 +302,7 @@ Array flow_accumulation_d8(const Array &z);
  * @image html ex_flow_accumulation_stochastic1.png
  * @image html ex_flow_accumulation_stochastic2.png
  *
- * @see      flow_accumulation_d8
+ * @see              flow_accumulation_d8
  */
 Array flow_accumulation_stochastic(const Array  &z,
                                    int           n_samples = 1 << 19,
@@ -895,8 +895,8 @@ Array flow_accumulation_from_velocity_field(const Array &u,
                                             int          iterations);
 
 /**
- * @brief GPU (OpenCL) variant of hmap::flow_accumulation_stochastic — see
- * the CPU declaration for the algorithm description and parameters.
+ * @brief GPU (OpenCL) variant of hmap::flow_accumulation_stochastic — see the
+ * CPU declaration for the algorithm description and parameters.
  */
 Array flow_accumulation_stochastic(const Array  &z,
                                    int           n_samples = 1 << 19,

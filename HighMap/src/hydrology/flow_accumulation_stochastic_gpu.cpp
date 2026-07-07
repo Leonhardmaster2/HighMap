@@ -23,8 +23,6 @@ Array flow_accumulation_stochastic(const Array  &z,
   Array vx = -gradient_x(z);
   Array vy = -gradient_y(z);
 
-  // hmap::downhill_velocity(z, vx, vy);
-
   Array flux(z.shape); // zero-initialized
 
   {
