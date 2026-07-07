@@ -931,6 +931,12 @@ void hydraulic_mcdonald(Array        &z,
  * The numerically stable route to high-resolution erosion with this model.
  * {512, 256, 128} on a 1024^2 input runs 256^2 (512 steps), 512^2 (256),
  * then 1024^2 (128). See hydraulic_mcdonald for the model and parameters.
+ *
+ * **Example**
+ * @include ex_hydraulic_mcdonald.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_mcdonald3.png
  */
 void hydraulic_mcdonald_multiscale(Array                  &z,
                                    std::uint32_t           seed,
