@@ -865,8 +865,9 @@ void hydraulic_particle(Array        &z,
  * (>= 1024^2) beyond a few hundred steps with default parameters — use
  * hydraulic_mcdonald_multiscale for high-resolution terrain.
  *
- * Results are reproducible up to floating-point summation order (deposits
- * accumulate via unordered atomic adds).
+ * Results are reproducible up to atomic scheduling order (particles read
+ * fields that other particles concurrently modify via atomic adds — a
+ * property shared with the reference implementation).
  *
  * @param z               Input/output heightmap. In: bedrock. Out: bedrock
  *                        plus sediment (total surface).

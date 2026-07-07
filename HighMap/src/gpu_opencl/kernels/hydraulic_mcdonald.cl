@@ -8,7 +8,7 @@ R""(
  * fields couple particles through the mean flow; a bank-stability debris
  * flow runs in the same solver loop against a separate sediment layer. */
 
-/* two deterministic uniforms in [0,1) per (seed, step, sample, salt) */
+/* one deterministic uniform in [0,1) per (seed, step, sample, salt) */
 float mcd_uniform(const uint seed, const uint step, const uint n, const uint salt)
 {
   return (float)(hash21u(n ^ (step * 0x9e3779b9u), seed + salt) >> 8) / 16777216.f;
