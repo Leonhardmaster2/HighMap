@@ -1,0 +1,2 @@
+add_executable(ex_hydraulic_mcdonald ex_hydraulic_mcdonald.cpp)
+target_link_libraries(ex_hydraulic_mcdonald highmap)

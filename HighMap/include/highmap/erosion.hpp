@@ -3,6 +3,8 @@
    this software. */
 #pragma once
 #include <cmath>
+#include <cstdint>
+#include <vector>
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
@@ -845,6 +847,113 @@ void hydraulic_particle(Array        &z,
                         float         evap_rate = 0.001f,
                         bool          enable_directional_bias = false,
                         float         angle_bias = 30.f);
+
+/**
+ * @brief Particle-based hydraulic erosion with flow-field coupling
+ * (McDonald's model): persistent per-cell discharge and momentum fields,
+ * exponentially filtered across iterations, couple particles through the
+ * mean local flow, producing coherent drainage networks; a bank-stability
+ * debris flow runs in the same solver loop against a separate sediment
+ * layer. Clean-room port of erosiv/soillib (LGPL-3, Nicholas McDonald),
+ * https://github.com/erosiv/soillib.
+ *
+ * Parameters are physical: the terrain is interpreted as a
+ * world_extent_km x world_extent_km domain with height range z_scale_km.
+ * This makes behavior consistent across resolutions.
+ *
+ * @warning Single-resolution runs numerically diverge at high resolutions
+ * (>= 1024^2) beyond a few hundred steps with default parameters — use
+ * hydraulic_mcdonald_multiscale for high-resolution terrain.
+ *
+ * Results are reproducible up to floating-point summation order (deposits
+ * accumulate via unordered atomic adds).
+ *
+ * @param z               Input/output heightmap. In: bedrock. Out: bedrock
+ *                        plus sediment (total surface).
+ * @param steps           Number of erosion iterations.
+ * @param seed            Random seed number.
+ * @param p_sediment_map  Optional output: final sediment layer.
+ * @param p_discharge_map Optional output: water discharge field (usable as
+ *                        a river / water mask).
+ * @param world_extent_km Physical domain edge length [km].
+ * @param z_scale_km      Physical height range of z's [0, 1] span [km].
+ * @param samples         Particles per iteration.
+ * @param maxage          Maximum particle age (steps along a trajectory).
+ * @param lrate           Exponential filter rate for the flow fields.
+ * @param time_step       Geological timestep [y].
+ * @param rainfall        Rainfall rate [m/y].
+ * @param evap_rate       Evaporation rate.
+ * @param gravity         Gravity [m/s^2].
+ * @param viscosity       Kinematic viscosity (flow-coupling strength).
+ * @param bed_shear       Bed shear coefficient.
+ * @param crit_slope      Critical (stable bank) slope [m/m].
+ * @param settle_rate     Debris settling rate.
+ * @param thermal_rate    Thermal erosion rate.
+ * @param deposition_rate Fluvial deposition rate.
+ * @param suspension_rate Fluvial suspension rate.
+ * @param exit_slope      Boundary exit slope [m/m].
+ *
+ * **Example**
+ * @include ex_hydraulic_mcdonald.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_mcdonald0.png
+ * @image html ex_hydraulic_mcdonald1.png
+ * @image html ex_hydraulic_mcdonald2.png
+ */
+void hydraulic_mcdonald(Array        &z,
+                        int           steps,
+                        std::uint32_t seed,
+                        Array        *p_sediment_map = nullptr,
+                        Array        *p_discharge_map = nullptr,
+                        float         world_extent_km = 40.f,
+                        float         z_scale_km = 4.f,
+                        int           samples = 8192,
+                        int           maxage = 512,
+                        float         lrate = 0.2f,
+                        float         time_step = 10.f,
+                        float         rainfall = 1.f,
+                        float         evap_rate = 1e-4f,
+                        float         gravity = 9.81f,
+                        float         viscosity = 0.025f,
+                        float         bed_shear = 0.01f,
+                        float         crit_slope = 0.57f,
+                        float         settle_rate = 0.1f,
+                        float         thermal_rate = 2.5e-3f,
+                        float         deposition_rate = 5e-3f,
+                        float         suspension_rate = 2.5e-4f,
+                        float         exit_slope = 0.01f);
+
+/**
+ * @brief Multiscale driver for hydraulic_mcdonald: erodes on a halving
+ * resolution ladder derived from z.shape (coarsest first), resampling the
+ * full model state (bedrock, sediment, discharge, momentum) between levels.
+ * The numerically stable route to high-resolution erosion with this model.
+ * {512, 256, 128} on a 1024^2 input runs 256^2 (512 steps), 512^2 (256),
+ * then 1024^2 (128). See hydraulic_mcdonald for the model and parameters.
+ */
+void hydraulic_mcdonald_multiscale(Array                  &z,
+                                   std::uint32_t           seed,
+                                   const std::vector<int> &steps_per_level = {512, 256, 128},
+                                   Array                  *p_sediment_map = nullptr,
+                                   Array                  *p_discharge_map = nullptr,
+                                   float                   world_extent_km = 40.f,
+                                   float                   z_scale_km = 4.f,
+                                   int                     samples = 8192,
+                                   int                     maxage = 512,
+                                   float                   lrate = 0.2f,
+                                   float                   time_step = 10.f,
+                                   float                   rainfall = 1.f,
+                                   float                   evap_rate = 1e-4f,
+                                   float                   gravity = 9.81f,
+                                   float                   viscosity = 0.025f,
+                                   float                   bed_shear = 0.01f,
+                                   float                   crit_slope = 0.57f,
+                                   float                   settle_rate = 0.1f,
+                                   float                   thermal_rate = 2.5e-3f,
+                                   float                   deposition_rate = 5e-3f,
+                                   float                   suspension_rate = 2.5e-4f,
+                                   float                   exit_slope = 0.01f);
 
 /**
  * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.
