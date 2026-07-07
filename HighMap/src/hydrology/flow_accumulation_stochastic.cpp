@@ -1,8 +1,6 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-
-#include <cmath>
 /* Port of the stochastic transport estimator from erosiv/geotransport
  * (MIT license) — "Stochastic Geomorphological Transport for Terrain
  * Erosion Simulation", N. McDonald & G. Cordonnier. Adapted to HighMap
