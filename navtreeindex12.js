@@ -1,5 +1,11 @@
 var NAVTREEINDEX12 =
 {
+"local__metrics__gpu_8cpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1":[5,0,1,1,23,1,7],
+"local__metrics__wrapper_8cpp.html":[5,0,1,1,23,2],
+"local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d":[5,0,1,1,23,2,0],
+"lru__tile__storage_8cpp.html":[5,0,1,1,45,3],
+"main_8cpp.html":[5,0,2,0,0],
+"main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627":[5,0,2,0,0,1],
 "main_8cpp.html#a4a24013b5fd4fa30708c51c72fcc9b56":[5,0,2,0,0,0],
 "math_2array_8hpp.html":[5,0,1,0,0,5,0],
 "math_2array_8hpp.html#a01df0f07ab6d0583d0794d7c03abc1eb":[5,0,1,0,0,5,0,23],
@@ -196,9 +202,9 @@ var NAVTREEINDEX12 =
 "mountain__stump_8cpp.html#a3cac6320779d6623497e665082f96d5e":[5,0,1,1,30,2,8,0],
 "mountain__tibesti_8cpp.html":[5,0,1,1,30,2,9],
 "mountain__tibesti_8cpp.html#ae0089429a438c5ebb60099913cda627e":[5,0,1,1,30,2,9,0],
-"mudslide_8cpp.html":[5,0,1,1,12,21],
-"mudslide_8cpp.html#a3faa3e769849fbcc7784d130c05f99a2":[5,0,1,1,12,21,0],
-"mudslide_8cpp.html#ac726e3e56563a153c2c62f0603d53381":[5,0,1,1,12,21,1],
+"mudslide_8cpp.html":[5,0,1,1,12,22],
+"mudslide_8cpp.html#a3faa3e769849fbcc7784d130c05f99a2":[5,0,1,1,12,22,0],
+"mudslide_8cpp.html#ac726e3e56563a153c2c62f0603d53381":[5,0,1,1,12,22,1],
 "multiscale_8hpp.html":[5,0,1,0,0,34],
 "multiscale_8hpp_source.html":[5,0,1,0,0,34],
 "multisteps_8cpp.html":[5,0,1,1,30,1,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX12 =
 "namespacehmap.html#a0b0df569ee039a70cd406e8320bcc0c3":[3,0,0,287],
 "namespacehmap.html#a0b3237f9cc015299bf3e436be71d3587":[3,0,0,500],
 "namespacehmap.html#a0b7db6f8ce57fcdeca7ca1e3b7d1e686":[3,0,0,808],
-"namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6":[3,0,0,432],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f":[3,0,0,104],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2faaf8f41c39c71902022e1aec12f10d372":[3,0,0,104,1],
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894":[3,0,0,104,0],
-"namespacehmap.html#a0cfa024afb9246aaa89ec6b2e69501c3":[3,0,0,510],
-"namespacehmap.html#a0cfa879188da80b9e5bf16e8c325c9ba":[3,0,0,151],
-"namespacehmap.html#a0d2c7cec42fe990f214a1b74da57cd00":[3,0,0,403]
+"namespacehmap.html#a0bcc84aa462aee73e1a3a52729f21ea6":[3,0,0,432]
 };
