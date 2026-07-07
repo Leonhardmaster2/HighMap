@@ -197,4 +197,69 @@ void hydraulic_mcdonald(Array        &z,
     z.vector[k] += sed.vector[k];
 }
 
+void hydraulic_mcdonald_multiscale(Array                  &z,
+                                   std::uint32_t           seed,
+                                   const std::vector<int> &steps_per_level,
+                                   Array                  *p_sediment_map,
+                                   Array                  *p_discharge_map,
+                                   float                   world_extent_km,
+                                   float                   z_scale_km,
+                                   int                     samples,
+                                   int                     maxage,
+                                   float                   lrate,
+                                   float                   time_step,
+                                   float                   rainfall,
+                                   float                   evap_rate,
+                                   float                   gravity,
+                                   float                   viscosity,
+                                   float                   bed_shear,
+                                   float                   crit_slope,
+                                   float                   settle_rate,
+                                   float                   thermal_rate,
+                                   float                   deposition_rate,
+                                   float                   suspension_rate,
+                                   float                   exit_slope)
+{
+  int nlevels = (int)steps_per_level.size();
+  if (nlevels == 0) return;
+
+  // halving ladder, coarsest first; final level == z.shape
+  std::vector<glm::ivec2> ladder(nlevels);
+  for (int i = 0; i < nlevels; ++i)
+  {
+    int shift = nlevels - 1 - i;
+    ladder[i] = {std::max(2, z.shape.x >> shift), std::max(2, z.shape.y >> shift)};
+  }
+
+  Array bed = z.resample_to_shape(ladder[0]);
+  Array sed(ladder[0]), dis(ladder[0]), mx(ladder[0]), my(ladder[0]);
+
+  for (int i = 0; i < nlevels; ++i)
+  {
+    if (i > 0)
+    {
+      bed = bed.resample_to_shape(ladder[i]);
+      sed = sed.resample_to_shape(ladder[i]);
+      dis = dis.resample_to_shape(ladder[i]);
+      mx = mx.resample_to_shape(ladder[i]);
+      my = my.resample_to_shape(ladder[i]);
+    }
+
+    detail::mcdonald_run_steps(bed, sed, dis, mx, my, steps_per_level[i],
+                               seed + (std::uint32_t)i, world_extent_km,
+                               z_scale_km, samples, maxage, lrate, time_step,
+                               rainfall, evap_rate, gravity, viscosity,
+                               bed_shear, crit_slope, settle_rate,
+                               thermal_rate, deposition_rate,
+                               suspension_rate, exit_slope);
+  }
+
+  if (p_sediment_map) *p_sediment_map = sed;
+  if (p_discharge_map) *p_discharge_map = dis;
+
+  z = bed;
+  for (size_t k = 0; k < z.vector.size(); ++k)
+    z.vector[k] += sed.vector[k];
+}
+
 } // namespace hmap::gpu

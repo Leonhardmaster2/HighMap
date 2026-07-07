@@ -29,4 +29,11 @@ int main(void)
   for (auto &v : dlog.vector)
     v = std::log10(1.f + v);
   dlog.to_png("ex_hydraulic_mcdonald2.png", hmap::Cmap::HOT);
+
+  hmap::Array zm = hmap::noise_fbm(hmap::NoiseType::PERLIN, {512, 512}, res, seed);
+  hmap::remap(zm);
+  hmap::Array discharge_m;
+  hmap::gpu::hydraulic_mcdonald_multiscale(zm, 1, {256, 128, 64}, nullptr, &discharge_m);
+  std::cout << "multiscale z min/max: " << zm.min() << " " << zm.max() << "\n";
+  zm.to_png("ex_hydraulic_mcdonald3.png", hmap::Cmap::TERRAIN, true);
 }
