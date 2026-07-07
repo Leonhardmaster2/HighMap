@@ -21,6 +21,7 @@
  * @copyright Copyright (c) 2023 Otto Link
  */
 #pragma once
+#include <cstdint>
 #include <functional>
 #include <limits>
 
@@ -282,6 +283,9 @@ Array flow_accumulation_d8(const Array &z);
  * Transport for Terrain Erosion Simulation" (N. McDonald, G. Cordonnier),
  * https://github.com/erosiv/geotransport (MIT).
  *
+ * Results are reproducible up to floating-point summation order (deposits
+ * accumulate via unordered atomic adds).
+ *
  * @param  z         Input array representing the heightmap values.
  * @param  n_samples Number of Monte-Carlo samples (particles).
  * @param  seed      Random seed number (deterministic for fixed inputs).
@@ -300,11 +304,11 @@ Array flow_accumulation_d8(const Array &z);
  *
  * @see      flow_accumulation_d8
  */
-Array flow_accumulation_stochastic(const Array &z,
-                                   int          n_samples = 1 << 19,
-                                   uint         seed = 0,
-                                   const Array *p_source = nullptr,
-                                   const Array *p_decay = nullptr);
+Array flow_accumulation_stochastic(const Array   &z,
+                                   int            n_samples = 1 << 19,
+                                   std::uint32_t  seed = 0,
+                                   const Array   *p_source = nullptr,
+                                   const Array   *p_decay = nullptr);
 
 /**
  * @brief Computes the flow accumulation for each cell using the Multiple Flow
@@ -890,18 +894,18 @@ Array flow_accumulation_from_velocity_field(const Array &u,
                                             const Array &v,
                                             int          iterations);
 
-/*! @brief See hmap::flow_direction_d8 */
-Array flow_direction_d8(const Array &z);
-
 /**
  * @brief GPU (OpenCL) variant of hmap::flow_accumulation_stochastic — see
  * the CPU declaration for the algorithm description and parameters.
  */
 Array flow_accumulation_stochastic(const Array &z,
-                                   int          n_samples = 1 << 19,
-                                   uint         seed = 0,
-                                   const Array *p_source = nullptr,
-                                   const Array *p_decay = nullptr);
+                                   int            n_samples = 1 << 19,
+                                   std::uint32_t  seed = 0,
+                                   const Array   *p_source = nullptr,
+                                   const Array   *p_decay = nullptr);
+
+/*! @brief See hmap::flow_direction_d8 */
+Array flow_direction_d8(const Array &z);
 
 /**
  * @brief GPU hydraulic flow simulation using a virtual-pipes model; simulates

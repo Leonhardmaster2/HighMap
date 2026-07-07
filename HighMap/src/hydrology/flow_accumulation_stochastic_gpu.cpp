@@ -1,6 +1,7 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <cstdint>
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
@@ -18,11 +19,11 @@ void downhill_velocity(const Array &z, Array &vx, Array &vy);
 namespace hmap::gpu
 {
 
-Array flow_accumulation_stochastic(const Array &z,
-                                   int          n_samples,
-                                   uint         seed,
-                                   const Array *p_source,
-                                   const Array *p_decay)
+Array flow_accumulation_stochastic(const Array   &z,
+                                   int            n_samples,
+                                   std::uint32_t  seed,
+                                   const Array   *p_source,
+                                   const Array   *p_decay)
 {
   Array vx(z.shape), vy(z.shape);
   hmap::downhill_velocity(z, vx, vy);
@@ -51,6 +52,9 @@ Array flow_accumulation_stochastic(const Array &z,
   }
 
   {
+    // vx/vy are re-bound and re-uploaded here because each clwrapper::Run
+    // allocates its own device buffers — there is no buffer sharing across
+    // the two Run instances above.
     auto run = clwrapper::Run("flow_accum_stochastic_normalize");
     run.bind_buffer<float>("flux", flux.vector);
     run.bind_buffer<float>("vx", vx.vector);

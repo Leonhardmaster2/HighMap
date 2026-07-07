@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
+/* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 /* Port of the stochastic transport estimator from erosiv/geotransport
@@ -96,11 +96,11 @@ float voxel_stepsize(float px, float py, float dx, float dy)
 
 } // namespace
 
-Array flow_accumulation_stochastic(const Array &z,
-                                   int          n_samples,
-                                   uint         seed,
-                                   const Array *p_source,
-                                   const Array *p_decay)
+Array flow_accumulation_stochastic(const Array   &z,
+                                   int            n_samples,
+                                   std::uint32_t  seed,
+                                   const Array   *p_source,
+                                   const Array   *p_decay)
 {
   int nx = z.shape.x;
   int ny = z.shape.y;
