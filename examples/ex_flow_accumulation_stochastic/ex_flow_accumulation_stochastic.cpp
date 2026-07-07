@@ -12,6 +12,8 @@ int main(void)
   hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
   auto facc_d8 = hmap::flow_accumulation_d8(z);
+  auto facc_dinf = hmap::flow_accumulation_dinf(z,
+                                                1.f / shape.x); // for reference
   auto facc_st = hmap::flow_accumulation_stochastic(z, 1 << 18, 1);
 
   hmap::gpu::init_opencl();
@@ -30,9 +32,8 @@ int main(void)
     syy += b * b;
     sxy += a * b;
   }
-  double corr = (ncells * sxy - sx * sy) /
-                (std::sqrt(ncells * sxx - sx * sx) *
-                 std::sqrt(ncells * syy - sy * sy));
+  double corr = (ncells * sxy - sx * sy) / (std::sqrt(ncells * sxx - sx * sx) *
+                                            std::sqrt(ncells * syy - sy * sy));
 
   std::cout << "stochastic flow acc. min/max: " << facc_st.min() << " "
             << facc_st.max() << "\n";
@@ -44,8 +45,10 @@ int main(void)
   // visually comparable
   auto facc_d8_log = hmap::log10(1.f + facc_d8);
   auto facc_st_log = hmap::log10(1.f + facc_st);
+  auto facc_dinf_log = hmap::log10(1.f + facc_dinf);
 
   z.to_png("ex_flow_accumulation_stochastic0.png", hmap::Cmap::TERRAIN, true);
   facc_d8_log.to_png("ex_flow_accumulation_stochastic1.png", hmap::Cmap::HOT);
   facc_st_log.to_png("ex_flow_accumulation_stochastic2.png", hmap::Cmap::HOT);
+  facc_dinf_log.to_png("ex_flow_accumulation_stochastic3.png", hmap::Cmap::HOT);
 }

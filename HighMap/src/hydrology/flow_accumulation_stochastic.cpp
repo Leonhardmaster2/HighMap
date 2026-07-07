@@ -96,11 +96,11 @@ float voxel_stepsize(float px, float py, float dx, float dy)
 
 } // namespace
 
-Array flow_accumulation_stochastic(const Array   &z,
-                                   int            n_samples,
-                                   std::uint32_t  seed,
-                                   const Array   *p_source,
-                                   const Array   *p_decay)
+Array flow_accumulation_stochastic(const Array  &z,
+                                   int           n_samples,
+                                   std::uint32_t seed,
+                                   const Array  *p_source,
+                                   const Array  *p_decay)
 {
   int nx = z.shape.x;
   int ny = z.shape.y;
@@ -111,8 +111,8 @@ Array flow_accumulation_stochastic(const Array   &z,
   Array flux(z.shape);
 
   const float eps = 1e-16f;
-  const int   max_step = nx + ny;              // Manhattan bound
-  const float p_inv = (float)nx * (float)ny;   // 1/P with unit cell area
+  const int   max_step = nx + ny;            // Manhattan bound
+  const float p_inv = (float)nx * (float)ny; // 1/P with unit cell area
 
 #pragma omp parallel for schedule(dynamic, 256)
   for (int n = 0; n < n_samples; ++n)

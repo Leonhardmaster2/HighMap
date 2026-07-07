@@ -19,11 +19,11 @@ void downhill_velocity(const Array &z, Array &vx, Array &vy);
 namespace hmap::gpu
 {
 
-Array flow_accumulation_stochastic(const Array   &z,
-                                   int            n_samples,
-                                   std::uint32_t  seed,
-                                   const Array   *p_source,
-                                   const Array   *p_decay)
+Array flow_accumulation_stochastic(const Array  &z,
+                                   int           n_samples,
+                                   std::uint32_t seed,
+                                   const Array  *p_source,
+                                   const Array  *p_decay)
 {
   Array vx(z.shape), vy(z.shape);
   hmap::downhill_velocity(z, vx, vy);
