@@ -21,17 +21,6 @@ namespace hmap
 namespace
 {
 
-float bilinear(const Array &a, float x, float y)
-{
-  int nx = a.shape.x, ny = a.shape.y;
-  int i = (int)x, j = (int)y;
-  if (i > nx - 2) i = nx - 2;
-  if (j > ny - 2) j = ny - 2;
-  float u = x - (float)i, v = y - (float)j;
-  return (1.f - u) * (1.f - v) * a(i, j) + u * (1.f - v) * a(i + 1, j) +
-         (1.f - u) * v * a(i, j + 1) + u * v * a(i + 1, j + 1);
-}
-
 // distance to the next cell-boundary intersection midpoint along d
 // (port of geotransport __stepsize; d must be normalized)
 float voxel_stepsize(float px, float py, float dx, float dy)
@@ -99,8 +88,14 @@ Array flow_accumulation_stochastic(const Array  &z,
         flux.vector[cind] += dep;
       }
 
-      float v_x = bilinear(vx, px, py);
-      float v_y = bilinear(vy, px, py);
+      // bilinear interpolation params
+      int   ip = (int)px;
+      int   jp = (int)py;
+      float up = px - ip;
+      float vp = py - jp;
+
+      float v_x = vx.get_value_bilinear_at(ip, jp, up, vp);
+      float v_y = vy.get_value_bilinear_at(ip, jp, up, vp);
       float v_len = std::hypot(v_x, v_y);
       if (v_len < eps) break;
 
