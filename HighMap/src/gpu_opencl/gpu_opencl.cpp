@@ -102,6 +102,9 @@ bool init_opencl()
 #include "kernels/hemisphere_field.cl"
       ;
   code +=
+#include "kernels/hydraulic_mcdonald.cl"
+      ;
+  code +=
 #include "kernels/hydraulic_particle.cl"
       ;
   code +=
