@@ -10,6 +10,8 @@ var dir_ce6c722236ab9f2244a54aefafe425a2 =
     [ "flow_accumulation_d8_gpu.cpp", "flow__accumulation__d8__gpu_8cpp.html", "flow__accumulation__d8__gpu_8cpp" ],
     [ "flow_accumulation_dinf.cpp", "flow__accumulation__dinf_8cpp.html", "flow__accumulation__dinf_8cpp" ],
     [ "flow_accumulation_from_velocity_field.cpp", "flow__accumulation__from__velocity__field_8cpp.html", "flow__accumulation__from__velocity__field_8cpp" ],
+    [ "flow_accumulation_stochastic.cpp", "flow__accumulation__stochastic_8cpp.html", "flow__accumulation__stochastic_8cpp" ],
+    [ "flow_accumulation_stochastic_gpu.cpp", "flow__accumulation__stochastic__gpu_8cpp.html", "flow__accumulation__stochastic__gpu_8cpp" ],
     [ "flow_fixing.cpp", "flow__fixing_8cpp.html", "flow__fixing_8cpp" ],
     [ "flow_simulation.cpp", "flow__simulation_8cpp.html", "flow__simulation_8cpp" ],
     [ "flow_stream.cpp", "flow__stream_8cpp.html", "flow__stream_8cpp" ],

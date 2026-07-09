@@ -4,19 +4,21 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{hmap\+::\+Terrain\+Tri\+Mesh}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1TerrainTriMesh_1_1Triangle}{Triangle} mesh representation of a terrain surface. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1BoundingBox}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Bounding\+Box}}
-\item 
+\begin{DoxyCompactList}\small\item\em Axis-\/aligned 2D bounding box. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1Edge}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Edge}}
-\item 
+\begin{DoxyCompactList}\small\item\em Undirected edge between two vertices. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1EdgeHash}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Edge\+Hash}}
-\item 
+\begin{DoxyCompactList}\small\item\em Hash functor for \doxylink{structhmap_1_1TerrainTriMesh_1_1Edge}{Edge}. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1Triangle}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Triangle}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1TerrainTriMesh_1_1Triangle}{Triangle} defined by three vertex indices. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1Neighbor}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Neighbor}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1TerrainTriMesh_1_1Neighbor}{Neighbor} vertex information. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1NeighborData}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Neighbor\+Data}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Vertex adjacency lists. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmap_1_1TerrainTriMesh_1_1ShortestPathResult}{hmap\+::\+Terrain\+Tri\+Mesh\+::\+Shortest\+Path\+Result}}
+\begin{DoxyCompactList}\small\item\em Result of a shortest-\/path computation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,6 +28,8 @@ namespace \mbox{\hyperlink{namespacehmap}{hmap}}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_aad6a39e70bf2ff70f8367e663d3027cf}{hmap\+::cubic\+\_\+pulse}} (const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&mesh)
-\item 
+\begin{DoxyCompactList}\small\item\em Compute a cubic pulse value for each mesh vertex. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_af9fdabd692817be603ff5c44e68ea619}{hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate a terrain mesh from a heightmap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a}{hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap\+\_\+random}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int control\+\_\+points\+\_\+count, std\+::uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Generate a random terrain mesh from a heightmap. \end{DoxyCompactList}\end{DoxyCompactItemize}

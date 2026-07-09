@@ -2,6 +2,7 @@ var cloud_8hpp =
 [
     [ "hmap::Cloud", "classhmap_1_1Cloud.html", "classhmap_1_1Cloud" ],
     [ "cloud_sdf_to_array", "cloud_8hpp.html#aad6694d36e91a15ded7373064d15b88c", null ],
+    [ "has_duplicates", "cloud_8hpp.html#a248e8293399d0a3ae57265562aecd659", null ],
     [ "interpolate_values_from_array", "cloud_8hpp.html#ab62e174cd14e34aa08ec4c5f00c14df8", null ],
     [ "merge_cloud", "cloud_8hpp.html#abd7c616c225d31eb2fd4e3ff023e3ed5", null ],
     [ "merge_clouds", "cloud_8hpp.html#afc6e9a8850aaebd3cca94aefb3c54114", null ],

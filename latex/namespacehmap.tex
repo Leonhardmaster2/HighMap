@@ -131,7 +131,7 @@ class \mbox{\hyperlink{classhmap_1_1StepFunction}{Step\+Function}}
 class \mbox{\hyperlink{classhmap_1_1Tensor}{Tensor}}
 \begin{DoxyCompactList}\small\item\em A class to represent a multi-\/dimensional tensor. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structhmap_1_1TerrainTriMesh_1_1Triangle}{Triangle} mesh representation of a terrain surface. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhmap_1_1TileKey}{Tile\+Key}}
 \item 
 struct \mbox{\hyperlink{structhmap_1_1TileKeyHash}{Tile\+Key\+Hash}}
@@ -949,6 +949,8 @@ bool \mbox{\hyperlink{namespacehmap_a1f55b3e36f46f0c821fb093bca24ca5f}{is\+\_\+p
 \begin{DoxyCompactList}\small\item\em Checks if a grid path has no gaps (8-\/connectivity). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aad6694d36e91a15ded7373064d15b88c}{cloud\+\_\+sdf\+\_\+to\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, glm\+::ivec2 shape, glm\+::vec4 bbox\+\_\+array=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\}, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+x=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+noise\+\_\+y=nullptr)
 \begin{DoxyCompactList}\small\item\em Compute a distance field from a point cloud. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacehmap_a248e8293399d0a3ae57265562aecd659}{has\+\_\+duplicates}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, float eps=1e-\/9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, bool xy\+\_\+only=true)
+\begin{DoxyCompactList}\small\item\em Checks whether the point cloud contains duplicate points. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}{interpolate\+\_\+values\+\_\+from\+\_\+array}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::vec4 bbox)
 \begin{DoxyCompactList}\small\item\em Interpolate values from an array at the points\textquotesingle{} {\ttfamily (x, y)} locations. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \mbox{\hyperlink{namespacehmap_abd7c616c225d31eb2fd4e3ff023e3ed5}{merge\+\_\+cloud}} (const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud1, const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&cloud2)
@@ -1157,6 +1159,8 @@ std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{namespacehmap_a823804201f4a5d
 \begin{DoxyCompactList}\small\item\em Estimate lake water depths on a terrain by filling depressions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a27b43e17baebd07ebb43808ca0dceb42}{flow\+\_\+accumulation\+\_\+d8}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
 \begin{DoxyCompactList}\small\item\em Computes the flow accumulation for each cell using the D8 flow direction model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_aa774e7d04ba3c90c4d76dedfd8f76245}{flow\+\_\+accumulation\+\_\+stochastic}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int n\+\_\+samples=1$<$$<$ 19, std\+::uint32\+\_\+t seed=0, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+source=nullptr, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+decay=nullptr)
+\begin{DoxyCompactList}\small\item\em Computes flow accumulation using a stochastic (Monte-\/\+Carlo) transport estimator. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a58ba4910af868f70849f343e0c73adf3}{flow\+\_\+accumulation\+\_\+dinf}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref)
 \begin{DoxyCompactList}\small\item\em Computes the flow accumulation for each cell using the Multiple Flow Direction (MFD) model. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9a75c558c8576802e0661ca9cabc7475}{flow\+\_\+accumulation\+\_\+dinf\+\_\+perturbed}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float talus\+\_\+ref, int nsamples, glm\+::vec2 kw, std\+::uint32\+\_\+t seed, float amp, const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}p\+\_\+perturb\+\_\+scaling=nullptr, glm\+::vec4 bbox=\{0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 0.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}, 1.\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}\})
@@ -1283,6 +1287,10 @@ std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_a0b3237f9cc015299bf3e4
 \begin{DoxyCompactList}\small\item\em Generate a square-\/shaped kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af79b0d6faf3275a80f3948dfff6adaf5}{tricube}} (glm\+::ivec2 shape)
 \begin{DoxyCompactList}\small\item\em Generate a tricube kernel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a6c42198d3612cdfd232c900f427bd103}{path\+\_\+length\+\_\+to\+\_\+outlet}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em Computes the downstream path length to the domain outlet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_af5117ffbcd95bf910f3b70b095bee604}{path\+\_\+length\+\_\+to\+\_\+sink}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z)
+\begin{DoxyCompactList}\small\item\em Computes the downstream path length to the nearest sink. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}{local\+\_\+max}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
 \begin{DoxyCompactList}\small\item\em Return the local maxima based on a maximum filter with a square kernel. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_a9b6a1d2ca8ef58a4a0605d04bcbff038}{local\+\_\+median\+\_\+deviation}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, int ir)
@@ -1647,8 +1655,12 @@ void \mbox{\hyperlink{namespacehmap_a7a433480a8cd89be48bc9ce8cbb25ce8}{swirl}} (
 \begin{DoxyCompactList}\small\item\em Return an array sparsely filled with random 0 and 1. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1dddbe034996fa79873ee62b3a3152fe}{fast\+\_\+hash32\+\_\+to\+\_\+unit\+\_\+float}} (unsigned int seed, size\+\_\+t k)
 \begin{DoxyCompactList}\small\item\em Generates a fast deterministic uniform float in \mbox{[}0,1) using a 32-\/bit hash. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{namespacehmap_a03dbcfc2248c5e343c88b07aa90b2374}{splitmix64}} (uint64\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em Computes a deterministic 64-\/bit hash using the Split\+Mix64 algorithm. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}{splitmix64\+\_\+to\+\_\+unit\+\_\+float}} (unsigned int seed, size\+\_\+t k)
-\begin{DoxyCompactList}\small\item\em Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Generates a deterministic uniform float in \mbox{[}0,1) from a seed and sample index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespacehmap_ab776cf6d2ca581c9f2525df15b2eef45}{uniform01}} (uint64\+\_\+t h)
+\begin{DoxyCompactList}\small\item\em Converts a 64-\/bit hash value into a deterministic uniform float in \mbox{[}0, 1). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_abc5d54d0d76a86f083db977837c28d69}{chop}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmin)
 \begin{DoxyCompactList}\small\item\em Set to zero any value lower than {\ttfamily vmin}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a0583ee2dca09a21193cb1e1830ce90bf}{chop\+\_\+max\+\_\+smooth}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, float vmax)
@@ -1798,9 +1810,11 @@ float \mbox{\hyperlink{namespacehmap_aec6ff7b54fb5d02804aa8de94bcd4caa}{variance
 \mbox{\hyperlink{classhmap_1_1Array}{Array}} \mbox{\hyperlink{namespacehmap_adb1405cd7f9a219c82c149bcaa55cafc}{quilting\+\_\+shuffle}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array, glm\+::ivec2 patch\+\_\+base\+\_\+shape, float overlap, std\+::uint32\+\_\+t seed, std\+::vector$<$ \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*} $>$ secondary\+\_\+arrays=\{\}, bool patch\+\_\+flip=true, bool patch\+\_\+rotate=true, bool patch\+\_\+transpose=true, float filter\+\_\+width\+\_\+ratio=0.\+25\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}})
 \begin{DoxyCompactList}\small\item\em Synthesize a new heightmap by reshuffling patches of the input heightmap. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{namespacehmap_aad6a39e70bf2ff70f8367e663d3027cf}{cubic\+\_\+pulse}} (const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&mesh)
-\item 
+\begin{DoxyCompactList}\small\item\em Compute a cubic pulse value for each mesh vertex. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_af9fdabd692817be603ff5c44e68ea619}{generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, float max\+\_\+error, int max\+\_\+triangles=0, int max\+\_\+points=0)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate a terrain mesh from a heightmap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \mbox{\hyperlink{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a}{generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap\+\_\+random}} (const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&z, int control\+\_\+points\+\_\+count, std\+::uint32\+\_\+t seed)
+\begin{DoxyCompactList}\small\item\em Generate a random terrain mesh from a heightmap. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a19dec938e688ef4b73cf27ff3934043b}{flip\+\_\+lr}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
 \begin{DoxyCompactList}\small\item\em Flip the array horizontally (left/right). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacehmap_a2c304fc0d8cefe164e3070c885b43aaa}{flip\+\_\+ud}} (\mbox{\hyperlink{classhmap_1_1Array}{Array}} \&array)
@@ -12992,6 +13006,28 @@ Compute a distance field from a point cloud.
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} of distances to the nearest point. 
 \end{DoxyReturn}
+\Hypertarget{namespacehmap_a248e8293399d0a3ae57265562aecd659}\label{namespacehmap_a248e8293399d0a3ae57265562aecd659} 
+\index{hmap@{hmap}!has\_duplicates@{has\_duplicates}}
+\index{has\_duplicates@{has\_duplicates}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool hmap\+::has\+\_\+duplicates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Cloud}{Cloud}} \&}]{cloud,  }\item[{float}]{eps = {\ttfamily 1e-\/9\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}},  }\item[{bool}]{xy\+\_\+only = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Checks whether the point cloud contains duplicate points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cloud} & Input point cloud. \\
+\hline
+{\em eps} & Distance tolerance for considering two points identical. \\
+\hline
+{\em xy\+\_\+only} & If true, compares only the X and Y coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if duplicate points are found, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8}\label{namespacehmap_ab62e174cd14e34aa08ec4c5f00c14df8} 
 \index{hmap@{hmap}!interpolate\_values\_from\_array@{interpolate\_values\_from\_array}}
 \index{interpolate\_values\_from\_array@{interpolate\_values\_from\_array}!hmap@{hmap}}
@@ -14879,7 +14915,7 @@ Calculate the chamfer distance between two paths.
 \Hypertarget{namespacehmap_adb224131a9c75491b105b67801e0fe20}\label{namespacehmap_adb224131a9c75491b105b67801e0fe20} 
 \index{hmap@{hmap}!has\_duplicates@{has\_duplicates}}
 \index{has\_duplicates@{has\_duplicates}!hmap@{hmap}}
-\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}}
+\doxysubsubsection{\texorpdfstring{has\_duplicates()}{has\_duplicates()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily bool hmap\+::has\+\_\+duplicates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Path}{Path}} \&}]{path,  }\item[{float}]{tol = {\ttfamily 1e-\/6\mbox{\hyperlink{distance__transform_8cpp_abcb9259cf91bfd25e92a72cdf18c285e}{f}}} }\end{DoxyParamCaption})}
 
 
@@ -17255,6 +17291,103 @@ This function calculates the flow accumulation for each cell in the heightmap ba
 \begin{DoxySeeAlso}{See also}
 \doxylink{namespacehmap_af8f580c9d50a07585257569bd1160891}{flow\+\_\+direction\+\_\+d8} 
 \end{DoxySeeAlso}
+\Hypertarget{namespacehmap_aa774e7d04ba3c90c4d76dedfd8f76245}\label{namespacehmap_aa774e7d04ba3c90c4d76dedfd8f76245} 
+\index{hmap@{hmap}!flow\_accumulation\_stochastic@{flow\_accumulation\_stochastic}}
+\index{flow\_accumulation\_stochastic@{flow\_accumulation\_stochastic}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{flow\_accumulation\_stochastic()}{flow\_accumulation\_stochastic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::flow\+\_\+accumulation\+\_\+stochastic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{n\+\_\+samples = {\ttfamily 1~$<$$<$~19},  }\item[{std\+::uint32\+\_\+t}]{seed = {\ttfamily 0},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+source = {\ttfamily nullptr},  }\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+decay = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Computes flow accumulation using a stochastic (Monte-\/\+Carlo) transport estimator. 
+
+Particles are spawned uniformly, advected along the downhill gradient field with exact voxel traversal, attenuated by an optional decay term, and deposit flux into every cell they exit. A final analytic normalization yields the steady-\/state flux, including for cells no particle visited. Compared to flow\+\_\+accumulation\+\_\+d8, the result is smooth and free of axis-\/aligned artifacts.
+
+Port of the reference implementation of "{}\+Stochastic Geomorphological \+Transport for Terrain Erosion Simulation"{} (N. Mc\+Donald, G. Cordonnier), \href{https://github.com/erosiv/geotransport}{\texttt{ https\+://github.\+com/erosiv/geotransport}} (MIT).
+
+Results are reproducible up to floating-\/point summation order (deposits accumulate via unordered atomic adds).
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Input array representing the heightmap values. \\
+\hline
+{\em n\+\_\+samples} & Number of Monte-\/\+Carlo samples (particles). \\
+\hline
+{\em seed} & Random seed number (deterministic for fixed inputs). \\
+\hline
+{\em p\+\_\+source} & Optional per-\/cell source term (default\+: uniform 1). \\
+\hline
+{\em p\+\_\+decay} & Optional per-\/cell decay rate (default\+: 0, pure accumulation). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classhmap_1_1Array}{Array} Per-\/cell steady-\/state flux.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ res\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ res,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Dinf\ for\ visual\ reference}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_d8\ =\ \mbox{\hyperlink{namespacehmap_a27b43e17baebd07ebb43808ca0dceb42}{hmap::flow\_accumulation\_d8}}(z);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_dinf\ =\ \mbox{\hyperlink{namespacehmap_a58ba4910af868f70849f343e0c73adf3}{hmap::flow\_accumulation\_dinf}}(z,\ 1.f\ /\ shape.x);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_st\ =\ \mbox{\hyperlink{namespacehmap_aa774e7d04ba3c90c4d76dedfd8f76245}{hmap::flow\_accumulation\_stochastic}}(z,\ 1\ <<\ 18,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_1_1gpu_adb8336ed4d83c15500872185dee45d50}{hmap::gpu::init\_opencl}}();}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_gpu\ =\ \mbox{\hyperlink{namespacehmap_1_1gpu_ae164e4dd12c68718bb1cc85ee2b2aad1}{hmap::gpu::flow\_accumulation\_stochastic}}(z,\ 1\ <<\ 18,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ CPU/GPU\ agreement:\ Pearson\ correlation\ on\ log(1\ +\ flux)}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{double}\ sx\ =\ 0,\ sy\ =\ 0,\ sxx\ =\ 0,\ syy\ =\ 0,\ sxy\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ ncells\ =\ shape.x\ *\ shape.y;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ ncells;\ ++k)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ std::log1p((\textcolor{keywordtype}{double})facc\_st.vector[k]);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ b\ =\ std::log1p((\textcolor{keywordtype}{double})facc\_gpu.vector[k]);}
+\DoxyCodeLine{\ \ \ \ sx\ +=\ a;}
+\DoxyCodeLine{\ \ \ \ sy\ +=\ b;}
+\DoxyCodeLine{\ \ \ \ sxx\ +=\ a\ *\ a;}
+\DoxyCodeLine{\ \ \ \ syy\ +=\ b\ *\ b;}
+\DoxyCodeLine{\ \ \ \ sxy\ +=\ a\ *\ b;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{double}\ corr\ =\ (ncells\ *\ sxy\ -\/\ sx\ *\ sy)\ /\ (std::sqrt(ncells\ *\ sxx\ -\/\ sx\ *\ sx)\ *}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sqrt(ncells\ *\ syy\ -\/\ sy\ *\ sy));}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}stochastic\ flow\ acc.\ min/max:\ "{}}\ <<\ facc\_st.min()\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ <<\ facc\_st.max()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPU/GPU\ log-\/flux\ correlation:\ "{}}\ <<\ corr\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ flux\ spans\ many\ orders\ of\ magnitude,\ so\ log-\/scale\ before\ rendering\ to}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ PNG\ (linear\ scaling\ makes\ the\ image\ mostly\ black\ with\ a\ few\ blown-\/out}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ pixels);\ apply\ the\ same\ treatment\ to\ the\ D8\ output\ so\ both\ images\ stay}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ visually\ comparable}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_d8\_log\ =\ \mbox{\hyperlink{namespacehmap_a75475b6109023ce0ad64f6f9f7c4c525}{hmap::log10}}(1.f\ +\ facc\_d8);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_st\_log\ =\ \mbox{\hyperlink{namespacehmap_a75475b6109023ce0ad64f6f9f7c4c525}{hmap::log10}}(1.f\ +\ facc\_st);}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ facc\_dinf\_log\ =\ \mbox{\hyperlink{namespacehmap_a75475b6109023ce0ad64f6f9f7c4c525}{hmap::log10}}(1.f\ +\ facc\_dinf);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ z.\mbox{\hyperlink{classhmap_1_1Array_a9ff7b2c0be8f2b5dd9fc33085cd647d1}{to\_png}}(\textcolor{stringliteral}{"{}ex\_flow\_accumulation\_stochastic0.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a6d093dbf3088c52a8acee413942545d9}{hmap::Cmap::TERRAIN}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ facc\_d8\_log.to\_png(\textcolor{stringliteral}{"{}ex\_flow\_accumulation\_stochastic1.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717}{hmap::Cmap::HOT}});}
+\DoxyCodeLine{\ \ facc\_st\_log.to\_png(\textcolor{stringliteral}{"{}ex\_flow\_accumulation\_stochastic2.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717}{hmap::Cmap::HOT}});}
+\DoxyCodeLine{\ \ facc\_dinf\_log.to\_png(\textcolor{stringliteral}{"{}ex\_flow\_accumulation\_stochastic3.png"{}},\ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369a320107cf3138d908a78d3c6d97705717}{hmap::Cmap::HOT}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}   
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{namespacehmap_a27b43e17baebd07ebb43808ca0dceb42}{flow\+\_\+accumulation\+\_\+d8} 
+\end{DoxySeeAlso}
 \Hypertarget{namespacehmap_a58ba4910af868f70849f343e0c73adf3}\label{namespacehmap_a58ba4910af868f70849f343e0c73adf3} 
 \index{hmap@{hmap}!flow\_accumulation\_dinf@{flow\_accumulation\_dinf}}
 \index{flow\_accumulation\_dinf@{flow\_accumulation\_dinf}!hmap@{hmap}}
@@ -19160,7 +19293,81 @@ The tricube kernel is a type of kernel function that is often used in statistica
 \begin{DoxyReturn}{Returns}
 \doxylink{classhmap_1_1Array}{Array} The tricube kernel array.
 \end{DoxyReturn}
-{\bfseries{Reference}} See \href{https://en.wikipedia.org/wiki/Kernel_\%28statistics\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Kernel\+\_\+\%28statistics\%29}} for details on the tricube kernel. \Hypertarget{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}\label{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922} 
+{\bfseries{Reference}} See \href{https://en.wikipedia.org/wiki/Kernel_\%28statistics\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Kernel\+\_\+\%28statistics\%29}} for details on the tricube kernel. \Hypertarget{namespacehmap_a6c42198d3612cdfd232c900f427bd103}\label{namespacehmap_a6c42198d3612cdfd232c900f427bd103} 
+\index{hmap@{hmap}!path\_length\_to\_outlet@{path\_length\_to\_outlet}}
+\index{path\_length\_to\_outlet@{path\_length\_to\_outlet}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{path\_length\_to\_outlet()}{path\_length\_to\_outlet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::path\+\_\+length\+\_\+to\+\_\+outlet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Computes the downstream path length to the domain outlet. 
+
+For each cell, follows the steepest-\/descending flow path and returns the number of downstream cells required to leave the domain. Cells whose flow terminates in an internal sink have a path length of 0.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ k\_sink\ =\ \mbox{\hyperlink{namespacehmap_af5117ffbcd95bf910f3b70b095bee604}{hmap::path\_length\_to\_sink}}(z);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ k\_outlet\ =\ \mbox{\hyperlink{namespacehmap_a6c42198d3612cdfd232c900f427bd103}{hmap::path\_length\_to\_outlet}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_length\_to\_sink.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ k\_sink,\ k\_outlet\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_af5117ffbcd95bf910f3b70b095bee604}\label{namespacehmap_af5117ffbcd95bf910f3b70b095bee604} 
+\index{hmap@{hmap}!path\_length\_to\_sink@{path\_length\_to\_sink}}
+\index{path\_length\_to\_sink@{path\_length\_to\_sink}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{path\_length\_to\_sink()}{path\_length\_to\_sink()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1Array}{Array}} hmap\+::path\+\_\+length\+\_\+to\+\_\+sink (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Computes the downstream path length to the nearest sink. 
+
+For each cell, follows the steepest-\/descending flow path and returns the number of downstream cells required to reach a sink. Sink cells have a path length of 0.
+
+{\bfseries{Example}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{highmap_8hpp}{highmap.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ glm::ivec2\ shape\ =\ \{256,\ 256\};}
+\DoxyCodeLine{\ \ glm::vec2\ \ kw\ =\ \{2.f,\ 2.f\};}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ seed\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ z\ =\ \mbox{\hyperlink{namespacehmap_a7f5b2e16a974bbfad06fbae44c8b3465}{hmap::noise\_fbm}}(\mbox{\hyperlink{namespacehmap_ab8197c4c7a85dacb616fee7a7d0df195a87c6abee9c8e2441859223b28e9b4581}{hmap::NoiseType::PERLIN}},\ shape,\ kw,\ seed);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ k\_sink\ =\ \mbox{\hyperlink{namespacehmap_af5117ffbcd95bf910f3b70b095bee604}{hmap::path\_length\_to\_sink}}(z);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classhmap_1_1Array}{hmap::Array}}\ k\_outlet\ =\ \mbox{\hyperlink{namespacehmap_a6c42198d3612cdfd232c900f427bd103}{hmap::path\_length\_to\_outlet}}(z);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{namespacehmap_ac2452e568959bc21c9b7b09202e5977a}{hmap::export\_banner\_png}}(\textcolor{stringliteral}{"{}ex\_path\_length\_to\_sink.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{z,\ k\_sink,\ k\_outlet\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehmap_ac70fe3cbb32e0340d5dd3e15cdcf9369afd0b9cd53cbae62c25ef686ba527d143}{hmap::Cmap::INFERNO}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries{Result}}  \Hypertarget{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922}\label{namespacehmap_adac2e2b20d0c2720e2dc068641bcd922} 
 \index{hmap@{hmap}!local\_max@{local\_max}}
 \index{local\_max@{local\_max}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{local\_max()}{local\_max()}}
@@ -27252,6 +27459,26 @@ Pseudo-\/random float in \mbox{[}0,1).
 \begin{DoxyNote}{Note}
 Faster but lower quality than \doxylink{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}{splitmix64\+\_\+to\+\_\+unit\+\_\+float()}. 
 \end{DoxyNote}
+\Hypertarget{namespacehmap_a03dbcfc2248c5e343c88b07aa90b2374}\label{namespacehmap_a03dbcfc2248c5e343c88b07aa90b2374} 
+\index{hmap@{hmap}!splitmix64@{splitmix64}}
+\index{splitmix64@{splitmix64}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{splitmix64()}{splitmix64()}}
+{\footnotesize\ttfamily uint64\+\_\+t hmap\+::splitmix64 (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{x }\end{DoxyParamCaption})}
+
+
+
+Computes a deterministic 64-\/bit hash using the Split\+Mix64 algorithm. 
+
+This function is used to generate reproducible pseudo-\/random values from integer inputs without maintaining any internal state. It is suitable for generating deterministic per-\/sample random seeds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input 64-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+64-\/bit hashed value. 
+\end{DoxyReturn}
 \Hypertarget{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8}\label{namespacehmap_a1727bd2e6f80a1762f65db5583067fa8} 
 \index{hmap@{hmap}!splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}}
 \index{splitmix64\_to\_unit\_float@{splitmix64\_to\_unit\_float}!hmap@{hmap}}
@@ -27260,7 +27487,9 @@ Faster but lower quality than \doxylink{namespacehmap_a1727bd2e6f80a1762f65db558
 
 
 
-Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/style hash. 
+Generates a deterministic uniform float in \mbox{[}0,1) from a seed and sample index. 
+
+The function combines the base seed and sample index, hashes the result using Split\+Mix64, and converts the generated bits into a floating-\/point value in the range \mbox{[}0,1). The output is deterministic and independent for each sample index.
 
 
 \begin{DoxyParams}{Parameters}
@@ -27271,6 +27500,26 @@ Generates a deterministic uniform float in \mbox{[}0,1) using a Split\+Mix64-\/s
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Pseudo-\/random float in \mbox{[}0,1). 
+\end{DoxyReturn}
+\Hypertarget{namespacehmap_ab776cf6d2ca581c9f2525df15b2eef45}\label{namespacehmap_ab776cf6d2ca581c9f2525df15b2eef45} 
+\index{hmap@{hmap}!uniform01@{uniform01}}
+\index{uniform01@{uniform01}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{uniform01()}{uniform01()}}
+{\footnotesize\ttfamily float hmap\+::uniform01 (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{h }\end{DoxyParamCaption})}
+
+
+
+Converts a 64-\/bit hash value into a deterministic uniform float in \mbox{[}0, 1). 
+
+Extracts the upper 24 bits of the input hash and scales them to produce a single-\/precision floating-\/point value. The 24-\/bit resolution matches the mantissa precision of a {\ttfamily float}, providing a deterministic pseudo-\/random uniform distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & 64-\/bit hash value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Uniform floating-\/point value in the range \mbox{[}0, 1). 
 \end{DoxyReturn}
 \Hypertarget{namespacehmap_abc5d54d0d76a86f083db977837c28d69}\label{namespacehmap_abc5d54d0d76a86f083db977837c28d69} 
 \index{hmap@{hmap}!chop@{chop}}
@@ -30520,11 +30769,29 @@ This function generates a new heightmap by reshuffling patches of the input heig
 \doxysubsubsection{\texorpdfstring{cubic\_pulse()}{cubic\_pulse()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily std\+::vector$<$ float $>$ hmap\+::cubic\+\_\+pulse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} \&}]{mesh }\end{DoxyParamCaption})}
 
+
+
+Compute a cubic pulse value for each mesh vertex. 
+
 \Hypertarget{namespacehmap_af9fdabd692817be603ff5c44e68ea619}\label{namespacehmap_af9fdabd692817be603ff5c44e68ea619} 
 \index{hmap@{hmap}!generate\_terrain\_tri\_mesh\_from\_heightmap@{generate\_terrain\_tri\_mesh\_from\_heightmap}}
 \index{generate\_terrain\_tri\_mesh\_from\_heightmap@{generate\_terrain\_tri\_mesh\_from\_heightmap}!hmap@{hmap}}
 \doxysubsubsection{\texorpdfstring{generate\_terrain\_tri\_mesh\_from\_heightmap()}{generate\_terrain\_tri\_mesh\_from\_heightmap()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{float}]{max\+\_\+error,  }\item[{int}]{max\+\_\+triangles = {\ttfamily 0},  }\item[{int}]{max\+\_\+points = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Generate a terrain mesh from a heightmap. 
+
+\Hypertarget{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a}\label{namespacehmap_a5078af3eb73fb47ab1aad6cc872ab29a} 
+\index{hmap@{hmap}!generate\_terrain\_tri\_mesh\_from\_heightmap\_random@{generate\_terrain\_tri\_mesh\_from\_heightmap\_random}}
+\index{generate\_terrain\_tri\_mesh\_from\_heightmap\_random@{generate\_terrain\_tri\_mesh\_from\_heightmap\_random}!hmap@{hmap}}
+\doxysubsubsection{\texorpdfstring{generate\_terrain\_tri\_mesh\_from\_heightmap\_random()}{generate\_terrain\_tri\_mesh\_from\_heightmap\_random()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmap_1_1TerrainTriMesh}{Terrain\+Tri\+Mesh}} hmap\+::generate\+\_\+terrain\+\_\+tri\+\_\+mesh\+\_\+from\+\_\+heightmap\+\_\+random (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmap_1_1Array}{Array}} \&}]{z,  }\item[{int}]{control\+\_\+points\+\_\+count,  }\item[{std\+::uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
+
+
+
+Generate a random terrain mesh from a heightmap. 
 
 \Hypertarget{namespacehmap_a19dec938e688ef4b73cf27ff3934043b}\label{namespacehmap_a19dec938e688ef4b73cf27ff3934043b} 
 \index{hmap@{hmap}!flip\_lr@{flip\_lr}}

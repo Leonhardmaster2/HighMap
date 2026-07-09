@@ -16,6 +16,8 @@ var local__metrics_8hpp =
       [ "LM_RUGOSITY_CONCAVE", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fa892abed7945357817b7504339fdcee14", null ],
       [ "LM_RUGOSITY_CONVEX", "local__metrics_8hpp.html#ab0737b29664736928a86f0755493895fac1321c034ba09831f5b5a040058f9477", null ]
     ] ],
+    [ "path_length_to_outlet", "local__metrics_8hpp.html#a6c42198d3612cdfd232c900f427bd103", null ],
+    [ "path_length_to_sink", "local__metrics_8hpp.html#af5117ffbcd95bf910f3b70b095bee604", null ],
     [ "local_max", "local__metrics_8hpp.html#adac2e2b20d0c2720e2dc068641bcd922", null ],
     [ "local_median_deviation", "local__metrics_8hpp.html#a9b6a1d2ca8ef58a4a0605d04bcbff038", null ],
     [ "local_min", "local__metrics_8hpp.html#aa7ab501bae56bac2236a74ade5cd34a4", null ],
