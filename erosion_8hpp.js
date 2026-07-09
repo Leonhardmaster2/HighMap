@@ -29,8 +29,6 @@ var erosion_8hpp =
     [ "deposition_fill_holes", "erosion_8hpp.html#a67fee4e11fb0b003d0ebb091e85533fe", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#ac6d55fbc90b3e84de1a4b68f26873934", null ],
     [ "hydraulic_particle", "erosion_8hpp.html#ac3ded0c179de9782edf74dbc0b348b5d", null ],
-    [ "hydraulic_mcdonald", "erosion_8hpp.html#a95d94b88a44f0b1c6b21a020d8779b1f", null ],
-    [ "hydraulic_mcdonald_multiscale", "erosion_8hpp.html#a33b7748b6322b458482b3a60c6a3a7c6", null ],
     [ "hydraulic_procedural", "erosion_8hpp.html#a99e82fd045db7e5fddd177449289c3b6", null ],
     [ "hydraulic_procedural_fbm", "erosion_8hpp.html#a79e45a2a4f3a41739ee49c722cded536", null ],
     [ "hydraulic_procedural_fbm", "erosion_8hpp.html#a0cf61fdf1248cd9cc4da40f510e13973", null ],

@@ -23,8 +23,6 @@ var classhmap_1_1DrainageBasin =
     [ "get_main_channels", "classhmap_1_1DrainageBasin.html#ad753fddf932df91b9de63dd9222a79a9", null ],
     [ "remove_lakes", "classhmap_1_1DrainageBasin.html#a81376d87a5f35274d6a541c9c9832bda", null ],
     [ "compute_response_times", "classhmap_1_1DrainageBasin.html#a97ae87db86facdff8c4955454553766a", null ],
-    [ "flow_breach", "classhmap_1_1DrainageBasin.html#a68cd031a86f51ed6107652ce336a51fa", null ],
-    [ "flow_breach_paths", "classhmap_1_1DrainageBasin.html#a4ec0c83521a03550a6824890b23a1311", null ],
     [ "update_elevations", "classhmap_1_1DrainageBasin.html#a61c39bccd602d2c04dfed14e653d01a6", null ],
     [ "accumulate_area_by_outlet", "classhmap_1_1DrainageBasin.html#a6864378e3110c92b84c033b3579d58d3", null ],
     [ "for_each_upstream", "classhmap_1_1DrainageBasin.html#a7b01ca0613368f0fd3dde8812e326ff1", null ],
