@@ -14,12 +14,12 @@
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 #include "highmap/shadows.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
 
-void apply_hillshade(Tensor      &color3,
+void apply_hillshade(Texture     &color3,
                      const Array &array,
                      float        vmin,
                      float        vmax,
@@ -85,25 +85,25 @@ void apply_hillshade(std::vector<uint8_t> &img,
   }
 }
 
-Tensor colorize(const Array &array,
-                float        vmin,
-                float        vmax,
-                int          cmap,
-                bool         hillshading,
-                bool         reverse,
-                const Array *p_noise)
+Texture colorize(const Array &array,
+                 float        vmin,
+                 float        vmax,
+                 int          cmap,
+                 bool         hillshading,
+                 bool         reverse,
+                 const Array *p_noise)
 {
   // get the colormap and reverse if needed
   const auto colormap_colors = get_colormap_data(cmap);
   if (reverse) std::swap(vmin, vmax);
 
-  // initialize color tensor and normalization factors
+  // initialize color texture and normalization factors
   const int nc = static_cast<int>(colormap_colors.size());
   glm::vec2 normalization_factors = array.normalization_coeff(vmin, vmax);
   normalization_factors.x *= (nc - 1);
   normalization_factors.y *= (nc - 1);
 
-  Tensor color3(array.shape, 3);
+  Texture color3(array.shape, 3);
 
   // lambda function to apply colormap
   auto apply_colormap = [&](float value) -> glm::vec3
@@ -144,17 +144,16 @@ Tensor colorize(const Array &array,
   return color3;
 }
 
-Tensor colorize_grayscale(const Array &array)
+Texture colorize_grayscale(const Array &array)
 {
-  Tensor color1 = Tensor(array.shape, 1);
-  color1.set_slice(0, array);
+  Texture color1 = Texture(array);
   color1.remap();
   return color1;
 }
 
-Tensor colorize_histogram(const Array &array)
+Texture colorize_histogram(const Array &array)
 {
-  Tensor color1 = Tensor(array.shape, 1);
+  Texture color1 = Texture(array.shape, 1);
 
   // normalization factors
   float a = 0.f;
@@ -188,7 +187,7 @@ Tensor colorize_histogram(const Array &array)
   return color1;
 }
 
-Tensor colorize_slope_height_heatmap(const Array &array, int cmap)
+Texture colorize_slope_height_heatmap(const Array &array, int cmap)
 {
   Array dz = gradient_norm(array);
 
@@ -228,16 +227,16 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap)
       sum(p, q) += 1.f;
     }
 
-  bool   hillshading = false;
-  Tensor col3 = colorize(sum, sum.min(), sum.max(), cmap, hillshading);
+  bool    hillshading = false;
+  Texture col3 = colorize(sum, sum.min(), sum.max(), cmap, hillshading);
 
   return col3;
 }
 
-Tensor colorize_vec2(const Array &array1, const Array &array2)
+Texture colorize_vec2(const Array &array1, const Array &array2)
 {
   // create image
-  Tensor col3 = Tensor(array1.shape, 3);
+  Texture col3 = Texture(array1.shape, 3);
 
   // normalization factors / 1
   float a1 = 0.f;

@@ -22,7 +22,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture.hpp"
 
@@ -86,7 +86,7 @@ enum Cmap : int; // highmap/colormap.hpp
  * @param exponent Power exponent applied to the hillshade values (default is
  *                 1.f).
  */
-void apply_hillshade(Tensor      &img,
+void apply_hillshade(Texture     &img,
                      const Array &array,
                      float        vmin = 0.f,
                      float        vmax = 1.f,
@@ -184,13 +184,13 @@ Array color_match_mask(const Array     &r,
  * @param  p_noise     Optional pointer to a noise array (default is nullptr).
  * @return             Tensor Colorized Tensor image.
  */
-Tensor colorize(const Array &array,
-                float        vmin,
-                float        vmax,
-                int          cmap,
-                bool         hillshading,
-                bool         reverse = false,
-                const Array *p_noise = nullptr);
+Texture colorize(const Array &array,
+                 float        vmin,
+                 float        vmax,
+                 int          cmap,
+                 bool         hillshading,
+                 bool         reverse = false,
+                 const Array *p_noise = nullptr);
 
 /**
  * @brief Colorize a scalar field into a texture using a predefined colormap.
@@ -258,7 +258,7 @@ void colorize(VirtualTexture               &out,
  * @param  array Input array.
  * @return       Tensor Grayscale Tensor image.
  */
-Tensor colorize_grayscale(const Array &array);
+Texture colorize_grayscale(const Array &array);
 
 /**
  * @brief Convert an array to a histogram-based grayscale image.
@@ -269,7 +269,7 @@ Tensor colorize_grayscale(const Array &array);
  * @param  array Input array.
  * @return       Tensor Grayscale Tensor image with histogram-based contrast.
  */
-Tensor colorize_histogram(const Array &array);
+Texture colorize_histogram(const Array &array);
 
 /**
  * @brief Colorizes a slope height heatmap based on the gradient norms of a
@@ -310,7 +310,7 @@ Tensor colorize_histogram(const Array &array);
  * **Result**
  * @image html ex_colorize_slope_height_heatmap.png
  */
-Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
+Texture colorize_slope_height_heatmap(const Array &array, int cmap);
 
 /**
  * @brief Combine two arrays into a colored image.
@@ -329,7 +329,7 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  * **Result**
  * @image html ex_colorize_vec2.png
  */
-Tensor colorize_vec2(const Array &array1, const Array &array2);
+Texture colorize_vec2(const Array &array1, const Array &array2);
 
 /**
  * @brief Compute luminance from a texture.

@@ -7,14 +7,14 @@
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
 
-Tensor normal_map(const Array &array)
+Texture normal_map(const Array &array)
 {
-  Tensor nmap = Tensor(array.shape, 3);
+  Texture nmap = Texture(array.shape, 3);
 
   Array dx = gradient_x(array) * array.shape.x;
   Array dy = gradient_y(array) * array.shape.y;
@@ -32,7 +32,7 @@ Tensor normal_map(const Array &array)
   return nmap;
 }
 
-Array normal_map_to_heightmap(const Tensor &nmap)
+Array normal_map_to_heightmap(const Texture &nmap)
 {
   glm::ivec2 shape(nmap.shape.x, nmap.shape.y);
   Array      z1(shape);
@@ -65,9 +65,9 @@ Array normal_map_to_heightmap(const Tensor &nmap)
   return z1 + z2;
 }
 
-Array normal_map_to_heightmap_poisson(const Tensor &nmap,
-                                      int           iterations,
-                                      float         omega)
+Array normal_map_to_heightmap_poisson(const Texture &nmap,
+                                      int            iterations,
+                                      float          omega)
 {
   glm::ivec2 shape(nmap.shape.x, nmap.shape.y);
   Array      z1(shape);

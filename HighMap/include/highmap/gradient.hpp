@@ -16,7 +16,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
@@ -344,7 +344,7 @@ Array laplacian(const Array &array);
  * @return       A tensor containing the normal vectors for each position in the
  *               input array.
  */
-Tensor normal_map(const Array &array);
+Texture normal_map(const Array &array);
 
 /**
  * @brief Converts a normal map to a heightmap using direct summation of
@@ -373,11 +373,11 @@ Tensor normal_map(const Array &array);
  * **Result**
  * @image html ex_normal_map_to_heightmap.png
  */
-Array normal_map_to_heightmap(const Tensor &nmap);
+Array normal_map_to_heightmap(const Texture &nmap);
 
-Array normal_map_to_heightmap_poisson(const Tensor &nmap,
-                                      int           iterations = 500,
-                                      float         omega = 1.5f);
+Array normal_map_to_heightmap_poisson(const Texture &nmap,
+                                      int            iterations = 500,
+                                      float          omega = 1.5f);
 
 /**
  * @brief Solve the Poisson equation ∇²h = rhs using Gauss–Seidel iteration.

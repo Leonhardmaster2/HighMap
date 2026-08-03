@@ -17,7 +17,7 @@
 
 #include "macrologger.h"
 
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture_storage.hpp"
 
@@ -87,7 +87,7 @@ public:
 
   std::vector<float> to_raw(const ComputeMode &cm, bool flip_y = false);
 
-  Tensor to_tensor(const glm::ivec2 &img_shape, const ComputeMode &cm) const;
+  Texture to_texture(const glm::ivec2 &img_shape, const ComputeMode &cm) const;
 
   // --- Members
 

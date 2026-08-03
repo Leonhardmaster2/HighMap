@@ -6,7 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
 #include "highmap/gradient.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
@@ -15,7 +15,7 @@ void export_normal_map_png(const std::string &fname,
                            const Array       &array,
                            int                depth)
 {
-  Tensor nmap = normal_map(array);
+  Texture nmap = normal_map(array);
   nmap.to_png(fname, depth);
 }
 
