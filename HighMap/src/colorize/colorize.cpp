@@ -277,4 +277,217 @@ Texture colorize_vec2(const Array &array1, const Array &array2)
   return col3;
 }
 
+Texture colorize(const Array                  &array,
+                 float                         vmin,
+                 float                         vmax,
+                 const std::vector<float>     &positions,
+                 const std::vector<glm::vec3> &colormap_colors,
+                 bool                          reverse,
+                 const Array                  *p_noise)
+{
+  auto cpos = positions;
+  auto colors = colormap_colors;
+
+  if (reverse)
+  {
+    std::reverse(colors.begin(), colors.end());
+    std::reverse(cpos.begin(), cpos.end());
+
+    for (auto &p : cpos)
+      p = 1.f - p;
+  }
+
+  std::vector<float> cc_r, cc_g, cc_b;
+  for (const auto &col : colors)
+  {
+    cc_r.push_back(col[0]);
+    cc_g.push_back(col[1]);
+    cc_b.push_back(col[2]);
+  }
+
+  Interpolator1D citp_r = hmap::Interpolator1D(
+      cpos,
+      cc_r,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_g = hmap::Interpolator1D(
+      cpos,
+      cc_g,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_b = hmap::Interpolator1D(
+      cpos,
+      cc_b,
+      hmap::InterpolationMethod1D::LINEAR);
+
+  Texture out(array.shape, 3);
+
+  for (int j = 0; j < array.shape.y; ++j)
+  {
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      float v = array(i, j) + (p_noise ? (*p_noise)(i, j) : 0.f);
+      v = (v - vmin) / (vmax - vmin);
+      v = std::clamp(v, 0.f, 1.f);
+
+      out(i, j, 0) = citp_r(v);
+      out(i, j, 1) = citp_g(v);
+      out(i, j, 2) = citp_b(v);
+    }
+  }
+
+  return out;
+}
+
+Array luminance(const Texture &tex)
+{
+  if (tex.num_channels() < 3)
+  {
+    throw std::runtime_error(
+        "Texture must have at least 3 channels for luminance.");
+  }
+  return 0.299f * tex[0] + 0.587f * tex[1] + 0.114f * tex[2];
+}
+
+Texture mix(const Texture &tex1, const Texture &tex2, bool use_sqrt_avg)
+{
+  if (tex1.num_channels() != 4 || tex2.num_channels() != 4 ||
+      tex1.shape != tex2.shape)
+  {
+    throw std::runtime_error(
+        "mix: Textures must have 4 channels and matching shapes.");
+  }
+
+  Texture out(tex1.shape, 4);
+
+  const Array &a1 = tex1[3];
+  const Array &a2 = tex2[3];
+
+  Array t = a2 / (a2 + a1 * (1.f - a2));
+
+  for (int nch = 0; nch < 3; ++nch)
+  {
+    if (use_sqrt_avg)
+    {
+      out[nch] = pow((1.f - t) * tex1[nch] * tex1[nch] +
+                         t * tex2[nch] * tex2[nch],
+                     0.5f);
+    }
+    else
+    {
+      out[nch] = lerp(tex1[nch], tex2[nch], t);
+    }
+  }
+
+  out[3] = a1 + a2 * (1.f - a1);
+  return out;
+}
+
+Texture mix(const std::vector<const Texture *> &texs, bool use_sqrt_avg)
+{
+  if (texs.empty()) return Texture();
+
+  Texture out = *texs.front();
+
+  for (size_t k = 1; k < texs.size(); ++k)
+  {
+    out = mix(out, *(texs[k]), use_sqrt_avg);
+  }
+
+  return out;
+}
+
+Texture mix_normal_map(const Texture          &nmap_base,
+                       const Texture          &nmap_detail,
+                       float                   detail_scaling,
+                       NormalMapBlendingMethod blending_method)
+{
+  if (nmap_base.shape != nmap_detail.shape)
+  {
+    throw std::runtime_error(
+        "mix_normal_map: normal maps must have matching shapes.");
+  }
+
+  Texture out(nmap_base.shape, 4);
+  // Copy alpha from base (or detail)
+  if (nmap_base.num_channels() == 4)
+    out[3] = nmap_base[3];
+  else
+    out[3] = Array(nmap_base.shape, 1.f);
+
+  std::function<glm::vec3(glm::vec3 &, glm::vec3 &)> blending_fct;
+
+  switch (blending_method)
+  {
+  case NormalMapBlendingMethod::NMAP_LINEAR:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2) { return n1 + n2; };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_DERIVATIVE:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    {
+      return glm::vec3(n1.x * n2.z + n2.x * n1.z,
+                       n1.y * n2.z + n2.y * n1.z,
+                       n1.z * n2.z);
+    };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_UDN:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    { return glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z); };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_UNITY:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    {
+      glm::vec3 m0 = glm::vec3(n1.z, n1.x, -n1.x);
+      glm::vec3 m1 = glm::vec3(n1.x, n1.z, -n1.y);
+      glm::vec3 m2 = glm::vec3(n1.x, n1.y, n1.z);
+
+      return glm::vec3(n2.x * m0.x + n2.y * m1.x + n2.z * m2.x,
+                       n2.x * m0.y + n2.y * m1.y + n2.z * m2.y,
+                       n2.x * m0.z + n2.y * m1.z + n2.z * m2.z);
+    };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_WHITEOUT:
+  default:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    { return glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z * n2.z); };
+  }
+  }
+
+  for (int j = 0; j < nmap_base.shape.y; j++)
+  {
+    for (int i = 0; i < nmap_base.shape.x; i++)
+    {
+      glm::vec3 v111 = glm::vec3(1.f, 1.f, 1.f);
+      glm::vec3 n1 = 2.f * glm::vec3(nmap_base(i, j, 0),
+                                     nmap_base(i, j, 1),
+                                     nmap_base(i, j, 2)) -
+                     v111;
+      glm::vec3 n2 = 2.f * glm::vec3(nmap_detail(i, j, 0),
+                                     nmap_detail(i, j, 1),
+                                     nmap_detail(i, j, 2)) -
+                     v111;
+
+      n2.x *= detail_scaling;
+      n2.y *= detail_scaling;
+      n2.z *= detail_scaling;
+
+      glm::vec3 vn = blending_fct(n1, n2);
+      vn = glm::normalize(vn);
+
+      out(i, j, 0) = 0.5f * vn.x + 0.5f;
+      out(i, j, 1) = 0.5f * vn.y + 0.5f;
+      out(i, j, 2) = 0.5f * vn.z + 0.5f;
+    }
+  }
+
+  return out;
+}
+
 } // namespace hmap

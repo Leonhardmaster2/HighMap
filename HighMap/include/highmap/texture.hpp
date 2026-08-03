@@ -54,7 +54,7 @@ public:
   /**
    * @brief Construct a new Texture object with shape and channel count.
    *
-   * @param shape 2D shape of the texture.
+   * @param shape        2D shape of the texture.
    * @param num_channels Number of channels.
    */
   Texture(glm::ivec2 shape, int num_channels);
@@ -63,9 +63,9 @@ public:
    * @brief Construct a new Texture object with shape, channel count and fill
    * value.
    *
-   * @param shape 2D shape of the texture.
+   * @param shape        2D shape of the texture.
    * @param num_channels Number of channels.
-   * @param fill_value The value to fill all channels with.
+   * @param fill_value   The value to fill all channels with.
    */
   Texture(glm::ivec2 shape, int num_channels, float fill_value);
 
@@ -94,7 +94,7 @@ public:
   /**
    * @brief Constructs a new Texture object from an image file.
    *
-   * @param fname The name of the file to load the texture from.
+   * @param fname  The name of the file to load the texture from.
    * @param flip_j If true, flip the image vertically on load.
    */
   explicit Texture(const std::string &fname, bool flip_j = false);

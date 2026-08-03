@@ -1,4 +1,7 @@
+#include "highmap/colorize.hpp"
+#include "highmap/colormaps.hpp"
 #include "highmap/dbg/assert.hpp"
+#include "highmap/primitives.hpp"
 #include "highmap/texture.hpp"
 
 #include <gtest/gtest.h>
@@ -56,4 +59,64 @@ TEST(TextureIO, PngRoundTripOrientationAndData)
                   1.0f,
                   tolerance); // Alpha should be filled with 1.f
     }
+}
+
+TEST(TextureColorize, CustomColormapAndOperations)
+{
+  glm::ivec2 shape = {8, 8};
+  Array      level = white(shape, 0.f, 1.f, 0);
+
+  // Red, Green, Blue at positions 0.0, 0.5, 1.0
+  std::vector<float>     positions = {0.f, 0.5f, 1.f};
+  std::vector<glm::vec3> colors = {glm::vec3(1.f, 0.f, 0.f),
+                                   glm::vec3(0.f, 1.f, 0.f),
+                                   glm::vec3(0.f, 0.f, 1.f)};
+
+  Texture col = colorize(level, 0.f, 1.f, positions, colors, false, nullptr);
+  EXPECT_EQ(col.num_channels(), 3);
+  EXPECT_EQ(col.shape, shape);
+
+  // Check luminance
+  Array lum = luminance(col);
+  EXPECT_EQ(lum.shape, shape);
+  for (int j = 0; j < shape.y; ++j)
+  {
+    for (int i = 0; i < shape.x; ++i)
+    {
+      glm::vec3 rgb = col.get_pixel3(i, j);
+      float     expected_lum = 0.299f * rgb.x + 0.587f * rgb.y + 0.114f * rgb.z;
+      EXPECT_NEAR(lum(i, j), expected_lum, 1e-5f);
+    }
+  }
+
+  // Check mixing
+  Texture t1(shape, 4, 0.f);
+  Texture t2(shape, 4, 1.f);
+  // Set alpha channels
+  t1[3] = Array(shape, 1.f);
+  t2[3] = Array(shape, 1.f);
+
+  Texture t_mixed = mix(t1, t2, false);
+  EXPECT_EQ(t_mixed.num_channels(), 4);
+  // Mixing equal alphas (1.f, 1.f) with mixing factor t = 1.0 / (1.0 + 1.0 *
+  // 0.0) = 1.0 Result should equal t2
+  for (int c = 0; c < 3; ++c)
+  {
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+    {
+      EXPECT_NEAR(t_mixed[c].vector[idx], 1.f, 1e-5f);
+    }
+  }
+
+  // Check mix_normal_map basic execution
+  Texture n1(shape, 4, 0.5f); // flat normals
+  Texture n2(shape, 4, 0.5f);
+  n1[2] = Array(shape, 1.f);
+  n2[2] = Array(shape, 1.f);
+
+  Texture blended = mix_normal_map(n1,
+                                   n2,
+                                   1.0f,
+                                   NormalMapBlendingMethod::NMAP_LINEAR);
+  EXPECT_EQ(blended.num_channels(), 4);
 }

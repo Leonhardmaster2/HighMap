@@ -107,6 +107,122 @@ VirtualTexture convert_texture_channels(const VirtualTexture &src,
                                         float                 fill_value,
                                         const ComputeMode    &cm);
 
+// Forward declarations and imports for colorize / image operations on virtual
+// textures
+enum NormalMapBlendingMethod : int;
+enum Cmap : int;
+
+/**
+ * @brief Colorize a scalar field into a VirtualTexture using a predefined
+ * colormap.
+ * @param out     Output virtual texture.
+ * @param level   Input scalar values.
+ * @param cm      Compute mode (CPU/GPU).
+ * @param vmin    Lower bound for normalization.
+ * @param vmax    Upper bound for normalization.
+ * @param cmap    Colormap identifier.
+ * @param p_alpha Optional alpha channel.
+ * @param reverse Reverse colormap mapping.
+ * @param p_noise Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ */
+void colorize(VirtualTexture    &out,
+              VirtualArray      &level,
+              const ComputeMode &cm,
+              float              vmin,
+              float              vmax,
+              int                cmap,
+              VirtualArray      *p_alpha = nullptr,
+              bool               reverse = false,
+              VirtualArray      *p_noise = nullptr);
+
+/**
+ * @brief Colorize a scalar field into a VirtualTexture using a custom colormap.
+ * @param out             Output virtual texture.
+ * @param level           Input scalar values.
+ * @param cm              Compute mode (CPU/GPU).
+ * @param vmin            Lower bound for normalization.
+ * @param vmax            Upper bound for normalization.
+ * @param positions       Normalized color positions.
+ * @param colormap_colors RGB(A) colors per position.
+ * @param p_alpha         Optional alpha channel.
+ * @param reverse         Reverse colormap mapping.
+ * @param p_noise         Optional noise for dithering.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ */
+void colorize(VirtualTexture               &out,
+              VirtualArray                 &level,
+              const ComputeMode            &cm,
+              float                         vmin,
+              float                         vmax,
+              const std::vector<float>     &positions,
+              const std::vector<glm::vec3> &colormap_colors,
+              VirtualArray                 *p_alpha = nullptr,
+              bool                          reverse = false,
+              VirtualArray                 *p_noise = nullptr);
+
+/**
+ * @brief Compute luminance from a VirtualTexture.
+ *
+ * Computes a grayscale luminance array from the RGB channels of a virtual
+ * texture and stores the result in @p out.
+ *
+ * @param out Output luminance array.
+ * @param tex Input virtual texture (expects at least 3 channels).
+ * @param cm  Compute mode (execution and storage behavior).
+ */
+void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
+
+/**
+ * @brief Mix two virtual textures into an output virtual texture.
+ * @param out          Output virtual texture.
+ * @param tex1         First input virtual texture.
+ * @param tex2         Second input virtual texture.
+ * @param cm           Compute mode (CPU/GPU).
+ * @param use_sqrt_avg Use square-root averaging.
+ *
+ * **Example**
+ * @include ex_virtual_texture.cpp
+ */
+void mix(VirtualTexture    &out,
+         VirtualTexture    &tex1,
+         VirtualTexture    &tex2,
+         const ComputeMode &cm,
+         bool               use_sqrt_avg = true);
+
+/**
+ * @brief Mix multiple virtual textures sequentially.
+ * @param out          Output virtual texture.
+ * @param texs         Vector of input virtual textures.
+ * @param cm           Compute mode (CPU/GPU).
+ * @param use_sqrt_avg Use square-root averaging.
+ */
+void mix(VirtualTexture                &out,
+         std::vector<VirtualTexture *> &texs,
+         const ComputeMode             &cm,
+         bool                           use_sqrt_avg = true);
+
+/**
+ * @brief Blend two normal maps into a single output virtual normal map.
+ *
+ * @param out             Output normal map texture.
+ * @param nmap_base       Base normal map texture.
+ * @param nmap_detail     Detail normal map texture.
+ * @param cm              Compute mode (execution and storage behavior).
+ * @param detail_scaling  Strength of the detail normal map.
+ * @param blending_method Normal map blending method.
+ */
+void mix_normal_map(VirtualTexture         &out,
+                    VirtualTexture         &nmap_base,
+                    VirtualTexture         &nmap_detail,
+                    const ComputeMode      &cm,
+                    float                   detail_scaling,
+                    NormalMapBlendingMethod blending_method);
+
 template <typename Func>
 void for_each_tile(VirtualTexture &tex, Func &&func, const ComputeMode &cm);
 
