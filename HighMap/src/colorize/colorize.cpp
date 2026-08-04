@@ -16,6 +16,8 @@
 #include "highmap/shadows.hpp"
 #include "highmap/texture.hpp"
 
+#include "mixbox.h"
+
 namespace hmap
 {
 
@@ -347,7 +349,7 @@ Array luminance(const Texture &tex)
   return 0.299f * tex[0] + 0.587f * tex[1] + 0.114f * tex[2];
 }
 
-Texture mix(const Texture &tex1, const Texture &tex2, bool use_sqrt_avg)
+Texture mix(const Texture &tex1, const Texture &tex2, MixMethod method)
 {
   if (tex1.num_channels() != 4 || tex2.num_channels() != 4 ||
       tex1.shape != tex2.shape)
@@ -363,17 +365,48 @@ Texture mix(const Texture &tex1, const Texture &tex2, bool use_sqrt_avg)
 
   Array t = a2 / (a2 + a1 * (1.f - a2));
 
-  for (int nch = 0; nch < 3; ++nch)
+  if (method == MM_MIXBOX)
   {
-    if (use_sqrt_avg)
+    for (int nch = 0; nch < 3; ++nch)
     {
-      out[nch] = pow((1.f - t) * tex1[nch] * tex1[nch] +
-                         t * tex2[nch] * tex2[nch],
-                     0.5f);
+      out[nch] = Array(tex1.shape, 0.f);
     }
-    else
+
+    int size = tex1.shape.x * tex1.shape.y;
+    for (int idx = 0; idx < size; ++idx)
     {
-      out[nch] = lerp(tex1[nch], tex2[nch], t);
+      float r1 = tex1[0].vector[idx];
+      float g1 = tex1[1].vector[idx];
+      float b1 = tex1[2].vector[idx];
+
+      float r2 = tex2[0].vector[idx];
+      float g2 = tex2[1].vector[idx];
+      float b2 = tex2[2].vector[idx];
+
+      float ratio = t.vector[idx];
+
+      float r, g, b;
+      mixbox_lerp_float(r1, g1, b1, r2, g2, b2, ratio, &r, &g, &b);
+
+      out[0].vector[idx] = r;
+      out[1].vector[idx] = g;
+      out[2].vector[idx] = b;
+    }
+  }
+  else
+  {
+    for (int nch = 0; nch < 3; ++nch)
+    {
+      if (method == MM_SQRT_AVG)
+      {
+        out[nch] = pow((1.f - t) * tex1[nch] * tex1[nch] +
+                           t * tex2[nch] * tex2[nch],
+                       0.5f);
+      }
+      else
+      {
+        out[nch] = lerp(tex1[nch], tex2[nch], t);
+      }
     }
   }
 
@@ -381,7 +414,7 @@ Texture mix(const Texture &tex1, const Texture &tex2, bool use_sqrt_avg)
   return out;
 }
 
-Texture mix(const std::vector<const Texture *> &texs, bool use_sqrt_avg)
+Texture mix(const std::vector<const Texture *> &texs, MixMethod method)
 {
   if (texs.empty()) return Texture();
 
@@ -389,7 +422,7 @@ Texture mix(const std::vector<const Texture *> &texs, bool use_sqrt_avg)
 
   for (size_t k = 1; k < texs.size(); ++k)
   {
-    out = mix(out, *(texs[k]), use_sqrt_avg);
+    out = mix(out, *(texs[k]), method);
   }
 
   return out;

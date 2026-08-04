@@ -5,6 +5,7 @@ include(hmm.cmake)
 include(libnpy.cmake)
 include(macro-logger.cmake)
 include(nn-c.cmake)
+include(mixbox.cmake)
 
 add_subdirectory(CLWrapper)
 add_subdirectory(PointSampler)

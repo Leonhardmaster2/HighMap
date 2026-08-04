@@ -38,7 +38,7 @@ int main(void)
                       hmap::Array(shape, 0.3f)); // 30% opacity
 
   // Mix the two textures together
-  hmap::Texture blended = hmap::mix(rgba1, rgba2, false);
+  hmap::Texture blended = hmap::mix(rgba1, rgba2, hmap::MixMethod::MM_LINEAR);
 
   // Save the mixed texture
   blended.to_png("ex_texture_mixed.png");

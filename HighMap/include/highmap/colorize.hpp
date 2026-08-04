@@ -46,6 +46,25 @@ static std::map<std::string, int> normal_map_blending_method_as_string = {
     {"Whiteout", NMAP_WHITEOUT},
 };
 
+/**
+ * @enum MixMethod
+ * @brief Methods for mixing/blending texture colors.
+ *
+ * @example ex_mixbox.cpp This example shows the visual differences between
+ * linear, square-root, and physical pigment-based (Mixbox) color blending.
+ *
+ * Output results:
+ * @image html ex_mixbox_linear.png "Linear Blending"
+ * @image html ex_mixbox_sqrt.png "Square-root Average Blending"
+ * @image html ex_mixbox_mixbox.png "Mixbox Blending"
+ */
+enum MixMethod : int
+{
+  MM_LINEAR,   ///< Linear RGB mixing.
+  MM_SQRT_AVG, ///< Square-root average mixing.
+  MM_MIXBOX    ///< Physical pigment-based mixing (Mixbox).
+};
+
 struct ColorAdjust
 {
   float in_min = 0.0f;
@@ -310,6 +329,13 @@ Texture colorize_vec2(const Array &array1, const Array &array2);
  * **Example**
  * @include ex_texture_mix_luminance.cpp
  *
+ * @include ex_mixbox.cpp
+ *
+ * **Result**
+ * @image html ex_mixbox_linear.png
+ * @image html ex_mixbox_mixbox.png
+ * @image html ex_mixbox_sqrt.png
+ *
  * @see        tests/src/test_texture.cpp
  *             (TextureColorize.CustomColormapAndOperations)
  */
@@ -317,26 +343,36 @@ Array luminance(const Texture &tex);
 
 /**
  * @brief Mix two textures into an output texture.
- * @param  tex1         First input texture.
- * @param  tex2         Second input texture.
- * @param  use_sqrt_avg Use square-root averaging.
- * @return              Mixed Texture.
+ * @param  tex1   First input texture.
+ * @param  tex2   Second input texture.
+ * @param  method Mixing method to use.
+ * @return        Mixed Texture.
  *
  * **Example**
  * @include ex_texture_mix_luminance.cpp
  *
- * @see                 tests/src/test_texture.cpp
- *                      (TextureColorize.CustomColormapAndOperations)
+ * @include ex_mixbox.cpp
+ *
+ * **Result**
+ * @image html ex_mixbox_linear.png
+ * @image html ex_mixbox_mixbox.png
+ * @image html ex_mixbox_sqrt.png
+ *
+ * @see           tests/src/test_texture.cpp
+ *                (TextureColorize.CustomColormapAndOperations)
  */
-Texture mix(const Texture &tex1, const Texture &tex2, bool use_sqrt_avg = true);
+Texture mix(const Texture &tex1,
+            const Texture &tex2,
+            MixMethod      method = MM_SQRT_AVG);
 
 /**
  * @brief Mix a list of textures sequentially.
- * @param  texs         Input list of textures.
- * @param  use_sqrt_avg Use square-root averaging.
- * @return              Mixed Texture.
+ * @param  texs   Input list of textures.
+ * @param  method Mixing method to use.
+ * @return        Mixed Texture.
  */
-Texture mix(const std::vector<const Texture *> &texs, bool use_sqrt_avg = true);
+Texture mix(const std::vector<const Texture *> &texs,
+            MixMethod                           method = MM_SQRT_AVG);
 
 /**
  * @brief Blend two normal maps into a single output normal map.

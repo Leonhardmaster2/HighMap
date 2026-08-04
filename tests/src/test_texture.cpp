@@ -96,7 +96,7 @@ TEST(TextureColorize, CustomColormapAndOperations)
   t1[3] = Array(shape, 1.f);
   t2[3] = Array(shape, 1.f);
 
-  Texture t_mixed = mix(t1, t2, false);
+  Texture t_mixed = mix(t1, t2, MixMethod::MM_LINEAR);
   EXPECT_EQ(t_mixed.num_channels(), 4);
   // Mixing equal alphas (1.f, 1.f) with mixing factor t = 1.0 / (1.0 + 1.0 *
   // 0.0) = 1.0 Result should equal t2
@@ -107,6 +107,10 @@ TEST(TextureColorize, CustomColormapAndOperations)
       EXPECT_NEAR(t_mixed[c].vector[idx], 1.f, 1e-5f);
     }
   }
+
+  // Also test Mixbox mixing compiles and runs
+  Texture t_mixbox = mix(t1, t2, MixMethod::MM_MIXBOX);
+  EXPECT_EQ(t_mixbox.num_channels(), 4);
 
   // Check mix_normal_map basic execution
   Texture n1(shape, 4, 0.5f); // flat normals
