@@ -24,10 +24,29 @@
 #include "highmap/array.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
-#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {
+
+/**
+ * @enum MixMethod
+ * @brief Methods for mixing/blending texture colors.
+ *
+ * @example ex_mixbox.cpp
+ * This example shows the visual differences between linear, square-root, and
+ * physical pigment-based (Mixbox) color blending.
+ *
+ * Output results:
+ * @image html ex_mixbox_linear.png "Linear Blending"
+ * @image html ex_mixbox_sqrt.png "Square-root Average Blending"
+ * @image html ex_mixbox_mixbox.png "Mixbox Blending"
+ */
+enum MixMethod : int
+{
+  MM_LINEAR,   ///< Linear RGB mixing.
+  MM_SQRT_AVG, ///< Square-root average mixing.
+  MM_MIXBOX    ///< Physical pigment-based mixing (Mixbox).
+};
 
 enum NormalMapBlendingMethod : int
 {
@@ -44,25 +63,6 @@ static std::map<std::string, int> normal_map_blending_method_as_string = {
     {"Unreal Developer Network", NMAP_UDN},
     {"Unity", NMAP_UNITY},
     {"Whiteout", NMAP_WHITEOUT},
-};
-
-/**
- * @enum MixMethod
- * @brief Methods for mixing/blending texture colors.
- *
- * @example ex_mixbox.cpp This example shows the visual differences between
- * linear, square-root, and physical pigment-based (Mixbox) color blending.
- *
- * Output results:
- * @image html ex_mixbox_linear.png "Linear Blending"
- * @image html ex_mixbox_sqrt.png "Square-root Average Blending"
- * @image html ex_mixbox_mixbox.png "Mixbox Blending"
- */
-enum MixMethod : int
-{
-  MM_LINEAR,   ///< Linear RGB mixing.
-  MM_SQRT_AVG, ///< Square-root average mixing.
-  MM_MIXBOX    ///< Physical pigment-based mixing (Mixbox).
 };
 
 struct ColorAdjust
@@ -395,3 +395,5 @@ Texture mix_normal_map(const Texture          &nmap_base,
                        NormalMapBlendingMethod blending_method);
 
 } // namespace hmap
+
+#include "highmap/virtual_array/virtual_texture.hpp"

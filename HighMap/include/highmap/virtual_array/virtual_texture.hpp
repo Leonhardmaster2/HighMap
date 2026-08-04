@@ -17,6 +17,7 @@
 
 #include "macrologger.h"
 
+#include "highmap/colorize.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture_storage.hpp"
@@ -183,7 +184,7 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
  * @param tex1         First input virtual texture.
  * @param tex2         Second input virtual texture.
  * @param cm           Compute mode (CPU/GPU).
- * @param use_sqrt_avg Use square-root averaging.
+ * @param method       Mixing method to use.
  *
  * **Example**
  * @include ex_virtual_texture.cpp
@@ -192,19 +193,19 @@ void mix(VirtualTexture    &out,
          VirtualTexture    &tex1,
          VirtualTexture    &tex2,
          const ComputeMode &cm,
-         bool               use_sqrt_avg = true);
+         MixMethod          method = MM_SQRT_AVG);
 
 /**
  * @brief Mix multiple virtual textures sequentially.
  * @param out          Output virtual texture.
  * @param texs         Vector of input virtual textures.
  * @param cm           Compute mode (CPU/GPU).
- * @param use_sqrt_avg Use square-root averaging.
+ * @param method       Mixing method to use.
  */
 void mix(VirtualTexture                &out,
          std::vector<VirtualTexture *> &texs,
          const ComputeMode             &cm,
-         bool                           use_sqrt_avg = true);
+         MixMethod                      method = MM_SQRT_AVG);
 
 /**
  * @brief Blend two normal maps into a single output virtual normal map.

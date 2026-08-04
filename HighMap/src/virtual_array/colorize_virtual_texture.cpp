@@ -19,6 +19,8 @@
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture.hpp"
 
+#include "mixbox.h"
+
 namespace hmap
 {
 
@@ -174,7 +176,7 @@ void mix(VirtualTexture    &out,
          VirtualTexture    &tex1,
          VirtualTexture    &tex2,
          const ComputeMode &cm,
-         bool               use_sqrt_avg)
+         MixMethod          method)
 {
   // --- failsafe
 
@@ -186,44 +188,27 @@ void mix(VirtualTexture    &out,
     return;
   }
 
-  // --- mixing function
-
-  std::function<void(Array &, Array &, Array &, Array &)> lambda_blend;
-
-  if (use_sqrt_avg)
-  {
-    lambda_blend = [](Array &out, Array &in1, Array &in2, Array &t)
-    { out = pow((1.f - t) * in1 * in1 + t * in2 * in2, 0.5f); };
-  }
-  else
-  {
-    lambda_blend = [](Array &out, Array &in1, Array &in2, Array &t)
-    { out = lerp(in1, in2, t); };
-  }
-
   // --- colorize fct
 
-  auto lambda =
-      [&lambda_blend](std::vector<Array *> &p_arrays, const TileRegion &)
+  auto lambda = [method](std::vector<Array *> &p_arrays, const TileRegion &)
   {
     //      R  G  B  A
     // out  0  1  2  3
     // tex1 4  5  6  7
     // tex2 8  9  10 11
 
-    Array &a1 = *p_arrays[7];
-    Array &a2 = *p_arrays[11];
+    // Construct temporary textures for the tiles
+    Texture t1(*p_arrays[4], *p_arrays[5], *p_arrays[6], *p_arrays[7]);
+    Texture t2(*p_arrays[8], *p_arrays[9], *p_arrays[10], *p_arrays[11]);
 
-    Array t = a2 / (a2 + a1 * (1.f - a2)); // mixing factor
+    // Mix using the standard mix function
+    Texture blended = mix(t1, t2, method);
 
-    for (int nch = 0; nch < 3; ++nch)
-      lambda_blend(*p_arrays[0 + nch],
-                   *p_arrays[4 + nch],
-                   *p_arrays[8 + nch],
-                   t);
-
-    // alpha channel
-    *p_arrays[3] = a1 + a2 * (1.f - a1);
+    // Write back the result to the output tile
+    for (int c = 0; c < 4; ++c)
+    {
+      *p_arrays[c] = blended[c];
+    }
   };
 
   // apply
@@ -241,14 +226,14 @@ void mix(VirtualTexture    &out,
 void mix(VirtualTexture                &out,
          std::vector<VirtualTexture *> &texs,
          const ComputeMode             &cm,
-         bool                           use_sqrt_avg)
+         MixMethod                      method)
 {
   if (texs.size() == 0) return;
 
   out.copy_from(*texs.front(), cm);
 
   for (size_t k = 1; k < texs.size(); k++)
-    mix(out, out, *(texs[k]), cm, use_sqrt_avg);
+    mix(out, out, *(texs[k]), cm, method);
 }
 
 void mix_normal_map(VirtualTexture         &out,
