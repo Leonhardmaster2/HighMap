@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"erosion_8hpp.html#a66355f091aa60d97d5a7c7eeb08c51cc":[5,0,1,0,0,21,22],
 "erosion_8hpp.html#a67fee4e11fb0b003d0ebb091e85533fe":[5,0,1,0,0,21,26],
 "erosion_8hpp.html#a72c9d220589d2724b4e48e9c37ff55ad":[5,0,1,0,0,21,65],
 "erosion_8hpp.html#a740cd2ba7c58126ef27bfcddcb6f00b8":[5,0,1,0,0,21,48],
@@ -55,7 +54,6 @@ var NAVTREEINDEX8 =
 "erosion__profile__function_8cpp.html#a02f191e398bfc3c0e87999d8576d7c3d":[5,0,1,1,24,2,2],
 "erosion__profile__function_8cpp.html#a18d33562e8ffbb8be79e2ec87bcf285f":[5,0,1,1,24,2,0],
 "erosion__profile__function_8cpp.html#ad3535c9e25ba863fcfe5931ccc556ac8":[5,0,1,1,24,2,1],
-"examples.html":[6],
 "expand__talus_8cpp.html":[5,0,1,1,15,4],
 "expand__talus_8cpp.html#a8c437f3963887949da7f4433cf26bf96":[5,0,1,1,15,4,0],
 "export_8hpp.html":[5,0,1,0,0,22],
@@ -249,5 +247,7 @@ var NAVTREEINDEX8 =
 "filters_8hpp.html#a4e0ce9e13f26f66fa546e5127a68956c":[5,0,1,0,0,24,73],
 "filters_8hpp.html#a4e3cbe9e4b43341148c170f34bd462fd":[5,0,1,0,0,24,94],
 "filters_8hpp.html#a4e87766dc576eec73cfef1f4050f3bb3":[5,0,1,0,0,24,18],
-"filters_8hpp.html#a516835426429688c59f7a02a8abbb174":[5,0,1,0,0,24,69]
+"filters_8hpp.html#a516835426429688c59f7a02a8abbb174":[5,0,1,0,0,24,69],
+"filters_8hpp.html#a54dd015841925f624e6e2bed159f9d37":[5,0,1,0,0,24,122],
+"filters_8hpp.html#a551b9d1203331ed95e472c57a6e439c4":[5,0,1,0,0,24,134]
 };

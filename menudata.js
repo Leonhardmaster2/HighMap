@@ -220,5 +220,4 @@ var menudata={children:[
 {text:"h",url:"globals_func_h.html#index_h"},
 {text:"m",url:"globals_func_m.html#index_m"},
 {text:"s",url:"globals_func_s.html#index_s"},
-{text:"t",url:"globals_func_t.html#index_t"}]}]}]},
-{text:"Examples",url:"examples.html"}]}
+{text:"t",url:"globals_func_t.html#index_t"}]}]}]}]}

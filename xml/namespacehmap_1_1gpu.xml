@@ -16178,7 +16178,21 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
 </parameterlist>
 <simplesect kind="return"><para><ref refid="classhmap_1_1Array" kindref="compound">Array</ref> 2D array containing the signed distance field.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename="ex_phemisphere_field.cpp"></programlisting></para>
+<bold>Example</bold> <programlisting filename="ex_phemisphere_field.cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="highmap_8hpp" kindref="compound">highmap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1_1gpu_1adb8336ed4d83c15500872185dee45d50" kindref="member">hmap::gpu::init_opencl</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::ivec2<sp/>shape<sp/>=<sp/>{256,<sp/>256};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>glm::vec2<sp/><sp/>kw<sp/>=<sp/>{4.f,<sp/>4.f};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classhmap_1_1Array" kindref="compound">hmap::Array</ref><sp/>z<sp/>=<sp/><ref refid="namespacehmap_1_1gpu_1afbb6331b02647bf09780b592ffcd4c39" kindref="member">hmap::gpu::hemisphere_field</ref>(shape,<sp/>kw,<sp/>seed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacehmap_1a262e6495cb2d02598f36a2b46114b2b4" kindref="member">hmap::remap</ref>(z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>z.<ref refid="classhmap_1_1Array_1a9ff7b2c0be8f2b5dd9fc33085cd647d1" kindref="member">to_png</ref>(</highlight><highlight class="stringliteral">&quot;ex_phemisphere_field.png&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacehmap_1ac70fe3cbb32e0340d5dd3e15cdcf9369a0741a9943ed0e5c50042ef82d4d55492" kindref="member">hmap::Cmap::VIRIDIS</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
 <para><bold>Result</bold> <image type="html" name="ex_phemisphere_field.png"></image>
  </para>
         </detaileddescription>
@@ -20800,7 +20814,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="20" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="20" bodyend="51" declfile="HighMap/include/highmap/transform.hpp" declline="450" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="20" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="20" bodyend="51" declfile="HighMap/include/highmap/transform.hpp" declline="451" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aa7f770a100604c3bd345c26f3402433b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -20870,7 +20884,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="53" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="53" bodyend="82" declfile="HighMap/include/highmap/transform.hpp" declline="464" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="53" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="53" bodyend="82" declfile="HighMap/include/highmap/transform.hpp" declline="465" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a47c2e99ee276a5b249e6ba593b1db505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -20944,7 +20958,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="84" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="84" bodyend="157" declfile="HighMap/include/highmap/transform.hpp" declline="477" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_particle_gpu.cpp" line="84" column="7" bodyfile="HighMap/src/transform/advection_particle_gpu.cpp" bodystart="84" bodyend="157" declfile="HighMap/include/highmap/transform.hpp" declline="478" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a6e5f495c359df88d1185220ab1cc8c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -21066,7 +21080,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="52" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="52" bodyend="68" declfile="HighMap/include/highmap/transform.hpp" declline="521" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="52" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="52" bodyend="68" declfile="HighMap/include/highmap/transform.hpp" declline="522" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a0c43413a89b330fc5f4051112d6a2a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classhmap_1_1Array" kindref="compound">Array</ref></type>
@@ -21111,7 +21125,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="14" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="14" bodyend="50" declfile="HighMap/include/highmap/transform.hpp" declline="527" declcolumn="7"/>
+        <location file="HighMap/src/transform/advection_warp_gpu.cpp" line="14" column="7" bodyfile="HighMap/src/transform/advection_warp_gpu.cpp" bodystart="14" bodyend="50" declfile="HighMap/include/highmap/transform.hpp" declline="528" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1aab128e15988875b5d350d6f156612aa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21139,7 +21153,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/transform_gpu.cpp" line="14" column="6" bodyfile="HighMap/src/transform/transform_gpu.cpp" bodystart="14" bodyend="26" declfile="HighMap/include/highmap/transform.hpp" declline="536" declcolumn="6"/>
+        <location file="HighMap/src/transform/transform_gpu.cpp" line="14" column="6" bodyfile="HighMap/src/transform/transform_gpu.cpp" bodystart="14" bodyend="26" declfile="HighMap/include/highmap/transform.hpp" declline="537" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1a99659d06f84b0e92e6731f28ca28937c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21166,7 +21180,7 @@ This function leverages an OpenCL kernel to compute the GavoroNoise values on th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="HighMap/src/transform/warp_gpu.cpp" line="14" column="6" bodyfile="HighMap/src/transform/warp_gpu.cpp" bodystart="14" bodyend="59" declfile="HighMap/include/highmap/transform.hpp" declline="539" declcolumn="6"/>
+        <location file="HighMap/src/transform/warp_gpu.cpp" line="14" column="6" bodyfile="HighMap/src/transform/warp_gpu.cpp" bodystart="14" bodyend="59" declfile="HighMap/include/highmap/transform.hpp" declline="540" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacehmap_1_1gpu_1afd1e43227fa8126847097029597c1573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; glm::ivec2 &gt;</type>

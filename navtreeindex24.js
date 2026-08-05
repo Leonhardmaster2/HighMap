@@ -1,7 +1,5 @@
 var NAVTREEINDEX24 =
 {
-"vectors_8hpp.html#a47f7c4ead587ead4a75c9c7f4fc4b079":[5,0,1,0,0,51,6],
-"vectors_8hpp.html#a7fbf29372398921d451f74b89d9a9a2e":[5,0,1,0,0,51,3],
 "vectors_8hpp.html#a8be122241fa42b0f6a7ef67106391780":[5,0,1,0,0,51,0],
 "vectors_8hpp.html#a943b5fe94afb086d501a00dc3f581784":[5,0,1,0,0,51,5],
 "vectors_8hpp.html#a9d0696281951271fcb3c7b9d7b2d4514":[5,0,1,0,0,51,4],
@@ -86,6 +84,5 @@ var NAVTREEINDEX24 =
 "wrapper_8cpp.html#ad6e4d1cf34786ef4065fbc0a5fa03d6d":[5,0,1,1,25,6,0],
 "wrapper_8cpp.html#af427123c185935335c9d2e108c833c67":[5,0,1,1,25,6,1],
 "zeroed__edges_8cpp.html":[5,0,1,1,4,2],
-"zeroed__edges_8cpp.html#a8e2364315f5b159daae10f508dd1d2a8":[5,0,1,1,4,2,0],
-"zfill-example.html":[6,1]
+"zeroed__edges_8cpp.html#a8e2364315f5b159daae10f508dd1d2a8":[5,0,1,1,4,2,0]
 };

@@ -77,38 +77,37 @@ var NAVTREE =
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ]
       ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_2home_2runner_2work_2HighMap_2HighMap_2HighMap_2include_2highmap_2internal_2string_utils_8hpp-example.html",
+"add__noise_8cpp.html",
 "classhmap_1_1Array.html#a6cd8060670649c0934ddab573e378d3f",
 "classhmap_1_1Cloud.html#adc675e8b2769a94b4c23bf7e69348f84",
 "classhmap_1_1FbmJordanFunction.html#ae414da2792a0bac7b5fba61d2ecef892",
 "classhmap_1_1Path.html#a0121bc7300b5a436eea60d3915103458",
 "classhmap_1_1Tensor.html#a61599497cbeaddf588b012eff837ad52",
 "classhmap_1_1WaveSquareFunction.html#af82dce648585f265eb2f3c9e50520e90",
-"core_8cpp.html#ae7d9d43c2cd453af7a6395cbcb2ac3b2",
-"erosion_8hpp.html#a66355f091aa60d97d5a7c7eeb08c51cc",
-"filters_8hpp.html#a54dd015841925f624e6e2bed159f9d37",
-"functions_r.html",
-"index.html#autotoc_md15",
-"local__metrics__gpu_8cpp.html#aeca9d8454f50273ca4a4f3db0c25a1b1",
-"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2f",
-"namespacehmap.html#a4b6f135c6e81d313ca54ae1efac5f2c9af76c60e345bf176e74af026ed87eb030",
-"namespacehmap.html#a9b14eb25556ef745f1e606bbe8d41dcb",
-"namespacehmap.html#acf26969b97f38bf692f538efb12ac2c2",
-"namespacehmap_1_1gpu.html#a52a653b3b3be84e8ff2330f30a6b5bf3",
-"natural__neighbor__interpolator_8cpp.html",
-"primitives_2functions_8hpp.html#afbb6331b02647bf09780b592ffcd4c39",
-"selector_8cpp.html#a4c42905cbb910cb4017ef3e026a31d59",
-"structhmap_1_1NanoflannPointCloudAdaptor.html",
-"structhmap_1_1VirtualArray.html#aee46789ef67622a8f65fb9fbeacd41b5",
-"test__path__arc__length_8cpp.html#a628d5b6374f21b30a78c3b5a5f68fb92",
-"vectors_8hpp.html#a47f7c4ead587ead4a75c9c7f4fc4b079"
+"core_8cpp.html#af23a6099bd3307b408f17d2346ab3d3f",
+"erosion_8hpp.html#a67fee4e11fb0b003d0ebb091e85533fe",
+"filters_8hpp.html#a558c273680de2328f37e5df7ee598813",
+"functions_s.html",
+"index.html#autotoc_md17",
+"local__metrics__wrapper_8cpp.html#a13719c4aafe9ffaabd767afe5a8bd44d",
+"namespacehmap.html#a0c714c7fa78e9384806de52a5d039f2fab1d0e0d533e11bd2532fd9e2f1802894",
+"namespacehmap.html#a4c42905cbb910cb4017ef3e026a31d59",
+"namespacehmap.html#a9b7b17b540fbec1501ba0e996897c1e5",
+"namespacehmap.html#acf8376b5e40b4373986c9a6b41c02429",
+"namespacehmap_1_1gpu.html#a54906b55a1c4e4efe938a780c1fb348e",
+"noise_8cpp.html#a428e34a1fe0dc66ba3d76d7c9eda348d",
+"primitives_2random_8hpp.html",
+"selector_8cpp.html#a5c54b11ce530d2b0cfc75de360e25ebf",
+"structhmap_1_1NanoflannPointCloudAdaptor.html#a073bf9163309e6ffacc0b2acedc0328c",
+"structhmap_1_1VirtualArray.html#aeff83280c1e81978b24909637bf728a1",
+"test__path__sample__at_8cpp.html#a0303a86bdff92e4275a44741c3b2d182",
+"vectors_8hpp.html#a8be122241fa42b0f6a7ef67106391780"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
