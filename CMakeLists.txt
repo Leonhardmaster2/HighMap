@@ -36,7 +36,10 @@ if(MSVC)
 
   add_definitions(-DHMAP_MSVC)
 
-  add_compile_options(/W4 /Od)
+  # do NOT pass /Od here: add_compile_options lands after the per-config flags
+  # on the MSVC command line, where it overrides Release's /O2 (last flag wins),
+  # silently disabling optimization in every Release build
+  add_compile_options(/W4 "$<$<NOT:$<CONFIG:Debug>>:/fp:fast>")
 
   add_compile_definitions(M_PI=3.14159265358979323846)
 
