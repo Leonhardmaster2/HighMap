@@ -32,9 +32,9 @@ namespace hmap
  *
  * This class handles the construction and analysis of hydrological flow
  * networks (receivers, streams, outlets) on a 3D triangular mesh. It allows
- * simulating
- * river network development, calculating Strahler orders, inverting receiver
- * maps, breaching lakes, and updating elevations based on response times.
+ * simulating river network development, calculating Strahler orders, inverting
+ * receiver maps, breaching lakes, and updating elevations based on response
+ * times.
  */
 class DrainageBasin
 {

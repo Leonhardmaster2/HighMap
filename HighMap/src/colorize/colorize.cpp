@@ -146,6 +146,202 @@ Texture colorize(const Array &array,
   return color3;
 }
 
+Texture colorize(const Array                  &array,
+                 float                         vmin,
+                 float                         vmax,
+                 const std::vector<float>     &positions,
+                 const std::vector<glm::vec3> &colormap_colors,
+                 bool                          reverse,
+                 const Array                  *p_noise)
+{
+  auto cpos = positions;
+  auto colors = colormap_colors;
+
+  if (reverse)
+  {
+    std::reverse(colors.begin(), colors.end());
+    std::reverse(cpos.begin(), cpos.end());
+
+    for (auto &p : cpos)
+      p = 1.f - p;
+  }
+
+  std::vector<float> cc_r, cc_g, cc_b;
+  for (const auto &col : colors)
+  {
+    cc_r.push_back(col[0]);
+    cc_g.push_back(col[1]);
+    cc_b.push_back(col[2]);
+  }
+
+  Interpolator1D citp_r = hmap::Interpolator1D(
+      cpos,
+      cc_r,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_g = hmap::Interpolator1D(
+      cpos,
+      cc_g,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_b = hmap::Interpolator1D(
+      cpos,
+      cc_b,
+      hmap::InterpolationMethod1D::LINEAR);
+
+  Texture out(array.shape, 3);
+
+  for (int j = 0; j < array.shape.y; ++j)
+  {
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      float v = array(i, j) + (p_noise ? (*p_noise)(i, j) : 0.f);
+      v = (v - vmin) / (vmax - vmin);
+      v = std::clamp(v, 0.f, 1.f);
+
+      out(i, j, 0) = citp_r(v);
+      out(i, j, 1) = citp_g(v);
+      out(i, j, 2) = citp_b(v);
+    }
+  }
+
+  return out;
+}
+
+Texture colorize_bivariate(const Array                  &a1,
+                           const Array                  &a2,
+                           const glm::vec2               range1,
+                           const glm::vec2               range2,
+                           const std::vector<float>     &positions1,
+                           const std::vector<float>     &positions2,
+                           const std::vector<glm::vec3> &colormap_colors1,
+                           const std::vector<glm::vec3> &colormap_colors2,
+                           MixMethod                     method,
+                           bool                          reverse1,
+                           bool                          reverse2,
+                           const Array                  *p_noise1,
+                           const Array                  *p_noise2)
+{
+  const glm::ivec2 shape = a1.shape;
+  Texture          color3(shape, 3);
+
+  // --- Colormap preparation
+
+  auto prepare_colormap = [](const std::vector<float>     &positions,
+                             const std::vector<glm::vec3> &colors,
+                             bool                          reverse)
+  {
+    auto cpos = positions;
+    auto colors_ = colors;
+
+    if (reverse)
+    {
+      std::reverse(colors_.begin(), colors_.end());
+      std::reverse(cpos.begin(), cpos.end());
+
+      for (auto &p : cpos)
+        p = 1.f - p;
+    }
+
+    return std::make_pair(std::move(cpos), std::move(colors_));
+  };
+
+  // --- Build color interpolator
+
+  auto make_color_interpolator = [](const std::vector<float>     &positions,
+                                    const std::vector<glm::vec3> &colors)
+  {
+    std::vector<float> r;
+    std::vector<float> g;
+    std::vector<float> b;
+
+    r.reserve(colors.size());
+    g.reserve(colors.size());
+    b.reserve(colors.size());
+
+    for (const auto &color : colors)
+    {
+      r.push_back(color[0]);
+      g.push_back(color[1]);
+      b.push_back(color[2]);
+    }
+
+    return std::array<Interpolator1D, 3>{
+        Interpolator1D(positions, r, hmap::InterpolationMethod1D::LINEAR),
+        Interpolator1D(positions, g, hmap::InterpolationMethod1D::LINEAR),
+        Interpolator1D(positions, b, hmap::InterpolationMethod1D::LINEAR)};
+  };
+
+  auto [cpos1,
+        colors1] = prepare_colormap(positions1, colormap_colors1, reverse1);
+
+  auto [cpos2,
+        colors2] = prepare_colormap(positions2, colormap_colors2, reverse2);
+
+  auto citp1 = make_color_interpolator(cpos1, colors1);
+  auto citp2 = make_color_interpolator(cpos2, colors2);
+
+  // --- Color mixing
+
+  auto mix_colors = [method](const glm::vec3 &color1, const glm::vec3 &color2)
+  {
+    switch (method)
+    {
+    case MixMethod::MM_SQRT_AVG:
+    case MixMethod::MM_LINEAR: return 0.5f * (color1 + color2);
+
+    case MixMethod::MM_MIXBOX:
+    {
+      glm::vec3 cmix;
+      mixbox_lerp_float(color1.x,
+                        color1.y,
+                        color1.z,
+                        color2.x,
+                        color2.y,
+                        color2.z,
+                        0.5f,
+                        &cmix.x,
+                        &cmix.y,
+                        &cmix.z);
+      return cmix;
+    }
+
+    default: return color1;
+    }
+  };
+
+  // --- Apply colormaps and mix
+
+  for (int j = 0; j < shape.y; ++j)
+  {
+    for (int i = 0; i < shape.x; ++i)
+    {
+      float v1 = a1(i, j);
+      float v2 = a2(i, j);
+
+      if (p_noise1) v1 += (*p_noise1)(i, j);
+
+      if (p_noise2) v2 += (*p_noise2)(i, j);
+
+      v1 = (v1 - range1.x) / (range1.y - range1.x);
+      v2 = (v2 - range2.x) / (range2.y - range2.x);
+
+      v1 = std::clamp(v1, 0.f, 1.f);
+      v2 = std::clamp(v2, 0.f, 1.f);
+
+      const glm::vec3 color1{citp1[0](v1), citp1[1](v1), citp1[2](v1)};
+
+      const glm::vec3 color2{citp2[0](v2), citp2[1](v2), citp2[2](v2)};
+
+      const glm::vec3 color = mix_colors(color1, color2);
+
+      color3(i, j, 0) = color[0];
+      color3(i, j, 1) = color[1];
+      color3(i, j, 2) = color[2];
+    }
+  }
+
+  return color3;
+}
+
 Texture colorize_grayscale(const Array &array)
 {
   Texture color1 = Texture(array);
@@ -277,66 +473,6 @@ Texture colorize_vec2(const Array &array1, const Array &array2)
     }
 
   return col3;
-}
-
-Texture colorize(const Array                  &array,
-                 float                         vmin,
-                 float                         vmax,
-                 const std::vector<float>     &positions,
-                 const std::vector<glm::vec3> &colormap_colors,
-                 bool                          reverse,
-                 const Array                  *p_noise)
-{
-  auto cpos = positions;
-  auto colors = colormap_colors;
-
-  if (reverse)
-  {
-    std::reverse(colors.begin(), colors.end());
-    std::reverse(cpos.begin(), cpos.end());
-
-    for (auto &p : cpos)
-      p = 1.f - p;
-  }
-
-  std::vector<float> cc_r, cc_g, cc_b;
-  for (const auto &col : colors)
-  {
-    cc_r.push_back(col[0]);
-    cc_g.push_back(col[1]);
-    cc_b.push_back(col[2]);
-  }
-
-  Interpolator1D citp_r = hmap::Interpolator1D(
-      cpos,
-      cc_r,
-      hmap::InterpolationMethod1D::LINEAR);
-  Interpolator1D citp_g = hmap::Interpolator1D(
-      cpos,
-      cc_g,
-      hmap::InterpolationMethod1D::LINEAR);
-  Interpolator1D citp_b = hmap::Interpolator1D(
-      cpos,
-      cc_b,
-      hmap::InterpolationMethod1D::LINEAR);
-
-  Texture out(array.shape, 3);
-
-  for (int j = 0; j < array.shape.y; ++j)
-  {
-    for (int i = 0; i < array.shape.x; ++i)
-    {
-      float v = array(i, j) + (p_noise ? (*p_noise)(i, j) : 0.f);
-      v = (v - vmin) / (vmax - vmin);
-      v = std::clamp(v, 0.f, 1.f);
-
-      out(i, j, 0) = citp_r(v);
-      out(i, j, 1) = citp_g(v);
-      out(i, j, 2) = citp_b(v);
-    }
-  }
-
-  return out;
 }
 
 Array luminance(const Texture &tex)

@@ -180,11 +180,11 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
 
 /**
  * @brief Mix two virtual textures into an output virtual texture.
- * @param out          Output virtual texture.
- * @param tex1         First input virtual texture.
- * @param tex2         Second input virtual texture.
- * @param cm           Compute mode (CPU/GPU).
- * @param method       Mixing method to use.
+ * @param out    Output virtual texture.
+ * @param tex1   First input virtual texture.
+ * @param tex2   Second input virtual texture.
+ * @param cm     Compute mode (CPU/GPU).
+ * @param method Mixing method to use.
  *
  * **Example**
  * @include ex_virtual_texture.cpp
@@ -197,10 +197,10 @@ void mix(VirtualTexture    &out,
 
 /**
  * @brief Mix multiple virtual textures sequentially.
- * @param out          Output virtual texture.
- * @param texs         Vector of input virtual textures.
- * @param cm           Compute mode (CPU/GPU).
- * @param method       Mixing method to use.
+ * @param out    Output virtual texture.
+ * @param texs   Vector of input virtual textures.
+ * @param cm     Compute mode (CPU/GPU).
+ * @param method Mixing method to use.
  */
 void mix(VirtualTexture                &out,
          std::vector<VirtualTexture *> &texs,

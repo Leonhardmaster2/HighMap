@@ -32,9 +32,8 @@ namespace hmap
  * @enum MixMethod
  * @brief Methods for mixing/blending texture colors.
  *
- * @example ex_mixbox.cpp
- * This example shows the visual differences between linear, square-root, and
- * physical pigment-based (Mixbox) color blending.
+ * @example ex_mixbox.cpp This example shows the visual differences between
+ * linear, square-root, and physical pigment-based (Mixbox) color blending.
  *
  * Output results:
  * @image html ex_mixbox_linear.png "Linear Blending"
@@ -236,6 +235,57 @@ Texture colorize(const Array                  &array,
                  const std::vector<glm::vec3> &colormap_colors,
                  bool                          reverse = false,
                  const Array                  *p_noise = nullptr);
+
+/**
+ * @brief Colorize two scalar fields into a Texture using two custom colormaps
+ *        and a color mixing method.
+ *
+ * Each scalar field is independently normalized using its corresponding range
+ * and mapped to a color using its custom colormap. The two resulting colors
+ * are then combined according to the specified mixing method.
+ *
+ * @param  a1                 First input scalar field.
+ * @param  a2                 Second input scalar field.
+ * @param  range1             Lower and upper bounds for normalization of the
+ *                            first field.
+ * @param  range2             Lower and upper bounds for normalization of the
+ *                            second field.
+ * @param  positions1         Normalized color positions for the first colormap.
+ * @param  positions2         Normalized color positions for the second
+ * colormap.
+ * @param  colormap_colors1   RGB colors for the first colormap.
+ * @param  colormap_colors2   RGB colors for the second colormap.
+ * @param  method              Method used to mix the two resulting colors.
+ * @param  reverse1            Reverse the first colormap mapping.
+ * @param  reverse2            Reverse the second colormap mapping.
+ * @param  p_noise1            Optional noise added to the first scalar field
+ *                            before normalization.
+ * @param  p_noise2            Optional noise added to the second scalar field
+ *                            before normalization.
+ * @return                    Colorized Texture containing the mixed colors.
+ *
+ * **Example**
+ * @include ex_texture_colorize_bivariate.cpp
+ *
+ * **Result**
+ * @image html ex_colorize_bivariate0.png
+ * @image html ex_colorize_bivariate1.png
+ *
+ * @see tests/src/test_texture.cpp
+ */
+Texture colorize_bivariate(const Array                  &a1,
+                           const Array                  &a2,
+                           const glm::vec2               range1,
+                           const glm::vec2               range2,
+                           const std::vector<float>     &positions1,
+                           const std::vector<float>     &positions2,
+                           const std::vector<glm::vec3> &colormap_colors1,
+                           const std::vector<glm::vec3> &colormap_colors2,
+                           MixMethod                     method = MM_SQRT_AVG,
+                           bool                          reverse1 = false,
+                           bool                          reverse2 = false,
+                           const Array                  *p_noise1 = nullptr,
+                           const Array                  *p_noise2 = nullptr);
 
 /**
  * @brief Convert an array to a grayscale image.

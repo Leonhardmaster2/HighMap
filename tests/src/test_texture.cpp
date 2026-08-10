@@ -124,3 +124,49 @@ TEST(TextureColorize, CustomColormapAndOperations)
                                    NormalMapBlendingMethod::NMAP_LINEAR);
   EXPECT_EQ(blended.num_channels(), 4);
 }
+
+TEST(TextureColorize, BivariateReverseAndNoise)
+{
+  glm::ivec2 shape = {4, 4};
+
+  Array a1(shape, 0.f);
+  Array a2(shape, 0.f);
+
+  Array noise1(shape, 0.f);
+  Array noise2(shape, 0.f);
+
+  // Move both normalized values to 1.0 through noise.
+  noise1 = 1.f;
+  noise2 = 1.f;
+
+  const std::vector<float> positions = {0.f, 1.f};
+
+  const std::vector<glm::vec3> colors1 = {glm::vec3(1.f, 0.f, 0.f),
+                                          glm::vec3(0.f, 0.f, 1.f)};
+
+  const std::vector<glm::vec3> colors2 = {glm::vec3(0.f, 1.f, 0.f),
+                                          glm::vec3(1.f, 1.f, 1.f)};
+
+  Texture result = colorize_bivariate(a1,
+                                      a2,
+                                      {0.f, 1.f},
+                                      {0.f, 1.f},
+                                      positions,
+                                      positions,
+                                      colors1,
+                                      colors2,
+                                      MixMethod::MM_LINEAR,
+                                      true,
+                                      true,
+                                      &noise1,
+                                      &noise2);
+
+  // With noise, both values are 1.0. With reverse=true, both map to the
+  // first color of their respective colormaps.
+  // color1 = red, color2 = green -> linear mix = yellow.
+  glm::vec3 color = result.get_pixel3(0, 0);
+
+  EXPECT_NEAR(color.r, 0.5f, 1e-5f);
+  EXPECT_NEAR(color.g, 0.5f, 1e-5f);
+  EXPECT_NEAR(color.b, 0.f, 1e-5f);
+}

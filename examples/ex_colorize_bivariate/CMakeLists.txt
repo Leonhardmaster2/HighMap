@@ -1,0 +1,2 @@
+add_executable(ex_colorize_bivariate ex_colorize_bivariate.cpp)
+target_link_libraries(ex_colorize_bivariate highmap)

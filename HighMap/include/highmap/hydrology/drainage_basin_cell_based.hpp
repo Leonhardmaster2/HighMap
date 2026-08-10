@@ -175,16 +175,16 @@ public:
   Mat<glm::ivec2>              receivers;    ///< Grid of receiver coordinates.
   Mat<std::vector<glm::ivec2>> children;     ///< Grid of children coordinates.
   Mat<glm::ivec2>              roots;        ///< Grid of basin root
-                                             // coordinates.
+  // coordinates.
 
   std::unordered_map<glm::ivec2, std::vector<glm::ivec2>, IVec2Hash>
       traversals; ///<
-                  // Cached
-                  // traversal
-                  // paths.
+  // Cached
+  // traversal
+  // paths.
 
   const glm::ivec2 null_cell = glm::ivec2(-1, -1); ///< Constant representing an
-                                                   // invalid/null cell.
+  // invalid/null cell.
 
 private:
   // constants
