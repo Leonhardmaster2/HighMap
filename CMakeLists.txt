@@ -108,6 +108,22 @@ add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
                         CL_HPP_TARGET_OPENCL_VERSION=120)
 
 # -----------------------------------------------------------------------------
+# Status output
+# -----------------------------------------------------------------------------
+
+message(STATUS "┌─ HighMap configuration ─────────────")
+message(STATUS "│ HIGHMAP_ENABLE_OPENCL:              ${HIGHMAP_ENABLE_OPENCL}")
+message(
+  STATUS "│ HIGHMAP_ENABLE_EXAMPLES:            ${HIGHMAP_ENABLE_EXAMPLES}")
+message(STATUS "│ HIGHMAP_ENABLE_TESTS:               ${HIGHMAP_ENABLE_TESTS}")
+message(
+  STATUS "│ HIGHMAP_ENABLE_BENCHMARKS:          ${HIGHMAP_ENABLE_BENCHMARKS}")
+message(STATUS "│ CMAKE_CXX_STANDARD:                 ${CMAKE_CXX_STANDARD}")
+message(STATUS "│ CMAKE_BUILD_TYPE:                   ${CMAKE_BUILD_TYPE}")
+message(STATUS "│ CMAKE_CXX_COMPILER_ID:              ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "└─────────────────────────────────────")
+
+# -----------------------------------------------------------------------------
 # External libs
 # -----------------------------------------------------------------------------
 
