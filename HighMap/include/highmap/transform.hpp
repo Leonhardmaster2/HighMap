@@ -19,6 +19,8 @@
  */
 #pragma once
 
+#include <vector>
+
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
@@ -462,6 +464,20 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
 
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       iterations,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
+
 Array advection_particle(const Array  &z,
                          const Array  &advected_field,
                          int           nparticles,
@@ -474,6 +490,19 @@ Array advection_particle(const Array  &z,
                          float         inertia = 0.f,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
+
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
 
 Array advection_particle(const Array  &dx,
                          const Array  &dy,
@@ -488,6 +517,20 @@ Array advection_particle(const Array  &dx,
                          float         inertia = 0.f,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
+
+std::vector<Array> advection_particle(const Array              &dx,
+                                      const Array              &dy,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
 
 /**
  * @brief Performs 2D field advection based on the gradient of a heightmap using
