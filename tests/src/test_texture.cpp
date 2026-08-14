@@ -3,6 +3,7 @@
 #include "highmap/dbg/assert.hpp"
 #include "highmap/primitives.hpp"
 #include "highmap/texture.hpp"
+#include "highmap/transform.hpp"
 
 #include <gtest/gtest.h>
 
@@ -170,3 +171,126 @@ TEST(TextureColorize, BivariateReverseAndNoise)
   EXPECT_NEAR(color.g, 0.5f, 1e-5f);
   EXPECT_NEAR(color.b, 0.f, 1e-5f);
 }
+
+TEST(TextureTransform, BasicTransforms)
+{
+  glm::ivec2 shape = {4, 8};
+  Texture tex(shape, 3);
+
+  // Initialize with distinct values
+  for (int c = 0; c < 3; ++c)
+  {
+    for (int j = 0; j < shape.y; ++j)
+    {
+      for (int i = 0; i < shape.x; ++i)
+      {
+        tex[c](i, j) = static_cast<float>(c * 100 + j * 10 + i);
+      }
+    }
+  }
+
+  // 1. Test flip_lr
+  {
+    Texture temp = tex;
+    flip_lr(temp);
+    EXPECT_EQ(temp.shape, shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](i, j), tex[c](shape.x - 1 - i, j));
+        }
+      }
+    }
+  }
+
+  // 2. Test flip_ud
+  {
+    Texture temp = tex;
+    flip_ud(temp);
+    EXPECT_EQ(temp.shape, shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](i, j), tex[c](i, shape.y - 1 - j));
+        }
+      }
+    }
+  }
+
+  // 3. Test rot180
+  {
+    Texture temp = tex;
+    rot180(temp);
+    EXPECT_EQ(temp.shape, shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](i, j), tex[c](shape.x - 1 - i, shape.y - 1 - j));
+        }
+      }
+    }
+  }
+
+  // 4. Test transpose
+  {
+    Texture temp = transpose(tex);
+    glm::ivec2 expected_shape = {shape.y, shape.x};
+    EXPECT_EQ(temp.shape, expected_shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](j, i), tex[c](i, j));
+        }
+      }
+    }
+  }
+
+  // 5. Test rot90
+  {
+    Texture temp = tex;
+    rot90(temp);
+    glm::ivec2 expected_shape = {shape.y, shape.x};
+    EXPECT_EQ(temp.shape, expected_shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](j, shape.x - 1 - i), tex[c](i, j));
+        }
+      }
+    }
+  }
+
+  // 6. Test rot270
+  {
+    Texture temp = tex;
+    rot270(temp);
+    glm::ivec2 expected_shape = {shape.y, shape.x};
+    EXPECT_EQ(temp.shape, expected_shape);
+    for (int c = 0; c < 3; ++c)
+    {
+      for (int j = 0; j < shape.y; ++j)
+      {
+        for (int i = 0; i < shape.x; ++i)
+        {
+          EXPECT_FLOAT_EQ(temp[c](shape.y - 1 - j, i), tex[c](i, j));
+        }
+      }
+    }
+  }
+}
+

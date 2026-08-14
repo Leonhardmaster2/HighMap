@@ -20,7 +20,7 @@ namespace hmap
 void flip_lr(Array &array)
 {
   for (int j = 0; j < array.shape.y; j++)
-    for (int i = 0; i < (int)(0.5f * array.shape.y); i++)
+    for (int i = 0; i < (int)(0.5f * array.shape.x); i++)
       std::swap(array(i, j), array(array.shape.x - i - 1, j));
 }
 
