@@ -23,10 +23,10 @@
 
 #include "macrologger.h"
 
-#include "highmap/array.hpp"
-
 namespace hmap
 {
+
+class Texture;
 
 /**
  * @brief Flip the array horizontally (left/right).
@@ -45,6 +45,13 @@ namespace hmap
 void flip_lr(Array &array);
 
 /**
+ * @brief Flip the texture horizontally (left/right).
+ *
+ * @param texture Input texture to be flipped.
+ */
+void flip_lr(Texture &texture);
+
+/**
  * @brief Flip the array vertically (up/down).
  *
  * This function flips the input array along the horizontal axis, resulting in
@@ -59,6 +66,13 @@ void flip_lr(Array &array);
  * @image html ex_flip_ud.png
  */
 void flip_ud(Array &array);
+
+/**
+ * @brief Flip the texture vertically (up/down).
+ *
+ * @param texture Input texture to be flipped.
+ */
+void flip_ud(Texture &texture);
 
 /**
  * @brief Interpret the input array `dr` as a radial displacement and convert it
@@ -94,6 +108,13 @@ void radial_displacement_to_xy(const Array &dr,
 void rot180(Array &array);
 
 /**
+ * @brief Rotate the texture by 180 degrees.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot180(Texture &texture);
+
+/**
  * @brief Rotate the array by 270 degrees.
  *
  * This function rotates the input array by 270 degrees in the counterclockwise
@@ -102,6 +123,13 @@ void rot180(Array &array);
  * @param array Input array to be rotated by 270 degrees.
  */
 void rot270(Array &array);
+
+/**
+ * @brief Rotate the texture by 270 degrees counterclockwise.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot270(Texture &texture);
 
 /**
  * @brief Rotate the array by 90 degrees.
@@ -118,6 +146,13 @@ void rot270(Array &array);
  * @image html ex_rot90.png
  */
 void rot90(Array &array);
+
+/**
+ * @brief Rotate the texture by 90 degrees counterclockwise.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot90(Texture &texture);
 
 /**
  * @brief Rotate the array by a specified angle.
@@ -161,18 +196,6 @@ void rotate(Array &array,
 void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy);
 
 /**
- * @brief Return the transposed array.
- *
- * This function returns a new array that is the transpose of the input array.
- * The transpose operation swaps the rows and columns of the array, effectively
- * flipping the array over its diagonal.
- *
- * @param  array Input array to be transposed.
- * @return       Array The transposed array.
- */
-Array transpose(const Array &array);
-
-/**
  * @brief Translates a 2D array by a specified amount along the x and y axes.
  *
  * This function shifts the contents of the input array by `dx` and `dy` units
@@ -214,6 +237,26 @@ Array translate(const Array &array,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Return the transposed array.
+ *
+ * This function returns a new array that is the transpose of the input array.
+ * The transpose operation swaps the rows and columns of the array, effectively
+ * flipping the array over its diagonal.
+ *
+ * @param  array Input array to be transposed.
+ * @return       Array The transposed array.
+ */
+Array transpose(const Array &array);
+
+/**
+ * @brief Return the transposed texture.
+ *
+ * @param texture Input texture to be transposed.
+ * @return Texture The transposed texture.
+ */
+Texture transpose(const Texture &texture);
 
 /**
  * @brief Apply a warping effect to the array.
