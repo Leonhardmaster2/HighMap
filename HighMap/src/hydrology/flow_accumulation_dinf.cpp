@@ -129,7 +129,6 @@ Array flow_accumulation_dinf_perturbed(const Array  &z,
                      seed + n,
                      nullptr,
                      nullptr,
-                     nullptr,
                      bbox);
 
     if (p_perturb_scaling) dz *= *p_perturb_scaling;

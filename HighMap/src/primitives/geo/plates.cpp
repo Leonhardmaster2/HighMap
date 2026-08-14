@@ -41,7 +41,6 @@ Array plates(glm::ivec2    shape,
                                                 nullptr,
                                                 nullptr,
                                                 nullptr,
-                                                nullptr,
                                                 bbox);
 
   // base primitive

@@ -19,7 +19,6 @@ Array noise(NoiseType     noise_type,
             std::uint32_t seed,
             const Array  *p_noise_x,
             const Array  *p_noise_y,
-            const Array  *p_stretching,
             glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -33,7 +32,7 @@ Array noise(NoiseType     noise_type,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                p.get()->get_delegate());
   return array;
 }
@@ -49,7 +48,6 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_ctrl_param,
                 const Array  *p_noise_x,
                 const Array  *p_noise_y,
-                const Array  *p_stretching,
                 glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -69,7 +67,7 @@ Array noise_fbm(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -86,7 +84,6 @@ Array noise_iq(NoiseType     noise_type,
                const Array  *p_ctrl_param,
                const Array  *p_noise_x,
                const Array  *p_noise_y,
-               const Array  *p_stretching,
                glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -107,7 +104,7 @@ Array noise_iq(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -127,7 +124,6 @@ Array noise_jordan(NoiseType     noise_type,
                    const Array  *p_ctrl_param,
                    const Array  *p_noise_x,
                    const Array  *p_noise_y,
-                   const Array  *p_stretching,
                    glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -151,7 +147,7 @@ Array noise_jordan(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -167,7 +163,6 @@ Array noise_parberry(glm::ivec2    shape,
                      const Array  *p_ctrl_param,
                      const Array  *p_noise_x,
                      const Array  *p_noise_y,
-                     const Array  *p_stretching,
                      glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -186,7 +181,7 @@ Array noise_parberry(glm::ivec2    shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -202,7 +197,6 @@ Array noise_pingpong(NoiseType     noise_type,
                      const Array  *p_ctrl_param,
                      const Array  *p_noise_x,
                      const Array  *p_noise_y,
-                     const Array  *p_stretching,
                      glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -222,7 +216,7 @@ Array noise_pingpong(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -239,7 +233,6 @@ Array noise_ridged(NoiseType     noise_type,
                    const Array  *p_ctrl_param,
                    const Array  *p_noise_x,
                    const Array  *p_noise_y,
-                   const Array  *p_stretching,
                    glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -260,7 +253,7 @@ Array noise_ridged(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -277,7 +270,6 @@ Array noise_swiss(NoiseType     noise_type,
                   const Array  *p_ctrl_param,
                   const Array  *p_noise_x,
                   const Array  *p_noise_y,
-                  const Array  *p_stretching,
                   glm::vec4     bbox)
 {
   Array array = Array(shape);
@@ -298,7 +290,7 @@ Array noise_swiss(NoiseType     noise_type,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }

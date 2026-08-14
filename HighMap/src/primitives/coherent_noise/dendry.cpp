@@ -42,7 +42,6 @@ Array dendry(glm::ivec2    shape,
              float         control_function_overlap,
              const Array  *p_noise_x,
              const Array  *p_noise_y,
-             const Array * /* p_stretching */,
              glm::vec4 bbox,
              int       subsampling)
 {
@@ -114,7 +113,6 @@ Array dendry(glm::ivec2     shape,
              float /* control_function_overlap */,
              const Array *p_noise_x,
              const Array *p_noise_y,
-             const Array * /* p_stretching */,
              glm::vec4 bbox)
 {
   Array array = Array(shape);

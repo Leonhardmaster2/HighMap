@@ -52,7 +52,6 @@ Array mountain_tibesti(glm::ivec2    shape,
                                 /* p_ctrl_param */ nullptr,
                                 p_noise_x,
                                 p_noise_y,
-                                /* p_stretching */ nullptr,
                                 bbox);
 
   noise4 = 0.5f * noise4 + 0.5f;
@@ -71,7 +70,6 @@ Array mountain_tibesti(glm::ivec2    shape,
                                 /* p_ctrl_param */ nullptr,
                                 p_noise_x,
                                 p_noise_y,
-                                /* p_stretching */ nullptr,
                                 bbox);
 
   // base
@@ -101,7 +99,6 @@ Array mountain_tibesti(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                /* p_noise_x */ nullptr,
                                /* p_noise_y */ nullptr,
-                               /* p_stretching */ nullptr,
                                center,
                                bbox);
 

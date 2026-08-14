@@ -112,7 +112,6 @@ Array biquad_pulse(glm::ivec2   shape,
                    const Array *p_ctrl_param = nullptr,
                    const Array *p_noise_x = nullptr,
                    const Array *p_noise_y = nullptr,
-                   const Array *p_stretching = nullptr,
                    glm::vec2    center = {0.5f, 0.5f},
                    glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -143,7 +142,6 @@ Array bump(glm::ivec2   shape,
            const Array *p_ctrl_param = nullptr, // gain multiplier
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
-           const Array *p_stretching = nullptr,
            glm::vec2    center = {0.5f, 0.5f},
            glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -220,7 +218,6 @@ Array checkerboard(glm::ivec2   shape,
                    glm::vec2    kw,
                    const Array *p_noise_x = nullptr,
                    const Array *p_noise_y = nullptr,
-                   const Array *p_stretching = nullptr,
                    glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -431,7 +428,6 @@ Array disk(glm::ivec2   shape,
            const Array *p_ctrl_param = nullptr,
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
-           const Array *p_stretching = nullptr,
            glm::vec2    center = {0.5f, 0.5f},
            glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -460,7 +456,6 @@ Array gaussian_pulse(glm::ivec2   shape,
                      const Array *p_ctrl_param = nullptr,
                      const Array *p_noise_x = nullptr,
                      const Array *p_noise_y = nullptr,
-                     const Array *p_stretching = nullptr,
                      glm::vec2    center = {0.5f, 0.5f},
                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -539,7 +534,6 @@ Array paraboloid(glm::ivec2   shape,
                  bool         reverse_y = false,
                  const Array *p_noise_x = nullptr,
                  const Array *p_noise_y = nullptr,
-                 const Array *p_stretching = nullptr,
                  glm::vec2    center = {0.5f, 0.5f},
                  glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -639,7 +633,6 @@ Array rectangle(glm::ivec2   shape,
                 const Array *p_ctrl_param = nullptr,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
-                const Array *p_stretching = nullptr,
                 glm::vec2    center = {0.5f, 0.5f},
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 /**
@@ -668,7 +661,6 @@ Array slope(glm::ivec2   shape,
             const Array *p_ctrl_param = nullptr,
             const Array *p_noise_x = nullptr,
             const Array *p_noise_y = nullptr,
-            const Array *p_stretching = nullptr,
             glm::vec2    center = {0.5f, 0.5f},
             glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 /**
@@ -707,7 +699,6 @@ Array step(glm::ivec2   shape,
            const Array *p_ctrl_param = nullptr,
            const Array *p_noise_x = nullptr,
            const Array *p_noise_y = nullptr,
-           const Array *p_stretching = nullptr,
            glm::vec2    center = {0.5f, 0.5f},
            glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -760,7 +751,6 @@ Array wave_dune(glm::ivec2   shape,
                 float        phase_shift = 0.f,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
-                const Array *p_stretching = nullptr,
                 glm::vec2    center = {0.5f, 0.5f},
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -791,7 +781,6 @@ Array wave_sine(glm::ivec2   shape,
                 float        phase_shift = 0.f,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
-                const Array *p_stretching = nullptr,
                 glm::vec2    center = {0.5f, 0.5f},
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -821,7 +810,6 @@ Array wave_square(glm::ivec2   shape,
                   float        phase_shift = 0.f,
                   const Array *p_noise_x = nullptr,
                   const Array *p_noise_y = nullptr,
-                  const Array *p_stretching = nullptr,
                   glm::vec2    center = {0.5f, 0.5f},
                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
@@ -854,7 +842,6 @@ Array wave_triangular(glm::ivec2   shape,
                       float        phase_shift = 0.f,
                       const Array *p_noise_x = nullptr,
                       const Array *p_noise_y = nullptr,
-                      const Array *p_stretching = nullptr,
                       glm::vec2    center = {0.5f, 0.5f},
                       glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 

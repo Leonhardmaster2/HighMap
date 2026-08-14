@@ -88,7 +88,6 @@ Array dendry(glm::ivec2    shape,
              float         control_function_overlap = 0.5f,
              const Array  *p_noise_x = nullptr,
              const Array  *p_noise_y = nullptr,
-             const Array  *p_stretching = nullptr,
              glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
              int           subsampling = 1);
 
@@ -108,7 +107,6 @@ Array dendry(glm::ivec2     shape,
              float          control_function_overlap = 0.5f,
              const Array   *p_noise_x = nullptr,
              const Array   *p_noise_y = nullptr,
-             const Array   *p_stretching = nullptr,
              glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -223,7 +221,6 @@ Array noise(NoiseType     noise_type,
             std::uint32_t seed,
             const Array  *p_noise_x = nullptr,
             const Array  *p_noise_y = nullptr,
-            const Array  *p_stretching = nullptr,
             glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -268,7 +265,6 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_ctrl_param = nullptr,
                 const Array  *p_noise_x = nullptr,
                 const Array  *p_noise_y = nullptr,
-                const Array  *p_stretching = nullptr,
                 glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -315,7 +311,6 @@ Array noise_iq(NoiseType     noise_type,
                const Array  *p_ctrl_param = nullptr,
                const Array  *p_noise_x = nullptr,
                const Array  *p_noise_y = nullptr,
-               const Array  *p_stretching = nullptr,
                glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -368,7 +363,6 @@ Array noise_jordan(NoiseType     noise_type,
                    const Array  *p_ctrl_param = nullptr,
                    const Array  *p_noise_x = nullptr,
                    const Array  *p_noise_y = nullptr,
-                   const Array  *p_stretching = nullptr,
                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -414,7 +408,6 @@ Array noise_parberry(glm::ivec2    shape,
                      const Array  *p_ctrl_param = nullptr,
                      const Array  *p_noise_x = nullptr,
                      const Array  *p_noise_y = nullptr,
-                     const Array  *p_stretching = nullptr,
                      glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -459,7 +452,6 @@ Array noise_pingpong(NoiseType     noise_type,
                      const Array  *p_ctrl_param = nullptr,
                      const Array  *p_noise_x = nullptr,
                      const Array  *p_noise_y = nullptr,
-                     const Array  *p_stretching = nullptr,
                      glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -506,7 +498,6 @@ Array noise_ridged(NoiseType     noise_type,
                    const Array  *p_ctrl_param = nullptr,
                    const Array  *p_noise_x = nullptr,
                    const Array  *p_noise_y = nullptr,
-                   const Array  *p_stretching = nullptr,
                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -553,7 +544,6 @@ Array noise_swiss(NoiseType     noise_type,
                   const Array  *p_ctrl_param = nullptr,
                   const Array  *p_noise_x = nullptr,
                   const Array  *p_noise_y = nullptr,
-                  const Array  *p_stretching = nullptr,
                   glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
@@ -587,7 +577,6 @@ Array worley_double(glm::ivec2    shape,
                     const Array  *p_ctrl_param = nullptr,
                     const Array  *p_noise_x = nullptr,
                     const Array  *p_noise_y = nullptr,
-                    const Array  *p_stretching = nullptr,
                     glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
 
 } // namespace hmap
@@ -807,7 +796,6 @@ Array noise(NoiseType     noise_type,
             std::uint32_t seed,
             const Array  *p_noise_x = nullptr,
             const Array  *p_noise_y = nullptr,
-            const Array  *p_stretching = nullptr,
             glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
             glm::ivec2    period = {0, 0});
 
@@ -829,7 +817,6 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_ctrl_param = nullptr,
                 const Array  *p_noise_x = nullptr,
                 const Array  *p_noise_y = nullptr,
-                const Array  *p_stretching = nullptr,
                 glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
                 glm::ivec2    period = {0, 0});
 

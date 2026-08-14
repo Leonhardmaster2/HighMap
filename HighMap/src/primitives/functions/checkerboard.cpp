@@ -16,7 +16,6 @@ Array checkerboard(glm::ivec2   shape,
                    glm::vec2    kw,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
-                   const Array *p_stretching,
                    glm::vec4    bbox)
 {
   Array array = Array(shape);
@@ -32,7 +31,7 @@ Array checkerboard(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                lambda);
   return array;
 }

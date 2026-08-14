@@ -335,7 +335,6 @@ void recast_rocky_slopes(Array        &array,
                             nullptr,
                             nullptr,
                             nullptr,
-                            nullptr,
                             bbox);
     gamma_correction_local(noise, gamma, ir, 0.1f);
     {

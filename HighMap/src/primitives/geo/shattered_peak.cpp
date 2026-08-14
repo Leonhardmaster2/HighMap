@@ -52,7 +52,6 @@ Array shattered_peak(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                p_noise_x,
                                p_noise_y,
-                               /* p_stretching */ nullptr,
                                bbox);
 
   Array dx = noise * std::cos(alpha);
@@ -64,7 +63,6 @@ Array shattered_peak(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                /* p_noise_x */ nullptr,
                                /* p_noise_y */ nullptr,
-                               /* p_stretching */ nullptr,
                                center,
                                bbox);
 
