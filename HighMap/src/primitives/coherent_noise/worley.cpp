@@ -20,7 +20,6 @@ Array worley_double(glm::ivec2    shape,
                     const Array  *p_ctrl_param,
                     const Array  *p_noise_x,
                     const Array  *p_noise_y,
-                    const Array  *p_stretching,
                     glm::vec4     bbox)
 {
   hmap::Array                array = hmap::Array(shape);
@@ -31,7 +30,7 @@ Array worley_double(glm::ivec2    shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }

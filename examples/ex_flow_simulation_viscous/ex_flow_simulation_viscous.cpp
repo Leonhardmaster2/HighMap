@@ -23,7 +23,6 @@ int main(void)
                         nullptr,
                         nullptr,
                         nullptr,
-                        nullptr,
                         {0.5f, 0.45f});
 
   float amount = 1e-1f;

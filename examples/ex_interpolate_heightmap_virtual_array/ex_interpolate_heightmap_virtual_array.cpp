@@ -26,7 +26,6 @@ int main(void)
                        0,
                        nullptr,
                        nullptr,
-                       nullptr,
                        region.bbox);
   };
 

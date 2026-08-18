@@ -40,7 +40,6 @@ Array badlands(glm::ivec2    shape,
                                                 nullptr,
                                                 p_noise_x,
                                                 p_noise_y,
-                                                nullptr,
                                                 bbox);
 
   Array dx = noise * std::cos(alpha);
