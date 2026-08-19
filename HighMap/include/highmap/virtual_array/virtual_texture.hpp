@@ -167,6 +167,45 @@ void colorize(VirtualTexture               &out,
               VirtualArray                 *p_noise = nullptr);
 
 /**
+ * @brief Colorize two scalar fields into a VirtualTexture using two custom
+ *        colormaps and a color mixing method.
+ * @param out              Output virtual texture.
+ * @param a1               First input scalar field.
+ * @param a2               Second input scalar field.
+ * @param cm               Compute mode (CPU/GPU).
+ * @param range1           Lower and upper bounds for normalization of the first
+ * field.
+ * @param range2           Lower and upper bounds for normalization of the
+ * second field.
+ * @param positions1       Normalized color positions for the first colormap.
+ * @param positions2       Normalized color positions for the second colormap.
+ * @param colormap_colors1 RGB colors for the first colormap.
+ * @param colormap_colors2 RGB colors for the second colormap.
+ * @param method           Method used to mix the two resulting colors.
+ * @param reverse1         Reverse the first colormap mapping.
+ * @param reverse2         Reverse the second colormap mapping.
+ * @param p_noise1         Optional noise added to the first scalar field before
+ * normalization.
+ * @param p_noise2         Optional noise added to the second scalar field
+ * before normalization.
+ */
+void colorize_bivariate(VirtualTexture               &out,
+                        VirtualArray                 &a1,
+                        VirtualArray                 &a2,
+                        const ComputeMode            &cm,
+                        glm::vec2                     range1,
+                        glm::vec2                     range2,
+                        const std::vector<float>     &positions1,
+                        const std::vector<float>     &positions2,
+                        const std::vector<glm::vec3> &colormap_colors1,
+                        const std::vector<glm::vec3> &colormap_colors2,
+                        MixMethod                     method = MM_SQRT_AVG,
+                        bool                          reverse1 = false,
+                        bool                          reverse2 = false,
+                        VirtualArray                 *p_noise1 = nullptr,
+                        VirtualArray                 *p_noise2 = nullptr);
+
+/**
  * @brief Compute luminance from a VirtualTexture.
  *
  * Computes a grayscale luminance array from the RGB channels of a virtual

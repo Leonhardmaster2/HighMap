@@ -7,10 +7,10 @@
 // -1), whose precondition (lo <= hi) is violated and which in practice yields
 // -1, so source(-1, -1) reads before the buffer and segfaults.
 //
-// Reached from Hesiod by opening any project whose Brush node deserialized to an
-// empty array (otto-link/Hesiod#658): Array::resample_to_shape_bilinear on a 0x0
-// source. An empty source has no meaningful interpolation, so the contract is to
-// leave the target at its zero-filled initial state.
+// Reached from Hesiod by opening any project whose Brush node deserialized to
+// an empty array (otto-link/Hesiod#658): Array::resample_to_shape_bilinear on a
+// 0x0 source. An empty source has no meaningful interpolation, so the contract
+// is to leave the target at its zero-filled initial state.
 
 namespace
 {
@@ -75,12 +75,14 @@ TEST(InterpolateArrayEmptySource, ResampleToShapeIsSafe)
   // the path Hesiod's Brush node actually took
   hmap::Array source;
 
-  hmap::Array out_bilinear = source.resample_to_shape_bilinear(glm::ivec2(32, 32));
+  hmap::Array out_bilinear = source.resample_to_shape_bilinear(
+      glm::ivec2(32, 32));
   EXPECT_EQ(out_bilinear.shape.x, 32);
   EXPECT_EQ(out_bilinear.shape.y, 32);
   expect_all_zero(out_bilinear);
 
-  hmap::Array out_nearest = source.resample_to_shape_nearest(glm::ivec2(32, 32));
+  hmap::Array out_nearest = source.resample_to_shape_nearest(
+      glm::ivec2(32, 32));
   EXPECT_EQ(out_nearest.shape.x, 32);
   EXPECT_EQ(out_nearest.shape.y, 32);
   expect_all_zero(out_nearest);

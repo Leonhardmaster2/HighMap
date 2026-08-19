@@ -374,13 +374,7 @@ Array get_primitive_base(const PrimitiveType &primitive_type,
                         bbox);
     //
   case PrimitiveType::PRIM_BUMP:
-    return bump(shape,
-                1.f,
-                nullptr,
-                p_noise_x,
-                p_noise_y,
-                center,
-                bbox);
+    return bump(shape, 1.f, nullptr, p_noise_x, p_noise_y, center, bbox);
     //
   case PrimitiveType::PRIM_CONE:
     return cone(shape, 2.f, 1.f, false, center, p_noise_x, p_noise_y, bbox);

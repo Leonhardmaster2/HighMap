@@ -175,7 +175,7 @@ TEST(TextureColorize, BivariateReverseAndNoise)
 TEST(TextureTransform, BasicTransforms)
 {
   glm::ivec2 shape = {4, 8};
-  Texture tex(shape, 3);
+  Texture    tex(shape, 3);
 
   // Initialize with distinct values
   for (int c = 0; c < 3; ++c)
@@ -234,7 +234,8 @@ TEST(TextureTransform, BasicTransforms)
       {
         for (int i = 0; i < shape.x; ++i)
         {
-          EXPECT_FLOAT_EQ(temp[c](i, j), tex[c](shape.x - 1 - i, shape.y - 1 - j));
+          EXPECT_FLOAT_EQ(temp[c](i, j),
+                          tex[c](shape.x - 1 - i, shape.y - 1 - j));
         }
       }
     }
@@ -242,7 +243,7 @@ TEST(TextureTransform, BasicTransforms)
 
   // 4. Test transpose
   {
-    Texture temp = transpose(tex);
+    Texture    temp = transpose(tex);
     glm::ivec2 expected_shape = {shape.y, shape.x};
     EXPECT_EQ(temp.shape, expected_shape);
     for (int c = 0; c < 3; ++c)
@@ -293,4 +294,3 @@ TEST(TextureTransform, BasicTransforms)
     }
   }
 }
-

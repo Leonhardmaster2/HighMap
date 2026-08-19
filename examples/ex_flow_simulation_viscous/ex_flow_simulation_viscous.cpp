@@ -17,13 +17,8 @@ int main(void)
   z = hmap::bulkify(z, hmap::PrimitiveType::PRIM_CUBIC_PULSE, 1.f);
   hmap::remap(z);
 
-  auto map = hmap::disk(shape,
-                        0.05f,
-                        32.f,
-                        nullptr,
-                        nullptr,
-                        nullptr,
-                        {0.5f, 0.45f});
+  auto map =
+      hmap::disk(shape, 0.05f, 32.f, nullptr, nullptr, nullptr, {0.5f, 0.45f});
 
   float amount = 1e-1f;
   int   iterations = 5000;

@@ -3,9 +3,8 @@
  * this software. */
 #include <vector>
 
-#include "macrologger.h"
-
 #include "cl_wrapper/run.hpp"
+#include "macrologger.h"
 
 #include "highmap/array.hpp"
 
