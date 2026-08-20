@@ -24,18 +24,33 @@ int main(void)
   float sigma = 0.3f;
   path.resample_uniform(); // to ensure a "uniform" output
 
-  // --- fractalize, with and without control function
-
-  hmap::Path pn = path;
-  hmap::Path pc = path;
-
-  pn = hmap::fractalize(pn, iterations, seed, sigma);
-  hmap::Array z3 = hmap::Array(shape);
-  pn.to_array(z3, bbox);
+  // --- fractalize, standard, bounded, and with control function
 
   int   orientation = 0;
   float persistence = 1.f;
 
+  // 1. Standard unbounded fractalize
+  hmap::Path pn = path;
+  pn = hmap::fractalize(pn, iterations, seed, sigma);
+  hmap::Array z3 = hmap::Array(shape);
+  pn.to_array(z3, bbox);
+
+  // 2. Bounded fractalize
+  hmap::Path pb = path;
+  pb = hmap::fractalize(pb,
+                        iterations,
+                        seed,
+                        2.f * sigma, // push amplitude
+                        orientation,
+                        persistence,
+                        nullptr,
+                        bbox,
+                        true);
+  hmap::Array z5 = hmap::Array(shape);
+  pb.to_array(z5, bbox);
+
+  // 3. Control function modulated fractalize (closed path)
+  hmap::Path pc = path;
   pc.set_closed(true);
   pc = hmap::fractalize(pc,
                         iterations,
@@ -49,6 +64,6 @@ int main(void)
   hmap::Array z4 = pc.to_array(shape, bbox);
 
   hmap::export_banner_png("ex_path_fractalize.png",
-                          {z1, z_control, z3, z4},
+                          {z1, z3, z5, z_control, z4},
                           hmap::Cmap::INFERNO);
 }
