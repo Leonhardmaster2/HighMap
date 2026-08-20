@@ -250,12 +250,39 @@ Path fractalize(const Path   &path,
                 int           orientation,
                 float         persistence,
                 Array        *p_ctrl_array,
-                glm::vec4     bbox)
+                glm::vec4     bbox,
+                bool          bounded)
 {
   Path new_path = path;
 
   std::mt19937                    gen(seed);
   std::normal_distribution<float> dis(0.f, 1.f);
+
+  struct EdgeBBox
+  {
+    float min_x, max_x, min_y, max_y;
+  };
+  std::vector<EdgeBBox> initial_bboxes;
+
+  if (bounded)
+  {
+    size_t n_init = path.size();
+    size_t end_init = path.is_closed() ? n_init : (n_init > 0 ? n_init - 1 : 0);
+    initial_bboxes.reserve(end_init);
+
+    for (size_t i = 0; i < end_init; ++i)
+    {
+      size_t      inext = (i + 1) % n_init;
+      const auto &p1 = path.points[i];
+      const auto &p2 = path.points[inext];
+      initial_bboxes.push_back({
+          std::min(p1.x, p2.x),
+          std::max(p1.x, p2.x),
+          std::min(p1.y, p2.y),
+          std::max(p1.y, p2.y),
+      });
+    }
+  }
 
   for (int it = 0; it < iterations; it++)
   {
@@ -286,6 +313,17 @@ Path fractalize(const Path   &path,
                             new_path.points[knext],
                             orientation,
                             amp);
+
+      if (bounded && !initial_bboxes.empty())
+      {
+        size_t edge_idx = k >> it;
+        if (edge_idx < initial_bboxes.size())
+        {
+          const auto &ibox = initial_bboxes[edge_idx];
+          pnew.x = std::clamp(pnew.x, ibox.min_x, ibox.max_x);
+          pnew.y = std::clamp(pnew.y, ibox.min_y, ibox.max_y);
+        }
+      }
 
       new_points.push_back(new_path.points[k]);
       new_points.push_back(pnew);

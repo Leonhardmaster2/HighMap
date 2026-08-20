@@ -627,6 +627,9 @@ Path decimate_vw(const Path &path, int n_points_target = 3);
  *                      displacement amplitude.
  * @param bbox          Bounding box that defines the valid area for the control
  *                      field's influence.
+ * @param bounded       If true, clamps each newly displaced midpoint to the
+ *                      bounding box defined by the initial edge it belongs to.
+ *                      Defaults to false.
  *
  * **Example**
  * @include ex_path_fractalize.cpp
@@ -641,7 +644,8 @@ Path fractalize(const Path   &path,
                 int           orientation = 0,
                 float         persistence = 1.f,
                 Array        *p_control_field = nullptr,
-                glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+                glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
+                bool          bounded = false);
 
 /**
  * @brief Inflate (offset) a path along its normals using curvature.
