@@ -196,7 +196,6 @@ void clamp_oblique_plane(Array    &array,
                       /* p_ctrl_param  */ nullptr,
                       /* p_noise_x  */ nullptr,
                       /* p_noise_y  */ nullptr,
-                      /* p_stretching  */ nullptr,
                       center,
                       bbox);
   plane += vmax;

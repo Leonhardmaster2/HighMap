@@ -21,7 +21,7 @@
 #include <opencv2/imgcodecs.hpp>
 
 #include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {

@@ -17,7 +17,6 @@ Array wave_dune(glm::ivec2   shape,
                 float        phase_shift,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                const Array *p_stretching,
                 glm::vec2    center,
                 glm::vec4    bbox)
 {
@@ -34,7 +33,7 @@ Array wave_dune(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -45,7 +44,6 @@ Array wave_sine(glm::ivec2   shape,
                 float        phase_shift,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                const Array *p_stretching,
                 glm::vec2    center,
                 glm::vec4    bbox)
 {
@@ -60,7 +58,7 @@ Array wave_sine(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -71,7 +69,6 @@ Array wave_square(glm::ivec2   shape,
                   float        phase_shift,
                   const Array *p_noise_x,
                   const Array *p_noise_y,
-                  const Array *p_stretching,
                   glm::vec2    center,
                   glm::vec4    bbox)
 {
@@ -86,7 +83,7 @@ Array wave_square(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -98,7 +95,6 @@ Array wave_triangular(glm::ivec2   shape,
                       float        phase_shift,
                       const Array *p_noise_x,
                       const Array *p_noise_y,
-                      const Array *p_stretching,
                       glm::vec2    center,
                       glm::vec4    bbox)
 {
@@ -114,7 +110,7 @@ Array wave_triangular(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }

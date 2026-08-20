@@ -19,12 +19,17 @@
  */
 #pragma once
 
+#include <cstdint>
+#include <vector>
+
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
 
 namespace hmap
 {
+
+class Texture;
 
 /**
  * @brief Flip the array horizontally (left/right).
@@ -35,12 +40,19 @@ namespace hmap
  * @param array Input array to be flipped horizontally.
  *
  * **Example**
- * @include flip_lr.cpp
+ * @include ex_flip_ud.cpp
  *
  * **Result**
- * @image html flip_lr.png
+ * @image html ex_flip_ud.png
  */
 void flip_lr(Array &array);
+
+/**
+ * @brief Flip the texture horizontally (left/right).
+ *
+ * @param texture Input texture to be flipped.
+ */
+void flip_lr(Texture &texture);
 
 /**
  * @brief Flip the array vertically (up/down).
@@ -51,12 +63,19 @@ void flip_lr(Array &array);
  * @param array Input array to be flipped vertically.
  *
  * **Example**
- * @include flip_ud.cpp
+ * @include ex_flip_ud.cpp
  *
  * **Result**
- * @image html flip_ud.png
+ * @image html ex_flip_ud.png
  */
 void flip_ud(Array &array);
+
+/**
+ * @brief Flip the texture vertically (up/down).
+ *
+ * @param texture Input texture to be flipped.
+ */
+void flip_ud(Texture &texture);
 
 /**
  * @brief Interpret the input array `dr` as a radial displacement and convert it
@@ -92,6 +111,13 @@ void radial_displacement_to_xy(const Array &dr,
 void rot180(Array &array);
 
 /**
+ * @brief Rotate the texture by 180 degrees.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot180(Texture &texture);
+
+/**
  * @brief Rotate the array by 270 degrees.
  *
  * This function rotates the input array by 270 degrees in the counterclockwise
@@ -100,6 +126,13 @@ void rot180(Array &array);
  * @param array Input array to be rotated by 270 degrees.
  */
 void rot270(Array &array);
+
+/**
+ * @brief Rotate the texture by 270 degrees counterclockwise.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot270(Texture &texture);
 
 /**
  * @brief Rotate the array by 90 degrees.
@@ -118,6 +151,13 @@ void rot270(Array &array);
 void rot90(Array &array);
 
 /**
+ * @brief Rotate the texture by 90 degrees counterclockwise.
+ *
+ * @param texture Input texture to be rotated.
+ */
+void rot90(Texture &texture);
+
+/**
  * @brief Rotate the array by a specified angle.
  *
  * This function rotates the input array by a given angle in degrees. The
@@ -127,6 +167,7 @@ void rot90(Array &array);
  *
  * @param array        Input array to be rotated.
  * @param angle        Rotation angle in degrees.
+ * @param zoom_in      If true, zoom in after rotation (default is true).
  * @param zero_padding If true, use zero-padding to fill the borders; otherwise,
  *                     use symmetry (default is false).
  *
@@ -156,18 +197,6 @@ void rotate(Array &array,
  * @param dy    Output array receiving the Y-axis displacement component.
  * */
 void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy);
-
-/**
- * @brief Return the transposed array.
- *
- * This function returns a new array that is the transpose of the input array.
- * The transpose operation swaps the rows and columns of the array, effectively
- * flipping the array over its diagonal.
- *
- * @param  array Input array to be transposed.
- * @return       Array The transposed array.
- */
-Array transpose(const Array &array);
 
 /**
  * @brief Translates a 2D array by a specified amount along the x and y axes.
@@ -211,6 +240,26 @@ Array translate(const Array &array,
                 const Array *p_noise_x = nullptr,
                 const Array *p_noise_y = nullptr,
                 glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Return the transposed array.
+ *
+ * This function returns a new array that is the transpose of the input array.
+ * The transpose operation swaps the rows and columns of the array, effectively
+ * flipping the array over its diagonal.
+ *
+ * @param  array Input array to be transposed.
+ * @return       Array The transposed array.
+ */
+Array transpose(const Array &array);
+
+/**
+ * @brief Return the transposed texture.
+ *
+ * @param texture Input texture to be transposed.
+ * @return Texture The transposed texture.
+ */
+Texture transpose(const Texture &texture);
 
 /**
  * @brief Apply a warping effect to the array.
@@ -461,6 +510,20 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
 
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       iterations,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
+
 Array advection_particle(const Array  &z,
                          const Array  &advected_field,
                          int           nparticles,
@@ -473,6 +536,19 @@ Array advection_particle(const Array  &z,
                          float         inertia = 0.f,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
+
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
 
 Array advection_particle(const Array  &dx,
                          const Array  &dy,
@@ -487,6 +563,20 @@ Array advection_particle(const Array  &dx,
                          float         inertia = 0.f,
                          const Array  *p_advection_mask = nullptr,
                          const Array  *p_mask = nullptr);
+
+std::vector<Array> advection_particle(const Array              &dx,
+                                      const Array              &dy,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse = false,
+                                      bool         post_filter = true,
+                                      float        post_filter_sigma = 0.125f,
+                                      float        advection_length = 0.1f,
+                                      float        value_persistence = 0.99f,
+                                      float        inertia = 0.f,
+                                      const Array *p_advection_mask = nullptr,
+                                      const Array *p_mask = nullptr);
 
 /**
  * @brief Performs 2D field advection based on the gradient of a heightmap using

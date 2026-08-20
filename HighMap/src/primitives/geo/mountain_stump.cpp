@@ -53,7 +53,6 @@ Array mountain_stump(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                p_noise_x,
                                p_noise_y,
-                               /* p_stretching */ nullptr,
                                bbox);
 
   Array dx = noise * std::cos(alpha);
@@ -65,7 +64,6 @@ Array mountain_stump(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                /* p_noise_x */ nullptr,
                                /* p_noise_y */ nullptr,
-                               /* p_stretching */ nullptr,
                                center,
                                bbox);
   gain(pulse, 2.f);
@@ -82,7 +80,6 @@ Array mountain_stump(glm::ivec2    shape,
                                        /* p_ctrl_param */ nullptr,
                                        p_noise_x,
                                        p_noise_y,
-                                       /* p_stretching */ nullptr,
                                        bbox) +
                 0.75f;
 

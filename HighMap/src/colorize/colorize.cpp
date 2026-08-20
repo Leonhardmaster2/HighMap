@@ -14,12 +14,14 @@
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 #include "highmap/shadows.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
+
+#include "mixbox.h"
 
 namespace hmap
 {
 
-void apply_hillshade(Tensor      &color3,
+void apply_hillshade(Texture     &color3,
                      const Array &array,
                      float        vmin,
                      float        vmax,
@@ -85,25 +87,25 @@ void apply_hillshade(std::vector<uint8_t> &img,
   }
 }
 
-Tensor colorize(const Array &array,
-                float        vmin,
-                float        vmax,
-                int          cmap,
-                bool         hillshading,
-                bool         reverse,
-                const Array *p_noise)
+Texture colorize(const Array &array,
+                 float        vmin,
+                 float        vmax,
+                 int          cmap,
+                 bool         hillshading,
+                 bool         reverse,
+                 const Array *p_noise)
 {
   // get the colormap and reverse if needed
   const auto colormap_colors = get_colormap_data(cmap);
   if (reverse) std::swap(vmin, vmax);
 
-  // initialize color tensor and normalization factors
+  // initialize color texture and normalization factors
   const int nc = static_cast<int>(colormap_colors.size());
   glm::vec2 normalization_factors = array.normalization_coeff(vmin, vmax);
   normalization_factors.x *= (nc - 1);
   normalization_factors.y *= (nc - 1);
 
-  Tensor color3(array.shape, 3);
+  Texture color3(array.shape, 3);
 
   // lambda function to apply colormap
   auto apply_colormap = [&](float value) -> glm::vec3
@@ -144,17 +146,212 @@ Tensor colorize(const Array &array,
   return color3;
 }
 
-Tensor colorize_grayscale(const Array &array)
+Texture colorize(const Array                  &array,
+                 float                         vmin,
+                 float                         vmax,
+                 const std::vector<float>     &positions,
+                 const std::vector<glm::vec3> &colormap_colors,
+                 bool                          reverse,
+                 const Array                  *p_noise)
 {
-  Tensor color1 = Tensor(array.shape, 1);
-  color1.set_slice(0, array);
+  auto cpos = positions;
+  auto colors = colormap_colors;
+
+  if (reverse)
+  {
+    std::reverse(colors.begin(), colors.end());
+    std::reverse(cpos.begin(), cpos.end());
+
+    for (auto &p : cpos)
+      p = 1.f - p;
+  }
+
+  std::vector<float> cc_r, cc_g, cc_b;
+  for (const auto &col : colors)
+  {
+    cc_r.push_back(col[0]);
+    cc_g.push_back(col[1]);
+    cc_b.push_back(col[2]);
+  }
+
+  Interpolator1D citp_r = hmap::Interpolator1D(
+      cpos,
+      cc_r,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_g = hmap::Interpolator1D(
+      cpos,
+      cc_g,
+      hmap::InterpolationMethod1D::LINEAR);
+  Interpolator1D citp_b = hmap::Interpolator1D(
+      cpos,
+      cc_b,
+      hmap::InterpolationMethod1D::LINEAR);
+
+  Texture out(array.shape, 3);
+
+  for (int j = 0; j < array.shape.y; ++j)
+  {
+    for (int i = 0; i < array.shape.x; ++i)
+    {
+      float v = array(i, j) + (p_noise ? (*p_noise)(i, j) : 0.f);
+      v = (v - vmin) / (vmax - vmin);
+      v = std::clamp(v, 0.f, 1.f);
+
+      out(i, j, 0) = citp_r(v);
+      out(i, j, 1) = citp_g(v);
+      out(i, j, 2) = citp_b(v);
+    }
+  }
+
+  return out;
+}
+
+Texture colorize_bivariate(const Array                  &a1,
+                           const Array                  &a2,
+                           const glm::vec2               range1,
+                           const glm::vec2               range2,
+                           const std::vector<float>     &positions1,
+                           const std::vector<float>     &positions2,
+                           const std::vector<glm::vec3> &colormap_colors1,
+                           const std::vector<glm::vec3> &colormap_colors2,
+                           MixMethod                     method,
+                           bool                          reverse1,
+                           bool                          reverse2,
+                           const Array                  *p_noise1,
+                           const Array                  *p_noise2)
+{
+  const glm::ivec2 shape = a1.shape;
+  Texture          color3(shape, 3);
+
+  // --- Colormap preparation
+
+  auto prepare_colormap = [](const std::vector<float>     &positions,
+                             const std::vector<glm::vec3> &colors,
+                             bool                          reverse)
+  {
+    auto cpos = positions;
+    auto colors_ = colors;
+
+    if (reverse)
+    {
+      std::reverse(colors_.begin(), colors_.end());
+      std::reverse(cpos.begin(), cpos.end());
+
+      for (auto &p : cpos)
+        p = 1.f - p;
+    }
+
+    return std::make_pair(std::move(cpos), std::move(colors_));
+  };
+
+  // --- Build color interpolator
+
+  auto make_color_interpolator = [](const std::vector<float>     &positions,
+                                    const std::vector<glm::vec3> &colors)
+  {
+    std::vector<float> r;
+    std::vector<float> g;
+    std::vector<float> b;
+
+    r.reserve(colors.size());
+    g.reserve(colors.size());
+    b.reserve(colors.size());
+
+    for (const auto &color : colors)
+    {
+      r.push_back(color[0]);
+      g.push_back(color[1]);
+      b.push_back(color[2]);
+    }
+
+    return std::array<Interpolator1D, 3>{
+        Interpolator1D(positions, r, hmap::InterpolationMethod1D::LINEAR),
+        Interpolator1D(positions, g, hmap::InterpolationMethod1D::LINEAR),
+        Interpolator1D(positions, b, hmap::InterpolationMethod1D::LINEAR)};
+  };
+
+  auto [cpos1,
+        colors1] = prepare_colormap(positions1, colormap_colors1, reverse1);
+
+  auto [cpos2,
+        colors2] = prepare_colormap(positions2, colormap_colors2, reverse2);
+
+  auto citp1 = make_color_interpolator(cpos1, colors1);
+  auto citp2 = make_color_interpolator(cpos2, colors2);
+
+  // --- Color mixing
+
+  auto mix_colors = [method](const glm::vec3 &color1, const glm::vec3 &color2)
+  {
+    switch (method)
+    {
+    case MixMethod::MM_SQRT_AVG:
+    case MixMethod::MM_LINEAR: return 0.5f * (color1 + color2);
+
+    case MixMethod::MM_MIXBOX:
+    {
+      glm::vec3 cmix;
+      mixbox_lerp_float(color1.x,
+                        color1.y,
+                        color1.z,
+                        color2.x,
+                        color2.y,
+                        color2.z,
+                        0.5f,
+                        &cmix.x,
+                        &cmix.y,
+                        &cmix.z);
+      return cmix;
+    }
+
+    default: return color1;
+    }
+  };
+
+  // --- Apply colormaps and mix
+
+  for (int j = 0; j < shape.y; ++j)
+  {
+    for (int i = 0; i < shape.x; ++i)
+    {
+      float v1 = a1(i, j);
+      float v2 = a2(i, j);
+
+      if (p_noise1) v1 += (*p_noise1)(i, j);
+
+      if (p_noise2) v2 += (*p_noise2)(i, j);
+
+      v1 = (v1 - range1.x) / (range1.y - range1.x);
+      v2 = (v2 - range2.x) / (range2.y - range2.x);
+
+      v1 = std::clamp(v1, 0.f, 1.f);
+      v2 = std::clamp(v2, 0.f, 1.f);
+
+      const glm::vec3 color1{citp1[0](v1), citp1[1](v1), citp1[2](v1)};
+
+      const glm::vec3 color2{citp2[0](v2), citp2[1](v2), citp2[2](v2)};
+
+      const glm::vec3 color = mix_colors(color1, color2);
+
+      color3(i, j, 0) = color[0];
+      color3(i, j, 1) = color[1];
+      color3(i, j, 2) = color[2];
+    }
+  }
+
+  return color3;
+}
+
+Texture colorize_grayscale(const Array &array)
+{
+  Texture color1 = Texture(array);
   color1.remap();
   return color1;
 }
 
-Tensor colorize_histogram(const Array &array)
+Texture colorize_histogram(const Array &array)
 {
-  Tensor color1 = Tensor(array.shape, 1);
+  Texture color1 = Texture(array.shape, 1);
 
   // normalization factors
   float a = 0.f;
@@ -188,7 +385,7 @@ Tensor colorize_histogram(const Array &array)
   return color1;
 }
 
-Tensor colorize_slope_height_heatmap(const Array &array, int cmap)
+Texture colorize_slope_height_heatmap(const Array &array, int cmap)
 {
   Array dz = gradient_norm(array);
 
@@ -228,16 +425,16 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap)
       sum(p, q) += 1.f;
     }
 
-  bool   hillshading = false;
-  Tensor col3 = colorize(sum, sum.min(), sum.max(), cmap, hillshading);
+  bool    hillshading = false;
+  Texture col3 = colorize(sum, sum.min(), sum.max(), cmap, hillshading);
 
   return col3;
 }
 
-Tensor colorize_vec2(const Array &array1, const Array &array2)
+Texture colorize_vec2(const Array &array1, const Array &array2)
 {
   // create image
-  Tensor col3 = Tensor(array1.shape, 3);
+  Texture col3 = Texture(array1.shape, 3);
 
   // normalization factors / 1
   float a1 = 0.f;
@@ -276,6 +473,190 @@ Tensor colorize_vec2(const Array &array1, const Array &array2)
     }
 
   return col3;
+}
+
+Array luminance(const Texture &tex)
+{
+  if (tex.num_channels() < 3)
+  {
+    throw std::runtime_error(
+        "Texture must have at least 3 channels for luminance.");
+  }
+  return 0.299f * tex[0] + 0.587f * tex[1] + 0.114f * tex[2];
+}
+
+Texture mix(const Texture &tex1, const Texture &tex2, MixMethod method)
+{
+  if (tex1.num_channels() != 4 || tex2.num_channels() != 4 ||
+      tex1.shape != tex2.shape)
+  {
+    throw std::runtime_error(
+        "mix: Textures must have 4 channels and matching shapes.");
+  }
+
+  Texture out(tex1.shape, 4);
+
+  const Array &a1 = tex1[3];
+  const Array &a2 = tex2[3];
+
+  Array t = a2 / (a2 + a1 * (1.f - a2));
+
+  if (method == MM_MIXBOX)
+  {
+    for (int nch = 0; nch < 3; ++nch)
+    {
+      out[nch] = Array(tex1.shape, 0.f);
+    }
+
+    int size = tex1.shape.x * tex1.shape.y;
+    for (int idx = 0; idx < size; ++idx)
+    {
+      float r1 = tex1[0].vector[idx];
+      float g1 = tex1[1].vector[idx];
+      float b1 = tex1[2].vector[idx];
+
+      float r2 = tex2[0].vector[idx];
+      float g2 = tex2[1].vector[idx];
+      float b2 = tex2[2].vector[idx];
+
+      float ratio = t.vector[idx];
+
+      float r, g, b;
+      mixbox_lerp_float(r1, g1, b1, r2, g2, b2, ratio, &r, &g, &b);
+
+      out[0].vector[idx] = r;
+      out[1].vector[idx] = g;
+      out[2].vector[idx] = b;
+    }
+  }
+  else
+  {
+    for (int nch = 0; nch < 3; ++nch)
+    {
+      if (method == MM_SQRT_AVG)
+      {
+        out[nch] = pow((1.f - t) * tex1[nch] * tex1[nch] +
+                           t * tex2[nch] * tex2[nch],
+                       0.5f);
+      }
+      else
+      {
+        out[nch] = lerp(tex1[nch], tex2[nch], t);
+      }
+    }
+  }
+
+  out[3] = a1 + a2 * (1.f - a1);
+  return out;
+}
+
+Texture mix(const std::vector<const Texture *> &texs, MixMethod method)
+{
+  if (texs.empty()) return Texture();
+
+  Texture out = *texs.front();
+
+  for (size_t k = 1; k < texs.size(); ++k)
+  {
+    out = mix(out, *(texs[k]), method);
+  }
+
+  return out;
+}
+
+Texture mix_normal_map(const Texture          &nmap_base,
+                       const Texture          &nmap_detail,
+                       float                   detail_scaling,
+                       NormalMapBlendingMethod blending_method)
+{
+  if (nmap_base.shape != nmap_detail.shape)
+  {
+    throw std::runtime_error(
+        "mix_normal_map: normal maps must have matching shapes.");
+  }
+
+  Texture out(nmap_base.shape, 4);
+  // Copy alpha from base (or detail)
+  if (nmap_base.num_channels() == 4)
+    out[3] = nmap_base[3];
+  else
+    out[3] = Array(nmap_base.shape, 1.f);
+
+  std::function<glm::vec3(glm::vec3 &, glm::vec3 &)> blending_fct;
+
+  switch (blending_method)
+  {
+  case NormalMapBlendingMethod::NMAP_LINEAR:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2) { return n1 + n2; };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_DERIVATIVE:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    {
+      return glm::vec3(n1.x * n2.z + n2.x * n1.z,
+                       n1.y * n2.z + n2.y * n1.z,
+                       n1.z * n2.z);
+    };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_UDN:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    { return glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z); };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_UNITY:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    {
+      glm::vec3 m0 = glm::vec3(n1.z, n1.x, -n1.x);
+      glm::vec3 m1 = glm::vec3(n1.x, n1.z, -n1.y);
+      glm::vec3 m2 = glm::vec3(n1.x, n1.y, n1.z);
+
+      return glm::vec3(n2.x * m0.x + n2.y * m1.x + n2.z * m2.x,
+                       n2.x * m0.y + n2.y * m1.y + n2.z * m2.y,
+                       n2.x * m0.z + n2.y * m1.z + n2.z * m2.z);
+    };
+  }
+  break;
+  case NormalMapBlendingMethod::NMAP_WHITEOUT:
+  default:
+  {
+    blending_fct = [](glm::vec3 &n1, glm::vec3 &n2)
+    { return glm::vec3(n1.x + n2.x, n1.y + n2.y, n1.z * n2.z); };
+  }
+  }
+
+  for (int j = 0; j < nmap_base.shape.y; j++)
+  {
+    for (int i = 0; i < nmap_base.shape.x; i++)
+    {
+      glm::vec3 v111 = glm::vec3(1.f, 1.f, 1.f);
+      glm::vec3 n1 = 2.f * glm::vec3(nmap_base(i, j, 0),
+                                     nmap_base(i, j, 1),
+                                     nmap_base(i, j, 2)) -
+                     v111;
+      glm::vec3 n2 = 2.f * glm::vec3(nmap_detail(i, j, 0),
+                                     nmap_detail(i, j, 1),
+                                     nmap_detail(i, j, 2)) -
+                     v111;
+
+      n2.x *= detail_scaling;
+      n2.y *= detail_scaling;
+      n2.z *= detail_scaling;
+
+      glm::vec3 vn = blending_fct(n1, n2);
+      vn = glm::normalize(vn);
+
+      out(i, j, 0) = 0.5f * vn.x + 0.5f;
+      out(i, j, 1) = 0.5f * vn.y + 0.5f;
+      out(i, j, 2) = 0.5f * vn.z + 0.5f;
+    }
+  }
+
+  return out;
 }
 
 } // namespace hmap

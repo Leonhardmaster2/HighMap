@@ -54,7 +54,6 @@ Array mountain_cone(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                p_noise_x,
                                p_noise_y,
-                               /* p_stretching */ nullptr,
                                bbox);
 
   Array dx = noise * std::cos(alpha);

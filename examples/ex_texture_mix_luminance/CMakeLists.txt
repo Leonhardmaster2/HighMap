@@ -1,0 +1,2 @@
+add_executable(ex_texture_mix_luminance ex_texture_mix_luminance.cpp)
+target_link_libraries(ex_texture_mix_luminance highmap)

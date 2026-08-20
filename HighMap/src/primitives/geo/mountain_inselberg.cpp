@@ -53,7 +53,6 @@ Array mountain_inselberg(glm::ivec2    shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               nullptr,
                                bbox);
 
   Array dx = noise * std::cos(alpha);
@@ -68,7 +67,6 @@ Array mountain_inselberg(glm::ivec2    shape,
                                /* p_ctrl_param */ nullptr,
                                p_gx,
                                p_gy,
-                               /* p_stretching */ nullptr,
                                center,
                                bbox);
 

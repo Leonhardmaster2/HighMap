@@ -8,7 +8,7 @@ int main(void)
 
   hmap::Array z1 = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
 
-  hmap::Tensor nmap = hmap::normal_map(z1);
+  hmap::Texture nmap = hmap::normal_map(z1);
 
   // rebuild input elevation field from normal map
   hmap::Array z2 = hmap::normal_map_to_heightmap(nmap);

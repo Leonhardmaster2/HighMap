@@ -4,11 +4,33 @@
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
+#include "macrologger.h"
 
 #include "highmap/array.hpp"
 
 namespace hmap::gpu
 {
+
+namespace
+{
+
+// A zero-sized source cannot be bound as an OpenCL image, and interpolating
+// from an empty array has no defined result. Leave the target as-is (its
+// constructor zero-fills it). Mirrors the CPU guard in interpolate_array.cpp.
+bool empty_source(const Array &source, const char *caller)
+{
+  if (source.shape.x < 1 || source.shape.y < 1)
+  {
+    LOG_DEBUG("%s: empty source (%dx%d), leaving target unchanged",
+              caller,
+              source.shape.x,
+              source.shape.y);
+    return true;
+  }
+  return false;
+}
+
+} // namespace
 
 // helpers
 
@@ -37,6 +59,8 @@ glm::vec4 helper_transform_bbox(const glm::vec4 &bbox_source,
 
 void interpolate_array_bicubic(const Array &source, Array &target)
 {
+  if (empty_source(source, "interpolate_array_bicubic")) return;
+
   glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_bicubic");
@@ -64,6 +88,8 @@ void interpolate_array_bicubic(const Array     &source,
                                const glm::vec4 &bbox_source,
                                const glm::vec4 &bbox_target)
 {
+  if (empty_source(source, "interpolate_array_bicubic")) return;
+
   glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute
@@ -89,6 +115,8 @@ void interpolate_array_bicubic(const Array     &source,
 
 void interpolate_array_bilinear(const Array &source, Array &target)
 {
+  if (empty_source(source, "interpolate_array_bilinear")) return;
+
   glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_bilinear");
@@ -112,6 +140,8 @@ void interpolate_array_bilinear(const Array     &source,
                                 const glm::vec4 &bbox_source,
                                 const glm::vec4 &bbox_target)
 {
+  if (empty_source(source, "interpolate_array_bilinear")) return;
+
   glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute
@@ -133,6 +163,8 @@ void interpolate_array_bilinear(const Array     &source,
 
 void interpolate_array_lagrange(const Array &source, Array &target, int order)
 {
+  if (empty_source(source, "interpolate_array_lagrange")) return;
+
   auto run = clwrapper::Run("interpolate_array_lagrange");
 
   run.bind_imagef("source", source.vector, source.shape.x, source.shape.y);
@@ -155,6 +187,8 @@ void interpolate_array_lagrange(const Array &source, Array &target, int order)
 
 void interpolate_array_nearest(const Array &source, Array &target)
 {
+  if (empty_source(source, "interpolate_array_nearest")) return;
+
   glm::vec4 bbox(0.f, 1.f, 0.f, 1.f);
 
   auto run = clwrapper::Run("interpolate_array_nearest");
@@ -178,6 +212,8 @@ void interpolate_array_nearest(const Array     &source,
                                const glm::vec4 &bbox_source,
                                const glm::vec4 &bbox_target)
 {
+  if (empty_source(source, "interpolate_array_nearest")) return;
+
   glm::vec4 bbox_target_mod = helper_transform_bbox(bbox_source, bbox_target);
 
   // compute

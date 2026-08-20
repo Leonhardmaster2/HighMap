@@ -7,6 +7,6 @@ int main(void)
 
   hmap::Array z = hmap::gaussian_pulse(shape, sigma);
 
-  hmap::Tensor col3 = hmap::colorize_histogram(z);
+  hmap::Texture col3 = hmap::colorize_histogram(z);
   col3.to_png("ex_colorize_histrogram.png");
 }

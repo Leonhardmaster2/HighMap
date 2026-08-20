@@ -36,7 +36,10 @@ if(MSVC)
 
   add_definitions(-DHMAP_MSVC)
 
-  add_compile_options(/W4 /Od)
+  # do NOT pass /Od here: add_compile_options lands after the per-config flags
+  # on the MSVC command line, where it overrides Release's /O2 (last flag wins),
+  # silently disabling optimization in every Release build
+  add_compile_options(/W4 "$<$<NOT:$<CONFIG:Debug>>:/fp:fast>")
 
   add_compile_definitions(M_PI=3.14159265358979323846)
 
@@ -103,6 +106,22 @@ add_compile_options(${OpenMP_CXX_FLAGS})
 # OpenCL
 add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
                         CL_HPP_TARGET_OPENCL_VERSION=120)
+
+# -----------------------------------------------------------------------------
+# Status output
+# -----------------------------------------------------------------------------
+
+message(STATUS "┌─ HighMap configuration ─────────────")
+message(STATUS "│ HIGHMAP_ENABLE_OPENCL:              ${HIGHMAP_ENABLE_OPENCL}")
+message(
+  STATUS "│ HIGHMAP_ENABLE_EXAMPLES:            ${HIGHMAP_ENABLE_EXAMPLES}")
+message(STATUS "│ HIGHMAP_ENABLE_TESTS:               ${HIGHMAP_ENABLE_TESTS}")
+message(
+  STATUS "│ HIGHMAP_ENABLE_BENCHMARKS:          ${HIGHMAP_ENABLE_BENCHMARKS}")
+message(STATUS "│ CMAKE_CXX_STANDARD:                 ${CMAKE_CXX_STANDARD}")
+message(STATUS "│ CMAKE_BUILD_TYPE:                   ${CMAKE_BUILD_TYPE}")
+message(STATUS "│ CMAKE_CXX_COMPILER_ID:              ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "└─────────────────────────────────────")
 
 # -----------------------------------------------------------------------------
 # External libs

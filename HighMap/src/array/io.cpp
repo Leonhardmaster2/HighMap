@@ -19,7 +19,7 @@
 #include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
 #include "highmap/range.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
@@ -138,7 +138,7 @@ void Array::to_png(const std::string &fname,
   const float vmin = this->min();
   const float vmax = this->max();
 
-  Tensor color3 =
+  Texture color3 =
       colorize(array_copy, vmin, vmax, cmap, hillshading, false, nullptr);
   color3.to_png(fname, depth);
 }

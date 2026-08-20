@@ -22,12 +22,30 @@
 #include <vector>
 
 #include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
-#include "highmap/virtual_array/virtual_texture.hpp"
 
 namespace hmap
 {
+
+/**
+ * @enum MixMethod
+ * @brief Methods for mixing/blending texture colors.
+ *
+ * @example ex_mixbox.cpp This example shows the visual differences between
+ * linear, square-root, and physical pigment-based (Mixbox) color blending.
+ *
+ * Output results:
+ * @image html ex_mixbox_linear.png "Linear Blending"
+ * @image html ex_mixbox_sqrt.png "Square-root Average Blending"
+ * @image html ex_mixbox_mixbox.png "Mixbox Blending"
+ */
+enum MixMethod : int
+{
+  MM_LINEAR,   ///< Linear RGB mixing.
+  MM_SQRT_AVG, ///< Square-root average mixing.
+  MM_MIXBOX    ///< Physical pigment-based mixing (Mixbox).
+};
 
 enum NormalMapBlendingMethod : int
 {
@@ -86,7 +104,7 @@ enum Cmap : int; // highmap/colormap.hpp
  * @param exponent Power exponent applied to the hillshade values (default is
  *                 1.f).
  */
-void apply_hillshade(Tensor      &img,
+void apply_hillshade(Texture     &img,
                      const Array &array,
                      float        vmin = 0.f,
                      float        vmax = 1.f,
@@ -184,92 +202,111 @@ Array color_match_mask(const Array     &r,
  * @param  p_noise     Optional pointer to a noise array (default is nullptr).
  * @return             Tensor Colorized Tensor image.
  */
-Tensor colorize(const Array &array,
-                float        vmin,
-                float        vmax,
-                int          cmap,
-                bool         hillshading,
-                bool         reverse = false,
-                const Array *p_noise = nullptr);
+Texture colorize(const Array &array,
+                 float        vmin,
+                 float        vmax,
+                 int          cmap,
+                 bool         hillshading,
+                 bool         reverse = false,
+                 const Array *p_noise = nullptr);
 
 /**
- * @brief Colorize a scalar field into a texture using a predefined colormap.
- * @param out     Output texture.
- * @param level   Input scalar values.
- * @param cm      Compute mode (CPU/GPU).
- * @param vmin    Lower bound for normalization.
- * @param vmax    Upper bound for normalization.
- * @param cmap    Colormap identifier.
- * @param p_alpha Optional alpha channel.
- * @param reverse Reverse colormap mapping.
- * @param p_noise Optional noise for dithering.
+ * @brief Colorize a scalar field into a Texture using a custom colormap.
+ *
+ * @param  array           Input scalar values.
+ * @param  vmin            Lower bound for normalization.
+ * @param  vmax            Upper bound for normalization.
+ * @param  positions       Normalized color positions.
+ * @param  colormap_colors RGB(A) colors per position.
+ * @param  reverse         Reverse colormap mapping.
+ * @param  p_noise         Optional noise for dithering.
+ * @return                 Colorized Texture.
  *
  * **Example**
- * @include ex_virtual_texture.cpp
+ * @include ex_texture_mix_luminance.cpp
  *
- * **Result**
- * @image html ex_virtual_texture.png
+ * @see                    tests/src/test_texture.cpp
+ *                         (TextureColorize.CustomColormapAndOperations)
  */
-void colorize(VirtualTexture    &out,
-              VirtualArray      &level,
-              const ComputeMode &cm,
-              float              vmin,
-              float              vmax,
-              int                cmap,
-              VirtualArray      *p_alpha = nullptr,
-              bool               reverse = false,
-              VirtualArray      *p_noise = nullptr);
+Texture colorize(const Array                  &array,
+                 float                         vmin,
+                 float                         vmax,
+                 const std::vector<float>     &positions,
+                 const std::vector<glm::vec3> &colormap_colors,
+                 bool                          reverse = false,
+                 const Array                  *p_noise = nullptr);
 
 /**
- * @brief Colorize a scalar field into a texture using a custom colormap.
- * @param out             Output texture.
- * @param level           Input scalar values.
- * @param cm              Compute mode (CPU/GPU).
- * @param vmin            Lower bound for normalization.
- * @param vmax            Upper bound for normalization.
- * @param positions       Normalized color positions.
- * @param colormap_colors RGB(A) colors per position.
- * @param p_alpha         Optional alpha channel.
- * @param reverse         Reverse colormap mapping.
- * @param p_noise         Optional noise for dithering.
+ * @brief Colorize two scalar fields into a Texture using two custom colormaps
+ *        and a color mixing method.
+ *
+ * Each scalar field is independently normalized using its corresponding range
+ * and mapped to a color using its custom colormap. The two resulting colors
+ * are then combined according to the specified mixing method.
+ *
+ * @param  a1                 First input scalar field.
+ * @param  a2                 Second input scalar field.
+ * @param  range1             Lower and upper bounds for normalization of the
+ *                            first field.
+ * @param  range2             Lower and upper bounds for normalization of the
+ *                            second field.
+ * @param  positions1         Normalized color positions for the first colormap.
+ * @param  positions2         Normalized color positions for the second
+ * colormap.
+ * @param  colormap_colors1   RGB colors for the first colormap.
+ * @param  colormap_colors2   RGB colors for the second colormap.
+ * @param  method              Method used to mix the two resulting colors.
+ * @param  reverse1            Reverse the first colormap mapping.
+ * @param  reverse2            Reverse the second colormap mapping.
+ * @param  p_noise1            Optional noise added to the first scalar field
+ *                            before normalization.
+ * @param  p_noise2            Optional noise added to the second scalar field
+ *                            before normalization.
+ * @return                    Colorized Texture containing the mixed colors.
  *
  * **Example**
- * @include ex_virtual_texture.cpp
+ * @include ex_texture_colorize_bivariate.cpp
  *
  * **Result**
- * @image html ex_virtual_texture.png
+ * @image html ex_colorize_bivariate0.png
+ * @image html ex_colorize_bivariate1.png
+ *
+ * @see tests/src/test_texture.cpp
  */
-void colorize(VirtualTexture               &out,
-              VirtualArray                 &level,
-              const ComputeMode            &cm,
-              float                         vmin,
-              float                         vmax,
-              const std::vector<float>     &positions,
-              const std::vector<glm::vec3> &colormap_colors,
-              VirtualArray                 *p_alpha = nullptr,
-              bool                          reverse = false,
-              VirtualArray                 *p_noise = nullptr);
+Texture colorize_bivariate(const Array                  &a1,
+                           const Array                  &a2,
+                           const glm::vec2               range1,
+                           const glm::vec2               range2,
+                           const std::vector<float>     &positions1,
+                           const std::vector<float>     &positions2,
+                           const std::vector<glm::vec3> &colormap_colors1,
+                           const std::vector<glm::vec3> &colormap_colors2,
+                           MixMethod                     method = MM_SQRT_AVG,
+                           bool                          reverse1 = false,
+                           bool                          reverse2 = false,
+                           const Array                  *p_noise1 = nullptr,
+                           const Array                  *p_noise2 = nullptr);
 
 /**
  * @brief Convert an array to a grayscale image.
  *
- * This function converts the input array to an 8-bit grayscale Tensor image.
+ * This function converts the input array to an 8-bit grayscale Texture image.
  *
  * @param  array Input array.
- * @return       Tensor Grayscale Tensor image.
+ * @return       Texture Grayscale Texture image.
  */
-Tensor colorize_grayscale(const Array &array);
+Texture colorize_grayscale(const Array &array);
 
 /**
  * @brief Convert an array to a histogram-based grayscale image.
  *
- * This function converts the input array to an 8-bit grayscale Tensor image
+ * This function converts the input array to an 8-bit grayscale Texture image
  * using a histogram-based method for enhanced contrast.
  *
  * @param  array Input array.
- * @return       Tensor Grayscale Tensor image with histogram-based contrast.
+ * @return       Texture Grayscale Texture image with histogram-based contrast.
  */
-Tensor colorize_histogram(const Array &array);
+Texture colorize_histogram(const Array &array);
 
 /**
  * @brief Colorizes a slope height heatmap based on the gradient norms of a
@@ -286,9 +323,9 @@ Tensor colorize_histogram(const Array &array);
  *               colorization. Colormap options depend on the colorization
  *               function used internally.
  *
- * @return       Tensor representing the colorized heatmap, which visualizes the
- *               distribution of height values and their corresponding gradient
- *               norms.
+ * @return       Texture representing the colorized heatmap, which visualizes
+ *               the distribution of height values and their corresponding
+ *               gradient norms.
  *
  * @details
  * - The function normalizes the height values and gradient norms independently
@@ -310,18 +347,18 @@ Tensor colorize_histogram(const Array &array);
  * **Result**
  * @image html ex_colorize_slope_height_heatmap.png
  */
-Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
+Texture colorize_slope_height_heatmap(const Array &array, int cmap);
 
 /**
  * @brief Combine two arrays into a colored image.
  *
  * This function takes two input arrays and combines them into a single 8-bit
- * colored Tensor image. The resulting image uses the data from both arrays to
+ * colored Texture image. The resulting image uses the data from both arrays to
  * create a composite color representation.
  *
  * @param  array1 First input array.
  * @param  array2 Second input array.
- * @return        Tensor Colorized Tensor image.
+ * @return        Texture Colorized Texture image.
  *
  * **Example**
  * @include ex_colorize_vec2.cpp
@@ -329,44 +366,63 @@ Tensor colorize_slope_height_heatmap(const Array &array, int cmap);
  * **Result**
  * @image html ex_colorize_vec2.png
  */
-Tensor colorize_vec2(const Array &array1, const Array &array2);
+Texture colorize_vec2(const Array &array1, const Array &array2);
 
 /**
- * @brief Compute luminance from a texture.
+ * @brief Compute luminance from a Texture.
  *
- * Computes a grayscale luminance array from the RGB channels of a virtual
- * texture and stores the result in @p out.
+ * Computes a grayscale luminance array from the RGB channels of a texture.
  *
- * @param out Output luminance array.
- * @param tex Input virtual texture (expects at least 3 channels).
- * @param cm  Compute mode (execution and storage behavior).
+ * @param  tex Input texture (expects at least 3 channels).
+ * @return     Luminance Array.
+ *
+ * **Example**
+ * @include ex_texture_mix_luminance.cpp
+ *
+ * @include ex_mixbox.cpp
+ *
+ * **Result**
+ * @image html ex_mixbox_linear.png
+ * @image html ex_mixbox_mixbox.png
+ * @image html ex_mixbox_sqrt.png
+ *
+ * @see        tests/src/test_texture.cpp
+ *             (TextureColorize.CustomColormapAndOperations)
  */
-void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm);
+Array luminance(const Texture &tex);
 
 /**
  * @brief Mix two textures into an output texture.
- * @param out          Output texture.
- * @param tex1         First input texture.
- * @param tex2         Second input texture.
- * @param cm           Compute mode (CPU/GPU).
- * @param use_sqrt_avg Use square-root averaging.
+ * @param  tex1   First input texture.
+ * @param  tex2   Second input texture.
+ * @param  method Mixing method to use.
+ * @return        Mixed Texture.
  *
  * **Example**
- * @include ex_virtual_texture.cpp
+ * @include ex_texture_mix_luminance.cpp
+ *
+ * @include ex_mixbox.cpp
  *
  * **Result**
- * @image html ex_virtual_texture.png
+ * @image html ex_mixbox_linear.png
+ * @image html ex_mixbox_mixbox.png
+ * @image html ex_mixbox_sqrt.png
+ *
+ * @see           tests/src/test_texture.cpp
+ *                (TextureColorize.CustomColormapAndOperations)
  */
-void mix(VirtualTexture    &out,
-         VirtualTexture    &tex1,
-         VirtualTexture    &tex2,
-         const ComputeMode &cm,
-         bool               use_sqrt_avg = true);
+Texture mix(const Texture &tex1,
+            const Texture &tex2,
+            MixMethod      method = MM_SQRT_AVG);
 
-void mix(VirtualTexture                &out,
-         std::vector<VirtualTexture *> &texs,
-         const ComputeMode             &cm,
-         bool                           use_sqrt_avg = true);
+/**
+ * @brief Mix a list of textures sequentially.
+ * @param  texs   Input list of textures.
+ * @param  method Mixing method to use.
+ * @return        Mixed Texture.
+ */
+Texture mix(const std::vector<const Texture *> &texs,
+            MixMethod                           method = MM_SQRT_AVG);
 
 /**
  * @brief Blend two normal maps into a single output normal map.
@@ -374,18 +430,20 @@ void mix(VirtualTexture                &out,
  * Combines a base normal map with a detail normal map using the specified
  * blending method and scaling factor.
  *
- * @param out             Output normal map texture.
- * @param nmap_base       Base normal map texture.
- * @param nmap_detail     Detail normal map texture.
- * @param cm              Compute mode (execution and storage behavior).
- * @param detail_scaling  Strength of the detail normal map.
- * @param blending_method Normal map blending method.
+ * @param  nmap_base       Base normal map texture.
+ * @param  nmap_detail     Detail normal map texture.
+ * @param  detail_scaling  Strength of the detail normal map.
+ * @param  blending_method Normal map blending method.
+ * @return                 Blended Texture normal map.
+ *
+ * @see                    tests/src/test_texture.cpp
+ *                         (TextureColorize.CustomColormapAndOperations)
  */
-void mix_normal_map(VirtualTexture         &out,
-                    VirtualTexture         &nmap_base,
-                    VirtualTexture         &nmap_detail,
-                    const ComputeMode      &cm,
-                    float                   detail_scaling,
-                    NormalMapBlendingMethod blending_method);
+Texture mix_normal_map(const Texture          &nmap_base,
+                       const Texture          &nmap_detail,
+                       float                   detail_scaling,
+                       NormalMapBlendingMethod blending_method);
 
 } // namespace hmap
+
+#include "highmap/virtual_array/virtual_texture.hpp"

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <memory>
+#include <vector>
 
 #include "cl_wrapper/run.hpp"
 
@@ -31,7 +32,37 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
-  Array out = advected_field;
+  auto res = advection_particle(z,
+                                std::vector<Array>{advected_field},
+                                iterations,
+                                nparticles,
+                                seed,
+                                reverse,
+                                post_filter,
+                                post_filter_sigma,
+                                advection_length,
+                                value_persistence,
+                                inertia,
+                                p_advection_mask,
+                                p_mask);
+  return res[0];
+}
+
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       iterations,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse,
+                                      bool                      post_filter,
+                                      float        post_filter_sigma,
+                                      float        advection_length,
+                                      float        value_persistence,
+                                      float        inertia,
+                                      const Array *p_advection_mask,
+                                      const Array *p_mask)
+{
+  std::vector<Array> out = advected_fields;
 
   for (int it = 0; it < iterations; ++it)
     out = advection_particle(z,
@@ -63,12 +94,40 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
+  auto res = advection_particle(z,
+                                std::vector<Array>{advected_field},
+                                nparticles,
+                                seed,
+                                reverse,
+                                post_filter,
+                                post_filter_sigma,
+                                advection_length,
+                                value_persistence,
+                                inertia,
+                                p_advection_mask,
+                                p_mask);
+  return res[0];
+}
+
+std::vector<Array> advection_particle(const Array              &z,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse,
+                                      bool                      post_filter,
+                                      float        post_filter_sigma,
+                                      float        advection_length,
+                                      float        value_persistence,
+                                      float        inertia,
+                                      const Array *p_advection_mask,
+                                      const Array *p_mask)
+{
   Array dx = -hmap::gradient_x(z);
   Array dy = -hmap::gradient_y(z);
 
   return advection_particle(dx,
                             dy,
-                            advected_field,
+                            advected_fields,
                             nparticles,
                             seed,
                             reverse,
@@ -95,17 +154,61 @@ Array advection_particle(const Array  &dx,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
+  auto res = advection_particle(dx,
+                                dy,
+                                std::vector<Array>{advected_field},
+                                nparticles,
+                                seed,
+                                reverse,
+                                post_filter,
+                                post_filter_sigma,
+                                advection_length,
+                                value_persistence,
+                                inertia,
+                                p_advection_mask,
+                                p_mask);
+  return res[0];
+}
+
+std::vector<Array> advection_particle(const Array              &dx,
+                                      const Array              &dy,
+                                      const std::vector<Array> &advected_fields,
+                                      int                       nparticles,
+                                      std::uint32_t             seed,
+                                      bool                      reverse,
+                                      bool                      post_filter,
+                                      float        post_filter_sigma,
+                                      float        advection_length,
+                                      float        value_persistence,
+                                      float        inertia,
+                                      const Array *p_advection_mask,
+                                      const Array *p_mask)
+{
+  if (advected_fields.empty()) return {};
+
   auto run = clwrapper::Run("advection_particle");
 
   glm::ivec2 shape = dx.shape;
+  int        num_fields = static_cast<int>(advected_fields.size());
+  int        stride = shape.x * shape.y;
 
-  Array out(shape);
-  Array count(shape);
+  // Concatenate input fields
+  std::vector<float> concat_advected_field;
+  concat_advected_field.reserve(num_fields * stride);
+  for (const auto &field : advected_fields)
+  {
+    concat_advected_field.insert(concat_advected_field.end(),
+                                 field.vector.begin(),
+                                 field.vector.end());
+  }
 
-  run.bind_buffer<float>("advected_field", advected_field.vector);
+  std::vector<float> concat_out(num_fields * stride, 0.f);
+  Array              count(shape);
+
+  run.bind_buffer<float>("advected_field", concat_advected_field);
   run.bind_buffer<float>("dx", dx.vector);
   run.bind_buffer<float>("dy", dy.vector);
-  run.bind_buffer<float>("out", out.vector);
+  run.bind_buffer<float>("out", concat_out);
   run.bind_buffer<float>("count", count.vector);
   helper_bind_optional_buffer(run, "advection_mask", p_advection_mask);
 
@@ -117,7 +220,8 @@ Array advection_particle(const Array  &dx,
                      advection_length,
                      value_persistence,
                      inertia,
-                     p_advection_mask ? 1 : 0);
+                     p_advection_mask ? 1 : 0,
+                     num_fields);
 
   run.write_buffer("advected_field");
   run.write_buffer("dx");
@@ -128,32 +232,45 @@ Array advection_particle(const Array  &dx,
   run.read_buffer("out");
   run.read_buffer("count");
 
-  for (int j = 0; j < shape.x; ++j)
-    for (int i = 0; i < shape.y; ++i)
+  // Deconcatenate results and do post-processing for each field
+  std::vector<Array> out_fields;
+  out_fields.reserve(num_fields);
+
+  for (int f = 0; f < num_fields; ++f)
+  {
+    Array       out(shape);
+    const auto &advected_field = advected_fields[f];
+
+    for (int j = 0; j < shape.x; ++j)
+      for (int i = 0; i < shape.y; ++i)
+      {
+        int offset = f * stride + (j * shape.x + i);
+        if (count(i, j))
+        {
+          out(i, j) = concat_out[offset] + advected_field(i, j);
+          out(i, j) /= (count(i, j) + 1.f);
+          out(i, j) = std::clamp(out(i, j), 0.f, 1.f);
+        }
+        else
+        {
+          out(i, j) = advected_field(i, j);
+        }
+      }
+
+    // post-processing
+    if (post_filter)
     {
-      if (count(i, j))
-      {
-        out(i, j) += advected_field(i, j);
-        out(i, j) /= (count(i, j) + 1.f);
-        out(i, j) = std::clamp(out(i, j), 0.f, 1.f);
-      }
-      else
-      {
-        out(i, j) = advected_field(i, j);
-      }
+      int max_it = 1;
+      hmap::laplace(out, p_advection_mask, post_filter_sigma, max_it);
     }
 
-  // post-processing
-  if (post_filter)
-  {
-    int max_it = 1;
-    hmap::laplace(out, p_advection_mask, post_filter_sigma, max_it);
+    if (p_mask)
+      out_fields.push_back(lerp(out, advected_field, *p_mask));
+    else
+      out_fields.push_back(out);
   }
 
-  if (p_mask)
-    return lerp(out, advected_field, *p_mask);
-  else
-    return out;
+  return out_fields;
 }
 
 } // namespace hmap::gpu

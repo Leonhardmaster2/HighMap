@@ -58,7 +58,6 @@ Array basalt_field(glm::ivec2    shape,
                               nullptr,
                               p_noise_x,
                               p_noise_y,
-                              nullptr,
                               bbox);
     remap(dx, 0.f, large_scale_warp_amp, -1.f, 1.f);
 
@@ -246,7 +245,6 @@ Array basalt_field(glm::ivec2    shape,
                                     nullptr,
                                     p_noise_x,
                                     p_noise_y,
-                                    nullptr,
                                     bbox);
     remap(rugosity, 0.f, 1.f, -1.f, 1.f);
 
@@ -272,7 +270,6 @@ Array basalt_field(glm::ivec2    shape,
                                      nullptr,
                                      p_noise_x,
                                      p_noise_y,
-                                     nullptr,
                                      bbox);
 
     remap(z_flatten, 0.f, 2.f * large_scale_amp + flatten_amp, -1.f, 1.f);

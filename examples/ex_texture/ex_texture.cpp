@@ -2,13 +2,13 @@
 
 int main(void)
 {
-  glm::ivec3   shape = {512, 256, 4};
-  hmap::Tensor array3 = hmap::Tensor(shape);
+  glm::ivec2    shape = {512, 256};
+  hmap::Texture array3 = hmap::Texture(shape, 4);
 
-  array3.set_slice(1, hmap::Array({shape.x, shape.y}, 1.f));
+  array3[1] = hmap::Array(shape, 1.f);
 
-  hmap::Array pulse = hmap::gaussian_pulse({shape.x, shape.y}, 0.1f);
-  array3.set_slice(3, pulse);
+  hmap::Array pulse = hmap::gaussian_pulse(shape, 0.1f);
+  array3[3] = pulse;
 
   array3.to_png("ex_array3_0.png");         // 8bit png
   array3.to_png("ex_array3_1.png", CV_16U); // 16bit png

@@ -507,9 +507,8 @@ Array noise(NoiseType     noise_type,
             std::uint32_t seed,
             const Array  *p_noise_x,
             const Array  *p_noise_y,
-            const Array * /* p_stretching */,
-            glm::vec4  bbox,
-            glm::ivec2 period)
+            glm::vec4     bbox,
+            glm::ivec2    period)
 {
   Array array(shape);
 
@@ -551,9 +550,8 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_ctrl_param,
                 const Array  *p_noise_x,
                 const Array  *p_noise_y,
-                const Array * /* p_stretching */,
-                glm::vec4  bbox,
-                glm::ivec2 period)
+                glm::vec4     bbox,
+                glm::ivec2    period)
 {
   Array array(shape);
 

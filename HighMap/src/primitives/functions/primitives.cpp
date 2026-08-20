@@ -19,7 +19,6 @@ Array biquad_pulse(glm::ivec2   shape,
                    const Array *p_ctrl_param,
                    const Array *p_noise_x,
                    const Array *p_noise_y,
-                   const Array *p_stretching,
                    glm::vec2    center,
                    glm::vec4    bbox)
 {
@@ -31,7 +30,7 @@ Array biquad_pulse(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -81,7 +80,6 @@ Array bump(glm::ivec2   shape,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
-           const Array *p_stretching,
            glm::vec2    center,
            glm::vec4    bbox)
 {
@@ -93,7 +91,7 @@ Array bump(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -181,7 +179,6 @@ Array disk(glm::ivec2   shape,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
-           const Array *p_stretching,
            glm::vec2    center,
            glm::vec4    bbox)
 {
@@ -193,7 +190,7 @@ Array disk(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -203,7 +200,6 @@ Array gaussian_pulse(glm::ivec2   shape,
                      const Array *p_ctrl_param,
                      const Array *p_noise_x,
                      const Array *p_noise_y,
-                     const Array *p_stretching,
                      glm::vec2    center,
                      glm::vec4    bbox)
 {
@@ -215,7 +211,7 @@ Array gaussian_pulse(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -229,7 +225,6 @@ Array paraboloid(glm::ivec2   shape,
                  bool         reverse_y,
                  const Array *p_noise_x,
                  const Array *p_noise_y,
-                 const Array *p_stretching,
                  glm::vec2    center,
                  glm::vec4    bbox)
 {
@@ -255,7 +250,7 @@ Array paraboloid(glm::ivec2   shape,
                                nullptr,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                lambda);
   return array;
 }
@@ -268,7 +263,6 @@ Array rectangle(glm::ivec2   shape,
                 const Array *p_ctrl_param,
                 const Array *p_noise_x,
                 const Array *p_noise_y,
-                const Array *p_stretching,
                 glm::vec2    center,
                 glm::vec4    bbox)
 {
@@ -280,7 +274,7 @@ Array rectangle(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -291,7 +285,6 @@ Array slope(glm::ivec2   shape,
             const Array *p_ctrl_param,
             const Array *p_noise_x,
             const Array *p_noise_y,
-            const Array *p_stretching,
             glm::vec2    center,
             glm::vec4    bbox)
 {
@@ -303,7 +296,7 @@ Array slope(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -344,7 +337,6 @@ Array step(glm::ivec2   shape,
            const Array *p_ctrl_param,
            const Array *p_noise_x,
            const Array *p_noise_y,
-           const Array *p_stretching,
            glm::vec2    center,
            glm::vec4    bbox)
 {
@@ -356,7 +348,7 @@ Array step(glm::ivec2   shape,
                                p_ctrl_param,
                                p_noise_x,
                                p_noise_y,
-                               p_stretching,
+                               nullptr,
                                f.get_delegate());
   return array;
 }
@@ -378,19 +370,11 @@ Array get_primitive_base(const PrimitiveType &primitive_type,
                         nullptr,
                         p_noise_x,
                         p_noise_y,
-                        nullptr,
                         center,
                         bbox);
     //
   case PrimitiveType::PRIM_BUMP:
-    return bump(shape,
-                1.f,
-                nullptr,
-                p_noise_x,
-                p_noise_y,
-                nullptr,
-                center,
-                bbox);
+    return bump(shape, 1.f, nullptr, p_noise_x, p_noise_y, center, bbox);
     //
   case PrimitiveType::PRIM_CONE:
     return cone(shape, 2.f, 1.f, false, center, p_noise_x, p_noise_y, bbox);

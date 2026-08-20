@@ -11,7 +11,7 @@
 #include "macrologger.h"
 
 #include "highmap/array.hpp"
-#include "highmap/tensor.hpp"
+#include "highmap/texture.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 #include "highmap/virtual_array/virtual_texture.hpp"
@@ -168,7 +168,7 @@ std::vector<uint8_t> VirtualTexture::to_img_8bit(const glm::ivec2  &img_shape,
     return {};
   }
 
-  Tensor t = this->to_tensor(img_shape, cm);
+  Texture t = this->to_texture(img_shape, cm);
   return t.to_img_8bit(flip_y);
 }
 
@@ -185,7 +185,7 @@ void VirtualTexture::to_png(const glm::ivec2  &img_shape,
     return;
   }
 
-  Tensor t = this->to_tensor(img_shape, cm);
+  Texture t = this->to_texture(img_shape, cm);
   t.to_png(fname, depth);
 }
 
@@ -202,7 +202,7 @@ std::vector<float> VirtualTexture::to_raw(const ComputeMode &cm, bool flip_y)
   raw.reserve(this->shape.x * this->shape.y * this->channels());
 
   // brute force
-  Tensor t = this->to_tensor(this->shape, cm);
+  Texture t = this->to_texture(this->shape, cm);
 
   if (flip_y)
   {
@@ -222,19 +222,18 @@ std::vector<float> VirtualTexture::to_raw(const ComputeMode &cm, bool flip_y)
   return raw;
 }
 
-Tensor VirtualTexture::to_tensor(const glm::ivec2  &img_shape,
-                                 const ComputeMode &cm) const
+Texture VirtualTexture::to_texture(const glm::ivec2  &img_shape,
+                                   const ComputeMode &cm) const
 {
   const int nch = this->channels();
 
   if (nch < 1) throw std::runtime_error("VirtualTexture has no channels");
 
-  Tensor t(img_shape, nch);
+  Texture t(img_shape, nch);
 
   for (int c = 0; c < nch; ++c)
   {
-    Array a = this->channel(c).to_array(img_shape, cm);
-    t.set_slice(c, a);
+    t[c] = this->channel(c).to_array(img_shape, cm);
   }
 
   return t;

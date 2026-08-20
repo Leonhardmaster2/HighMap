@@ -57,7 +57,6 @@ int main()
                            nullptr,
                            nullptr,
                            nullptr,
-                           nullptr,
                            region.bbox);
   };
 

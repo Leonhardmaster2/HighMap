@@ -16,7 +16,8 @@ void kernel advection_particle(global float *field,
                                const float   advection_length,
                                const float   value_persistence,
                                const float   inertia,
-                               const int     has_advection_mask)
+                               const int     has_advection_mask,
+                               const int     num_fields)
 {
   int id = get_global_id(0); // particle id
   if (id >= nparticles) return;
@@ -48,9 +49,19 @@ void kernel advection_particle(global float *field,
     }
   }
 
-  int2   g = (int2)((int)pos.x, (int)pos.y);
-  int    idx = linear_index_g(g, nx);
-  float  val = field[idx];
+  int2 g = (int2)((int)pos.x, (int)pos.y);
+  int  idx = linear_index_g(g, nx);
+
+  float val[64];
+  int   num_f = num_fields;
+  if (num_f > 64) num_f = 64;
+  int stride = nx * ny;
+
+  for (int f = 0; f < num_f; ++f)
+  {
+    val[f] = field[f * stride + idx];
+  }
+
   float2 dir = (float2)(0.f, 0.f);
   float2 dir_prev = (float2)(0.f, 0.f);
 
@@ -92,8 +103,11 @@ void kernel advection_particle(global float *field,
 
     if (true)
     {
-      val = lerp(field[idx], val, value_persistence);
-      out[idx] += val;
+      for (int f = 0; f < num_f; ++f)
+      {
+        val[f] = lerp(field[f * stride + idx], val[f], value_persistence);
+        out[f * stride + idx] += val[f];
+      }
       count[idx] += 1.f;
     }
     else
@@ -101,7 +115,10 @@ void kernel advection_particle(global float *field,
       int ir = 2;
       if (g.x < ir || g.x > nx - 1 - ir || g.y < ir || g.y > ny - 1 - ir) break;
 
-      val = lerp(field[idx], val, value_persistence);
+      for (int f = 0; f < num_f; ++f)
+      {
+        val[f] = lerp(field[f * stride + idx], val[f], value_persistence);
+      }
 
       float sum = 0.f;
       for (int p = -ir; p < ir; ++p)
@@ -116,8 +133,12 @@ void kernel advection_particle(global float *field,
         {
           float w = sqrt((float)(ir - abs(p)) * (ir - abs(q))) / sum;
           int2  gd = (int2)(g.x + p, g.y + q);
-          out[linear_index_g(gd, nx)] += val * w;
-          count[linear_index_g(gd, nx)] += w;
+          int   out_idx = linear_index_g(gd, nx);
+          for (int f = 0; f < num_f; ++f)
+          {
+            out[f * stride + out_idx] += val[f] * w;
+          }
+          count[out_idx] += w;
         }
     }
   }
