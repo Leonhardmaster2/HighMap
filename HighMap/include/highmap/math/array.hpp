@@ -176,6 +176,30 @@ Array log10(const Array &array);
 Array pow(const Array &array, float exp);
 
 /**
+ * @brief Generalized Rvachev R-function for smooth minimum / intersection
+ * (exact zero-set).
+ *
+ * @param  array1 First array.
+ * @param  array2 Second array.
+ * @param  alpha  Parameter in (-1, 1] controlling blending sharpness (default
+ *                0.0).
+ * @return        Output array.
+ */
+Array r_min(const Array &array1, const Array &array2, float alpha = 0.f);
+
+/**
+ * @brief Generalized Rvachev R-function for smooth maximum / union (exact
+ * zero-set).
+ *
+ * @param  array1 First array.
+ * @param  array2 Second array.
+ * @param  alpha  Parameter in (-1, 1] controlling blending sharpness (default
+ *                0.0).
+ * @return        Output array.
+ */
+Array r_max(const Array &array1, const Array &array2, float alpha = 0.f);
+
+/**
  * @brief Sigmoid function.
  *
  * Applies the generalized sigmoid transformation element-wise:

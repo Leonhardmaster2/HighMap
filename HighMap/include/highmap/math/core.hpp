@@ -139,6 +139,40 @@ float lerp(float a, float b, float t);
 float power_curve(float x, float a, float b);
 
 /**
+ * @brief Generalized Rvachev R-function for smooth minimum / intersection
+ * (exact zero-set).
+ *
+ * \f[
+ * R_{\min}(f_1, f_2, \alpha) = \frac{f_1 + f_2 - \sqrt{f_1^2 + f_2^2 - 2\alpha
+ * f_1 f_2}}{1 + \alpha} \f]
+ *
+ * @param  f1    First value.
+ * @param  f2    Second value.
+ * @param  alpha Parameter in (-1, 1] controlling blending sharpness (default
+ *               0.0). alpha = 0 gives standard Euclidean R-min, alpha = 1 gives
+ *               exact min.
+ * @return       Smooth minimum value.
+ */
+float r_min(float f1, float f2, float alpha = 0.f);
+
+/**
+ * @brief Generalized Rvachev R-function for smooth maximum / union (exact
+ * zero-set).
+ *
+ * \f[
+ * R_{\max}(f_1, f_2, \alpha) = \frac{f_1 + f_2 + \sqrt{f_1^2 + f_2^2 - 2\alpha
+ * f_1 f_2}}{1 + \alpha} \f]
+ *
+ * @param  f1    First value.
+ * @param  f2    Second value.
+ * @param  alpha Parameter in (-1, 1] controlling blending sharpness (default
+ *               0.0). alpha = 0 gives standard Euclidean R-max, alpha = 1 gives
+ *               exact max.
+ * @return       Smooth maximum value.
+ */
+float r_max(float f1, float f2, float alpha = 0.f);
+
+/**
  * @brief Sigmoid function.
  *
  * Generalized logistic function:
