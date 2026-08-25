@@ -18,19 +18,13 @@ int main(void)
 
   mask_fixed_values.infos();
 
-  hmap::Timer::Start("CPU SOR");
+  hmap::Timer::Start("CPU");
   hmap::Array z1 = hmap::harmonic_interpolation(z0, mask_fixed_values);
-  hmap::Timer::Stop("CPU SOR");
+  hmap::Timer::Stop("CPU");
 
-  hmap::Timer::Start("GPU (Legacy BF)");
-  hmap::Array z_legacy = hmap::gpu::harmonic_interpolation_legacy_bf(
-      z0,
-      mask_fixed_values);
-  hmap::Timer::Stop("GPU (Legacy BF)");
-
-  hmap::Timer::Start("GPU (Red-Black SOR)");
+  hmap::Timer::Start("GPU");
   hmap::Array z2 = hmap::gpu::harmonic_interpolation(z0, mask_fixed_values);
-  hmap::Timer::Stop("GPU (Red-Black SOR)");
+  hmap::Timer::Stop("GPU");
 
   hmap::export_banner_png("ex_harmonic_interpolation.png",
                           {z0, mask_fixed_values, z1, z2},
