@@ -1,6 +1,8 @@
 /* Copyright (c) 2025 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <algorithm>
+#include <cmath>
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
@@ -17,6 +19,18 @@ Array harmonic_interpolation(const Array &array,
                              float        omega)
 {
   Array u = array;
+
+  // If omega <= 0, analytically compute the optimal SOR relaxation factor
+  // based on grid dimensions:
+  // rho_jacobi = 0.5 * (cos(pi / nx) + cos(pi / ny))
+  // omega_opt  = 2.0 / (1.0 + sqrt(1.0 - rho_jacobi^2))
+  if (omega <= 0.f)
+  {
+    float pi = static_cast<float>(M_PI);
+    float rho = 0.5f * (std::cos(pi / static_cast<float>(u.shape.x)) +
+                        std::cos(pi / static_cast<float>(u.shape.y)));
+    omega = 2.f / (1.f + std::sqrt(std::max(0.f, 1.f - rho * rho)));
+  }
 
   auto run = clwrapper::Run("harmonic_interpolation_red_black");
 
