@@ -97,3 +97,29 @@ TEST(GpuCpu, MorphologicalOperators)
   for (auto [k, v] : map)
     RecordProperty(k, v);
 }
+
+TEST(GpuCpu, HarmonicInterpolation)
+{
+  Timer::Clear();
+
+  const glm::ivec2 shape = {64, 64};
+  Array            z = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
+  Array            mask = z;
+  clamp_min(mask, 0.f);
+
+  Timer::Start("CPU");
+  Array zc = harmonic_interpolation(z, mask, 500, 1e-5f);
+  Timer::Stop("CPU");
+
+  Timer::Start("GPU (Red-Black)");
+  Array zg = gpu::harmonic_interpolation(z, mask, 500, 1e-5f);
+  Timer::Stop("GPU (Red-Black)");
+
+  Timer::Start("GPU (Legacy BF)");
+  Array zg_bf = gpu::harmonic_interpolation_legacy_bf(z, mask, 500);
+  Timer::Stop("GPU (Legacy BF)");
+
+  // Both CPU SOR and GPU Red-Black SOR solve the same Laplace problem
+  bool ret = assert_almost_equal(zc, zg, 1e-2f);
+  EXPECT_EQ(ret, true);
+}
