@@ -111,13 +111,9 @@ TEST(GpuCpu, HarmonicInterpolation)
   Array zc = harmonic_interpolation(z, mask, 500, 1e-5f);
   Timer::Stop("CPU");
 
-  Timer::Start("GPU (Red-Black)");
+  Timer::Start("GPU");
   Array zg = gpu::harmonic_interpolation(z, mask, 500, 1e-5f);
-  Timer::Stop("GPU (Red-Black)");
-
-  Timer::Start("GPU (Legacy BF)");
-  Array zg_bf = gpu::harmonic_interpolation_legacy_bf(z, mask, 500);
-  Timer::Stop("GPU (Legacy BF)");
+  Timer::Stop("GPU");
 
   // Both CPU SOR and GPU Red-Black SOR solve the same Laplace problem
   bool ret = assert_almost_equal(zc, zg, 1e-2f);

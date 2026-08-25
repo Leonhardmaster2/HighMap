@@ -317,11 +317,4 @@ Array harmonic_interpolation(const Array &array,
                              float        tolerance = 1e-5f,
                              float        omega = 0.f);
 
-/*! @brief Legacy brute-force Jacobi harmonic interpolation (kept for
-   benchmarking purposes).
- */
-Array harmonic_interpolation_legacy_bf(const Array &array,
-                                       const Array &mask_fixed_values,
-                                       int          iterations_max = 500);
-
 } // namespace hmap::gpu
