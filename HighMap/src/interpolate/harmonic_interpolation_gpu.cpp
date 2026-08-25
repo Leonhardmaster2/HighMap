@@ -13,7 +13,39 @@ namespace hmap::gpu
 
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
-                             int          iterations_max)
+                             int          iterations_max,
+                             float        omega)
+{
+  Array u = array;
+
+  auto run = clwrapper::Run("harmonic_interpolation_red_black");
+
+  run.bind_buffer<float>("u", u.vector);
+  run.bind_buffer<float>("mask_fixed_values", mask_fixed_values.vector);
+  run.bind_arguments(u.shape.x, u.shape.y, 0, omega);
+
+  run.write_buffer("u");
+  run.write_buffer("mask_fixed_values");
+
+  for (int it = 0; it < iterations_max; ++it)
+  {
+    // Pass 0: Red cells ((i + j) % 2 == 0)
+    run.set_argument(4, 0);
+    run.execute({u.shape.x, u.shape.y});
+
+    // Pass 1: Black cells ((i + j) % 2 == 1)
+    run.set_argument(4, 1);
+    run.execute({u.shape.x, u.shape.y});
+  }
+
+  run.read_buffer("u");
+
+  return u;
+}
+
+Array harmonic_interpolation_legacy_bf(const Array &array,
+                                       const Array &mask_fixed_values,
+                                       int          iterations_max)
 {
   Array array_wrk = array;
   Array out(array.shape);

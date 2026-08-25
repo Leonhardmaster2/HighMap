@@ -295,9 +295,26 @@ Array interpolate2d_nni(glm::ivec2                shape,
 namespace hmap::gpu
 {
 
-/*! @brief See hmap::harmonic_interpolation */
+/*! @brief Perform harmonic interpolation on GPU using Red-Black Successive
+ * Over-Relaxation (RB-SOR).
+ *
+ * @param array             Input 2D array providing the initial guess.
+ * @param mask_fixed_values Mask array where values > 0 are fixed boundary
+ *                          constraints.
+ * @param iterations_max    Maximum number of iterations.
+ * @param omega             Relaxation parameter (1.0 < omega < 2.0).
+ * @return                  Interpolated array.
+ */
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
-                             int          iterations_max = 500);
+                             int          iterations_max = 500,
+                             float        omega = 1.8f);
+
+/*! @brief Legacy brute-force Jacobi harmonic interpolation (kept for
+ * benchmarking purposes).
+ */
+Array harmonic_interpolation_legacy_bf(const Array &array,
+                                       const Array &mask_fixed_values,
+                                       int          iterations_max = 500);
 
 } // namespace hmap::gpu
