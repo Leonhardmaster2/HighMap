@@ -19,6 +19,14 @@ Array harmonic_interpolation(const Array &array,
   int   nx = out.shape.x;
   int   ny = out.shape.y;
 
+  if (omega <= 0.f)
+  {
+    float pi = static_cast<float>(M_PI);
+    float rho = 0.5f * (std::cos(pi / static_cast<float>(nx)) +
+                        std::cos(pi / static_cast<float>(ny)));
+    omega = 2.f / (1.f + std::sqrt(std::max(0.f, 1.f - rho * rho)));
+  }
+
   for (int it = 0; it < iterations_max; ++it)
   {
     float max_diff = 0.f;

@@ -108,15 +108,15 @@ TEST(GpuCpu, HarmonicInterpolation)
   clamp_min(mask, 0.f);
 
   Timer::Start("CPU");
-  Array zc = harmonic_interpolation(z, mask, 300, 1e-5f, 1.8f);
+  Array zc = harmonic_interpolation(z, mask, 500, 1e-5f);
   Timer::Stop("CPU");
 
   Timer::Start("GPU (Red-Black)");
-  Array zg = gpu::harmonic_interpolation(z, mask, 300, 1.8f);
+  Array zg = gpu::harmonic_interpolation(z, mask, 500, 1e-5f);
   Timer::Stop("GPU (Red-Black)");
 
   Timer::Start("GPU (Legacy BF)");
-  Array zg_bf = gpu::harmonic_interpolation_legacy_bf(z, mask, 300);
+  Array zg_bf = gpu::harmonic_interpolation_legacy_bf(z, mask, 500);
   Timer::Stop("GPU (Legacy BF)");
 
   // Both CPU SOR and GPU Red-Black SOR solve the same Laplace problem

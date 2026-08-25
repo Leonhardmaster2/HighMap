@@ -16,6 +16,7 @@ namespace hmap::gpu
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
                              int          iterations_max,
+                             float        tolerance,
                              float        omega)
 {
   Array u = array;
@@ -32,24 +33,48 @@ Array harmonic_interpolation(const Array &array,
     omega = 2.f / (1.f + std::sqrt(std::max(0.f, 1.f - rho * rho)));
   }
 
-  auto run = clwrapper::Run("harmonic_interpolation_red_black");
+  auto run = clwrapper::Run("harmonic_interpolation_red_black_diff");
+  std::vector<float> max_diff_buf(1, 0.f);
 
   run.bind_buffer<float>("u", u.vector);
   run.bind_buffer<float>("mask_fixed_values", mask_fixed_values.vector);
-  run.bind_arguments(u.shape.x, u.shape.y, 0, omega);
+  run.bind_buffer<float>("max_diff", max_diff_buf);
+  run.bind_arguments(u.shape.x, u.shape.y, 0, omega, 0);
 
   run.write_buffer("u");
   run.write_buffer("mask_fixed_values");
 
+  const int check_interval = 16;
+
   for (int it = 0; it < iterations_max; ++it)
   {
+    int track_diff = (tolerance > 0.f) &&
+                             ((it % check_interval == check_interval - 1) ||
+                              (it == iterations_max - 1))
+                         ? 1
+                         : 0;
+
+    if (track_diff)
+    {
+      max_diff_buf[0] = 0.f;
+      run.write_buffer("max_diff");
+    }
+
     // Pass 0: Red cells ((i + j) % 2 == 0)
-    run.set_argument(4, 0);
+    run.set_argument(5, 0);
+    run.set_argument(7, track_diff);
     run.execute({u.shape.x, u.shape.y});
 
     // Pass 1: Black cells ((i + j) % 2 == 1)
-    run.set_argument(4, 1);
+    run.set_argument(5, 1);
+    run.set_argument(7, track_diff);
     run.execute({u.shape.x, u.shape.y});
+
+    if (track_diff)
+    {
+      run.read_buffer("max_diff");
+      if (max_diff_buf[0] < tolerance) break;
+    }
   }
 
   run.read_buffer("u");

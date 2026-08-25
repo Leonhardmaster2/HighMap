@@ -149,7 +149,7 @@ Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
                              int          iterations_max = 500,
                              float        tolerance = 1e-5f,
-                             float        omega = 1.8f);
+                             float        omega = 0.f);
 
 /**
  * @brief Generic 2D interpolation function.
@@ -302,6 +302,9 @@ namespace hmap::gpu
  * @param  mask_fixed_values Mask array where values > 0 are fixed boundary
  *                           constraints.
  * @param  iterations_max    Maximum number of iterations.
+ * @param  tolerance         Convergence tolerance for early exit (default:
+ *                           1e-5). If the maximum update in an iteration check
+ * falls below this threshold, the algorithm stops.
  * @param  omega             Relaxation parameter (1.0 < omega < 2.0). If set to
  *                           0.0f (default), the optimal analytical relaxation
  *                           factor for the grid shape is automatically
@@ -311,6 +314,7 @@ namespace hmap::gpu
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
                              int          iterations_max = 500,
+                             float        tolerance = 1e-5f,
                              float        omega = 0.f);
 
 /*! @brief Legacy brute-force Jacobi harmonic interpolation (kept for
