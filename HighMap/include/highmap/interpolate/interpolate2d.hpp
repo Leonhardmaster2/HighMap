@@ -152,6 +152,36 @@ Array harmonic_interpolation(const Array &array,
                              float        omega = 0.f);
 
 /**
+ * @brief Perform harmonic interpolation on a 2D array with 2D variable
+ * diffusion coefficients (Dx, Dy) using the Successive Over-Relaxation (SOR)
+ * method.
+ *
+ * Solves the steady-state anisotropic diffusion equation:
+ * \f[
+ * \nabla \cdot (\mathbf{D} \nabla u) = \frac{\partial}{\partial x}\left(D_x
+ * \frac{\partial u}{\partial x}\right) +
+ * \frac{\partial}{\partial y}\left(D_y \frac{\partial u}{\partial y}\right) = 0
+ * \f]
+ *
+ * @param  array             Input 2D array providing the initial guess.
+ * @param  mask_fixed_values Mask where values > 0 indicate fixed boundary
+ *                           constraints.
+ * @param  dx                Array of diffusion coefficients in the x-direction.
+ * @param  dy                Array of diffusion coefficients in the y-direction.
+ * @param  iterations_max    Maximum number of SOR iterations.
+ * @param  tolerance         Convergence tolerance.
+ * @param  omega             Relaxation factor (0 = auto-computed optimal).
+ * @return                   Interpolated array.
+ */
+Array harmonic_interpolation(const Array &array,
+                             const Array &mask_fixed_values,
+                             const Array &dx,
+                             const Array &dy,
+                             int          iterations_max = 500,
+                             float        tolerance = 1e-5f,
+                             float        omega = 0.f);
+
+/**
  * @brief Generic 2D interpolation function.
  *
  * This function performs interpolation on a 2D grid using the specified
@@ -313,6 +343,27 @@ namespace hmap::gpu
  */
 Array harmonic_interpolation(const Array &array,
                              const Array &mask_fixed_values,
+                             int          iterations_max = 500,
+                             float        tolerance = 1e-5f,
+                             float        omega = 0.f);
+
+/*! @brief Perform harmonic interpolation on GPU with 2D variable diffusion
+   coefficients (Dx, Dy) using Red-Black SOR.
+ *
+ * @param  array             Input 2D array providing the initial guess.
+ * @param  mask_fixed_values Mask where values > 0 are fixed boundary
+ *                           constraints.
+ * @param  dx                Array of diffusion coefficients in x-direction.
+ * @param  dy                Array of diffusion coefficients in y-direction.
+ * @param  iterations_max    Maximum number of iterations.
+ * @param  tolerance         Convergence tolerance.
+ * @param  omega             Relaxation factor (0 = auto-computed optimal).
+ * @return                   Interpolated array.
+ */
+Array harmonic_interpolation(const Array &array,
+                             const Array &mask_fixed_values,
+                             const Array &dx,
+                             const Array &dy,
                              int          iterations_max = 500,
                              float        tolerance = 1e-5f,
                              float        omega = 0.f);
