@@ -14,6 +14,7 @@
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/cloud.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
@@ -510,6 +511,16 @@ Array noise(NoiseType     noise_type,
             glm::vec4     bbox,
             glm::ivec2    period)
 {
+  if (metal::is_available() && metal::supports_noise(noise_type))
+    return metal::noise(noise_type,
+                        shape,
+                        kw,
+                        seed,
+                        p_noise_x,
+                        p_noise_y,
+                        bbox,
+                        period);
+
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);

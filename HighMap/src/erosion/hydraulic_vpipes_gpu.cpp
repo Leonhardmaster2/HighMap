@@ -7,6 +7,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/erosion.hpp"
 
 namespace hmap::gpu
@@ -31,6 +32,29 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v)
 {
+  if (metal::is_available())
+  {
+    metal::hydraulic_vpipes(z,
+                            water_height,
+                            maintain_water_volume,
+                            evap_rate,
+                            iterations,
+                            dt,
+                            k_capacity,
+                            k_erode,
+                            k_depose,
+                            k_discharge_exp,
+                            downcutting_max_depth_ratio,
+                            flux_diffusion,
+                            flux_diffusion_strength,
+                            p_rain_map,
+                            p_water_depth,
+                            p_sediment,
+                            p_vel_u,
+                            p_vel_v);
+    return;
+  }
+
   const glm::ivec2 shape = z.shape;
 
   Array rain_map(shape, 1.f);

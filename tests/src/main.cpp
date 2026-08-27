@@ -5,7 +5,11 @@
 
 void global_init()
 {
-  hmap::gpu::init_opencl();
+  // OpenCL is optional at runtime on macOS. In particular, the system OpenCL
+  // framework may be present while no OpenCL device is exposed. The GPU tests
+  // that require OpenCL own their availability checks; do not abort the whole
+  // test binary during global initialization.
+  (void)hmap::gpu::init_opencl();
   spdlog::set_level(spdlog::level::off);
 }
 

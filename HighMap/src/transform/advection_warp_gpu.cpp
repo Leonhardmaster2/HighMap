@@ -6,6 +6,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/gradient.hpp"
 
 namespace hmap::gpu
@@ -19,6 +20,15 @@ Array advection_warp(const Array &z,
                      float        value_persistence,
                      const Array *p_mask)
 {
+  if (metal::is_available())
+    return metal::advection_warp(z,
+                                 advected_field,
+                                 dx,
+                                 dy,
+                                 advection_length,
+                                 value_persistence,
+                                 p_mask);
+
   auto run = clwrapper::Run("advection_warp");
 
   glm::ivec2 shape = z.shape;

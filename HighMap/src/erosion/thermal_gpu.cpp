@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -20,6 +21,14 @@ void thermal(Array       &z,
              Array       *p_bedrock,
              Array       *p_deposition_map)
 {
+  if (metal::is_available() && p_bedrock == nullptr &&
+      p_deposition_map == nullptr)
+  {
+    metal::thermal(z, talus, iterations);
+    extrapolate_borders(z);
+    return;
+  }
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 

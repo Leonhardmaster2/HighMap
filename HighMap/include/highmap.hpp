@@ -29,6 +29,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/geometry.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/hydrology.hpp"
 #include "highmap/interpolate.hpp"
 #include "highmap/kernels.hpp"

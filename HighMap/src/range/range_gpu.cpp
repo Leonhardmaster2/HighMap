@@ -7,12 +7,15 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 
 namespace hmap::gpu
 {
 
 Array maximum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (metal::is_available()) return metal::maximum_smooth(array1, array2, k);
+
   Array array_out = array1;
 
   auto run = clwrapper::Run("maximum_smooth");
@@ -33,6 +36,8 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k)
 
 Array minimum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (metal::is_available()) return metal::minimum_smooth(array1, array2, k);
+
   Array array_out = array1;
 
   auto run = clwrapper::Run("minimum_smooth");
