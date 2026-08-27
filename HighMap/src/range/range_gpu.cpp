@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/internal/validation.hpp"
+#include "highmap/gpu/metal.hpp"
 
 namespace hmap::gpu
 {
@@ -16,6 +17,8 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k)
 {
   if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
     return Array();
+
+  if (metal::is_available()) return metal::maximum_smooth(array1, array2, k);
 
   Array array_out = array1;
 
@@ -39,6 +42,8 @@ Array minimum_smooth(const Array &array1, const Array &array2, float k)
 {
   if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
     return Array();
+
+  if (metal::is_available()) return metal::minimum_smooth(array1, array2, k);
 
   Array array_out = array1;
 

@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/internal/validation.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -23,6 +24,14 @@ void thermal(Array       &z,
 {
   if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
   if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+
+  if (metal::is_available() && p_bedrock == nullptr &&
+      p_deposition_map == nullptr)
+  {
+    metal::thermal(z, talus, iterations);
+    extrapolate_borders(z);
+    return;
+  }
 
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;

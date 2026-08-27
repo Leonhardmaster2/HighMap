@@ -11,7 +11,9 @@ project(highmap-root LANGUAGES C CXX)
 # Options
 # -----------------------------------------------------------------------------
 
-option(HIGHMAP_ENABLE_OPENCL "" ON)
+option(HIGHMAP_ENABLE_OPENCL "Enable the legacy OpenCL compatibility backend" ON)
+option(HIGHMAP_ENABLE_METAL "Enable the native Metal compute backend on macOS" ON)
+option(HIGHMAP_ENABLE_OPENMP "Enable OpenMP acceleration when available" ON)
 option(HIGHMAP_ENABLE_LOGS "Enable logging" ON)
 option(HIGHMAP_ENABLE_EXAMPLES "" ON)
 option(HIGHMAP_ENABLE_TESTS "" ON)
@@ -84,6 +86,11 @@ endif()
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
+# Keep the serial OpenMP compatibility shim local to this superproject. The
+# NoiseLib submodule asks for OpenMP unconditionally even when its code is
+# compiled serially, so its probe must see the same project-level option.
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 # -----------------------------------------------------------------------------
 # Dependencies
 # -----------------------------------------------------------------------------
@@ -91,14 +98,111 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 find_package(GSL REQUIRED COMPONENTS gsl gslcblas)
 find_package(assimp REQUIRED)
 find_package(glm REQUIRED)
-find_package(OpenMP REQUIRED)
+if(HIGHMAP_ENABLE_OPENMP)
+
+  # Apple Clang does not ship an OpenMP runtime. When Homebrew's libomp is
+  # installed, FindOpenMP needs the preprocessor flag and include/library
+  # locations supplied explicitly. Keep the flags as a CMake list so they are
+  # passed as separate compiler arguments to every target, including the
+  # external libraries.
+  if(APPLE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    find_path(HIGHMAP_LIBOMP_INCLUDE_DIR
+              omp.h
+              HINTS
+                /opt/homebrew/opt/libomp/include
+                /usr/local/opt/libomp/include)
+    find_library(HIGHMAP_LIBOMP_LIBRARY
+                 NAMES omp
+                 HINTS
+                   /opt/homebrew/opt/libomp/lib
+                   /usr/local/opt/libomp/lib)
+
+    if(HIGHMAP_LIBOMP_INCLUDE_DIR AND HIGHMAP_LIBOMP_LIBRARY)
+      set(OpenMP_C_FLAGS
+          "-Xpreprocessor;-fopenmp;-I${HIGHMAP_LIBOMP_INCLUDE_DIR}"
+          CACHE STRING "OpenMP C compiler flags" FORCE)
+      set(OpenMP_CXX_FLAGS
+          "-Xpreprocessor;-fopenmp;-I${HIGHMAP_LIBOMP_INCLUDE_DIR}"
+          CACHE STRING "OpenMP CXX compiler flags" FORCE)
+      set(OpenMP_C_LIB_NAMES omp CACHE STRING "OpenMP C library names" FORCE)
+      set(OpenMP_CXX_LIB_NAMES omp CACHE STRING "OpenMP CXX library names" FORCE)
+      set(OpenMP_omp_LIBRARY
+          "${HIGHMAP_LIBOMP_LIBRARY}"
+          CACHE FILEPATH "OpenMP runtime library" FORCE)
+    endif()
+  endif()
+
+  find_package(OpenMP QUIET)
+  if(NOT OpenMP_CXX_FOUND)
+    message(WARNING
+            "OpenMP was requested but no usable runtime was found; continuing without OpenMP")
+    set(HIGHMAP_ENABLE_OPENMP OFF)
+  endif()
+endif()
+
+if(HIGHMAP_ENABLE_OPENMP)
+  add_compile_definitions(HIGHMAP_HAS_OPENMP=1)
+else()
+  add_compile_definitions(HIGHMAP_HAS_OPENMP=0)
+endif()
+
 find_package(OpenCV REQUIRED)
 find_package(OpenCL REQUIRED)
 
+# Apple SDKs provide the OpenCL framework but not the Khronos C++ wrapper
+# header. Homebrew installs the header and C headers as separate packages, so
+# locate both explicitly when FindOpenCL only reports the framework library.
+find_path(HIGHMAP_OPENCL_CPP_INCLUDE_DIR
+          CL/opencl.hpp
+          HINTS
+            /opt/homebrew/include
+            /opt/homebrew/opt/opencl-clhpp-headers/include
+            /usr/local/include
+            /usr/local/opt/opencl-clhpp-headers/include)
+find_path(HIGHMAP_OPENCL_C_INCLUDE_DIR
+          CL/cl.h
+          HINTS
+            /opt/homebrew/include
+            /opt/homebrew/opt/opencl-headers/include
+            /usr/local/include
+            /usr/local/opt/opencl-headers/include)
+if(HIGHMAP_OPENCL_CPP_INCLUDE_DIR)
+  include_directories(${HIGHMAP_OPENCL_CPP_INCLUDE_DIR})
+endif()
+if(HIGHMAP_OPENCL_C_INCLUDE_DIR)
+  include_directories(${HIGHMAP_OPENCL_C_INCLUDE_DIR})
+endif()
+
+# Metal is deliberately detected by framework headers/library rather than by
+# a marketing name (M1/M2/M3/...). Command Line Tools installations commonly
+# lack the Metal SDK headers, so a normal non-Metal build remains supported.
+set(HIGHMAP_METAL_AVAILABLE OFF)
+if(APPLE AND HIGHMAP_ENABLE_METAL)
+  find_path(HIGHMAP_METAL_INCLUDE_DIR
+            Metal.h
+            PATH_SUFFIXES Metal.framework/Headers)
+  find_library(HIGHMAP_METAL_LIBRARY NAMES Metal)
+
+  if(HIGHMAP_METAL_INCLUDE_DIR AND HIGHMAP_METAL_LIBRARY)
+    enable_language(OBJCXX)
+    set(HIGHMAP_METAL_AVAILABLE ON)
+    add_compile_definitions(HIGHMAP_HAS_METAL=1)
+    message(STATUS "Metal backend: enabled (${HIGHMAP_METAL_LIBRARY})")
+  else()
+    add_compile_definitions(HIGHMAP_HAS_METAL=0)
+    message(WARNING
+            "Metal was requested but the Metal SDK/framework was not found; continuing without Metal")
+  endif()
+else()
+  add_compile_definitions(HIGHMAP_HAS_METAL=0)
+endif()
+
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-# OpenMP
-add_compile_options(${OpenMP_CXX_FLAGS})
+# OpenMP flags/runtime are carried by `OpenMP::OpenMP_CXX` on the targets that
+# use it. Do not add `OpenMP_CXX_FLAGS` globally: Apple Clang's
+# `-Xpreprocessor` would also capture CMake's dependency flags (`-MD`, `-MF`)
+# and break otherwise unrelated external targets.
 
 # OpenCL
 add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
@@ -118,6 +222,9 @@ endif()
 message(STATUS "┌─ HighMap configuration ─────────────")
 message(STATUS "│ HIGHMAP_ENABLE_OPENCL:              ${HIGHMAP_ENABLE_OPENCL}")
 message(STATUS "│ HIGHMAP_ENABLE_LOGS:                ${HIGHMAP_ENABLE_LOGS}")
+message(STATUS "│ HIGHMAP_ENABLE_METAL:               ${HIGHMAP_ENABLE_METAL}")
+message(STATUS "│ HIGHMAP_METAL_AVAILABLE:             ${HIGHMAP_METAL_AVAILABLE}")
+message(STATUS "│ HIGHMAP_ENABLE_OPENMP:              ${HIGHMAP_ENABLE_OPENMP}")
 message(
   STATUS "│ HIGHMAP_ENABLE_EXAMPLES:            ${HIGHMAP_ENABLE_EXAMPLES}")
 message(STATUS "│ HIGHMAP_ENABLE_TESTS:               ${HIGHMAP_ENABLE_TESTS}")

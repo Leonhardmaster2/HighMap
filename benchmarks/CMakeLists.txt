@@ -13,7 +13,7 @@ set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(benchmark)
 
-file(GLOB TEST_SOURCES src/*.cpp)
+file(GLOB TEST_SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${TEST_SOURCES})
 

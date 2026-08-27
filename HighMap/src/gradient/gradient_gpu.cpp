@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
@@ -53,6 +54,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
 Array gradient_norm(const Array &array)
 {
   if (!validate_non_empty(array)) return Array();
+
+  if (metal::is_available()) return metal::gradient_norm(array);
 
   Array dm(array.shape);
 

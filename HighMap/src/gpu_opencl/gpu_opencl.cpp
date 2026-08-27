@@ -31,7 +31,11 @@ void helper_bind_optional_buffer(clwrapper::Run    &run,
 
 bool init_opencl()
 {
-  if (!clwrapper::DeviceManager::get_instance().is_ready()) return false;
+  // Call the static readiness probe before requesting the singleton. On a
+  // platform that exposes the OpenCL framework but has no matching device,
+  // constructing DeviceManager throws; the probe catches that condition and
+  // lets callers keep using CPU or another backend.
+  if (!clwrapper::DeviceManager::is_ready()) return false;
 
   auto &km = clwrapper::KernelManager::get_instance();
   km.clear_sources();
