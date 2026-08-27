@@ -109,7 +109,7 @@ void falloff(Array           &array,
     for (int j = 0; j < array.shape.y; j++)
       for (int i = 0; i < array.shape.x; i++)
       {
-        float r = r_fct(x[i], y[j]);
+        float r = r_fct(2.f * x[i], 2.f * y[j]);
         r += (*p_noise)(i, j) * (*p_noise)(i, j);
         r = 1.f - strength * r * r;
         array(i, j) *= r;
@@ -178,7 +178,7 @@ Array generate_buffered_array(const Array &array,
 
     for (int j = j1; j < array_out.shape.y - j2; j++)
       for (int i = array_out.shape.x - i2; i < array_out.shape.x; i++)
-        array_out(i, j) = array_out(2 * (array_out.shape.x - i2) - i - 1, j);
+        array_out(i, j) = array_out(2 * (array_out.shape.x - i2 - 1) - i, j);
 
     for (int j = 0; j < j1; j++)
       for (int i = 0; i < array_out.shape.x; i++)
@@ -186,7 +186,7 @@ Array generate_buffered_array(const Array &array,
 
     for (int j = array_out.shape.y - j2; j < array_out.shape.y; j++)
       for (int i = 0; i < array_out.shape.x; i++)
-        array_out(i, j) = array_out(i, 2 * (array_out.shape.y - j2) - j - 1);
+        array_out(i, j) = array_out(i, 2 * (array_out.shape.y - j2 - 1) - j);
   }
 
   return array_out;
@@ -422,7 +422,7 @@ void sym_borders(Array &array, glm::ivec4 buffer_sizes)
 
   for (int j = j1; j < array.shape.y - j2; j++)
     for (int i = array.shape.x - i2; i < array.shape.x; i++)
-      array(i, j) = array(2 * (array.shape.x - i2) - i - 1, j);
+      array(i, j) = array(2 * (array.shape.x - i2 - 1) - i, j);
 
   for (int j = 0; j < j1; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -430,7 +430,7 @@ void sym_borders(Array &array, glm::ivec4 buffer_sizes)
 
   for (int j = array.shape.y - j2; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
-      array(i, j) = array(i, 2 * (array.shape.y - j2) - j - 1);
+      array(i, j) = array(i, 2 * (array.shape.y - j2 - 1) - j);
 }
 
 void zeroed_borders(Array &array)

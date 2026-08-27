@@ -78,7 +78,8 @@ glm::ivec2 pick_boundary_cell(const Array   &z,
 
     if (favor_lower_elevation)
     {
-      float w = (z(cells[k]) - range.x) / (range.y - range.x);
+      float delta = range.y - range.x;
+      float w = (delta > 1e-7f) ? (z(cells[k]) - range.x) / delta : 0.f;
       weights[k] *= (1.f - w) * (1.f - w);
     }
 

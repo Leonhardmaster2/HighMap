@@ -44,8 +44,8 @@ enum DomainBoundary : int
 {
 	BOUNDARY_LEFT, ///< i = 0
 	BOUNDARY_RIGHT, ///< i = nx - 1
-	BOUNDARY_TOP, ///< j = 0
-	BOUNDARY_BOTTOM ///< j = ny - 1
+	BOUNDARY_TOP, ///< j = ny - 1
+	BOUNDARY_BOTTOM ///< j = 0
 };
 // clang-format on
 
