@@ -612,8 +612,6 @@ Array snow_melting_map(const Array &z,
  * @param  tolerance      Convergence criterion: the algorithm stops if the
  *                        maximum absolute update between iterations is less
  *                        than this value.
- * @param  omega          Relaxation factor for the SOR solver (1 < omega < 2
- *                        recommended).
  *
  * @return                A 2D array containing the computed water depth at each
  *                        grid cell. Depth values are non-negative where water
@@ -631,8 +629,7 @@ Array water_depth_from_mask(const Array &z,
                             const Array &mask,
                             float        mask_threshold = 0.f,
                             int          iterations_max = 10000,
-                            float        tolerance = 1e-2f,
-                            float        omega = 1.8f);
+                            float        tolerance = 1e-2f);
 
 /**
  * @brief Apply a drying factor to a water depth field.
@@ -1032,5 +1029,12 @@ void water_depth_filter(Array       &depth,
 Array water_frontier_curvature(const Array &water_depth,
                                int          prefilter_ir,
                                bool extend_values_from_interface = false);
+
+/*! @brief See hmap::water_depth_from_mask */
+Array water_depth_from_mask(const Array &z,
+                            const Array &mask,
+                            float        mask_threshold = 0.f,
+                            int          iterations_max = 10000,
+                            float        tolerance = 1e-2f);
 
 } // namespace hmap::gpu

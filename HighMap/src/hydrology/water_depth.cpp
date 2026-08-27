@@ -69,8 +69,7 @@ Array water_depth_from_mask(const Array &z,
                             const Array &mask,
                             float        mask_threshold,
                             int          iterations_max,
-                            float        tolerance,
-                            float        omega)
+                            float        tolerance)
 {
   Array water_depth(z.shape);
 
@@ -79,11 +78,7 @@ Array water_depth_from_mask(const Array &z,
   make_binary(mask_t, mask_threshold);
   mask_t = 1.f - mask_t; // fixed values
 
-  water_depth = harmonic_interpolation(z,
-                                       mask_t,
-                                       iterations_max,
-                                       tolerance,
-                                       omega) -
+  water_depth = harmonic_interpolation(z, mask_t, iterations_max, tolerance) -
                 z;
 
   return water_depth;
@@ -384,6 +379,28 @@ void water_depth_filter(Array       &depth,
     for (int i = 0; i < shape.x; ++i)
       if ((*p_water_mask)(i, j) != 0.f)
         depth(i, j) = std::max(0.f, zt(i, j) - z(i, j));
+}
+
+Array water_depth_from_mask(const Array &z,
+                            const Array &mask,
+                            float        mask_threshold,
+                            int          iterations_max,
+                            float        tolerance)
+{
+  Array water_depth(z.shape);
+
+  // transform to binary 0|1 mask
+  Array mask_t = mask;
+  make_binary(mask_t, mask_threshold);
+  mask_t = 1.f - mask_t; // fixed values
+
+  water_depth = gpu::harmonic_interpolation(z,
+                                            mask_t,
+                                            iterations_max,
+                                            tolerance) -
+                z;
+
+  return water_depth;
 }
 
 Array water_frontier_curvature(const Array &water_depth,

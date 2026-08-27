@@ -119,3 +119,38 @@ TEST(GpuCpu, HarmonicInterpolation)
   bool ret = assert_almost_equal(zc, zg, 1e-2f);
   EXPECT_EQ(ret, true);
 }
+
+TEST(GpuCpu, WaterDepthFromMask)
+{
+  Timer::Clear();
+
+  const glm::ivec2 shape = {64, 64};
+  Array            z = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
+  remap(z);
+
+  Array mask = select_rivers(z, 1.f / shape.x, 10.f);
+  remap(mask);
+
+  const float mask_threshold = 0.1f;
+  const int   iterations_max = 1000;
+  const float tolerance = 1e-3f;
+
+  Timer::Start("CPU");
+  Array wc = water_depth_from_mask(z,
+                                   mask,
+                                   mask_threshold,
+                                   iterations_max,
+                                   tolerance);
+  Timer::Stop("CPU");
+
+  Timer::Start("GPU");
+  Array wg = gpu::water_depth_from_mask(z,
+                                        mask,
+                                        mask_threshold,
+                                        iterations_max,
+                                        tolerance);
+  Timer::Stop("GPU");
+
+  bool ret = assert_almost_equal(wc, wg, 1e-2f);
+  EXPECT_EQ(ret, true);
+}
