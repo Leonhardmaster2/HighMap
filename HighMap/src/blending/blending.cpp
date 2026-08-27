@@ -75,6 +75,38 @@ Array blend_soft(const Array &array1, const Array &array2)
   return array_out;
 }
 
+Array blend_power_law(const std::vector<const Array *> &arrays, float alpha)
+{
+  if (arrays.empty()) return Array();
+
+  if (arrays.size() == 1) return *arrays[0];
+
+  glm::ivec2 shape = arrays[0]->shape;
+  Array      num = Array(shape, 0.f);
+  Array      den = Array(shape, 0.f);
+
+  if (alpha == 0.f)
+  {
+    for (const auto *arr : arrays)
+      num += *arr;
+    return num / static_cast<float>(arrays.size());
+  }
+
+  for (const auto *arr : arrays)
+  {
+    Array p = pow(*arr, alpha);
+    den += p;
+    num += p * (*arr);
+  }
+
+  return num / den;
+}
+
+Array blend_power_law(const Array &array1, const Array &array2, float alpha)
+{
+  return blend_power_law({&array1, &array2}, alpha);
+}
+
 Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
             float                             gain_factor)

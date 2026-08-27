@@ -123,6 +123,44 @@ Array blend_overlay(const Array &array1, const Array &array2);
 Array blend_soft(const Array &array1, const Array &array2);
 
 /**
+ * @brief Return the power law blending of a set of arrays.
+ *
+ * Blends two (or more) arrays using power law averaging:
+ * \f[
+ * f_\text{blend} = \frac{\sum_i f_i^{\alpha+1}}{\sum_i f_i^\alpha}
+ * \f] The behavior varies with the bias \f$\alpha\f$ from a simple average of
+ * the heights at each node when \f$\alpha=0\f$, approaching \f$\max(f_i)\f$ as
+ * \f$\alpha \to \infty\f$.
+ *
+ * @param  arrays Array references to blend.
+ * @param  alpha  Power law exponent (default: 0.0).
+ * @return        Array Resulting array after power law blending.
+ *
+ * **Example**
+ * @include ex_blend_power_law.cpp
+ *
+ * **Result**
+ * @image html ex_blend_power_law0.png
+ * @image html ex_blend_power_law1.png
+ * @image html ex_blend_power_law2.png
+ * @image html ex_blend_power_law3.png
+ */
+Array blend_power_law(const std::vector<const Array *> &arrays,
+                      float                             alpha = 0.f);
+
+/**
+ * @brief Return the power law blending of two arrays.
+ *
+ * @param  array1 First input array.
+ * @param  array2 Second input array.
+ * @param  alpha  Power law exponent (default: 0.0).
+ * @return        Array Resulting array after power law blending.
+ */
+Array blend_power_law(const Array &array1,
+                      const Array &array2,
+                      float        alpha = 0.f);
+
+/**
  * @brief Return the mixing of a set of arrays based on a parameter `t`.
  *
  * This function mixes a set of arrays based on a mixing coefficient `t`

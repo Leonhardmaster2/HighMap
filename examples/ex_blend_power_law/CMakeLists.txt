@@ -1,0 +1,2 @@
+add_executable(ex_blend_power_law ex_blend_power_law.cpp)
+target_link_libraries(ex_blend_power_law highmap)

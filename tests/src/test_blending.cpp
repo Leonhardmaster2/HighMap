@@ -143,3 +143,37 @@ TEST(Blending, BlendGradients)
   EXPECT_GE(res.min(), -1e-4f);
   EXPECT_LE(res.max(), 1.0f + 1e-4f);
 }
+
+TEST(Blending, BlendPowerLaw)
+{
+  glm::ivec2 shape = {4, 4};
+  Array      f1(shape, 2.0f);
+  Array      f2(shape, 8.0f);
+
+  // alpha = 0 -> arithmetic mean: (2 + 8) / 2 = 5.0
+  Array res_alpha0 = blend_power_law(f1, f2, 0.0f);
+  EXPECT_NEAR(res_alpha0(0, 0), 5.0f, 1e-5f);
+  EXPECT_NEAR(res_alpha0(2, 2), 5.0f, 1e-5f);
+
+  // alpha = 1 -> (2^2 + 8^2) / (2^1 + 8^1) = (4 + 64) / (2 + 8) = 68 / 10 = 6.8
+  Array res_alpha1 = blend_power_law(f1, f2, 1.0f);
+  EXPECT_NEAR(res_alpha1(0, 0), 6.8f, 1e-5f);
+
+  // alpha large -> approaches max(f_i) = 8.0
+  // for alpha = 10: (2^11 + 8^11) / (2^10 + 8^10) ~= 8.0
+  Array res_alpha10 = blend_power_law(f1, f2, 10.0f);
+  EXPECT_NEAR(res_alpha10(0, 0), 8.0f, 1e-2f);
+
+  // Test with vector of 3 arrays
+  Array                      f3(shape, 5.0f);
+  std::vector<const Array *> arrays = {&f1, &f2, &f3};
+
+  // alpha = 0 -> (2 + 8 + 5) / 3 = 5.0
+  Array res_vec0 = blend_power_law(arrays, 0.0f);
+  EXPECT_NEAR(res_vec0(0, 0), 5.0f, 1e-5f);
+
+  // alpha = 1 -> (2^2 + 8^2 + 5^2) / (2 + 8 + 5) = (4 + 64 + 25) / 15 = 93 / 15
+  // = 6.2
+  Array res_vec1 = blend_power_law(arrays, 1.0f);
+  EXPECT_NEAR(res_vec1(0, 0), 6.2f, 1e-5f);
+}
