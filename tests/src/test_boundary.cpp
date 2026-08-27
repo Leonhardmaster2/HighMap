@@ -1,5 +1,6 @@
-#include <gtest/gtest.h>
 #include "highmap/boundary.hpp"
+
+#include <gtest/gtest.h>
 
 TEST(BoundaryTest, DomainBoundaryEnumValues)
 {
@@ -13,22 +14,34 @@ TEST(BoundaryTest, PickBoundaryCellFlatArray)
 {
   hmap::Array z(glm::ivec2(16, 16), 5.0f);
 
-  glm::ivec2 cell_b = hmap::pick_boundary_cell(z, hmap::DomainBoundary::BOUNDARY_BOTTOM, 42);
+  glm::ivec2 cell_b = hmap::pick_boundary_cell(
+      z,
+      hmap::DomainBoundary::BOUNDARY_BOTTOM,
+      42);
   EXPECT_EQ(cell_b.y, 0);
   EXPECT_GE(cell_b.x, 0);
   EXPECT_LT(cell_b.x, 16);
 
-  glm::ivec2 cell_t = hmap::pick_boundary_cell(z, hmap::DomainBoundary::BOUNDARY_TOP, 42);
+  glm::ivec2 cell_t = hmap::pick_boundary_cell(
+      z,
+      hmap::DomainBoundary::BOUNDARY_TOP,
+      42);
   EXPECT_EQ(cell_t.y, 15);
   EXPECT_GE(cell_t.x, 0);
   EXPECT_LT(cell_t.x, 16);
 
-  glm::ivec2 cell_l = hmap::pick_boundary_cell(z, hmap::DomainBoundary::BOUNDARY_LEFT, 42);
+  glm::ivec2 cell_l = hmap::pick_boundary_cell(
+      z,
+      hmap::DomainBoundary::BOUNDARY_LEFT,
+      42);
   EXPECT_EQ(cell_l.x, 0);
   EXPECT_GE(cell_l.y, 0);
   EXPECT_LT(cell_l.y, 16);
 
-  glm::ivec2 cell_r = hmap::pick_boundary_cell(z, hmap::DomainBoundary::BOUNDARY_RIGHT, 42);
+  glm::ivec2 cell_r = hmap::pick_boundary_cell(
+      z,
+      hmap::DomainBoundary::BOUNDARY_RIGHT,
+      42);
   EXPECT_EQ(cell_r.x, 15);
   EXPECT_GE(cell_r.y, 0);
   EXPECT_LT(cell_r.y, 16);
@@ -41,7 +54,7 @@ TEST(BoundaryTest, GenerateBufferedArrayPivotCentered)
     for (int i = 0; i < 5; ++i)
       arr(i, j) = float(i + j * 10);
 
-  glm::ivec4 buffers(2, 2, 2, 2);
+  glm::ivec4  buffers(2, 2, 2, 2);
   hmap::Array buffered = hmap::generate_buffered_array(arr, buffers, false);
 
   EXPECT_EQ(buffered.shape.x, 9);
