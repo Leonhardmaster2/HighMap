@@ -236,48 +236,73 @@ void gamma_correction_local(Array       &array,
 
 void kuwahara(Array &array, int ir, float mix_ratio)
 {
+  if (ir <= 0) return;
 
   Array array_buffered = generate_buffered_array(array,
                                                  glm::ivec4(ir, ir, ir, ir));
-  Array array_out(array_buffered.shape);
+  Array array_out(array.shape);
 
-  for (int j = ir; j < array_buffered.shape.y - ir; j++)
-    for (int i = ir; i < array_buffered.shape.x - ir; i++)
+  const int    nx_buf = array_buffered.shape.x;
+  const float *buf_ptr = array_buffered.vector.data();
+  const int    q_count = (ir + 1) * (ir + 1);
+  const float  inv_q = 1.0f / static_cast<float>(q_count);
+
+#pragma omp parallel for collapse(2) schedule(static)
+  for (int j = 0; j < array.shape.y; j++)
+  {
+    for (int i = 0; i < array.shape.x; i++)
     {
-      // build quadrants
-      Array q1 = array_buffered.extract_slice(
-          glm::ivec4(i - ir, i + 1, j - ir, j + 1));
-      Array q2 = array_buffered.extract_slice(
-          glm::ivec4(i - ir, i + 1, j + 1, j + ir));
-      Array q3 = array_buffered.extract_slice(
-          glm::ivec4(i + 1, i + ir, j - ir, j + 1));
-      Array q4 = array_buffered.extract_slice(
-          glm::ivec4(i + 1, i + ir, j + 1, j + ir));
+      const int bi = i + ir;
+      const int bj = j + ir;
 
-      std::vector<float> means = {q1.mean(), q2.mean(), q3.mean(), q4.mean()};
-      std::vector<float> stds = {q1.std(), q2.std(), q3.std(), q4.std()};
+      // 4 quadrants: offsets (dx_start, dy_start)
+      const int offsets[4][2] = {
+          {-ir, -ir}, // Q1: Top-Left
+          {-ir, 0},   // Q2: Bottom-Left
+          {0, -ir},   // Q3: Top-Right
+          {0, 0}      // Q4: Bottom-Right
+      };
 
-      size_t imin = std::min_element(stds.begin(), stds.end()) - stds.begin();
-      array_out(i, j) = means[imin];
+      float min_var = std::numeric_limits<float>::max();
+      float best_mean = 0.0f;
+
+      for (int q = 0; q < 4; ++q)
+      {
+        float sum = 0.0f;
+        float sum_sq = 0.0f;
+
+        const int x0 = bi + offsets[q][0];
+        const int y0 = bj + offsets[q][1];
+
+        for (int y = y0; y <= y0 + ir; ++y)
+        {
+          const float *row = buf_ptr + y * nx_buf;
+          for (int x = x0; x <= x0 + ir; ++x)
+          {
+            const float val = row[x];
+            sum += val;
+            sum_sq += val * val;
+          }
+        }
+
+        const float mean = sum * inv_q;
+        const float var = (sum_sq * inv_q) - (mean * mean);
+
+        if (var < min_var)
+        {
+          min_var = var;
+          best_mean = mean;
+        }
+      }
+
+      array_out(i, j) = best_mean;
     }
+  }
 
   if (mix_ratio == 1.f)
-  {
-    array = array_out.extract_slice(glm::ivec4(ir,
-                                               array_buffered.shape.x - ir,
-                                               ir,
-                                               array_buffered.shape.y - ir));
-  }
+    array = std::move(array_out);
   else
-  {
-    array = lerp(
-        array,
-        array_out.extract_slice(glm::ivec4(ir,
-                                           array_buffered.shape.x - ir,
-                                           ir,
-                                           array_buffered.shape.y - ir)),
-        mix_ratio);
-  }
+    array = lerp(array, array_out, mix_ratio);
 }
 
 void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
