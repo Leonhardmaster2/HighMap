@@ -21,6 +21,8 @@ void extrapolate_borders(Array &array, int nbuffer, float sigma)
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
+  if (ni < nbuffer + 2 || nj < nbuffer + 2) return;
+
   if (sigma == 0.f)
   {
     for (int j = 0; j < nj; j++)
