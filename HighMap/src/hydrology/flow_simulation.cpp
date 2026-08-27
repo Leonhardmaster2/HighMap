@@ -40,6 +40,9 @@ Array flow_simulation(const Array &z,
   Array ft(shape); // top
   Array fb(shape); // bottom
 
+  Array u(shape);
+  Array v(shape);
+
   for (int it = 0; it < iterations; ++it)
   {
 
@@ -84,8 +87,6 @@ Array flow_simulation(const Array &z,
     run_wa.bind_imagef("fb", fb.vector, shape.x, shape.y);
     run_wa.bind_imagef("d1", d.vector, shape.x, shape.y);
 
-    Array u(shape), v(shape);
-
     run_wa.bind_imagef("d2_out", d.vector, shape.x, shape.y, true); // outputs
     run_wa.bind_imagef("u_out", u.vector, shape.x, shape.y, true);
     run_wa.bind_imagef("v_out", v.vector, shape.x, shape.y, true);
@@ -95,8 +96,6 @@ Array flow_simulation(const Array &z,
     run_wa.execute({shape.x, shape.y});
 
     run_wa.read_imagef("d2_out");
-    run_wa.read_imagef("u_out");
-    run_wa.read_imagef("v_out");
   }
 
   // remove thin layer of remaining water

@@ -106,7 +106,7 @@ void kernel hydraulic_vpipes_water_pass(read_only image2d_t  z,
   float v_new = 0.5f * (TGET(ft, i, j - 1) - TGET(fb, i, j) + TGET(ft, i, j) -
                         TGET(fb, i, j + 1));
 
-  float dmean = max(0.001f * water_height / dt, d2_new);
+  float dmean = max(0.001f * water_height, d2_new);
 
   u_new /= dmean;
   v_new /= dmean;
@@ -204,7 +204,8 @@ void kernel hydraulic_vpipes_sediment_transport_pass(read_only image2d_t  u,
   const int i = g.x;
   const int j = g.y;
 
-  float2 pos = (float2)(i - dt * TGET(u, i, j), j - dt * TGET(v, i, j));
+  float2 pos = (float2)(i + 0.5f - dt * TGET(u, i, j),
+                        j + 0.5f - dt * TGET(v, i, j));
   float  s_new = read_imagef(s, sampler_itp, pos).x;
 
   TSET(s_out, i, j, s_new);
