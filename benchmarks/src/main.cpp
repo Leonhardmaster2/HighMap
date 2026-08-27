@@ -5,7 +5,10 @@
 
 void global_init()
 {
-  hmap::gpu::init_opencl();
+  // OpenCL may be unavailable even when its framework is installed. OpenCL
+  // benchmark cases report that condition themselves instead of aborting the
+  // complete CPU/Metal benchmark executable.
+  (void)hmap::gpu::init_opencl();
   spdlog::set_level(spdlog::level::off);
 }
 

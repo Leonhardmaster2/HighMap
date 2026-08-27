@@ -6,6 +6,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/internal/validation.hpp"
 
@@ -24,6 +25,15 @@ Array advection_warp(const Array &z,
       !validate_same_shape(z, dx) || !validate_same_shape(z, dy))
     return Array();
   if (p_mask && !validate_same_shape(z, *p_mask)) return Array();
+
+  if (metal::is_available())
+    return metal::advection_warp(z,
+                                 advected_field,
+                                 dx,
+                                 dy,
+                                 advection_length,
+                                 value_persistence,
+                                 p_mask);
 
   auto run = clwrapper::Run("advection_warp");
 

@@ -15,6 +15,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/internal/validation.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
@@ -582,6 +583,16 @@ Array noise(NoiseType     noise_type,
   if (!validate_shape(shape)) return Array();
   if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
   if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
+  if (metal::is_available() && metal::supports_noise(noise_type))
+    return metal::noise(noise_type,
+                        shape,
+                        kw,
+                        seed,
+                        p_noise_x,
+                        p_noise_y,
+                        bbox,
+                        period);
 
   Array array(shape);
 

@@ -10,7 +10,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-file(GLOB TEST_SOURCES src/*.cpp)
+file(GLOB TEST_SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${TEST_SOURCES})
 
