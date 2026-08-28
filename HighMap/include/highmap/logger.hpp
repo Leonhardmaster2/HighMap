@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string_view>
 
+#include <concepts>
 #include <format>
 #include <source_location>
 
@@ -51,6 +52,7 @@ template <typename... Args> struct format_string_with_loc
   std::source_location        loc;
 
   template <typename S>
+    requires std::constructible_from<std::format_string<Args...>, const S &>
   consteval format_string_with_loc(
       const S                    &s,
       const std::source_location &l = std::source_location::current())
@@ -121,6 +123,20 @@ inline void trace(
   detail::log_impl(detail::Level::Trace, message, loc);
 }
 
+template <typename... Args>
+inline void trace(const std::source_location &loc,
+                  std::format_string<Args...> fmt,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Trace, msg, loc);
+}
+
+inline void trace(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Trace, message, loc);
+}
+
 // -----------------------------------------------------------------------------
 // info
 // -----------------------------------------------------------------------------
@@ -136,6 +152,20 @@ inline void info(format_string_with_loc<std::type_identity_t<Args>...> fl,
 inline void info(
     std::string_view            message,
     const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Info, message, loc);
+}
+
+template <typename... Args>
+inline void info(const std::source_location &loc,
+                 std::format_string<Args...> fmt,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Info, msg, loc);
+}
+
+inline void info(const std::source_location &loc, std::string_view message)
 {
   detail::log_impl(detail::Level::Info, message, loc);
 }
@@ -159,6 +189,20 @@ inline void warn(
   detail::log_impl(detail::Level::Warn, message, loc);
 }
 
+template <typename... Args>
+inline void warn(const std::source_location &loc,
+                 std::format_string<Args...> fmt,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Warn, msg, loc);
+}
+
+inline void warn(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Warn, message, loc);
+}
+
 // -----------------------------------------------------------------------------
 // error
 // -----------------------------------------------------------------------------
@@ -174,6 +218,20 @@ inline void error(format_string_with_loc<std::type_identity_t<Args>...> fl,
 inline void error(
     std::string_view            message,
     const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Error, message, loc);
+}
+
+template <typename... Args>
+inline void error(const std::source_location &loc,
+                  std::format_string<Args...> fmt,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Error, msg, loc);
+}
+
+inline void error(const std::source_location &loc, std::string_view message)
 {
   detail::log_impl(detail::Level::Error, message, loc);
 }

@@ -57,3 +57,27 @@ TEST(LoggerTest, ErrorOutput)
   EXPECT_NE(output.find("test_logger.cpp"), std::string::npos);
 #endif
 }
+
+TEST(LoggerTest, ExplicitSourceLocation)
+{
+  std::stringstream buffer;
+  std::streambuf   *old_cout = std::cout.rdbuf(buffer.rdbuf());
+
+  auto loc = std::source_location::current();
+  hmap::log::info(loc, "Explicit loc formatted {}", 42);
+  hmap::log::trace(loc, "Explicit loc plain message");
+
+  std::string dyn = "dynamic string";
+  hmap::log::info(loc, dyn);
+
+  std::cout.rdbuf(old_cout);
+
+#if HIGHMAP_ENABLE_LOGS
+  std::string output = buffer.str();
+  EXPECT_NE(output.find("[info]"), std::string::npos);
+  EXPECT_NE(output.find("Explicit loc formatted 42"), std::string::npos);
+  EXPECT_NE(output.find("[trace]"), std::string::npos);
+  EXPECT_NE(output.find("Explicit loc plain message"), std::string::npos);
+  EXPECT_NE(output.find("dynamic string"), std::string::npos);
+#endif
+}
