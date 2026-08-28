@@ -13,6 +13,9 @@ project(highmap-root LANGUAGES C CXX)
 
 option(HIGHMAP_ENABLE_OPENCL "Enable the legacy OpenCL compatibility backend" ON)
 option(HIGHMAP_ENABLE_METAL "Enable the native Metal compute backend on macOS" ON)
+option(HIGHMAP_METAL_RUNTIME_COMPILE
+       "Allow runtime MSL compilation when no precompiled metallib is available"
+       ON)
 option(HIGHMAP_ENABLE_OPENMP "Enable OpenMP acceleration when available" ON)
 option(HIGHMAP_ENABLE_EXAMPLES "" ON)
 option(HIGHMAP_ENABLE_TESTS "" ON)
@@ -180,6 +183,7 @@ endif()
 # a marketing name (M1/M2/M3/...). Command Line Tools installations commonly
 # lack the Metal SDK headers, so a normal non-Metal build remains supported.
 set(HIGHMAP_METAL_AVAILABLE OFF)
+set(HIGHMAP_METAL_PRECOMPILED OFF)
 if(APPLE AND HIGHMAP_ENABLE_METAL)
   find_path(HIGHMAP_METAL_INCLUDE_DIR
             Metal.h
@@ -198,6 +202,35 @@ if(APPLE AND HIGHMAP_ENABLE_METAL)
   endif()
 else()
   add_compile_definitions(HIGHMAP_HAS_METAL=0)
+endif()
+
+if(HIGHMAP_METAL_AVAILABLE)
+  string(TOLOWER "${CMAKE_BUILD_TYPE}" HIGHMAP_BUILD_TYPE_LOWER)
+  find_program(HIGHMAP_XCRUN_EXECUTABLE xcrun)
+  find_program(HIGHMAP_XXD_EXECUTABLE xxd)
+  if(HIGHMAP_XCRUN_EXECUTABLE AND HIGHMAP_XXD_EXECUTABLE AND
+     HIGHMAP_BUILD_TYPE_LOWER STREQUAL "release")
+    execute_process(
+      COMMAND ${HIGHMAP_XCRUN_EXECUTABLE} --sdk macosx --find metal
+      OUTPUT_VARIABLE HIGHMAP_METAL_COMPILER
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      ERROR_QUIET)
+    execute_process(
+      COMMAND ${HIGHMAP_XCRUN_EXECUTABLE} --sdk macosx --find metallib
+      OUTPUT_VARIABLE HIGHMAP_METALLIB_TOOL
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      ERROR_QUIET)
+    if(HIGHMAP_METAL_COMPILER AND HIGHMAP_METALLIB_TOOL)
+      set(HIGHMAP_METAL_PRECOMPILED ON)
+      add_compile_definitions(HIGHMAP_METAL_PRECOMPILED=1)
+      message(STATUS "Metal release library: build-time metallib embedding enabled")
+    endif()
+  endif()
+
+  if(NOT HIGHMAP_METAL_PRECOMPILED AND NOT HIGHMAP_METAL_RUNTIME_COMPILE)
+    message(FATAL_ERROR
+            "Metal runtime compilation is disabled, but no build-time metal/metallib toolchain was found")
+  endif()
 endif()
 
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -219,6 +252,7 @@ message(STATUS "┌─ HighMap configuration ───────────�
 message(STATUS "│ HIGHMAP_ENABLE_OPENCL:              ${HIGHMAP_ENABLE_OPENCL}")
 message(STATUS "│ HIGHMAP_ENABLE_METAL:               ${HIGHMAP_ENABLE_METAL}")
 message(STATUS "│ HIGHMAP_METAL_AVAILABLE:             ${HIGHMAP_METAL_AVAILABLE}")
+message(STATUS "│ HIGHMAP_METAL_PRECOMPILED:           ${HIGHMAP_METAL_PRECOMPILED}")
 message(STATUS "│ HIGHMAP_ENABLE_OPENMP:              ${HIGHMAP_ENABLE_OPENMP}")
 message(
   STATUS "│ HIGHMAP_ENABLE_EXAMPLES:            ${HIGHMAP_ENABLE_EXAMPLES}")
