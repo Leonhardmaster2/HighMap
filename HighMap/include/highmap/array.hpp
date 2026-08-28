@@ -568,7 +568,7 @@ public:
    * to be in the form of {xmin, xmax, ymin, ymax}.
    * @return      float The nearest value at the clamped location (x, y).
    */
-  float get_value_nearest(float x, float y, glm::vec4 bbox);
+  float get_value_nearest(float x, float y, glm::vec4 bbox) const;
 
   /**
    * @brief Retrieves the underlying data vector.

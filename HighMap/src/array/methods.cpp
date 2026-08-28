@@ -245,7 +245,7 @@ float Array::get_value_bilinear_at(int i, int j, float u, float v) const
   return (*this)(i, j) + a10 * u + a01 * v + a11 * u * v;
 }
 
-float Array::get_value_nearest(float x, float y, glm::vec4 bbox)
+float Array::get_value_nearest(float x, float y, glm::vec4 bbox) const
 {
   int i = (int)(std::clamp((x - bbox.x) / (bbox.y - bbox.x), 0.f, 1.f) *
                 (this->shape.x - 1));
