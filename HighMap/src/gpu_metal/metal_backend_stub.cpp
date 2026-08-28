@@ -121,6 +121,11 @@ DeviceArray DeviceSession::gradient_norm(DeviceArray)
   unavailable();
 }
 
+DeviceArray DeviceSession::morphological_gradient(DeviceArray, int)
+{
+  unavailable();
+}
+
 DeviceArray DeviceSession::maximum_smooth(DeviceArray,
                                            const DeviceArray &,
                                            float)
@@ -303,6 +308,11 @@ bool supports_noise_fbm(NoiseType)
 }
 
 Array gradient_norm(const Array &)
+{
+  unavailable();
+}
+
+Array morphological_gradient(const Array &, int)
 {
   unavailable();
 }

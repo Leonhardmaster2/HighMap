@@ -650,6 +650,30 @@ TEST_F(MetalBackend, SmoothExtremaMatchesCpu)
   expect_finite_and_close(actual_min, expected_min, 1e-5f);
 }
 
+TEST_F(MetalBackend, MorphologicalGradientMatchesOpenCL)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {23, 17};
+  Array input(shape);
+  fill_field(input);
+  input(0, 0) = -2.5f;
+  input(shape.x - 1, shape.y - 1) = 3.25f;
+
+  const int radius = 2;
+  const Array expected = hmap::gpu::morphological_gradient(input, radius);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto resident = session.upload(input);
+  auto resident_gradient =
+      session.morphological_gradient(std::move(resident), radius);
+  const Array actual = session.download(resident_gradient);
+
+  expect_finite_and_close(actual, expected, 1e-5f);
+  EXPECT_GT(session.stats().peak_resident_bytes, input.vector.size() * sizeof(float));
+}
+
 TEST_F(MetalBackend, SupportedNoiseIsDeterministicAndRouted)
 {
   const glm::ivec2 shape = {19, 13};
