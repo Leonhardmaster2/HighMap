@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -131,6 +132,48 @@ struct NoiseParams
   float bbox3;
 };
 
+struct NoiseFbmParams
+{
+  int nx;
+  int ny;
+  int noise_id;
+  float kx;
+  float ky;
+  std::uint32_t seed;
+  int octaves;
+  float weight;
+  float persistence;
+  float lacunarity;
+  int has_ctrl_param;
+  int has_noise_x;
+  int has_noise_y;
+  int period_x;
+  int period_y;
+  float bbox0;
+  float bbox1;
+  float bbox2;
+  float bbox3;
+};
+
+struct SmoothCpulseParams
+{
+  int nx;
+  int ny;
+  int ir;
+  int pass;
+  float weight_sum;
+};
+
+struct NormalizeParams
+{
+  int nx;
+  int ny;
+  float from_min;
+  float from_max;
+  float to_min;
+  float to_max;
+};
+
 struct AdvectionParams
 {
   int nx;
@@ -179,6 +222,12 @@ struct HydraulicParams
 };
 
 struct ReduceParams
+{
+  int count;
+  int threads_per_group;
+};
+
+struct MinMaxParams
 {
   int count;
   int threads_per_group;
@@ -653,6 +702,83 @@ void release_session_buffer(
   session->stats.resident_bytes = session->live_bytes;
 }
 
+std::pair<float, float> reduce_range(
+    const std::shared_ptr<detail::DeviceSessionState> &session,
+    id<MTLBuffer>                                      input,
+    std::size_t                                         count)
+{
+  require_session_open(session);
+  if (!input || count == 0)
+    throw std::invalid_argument("Metal range reduction requires a non-empty input");
+
+  id<MTLComputePipelineState> tiles_pipeline =
+      context().pipeline("minmax_tiles", &session->stats);
+  id<MTLComputePipelineState> reduce_pipeline =
+      context().pipeline("minmax_reduce", &session->stats);
+  const NSUInteger threads = reduction_threads(reduce_pipeline);
+  const std::size_t partial_count =
+      std::max<std::size_t>(1, (count + threads - 1) / threads);
+  const std::size_t partial_bytes = partial_count * 2 * sizeof(float);
+  id<MTLBuffer> reduction_a =
+      new_session_buffer(session, partial_bytes, StorageMode::shared);
+  id<MTLBuffer> reduction_b =
+      new_session_buffer(session, partial_bytes, StorageMode::shared);
+
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(session->command_buffer, &session->stats);
+  [encoder setComputePipelineState:tiles_pipeline];
+  [encoder setBuffer:input offset:0 atIndex:0];
+  [encoder setBuffer:reduction_a offset:0 atIndex:1];
+  MinMaxParams params{static_cast<int>(count), static_cast<int>(threads)};
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch_reduction(encoder, tiles_pipeline, static_cast<int>(count), threads);
+  [encoder endEncoding];
+
+  id<MTLBuffer> reduction_input = reduction_a;
+  id<MTLBuffer> reduction_output = reduction_b;
+  std::size_t reduction_count = partial_count;
+  while (reduction_count > 1)
+  {
+    const std::size_t next_count =
+        (reduction_count + threads - 1) / threads;
+    encoder = compute_encoder(session->command_buffer, &session->stats);
+    [encoder setComputePipelineState:reduce_pipeline];
+    [encoder setBuffer:reduction_input offset:0 atIndex:0];
+    [encoder setBuffer:reduction_output offset:0 atIndex:1];
+    params = {static_cast<int>(reduction_count), static_cast<int>(threads)};
+    set_bytes(encoder, &params, sizeof(params), 2);
+    dispatch_reduction(encoder,
+                       reduce_pipeline,
+                       static_cast<int>(reduction_count),
+                       threads);
+    [encoder endEncoding];
+    reduction_count = next_count;
+    std::swap(reduction_input, reduction_output);
+  }
+  session->stats.encoding_ms += elapsed_ms(encoding_start);
+  session->has_work = true;
+
+  // Normalization needs two scalar values before its pointwise pass can be
+  // encoded. Keep this as a scalar synchronization; the terrain itself never
+  // crosses the host boundary.
+  wait_for_completion(session->command_buffer, &session->stats);
+  session->command_buffer = make_command_buffer(&session->stats);
+  session->has_work = false;
+
+  std::vector<float> range(2, 0.f);
+  read_buffer(reduction_input, range, &session->stats);
+  release_session_buffer(session,
+                         reduction_a,
+                         partial_bytes,
+                         StorageMode::shared);
+  release_session_buffer(session,
+                         reduction_b,
+                         partial_bytes,
+                         StorageMode::shared);
+  return {range[0], range[1]};
+}
+
 id<MTLBlitCommandEncoder> blit_encoder(
     const std::shared_ptr<detail::DeviceSessionState> &session)
 {
@@ -982,6 +1108,14 @@ bool supports_noise(NoiseType noise_type)
   case NoiseType::VALUE_LINEAR: return true;
   default: return false;
   }
+}
+
+bool supports_noise_fbm(NoiseType noise_type)
+{
+  // The resident FBM kernel shares the staged backend's base-noise coverage.
+  // The remaining HighMap FBM families have materially different algorithms
+  // and remain on their established CPU/OpenCL paths.
+  return supports_noise(noise_type);
 }
 
 Array gradient_norm(const Array &array)
@@ -1632,6 +1766,246 @@ DeviceArray DeviceSession::noise(NoiseType     noise_type,
   record_encoding(encoding_start, &state_->stats);
   state_->has_work = true;
   return DeviceArray(std::move(result));
+}
+
+DeviceArray DeviceSession::noise_fbm(NoiseType          noise_type,
+                                     glm::ivec2         shape,
+                                     glm::vec2          kw,
+                                     std::uint32_t      seed,
+                                     int                octaves,
+                                     float              weight,
+                                     float              persistence,
+                                     float              lacunarity,
+                                     const DeviceArray *p_ctrl_param,
+                                     const DeviceArray *p_noise_x,
+                                     const DeviceArray *p_noise_y,
+                                     glm::vec4          bbox,
+                                     glm::ivec2         period)
+{
+  require_session_open(state_);
+  check_shape_2d(shape);
+  if (!supports_noise_fbm(noise_type))
+    throw std::invalid_argument("Metal resident FBM noise type is unsupported");
+  if (octaves < 0)
+    throw std::invalid_argument("Metal resident FBM octaves must be non-negative");
+
+  if (p_ctrl_param)
+  {
+    require_input(state_, p_ctrl_param->state_, "ctrl_param");
+    require_same_shape(p_ctrl_param->state_, shape, "ctrl_param");
+  }
+  if (p_noise_x)
+  {
+    require_input(state_, p_noise_x->state_, "noise_x");
+    require_same_shape(p_noise_x->state_, shape, "noise_x");
+  }
+  if (p_noise_y)
+  {
+    require_input(state_, p_noise_y->state_, "noise_y");
+    require_same_shape(p_noise_y->state_, shape, "noise_y");
+  }
+
+  const StorageMode mode = state_->default_storage;
+  const std::size_t count = static_cast<std::size_t>(shape.x) *
+                            static_cast<std::size_t>(shape.y);
+  const std::size_t bytes = count * sizeof(float);
+  id<MTLBuffer> output = acquire_session_buffer(state_, bytes, mode);
+  id<MTLBuffer> ctrl = p_ctrl_param
+                           ? p_ctrl_param->state_->buffer
+                           : new_session_buffer(state_, sizeof(float), mode);
+  id<MTLBuffer> noise_x = p_noise_x
+                              ? p_noise_x->state_->buffer
+                              : new_session_buffer(state_, sizeof(float), mode);
+  id<MTLBuffer> noise_y = p_noise_y
+                              ? p_noise_y->state_->buffer
+                              : new_session_buffer(state_, sizeof(float), mode);
+  auto result = make_array_state(state_,
+                                 shape,
+                                 output,
+                                 mode,
+                                 ResidencyState::device_valid);
+
+  NoiseFbmParams params{shape.x,
+                        shape.y,
+                        static_cast<int>(noise_type),
+                        kw.x,
+                        kw.y,
+                        seed,
+                        octaves,
+                        weight,
+                        persistence,
+                        lacunarity,
+                        p_ctrl_param ? 1 : 0,
+                        p_noise_x ? 1 : 0,
+                        p_noise_y ? 1 : 0,
+                        period.x,
+                        period.y,
+                        bbox.x,
+                        bbox.y,
+                        bbox.z,
+                        bbox.w};
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("noise_fbm", &state_->stats);
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:output offset:0 atIndex:0];
+  [encoder setBuffer:ctrl offset:0 atIndex:1];
+  [encoder setBuffer:noise_x offset:0 atIndex:2];
+  [encoder setBuffer:noise_y offset:0 atIndex:3];
+  set_bytes(encoder, &params, sizeof(params), 4);
+  dispatch(encoder, pipeline, shape.x, shape.y, "noise_fbm");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  return DeviceArray(std::move(result));
+}
+
+DeviceArray DeviceSession::smooth_cpulse(DeviceArray array, int ir)
+{
+  require_session_open(state_);
+  require_input(state_, array.state_, "smooth input");
+  if (ir <= 0) return array;
+
+  const glm::ivec2 shape = array.state_->shape;
+  const StorageMode mode = array.state_->storage;
+  const std::size_t bytes = array.state_->byte_size;
+  float weight_sum = 0.f;
+  for (int k = -ir; k <= ir; ++k)
+  {
+    const float d = std::abs(static_cast<float>(k)) / static_cast<float>(ir);
+    weight_sum += std::exp(-0.5f * d * d * 9.f);
+  }
+
+  id<MTLBuffer> first = acquire_session_buffer(state_, bytes, mode);
+  id<MTLBuffer> second = acquire_session_buffer(state_, bytes, mode);
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("smooth_cpulse", &state_->stats);
+  SmoothCpulseParams params{shape.x, shape.y, ir, 0, weight_sum};
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:array.state_->buffer offset:0 atIndex:0];
+  [encoder setBuffer:first offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, pipeline, shape.x, shape.y, "smooth_cpulse");
+  [encoder endEncoding];
+
+  params.pass = 1;
+  encoder = compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:first offset:0 atIndex:0];
+  [encoder setBuffer:second offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, pipeline, shape.x, shape.y, "smooth_cpulse");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+
+  release_session_buffer(state_, first, bytes, mode);
+  recycle_unique_state(array.state_);
+  return DeviceArray(make_array_state(state_,
+                                      shape,
+                                      second,
+                                      mode,
+                                      ResidencyState::device_valid));
+}
+
+DeviceArray DeviceSession::spectral_equalizer(
+    DeviceArray              array,
+    const std::vector<float> &weights,
+    int                       ir_min,
+    int                       ir_max)
+{
+  require_session_open(state_);
+  require_input(state_, array.state_, "spectral input");
+  if (weights.empty()) return array;
+  if (ir_min <= 0 || ir_max <= 0)
+    throw std::invalid_argument("Metal spectral radii must be positive");
+
+  const std::size_t nbands = weights.size();
+  std::vector<int> radii;
+  radii.reserve(nbands > 0 ? nbands - 1 : 0);
+  int previous = 0;
+  if (nbands > 1)
+  {
+    const float log_min = std::log(static_cast<float>(ir_min));
+    const float log_max = std::log(static_cast<float>(ir_max));
+    for (std::size_t i = 0; i + 1 < nbands; ++i)
+    {
+      const float t = static_cast<float>(i) /
+                      static_cast<float>(nbands - 2);
+      int radius = std::max(
+          1,
+          static_cast<int>(std::exp(log_min + t * (log_max - log_min)) + 0.5f));
+      if (radius <= previous) radius = previous + 1;
+      previous = radius;
+      radii.push_back(radius);
+    }
+  }
+
+  std::vector<DeviceArray> blurred;
+  blurred.reserve(nbands);
+  blurred.push_back(std::move(array));
+  const DeviceArray source = blurred.front();
+  for (const int radius : radii)
+    blurred.push_back(this->smooth_cpulse(source, radius));
+
+  DeviceArray output;
+  for (std::size_t k = 0; k < nbands; ++k)
+  {
+    DeviceArray band;
+    if (k + 1 < nbands)
+      band = this->linear_combine(blurred[k], blurred[k + 1], 1.f, -1.f);
+    else
+      band = blurred[k];
+
+    const float band_weight = weights[nbands - 1 - k];
+    if (output.empty())
+    {
+      const DeviceArray band_reference = band;
+      output = this->linear_combine(std::move(band),
+                                    band_reference,
+                                    band_weight,
+                                    0.f);
+    }
+    else
+      output = this->linear_combine(std::move(output), band, 1.f, band_weight);
+  }
+  return output;
+}
+
+DeviceArray DeviceSession::normalize(DeviceArray array, float vmin, float vmax)
+{
+  require_session_open(state_);
+  require_input(state_, array.state_, "normalize input");
+  const glm::ivec2 shape = array.state_->shape;
+  const StorageMode mode = array.state_->storage;
+  const std::size_t bytes = array.state_->byte_size;
+  const auto range = reduce_range(state_, array.state_->buffer, array.size());
+  id<MTLBuffer> output = acquire_session_buffer(state_, bytes, mode);
+  NormalizeParams params{shape.x, shape.y, range.first, range.second, vmin, vmax};
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("normalize", &state_->stats);
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:array.state_->buffer offset:0 atIndex:0];
+  [encoder setBuffer:output offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, pipeline, shape.x, shape.y, "normalize");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  recycle_unique_state(array.state_);
+  return DeviceArray(make_array_state(state_,
+                                      shape,
+                                      output,
+                                      mode,
+                                      ResidencyState::device_valid));
 }
 
 DeviceArray DeviceSession::advection_warp(DeviceArray        z,
