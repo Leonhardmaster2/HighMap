@@ -1242,6 +1242,66 @@ Array noise(NoiseType     noise_type,
   return output;
 }
 
+Array noise_fbm(NoiseType     noise_type,
+                glm::ivec2    shape,
+                glm::vec2     kw,
+                std::uint32_t seed,
+                int           octaves,
+                float         weight,
+                float         persistence,
+                float         lacunarity,
+                const Array  *p_ctrl_param,
+                const Array  *p_noise_x,
+                const Array  *p_noise_y,
+                glm::vec4     bbox,
+                glm::ivec2    period)
+{
+  begin_operation();
+  require_ready();
+  DeviceSession session;
+  auto ctrl = p_ctrl_param ? session.upload(*p_ctrl_param) : DeviceArray{};
+  auto noise_x = p_noise_x ? session.upload(*p_noise_x) : DeviceArray{};
+  auto noise_y = p_noise_y ? session.upload(*p_noise_y) : DeviceArray{};
+  auto result = session.noise_fbm(noise_type,
+                                  shape,
+                                  kw,
+                                  seed,
+                                  octaves,
+                                  weight,
+                                  persistence,
+                                  lacunarity,
+                                  p_ctrl_param ? &ctrl : nullptr,
+                                  p_noise_x ? &noise_x : nullptr,
+                                  p_noise_y ? &noise_y : nullptr,
+                                  bbox,
+                                  period);
+  return session.download(result);
+}
+
+Array smooth_cpulse(const Array &array, int ir)
+{
+  begin_operation();
+  require_ready();
+  DeviceSession session;
+  auto result = session.smooth_cpulse(session.upload(array), ir);
+  return session.download(result);
+}
+
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max)
+{
+  begin_operation();
+  require_ready();
+  DeviceSession session;
+  auto result = session.spectral_equalizer(session.upload(array),
+                                           weights,
+                                           ir_min,
+                                           ir_max);
+  return session.download(result);
+}
+
 Array advection_warp(const Array &z,
                      const Array &advected_field,
                      const Array &dx,
