@@ -142,6 +142,41 @@ DeviceArray DeviceSession::noise(NoiseType,
   unavailable();
 }
 
+DeviceArray DeviceSession::noise_fbm(NoiseType,
+                                     glm::ivec2,
+                                     glm::vec2,
+                                     std::uint32_t,
+                                     int,
+                                     float,
+                                     float,
+                                     float,
+                                     const DeviceArray *,
+                                     const DeviceArray *,
+                                     const DeviceArray *,
+                                     glm::vec4,
+                                     glm::ivec2)
+{
+  unavailable();
+}
+
+DeviceArray DeviceSession::smooth_cpulse(DeviceArray, int)
+{
+  unavailable();
+}
+
+DeviceArray DeviceSession::spectral_equalizer(DeviceArray,
+                                               const std::vector<float> &,
+                                               int,
+                                               int)
+{
+  unavailable();
+}
+
+DeviceArray DeviceSession::normalize(DeviceArray, float, float)
+{
+  unavailable();
+}
+
 DeviceArray DeviceSession::advection_warp(DeviceArray,
                                            const DeviceArray &,
                                            const DeviceArray &,
@@ -234,6 +269,11 @@ ExecutionStats DeviceSession::stats() const
 }
 
 bool supports_noise(NoiseType)
+{
+  return false;
+}
+
+bool supports_noise_fbm(NoiseType)
 {
   return false;
 }
