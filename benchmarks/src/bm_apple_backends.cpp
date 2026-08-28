@@ -1,6 +1,7 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU
  * General Public License. The full license is in the LICENSE file. */
 
+#include <algorithm>
 #include <chrono>
 #include <cstdint>
 #include <cstdlib>
@@ -565,6 +566,78 @@ static void BM_Apple_Metal_GradientNorm(benchmark::State &state)
     stats = hmap::gpu::metal::last_execution_stats();
     benchmark::DoNotOptimize(output.vector.data());
   }
+  record_metal_timing(state, timing, stats);
+  record_pixels(state, size);
+}
+
+static int morphological_radius_for_size(int size)
+{
+  (void)size;
+  return 4;
+}
+
+static void BM_Phase7_CPU_MorphologicalGradient(benchmark::State &state)
+{
+  const int size = state.range(0);
+  const Array input = make_field(size);
+  const int radius = morphological_radius_for_size(size);
+  bool warmed = false;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return hmap::morphological_gradient(input, radius); });
+    Array output = hmap::morphological_gradient(input, radius);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  state.counters["radius"] = static_cast<double>(radius);
+  record_pixels(state, size);
+}
+
+static void BM_Phase7_OpenCL_MorphologicalGradient(benchmark::State &state)
+{
+  skip_if_opencl_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const Array input = make_field(size);
+  const int radius = morphological_radius_for_size(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return hmap::gpu::morphological_gradient(input, radius); });
+    timing = {};
+    const auto total_start = Clock::now();
+    Array output = hmap::gpu::morphological_gradient(input, radius);
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  state.counters["radius"] = static_cast<double>(radius);
+  record_timing(state, timing);
+  record_pixels(state, size);
+}
+
+static void BM_Phase7_Metal_MorphologicalGradient(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const Array input = make_field(size);
+  const int radius = morphological_radius_for_size(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return hmap::gpu::metal::morphological_gradient(input, radius); });
+    const auto total_start = Clock::now();
+    Array output = hmap::gpu::metal::morphological_gradient(input, radius);
+    timing.total_ms = elapsed_ms(total_start);
+    stats = hmap::gpu::metal::last_execution_stats();
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  state.counters["radius"] = static_cast<double>(radius);
   record_metal_timing(state, timing, stats);
   record_pixels(state, size);
 }
@@ -1625,6 +1698,25 @@ BENCHMARK(BM_Apple_OpenCL_GradientNorm)
 BENCHMARK(BM_Apple_Metal_GradientNorm)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_pointwise_sizes); })
+    ->UseRealTime();
+
+BENCHMARK(BM_Phase7_CPU_MorphologicalGradient)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : {512, 1024, 2048, 4096}) b->Arg(size);
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase7_OpenCL_MorphologicalGradient)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : {512, 1024, 2048, 4096}) b->Arg(size);
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase7_Metal_MorphologicalGradient)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : {512, 1024, 2048, 4096}) b->Arg(size);
+            })
     ->UseRealTime();
 
 BENCHMARK(BM_Apple_CPU_SmoothMaximum)
