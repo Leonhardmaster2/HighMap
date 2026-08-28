@@ -469,6 +469,21 @@ TEST_F(MetalBackend, DeviceArrayThermalMatchesSynchronousMetal)
   EXPECT_EQ(stats.encoders, 5u);
 }
 
+TEST_F(MetalBackend, DeviceArrayBorderExtrapolationMatchesArray)
+{
+  const glm::ivec2 shape = {29, 13};
+  Array source(shape);
+  fill_field(source);
+  Array expected = source;
+  hmap::extrapolate_borders(expected);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device_source = session.upload(source);
+  auto device_result = session.extrapolate_borders(std::move(device_source));
+  const Array actual = session.download(device_result);
+  expect_finite_and_close(actual, expected, 1e-6f);
+}
+
 TEST_F(MetalBackend, DeviceArrayLinearThermalBlendMatchesReference)
 {
   const glm::ivec2 shape = {29, 13};

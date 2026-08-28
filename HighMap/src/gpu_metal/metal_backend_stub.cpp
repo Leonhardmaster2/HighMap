@@ -177,6 +177,11 @@ DeviceArray DeviceSession::thermal_ridge(DeviceArray,
   unavailable();
 }
 
+DeviceArray DeviceSession::extrapolate_borders(DeviceArray)
+{
+  unavailable();
+}
+
 DeviceArray DeviceSession::linear_combine(DeviceArray,
                                            const DeviceArray &,
                                            float,
