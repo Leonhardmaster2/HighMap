@@ -168,6 +168,8 @@ public:
                        StorageMode mode = StorageMode::private_storage);
 
   DeviceArray gradient_norm(DeviceArray array);
+  /** @brief Compute a radius-bounded morphological gradient in-resident. */
+  DeviceArray morphological_gradient(DeviceArray array, int ir);
   DeviceArray maximum_smooth(DeviceArray        array1,
                              const DeviceArray &array2,
                              float k);
@@ -296,6 +298,9 @@ bool supports_noise(NoiseType noise_type);
 bool supports_noise_fbm(NoiseType noise_type);
 
 Array gradient_norm(const Array &array);
+
+/** @brief Compute a morphological gradient with the staged Metal backend. */
+Array morphological_gradient(const Array &array, int ir);
 
 Array maximum_smooth(const Array &array1, const Array &array2, float k);
 
