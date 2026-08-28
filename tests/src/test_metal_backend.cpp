@@ -201,8 +201,293 @@ TEST_F(MetalBackend, ReportsUsableDevice)
   EXPECT_FALSE(hmap::gpu::metal::device_name().empty());
   const auto capabilities = hmap::gpu::metal::capabilities();
   EXPECT_FALSE(capabilities.device_name.empty());
+  EXPECT_GT(capabilities.recommended_max_working_set_size, 0u);
   EXPECT_GT(capabilities.thread_execution_width, 0u);
   EXPECT_GT(capabilities.max_threads_per_threadgroup, 0u);
+}
+
+TEST_F(MetalBackend, DeviceArraySharedUploadDownloadAndMove)
+{
+  const glm::ivec2 shape = {17, 11};
+  Array input(shape);
+  fill_field(input);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device = session.upload(input);
+  EXPECT_FALSE(device.empty());
+  EXPECT_EQ(device.shape(), shape);
+  EXPECT_EQ(device.size(), input.vector.size());
+  EXPECT_EQ(device.storage_mode(), hmap::gpu::metal::StorageMode::shared);
+  EXPECT_EQ(device.residency_state(),
+            hmap::gpu::metal::ResidencyState::both_valid);
+
+  auto moved = std::move(device);
+  EXPECT_TRUE(device.empty());
+  expect_finite_and_close(session.download(moved), input, 0.f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 0u);
+  EXPECT_EQ(stats.readback_bytes, input.vector.size() * sizeof(float));
+}
+
+TEST_F(MetalBackend, DeviceArrayPrivateUploadDownloadUsesExplicitStaging)
+{
+  const glm::ivec2 shape = {19, 7};
+  Array input(shape);
+  fill_field(input);
+
+  hmap::gpu::metal::DeviceSession session(
+      hmap::gpu::metal::StorageMode::private_storage);
+  auto device = session.upload(
+      input, hmap::gpu::metal::StorageMode::private_storage);
+  const auto actual = session.download(device);
+  expect_finite_and_close(actual, input, 0.f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_GE(stats.blit_encoders, 2u);
+  EXPECT_EQ(stats.readback_bytes, input.vector.size() * sizeof(float));
+}
+
+TEST_F(MetalBackend, DeviceArrayCanOutliveSession)
+{
+  const glm::ivec2 shape = {13, 9};
+  Array input(shape);
+  fill_field(input);
+
+  hmap::gpu::metal::DeviceArray device;
+  {
+    hmap::gpu::metal::DeviceSession session;
+    device = session.upload(input);
+    device.set_debug_name("phase3-lifetime");
+    EXPECT_EQ(device.debug_name(), "phase3-lifetime");
+  }
+
+  EXPECT_EQ(device.residency_state(),
+            hmap::gpu::metal::ResidencyState::both_valid);
+  expect_finite_and_close(device.to_array(), input, 0.f);
+}
+
+TEST_F(MetalBackend, DeviceArrayRejectsMixedSessionsAndShapeMismatch)
+{
+  Array first_input({11, 7}, 1.f);
+  Array second_input({13, 7}, 2.f);
+  hmap::gpu::metal::DeviceSession first_session;
+  hmap::gpu::metal::DeviceSession second_session;
+  auto first = first_session.upload(first_input);
+  auto second = second_session.upload(second_input);
+  auto wrong_shape = first_session.upload(second_input);
+
+  EXPECT_THROW(first_session.gradient_norm(second), std::invalid_argument);
+  EXPECT_THROW(first_session.maximum_smooth(first, second, 0.2f),
+               std::invalid_argument);
+  EXPECT_THROW(first_session.maximum_smooth(first, wrong_shape, 0.2f),
+               std::invalid_argument);
+}
+
+TEST_F(MetalBackend, DeviceArrayFinishClosesSessionOnce)
+{
+  Array input({15, 9}, 0.5f);
+  hmap::gpu::metal::DeviceSession session;
+  auto device = session.upload(input);
+  session.finish();
+  const auto finished = session.stats();
+  EXPECT_EQ(finished.synchronization_count, 0u);
+  EXPECT_THROW(session.gradient_norm(std::move(device)), std::runtime_error);
+}
+
+TEST_F(MetalBackend, DeviceSessionCanSplitCommandBuffersWithoutWaiting)
+{
+  const glm::ivec2 shape = {21, 13};
+  hmap::gpu::metal::DeviceSession session;
+  auto noise = session.noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  session.submit();
+  auto gradient = session.gradient_norm(std::move(noise));
+  const Array actual = session.download(gradient);
+  const Array expected = hmap::gpu::metal::gradient_norm(
+      hmap::gpu::metal::noise(hmap::NoiseType::PERLIN,
+                              shape,
+                              {4.f, 4.f},
+                              42u));
+  expect_finite_and_close(actual, expected, 1e-5f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 2u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+}
+
+TEST_F(MetalBackend, DeviceArrayPrivateDownloadIsIdempotent)
+{
+  Array input({13, 11}, 0.25f);
+  hmap::gpu::metal::DeviceSession session(
+      hmap::gpu::metal::StorageMode::private_storage);
+  auto device = session.upload(
+      input, hmap::gpu::metal::StorageMode::private_storage);
+  const Array first = session.download(device);
+  const auto after_first = session.stats();
+  const Array second = session.download(device);
+  const auto after_second = session.stats();
+
+  expect_finite_and_close(first, input, 0.f);
+  expect_finite_and_close(second, input, 0.f);
+  EXPECT_EQ(after_first.synchronization_count, 1u);
+  EXPECT_EQ(after_second.synchronization_count, 1u);
+  EXPECT_EQ(after_second.readback_bytes,
+            2u * input.vector.size() * sizeof(float));
+  EXPECT_EQ(device.residency_state(),
+            hmap::gpu::metal::ResidencyState::both_valid);
+}
+
+TEST_F(MetalBackend, DeviceArrayComposedPointwiseMatchesSynchronousMetal)
+{
+  const glm::ivec2 shape = {33, 19};
+  Array source(shape);
+  fill_field(source);
+
+  const Array synchronous_noise = hmap::gpu::metal::noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  const Array synchronous_gradient =
+      hmap::gpu::metal::gradient_norm(synchronous_noise);
+  const Array expected = hmap::gpu::metal::maximum_smooth(
+      synchronous_gradient, synchronous_noise, 0.2f);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device_noise = session.noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  auto device_other_noise = session.noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  auto device_gradient = session.gradient_norm(std::move(device_noise));
+  auto device_result = session.maximum_smooth(
+      std::move(device_gradient), device_other_noise, 0.2f);
+  const Array actual = session.download(device_result);
+  expect_finite_and_close(actual, expected, 1e-5f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_EQ(stats.readback_bytes, actual.vector.size() * sizeof(float));
+  EXPECT_EQ(stats.upload_bytes, 0u);
+  EXPECT_GE(stats.buffer_reuses, 1u);
+  EXPECT_GT(stats.bytes_reused, 0u);
+}
+
+TEST_F(MetalBackend, DeviceArrayTextureAdvectionMatchesBufferPath)
+{
+  const glm::ivec2 shape = {23, 15};
+  Array z(shape);
+  Array field(shape);
+  Array dx(shape, 0.35f);
+  Array dy(shape, -0.2f);
+  fill_field(z);
+  fill_field(field);
+
+  const Array expected = hmap::gpu::metal::advection_warp(
+      z, field, dx, dy, 0.35f, 0.8f, nullptr);
+  hmap::gpu::metal::DeviceSession session;
+  auto device_z = session.upload(z);
+  auto device_field = session.upload(field);
+  auto device_dx = session.upload(dx);
+  auto device_dy = session.upload(dy);
+  auto device_result = session.advection_warp_texture(
+      std::move(device_z), device_field, device_dx, device_dy, 0.35f, 0.8f);
+  const Array actual = session.download(device_result);
+  expect_finite_and_close(actual, expected, 2e-3f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_GE(stats.texture_allocations, 6u);
+  EXPECT_GE(stats.blit_encoders, 6u);
+}
+
+TEST_F(MetalBackend, DeviceArrayThermalMatchesSynchronousMetal)
+{
+  const glm::ivec2 shape = {29, 13};
+  Array source(shape);
+  fill_field(source);
+  const Array talus(shape, 0.01f);
+
+  Array expected = source;
+  hmap::gpu::metal::thermal(expected, talus, 5);
+
+  hmap::gpu::metal::DeviceSession session(
+      hmap::gpu::metal::StorageMode::private_storage);
+  auto device_source = session.upload(
+      source, hmap::gpu::metal::StorageMode::private_storage);
+  auto device_talus = session.upload(
+      talus, hmap::gpu::metal::StorageMode::private_storage);
+  auto device_result =
+      session.thermal(std::move(device_source), device_talus, 5);
+  const Array actual = session.download(device_result);
+  expect_finite_and_close(actual, expected, 2e-5f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_EQ(stats.encoders, 5u);
+}
+
+TEST_F(MetalBackend, DeviceArrayHydraulicMatchesSynchronousMetal)
+{
+  const glm::ivec2 shape = {17, 11};
+  Array source(shape);
+  fill_field(source);
+  Array expected = source;
+  Array expected_water;
+  hmap::gpu::metal::hydraulic_vpipes(expected,
+                                     0.025f,
+                                     true,
+                                     0.1f,
+                                     2,
+                                     0.5f,
+                                     0.5f,
+                                     0.001f,
+                                     0.01f,
+                                     1.f,
+                                     10.f,
+                                     true,
+                                     0.01f,
+                                     nullptr,
+                                     &expected_water,
+                                     nullptr,
+                                     nullptr,
+                                     nullptr);
+
+  hmap::gpu::metal::DeviceSession session(
+      hmap::gpu::metal::StorageMode::private_storage);
+  auto device_source = session.upload(
+      source, hmap::gpu::metal::StorageMode::private_storage);
+  hmap::gpu::metal::DeviceArray actual_water;
+  auto device_result = session.hydraulic_vpipes(std::move(device_source),
+                                                0.025f,
+                                                true,
+                                                0.1f,
+                                                2,
+                                                0.5f,
+                                                0.5f,
+                                                0.001f,
+                                                0.01f,
+                                                1.f,
+                                                10.f,
+                                                true,
+                                                0.01f,
+                                                nullptr,
+                                                &actual_water);
+  const Array actual = session.download(device_result);
+  const Array actual_water_host = session.download(actual_water);
+  expect_finite_and_close(actual, expected, 2e-5f);
+  expect_finite_and_close(actual_water_host, expected_water, 2e-5f);
+
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_EQ(stats.readback_bytes,
+            (actual.vector.size() + actual_water_host.vector.size()) *
+                sizeof(float));
+  EXPECT_GT(stats.peak_resident_bytes, actual.vector.size() * sizeof(float));
 }
 
 TEST_F(MetalBackend, GradientNormMatchesCpu)
