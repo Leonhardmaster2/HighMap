@@ -36,6 +36,48 @@ struct NoiseParams
   float bbox3;
 };
 
+struct NoiseFbmParams
+{
+  int nx;
+  int ny;
+  int noise_id;
+  float kx;
+  float ky;
+  uint seed;
+  int octaves;
+  float weight;
+  float persistence;
+  float lacunarity;
+  int has_ctrl_param;
+  int has_noise_x;
+  int has_noise_y;
+  int period_x;
+  int period_y;
+  float bbox0;
+  float bbox1;
+  float bbox2;
+  float bbox3;
+};
+
+struct SmoothCpulseParams
+{
+  int nx;
+  int ny;
+  int ir;
+  int pass;
+  float weight_sum;
+};
+
+struct NormalizeParams
+{
+  int nx;
+  int ny;
+  float from_min;
+  float from_max;
+  float to_min;
+  float to_max;
+};
+
 struct AdvectionParams
 {
   int nx;
@@ -84,6 +126,12 @@ struct HydraulicParams
 };
 
 struct ReduceParams
+{
+  int count;
+  int threads_per_group;
+};
+
+struct MinMaxParams
 {
   int count;
   int threads_per_group;
@@ -247,6 +295,32 @@ inline float evaluate_noise(float2 p, int noise_id, float fseed, int2 period)
   return 0.f;
 }
 
+inline float evaluate_noise_fbm(float2       p,
+                               int          noise_id,
+                               float        fseed,
+                               int2         period,
+                               int          octaves,
+                               float        weight,
+                               float        persistence,
+                               float        lacunarity)
+{
+  float n = 0.f;
+  float nf = 1.f;
+  float na = 0.6f;
+  int2 per = period;
+  for (int i = 0; i < octaves; ++i)
+  {
+    float v = evaluate_noise(p * nf, noise_id, fseed, per);
+    n += v * na;
+    na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
+    na *= persistence;
+    nf *= lacunarity;
+    per = int2(per.x > 0 ? int(float(per.x) * lacunarity + 0.5f) : 0,
+               per.y > 0 ? int(float(per.y) * lacunarity + 0.5f) : 0);
+  }
+  return n;
+}
+
 kernel void gradient_norm(device const float *array [[buffer(0)]],
                           device float       *g_norm [[buffer(1)]],
                           constant GridParams &p [[buffer(2)]],
@@ -325,6 +399,69 @@ kernel void noise(device float       *output [[buffer(0)]],
                                  p.noise_id,
                                  fseed,
                                  int2(p.period_x, p.period_y));
+}
+
+kernel void noise_fbm(device float       *output [[buffer(0)]],
+                      device const float *ctrl_param [[buffer(1)]],
+                      device const float *noise_x [[buffer(2)]],
+                      device const float *noise_y [[buffer(3)]],
+                      constant NoiseFbmParams &p [[buffer(4)]],
+                      uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  uint index = index_at(int(gid.x), int(gid.y), p.nx);
+  float fseed = seeded_random(p.seed);
+  float ct = p.has_ctrl_param ? ctrl_param[index] : 1.f;
+  float dx = p.has_noise_x ? noise_x[index] : 0.f;
+  float dy = p.has_noise_y ? noise_y[index] : 0.f;
+  float x = p.kx * (float(gid.x) / float(p.nx) * (p.bbox1 - p.bbox0) + p.bbox0) +
+            p.kx * dx;
+  float y = p.ky * (float(gid.y) / float(p.ny) * (p.bbox3 - p.bbox2) + p.bbox2) +
+            p.ky * dy;
+  float new_weight = (1.f - ct) + ct * p.weight;
+  output[index] = evaluate_noise_fbm(float2(x, y),
+                                     p.noise_id,
+                                     fseed,
+                                     int2(p.period_x, p.period_y),
+                                     p.octaves,
+                                     new_weight,
+                                     p.persistence,
+                                     p.lacunarity);
+}
+
+kernel void smooth_cpulse(device const float *input [[buffer(0)]],
+                          device float       *output [[buffer(1)]],
+                          constant SmoothCpulseParams &p [[buffer(2)]],
+                          uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  float value = 0.f;
+  for (int k = -p.ir; k <= p.ir; ++k)
+  {
+    int x = p.pass == 0 ? int(gid.x) + k : int(gid.x);
+    int y = p.pass == 0 ? int(gid.y) : int(gid.y) + k;
+    x = clamp(x, 0, p.nx - 1);
+    y = clamp(y, 0, p.ny - 1);
+    float d = float(abs(k)) / float(p.ir);
+    float w = exp(-0.5f * d * d * 9.f) / p.weight_sum;
+    value += input[index_at(x, y, p.nx)] * w;
+  }
+  output[index_at(int(gid.x), int(gid.y), p.nx)] = value;
+}
+
+kernel void normalize(device const float *input [[buffer(0)]],
+                      device float       *output [[buffer(1)]],
+                      constant NormalizeParams &p [[buffer(2)]],
+                      uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  uint i = index_at(int(gid.x), int(gid.y), p.nx);
+  if (p.from_min == p.from_max)
+    output[i] = p.to_min;
+  else
+    output[i] = p.to_min + (input[i] - p.from_min) *
+                            (p.to_max - p.to_min) /
+                            (p.from_max - p.from_min);
 }
 
 kernel void advection_warp(device const float *z [[buffer(0)]],
@@ -721,6 +858,54 @@ kernel void hydraulic_sum_reduce(device const float *values [[buffer(0)]],
     threadgroup_barrier(mem_flags::mem_threadgroup);
   }
 
+  if (lid == 0u) partials[group] = reduction_shared[0];
+}
+
+kernel void minmax_tiles(device const float *values [[buffer(0)]],
+                         device float2      *partials [[buffer(1)]],
+                         constant MinMaxParams &p [[buffer(2)]],
+                         uint gid [[thread_position_in_grid]],
+                         uint lid [[thread_index_in_threadgroup]],
+                         uint group [[threadgroup_position_in_grid]])
+{
+  threadgroup float2 reduction_shared[256];
+  reduction_shared[lid] = gid < uint(p.count)
+                              ? float2(values[gid], values[gid])
+                              : float2(INFINITY, -INFINITY);
+  threadgroup_barrier(mem_flags::mem_threadgroup);
+  for (uint stride = uint(p.threads_per_group) / 2u; stride > 0u; stride /= 2u)
+  {
+    if (lid < stride)
+      reduction_shared[lid] = float2(min(reduction_shared[lid].x,
+                                        reduction_shared[lid + stride].x),
+                                    max(reduction_shared[lid].y,
+                                        reduction_shared[lid + stride].y));
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+  }
+  if (lid == 0u) partials[group] = reduction_shared[0];
+}
+
+kernel void minmax_reduce(device const float2 *values [[buffer(0)]],
+                          device float2       *partials [[buffer(1)]],
+                          constant MinMaxParams &p [[buffer(2)]],
+                          uint lid [[thread_index_in_threadgroup]],
+                          uint group [[threadgroup_position_in_grid]])
+{
+  threadgroup float2 reduction_shared[256];
+  uint input_index = group * uint(p.threads_per_group) + lid;
+  reduction_shared[lid] = input_index < uint(p.count)
+                              ? values[input_index]
+                              : float2(INFINITY, -INFINITY);
+  threadgroup_barrier(mem_flags::mem_threadgroup);
+  for (uint stride = uint(p.threads_per_group) / 2u; stride > 0u; stride /= 2u)
+  {
+    if (lid < stride)
+      reduction_shared[lid] = float2(min(reduction_shared[lid].x,
+                                        reduction_shared[lid + stride].x),
+                                    max(reduction_shared[lid].y,
+                                        reduction_shared[lid + stride].y));
+    threadgroup_barrier(mem_flags::mem_threadgroup);
+  }
   if (lid == 0u) partials[group] = reduction_shared[0];
 }
 

@@ -682,6 +682,63 @@ TEST_F(MetalBackend, SupportedNoiseMatchesOpenCL)
   }
 }
 
+TEST_F(MetalBackend, ResidentNoiseFbmAndNormalizationMatchOpenCL)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {37, 29};
+  const glm::vec2 kw = {5.f, 3.f};
+  const std::uint32_t seed = 1234u;
+  Array expected = hmap::gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                        shape,
+                                        kw,
+                                        seed,
+                                        8,
+                                        0.7f,
+                                        0.5f,
+                                        2.f);
+  hmap::remap(expected, 0.f, 1.f);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device = session.noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                  shape,
+                                  kw,
+                                  seed,
+                                  8,
+                                  0.7f,
+                                  0.5f,
+                                  2.f);
+  auto normalized = session.normalize(std::move(device));
+  const Array actual = session.download(normalized);
+  expect_finite_and_close(actual, expected, 2e-4f);
+  EXPECT_EQ(session.stats().upload_bytes, 0u);
+}
+
+TEST_F(MetalBackend, ResidentSpectralEqualizerMatchesOpenCL)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {47, 31};
+  Array source(shape);
+  fill_field(source);
+  const std::vector<float> weights = {0.8f, 1.1f, 0.6f, 1.3f, 0.9f, 1.0f};
+  const Array expected =
+      hmap::gpu::spectral_equalizer(source, weights, 3, 11);
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device_source = session.upload(source);
+  auto device_result = session.spectral_equalizer(std::move(device_source),
+                                                  weights,
+                                                  3,
+                                                  11);
+  const Array actual = session.download(device_result);
+  expect_finite_and_close(actual, expected, 2e-4f);
+  EXPECT_EQ(session.stats().readback_bytes,
+            actual.vector.size() * sizeof(float));
+}
+
 TEST_F(MetalBackend, AdvectionMatchesOpenCL)
 {
   if (!opencl_available())

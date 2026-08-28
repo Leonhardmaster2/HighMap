@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
@@ -173,6 +174,28 @@ public:
                     const DeviceArray *p_noise_y = nullptr,
                     glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f},
                     glm::ivec2     period = {0, 0});
+  DeviceArray noise_fbm(NoiseType     noise_type,
+                        glm::ivec2    shape,
+                        glm::vec2     kw,
+                        std::uint32_t seed,
+                        int           octaves = 8,
+                        float         weight = 0.7f,
+                        float         persistence = 0.5f,
+                        float         lacunarity = 2.f,
+                        const DeviceArray *p_ctrl_param = nullptr,
+                        const DeviceArray *p_noise_x = nullptr,
+                        const DeviceArray *p_noise_y = nullptr,
+                        glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f},
+                        glm::ivec2     period = {0, 0});
+  /** @brief Gaussian separable blur kept entirely in the session. */
+  DeviceArray smooth_cpulse(DeviceArray array, int ir);
+  /** @brief Rebuild weighted frequency bands without host materialization. */
+  DeviceArray spectral_equalizer(DeviceArray              array,
+                                 const std::vector<float> &weights,
+                                 int                       ir_min,
+                                 int                       ir_max);
+  /** @brief Remap using a device reduction for the source range. */
+  DeviceArray normalize(DeviceArray array, float vmin = 0.f, float vmax = 1.f);
   DeviceArray advection_warp(DeviceArray z,
                              const DeviceArray &advected_field,
                              const DeviceArray &dx,
@@ -245,6 +268,8 @@ private:
 
 /** @brief Return whether the staged Metal noise kernel supports this type. */
 bool supports_noise(NoiseType noise_type);
+/** @brief Return whether resident FBM is available for this noise type. */
+bool supports_noise_fbm(NoiseType noise_type);
 
 Array gradient_norm(const Array &array);
 
