@@ -1,18 +1,17 @@
-# Apple Metal backend design
+# Apple Metal backend design — Phase 2
 
-## Goals
+## Goals and current boundary
 
 The Metal backend is an optional native compute backend for Apple platforms.
-It must coexist with the existing CPU and OpenCL implementations, preserve
-existing public HighMap signatures, and avoid making callers manage Metal
-objects for ordinary `hmap::gpu::*` calls.
+It coexists with CPU and OpenCL, preserves the existing public HighMap
+signatures, and keeps Metal objects out of ordinary `Array` callers.
 
-The first slice is intentionally small: a capability-detected Metal device,
-cached compute pipelines, flat float buffers, explicit command submission, and
-representative gradient/filter/noise/advection/thermal/hydraulic entry points. The
-canonical shader source is kept in `HighMap/src/gpu_metal/highmap.metal` and is
-embedded into the library at configure time so a runtime source checkout is
-not required.
+The Phase 2 boundary is deliberately measurable: gradient, smooth extrema,
+noise, advection, thermal and hydraulic virtual pipes have native Metal
+implementations, instrumented timing counters, expanded parity tests and a
+common benchmark matrix. The public API is still synchronous and returns
+host-resident `Array` values. A GPU-resident composition API is the next
+architecture milestone, not an implicit property of these wrappers.
 
 ## Layering
 
@@ -25,124 +24,138 @@ HighMap public API (Array and existing gpu::* functions)
        v                         v
   existing OpenCL path       hmap::gpu::metal
   (CLWrapper)                MetalContext + MSL pipelines
-             |
-             v
-          Apple GPU
+             |                         |
+             +------------+------------+
+                          v
+                       Apple GPU
 ```
 
-The `hmap::gpu::metal` namespace is a low-level, optional capability surface.
-The existing `hmap::gpu::*` functions use it opportunistically for the staged
-representative operations and fall back to their current OpenCL behavior when
-Metal is unavailable. No OpenCL source or API is removed.
+The `hmap::gpu::metal` namespace is a low-level optional capability surface.
+The high-level staged functions select Metal when it is available and retain
+the existing OpenCL fallback otherwise. No OpenCL source or API is removed.
 
-## Resource model
+## Resource model and measured choices
 
-### Device and context
+`MetalContext` owns the default `MTLDevice`, one command queue, one shader
+library, a function-name pipeline cache and capability metadata. Initialization
+is lazy and thread-safe. Pipeline lookup is cached; the instrumented path
+reports cache misses separately from encoding and GPU time.
 
-`MetalContext` owns:
+Current staged calls use `MTLBuffer` objects containing the exact flat
+`Array::vector` layout (`j * nx + i`). This is the right boundary for the
+existing synchronous API because callers expect a returned or mutated CPU
+`Array` immediately. All current buffers use unified-memory `Shared` storage;
+that makes upload and final readback explicit and reliable on Apple Silicon.
 
-* the default `MTLDevice`, selected through `MTLCreateSystemDefaultDevice()`;
-* one command queue for the current synchronous API;
-* one shader library compiled once from the embedded MSL source;
-* a map of compute pipeline states keyed by function name;
-* capability metadata obtained from Metal objects, never from M-series names.
+The Phase 2 benchmark does not justify switching these isolated calls to
+`Private` storage: each call still has to upload inputs and read back its
+result, so a private resource would add a staging/blit path without removing
+the public boundary. A private-storage experiment should wait for a chain that
+keeps multiple results on the device.
 
-Initialization is lazy and thread-safe. Pipeline lookup is cached. Failure to
-find Metal or compile the shader library leaves `is_available()` false and is
-reported through a descriptive diagnostic; the CPU/OpenCL paths remain usable.
+Buffers are used for every staged operation. Pointwise and reduction kernels
+need linear indexing, and advection's custom mirrored-boundary sampler fits
+the buffer representation. The OpenCL reference uses images for advection,
+but the Metal measurements did not establish a texture win after accounting
+for allocation and readback; texture-backed sampling remains a targeted future
+experiment rather than a speculative rewrite.
 
-### Data representation
+## Device capabilities and dispatch
 
-The first backend uses `MTLBuffer` objects containing the exact flat
-`Array::vector` layout (`j * nx + i`). This keeps copies predictable and lets
-the same kernels support both pointwise and neighborhood operations. The
-abstraction does not expose a graphics texture or a texture sampler to public
-HighMap APIs yet.
+The backend reports device name, recommended working-set size, thread
+execution width, maximum threads per threadgroup and a generic Metal family
+number. It does not infer an M-series model from marketing names.
 
-The intended next step is a private `DeviceArray` with:
+The measured default dispatch policy uses up to 32 lanes for pointwise kernels
+and a compact 16-wide tile for neighborhood kernels, clamped by the pipeline's
+reported SIMD width and maximum threadgroup size. `HIGHMAP_METAL_THREADGROUP`
+provides a reproducible override for future sweeps. The measured sweeps showed
+32-wide pointwise dispatch improving gradient and 16-wide neighborhood
+dispatch improving advection relative to the initial 8-wide baseline.
 
-* shape and element format;
-* `MTLBuffer` or `MTLTexture` storage;
-* storage mode (`Shared` for upload/readback-friendly data, `Private` for long
-  GPU chains);
-* host/device dirty state;
-* explicit `upload`, `download`, and `synchronize` operations.
-
-That type should be introduced only after measurements show a composed pipeline
-benefits from residency; `Array` remains a simple host value type.
-
-### Command submission
+## Command buffers, synchronization and residency
 
 The synchronous adapter encodes one or more compute passes, commits a command
-buffer, and waits only at the public result boundary. The hydraulic path uses
-two state buffers and encodes all dependent passes for an iteration before the
-command buffer is committed. It therefore avoids the current OpenCL
-flow-readback/water-readback/erosion-readback/sediment-readback sequence.
+buffer, waits at the public result boundary and then copies results to the
+caller. Simple operations use one encoder and one wait. Thermal uses one
+command buffer with one encoder per ping-pong iteration and one final wait.
 
-The multi-pass design uses separate buffers for a pass's input and output. The
-Metal implementation must not rely on in-place neighbor writes. A future
-asynchronous API can return a command token or expose a `DeviceArray`, but that
-is intentionally outside this milestone.
+Hydraulic is the main residency target. It allocates the full ping-pong state
+once, encodes flow, water, erosion, sediment and evaporation passes for every
+iteration, keeps the state on the GPU between passes, and commits exactly one
+command buffer. When volume maintenance is requested, the water sum and
+rescaling are also encoded in the same command buffer using a hierarchical
+float reduction. Only the final requested arrays are read back. The correctness
+suite asserts one command buffer and one synchronization for this path.
 
-## Public and internal contracts
+This is a meaningful architecture difference from the benchmark's OpenCL
+hydraulic copy, which reads outputs after each dependent pass and performs
+host-side volume/state work between passes. The hydraulic speedup is therefore
+not attributed to Metal hardware alone.
 
-The low-level header provides:
+## Reductions and numerical behavior
 
-* `is_available()` and `device_name()` for diagnostics;
-* `gradient_norm`, `noise`, and `advection_warp` returning `Array` values;
-* `thermal` and `hydraulic_vpipes` mutating/outputting arrays with the existing
-  signatures.
+The hydraulic volume correction uses a two-stage GPU reduction: a tile sum
+followed by recursively reduced partial buffers, then a GPU rescale pass. The
+intermediate scalar remains device-resident; only final public arrays are
+downloaded. The reduction uses float accumulation rather than a quantized
+integer atomic so larger maps and water levels do not silently overflow.
 
-These functions throw only for an explicitly requested Metal operation after
-Metal was reported available but a runtime operation failed. High-level
-selection checks availability before calling them and otherwise preserves the
-existing OpenCL behavior.
+Metal uses float32 and preserves the existing boundary and sampling rules.
+Stress tests cover flat and non-square gradients, seeded noise with optional
+maps/bounds/periods, masked advection, zero/one/many thermal iterations and
+non-square hydraulic output/invariant cases.
 
-## Backend selection policy for this milestone
+## Fusion and a future `DeviceArray`
 
-There is no speculative dynamic scheduler. For the five staged operations:
+The current wrappers do not fuse public operations. Fusing two calls behind
+the existing `Array` API would either change when the caller can observe a
+result or silently retain hidden device state, so it would be an unsafe
+optimization at this boundary. The next design is an internal or public
+GPU-resident `DeviceArray` with:
 
-* if Metal is available on macOS, the selected high-level GPU function uses
-  Metal;
-* if Metal is unavailable, it uses the existing OpenCL implementation;
-* non-Apple builds compile the stub and use OpenCL;
-* future selection can incorporate operation, dimensions, iteration count,
-  current residency and requested result residency after benchmark evidence.
+* shape, element format and backend ownership;
+* an `MTLBuffer` or `MTLTexture` handle and storage mode;
+* host/device dirty state with explicit upload/download operations;
+* lifetime tied to the Metal device/queue and command-buffer dependencies;
+* thread-safe ownership rules, or an explicit single-queue contract;
+* conversion to `Array` only at a requested synchronization boundary.
 
-The benchmark harness records CPU/OpenCL/Metal separately using end-to-end
-host API wall time, including the current upload, dispatch, synchronization and
-readback costs. Separate upload/dispatch/readback columns remain a follow-up
-once the backend exposes nonblocking timing hooks. On the current host, the
-OpenCL and Metal cases are explicitly unavailable at runtime, so no backend
-speed claim is made yet.
+With that type, a caller could compose gradient → smooth → noise or a
+multi-pass terrain chain without allocating, uploading and downloading every
+stage. The benchmark evidence supports doing this for hydraulic and other
+multi-pass workloads first. It does not yet support claiming a generic fusion
+engine or migrating the remaining OpenCL catalog.
 
-## CMake and portability
+## CPU crossover and selection policy
 
-`HIGHMAP_ENABLE_METAL` defaults on only as a request; actual availability is
-detected from Metal framework headers/library. Objective-C++ is enabled only on
-that successful detection. The Objective-C++ backend source is excluded from non-Apple and
-SDK-incomplete builds. Foundation/Metal frameworks are linked privately to the
-HighMap library.
+The measured results show no universal GPU threshold. CPU wins small gradient
+and remains competitive through 4096²; Metal is clearly ahead of CPU for noise
+from 512² in the measured samples; advection benefits at 1024² and 2048² but
+loses its advantage at 4096² when transfer cost dominates; hydraulic benefits
+strongly from the single-command-buffer design. The high-level scheduler
+should therefore eventually consider operation, dimensions, iteration count,
+current residency and requested result residency. Until residency exists, the
+selection policy remains operation-specific and benchmark-backed rather than a
+single pixel-count cutoff.
 
-OpenCL remains the existing required compatibility backend in this milestone;
-its source and submodule are untouched. The existing OpenMP option is made
-robust for Apple Clang + Homebrew `libomp`, while builds without a usable
-OpenMP runtime continue with the library's existing serial behavior.
+## Build and portability
 
-## Numerical policy
+`HIGHMAP_ENABLE_METAL` is optional. Objective-C++ and Metal framework linkage
+are enabled only when the Apple SDK is usable. Release builds use a build-time
+`metallib` when standalone `xcrun metal` and `metallib` tools are available;
+otherwise the embedded MSL source is compiled by `newLibraryWithSource` at
+runtime. Non-Apple builds use the stub API and compile without Objective-C++.
 
-Metal uses float32 and follows the algorithm's existing boundary and sampling
-rules. Parity tests report maximum absolute error, mean absolute error and
-RMSE. Iterative erosion additionally checks invariants and aggregate terrain
-statistics. Any intentional difference caused by ping-pong ordering or Metal
-math lowering is recorded in `METAL_PORT_STATUS.md`.
+The current host lacks the standalone Metal compiler, so the runtime source
+path is the active build path. The build-time path is implemented and will be
+selected automatically on a tool-complete Apple SDK.
 
-## Deferred work
+## Next milestone
 
-* texture-backed sampling after profiling buffer-vs-texture behavior;
-* device-side reductions for all hydrology algorithms;
-* GPU-resident public `DeviceArray` composition;
-* full 81-file OpenCL kernel migration;
-* asynchronous public API and event ownership;
-* per-GPU-family paths. Capability checks, not M-series marketing names, are
-  the extension point.
+Implement and benchmark the GPU-resident `DeviceArray` boundary, then measure
+buffer versus texture and shared versus private storage for composed chains.
+Prioritize reductions and linear pointwise stages that can reuse resident
+state. Expand the kernel catalog only after those measurements establish that
+the residency boundary, rather than another isolated wrapper, is the limiting
+factor.

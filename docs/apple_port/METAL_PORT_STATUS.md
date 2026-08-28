@@ -1,21 +1,25 @@
 # Metal port status
 
 Status values: `planned`, `implemented`, `compiled`, `tested`, or `blocked`.
-“Implemented” means source exists; it does not imply runtime parity.
+“Implemented” means source exists; it does not imply numerical parity by
+itself.
 
 | Function | CPU | OpenCL | Metal | Tested | Benchmark | Notes |
 |---|---|---|---|---|---|---|
-| `gradient_norm` | yes | yes | implemented / compiled | runtime-blocked | CPU only | Flat-buffer local-neighbor kernel; CPU/OpenCL parity tests are present, but no Metal device is exposed here |
-| `maximum_smooth` / `minimum_smooth` | yes | yes | implemented / compiled | runtime-blocked | CPU only | Pointwise smooth-extrema filter; included as the first simple filter stage |
-| `noise` (Perlin/simplex/value subset) | yes | yes | implemented / compiled | runtime-blocked | CPU only | Perlin, Perlin billow/half, simplex2, value and value-linear paths; deterministic and OpenCL parity tests are present |
-| `advection_warp` | yes | yes | implemented / compiled | runtime-blocked | CPU only | Bounded path walk; OpenCL parity test uses a 2e-3 mirrored-boundary tolerance |
-| `thermal` | yes | yes | implemented / compiled | runtime-blocked | CPU only | Metal uses ping-pong state; high-level wrapper preserves border extrapolation |
-| `hydraulic_vpipes` | yes | yes | implemented / compiled | runtime-blocked | CPU only | Four dependent passes stay resident in one Metal command buffer; optional water conservation uses a hierarchical float reduction |
-| Other 76+ OpenCL entry points | yes/mixed | yes | planned | pending | pending | Port only where measurements justify it |
+| `gradient_norm` | yes | yes | implemented / compiled | 14-test suite | measured | Flat-buffer local-neighbor kernel; CPU parity and boundary stress coverage |
+| `maximum_smooth` / `minimum_smooth` | yes | yes | implemented / compiled | compiled | measured harness | Pointwise smooth-extrema filters |
+| `noise` | yes | yes | implemented / compiled | 14-test suite | measured | Seed, optional-map, bbox and period parity coverage |
+| `advection_warp` | yes in library, no benchmark reference | yes | implemented / compiled | 14-test suite | measured | Buffer sampler with mask and non-square stress coverage |
+| `thermal` | yes in library, no benchmark reference | yes | implemented / compiled | 14-test suite | measured | Ping-pong state; one command buffer for all iterations |
+| `hydraulic_vpipes` | yes in library, no benchmark reference | yes | implemented / compiled | 14-test suite | measured | GPU-resident state, one command buffer, GPU hierarchical volume reduction |
+| Other OpenCL entry points | yes/mixed | yes | planned | pending | pending | Port only when residency-aware measurements justify it |
 
-The current host has Metal headers/frameworks, and the Objective-C++ backend
-compiles. Runtime MSL compilation and kernel execution could not be exercised:
-`MTLCreateSystemDefaultDevice()` returned no usable device. The standalone
-`xcrun metal` compiler is also absent, so when a device is available shader
-compilation is intentionally performed through
-`MTLDevice::newLibraryWithSource`.
+The current host exposes both an Apple M3 OpenCL device and a usable native
+Metal device. Metal-focused tests pass 14/14, and the same tests skip cleanly
+when configured with Metal disabled. The standalone `xcrun metal` compiler is
+not installed on this host, so the tested Release build uses embedded MSL
+runtime compilation; the build-time `metallib` path is enabled automatically
+when the SDK tools are available.
+
+Detailed timings and the Phase 2 decision are recorded in
+`BENCHMARK_RESULTS.md` and `PHASE2_PERFORMANCE_REVIEW.md`.
