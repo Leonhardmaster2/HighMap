@@ -286,6 +286,27 @@ Array noise(NoiseType     noise_type,
             glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
             glm::ivec2    period = {0, 0});
 
+Array noise_fbm(NoiseType     noise_type,
+                glm::ivec2    shape,
+                glm::vec2     kw,
+                std::uint32_t seed,
+                int           octaves = 8,
+                float         weight = 0.7f,
+                float         persistence = 0.5f,
+                float         lacunarity = 2.f,
+                const Array  *p_ctrl_param = nullptr,
+                const Array  *p_noise_x = nullptr,
+                const Array  *p_noise_y = nullptr,
+                glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
+                glm::ivec2    period = {0, 0});
+
+Array smooth_cpulse(const Array &array, int ir);
+
+Array spectral_equalizer(const Array              &array,
+                         const std::vector<float> &weights,
+                         int                       ir_min,
+                         int                       ir_max);
+
 Array advection_warp(const Array &z,
                      const Array &advected_field,
                      const Array &dx,
