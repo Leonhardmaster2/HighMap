@@ -1,4 +1,9 @@
-# Performance baseline
+# Performance baseline — Phase 1 historical record
+
+This document records the pre-Phase-2 environment and unavailable-device
+baseline. Current Apple M3 OpenCL/Metal measurements are in
+`BENCHMARK_RESULTS.md`; the Phase 2 interpretation is in
+`PHASE2_PERFORMANCE_REVIEW.md`.
 
 ## Environment
 
