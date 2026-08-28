@@ -3,6 +3,7 @@
  * with this software. */
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <string>
 
@@ -26,6 +27,51 @@ bool is_available();
 
 /** @brief Return the selected Metal device name, or an empty string. */
 std::string device_name();
+
+/**
+ * @brief Capability and dispatch data exposed for diagnostics and tuning.
+ *
+ * Values are zero on builds without a usable Metal backend. GPU family
+ * numbers are reported by Metal and are intentionally not mapped to M-series
+ * marketing names.
+ */
+struct DeviceCapabilities
+{
+  std::string device_name;
+  std::uint64_t recommended_max_working_set_size = 0;
+  std::uint32_t thread_execution_width = 0;
+  std::uint32_t max_threads_per_threadgroup = 0;
+  std::uint32_t gpu_family = 0;
+};
+
+DeviceCapabilities capabilities();
+
+/**
+ * @brief Counters from the most recent Metal operation on the calling thread.
+ *
+ * These are diagnostic counters for benchmark and profiling work, not part of
+ * the numerical API contract. GPU time is obtained from Metal command-buffer
+ * timestamps when the driver reports them.
+ */
+struct ExecutionStats
+{
+  std::uint64_t buffer_allocations = 0;
+  std::uint64_t pipeline_creations = 0;
+  std::uint64_t command_buffers = 0;
+  std::uint64_t encoders = 0;
+  std::uint64_t synchronization_count = 0;
+  std::uint64_t upload_bytes = 0;
+  std::uint64_t readback_bytes = 0;
+  double        allocation_ms = 0.0;
+  double        upload_ms = 0.0;
+  double        pipeline_lookup_ms = 0.0;
+  double        encoding_ms = 0.0;
+  double        gpu_execution_ms = 0.0;
+  double        wait_ms = 0.0;
+  double        readback_ms = 0.0;
+};
+
+ExecutionStats last_execution_stats();
 
 /** @brief Return whether the staged Metal noise kernel supports this type. */
 bool supports_noise(NoiseType noise_type);
