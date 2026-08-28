@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <cstdint>
+#include <utility>
 #include <vector>
 
 #include <benchmark/benchmark.h>
@@ -482,8 +483,20 @@ void record_metal_timing(benchmark::State                  &state,
   state.counters["command_buffers"] =
       static_cast<double>(stats.command_buffers);
   state.counters["encoders"] = static_cast<double>(stats.encoders);
+  state.counters["blit_encoders"] = static_cast<double>(stats.blit_encoders);
   state.counters["upload_bytes"] = static_cast<double>(stats.upload_bytes);
   state.counters["readback_bytes"] = static_cast<double>(stats.readback_bytes);
+  state.counters["bytes_allocated"] =
+      static_cast<double>(stats.bytes_allocated);
+  state.counters["bytes_reused"] = static_cast<double>(stats.bytes_reused);
+  state.counters["buffer_reuses"] =
+      static_cast<double>(stats.buffer_reuses);
+  state.counters["texture_allocations"] =
+      static_cast<double>(stats.texture_allocations);
+  state.counters["resident_bytes"] =
+      static_cast<double>(stats.resident_bytes);
+  state.counters["peak_resident_bytes"] =
+      static_cast<double>(stats.peak_resident_bytes);
 }
 
 template <typename Callable>
@@ -870,6 +883,730 @@ static void BM_Apple_Metal_HydraulicVPipes(benchmark::State &state)
   record_pixels(state, size, iterations);
 }
 
+struct ResidentChainInputs
+{
+  Array z;
+  Array field;
+  Array dx;
+  Array dy;
+  Array talus;
+};
+
+ResidentChainInputs make_resident_chain_inputs(int size)
+{
+  ResidentChainInputs inputs;
+  inputs.z = make_field(size);
+  inputs.field = make_field(size);
+  inputs.dx = hmap::gradient_x(inputs.z);
+  inputs.dy = hmap::gradient_y(inputs.z);
+  inputs.talus = Array(inputs.z.shape, 0.01f);
+  return inputs;
+}
+
+void add_timing(TimingBreakdown &destination, const TimingBreakdown &source)
+{
+  destination.allocation_ms += source.allocation_ms;
+  destination.upload_ms += source.upload_ms;
+  destination.pipeline_lookup_ms += source.pipeline_lookup_ms;
+  destination.encoding_ms += source.encoding_ms;
+  destination.device_or_finish_ms += source.device_or_finish_ms;
+  destination.synchronization_ms += source.synchronization_ms;
+  destination.readback_ms += source.readback_ms;
+  destination.host_compute_ms += source.host_compute_ms;
+}
+
+void add_execution_stats(
+    hmap::gpu::metal::ExecutionStats                         &destination,
+    const hmap::gpu::metal::ExecutionStats                   &source)
+{
+  destination.buffer_allocations += source.buffer_allocations;
+  destination.pipeline_creations += source.pipeline_creations;
+  destination.command_buffers += source.command_buffers;
+  destination.encoders += source.encoders;
+  destination.synchronization_count += source.synchronization_count;
+  destination.upload_bytes += source.upload_bytes;
+  destination.readback_bytes += source.readback_bytes;
+  destination.bytes_allocated += source.bytes_allocated;
+  destination.bytes_reused += source.bytes_reused;
+  destination.buffer_reuses += source.buffer_reuses;
+  destination.texture_allocations += source.texture_allocations;
+  destination.resident_bytes =
+      std::max(destination.resident_bytes, source.resident_bytes);
+  destination.peak_resident_bytes =
+      std::max(destination.peak_resident_bytes, source.peak_resident_bytes);
+  destination.blit_encoders += source.blit_encoders;
+  destination.allocation_ms += source.allocation_ms;
+  destination.upload_ms += source.upload_ms;
+  destination.pipeline_lookup_ms += source.pipeline_lookup_ms;
+  destination.encoding_ms += source.encoding_ms;
+  destination.gpu_execution_ms += source.gpu_execution_ms;
+  destination.wait_ms += source.wait_ms;
+  destination.readback_ms += source.readback_ms;
+}
+
+Array run_cpu_chain_a(int size)
+{
+  const glm::ivec2 shape = {size, size};
+  const Array first = hmap::noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  const Array second = hmap::noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  const Array gradient = hmap::gradient_norm(first);
+  return hmap::maximum_smooth(gradient, second, 0.2f);
+}
+
+Array run_opencl_chain_a(int size, TimingBreakdown *timing = nullptr)
+{
+  const auto total_start = Clock::now();
+  const glm::ivec2 shape = {size, size};
+  TimingBreakdown step;
+  Array first = opencl_noise(shape, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  Array second = opencl_noise(shape, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  Array gradient = opencl_gradient_norm(first, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  Array result = opencl_maximum_smooth(gradient, second, &step);
+  if (timing)
+  {
+    add_timing(*timing, step);
+    timing->total_ms = elapsed_ms(total_start);
+  }
+  return result;
+}
+
+Array run_metal_sync_chain_a(
+    int                                           size,
+    TimingBreakdown                              *timing = nullptr,
+    hmap::gpu::metal::ExecutionStats             *stats = nullptr)
+{
+  const auto total_start = Clock::now();
+  const glm::ivec2 shape = {size, size};
+  Array first = hmap::gpu::metal::noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  Array second = hmap::gpu::metal::noise(
+      hmap::NoiseType::PERLIN, shape, {4.f, 4.f}, 42u);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  Array gradient = hmap::gpu::metal::gradient_norm(first);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  Array result = hmap::gpu::metal::maximum_smooth(gradient, second, 0.2f);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  if (timing) timing->total_ms = elapsed_ms(total_start);
+  return result;
+}
+
+Array run_device_chain_a(
+    int                               size,
+    hmap::gpu::metal::StorageMode    storage,
+    hmap::gpu::metal::ExecutionStats *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto first = session.noise(
+      hmap::NoiseType::PERLIN, {size, size}, {4.f, 4.f}, 42u);
+  auto second = session.noise(
+      hmap::NoiseType::PERLIN, {size, size}, {4.f, 4.f}, 42u);
+  auto gradient = session.gradient_norm(std::move(first));
+  auto result = session.maximum_smooth(std::move(gradient), second, 0.2f);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+Array run_device_chain_a_split(
+    int                               size,
+    hmap::gpu::metal::StorageMode    storage,
+    hmap::gpu::metal::ExecutionStats *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto first = session.noise(
+      hmap::NoiseType::PERLIN, {size, size}, {4.f, 4.f}, 42u);
+  auto second = session.noise(
+      hmap::NoiseType::PERLIN, {size, size}, {4.f, 4.f}, 42u);
+  session.submit();
+  auto gradient = session.gradient_norm(std::move(first));
+  session.submit();
+  auto result = session.maximum_smooth(std::move(gradient), second, 0.2f);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+Array run_opencl_chain_b(const ResidentChainInputs &inputs,
+                         int                       iterations,
+                         TimingBreakdown          *timing = nullptr)
+{
+  const auto total_start = Clock::now();
+  TimingBreakdown step;
+  Array result = opencl_advection(
+      inputs.z, inputs.field, inputs.dx, inputs.dy, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  result = opencl_thermal(result, inputs.talus, iterations, &step);
+  if (timing)
+  {
+    add_timing(*timing, step);
+    timing->total_ms = elapsed_ms(total_start);
+  }
+  return result;
+}
+
+Array run_metal_sync_chain_b(
+    const ResidentChainInputs                 &inputs,
+    int                                        iterations,
+    TimingBreakdown                            *timing = nullptr,
+    hmap::gpu::metal::ExecutionStats          *stats = nullptr)
+{
+  const auto total_start = Clock::now();
+  Array result = hmap::gpu::metal::advection_warp(
+      inputs.z, inputs.field, inputs.dx, inputs.dy, 0.1f, 0.9f);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  hmap::gpu::metal::thermal(result, inputs.talus, iterations);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  if (timing) timing->total_ms = elapsed_ms(total_start);
+  return result;
+}
+
+Array run_device_chain_b(
+    const ResidentChainInputs             &inputs,
+    int                                    iterations,
+    hmap::gpu::metal::StorageMode         storage,
+    hmap::gpu::metal::ExecutionStats     *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto z = session.upload(inputs.z, storage);
+  auto field = session.upload(inputs.field, storage);
+  auto dx = session.upload(inputs.dx, storage);
+  auto dy = session.upload(inputs.dy, storage);
+  auto talus = session.upload(inputs.talus, storage);
+  auto result = session.advection_warp(
+      std::move(z), field, dx, dy, 0.1f, 0.9f);
+  result = session.thermal(std::move(result), talus, iterations);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+Array run_device_texture_advection(
+    const ResidentChainInputs             &inputs,
+    hmap::gpu::metal::StorageMode         storage,
+    hmap::gpu::metal::ExecutionStats     *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto z = session.upload(inputs.z, storage);
+  auto field = session.upload(inputs.field, storage);
+  auto dx = session.upload(inputs.dx, storage);
+  auto dy = session.upload(inputs.dy, storage);
+  auto result = session.advection_warp_texture(
+      std::move(z), field, dx, dy, 0.1f, 0.9f);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+Array run_device_buffer_advection(
+    const ResidentChainInputs             &inputs,
+    hmap::gpu::metal::StorageMode         storage,
+    hmap::gpu::metal::ExecutionStats     *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto z = session.upload(inputs.z, storage);
+  auto field = session.upload(inputs.field, storage);
+  auto dx = session.upload(inputs.dx, storage);
+  auto dy = session.upload(inputs.dy, storage);
+  auto result = session.advection_warp(
+      std::move(z), field, dx, dy, 0.1f, 0.9f);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+Array run_opencl_chain_c(const ResidentChainInputs &inputs,
+                         int                       iterations,
+                         TimingBreakdown          *timing = nullptr)
+{
+  const auto total_start = Clock::now();
+  TimingBreakdown step;
+  Array result = opencl_advection(
+      inputs.z, inputs.field, inputs.dx, inputs.dy, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  result = opencl_thermal(result, inputs.talus, iterations, &step);
+  if (timing) add_timing(*timing, step);
+  step = {};
+  result = opencl_hydraulic_vpipes(result, iterations, &step);
+  if (timing)
+  {
+    add_timing(*timing, step);
+    timing->total_ms = elapsed_ms(total_start);
+  }
+  return result;
+}
+
+Array run_metal_sync_chain_c(
+    const ResidentChainInputs                 &inputs,
+    int                                        iterations,
+    TimingBreakdown                            *timing = nullptr,
+    hmap::gpu::metal::ExecutionStats          *stats = nullptr)
+{
+  const auto total_start = Clock::now();
+  Array result = hmap::gpu::metal::advection_warp(
+      inputs.z, inputs.field, inputs.dx, inputs.dy, 0.1f, 0.9f);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  hmap::gpu::metal::thermal(result, inputs.talus, iterations);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  hmap::gpu::metal::hydraulic_vpipes(result,
+                                     0.01f,
+                                     true,
+                                     0.1f,
+                                     iterations,
+                                     0.5f,
+                                     0.5f,
+                                     0.001f,
+                                     0.01f,
+                                     1.f,
+                                     10.f,
+                                     true,
+                                     0.01f,
+                                     nullptr,
+                                     nullptr,
+                                     nullptr,
+                                     nullptr,
+                                     nullptr);
+  if (stats) add_execution_stats(*stats, hmap::gpu::metal::last_execution_stats());
+  if (timing) timing->total_ms = elapsed_ms(total_start);
+  return result;
+}
+
+Array run_device_chain_c(
+    const ResidentChainInputs             &inputs,
+    int                                    iterations,
+    hmap::gpu::metal::StorageMode         storage,
+    hmap::gpu::metal::ExecutionStats     *stats = nullptr)
+{
+  hmap::gpu::metal::DeviceSession session(storage);
+  auto z = session.upload(inputs.z, storage);
+  auto field = session.upload(inputs.field, storage);
+  auto dx = session.upload(inputs.dx, storage);
+  auto dy = session.upload(inputs.dy, storage);
+  auto talus = session.upload(inputs.talus, storage);
+  auto result = session.advection_warp(
+      std::move(z), field, dx, dy, 0.1f, 0.9f);
+  result = session.thermal(std::move(result), talus, iterations);
+  result = session.hydraulic_vpipes(std::move(result),
+                                    0.01f,
+                                    true,
+                                    0.1f,
+                                    iterations,
+                                    0.5f,
+                                    0.5f,
+                                    0.001f,
+                                    0.01f,
+                                    1.f,
+                                    10.f,
+                                    true,
+                                    0.01f);
+  Array output = session.download(result);
+  if (stats) *stats = session.stats();
+  return output;
+}
+
+void record_chain_metal(benchmark::State                         &state,
+                        const TimingBreakdown                    &timing,
+                        const hmap::gpu::metal::ExecutionStats  &stats)
+{
+  record_metal_timing(state, timing, stats);
+  state.counters["one_command_buffer"] =
+      stats.command_buffers == 1 ? 1.0 : 0.0;
+  state.counters["one_final_sync"] =
+      stats.synchronization_count == 1 ? 1.0 : 0.0;
+}
+
+static void BM_Phase3_CPU_ChainA(benchmark::State &state)
+{
+  const int size = state.range(0);
+  bool warmed = false;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&] { return run_cpu_chain_a(size); });
+    Array output = run_cpu_chain_a(size);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_OpenCL_ChainA(benchmark::State &state)
+{
+  skip_if_opencl_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  bool warmed = false;
+  TimingBreakdown timing;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&] { return run_opencl_chain_a(size); });
+    timing = {};
+    Array output = run_opencl_chain_a(size, &timing);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_timing(state, timing);
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_MetalSync_ChainA(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  bool warmed = false;
+  TimingBreakdown timing;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&] { return run_metal_sync_chain_a(size); });
+    timing = {};
+    stats = {};
+    Array output = run_metal_sync_chain_a(size, &timing, &stats);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_chain_metal(state, timing, stats);
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_DeviceArrayShared_ChainA(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_a(
+                      size, hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_a(
+        size, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_DeviceArrayPrivate_ChainA(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_a(
+                      size,
+                      hmap::gpu::metal::StorageMode::private_storage); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_a(
+        size, hmap::gpu::metal::StorageMode::private_storage, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_DeviceArrayShared_SplitChainA(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_a_split(
+                      size, hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_a_split(
+        size, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_OpenCL_ChainB(benchmark::State &state)
+{
+  skip_if_opencl_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return run_opencl_chain_b(inputs, iterations); });
+    timing = {};
+    Array output = run_opencl_chain_b(inputs, iterations, &timing);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_timing(state, timing);
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_MetalSync_ChainB(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return run_metal_sync_chain_b(inputs, iterations); });
+    timing = {};
+    stats = {};
+    Array output = run_metal_sync_chain_b(inputs, iterations, &timing, &stats);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_chain_metal(state, timing, stats);
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_DeviceArrayShared_ChainB(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_b(
+                      inputs,
+                      iterations,
+                      hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_b(
+        inputs, iterations, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_DeviceArrayPrivate_ChainB(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_b(
+                      inputs,
+                      iterations,
+                      hmap::gpu::metal::StorageMode::private_storage); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_b(
+        inputs,
+        iterations,
+        hmap::gpu::metal::StorageMode::private_storage,
+        &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_DeviceArrayShared_TextureAdvection(
+    benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_texture_advection(
+                      inputs, hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_texture_advection(
+        inputs, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_DeviceArrayShared_BufferAdvection(
+    benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_buffer_advection(
+                      inputs, hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_buffer_advection(
+        inputs, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size);
+}
+
+static void BM_Phase3_OpenCL_ChainC(benchmark::State &state)
+{
+  skip_if_opencl_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return run_opencl_chain_c(inputs, iterations); });
+    timing = {};
+    Array output = run_opencl_chain_c(inputs, iterations, &timing);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_timing(state, timing);
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_MetalSync_ChainC(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  TimingBreakdown timing;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed,
+                [&] { return run_metal_sync_chain_c(inputs, iterations); });
+    timing = {};
+    stats = {};
+    Array output = run_metal_sync_chain_c(inputs, iterations, &timing, &stats);
+    benchmark::DoNotOptimize(output.vector.data());
+  }
+  record_chain_metal(state, timing, stats);
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_DeviceArrayShared_ChainC(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_c(
+                      inputs,
+                      iterations,
+                      hmap::gpu::metal::StorageMode::shared); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_c(
+        inputs, iterations, hmap::gpu::metal::StorageMode::shared, &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size, iterations);
+}
+
+static void BM_Phase3_DeviceArrayPrivate_ChainC(benchmark::State &state)
+{
+  skip_if_metal_unavailable(state);
+  if (state.skipped()) return;
+  const int size = state.range(0);
+  const int iterations = state.range(1);
+  const ResidentChainInputs inputs = make_resident_chain_inputs(size);
+  bool warmed = false;
+  hmap::gpu::metal::ExecutionStats stats;
+  for (auto _ : state)
+  {
+    warmup_once(state, warmed, [&]
+                { return run_device_chain_c(
+                      inputs,
+                      iterations,
+                      hmap::gpu::metal::StorageMode::private_storage); });
+    stats = {};
+    const auto total_start = Clock::now();
+    Array output = run_device_chain_c(
+        inputs,
+        iterations,
+        hmap::gpu::metal::StorageMode::private_storage,
+        &stats);
+    TimingBreakdown timing;
+    timing.total_ms = elapsed_ms(total_start);
+    benchmark::DoNotOptimize(output.vector.data());
+    record_chain_metal(state, timing, stats);
+  }
+  record_pixels(state, size, iterations);
+}
+
 BENCHMARK(BM_Apple_CPU_GradientNorm)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_pointwise_sizes); })
@@ -934,4 +1671,98 @@ BENCHMARK(BM_Apple_OpenCL_HydraulicVPipes)
 BENCHMARK(BM_Apple_Metal_HydraulicVPipes)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_size_iterations(b, k_neighborhood_sizes); })
+    ->UseRealTime();
+
+// Phase 3 composed execution. These cases include the initial inputs and one
+// final result readback in every timed sample. DeviceArray cases therefore
+// expose the transfer boundary directly while keeping intermediate values
+// resident in one session command buffer.
+const std::vector<int> k_device_array_sizes = {256, 512, 1024, 2048, 4096};
+
+BENCHMARK(BM_Phase3_CPU_ChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_OpenCL_ChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_MetalSync_ChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_ChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayPrivate_ChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_SplitChainA)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+
+BENCHMARK(BM_Phase3_OpenCL_ChainB)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_MetalSync_ChainB)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_ChainB)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayPrivate_ChainB)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+
+BENCHMARK(BM_Phase3_DeviceArrayShared_TextureAdvection)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : {1024, 2048, 4096}) b->Arg(size);
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_BufferAdvection)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : {1024, 2048, 4096}) b->Arg(size);
+            })
+    ->UseRealTime();
+
+BENCHMARK(BM_Phase3_OpenCL_ChainC)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_MetalSync_ChainC)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_ChainC)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayPrivate_ChainC)
+    ->Apply([](benchmark::internal::Benchmark *b)
+            {
+              for (const int size : k_device_array_sizes) b->Args({size, 10});
+            })
     ->UseRealTime();
