@@ -50,6 +50,12 @@ struct ThermalParams
   int ny;
 };
 
+struct BorderParams
+{
+  int nx;
+  int ny;
+};
+
 struct LinearCombineParams
 {
   int nx;
@@ -496,6 +502,44 @@ kernel void thermal_ridge_pass(device const float *z_in [[buffer(0)]],
   float amp = slope_max > 0.f ? clamp(1.f - t / slope_max, 0.f, 1.f) : 0.f;
   amp = amp * amp * (3.f - 2.f * amp);
   z_out[index] = value + 0.25f * (t - 0.5f * sum) * amp;
+}
+
+kernel void extrapolate_horizontal(device const float *z_in [[buffer(0)]],
+                                   device float       *z_out [[buffer(1)]],
+                                   constant BorderParams &p [[buffer(2)]],
+                                   uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int x = int(gid.x);
+  const int y = int(gid.y);
+  const uint index = index_at(x, y, p.nx);
+  float value = z_in[index];
+  if (x == 0)
+    value = 2.f * load_clamped(z_in, 1, y, p.nx, p.ny) -
+            load_clamped(z_in, 2, y, p.nx, p.ny);
+  else if (x == p.nx - 1)
+    value = 2.f * load_clamped(z_in, p.nx - 2, y, p.nx, p.ny) -
+            load_clamped(z_in, p.nx - 3, y, p.nx, p.ny);
+  z_out[index] = value;
+}
+
+kernel void extrapolate_vertical(device const float *z_in [[buffer(0)]],
+                                 device float       *z_out [[buffer(1)]],
+                                 constant BorderParams &p [[buffer(2)]],
+                                 uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int x = int(gid.x);
+  const int y = int(gid.y);
+  const uint index = index_at(x, y, p.nx);
+  float value = z_in[index];
+  if (y == 0)
+    value = 2.f * load_clamped(z_in, x, 1, p.nx, p.ny) -
+            load_clamped(z_in, x, 2, p.nx, p.ny);
+  else if (y == p.ny - 1)
+    value = 2.f * load_clamped(z_in, x, p.ny - 2, p.nx, p.ny) -
+            load_clamped(z_in, x, p.ny - 3, p.nx, p.ny);
+  z_out[index] = value;
 }
 
 kernel void linear_combine(device const float *array1 [[buffer(0)]],
