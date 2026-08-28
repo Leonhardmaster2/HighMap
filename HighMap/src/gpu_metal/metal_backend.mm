@@ -3,8 +3,12 @@
  * with this software. */
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
+#include <dispatch/dispatch.h>
 
 #include <algorithm>
+#include <chrono>
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <mutex>
 #include <numeric>
@@ -12,6 +16,14 @@
 #include <unordered_map>
 
 #include "metal_shader_source.hpp"
+
+#ifndef HIGHMAP_METAL_PRECOMPILED
+#define HIGHMAP_METAL_PRECOMPILED 0
+#endif
+
+#if HIGHMAP_METAL_PRECOMPILED
+#include "metal_library.hpp"
+#endif
 
 #include "highmap/gpu/metal.hpp"
 
@@ -22,6 +34,21 @@ namespace hmap::gpu::metal
 
 namespace
 {
+
+thread_local ExecutionStats current_stats;
+
+using Clock = std::chrono::steady_clock;
+
+double elapsed_ms(Clock::time_point start)
+{
+  return std::chrono::duration<double, std::milli>(Clock::now() - start)
+      .count();
+}
+
+void begin_operation()
+{
+  current_stats = {};
+}
 
 struct GridParams
 {
@@ -120,9 +147,18 @@ public:
       }
 
       NSError *error = nil;
+#if HIGHMAP_METAL_PRECOMPILED
+      dispatch_data_t binary = dispatch_data_create(
+          highmap_metal_library,
+          highmap_metal_library_len,
+          nullptr,
+          DISPATCH_DATA_DESTRUCTOR_DEFAULT);
+      library = [device newLibraryWithData:binary error:&error];
+#else
       NSString *source = [NSString stringWithUTF8String:
                                       HIGHMAP_METAL_SHADER_SOURCE];
       library = [device newLibraryWithSource:source options:nil error:&error];
+#endif
       if (!library)
       {
         failure = error ? [[error localizedDescription] UTF8String]
@@ -142,9 +178,14 @@ public:
     ensure_initialized();
     if (!ready) throw std::runtime_error(failure);
 
+    const auto lookup_start = Clock::now();
     std::lock_guard<std::mutex> lock(mutex);
     auto it = pipelines.find(function_name);
-    if (it != pipelines.end()) return it->second;
+    if (it != pipelines.end())
+    {
+      current_stats.pipeline_lookup_ms += elapsed_ms(lookup_start);
+      return it->second;
+    }
 
     @autoreleasepool
     {
@@ -164,6 +205,8 @@ public:
         throw std::runtime_error(message);
       }
       pipelines.emplace(function_name, state);
+      ++current_stats.pipeline_creations;
+      current_stats.pipeline_lookup_ms += elapsed_ms(lookup_start);
       return state;
     }
   }
@@ -208,33 +251,88 @@ void check_shape_2d(glm::ivec2 shape)
 id<MTLBuffer> input_buffer(const std::vector<float> &values)
 {
   if (values.empty()) throw std::invalid_argument("Metal cannot bind an empty array");
+  const auto allocation_start = Clock::now();
   id<MTLBuffer> buffer = [context().device
-      newBufferWithBytes:values.data()
-                  length:values.size() * sizeof(float)
+      newBufferWithLength:values.size() * sizeof(float)
                  options:MTLResourceStorageModeShared];
   if (!buffer) throw std::runtime_error("Metal input buffer allocation failed");
+  current_stats.allocation_ms += elapsed_ms(allocation_start);
+  const auto upload_start = Clock::now();
+  std::memcpy([buffer contents], values.data(), values.size() * sizeof(float));
+  current_stats.upload_ms += elapsed_ms(upload_start);
+  ++current_stats.buffer_allocations;
+  current_stats.upload_bytes += values.size() * sizeof(float);
   return buffer;
 }
 
 id<MTLBuffer> zero_buffer(size_t count)
 {
+  const auto allocation_start = Clock::now();
   id<MTLBuffer> buffer = [context().device
       newBufferWithLength:count * sizeof(float)
                   options:MTLResourceStorageModeShared];
   if (!buffer) throw std::runtime_error("Metal output buffer allocation failed");
   std::memset([buffer contents], 0, count * sizeof(float));
+  current_stats.allocation_ms += elapsed_ms(allocation_start);
+  ++current_stats.buffer_allocations;
   return buffer;
 }
+
+struct DispatchShape
+{
+  NSUInteger width;
+  NSUInteger height;
+};
 
 void dispatch(id<MTLComputeCommandEncoder> encoder,
               id<MTLComputePipelineState> pipeline,
               int nx,
-              int ny)
+              int ny,
+              const char *kernel_name)
 {
-  NSUInteger width = std::min<NSUInteger>(8, [pipeline threadExecutionWidth]);
-  NSUInteger height = std::min<NSUInteger>(
-      8,
-      std::max<NSUInteger>(1, [pipeline maxTotalThreadsPerThreadgroup] / width));
+  const NSUInteger max_threads = [pipeline maxTotalThreadsPerThreadgroup];
+  const NSUInteger simd_width = [pipeline threadExecutionWidth];
+
+  // A process-level override makes layout experiments reproducible without
+  // changing the public API. Examples: HIGHMAP_METAL_THREADGROUP=8x8 or
+  // HIGHMAP_METAL_THREADGROUP=16x8. It is read once per process, not per
+  // dispatch.
+  static const DispatchShape override_shape = [] {
+    const char *value = std::getenv("HIGHMAP_METAL_THREADGROUP");
+    int width = 0;
+    int height = 0;
+    if (!value || std::sscanf(value, "%dx%d", &width, &height) != 2 ||
+        width <= 0 || height <= 0)
+      return DispatchShape{0, 0};
+    return DispatchShape{static_cast<NSUInteger>(width),
+                         static_cast<NSUInteger>(height)};
+  }();
+
+  if (override_shape.width > 0 && override_shape.height > 0 &&
+      override_shape.width * override_shape.height <= max_threads)
+  {
+    [encoder dispatchThreads:MTLSizeMake(static_cast<NSUInteger>(nx),
+                                         static_cast<NSUInteger>(ny),
+                                         1)
+        threadsPerThreadgroup:MTLSizeMake(override_shape.width,
+                                          override_shape.height,
+                                          1)];
+    return;
+  }
+
+  // Neighborhood kernels use a 16-wide tile on the measured Apple M3 path;
+  // this keeps the tile compact while exposing a full SIMD group. Pointwise
+  // kernels have no cross-thread neighborhood and use up to 32 lanes. The
+  // limits are clamped by the pipeline's reported SIMD width, and the
+  // environment override is available for repeatable tuning sweeps.
+  const bool neighborhood = std::strstr(kernel_name, "advection") != nullptr ||
+                            std::strstr(kernel_name, "thermal") != nullptr ||
+                            std::strstr(kernel_name, "hydraulic") != nullptr;
+  NSUInteger width = neighborhood ? std::min<NSUInteger>(16, simd_width)
+                                  : std::min<NSUInteger>(32, simd_width);
+  width = std::max<NSUInteger>(1, std::min(width, max_threads));
+  const NSUInteger height = std::max<NSUInteger>(
+      1, std::min<NSUInteger>(8, max_threads / width));
   [encoder dispatchThreads:MTLSizeMake(static_cast<NSUInteger>(nx),
                                        static_cast<NSUInteger>(ny),
                                        1)
@@ -261,10 +359,40 @@ void dispatch_reduction(id<MTLComputeCommandEncoder> encoder,
           threadsPerThreadgroup:MTLSizeMake(threads, 1, 1)];
 }
 
+id<MTLCommandBuffer> make_command_buffer()
+{
+  id<MTLCommandBuffer> value = [context().queue commandBuffer];
+  if (!value) throw std::runtime_error("Metal command buffer allocation failed");
+  ++current_stats.command_buffers;
+  return value;
+}
+
+id<MTLComputeCommandEncoder> compute_encoder(id<MTLCommandBuffer> buffer)
+{
+  id<MTLComputeCommandEncoder> value = [buffer computeCommandEncoder];
+  if (!value) throw std::runtime_error("Metal compute encoder creation failed");
+  ++current_stats.encoders;
+  return value;
+}
+
+void record_encoding(Clock::time_point start)
+{
+  current_stats.encoding_ms += elapsed_ms(start);
+}
+
 void wait_for_completion(id<MTLCommandBuffer> command_buffer)
 {
+  const auto t0 = std::chrono::steady_clock::now();
+  ++current_stats.synchronization_count;
   [command_buffer commit];
   [command_buffer waitUntilCompleted];
+  const auto t1 = std::chrono::steady_clock::now();
+  current_stats.wait_ms +=
+      std::chrono::duration<double, std::milli>(t1 - t0).count();
+  const CFTimeInterval gpu_start = [command_buffer GPUStartTime];
+  const CFTimeInterval gpu_end = [command_buffer GPUEndTime];
+  if (gpu_end >= gpu_start && gpu_start > 0.0)
+    current_stats.gpu_execution_ms += (gpu_end - gpu_start) * 1000.0;
   if ([command_buffer status] == MTLCommandBufferStatusError)
   {
     NSError *error = [command_buffer error];
@@ -275,7 +403,10 @@ void wait_for_completion(id<MTLCommandBuffer> command_buffer)
 
 void read_buffer(id<MTLBuffer> buffer, std::vector<float> &values)
 {
+  const auto readback_start = Clock::now();
   std::memcpy(values.data(), [buffer contents], values.size() * sizeof(float));
+  current_stats.readback_ms += elapsed_ms(readback_start);
+  current_stats.readback_bytes += values.size() * sizeof(float);
 }
 
 void set_bytes(id<MTLComputeCommandEncoder> encoder,
@@ -308,6 +439,58 @@ std::string device_name()
   return context().device_label();
 }
 
+DeviceCapabilities capabilities()
+{
+  context().ensure_initialized();
+  if (!context().ready_state()) return {};
+
+  const MTLSize max_threads = [context().device maxThreadsPerThreadgroup];
+  id<MTLComputePipelineState> gradient_pipeline =
+      context().pipeline("gradient_norm");
+
+  DeviceCapabilities result;
+  result.device_name = context().device_label();
+  result.recommended_max_working_set_size =
+      [context().device recommendedMaxWorkingSetSize];
+  result.thread_execution_width =
+      static_cast<std::uint32_t>([gradient_pipeline threadExecutionWidth]);
+  result.max_threads_per_threadgroup =
+      static_cast<std::uint32_t>(max_threads.width * max_threads.height *
+                                 max_threads.depth);
+
+  // Report the highest generic family advertised by the SDK/runtime pair.
+  // This is diagnostic metadata only; dispatch policy remains capability based.
+  if (@available(macOS 26.0, *))
+  {
+    if ([context().device supportsFamily:MTLGPUFamilyMetal4])
+      result.gpu_family = static_cast<std::uint32_t>(MTLGPUFamilyMetal4);
+  }
+  if (result.gpu_family == 0)
+  {
+    if (@available(macOS 13.0, *))
+    {
+      if ([context().device supportsFamily:MTLGPUFamilyMetal3])
+        result.gpu_family = static_cast<std::uint32_t>(MTLGPUFamilyMetal3);
+    }
+  }
+  if (result.gpu_family == 0 &&
+      [context().device supportsFamily:MTLGPUFamilyApple9])
+    result.gpu_family = static_cast<std::uint32_t>(MTLGPUFamilyApple9);
+  if (result.gpu_family == 0 &&
+      [context().device supportsFamily:MTLGPUFamilyApple7])
+    result.gpu_family = static_cast<std::uint32_t>(MTLGPUFamilyApple7);
+  if (result.gpu_family == 0 &&
+      [context().device supportsFamily:MTLGPUFamilyApple1])
+    result.gpu_family = static_cast<std::uint32_t>(MTLGPUFamilyApple1);
+
+  return result;
+}
+
+ExecutionStats last_execution_stats()
+{
+  return current_stats;
+}
+
 bool supports_noise(NoiseType noise_type)
 {
   switch (noise_type)
@@ -324,6 +507,7 @@ bool supports_noise(NoiseType noise_type)
 
 Array gradient_norm(const Array &array)
 {
+  begin_operation();
   require_ready();
   check_shape_2d(array.shape);
 
@@ -333,14 +517,16 @@ Array gradient_norm(const Array &array)
   GridParams params{array.shape.x, array.shape.y};
 
   id<MTLComputePipelineState> pipeline = context().pipeline("gradient_norm");
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
-  id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
   [encoder setComputePipelineState:pipeline];
   [encoder setBuffer:input offset:0 atIndex:0];
   [encoder setBuffer:result offset:0 atIndex:1];
   set_bytes(encoder, &params, sizeof(params), 2);
-  dispatch(encoder, pipeline, params.nx, params.ny);
+  dispatch(encoder, pipeline, params.nx, params.ny, "gradient_norm");
   [encoder endEncoding];
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(result, output.vector);
   return output;
@@ -351,6 +537,7 @@ Array smooth_extrema(const Array &array1,
                      float        k,
                      const char  *kernel_name)
 {
+  begin_operation();
   require_ready();
   check_shape_2d(array1.shape);
   check_shape(array2, array1.shape, "array2");
@@ -362,15 +549,17 @@ Array smooth_extrema(const Array &array1,
   BinarySmoothParams params{array1.shape.x, array1.shape.y, k};
 
   id<MTLComputePipelineState> pipeline = context().pipeline(kernel_name);
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
-  id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
   [encoder setComputePipelineState:pipeline];
   [encoder setBuffer:input1 offset:0 atIndex:0];
   [encoder setBuffer:input2 offset:0 atIndex:1];
   [encoder setBuffer:result offset:0 atIndex:2];
   set_bytes(encoder, &params, sizeof(params), 3);
-  dispatch(encoder, pipeline, params.nx, params.ny);
+  dispatch(encoder, pipeline, params.nx, params.ny, kernel_name);
   [encoder endEncoding];
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(result, output.vector);
   return output;
@@ -395,6 +584,7 @@ Array noise(NoiseType     noise_type,
             glm::vec4     bbox,
             glm::ivec2    period)
 {
+  begin_operation();
   require_ready();
   check_shape_2d(shape);
   if (!supports_noise(noise_type))
@@ -423,15 +613,17 @@ Array noise(NoiseType     noise_type,
                      bbox.w};
 
   id<MTLComputePipelineState> pipeline = context().pipeline("noise");
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
-  id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
   [encoder setComputePipelineState:pipeline];
   [encoder setBuffer:result offset:0 atIndex:0];
   [encoder setBuffer:noise_x offset:0 atIndex:1];
   [encoder setBuffer:noise_y offset:0 atIndex:2];
   set_bytes(encoder, &params, sizeof(params), 3);
-  dispatch(encoder, pipeline, params.nx, params.ny);
+  dispatch(encoder, pipeline, params.nx, params.ny, "noise");
   [encoder endEncoding];
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(result, output.vector);
   return output;
@@ -445,6 +637,7 @@ Array advection_warp(const Array &z,
                      float        value_persistence,
                      const Array *p_mask)
 {
+  begin_operation();
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -465,8 +658,9 @@ Array advection_warp(const Array &z,
   AdvectionParams params{shape.x, shape.y, advection_length, value_persistence};
 
   id<MTLComputePipelineState> pipeline = context().pipeline("advection_warp");
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
-  id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
   [encoder setComputePipelineState:pipeline];
   [encoder setBuffer:z_buffer offset:0 atIndex:0];
   [encoder setBuffer:field_buffer offset:0 atIndex:1];
@@ -475,8 +669,9 @@ Array advection_warp(const Array &z,
   [encoder setBuffer:mask_buffer offset:0 atIndex:4];
   [encoder setBuffer:output_buffer offset:0 atIndex:5];
   set_bytes(encoder, &params, sizeof(params), 6);
-  dispatch(encoder, pipeline, params.nx, params.ny);
+  dispatch(encoder, pipeline, params.nx, params.ny, "advection_warp");
   [encoder endEncoding];
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(output_buffer, output.vector);
   return output;
@@ -484,6 +679,7 @@ Array advection_warp(const Array &z,
 
 void thermal(Array &z, const Array &talus, int iterations)
 {
+  begin_operation();
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -495,21 +691,23 @@ void thermal(Array &z, const Array &talus, int iterations)
   ThermalParams params{shape.x, shape.y};
   id<MTLBuffer> talus_buffer = input_buffer(talus.vector);
   id<MTLComputePipelineState> pipeline = context().pipeline("thermal_pass");
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
 
   for (int it = 0; it < iterations; ++it)
   {
-    id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+    id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:pipeline];
     [encoder setBuffer:input offset:0 atIndex:0];
     [encoder setBuffer:talus_buffer offset:0 atIndex:1];
     [encoder setBuffer:output offset:0 atIndex:2];
     set_bytes(encoder, &params, sizeof(params), 3);
-    dispatch(encoder, pipeline, params.nx, params.ny);
+    dispatch(encoder, pipeline, params.nx, params.ny, "thermal_pass");
     [encoder endEncoding];
     std::swap(input, output);
   }
 
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(input, z.vector);
 }
@@ -533,6 +731,7 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v)
 {
+  begin_operation();
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -606,7 +805,8 @@ void hydraulic_vpipes(Array &z,
                          rain_volume,
                          maintain_water_volume ? 1 : 0};
 
-  id<MTLCommandBuffer> command_buffer = [context().queue commandBuffer];
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
   // Initialize the shared water buffer by a small host-side multiply. This
   // avoids another shader solely for a multiply while preserving GPU residency
   // thereafter.
@@ -615,7 +815,7 @@ void hydraulic_vpipes(Array &z,
 
   for (int it = 0; it < std::max(0, iterations); ++it)
   {
-    id<MTLComputeCommandEncoder> encoder = [command_buffer computeCommandEncoder];
+    id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:flow_pipeline];
     [encoder setBuffer:z_a offset:0 atIndex:0];
     [encoder setBuffer:fl_a offset:0 atIndex:1];
@@ -628,10 +828,10 @@ void hydraulic_vpipes(Array &z,
     [encoder setBuffer:ft_b offset:0 atIndex:8];
     [encoder setBuffer:fb_b offset:0 atIndex:9];
     set_bytes(encoder, &params, sizeof(params), 10);
-    dispatch(encoder, flow_pipeline, shape.x, shape.y);
+    dispatch(encoder, flow_pipeline, shape.x, shape.y, "hydraulic_flow_pass");
     [encoder endEncoding];
 
-    encoder = [command_buffer computeCommandEncoder];
+    encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:water_pipeline];
     [encoder setBuffer:z_a offset:0 atIndex:0];
     [encoder setBuffer:fl_b offset:0 atIndex:1];
@@ -643,10 +843,10 @@ void hydraulic_vpipes(Array &z,
     [encoder setBuffer:velocity_u offset:0 atIndex:7];
     [encoder setBuffer:velocity_v offset:0 atIndex:8];
     set_bytes(encoder, &params, sizeof(params), 9);
-    dispatch(encoder, water_pipeline, shape.x, shape.y);
+    dispatch(encoder, water_pipeline, shape.x, shape.y, "hydraulic_water_pass");
     [encoder endEncoding];
 
-    encoder = [command_buffer computeCommandEncoder];
+    encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:erosion_pipeline];
     [encoder setBuffer:z_a offset:0 atIndex:0];
     [encoder setBuffer:d2 offset:0 atIndex:1];
@@ -656,25 +856,25 @@ void hydraulic_vpipes(Array &z,
     [encoder setBuffer:z_b offset:0 atIndex:5];
     [encoder setBuffer:sediment_tmp offset:0 atIndex:6];
     set_bytes(encoder, &params, sizeof(params), 7);
-    dispatch(encoder, erosion_pipeline, shape.x, shape.y);
+    dispatch(encoder, erosion_pipeline, shape.x, shape.y, "hydraulic_erosion_pass");
     [encoder endEncoding];
 
-    encoder = [command_buffer computeCommandEncoder];
+    encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:sediment_pipeline];
     [encoder setBuffer:velocity_u offset:0 atIndex:0];
     [encoder setBuffer:velocity_v offset:0 atIndex:1];
     [encoder setBuffer:sediment_tmp offset:0 atIndex:2];
     [encoder setBuffer:sediment offset:0 atIndex:3];
     set_bytes(encoder, &params, sizeof(params), 4);
-    dispatch(encoder, sediment_pipeline, shape.x, shape.y);
+    dispatch(encoder, sediment_pipeline, shape.x, shape.y, "hydraulic_sediment_pass");
     [encoder endEncoding];
 
-    encoder = [command_buffer computeCommandEncoder];
+    encoder = compute_encoder(command_buffer);
     [encoder setComputePipelineState:evaporate_pipeline];
     [encoder setBuffer:d2 offset:0 atIndex:0];
     [encoder setBuffer:d_b offset:0 atIndex:1];
     set_bytes(encoder, &params, sizeof(params), 2);
-    dispatch(encoder, evaporate_pipeline, shape.x, shape.y);
+    dispatch(encoder, evaporate_pipeline, shape.x, shape.y, "hydraulic_evaporate");
     [encoder endEncoding];
 
     if (maintain_water_volume)
@@ -689,7 +889,7 @@ void hydraulic_vpipes(Array &z,
       int reduction_count = static_cast<int>(count);
       int next_count = static_cast<int>(partial_count);
 
-      encoder = [command_buffer computeCommandEncoder];
+      encoder = compute_encoder(command_buffer);
       [encoder setComputePipelineState:sum_pipeline];
       [encoder setBuffer:d_b offset:0 atIndex:0];
       [encoder setBuffer:reduction_input offset:0 atIndex:1];
@@ -705,7 +905,7 @@ void hydraulic_vpipes(Array &z,
         next_count = static_cast<int>(
             (static_cast<size_t>(reduction_count) + sum_threads - 1) /
             sum_threads);
-        encoder = [command_buffer computeCommandEncoder];
+        encoder = compute_encoder(command_buffer);
         [encoder setComputePipelineState:reduce_pipeline];
         [encoder setBuffer:reduction_input offset:0 atIndex:0];
         [encoder setBuffer:reduction_output offset:0 atIndex:1];
@@ -720,13 +920,13 @@ void hydraulic_vpipes(Array &z,
         std::swap(reduction_input, reduction_output);
       }
 
-      encoder = [command_buffer computeCommandEncoder];
+      encoder = compute_encoder(command_buffer);
       [encoder setComputePipelineState:rescale_pipeline];
       [encoder setBuffer:d_b offset:0 atIndex:0];
       [encoder setBuffer:rain_buffer offset:0 atIndex:1];
       [encoder setBuffer:reduction_input offset:0 atIndex:2];
       set_bytes(encoder, &params, sizeof(params), 3);
-      dispatch(encoder, rescale_pipeline, shape.x, shape.y);
+      dispatch(encoder, rescale_pipeline, shape.x, shape.y, "hydraulic_rescale");
       [encoder endEncoding];
     }
 
@@ -738,6 +938,7 @@ void hydraulic_vpipes(Array &z,
     std::swap(fb_a, fb_b);
   }
 
+  record_encoding(encoding_start);
   wait_for_completion(command_buffer);
   read_buffer(z_a, z.vector);
 

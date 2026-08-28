@@ -32,6 +32,16 @@ std::string device_name()
   return {};
 }
 
+DeviceCapabilities capabilities()
+{
+  return {};
+}
+
+ExecutionStats last_execution_stats()
+{
+  return {};
+}
+
 bool supports_noise(NoiseType)
 {
   return false;

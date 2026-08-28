@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdint>
 #include <algorithm>
+#include <numeric>
 #include <utility>
 
 #include <gtest/gtest.h>
@@ -43,26 +44,38 @@ Array opencl_gradient_norm(const Array &input)
 Array opencl_noise(hmap::NoiseType noise_type,
                    glm::ivec2    shape,
                    glm::vec2     kw,
-                   std::uint32_t seed)
+                   std::uint32_t seed,
+                   const Array  *p_noise_x = nullptr,
+                   const Array  *p_noise_y = nullptr,
+                   glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
+                   glm::ivec2    period = {0, 0})
 {
   Array out(shape);
   std::vector<float> dummy(1, 0.f);
   clwrapper::Run run("noise");
   run.bind_buffer<float>("array", out.vector);
-  run.bind_buffer<float>("noise_x", dummy);
-  run.bind_buffer<float>("noise_y", dummy);
+  run.bind_buffer<float>("noise_x",
+                         p_noise_x ? const_cast<std::vector<float> &>(
+                                         p_noise_x->vector)
+                                   : dummy);
+  run.bind_buffer<float>("noise_y",
+                         p_noise_y ? const_cast<std::vector<float> &>(
+                                         p_noise_y->vector)
+                                   : dummy);
   run.bind_arguments(shape.x,
                      shape.y,
                      static_cast<int>(noise_type),
                      kw.x,
                      kw.y,
                      seed,
-                     0,
-                     0,
-                     0,
-                     0,
-                     glm::vec4(0.f, 1.f, 0.f, 1.f));
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     period.x,
+                     period.y,
+                     bbox);
   run.write_buffer("array");
+  if (p_noise_x) run.write_buffer("noise_x");
+  if (p_noise_y) run.write_buffer("noise_y");
   run.execute({shape.x, shape.y});
   run.read_buffer("array");
   return out;
@@ -73,7 +86,8 @@ Array opencl_advection(const Array &z,
                        const Array &dx,
                        const Array &dy,
                        float        advection_length,
-                       float        value_persistence)
+                       float        value_persistence,
+                       const Array *p_mask = nullptr)
 {
   Array out(z.shape);
   Array mask(z.shape, 1.f);
@@ -82,7 +96,10 @@ Array opencl_advection(const Array &z,
   run.bind_imagef("field", field.vector, z.shape.x, z.shape.y);
   run.bind_imagef("dx", dx.vector, z.shape.x, z.shape.y);
   run.bind_imagef("dy", dy.vector, z.shape.x, z.shape.y);
-  run.bind_imagef("mask", mask.vector, z.shape.x, z.shape.y);
+  run.bind_imagef("mask",
+                  p_mask ? p_mask->vector : mask.vector,
+                  z.shape.x,
+                  z.shape.y);
   run.bind_imagef("out", out.vector, z.shape.x, z.shape.y, true);
   run.bind_arguments(z.shape.x,
                      z.shape.y,
@@ -182,6 +199,10 @@ protected:
 TEST_F(MetalBackend, ReportsUsableDevice)
 {
   EXPECT_FALSE(hmap::gpu::metal::device_name().empty());
+  const auto capabilities = hmap::gpu::metal::capabilities();
+  EXPECT_FALSE(capabilities.device_name.empty());
+  EXPECT_GT(capabilities.thread_execution_width, 0u);
+  EXPECT_GT(capabilities.max_threads_per_threadgroup, 0u);
 }
 
 TEST_F(MetalBackend, GradientNormMatchesCpu)
@@ -318,6 +339,160 @@ TEST_F(MetalBackend, ThermalMatchesDeterministicReference)
 
   hmap::gpu::metal::thermal(actual, talus, 4);
   expect_finite_and_close(actual, expected, 1e-5f);
+}
+
+TEST_F(MetalBackend, BoundaryAndFlatGradientStress)
+{
+  const glm::ivec2 shape = {2, 23};
+  Array input(shape, -3.5f);
+  const Array expected = hmap::gradient_norm(input);
+  const Array actual = hmap::gpu::metal::gradient_norm(input);
+  expect_finite_and_close(actual, expected, 1e-6f);
+
+  Array non_square(glm::ivec2{29, 7});
+  fill_field(non_square);
+  const Array expected_non_square = hmap::gradient_norm(non_square);
+  const Array actual_non_square =
+      hmap::gpu::metal::gradient_norm(non_square);
+  expect_finite_and_close(actual_non_square, expected_non_square, 1e-5f);
+}
+
+TEST_F(MetalBackend, NoiseOptionalInputsPeriodsAndSeeds)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {31, 11};
+  Array noise_x(shape);
+  Array noise_y(shape);
+  for (size_t k = 0; k < noise_x.vector.size(); ++k)
+  {
+    noise_x.vector[k] = 0.15f * std::sin(float(k));
+    noise_y.vector[k] = -0.1f * std::cos(0.5f * float(k));
+  }
+
+  for (const std::uint32_t seed : {1u, 42u, 0xffffffffu})
+  {
+    const auto actual = hmap::gpu::metal::noise(
+        hmap::NoiseType::VALUE_LINEAR,
+        shape,
+        {3.2f, 2.7f},
+        seed,
+        &noise_x,
+        &noise_y,
+        {-0.25f, 1.25f, -0.5f, 1.5f},
+        {5, 3});
+    const auto expected = opencl_noise(hmap::NoiseType::VALUE_LINEAR,
+                                       shape,
+                                       {3.2f, 2.7f},
+                                       seed,
+                                       &noise_x,
+                                       &noise_y,
+                                       {-0.25f, 1.25f, -0.5f, 1.5f},
+                                       {5, 3});
+    expect_finite_and_close(actual, expected, 2e-5f);
+  }
+}
+
+TEST_F(MetalBackend, AdvectionOptionalMaskAndBoundaryStress)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {11, 7};
+  Array z(shape);
+  Array field(shape);
+  Array dx(shape);
+  Array dy(shape);
+  Array mask(shape);
+  fill_field(z);
+  fill_field(field);
+  for (size_t k = 0; k < dx.vector.size(); ++k)
+  {
+    dx.vector[k] = (k % 3 == 0) ? -0.4f : 0.25f;
+    dy.vector[k] = (k % 4 == 0) ? 0.3f : -0.15f;
+    mask.vector[k] = (k % 2 == 0) ? 0.f : 1.f;
+  }
+
+  const auto actual = hmap::gpu::metal::advection_warp(
+      z, field, dx, dy, 1.5f, 0.65f, &mask);
+  const auto expected =
+      opencl_advection(z, field, dx, dy, 1.5f, 0.65f, &mask);
+  expect_finite_and_close(actual, expected, 2e-3f);
+}
+
+TEST_F(MetalBackend, ThermalIterationCountStress)
+{
+  const glm::ivec2 shape = {33, 19};
+  Array source(shape);
+  fill_field(source);
+  const Array talus(shape, 0.01f);
+
+  for (const int iterations : {0, 1, 10})
+  {
+    Array actual = source;
+    const Array expected = thermal_reference(source, talus, iterations);
+    hmap::gpu::metal::thermal(actual, talus, iterations);
+    expect_finite_and_close(actual, expected, 2e-5f);
+  }
+}
+
+TEST_F(MetalBackend, HydraulicOptionalOutputsAndNonSquareStress)
+{
+  const glm::ivec2 shape = {19, 13};
+  Array terrain(shape);
+  Array rain(shape);
+  fill_field(terrain);
+  for (size_t k = 0; k < rain.vector.size(); ++k)
+    rain.vector[k] = 0.5f + 0.5f * std::fabs(std::sin(float(k)));
+
+  Array water_depth;
+  Array sediment;
+  Array velocity_u;
+  Array velocity_v;
+  hmap::gpu::metal::hydraulic_vpipes(terrain,
+                                     0.025f,
+                                     true,
+                                     0.15f,
+                                     10,
+                                     0.25f,
+                                     0.4f,
+                                     0.002f,
+                                     0.02f,
+                                     1.2f,
+                                     8.f,
+                                     false,
+                                     0.f,
+                                     &rain,
+                                     &water_depth,
+                                     &sediment,
+                                     &velocity_u,
+                                     &velocity_v);
+
+  const auto execution = hmap::gpu::metal::last_execution_stats();
+  EXPECT_EQ(execution.command_buffers, 1u);
+  EXPECT_EQ(execution.synchronization_count, 1u);
+  EXPECT_GE(execution.encoders, 50u);
+  EXPECT_GT(execution.readback_bytes, 0u);
+
+  for (const Array *result : {&terrain,
+                              &water_depth,
+                              &sediment,
+                              &velocity_u,
+                              &velocity_v})
+  {
+    ASSERT_EQ(result->shape.x, shape.x);
+    ASSERT_EQ(result->shape.y, shape.y);
+    for (const float value : result->vector) EXPECT_TRUE(std::isfinite(value));
+  }
+
+  const double expected_water_volume =
+      0.025 * std::accumulate(rain.vector.begin(), rain.vector.end(), 0.f);
+  const double actual_water_volume =
+      std::accumulate(water_depth.vector.begin(),
+                      water_depth.vector.end(),
+                      0.0);
+  EXPECT_NEAR(actual_water_volume, expected_water_volume, 5e-4);
 }
 
 TEST_F(MetalBackend, HydraulicFlatFieldPreservesWaterAndTerrain)
