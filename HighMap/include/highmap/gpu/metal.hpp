@@ -156,6 +156,14 @@ public:
 
   DeviceArray upload(const Array &array,
                      StorageMode mode = StorageMode::shared);
+  /**
+   * @brief Adopt a completed device resource into this session.
+   *
+   * The source session is finished before the resource is returned. This is
+   * intended for bounded, optional caches; callers never receive or store a
+   * raw Metal buffer.
+   */
+  DeviceArray adopt_completed(const DeviceArray &array);
   DeviceArray allocate(glm::ivec2 shape,
                        StorageMode mode = StorageMode::private_storage);
 
@@ -187,6 +195,22 @@ public:
                         const DeviceArray *p_noise_y = nullptr,
                         glm::vec4      bbox = {0.f, 1.f, 0.f, 1.f},
                         glm::ivec2     period = {0, 0});
+  /** @brief Evaluate the Gabor-wavelet fBm primitive without host materialization. */
+  DeviceArray gabor_wave_fbm(
+      glm::ivec2          shape,
+      glm::vec2           kw,
+      std::uint32_t       seed,
+      float               angle_degrees,
+      float               angle_spread_ratio,
+      int                 octaves,
+      float               weight,
+      float               persistence,
+      float               lacunarity,
+      const DeviceArray  *p_ctrl_param = nullptr,
+      const DeviceArray  *p_noise_x = nullptr,
+      const DeviceArray  *p_noise_y = nullptr,
+      const DeviceArray  *p_angle = nullptr,
+      glm::vec4           bbox = {0.f, 1.f, 0.f, 1.f});
   /** @brief Gaussian separable blur kept entirely in the session. */
   DeviceArray smooth_cpulse(DeviceArray array, int ir);
   /** @brief Rebuild weighted frequency bands without host materialization. */
@@ -299,6 +323,22 @@ Array noise_fbm(NoiseType     noise_type,
                 const Array  *p_noise_y = nullptr,
                 glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f},
                 glm::ivec2    period = {0, 0});
+
+Array gabor_wave_fbm(
+    glm::ivec2        shape,
+    glm::vec2         kw,
+    std::uint32_t     seed,
+    float             angle_degrees,
+    float             angle_spread_ratio,
+    int               octaves = 8,
+    float             weight = 0.7f,
+    float             persistence = 0.5f,
+    float             lacunarity = 2.f,
+    const Array      *p_ctrl_param = nullptr,
+    const Array      *p_noise_x = nullptr,
+    const Array      *p_noise_y = nullptr,
+    const Array      *p_angle = nullptr,
+    glm::vec4         bbox = {0.f, 1.f, 0.f, 1.f});
 
 Array smooth_cpulse(const Array &array, int ir);
 

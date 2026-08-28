@@ -309,6 +309,26 @@ TEST_F(MetalBackend, DeviceArrayCanOutliveSession)
   expect_finite_and_close(device.to_array(), input, 0.f);
 }
 
+TEST_F(MetalBackend, DeviceArrayCanBeAdoptedByCompletedSession)
+{
+  const glm::ivec2 shape = {17, 13};
+  Array input(shape);
+  fill_field(input);
+
+  hmap::gpu::metal::DeviceArray completed;
+  {
+    hmap::gpu::metal::DeviceSession producer;
+    completed = producer.gradient_norm(producer.upload(input));
+    producer.finish();
+  }
+
+  hmap::gpu::metal::DeviceSession consumer;
+  auto adopted = consumer.adopt_completed(completed);
+  const Array actual = consumer.download(adopted);
+  const Array expected = hmap::gpu::metal::gradient_norm(input);
+  expect_finite_and_close(actual, expected, 2e-5f);
+}
+
 TEST_F(MetalBackend, DeviceArrayRejectsMixedSessionsAndShapeMismatch)
 {
   Array first_input({11, 7}, 1.f);
@@ -713,6 +733,68 @@ TEST_F(MetalBackend, ResidentNoiseFbmAndNormalizationMatchOpenCL)
   const Array actual = session.download(normalized);
   expect_finite_and_close(actual, expected, 2e-4f);
   EXPECT_EQ(session.stats().upload_bytes, 0u);
+}
+
+TEST_F(MetalBackend, ResidentGaborWaveFbmMatchesOpenCL)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {37, 29};
+  const glm::vec2 kw = {3.5f, 5.25f};
+  const std::uint32_t seed = 2718u;
+  const float angle_degrees = 21.2f;
+  Array ctrl(shape);
+  Array noise_x(shape);
+  Array noise_y(shape);
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      const float phase = 0.17f * float(i) + 0.11f * float(j);
+      ctrl(i, j) = 0.35f + 0.25f * std::sin(phase);
+      noise_x(i, j) = 0.015f * std::sin(0.23f * float(i + j));
+      noise_y(i, j) = 0.02f * std::cos(0.19f * float(i - j));
+    }
+
+  Array angle_delta(shape);
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+      angle_delta(i, j) = 0.03f * std::sin(0.13f * float(i)) *
+                          std::cos(0.09f * float(j));
+
+  Array angle_field(shape, angle_degrees);
+  angle_field += angle_delta * (180.f / float(M_PI));
+
+  const Array expected = hmap::gpu::gabor_wave_fbm(shape,
+                                                    kw,
+                                                    seed,
+                                                    angle_field,
+                                                    0.65f,
+                                                    6,
+                                                    0.72f,
+                                                    0.53f,
+                                                    1.9f,
+                                                    &ctrl,
+                                                    &noise_x,
+                                                    &noise_y,
+                                                    {-0.25f, 1.25f, 0.1f, 0.9f});
+  const Array actual = hmap::gpu::metal::gabor_wave_fbm(
+      shape,
+      kw,
+      seed,
+      angle_degrees,
+      0.65f,
+      6,
+      0.72f,
+      0.53f,
+      1.9f,
+      &ctrl,
+      &noise_x,
+      &noise_y,
+      &angle_delta,
+      {-0.25f, 1.25f, 0.1f, 0.9f});
+
+  expect_finite_and_close(actual, expected, 3e-4f);
 }
 
 TEST_F(MetalBackend, ResidentSpectralEqualizerMatchesOpenCL)

@@ -59,6 +59,29 @@ struct NoiseFbmParams
   float bbox3;
 };
 
+struct GaborFbmParams
+{
+  int nx;
+  int ny;
+  float kx;
+  float ky;
+  uint seed;
+  float angle_degrees;
+  float angle_spread_ratio;
+  int octaves;
+  float weight;
+  float persistence;
+  float lacunarity;
+  int has_ctrl_param;
+  int has_noise_x;
+  int has_noise_y;
+  int has_angle;
+  float bbox0;
+  float bbox1;
+  float bbox2;
+  float bbox3;
+};
+
 struct SmoothCpulseParams
 {
   int nx;
@@ -321,6 +344,74 @@ inline float evaluate_noise_fbm(float2       p,
   return n;
 }
 
+inline float2 hash22_poly(float2 x, float fseed)
+{
+  const float2 k = float2(0.3183099f, 0.3678794f);
+  x = x * k + k.yx;
+  return fract(16.f * k * fract(x.x * x.y * (x.x + x.y) + fseed));
+}
+
+inline float2 angle_to_dir_degrees(float angle)
+{
+  constexpr float pi_over_180 = 0.017453292519943295f;
+  float radians = angle * pi_over_180;
+  return float2(cos(radians), sin(radians));
+}
+
+inline float gabor_wave_scalar(float2 p,
+                               float2 dir,
+                               float angle_spread_ratio,
+                               float fseed)
+{
+  float2 ip = floor(p);
+  float2 fp = fract(p);
+  constexpr float fr = 6.283185f;
+  constexpr float fa = 4.f;
+  float av = 0.f;
+  float at = 0.f;
+
+  for (int j = -2; j <= 2; ++j)
+    for (int i = -2; i <= 2; ++i)
+    {
+      float2 o = float2(float(i), float(j));
+      float2 h = hash22_poly(ip + o, fseed);
+      float2 r = fp - (o + h);
+      float2 s = float2(11.f, 31.f);
+      float2 k = normalize(dir + angle_spread_ratio *
+                                     (2.f * hash22_poly(ip + o + s, fseed) - 1.f));
+      float d = dot(r, r);
+      float l = dot(r, k);
+      float w = exp(-fa * d);
+      av += w * cos(fr * l);
+      at += w;
+    }
+
+  return at > 0.f ? av / at : 0.f;
+}
+
+inline float gabor_wave_scalar_fbm(float2 p,
+                                   float2 dir,
+                                   float angle_spread_ratio,
+                                   int octaves,
+                                   float weight,
+                                   float persistence,
+                                   float lacunarity,
+                                   float fseed)
+{
+  float n = 0.f;
+  float nf = 1.f;
+  float na = 0.6f;
+  for (int i = 0; i < octaves; ++i)
+  {
+    float v = gabor_wave_scalar(p * nf, dir, angle_spread_ratio, fseed);
+    n += v * na;
+    na *= (1.f - weight) + weight * min(v + 1.f, 2.f) * 0.5f;
+    na *= persistence;
+    nf *= lacunarity;
+  }
+  return n;
+}
+
 kernel void gradient_norm(device const float *array [[buffer(0)]],
                           device float       *g_norm [[buffer(1)]],
                           constant GridParams &p [[buffer(2)]],
@@ -427,6 +518,41 @@ kernel void noise_fbm(device float       *output [[buffer(0)]],
                                      new_weight,
                                      p.persistence,
                                      p.lacunarity);
+}
+
+kernel void gabor_wave_fbm(device float       *output [[buffer(0)]],
+                           device const float *ctrl_param [[buffer(1)]],
+                           device const float *noise_x [[buffer(2)]],
+                           device const float *noise_y [[buffer(3)]],
+                           device const float *angle [[buffer(4)]],
+                           constant GaborFbmParams &p [[buffer(5)]],
+                           uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  uint index = index_at(int(gid.x), int(gid.y), p.nx);
+  float fseed = seeded_random(p.seed);
+  float ct = p.has_ctrl_param ? ctrl_param[index] : 1.f;
+  float dx = p.has_noise_x ? noise_x[index] : 0.f;
+  float dy = p.has_noise_y ? noise_y[index] : 0.f;
+  float angle_degrees_local = p.angle_degrees +
+                              (p.has_angle ? angle[index] * 57.29577951308232f : 0.f);
+  // Keep the same half-wavenumber convention as the OpenCL Gabor kernels.
+  const float kx = 0.5f * p.kx;
+  const float ky = 0.5f * p.ky;
+  float2 pos = float2(
+      kx * (float(gid.x) / float(p.nx) * (p.bbox1 - p.bbox0) + p.bbox0) +
+          kx * dx,
+      ky * (float(gid.y) / float(p.ny) * (p.bbox3 - p.bbox2) + p.bbox2) +
+          ky * dy);
+  output[index] = gabor_wave_scalar_fbm(
+      pos,
+      angle_to_dir_degrees(angle_degrees_local),
+      p.angle_spread_ratio,
+      p.octaves,
+      (1.f - ct) + ct * p.weight,
+      p.persistence,
+      p.lacunarity,
+      fseed);
 }
 
 kernel void smooth_cpulse(device const float *input [[buffer(0)]],

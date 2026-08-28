@@ -106,6 +106,11 @@ DeviceArray DeviceSession::upload(const Array &, StorageMode)
   unavailable();
 }
 
+DeviceArray DeviceSession::adopt_completed(const DeviceArray &)
+{
+  unavailable();
+}
+
 DeviceArray DeviceSession::allocate(glm::ivec2, StorageMode)
 {
   unavailable();
@@ -155,6 +160,25 @@ DeviceArray DeviceSession::noise_fbm(NoiseType,
                                      const DeviceArray *,
                                      glm::vec4,
                                      glm::ivec2)
+{
+  unavailable();
+}
+
+DeviceArray DeviceSession::gabor_wave_fbm(
+    glm::ivec2,
+    glm::vec2,
+    std::uint32_t,
+    float,
+    float,
+    int,
+    float,
+    float,
+    float,
+    const DeviceArray *,
+    const DeviceArray *,
+    const DeviceArray *,
+    const DeviceArray *,
+    glm::vec4)
 {
   unavailable();
 }
@@ -318,6 +342,24 @@ Array noise_fbm(NoiseType,
                 const Array *,
                 glm::vec4,
                 glm::ivec2)
+{
+  unavailable();
+}
+
+Array gabor_wave_fbm(glm::ivec2,
+                     glm::vec2,
+                     std::uint32_t,
+                     float,
+                     float,
+                     int,
+                     float,
+                     float,
+                     float,
+                     const Array *,
+                     const Array *,
+                     const Array *,
+                     const Array *,
+                     glm::vec4)
 {
   unavailable();
 }
