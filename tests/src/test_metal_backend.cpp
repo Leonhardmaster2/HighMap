@@ -149,6 +149,45 @@ Array thermal_reference(Array z, const Array &talus, int iterations)
   return z;
 }
 
+Array thermal_ridge_reference(Array z, const Array &talus, int iterations)
+{
+  for (int iteration = 0; iteration < iterations; ++iteration)
+  {
+    Array next(z.shape);
+    for (int j = 0; j < z.shape.y; ++j)
+      for (int i = 0; i < z.shape.x; ++i)
+      {
+        if (i == 0 || i == z.shape.x - 1 || j == 0 || j == z.shape.y - 1)
+        {
+          next(i, j) = z(i, j);
+          continue;
+        }
+
+        const int di[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
+        const int dj[8] = {0, 1, -1, 0, -1, 1, -1, 1};
+        const float distance[8] = {
+            1.f, 1.f, 1.f, 1.f, 1.414f, 1.414f, 1.414f, 1.414f};
+        const float value = z(i, j);
+        float sum = 0.f;
+        float slope_max = 0.f;
+        for (int k = 0; k < 8; ++k)
+        {
+          const float dz = (value - z(i + di[k], j + dj[k])) / distance[k];
+          if (dz > 0.f) sum += dz;
+          slope_max = std::max(slope_max, std::fabs(dz));
+        }
+
+        const float t = talus(i, j);
+        float amp = slope_max > 0.f ? std::clamp(1.f - t / slope_max, 0.f, 1.f)
+                                    : 0.f;
+        amp = amp * amp * (3.f - 2.f * amp);
+        next(i, j) = value + 0.25f * (t - 0.5f * sum) * amp;
+      }
+    z = std::move(next);
+  }
+  return z;
+}
+
 void expect_finite_and_close(const Array &actual,
                              const Array &expected,
                              float        tolerance)
@@ -428,6 +467,45 @@ TEST_F(MetalBackend, DeviceArrayThermalMatchesSynchronousMetal)
   EXPECT_EQ(stats.command_buffers, 1u);
   EXPECT_EQ(stats.synchronization_count, 1u);
   EXPECT_EQ(stats.encoders, 5u);
+}
+
+TEST_F(MetalBackend, DeviceArrayLinearThermalBlendMatchesReference)
+{
+  const glm::ivec2 shape = {29, 13};
+  Array source(shape);
+  fill_field(source);
+  const Array talus(shape, 0.01f);
+  const int standard_iterations = 4;
+  const int ridge_iterations = 3;
+  const float weight1 = 0.8f;
+  const float weight2 = 1.1f;
+
+  const Array expected_thermal = thermal_ridge_reference(
+      thermal_reference(source, talus, standard_iterations),
+      talus,
+      ridge_iterations);
+  Array expected(expected_thermal.shape);
+  for (std::size_t i = 0; i < expected.vector.size(); ++i)
+    expected.vector[i] = weight1 * source.vector[i] +
+                         weight2 * expected_thermal.vector[i];
+
+  hmap::gpu::metal::DeviceSession session;
+  auto device_source = session.upload(source);
+  auto device_talus = session.upload(talus);
+  auto device_thermal = session.thermal(
+      std::move(device_source), device_talus, standard_iterations);
+  device_thermal = session.thermal_ridge(
+      std::move(device_thermal), device_talus, ridge_iterations);
+  auto device_result = session.linear_combine(
+      session.upload(source), device_thermal, weight1, weight2);
+  const Array actual = session.download(device_result);
+
+  expect_finite_and_close(actual, expected, 2e-5f);
+  const auto stats = session.stats();
+  EXPECT_EQ(stats.command_buffers, 1u);
+  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_EQ(stats.encoders,
+            static_cast<std::uint64_t>(standard_iterations + ridge_iterations + 1));
 }
 
 TEST_F(MetalBackend, DeviceArrayHydraulicMatchesSynchronousMetal)

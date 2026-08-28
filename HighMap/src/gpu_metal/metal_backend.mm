@@ -145,6 +145,14 @@ struct ThermalParams
   int ny;
 };
 
+struct LinearCombineParams
+{
+  int nx;
+  int ny;
+  float weight1;
+  float weight2;
+};
+
 struct HydraulicParams
 {
   int nx;
@@ -1801,6 +1809,89 @@ DeviceArray DeviceSession::thermal(DeviceArray        z,
                                       input,
                                       mode,
                                       ResidencyState::device_valid));
+}
+
+DeviceArray DeviceSession::thermal_ridge(DeviceArray        z,
+                                         const DeviceArray &talus,
+                                         int                iterations)
+{
+  require_session_open(state_);
+  require_input(state_, z.state_, "thermal ridge input");
+  require_input(state_, talus.state_, "thermal ridge talus");
+  require_same_shape(talus.state_, z.state_->shape, "thermal ridge talus");
+  if (iterations <= 0) return z;
+
+  const glm::ivec2 shape = z.state_->shape;
+  const StorageMode mode = z.state_->storage;
+  const std::size_t bytes = z.state_->byte_size;
+  id<MTLBuffer> first = acquire_session_buffer(state_, bytes, mode);
+  id<MTLBuffer> second = acquire_session_buffer(state_, bytes, mode);
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("thermal_ridge_pass", &state_->stats);
+  ThermalParams params{shape.x, shape.y};
+  id<MTLBuffer> input = z.state_->buffer;
+  id<MTLBuffer> output = first;
+  const auto encoding_start = Clock::now();
+  for (int it = 0; it < iterations; ++it)
+  {
+    id<MTLComputeCommandEncoder> encoder =
+        compute_encoder(state_->command_buffer, &state_->stats);
+    [encoder setComputePipelineState:pipeline];
+    [encoder setBuffer:input offset:0 atIndex:0];
+    [encoder setBuffer:talus.state_->buffer offset:0 atIndex:1];
+    [encoder setBuffer:output offset:0 atIndex:2];
+    set_bytes(encoder, &params, sizeof(params), 3);
+    dispatch(encoder, pipeline, shape.x, shape.y, "thermal_ridge_pass");
+    [encoder endEncoding];
+    input = output;
+    output = output == first ? second : first;
+  }
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  release_session_buffer(state_, output, bytes, mode);
+  recycle_unique_state(z.state_);
+  return DeviceArray(make_array_state(state_,
+                                      shape,
+                                      input,
+                                      mode,
+                                      ResidencyState::device_valid));
+}
+
+DeviceArray DeviceSession::linear_combine(DeviceArray        array1,
+                                          const DeviceArray &array2,
+                                          float              weight1,
+                                          float              weight2)
+{
+  require_session_open(state_);
+  require_input(state_, array1.state_, "linear combine input 1");
+  require_input(state_, array2.state_, "linear combine input 2");
+  require_same_shape(array2.state_, array1.state_->shape, "linear combine input 2");
+  const glm::ivec2 shape = array1.state_->shape;
+  const StorageMode mode = array1.state_->storage;
+  const std::size_t bytes = array1.state_->byte_size;
+  id<MTLBuffer> output = acquire_session_buffer(state_, bytes, mode);
+  auto result = make_array_state(state_,
+                                 shape,
+                                 output,
+                                 mode,
+                                 ResidencyState::device_valid);
+  LinearCombineParams params{shape.x, shape.y, weight1, weight2};
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("linear_combine", &state_->stats);
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:array1.state_->buffer offset:0 atIndex:0];
+  [encoder setBuffer:array2.state_->buffer offset:0 atIndex:1];
+  [encoder setBuffer:output offset:0 atIndex:2];
+  set_bytes(encoder, &params, sizeof(params), 3);
+  dispatch(encoder, pipeline, shape.x, shape.y, "linear_combine");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  recycle_unique_state(array1.state_);
+  return DeviceArray(std::move(result));
 }
 
 DeviceArray DeviceSession::hydraulic_vpipes(

@@ -50,6 +50,14 @@ struct ThermalParams
   int ny;
 };
 
+struct LinearCombineParams
+{
+  int nx;
+  int ny;
+  float weight1;
+  float weight2;
+};
+
 struct HydraulicParams
 {
   int nx;
@@ -451,6 +459,54 @@ kernel void thermal_pass(device const float *z_in [[buffer(0)]],
                                distance[k],
                                talus[index]);
   z_out[index] = value + amount;
+}
+
+kernel void thermal_ridge_pass(device const float *z_in [[buffer(0)]],
+                               device const float *talus [[buffer(1)]],
+                               device float       *z_out [[buffer(2)]],
+                               constant ThermalParams &p [[buffer(3)]],
+                               uint2                gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  int x = int(gid.x);
+  int y = int(gid.y);
+  uint index = index_at(x, y, p.nx);
+  if (x == 0 || x == p.nx - 1 || y == 0 || y == p.ny - 1)
+  {
+    z_out[index] = z_in[index];
+    return;
+  }
+
+  constexpr float diagonal = 1.414f;
+  const int dx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
+  const int dy[8] = {0, 1, -1, 0, -1, 1, -1, 1};
+  const float distance[8] = {1.f, 1.f, 1.f, 1.f, diagonal, diagonal, diagonal, diagonal};
+  const float value = z_in[index];
+  float sum = 0.f;
+  float slope_max = 0.f;
+  for (uint k = 0; k < 8; ++k)
+  {
+    float dz = (value - load_clamped(z_in, x + dx[k], y + dy[k], p.nx, p.ny)) /
+               distance[k];
+    if (dz > 0.f) sum += dz;
+    slope_max = max(slope_max, fabs(dz));
+  }
+
+  const float t = talus[index];
+  float amp = slope_max > 0.f ? clamp(1.f - t / slope_max, 0.f, 1.f) : 0.f;
+  amp = amp * amp * (3.f - 2.f * amp);
+  z_out[index] = value + 0.25f * (t - 0.5f * sum) * amp;
+}
+
+kernel void linear_combine(device const float *array1 [[buffer(0)]],
+                           device const float *array2 [[buffer(1)]],
+                           device float       *output [[buffer(2)]],
+                           constant LinearCombineParams &p [[buffer(3)]],
+                           uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  uint i = index_at(int(gid.x), int(gid.y), p.nx);
+  output[i] = p.weight1 * array1[i] + p.weight2 * array2[i];
 }
 
 kernel void hydraulic_flow_pass(device const float *z [[buffer(0)]],

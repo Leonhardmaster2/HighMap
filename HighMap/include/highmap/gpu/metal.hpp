@@ -198,6 +198,13 @@ public:
   DeviceArray thermal(DeviceArray z,
                       const DeviceArray &talus,
                       int                iterations);
+  DeviceArray thermal_ridge(DeviceArray z,
+                            const DeviceArray &talus,
+                            int                iterations);
+  DeviceArray linear_combine(DeviceArray        array1,
+                             const DeviceArray &array2,
+                             float              weight1,
+                             float              weight2);
   DeviceArray hydraulic_vpipes(
       DeviceArray        z,
       float              water_height,
