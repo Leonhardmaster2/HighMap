@@ -170,6 +170,21 @@ DeviceArray DeviceSession::thermal(DeviceArray, const DeviceArray &, int)
   unavailable();
 }
 
+DeviceArray DeviceSession::thermal_ridge(DeviceArray,
+                                          const DeviceArray &,
+                                          int)
+{
+  unavailable();
+}
+
+DeviceArray DeviceSession::linear_combine(DeviceArray,
+                                           const DeviceArray &,
+                                           float,
+                                           float)
+{
+  unavailable();
+}
+
 DeviceArray DeviceSession::hydraulic_vpipes(
     DeviceArray,
     float,
