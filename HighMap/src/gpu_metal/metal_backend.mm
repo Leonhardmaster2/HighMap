@@ -155,6 +155,29 @@ struct NoiseFbmParams
   float bbox3;
 };
 
+struct GaborFbmParams
+{
+  int nx;
+  int ny;
+  float kx;
+  float ky;
+  uint32_t seed;
+  float angle_degrees;
+  float angle_spread_ratio;
+  int octaves;
+  float weight;
+  float persistence;
+  float lacunarity;
+  int has_ctrl_param;
+  int has_noise_x;
+  int has_noise_y;
+  int has_angle;
+  float bbox0;
+  float bbox1;
+  float bbox2;
+  float bbox3;
+};
+
 struct SmoothCpulseParams
 {
   int nx;
@@ -988,6 +1011,13 @@ void finish_session(const std::shared_ptr<detail::DeviceSessionState> &session)
   session->command_buffer = nil;
   session->submitted_command_buffers.clear();
   session->upload_staging.clear();
+  // A finished session cannot accept more work. Release scratch buffers so a
+  // completed DeviceArray retained by an optional cache keeps only its own
+  // resource alive.
+  session->shared_pool.clear();
+  session->private_pool.clear();
+  session->live_bytes = 0;
+  session->stats.resident_bytes = 0;
 }
 
 void prepare_download_state(
@@ -1275,6 +1305,45 @@ Array noise_fbm(NoiseType     noise_type,
                                   p_noise_y ? &noise_y : nullptr,
                                   bbox,
                                   period);
+  return session.download(result);
+}
+
+Array gabor_wave_fbm(glm::ivec2        shape,
+                     glm::vec2         kw,
+                     std::uint32_t     seed,
+                     float             angle_degrees,
+                     float             angle_spread_ratio,
+                     int               octaves,
+                     float             weight,
+                     float             persistence,
+                     float             lacunarity,
+                     const Array      *p_ctrl_param,
+                     const Array      *p_noise_x,
+                     const Array      *p_noise_y,
+                     const Array      *p_angle,
+                     glm::vec4         bbox)
+{
+  begin_operation();
+  require_ready();
+  DeviceSession session;
+  auto ctrl = p_ctrl_param ? session.upload(*p_ctrl_param) : DeviceArray{};
+  auto noise_x = p_noise_x ? session.upload(*p_noise_x) : DeviceArray{};
+  auto noise_y = p_noise_y ? session.upload(*p_noise_y) : DeviceArray{};
+  auto angle = p_angle ? session.upload(*p_angle) : DeviceArray{};
+  auto result = session.gabor_wave_fbm(shape,
+                                       kw,
+                                       seed,
+                                       angle_degrees,
+                                       angle_spread_ratio,
+                                       octaves,
+                                       weight,
+                                       persistence,
+                                       lacunarity,
+                                       p_ctrl_param ? &ctrl : nullptr,
+                                       p_noise_x ? &noise_x : nullptr,
+                                       p_noise_y ? &noise_y : nullptr,
+                                       p_angle ? &angle : nullptr,
+                                       bbox);
   return session.download(result);
 }
 
@@ -1916,6 +1985,98 @@ DeviceArray DeviceSession::noise_fbm(NoiseType          noise_type,
   [encoder setBuffer:noise_y offset:0 atIndex:3];
   set_bytes(encoder, &params, sizeof(params), 4);
   dispatch(encoder, pipeline, shape.x, shape.y, "noise_fbm");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  return DeviceArray(std::move(result));
+}
+
+DeviceArray DeviceSession::gabor_wave_fbm(
+    glm::ivec2         shape,
+    glm::vec2          kw,
+    std::uint32_t      seed,
+    float              angle_degrees,
+    float              angle_spread_ratio,
+    int                octaves,
+    float              weight,
+    float              persistence,
+    float              lacunarity,
+    const DeviceArray *p_ctrl_param,
+    const DeviceArray *p_noise_x,
+    const DeviceArray *p_noise_y,
+    const DeviceArray *p_angle,
+    glm::vec4          bbox)
+{
+  require_session_open(state_);
+  check_shape_2d(shape);
+  if (octaves < 0)
+    throw std::invalid_argument("Metal resident Gabor FBM octaves must be non-negative");
+
+  const auto check_optional = [&](const DeviceArray *array, const char *name) {
+    if (!array) return;
+    require_input(state_, array->state_, name);
+    require_same_shape(array->state_, shape, name);
+  };
+  check_optional(p_ctrl_param, "ctrl_param");
+  check_optional(p_noise_x, "noise_x");
+  check_optional(p_noise_y, "noise_y");
+  check_optional(p_angle, "angle");
+
+  const StorageMode mode = state_->default_storage;
+  const std::size_t count = static_cast<std::size_t>(shape.x) *
+                            static_cast<std::size_t>(shape.y);
+  const std::size_t bytes = count * sizeof(float);
+  id<MTLBuffer> output = acquire_session_buffer(state_, bytes, mode);
+  id<MTLBuffer> ctrl = p_ctrl_param
+                           ? p_ctrl_param->state_->buffer
+                           : new_session_buffer(state_, sizeof(float), mode);
+  id<MTLBuffer> noise_x = p_noise_x
+                              ? p_noise_x->state_->buffer
+                              : new_session_buffer(state_, sizeof(float), mode);
+  id<MTLBuffer> noise_y = p_noise_y
+                              ? p_noise_y->state_->buffer
+                              : new_session_buffer(state_, sizeof(float), mode);
+  id<MTLBuffer> angle = p_angle
+                            ? p_angle->state_->buffer
+                            : new_session_buffer(state_, sizeof(float), mode);
+  auto result = make_array_state(state_,
+                                 shape,
+                                 output,
+                                 mode,
+                                 ResidencyState::device_valid);
+
+  GaborFbmParams params{shape.x,
+                        shape.y,
+                        kw.x,
+                        kw.y,
+                        seed,
+                        angle_degrees,
+                        angle_spread_ratio,
+                        octaves,
+                        weight,
+                        persistence,
+                        lacunarity,
+                        p_ctrl_param ? 1 : 0,
+                        p_noise_x ? 1 : 0,
+                        p_noise_y ? 1 : 0,
+                        p_angle ? 1 : 0,
+                        bbox.x,
+                        bbox.y,
+                        bbox.z,
+                        bbox.w};
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("gabor_wave_fbm", &state_->stats);
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:output offset:0 atIndex:0];
+  [encoder setBuffer:ctrl offset:0 atIndex:1];
+  [encoder setBuffer:noise_x offset:0 atIndex:2];
+  [encoder setBuffer:noise_y offset:0 atIndex:3];
+  [encoder setBuffer:angle offset:0 atIndex:4];
+  set_bytes(encoder, &params, sizeof(params), 5);
+  dispatch(encoder, pipeline, shape.x, shape.y, "gabor_wave_fbm");
   [encoder endEncoding];
   record_encoding(encoding_start, &state_->stats);
   state_->has_work = true;
@@ -2801,6 +2962,27 @@ DeviceArray DeviceSession::upload(const Array &array, StorageMode mode)
                                  ResidencyState::both_valid);
   result->host_shadow =
       std::make_shared<std::vector<float>>(array.vector);
+  return DeviceArray(std::move(result));
+}
+
+DeviceArray DeviceSession::adopt_completed(const DeviceArray &array)
+{
+  require_session_open(state_);
+  if (!array.state_ || !array.state_->buffer)
+    throw std::invalid_argument("Cannot adopt an empty Metal DeviceArray");
+  if (!array.state_->session)
+    throw std::invalid_argument("Cannot adopt a Metal DeviceArray without a session");
+
+  if (array.state_->session == state_)
+    return array;
+
+  finish_session(array.state_->session);
+  auto result = make_array_state(state_,
+                                 array.state_->shape,
+                                 array.state_->buffer,
+                                 array.state_->storage,
+                                 array.state_->residency);
+  result->host_shadow = array.state_->host_shadow;
   return DeviceArray(std::move(result));
 }
 
