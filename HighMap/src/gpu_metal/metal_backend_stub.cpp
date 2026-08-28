@@ -305,6 +305,33 @@ Array noise(NoiseType,
   unavailable();
 }
 
+Array noise_fbm(NoiseType,
+                glm::ivec2,
+                glm::vec2,
+                std::uint32_t,
+                int,
+                float,
+                float,
+                float,
+                const Array *,
+                const Array *,
+                const Array *,
+                glm::vec4,
+                glm::ivec2)
+{
+  unavailable();
+}
+
+Array smooth_cpulse(const Array &, int)
+{
+  unavailable();
+}
+
+Array spectral_equalizer(const Array &, const std::vector<float> &, int, int)
+{
+  unavailable();
+}
+
 Array advection_warp(const Array &,
                      const Array &,
                      const Array &,
