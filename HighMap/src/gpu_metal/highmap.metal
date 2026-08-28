@@ -357,6 +357,59 @@ kernel void advection_warp(device const float *z [[buffer(0)]],
   output[index_at(int(gid.x), int(gid.y), p.nx)] = value;
 }
 
+// Texture-backed advection is intentionally an experiment rather than a
+// replacement for the buffer path. DeviceArray owns buffers; the host-side
+// session performs explicit buffer/texture blits around this kernel so their
+// cost remains measurable.
+kernel void advection_warp_texture(
+    texture2d<float, access::sample> z [[texture(0)]],
+    texture2d<float, access::sample> field [[texture(1)]],
+    texture2d<float, access::sample> dx [[texture(2)]],
+    texture2d<float, access::sample> dy [[texture(3)]],
+    texture2d<float, access::sample> mask [[texture(4)]],
+    texture2d<float, access::write> output [[texture(5)]],
+    constant AdvectionParams       &p [[buffer(0)]],
+    uint2                           gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  constexpr sampler sampler(coord::normalized,
+                            address::mirrored_repeat,
+                            filter::linear);
+  constexpr uint max_steps = 1024u;
+  float2 position = (float2(gid) + 0.5f) / float2(p.nx, p.ny);
+  float2 path[max_steps];
+  uint path_length = 0u;
+  float z_previous = z.sample(sampler, position).r;
+  float2 direction = float2(0.f);
+  float drx = 1.f / float(p.nx);
+  float dry = 1.f / float(p.ny);
+  uint limit = min(max_steps, uint(ceil(p.advection_length / min(drx, dry))));
+
+  for (uint step = 0u; step < limit; ++step) {
+    path[path_length++] = position;
+    float2 velocity = float2(dx.sample(sampler, position).r,
+                              dy.sample(sampler, position).r);
+    float length = metal::length(velocity);
+    if (length > 0.f) direction = velocity / length;
+    position += float2(direction.x * drx, direction.y * dry);
+    if (position.x < 0.f || position.x > 1.f ||
+        position.y < 0.f || position.y > 1.f) break;
+    float z_current = z.sample(sampler, position).r;
+    if (z_current - z_previous < -1e-5f) break;
+    z_previous = z_current;
+  }
+
+  float value = path_length > 0u
+                    ? field.sample(sampler, path[path_length - 1u]).r
+                    : 0.f;
+  for (int step = int(path_length) - 1; step >= 0; --step) {
+    float new_value = field.sample(sampler, path[step]).r;
+    float ratio = mask.sample(sampler, path[step]).r * p.value_persistence;
+    value = ratio * value + (1.f - ratio) * new_value;
+  }
+  output.write(float4(value), uint2(gid.x, gid.y));
+}
+
 inline float thermal_exchange(float self, float other, float distance, float talus)
 {
   float max_difference = distance * talus;
