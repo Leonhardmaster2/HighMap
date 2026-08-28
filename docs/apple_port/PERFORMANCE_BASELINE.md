@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Source | `dev` at `2cc066e1002f598e10bb4f493ac2a811e8e09300` |
+| Source | `dev` at `e0d1279fced75cf7556de233128abfb5650e25b5` |
 | Host | arm64 MacBook Air host (Darwin reports `RELEASE_ARM64_T8122`; exact M-series model was not exposed by the available system queries) |
 | OS | macOS 27.0, build `26A5378j` |
 | Compiler | Apple Clang 21.0.0.21000327, target `arm64-apple-darwin27.0.0` |
@@ -50,7 +50,7 @@ records the environment and protocol rather than inventing measurements.
 
 | Backend | 128²–8192² | Status |
 |---|---:|---|
-| CPU | built and measured | A filtered CPU-oriented run completed 298 tests: 284 passed, 5 pre-existing failures, and 9 Metal tests skipped. The failures were `Blending.BlendExclusion`, `Blending.BlendNegate`, `Blending.BlendOverlay`, `Blending.BlendSoft`, and `PathSplines.PreservePathShape`. |
+| CPU | built and measured | A filtered CPU-oriented run completed 297 tests: 288 passed and 9 Metal tests skipped. The excluded legacy GPU suites require an unavailable OpenCL device; `PathSplines.PreservePathShape` remains a separate pre-existing failure in the unfiltered run. |
 | OpenCL | compiled, unavailable at runtime | `DeviceManager::is_ready()` reports no OpenCL device on the host. OpenCL-dependent tests/benchmarks skip instead of aborting. |
 | Metal | compiled, unavailable at runtime | Metal headers/framework are found and Objective-C++ backend code builds, but `MTLCreateSystemDefaultDevice()` returns no usable device in this execution environment. Metal tests/benchmarks skip. |
 
@@ -58,7 +58,9 @@ The measured CPU samples and the unavailable-backend evidence are recorded in
 `BENCHMARK_RESULTS.md`. No CPU-vs-OpenCL-vs-Metal decision gate can be closed
 until the same binaries run on a host exposing both compute devices.
 
-The unfiltered executable was also run. Its OpenCL-dependent legacy tests
-throw the documented no-device error because those older tests do not yet
-self-skip; they are not treated as CPU or Metal regressions. The new Metal
-tests and benchmark cases self-skip cleanly when Metal is unavailable.
+The unfiltered executable was also run: 331 tests produced 292 passes, 9
+Metal skips, and 30 failures. Twenty-nine failures are legacy OpenCL-dependent
+tests that throw the documented no-device error because those older tests do
+not yet self-skip; the remaining `PathSplines.PreservePathShape` failure is
+separate. They are not treated as CPU or Metal regressions. The new Metal tests
+and benchmark cases self-skip cleanly when Metal is unavailable.
