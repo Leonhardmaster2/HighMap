@@ -201,6 +201,8 @@ public:
   DeviceArray thermal_ridge(DeviceArray z,
                             const DeviceArray &talus,
                             int                iterations);
+  /** @brief Apply the legacy one-cell linear border extrapolation in-resident. */
+  DeviceArray extrapolate_borders(DeviceArray z);
   DeviceArray linear_combine(DeviceArray        array1,
                              const DeviceArray &array2,
                              float              weight1,

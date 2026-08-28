@@ -145,6 +145,12 @@ struct ThermalParams
   int ny;
 };
 
+struct BorderParams
+{
+  int nx;
+  int ny;
+};
+
 struct LinearCombineParams
 {
   int nx;
@@ -1853,6 +1859,52 @@ DeviceArray DeviceSession::thermal_ridge(DeviceArray        z,
   return DeviceArray(make_array_state(state_,
                                       shape,
                                       input,
+                                      mode,
+                                      ResidencyState::device_valid));
+}
+
+DeviceArray DeviceSession::extrapolate_borders(DeviceArray z)
+{
+  require_session_open(state_);
+  require_input(state_, z.state_, "border extrapolation input");
+  const glm::ivec2 shape = z.state_->shape;
+  if (shape.x < 3 || shape.y < 3) return z;
+
+  const StorageMode mode = z.state_->storage;
+  const std::size_t bytes = z.state_->byte_size;
+  id<MTLBuffer> horizontal = acquire_session_buffer(state_, bytes, mode);
+  id<MTLBuffer> vertical = acquire_session_buffer(state_, bytes, mode);
+  id<MTLComputePipelineState> horizontal_pipeline =
+      context().pipeline("extrapolate_horizontal", &state_->stats);
+  id<MTLComputePipelineState> vertical_pipeline =
+      context().pipeline("extrapolate_vertical", &state_->stats);
+  BorderParams params{shape.x, shape.y};
+
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:horizontal_pipeline];
+  [encoder setBuffer:z.state_->buffer offset:0 atIndex:0];
+  [encoder setBuffer:horizontal offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, horizontal_pipeline, shape.x, shape.y, "extrapolate_horizontal");
+  [encoder endEncoding];
+
+  encoder = compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:vertical_pipeline];
+  [encoder setBuffer:horizontal offset:0 atIndex:0];
+  [encoder setBuffer:vertical offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, vertical_pipeline, shape.x, shape.y, "extrapolate_vertical");
+  [encoder endEncoding];
+
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  release_session_buffer(state_, horizontal, bytes, mode);
+  recycle_unique_state(z.state_);
+  return DeviceArray(make_array_state(state_,
+                                      shape,
+                                      vertical,
                                       mode,
                                       ResidencyState::device_valid));
 }
