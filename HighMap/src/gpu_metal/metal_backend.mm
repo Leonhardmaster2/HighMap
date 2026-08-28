@@ -1191,6 +1191,18 @@ void thermal(Array &z, const Array &talus, int iterations)
   read_buffer(input, z.vector);
 }
 
+void thermal_ridge(Array &z, const Array &talus, int iterations)
+{
+  DeviceSession session;
+  auto device_z = session.upload(z);
+  auto device_talus = session.upload(talus);
+  auto result = session.thermal_ridge(std::move(device_z),
+                                      device_talus,
+                                      iterations);
+  result = session.extrapolate_borders(std::move(result));
+  z = session.download(result);
+}
+
 void hydraulic_vpipes(Array &z,
                       float  water_height,
                       bool   maintain_water_volume,

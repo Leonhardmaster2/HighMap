@@ -306,6 +306,12 @@ void thermal_ridge(Array       &z,
 {
   if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
 
+  if (metal::is_available() && p_deposition_map == nullptr)
+  {
+    metal::thermal_ridge(z, talus, iterations);
+    return;
+  }
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 
