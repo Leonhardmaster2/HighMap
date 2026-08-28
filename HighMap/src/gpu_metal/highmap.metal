@@ -11,6 +11,13 @@ struct GridParams
   int ny;
 };
 
+struct LocalExtremaParams
+{
+  int nx;
+  int ny;
+  int ir;
+};
+
 struct BinarySmoothParams
 {
   int nx;
@@ -471,6 +478,33 @@ kernel void minimum_smooth(device const float *array1 [[buffer(0)]],
   if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
   uint i = index_at(int(gid.x), int(gid.y), p.nx);
   output[i] = smooth_minimum(array1[i], array2[i], p.k);
+}
+
+kernel void morphological_gradient(device const float          *input [[buffer(0)]],
+                                   device float                *output [[buffer(1)]],
+                                   constant LocalExtremaParams &p [[buffer(2)]],
+                                   uint2                        gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+
+  const int x = int(gid.x);
+  const int y = int(gid.y);
+  float local_max = -INFINITY;
+  float local_min = INFINITY;
+
+  for (int j = y - p.ir; j <= y + p.ir; ++j)
+    for (int i = x - p.ir; i <= x + p.ir; ++i)
+    {
+      const int dx = i - x;
+      const int dy = j - y;
+      if (dx * dx + dy * dy > p.ir * p.ir) continue;
+
+      const float value = load_clamped(input, i, j, p.nx, p.ny);
+      local_max = max(local_max, value);
+      local_min = min(local_min, value);
+    }
+
+  output[index_at(x, y, p.nx)] = local_max - local_min;
 }
 
 kernel void noise(device float       *output [[buffer(0)]],

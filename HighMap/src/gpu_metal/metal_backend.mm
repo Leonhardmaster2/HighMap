@@ -107,6 +107,13 @@ struct GridParams
   int ny;
 };
 
+struct LocalExtremaParams
+{
+  int nx;
+  int ny;
+  int ir;
+};
+
 struct BinarySmoothParams
 {
   int nx;
@@ -1218,6 +1225,40 @@ Array minimum_smooth(const Array &array1, const Array &array2, float k)
   return smooth_extrema(array1, array2, k, "minimum_smooth");
 }
 
+Array morphological_gradient(const Array &array, int ir)
+{
+  begin_operation();
+  require_ready();
+  check_shape_2d(array.shape);
+  if (ir < 0)
+    throw std::invalid_argument("Metal morphological radius is negative");
+
+  Array output(array.shape);
+  id<MTLBuffer> input = input_buffer(array.vector);
+  id<MTLBuffer> result = zero_buffer(output.vector.size());
+  LocalExtremaParams params{array.shape.x, array.shape.y, ir};
+
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("morphological_gradient");
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:input offset:0 atIndex:0];
+  [encoder setBuffer:result offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder,
+           pipeline,
+           params.nx,
+           params.ny,
+           "morphological_gradient");
+  [encoder endEncoding];
+  record_encoding(encoding_start);
+  wait_for_completion(command_buffer);
+  read_buffer(result, output.vector);
+  return output;
+}
+
 Array noise(NoiseType     noise_type,
             glm::ivec2    shape,
             glm::vec2     kw,
@@ -1743,6 +1784,40 @@ DeviceArray DeviceSession::gradient_norm(DeviceArray array)
   [encoder setBuffer:output offset:0 atIndex:1];
   set_bytes(encoder, &params, sizeof(params), 2);
   dispatch(encoder, pipeline, shape.x, shape.y, "gradient_norm");
+  [encoder endEncoding];
+  record_encoding(encoding_start, &state_->stats);
+  state_->has_work = true;
+  recycle_unique_state(array.state_);
+  return DeviceArray(std::move(result));
+}
+
+DeviceArray DeviceSession::morphological_gradient(DeviceArray array, int ir)
+{
+  require_session_open(state_);
+  require_input(state_, array.state_, "morphological gradient input");
+  if (ir < 0)
+    throw std::invalid_argument("Metal morphological radius is negative");
+
+  const glm::ivec2 shape = array.state_->shape;
+  const StorageMode mode = array.state_->storage;
+  id<MTLBuffer> output = acquire_session_buffer(state_, array.state_->byte_size, mode);
+  auto result = make_array_state(state_,
+                                 shape,
+                                 output,
+                                 mode,
+                                 ResidencyState::device_valid);
+
+  LocalExtremaParams params{shape.x, shape.y, ir};
+  id<MTLComputePipelineState> pipeline =
+      context().pipeline("morphological_gradient", &state_->stats);
+  const auto encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder =
+      compute_encoder(state_->command_buffer, &state_->stats);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:array.state_->buffer offset:0 atIndex:0];
+  [encoder setBuffer:output offset:0 atIndex:1];
+  set_bytes(encoder, &params, sizeof(params), 2);
+  dispatch(encoder, pipeline, shape.x, shape.y, "morphological_gradient");
   [encoder endEncoding];
   record_encoding(encoding_start, &state_->stats);
   state_->has_work = true;
