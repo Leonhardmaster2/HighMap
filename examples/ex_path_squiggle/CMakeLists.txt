@@ -1,0 +1,2 @@
+add_executable(ex_path_squiggle ex_path_squiggle.cpp)
+target_link_libraries(ex_path_squiggle highmap)

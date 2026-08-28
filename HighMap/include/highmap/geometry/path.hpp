@@ -781,6 +781,79 @@ Path smooth(const Path &path,
             float       averaging_intensity = 1.f,
             float       inertia = 0.f);
 
+/**
+ * @brief Generates a continuous, non-self-intersecting squiggle curve by
+ * applying the squiggle recursive triangle subdivision algorithm to each edge of
+ * the input path.
+ *
+ * Implements the squiggle curve construction from Prusinkiewicz et al.,
+ * "Generating Mountainous Terrain". Constrained within domain triangles for
+ * each edge, ensuring continuity and absence of self-intersections.
+ *
+ * @param  path         The input path to apply the squiggle algorithm to.
+ * @param  iterations   Number of recursive subdivision levels per edge (e.g., 2
+ *                      to 6).
+ * @param  seed         Random seed number for deterministic edge selection.
+ * @param  height_ratio Height of the bounding triangle relative to edge length
+ *                      (default 0.5).
+ * @param  orientation  Displacement direction: 0 to alternate sides, 1 for
+ *                      positive normal, -1 for negative normal.
+ * @param  p_weights    Optional pointer to an Array defining spatial weights to
+ *                      bias path progression.
+ * @param  p_mask       Optional pointer to a binary/mask Array (1 = allowed, 0
+ *                      = forbidden) preventing the path from entering forbidden
+ *                      areas.
+ * @param  bbox         Bounding box for spatial sampling.
+ * @return              Generated continuous Path.
+ *
+ * **Example**
+ * @include ex_path_squiggle.cpp
+ *
+ * **Result**
+ * @image html ex_path_squiggle.png
+ *
+ * Reference: Prusinkiewicz et al., Generating Mountainous Terrain (1993).
+ */
+Path squiggle(const Path   &path,
+              int           iterations = 4,
+              std::uint32_t seed = 0,
+              float         height_ratio = 0.5f,
+              int           orientation = 0,
+              const Array  *p_weights = nullptr,
+              const Array  *p_mask = nullptr,
+              glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates squiggle paths with secondary tributary branches along each
+ * edge.
+ *
+ * @param  path               The input path.
+ * @param  iterations         Number of recursive subdivision levels.
+ * @param  seed               Random seed number.
+ * @param  branch_probability Probability of initiating a tributary branch at
+ *                            subdivision steps.
+ * @param  max_branches       Maximum number of secondary branches.
+ * @param  height_ratio       Height of the bounding triangle relative to edge
+ *                            length.
+ * @param  orientation        Displacement direction: 0 to alternate sides, 1
+ *                            for positive normal, -1 for negative normal.
+ * @param  p_weights          Optional spatial weights Array.
+ * @param  p_mask             Optional mask Array.
+ * @param  bbox               Bounding box for array sampling.
+ * @return                    Vector of Paths where the first Path is the main
+ *                            trunk and subsequent Paths are tributary branches.
+ */
+std::vector<Path> squiggle_branches(const Path   &path,
+                                    int           iterations = 4,
+                                    std::uint32_t seed = 0,
+                                    float         branch_probability = 0.3f,
+                                    int           max_branches = 8,
+                                    float         height_ratio = 0.5f,
+                                    int           orientation = 0,
+                                    const Array  *p_weights = nullptr,
+                                    const Array  *p_mask = nullptr,
+                                    glm::vec4     bbox = {0.f, 1.f, 0.f, 1.f});
+
 // ==========================================================================
 //  Verification Functions
 // ==========================================================================
