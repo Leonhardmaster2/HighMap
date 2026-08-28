@@ -74,8 +74,11 @@ Each value stores:
 The initial resident implementation uses buffers rather than textures because
 the staged kernels already use flat indexing and the chain benchmark is
 intended to isolate residency first. Texture-backed advection is a separate
-experiment; it must retain the same mirrored boundary behaviour before it can
-be selected.
+experiment exposed as `advection_warp_texture()`: it converts the resident
+buffers to temporary `R32Float` textures and converts the result back, so the
+same mirrored boundary behaviour can be tested without changing DeviceArray's
+resource model. The measured path is retained as an experiment, not selected
+as the default.
 
 `Shared` is the default for direct host upload because it permits a single
 explicit memcpy and final readback. `Private` is available for resident values;
@@ -99,6 +102,12 @@ resource and performs no second command-buffer commit. Appending another
 operation after a session has been finished is an error, because reopening a
 command buffer would make dependency ownership ambiguous. A future asynchronous
 API can expose a completion token, but Phase 3 keeps the ownership rule small.
+
+For command-buffer experiments, `DeviceSession::submit()` commits the current
+buffer and opens the next buffer on the same queue without waiting. Queue
+ordering preserves dependencies, and the session still reports one
+synchronization when the final result is downloaded. The default composed path
+uses one buffer; the split path measures the driver/encoding tradeoff.
 
 ## Shape, backend and error rules
 
@@ -131,6 +140,12 @@ peak resident bytes in `ExecutionStats`. It is session-local rather than a
 global heap, so lifetime, device ownership and memory pressure are observable.
 `MTLHeap` is not used.
 
+The public Phase 3 operations remain out-of-place. Move-consuming inputs let a
+later operation recycle an input buffer when no shallow copies remain; thermal
+and hydraulic retain ping-pong state where in-place updates would change the
+algorithm. No speculative clamp/scale kernel was added just to expose an
+in-place API.
+
 ## Operation surface
 
 The first resident surface mirrors the validated Phase 2 families:
@@ -142,6 +157,10 @@ The first resident surface mirrors the validated Phase 2 families:
 * thermal ping-pong on resident state;
 * hydraulic virtual pipes with optional resident output arrays and GPU
   hierarchical volume reduction.
+
+The only new supporting kernel is `advection_warp_texture`, added for the
+buffer-versus-texture experiment. Existing gradient, smoothing, noise,
+advection, thermal, hydraulic and reduction kernels are reused.
 
 The synchronous `Array` wrappers remain the compatibility layer. They may use
 the same internal encoders, but their timing and host-visible behaviour do not
@@ -167,6 +186,7 @@ are interchangeable.
 | `DeviceArray::shape()` | no | Metadata only |
 | `DeviceArray::storage_mode()` | no | Metadata only |
 | `DeviceArray::set_debug_name()` | no | Metadata/resource label only |
+| `DeviceSession::submit()` | no | Commits the current buffer and opens the next one |
 | `download(DeviceArray)` | yes, once | Final synchronization and host copy |
 | `DeviceSession::finish()` | yes, once | Explicit completion without download |
 | session destruction with open work | yes | Safety completion rule |
