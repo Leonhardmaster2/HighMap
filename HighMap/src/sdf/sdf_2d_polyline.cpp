@@ -7,11 +7,10 @@
 #include <limits>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 
 namespace hmap
@@ -25,7 +24,7 @@ Array sdf_2d_polyline(const Path  &path,
 {
   if (path.size() < 2)
   {
-    LOG_ERROR("at least 2 points needed in the Path to compute the SDF");
+    hmap::log::error("at least 2 points needed in the Path to compute the SDF");
     return Array(shape);
   }
 
@@ -76,7 +75,7 @@ Array sdf_2d_polyline_bezier(const Path  &path,
 {
   if (path.size() < 3)
   {
-    LOG_ERROR("at least 3 points needed in the Path to compute the SDF");
+    hmap::log::error("at least 3 points needed in the Path to compute the SDF");
     return Array(shape);
   }
 

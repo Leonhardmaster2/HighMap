@@ -4,9 +4,9 @@
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
-#include "macrologger.h"
 
 #include "highmap/array.hpp"
+#include "highmap/logger.hpp"
 
 namespace hmap::gpu
 {
@@ -21,10 +21,10 @@ bool empty_source(const Array &source, const char *caller)
 {
   if (source.shape.x < 1 || source.shape.y < 1)
   {
-    LOG_DEBUG("%s: empty source (%dx%d), leaving target unchanged",
-              caller,
-              source.shape.x,
-              source.shape.y);
+    hmap::log::trace("{}: empty source ({}x{}), leaving target unchanged",
+                     caller,
+                     source.shape.x,
+                     source.shape.y);
     return true;
   }
   return false;

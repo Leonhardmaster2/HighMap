@@ -9,10 +9,9 @@
 #include <utility>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
@@ -337,8 +336,8 @@ void VirtualArray::smooth_overlap_buffers()
 {
   if (this->storage->max_live_tiles() < 2)
   {
-    LOG_ERROR("VirtualArray: smooth_overlap_buffers requires at least 2 tiles "
-              "in memory, skipping");
+    hmap::log::error("VirtualArray: smooth_overlap_buffers requires at least 2 "
+                     "tiles in memory, skipping");
     return;
   }
 

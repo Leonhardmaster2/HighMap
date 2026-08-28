@@ -6,9 +6,8 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
+#include "highmap/logger.hpp"
 
 namespace hmap
 {
@@ -19,7 +18,7 @@ Array read_to_array(const std::string &fname, bool flip_j, bool remap)
 
   if (mat.data == nullptr)
   {
-    LOG_ERROR("error while reading the image file: %s", fname.c_str());
+    hmap::log::error("error while reading the image file: {}", fname);
     return Array();
   }
   else

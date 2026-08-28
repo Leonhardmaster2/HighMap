@@ -61,8 +61,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     -Wno-header-guard
     -Wno-gnu-zero-variadic-macro-arguments)
 
-  add_compile_definitions(LOG_LEVEL=3)
-
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
   message(STATUS "Compiler: GCC")
@@ -77,8 +75,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     -fPIC
     -Wno-free-nonheap-object
     -Wno-deprecated-enum-enum-conversion)
-
-  add_compile_definitions(LOG_LEVEL=3)
 
 endif()
 

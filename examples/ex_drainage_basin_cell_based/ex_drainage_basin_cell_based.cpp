@@ -47,7 +47,7 @@ int main(void)
     auto  response_times = db.compute_response_times(acc, erodibility, m_exp);
     float diff = db.update_elevations(response_times, uplift_rate, max_slope);
 
-    LOG_DEBUG("%d, %f", it, diff);
+    hmap::log::trace("{}, {}", it, diff);
   }
 
   db.get_z().dump("out1.png");

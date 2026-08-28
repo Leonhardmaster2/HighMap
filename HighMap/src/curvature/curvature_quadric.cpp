@@ -5,12 +5,12 @@
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
-#include "macrologger.h"
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/logger.hpp"
 
 #include "appMetrics/core.h"
 #include "appMetrics/heightfield.h"
@@ -75,7 +75,7 @@ Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
     break;
   default:
   {
-    LOG_DEBUG("hmap::curvature_quadric: unknown CurvatureType");
+    hmap::log::trace("hmap::curvature_quadric: unknown CurvatureType");
     return Array(shape);
   }
   }

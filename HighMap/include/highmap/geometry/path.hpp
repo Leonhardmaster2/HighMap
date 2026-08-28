@@ -783,8 +783,8 @@ Path smooth(const Path &path,
 
 /**
  * @brief Generates a continuous, non-self-intersecting squiggle curve by
- * applying the squiggle recursive triangle subdivision algorithm to each edge of
- * the input path.
+ * applying the squiggle recursive triangle subdivision algorithm to each edge
+ * of the input path.
  *
  * Implements the squiggle curve construction from Prusinkiewicz et al.,
  * "Generating Mountainous Terrain". Constrained within domain triangles for

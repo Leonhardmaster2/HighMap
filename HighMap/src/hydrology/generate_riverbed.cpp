@@ -5,13 +5,12 @@
 #include <cmath>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/range.hpp"
 #include "highmap/sdf.hpp"
 
@@ -36,7 +35,7 @@ Array generate_riverbed(const Path &path,
 {
   if (path.size() < 2)
   {
-    LOG_ERROR("at least 2 points needed");
+    hmap::log::error("at least 2 points needed");
     return Array(shape);
   }
 

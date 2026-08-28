@@ -12,9 +12,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/texture.hpp"
 
 namespace hmap
@@ -74,7 +73,7 @@ Texture::Texture(const std::string &fname, bool flip_j)
 
   if (mat.data == nullptr)
   {
-    LOG_ERROR("error while reading the image file: %s", fname.c_str());
+    hmap::log::error("error while reading the image file: {}", fname);
     this->shape = glm::ivec2(0, 0);
     this->channels.clear();
     return;

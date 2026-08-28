@@ -22,8 +22,6 @@
 #include <map>
 #include <string>
 
-#include "macrologger.h"
-
 namespace hmap
 {
 

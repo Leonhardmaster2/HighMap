@@ -4,10 +4,9 @@
 #include <cstddef>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/coord_frame.hpp"
 #include "highmap/interpolate/interpolate_array.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
@@ -64,7 +63,7 @@ void flatten_heightmap(const std::vector<const VirtualArray *> &h_sources,
 {
   if (!h_sources.size() || !t_sources.size())
   {
-    LOG_DEBUG("empty h_sources or t_sources");
+    hmap::log::trace("empty h_sources or t_sources");
     return;
   }
 

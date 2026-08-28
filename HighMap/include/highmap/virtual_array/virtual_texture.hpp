@@ -15,8 +15,6 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 
-#include "macrologger.h"
-
 #include "highmap/colorize.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
