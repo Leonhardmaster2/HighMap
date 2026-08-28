@@ -279,6 +279,14 @@ Array advection_warp(const Array &z,
 void thermal(Array &z, const Array &talus, int iterations);
 
 /**
+ * @brief Run the thermal ridge algorithm on Metal.
+ *
+ * The legacy wrapper preserves the same border extrapolation behavior as the
+ * OpenCL implementation while using the ordered resident session API.
+ */
+void thermal_ridge(Array &z, const Array &talus, int iterations);
+
+/**
  * @brief Run hydraulic virtual pipes with all simulation state kept on Metal.
  *
  * The final result is copied back into the supplied arrays only after the
