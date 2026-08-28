@@ -3,9 +3,11 @@
 ## Scope and source snapshot
 
 This audit was performed against the `dev` branch at commit
-`2cc066e1002f598e10bb4f493ac2a811e8e09300` (`fix(gpu): correct sampling offset
-and regularization in hydraulic_vpipes kernel`). The working branch is
-`feature/apple-metal-backend`. The repository was cloned with all submodules;
+`e0d1279fced75cf7556de233128abfb5650e25b5` (`fix(tests): correct index checks
+in blending tests and add boundary size guard`). The working branch is
+`feature/apple-metal-backend`, with the implementation based on the immediately
+preceding HighMap source snapshot plus this upstream fix. The repository was
+cloned with all submodules;
 the OpenCL wrapper at this snapshot is `7be8d7448f9c0f108896765ba94ad9ec3099061f`.
 
 The host used for the initial audit is arm64 macOS 27.0, Apple Clang
