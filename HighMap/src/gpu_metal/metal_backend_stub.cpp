@@ -281,6 +281,11 @@ void thermal(Array &, const Array &, int)
   unavailable();
 }
 
+void thermal_ridge(Array &, const Array &, int)
+{
+  unavailable();
+}
+
 void hydraulic_vpipes(Array &,
                       float,
                       bool,
