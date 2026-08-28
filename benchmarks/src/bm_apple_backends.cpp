@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <cstdint>
+#include <cstdlib>
 #include <utility>
 #include <vector>
 
@@ -1278,6 +1279,12 @@ static void BM_Phase3_MetalSync_ChainA(benchmark::State &state)
 
 static void BM_Phase3_DeviceArrayShared_ChainA(benchmark::State &state)
 {
+  if (state.range(0) > 4096 && std::getenv("HIGHMAP_PHASE3_EXTENDED") == nullptr)
+  {
+    state.SkipWithError(
+        "8192² is an extended case; set HIGHMAP_PHASE3_EXTENDED=1");
+    return;
+  }
   skip_if_metal_unavailable(state);
   if (state.skipped()) return;
   const int size = state.range(0);
@@ -1694,6 +1701,9 @@ BENCHMARK(BM_Phase3_MetalSync_ChainA)
 BENCHMARK(BM_Phase3_DeviceArrayShared_ChainA)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_device_array_sizes); })
+    ->UseRealTime();
+BENCHMARK(BM_Phase3_DeviceArrayShared_ChainA)
+    ->Arg(8192)
     ->UseRealTime();
 BENCHMARK(BM_Phase3_DeviceArrayPrivate_ChainA)
     ->Apply([](benchmark::internal::Benchmark *b)
