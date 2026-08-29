@@ -578,6 +578,41 @@ Path flow_stream(const Array     &z,
                  const float      upward_penalization = 100.f);
 
 /**
+ * @brief Blends and carves smooth riverbanks around modified riverbed profiles.
+ *
+ * Compares an initial elevation terrain @p z with an updated/carved riverbed @p
+ * z_river, identifies modified cells, expands riverbanks using talus slopes,
+ * smooths the channel bottom, and blends the carved river with the original
+ * terrain using distance-transform based exponential falloff and optional
+ * domain warping.
+ *
+ * @param  z                     Original terrain elevation array.
+ * @param  z_river               Carved riverbed elevation array (or stream
+ * bottom).
+ * @param  talus_riverbank       Talus slope angle/ratio for riverbank
+ * expansion.
+ * @param  smooth_river_bottom   Whether to apply Laplace smoothing along the
+ * river bottom.
+ * @param  merging_distance      Transition distance (in pixels) for blending
+ * riverbanks into terrain.
+ * @param  seed                  Random seed for riverbank noise.
+ * @param  riverbank_noise_ratio Noise ratio for talus expansion roughness.
+ * @param  p_noise_x             Optional noise array for domain warping in X.
+ * @param  p_noise_y             Optional noise array for domain warping in Y.
+ * @return                       Merged terrain array with smoothly carved river
+ * channels.
+ */
+Array carve_riverbed(const Array  &z,
+                     const Array  &z_river,
+                     float         talus_riverbank = 0.01f,
+                     bool          smooth_river_bottom = true,
+                     float         merging_distance = 8.f,
+                     std::uint32_t seed = 0,
+                     float         riverbank_noise_ratio = 0.f,
+                     const Array  *p_noise_x = nullptr,
+                     const Array  *p_noise_y = nullptr);
+
+/**
  * @brief Generates a 2D array representing a riverbed based on a specified
  * path.
  *

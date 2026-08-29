@@ -250,26 +250,15 @@ Array flow_fixing(const Array  &z,
 
   if (carve_riverbed)
   {
-    Array mask(shape);
-    Array zr = zb;
-
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-        if (zb(i, j) != z(i, j)) mask(i, j) = 1.f;
-
-    int ir = 2;
-    expand_talus(zr, mask, talus_riverbank, seed, ir, riverbank_noise_ratio);
-
-    if (smooth_river_bottom) laplace(zr);
-
-    // transition mask
-    mask = distance_transform(mask);
-    mask = exp(-mask / merging_distance);
-    laplace(mask);
-
-    warp(mask, p_noise_x, p_noise_y);
-
-    return lerp(z, zr, mask);
+    return hmap::carve_riverbed(z,
+                                zb,
+                                talus_riverbank,
+                                smooth_river_bottom,
+                                merging_distance,
+                                seed,
+                                riverbank_noise_ratio,
+                                p_noise_x,
+                                p_noise_y);
   }
   else
   {
@@ -289,8 +278,7 @@ Array flow_fixing_drainage_basin(const Array        &z,
                                  const Array        *p_noise_x,
                                  const Array        *p_noise_y)
 {
-  const glm::ivec2 shape = z.shape;
-  Array            zb = z;
+  Array zb = z;
 
   for (int it = 0; it < iterations; ++it)
   {
@@ -336,25 +324,15 @@ Array flow_fixing_drainage_basin(const Array        &z,
   // --- optional riverbed carving
   if (carve_riverbed)
   {
-    Array mask(shape);
-    Array zr = zb;
-
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-        if (zb(i, j) != z(i, j)) mask(i, j) = 1.f;
-
-    int ir = 2;
-    expand_talus(zr, mask, talus_riverbank, seed, ir, 0.f);
-    laplace(zr);
-
-    // transition mask
-    mask = distance_transform(mask);
-    mask = exp(-mask / merging_distance);
-    laplace(mask);
-
-    warp(mask, p_noise_x, p_noise_y);
-
-    return lerp(z, zr, mask);
+    return hmap::carve_riverbed(z,
+                                zb,
+                                talus_riverbank,
+                                true, // smooth_river_bottom
+                                merging_distance,
+                                seed,
+                                0.f, // riverbank_noise_ratio
+                                p_noise_x,
+                                p_noise_y);
   }
   else
   {
@@ -776,26 +754,15 @@ Array flow_fixing_mst(const Array  &z,
 
   if (carve_riverbed)
   {
-    Array mask(shape);
-    Array zr = zb;
-
-    for (int j = 0; j < shape.y; j++)
-      for (int i = 0; i < shape.x; i++)
-        if (zb(i, j) != z(i, j)) mask(i, j) = 1.f;
-
-    int ir = 2;
-    expand_talus(zr, mask, talus_riverbank, seed, ir, riverbank_noise_ratio);
-
-    if (smooth_river_bottom) laplace(zr);
-
-    // transition mask
-    mask = distance_transform(mask);
-    mask = exp(-mask / merging_distance);
-    laplace(mask);
-
-    warp(mask, p_noise_x, p_noise_y);
-
-    return lerp(z, zr, mask);
+    return hmap::carve_riverbed(z,
+                                zb,
+                                talus_riverbank,
+                                smooth_river_bottom,
+                                merging_distance,
+                                seed,
+                                riverbank_noise_ratio,
+                                p_noise_x,
+                                p_noise_y);
   }
   else
   {
