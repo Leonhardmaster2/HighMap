@@ -299,8 +299,8 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
 {
   if (tex.channels() < 3)
   {
-    hmap::log::error("VirtualTexture: inputs mismatch, virtual textures must "
-                     "have 3 channels for luminance.");
+    hmap::log::error("inputs mismatch, virtual textures must have 3 channels "
+                     "for luminance.");
     return;
   }
 
@@ -332,8 +332,8 @@ void mix(VirtualTexture    &out,
   if (out.channels() != 4 || tex1.channels() != 4 || tex2.channels() != 4 ||
       out.shape != tex1.shape || out.shape != tex2.shape)
   {
-    hmap::log::error("VirtualTexture: inputs mismatch, virtual textures must "
-                     "have 4 channels and same shape.");
+    hmap::log::error("inputs mismatch, virtual textures must have 4 channels "
+                     "and same shape.");
     return;
   }
 

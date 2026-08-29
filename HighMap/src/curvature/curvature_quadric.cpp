@@ -75,7 +75,7 @@ Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
     break;
   default:
   {
-    hmap::log::trace("hmap::curvature_quadric: unknown CurvatureType");
+    hmap::log::trace("unknown CurvatureType");
     return Array(shape);
   }
   }

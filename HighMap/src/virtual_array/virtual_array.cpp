@@ -336,8 +336,8 @@ void VirtualArray::smooth_overlap_buffers()
 {
   if (this->storage->max_live_tiles() < 2)
   {
-    hmap::log::error("VirtualArray: smooth_overlap_buffers requires at least 2 "
-                     "tiles in memory, skipping");
+    hmap::log::error(
+        "smooth_overlap_buffers requires at least 2 tiles in memory, skipping");
     return;
   }
 

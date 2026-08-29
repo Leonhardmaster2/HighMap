@@ -23,8 +23,7 @@ void export_points_to_ply(
   // check input vector sizes
   if (x.size() != y.size() || x.size() != z.size())
   {
-    hmap::log::trace(
-        "HighMap - Error: x, y, and z vectors must have the same size.");
+    hmap::log::error("x, y, and z vectors must have the same size.");
     return;
   }
 
@@ -33,11 +32,10 @@ void export_points_to_ply(
   {
     if (values.size() != n_points)
     {
-      hmap::log::trace(
-          "HighMap - Error: custom field {} has size {} but expected {}.",
-          name,
-          values.size(),
-          n_points);
+      hmap::log::error("custom field {} has size {} but expected {}.",
+                       name,
+                       values.size(),
+                       n_points);
       return;
     }
   }
@@ -45,8 +43,7 @@ void export_points_to_ply(
   std::ofstream out(fname);
   if (!out)
   {
-    hmap::log::trace("HighMap - Error: could not open file {} for writing.",
-                     fname);
+    hmap::log::error("could not open file {} for writing.", fname);
     return;
   }
 

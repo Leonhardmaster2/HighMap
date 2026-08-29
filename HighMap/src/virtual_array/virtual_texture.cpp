@@ -139,11 +139,9 @@ void VirtualTexture::from_arrays(const std::vector<const Array *> &p_arrays,
 
   if (nch != int(arrays.size()))
   {
-    hmap::log::error(
-        "VirtualTexture::from_arrays: size mismatch between arrays "
-        "and channels nb ({} != {})",
-        nch,
-        p_arrays.size());
+    hmap::log::error("size mismatch between arrays and channels nb ({} != {})",
+                     nch,
+                     p_arrays.size());
     return;
   }
 

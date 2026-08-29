@@ -21,7 +21,7 @@ void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
 {
   if (access.outputs.empty())
   {
-    hmap::log::error("for_each_tile: no output VirtualArray");
+    hmap::log::error("no output VirtualArray");
     return;
   }
 
