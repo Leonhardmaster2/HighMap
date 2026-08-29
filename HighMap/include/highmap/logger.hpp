@@ -1,0 +1,266 @@
+/* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
+   Public License. The full license is in the file LICENSE, distributed with
+   this software. */
+
+/**
+ * @file logger.hpp
+ * @author Otto Link (otto.link.bv@gmail.com)
+ * @brief Custom logger utility with spdlog-like formatting and source location.
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+#pragma once
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+#include <concepts>
+#include <format>
+#include <source_location>
+
+#ifndef HIGHMAP_ENABLE_LOGS
+#define HIGHMAP_ENABLE_LOGS 1
+#endif
+
+#ifndef HIGHMAP_LOG_LEVEL_WIDTH
+#define HIGHMAP_LOG_LEVEL_WIDTH 5
+#endif
+
+#ifndef HIGHMAP_LOG_FILE_WIDTH
+#define HIGHMAP_LOG_FILE_WIDTH 24
+#endif
+
+namespace hmap::log
+{
+
+#if !HIGHMAP_ENABLE_LOGS
+
+template <typename... Args> inline void trace([[maybe_unused]] Args &&...args)
+{
+}
+
+template <typename... Args> inline void info([[maybe_unused]] Args &&...args)
+{
+}
+
+template <typename... Args> inline void warn([[maybe_unused]] Args &&...args)
+{
+}
+
+template <typename... Args> inline void error([[maybe_unused]] Args &&...args)
+{
+}
+
+#else
+
+template <typename... Args> struct format_string_with_loc
+{
+  std::format_string<Args...> fmt;
+  std::source_location        loc;
+
+  template <typename S>
+    requires std::constructible_from<std::format_string<Args...>, const S &>
+  consteval format_string_with_loc(
+      const S                    &s,
+      const std::source_location &l = std::source_location::current())
+      : fmt(s), loc(l)
+  {
+  }
+};
+
+namespace detail
+{
+
+enum class Level
+{
+  Trace,
+  Info,
+  Warn,
+  Error
+};
+
+inline const char *level_to_string(Level level)
+{
+  switch (level)
+  {
+  case Level::Trace: return "trace";
+  case Level::Info: return "info";
+  case Level::Warn: return "warn";
+  case Level::Error: return "error";
+  }
+  return "info";
+}
+
+constexpr std::string_view get_filename(std::string_view path)
+{
+  const size_t pos = path.find_last_of("/\\");
+  return (pos == std::string_view::npos) ? path : path.substr(pos + 1);
+}
+
+inline std::string format_fixed_width(std::string_view str, size_t width)
+{
+  if (width == 0) return std::string(str);
+  if (str.length() > width)
+  {
+    if (width <= 3) return std::string(str.substr(0, width));
+    return std::string(str.substr(0, width - 3)) + "...";
+  }
+  std::string res(str);
+  res.append(width - str.length(), ' ');
+  return res;
+}
+
+inline void log_impl(Level                       level,
+                     std::string_view            msg,
+                     const std::source_location &loc)
+{
+  std::ostream &out = (level == Level::Warn || level == Level::Error)
+                          ? std::cerr
+                          : std::cout;
+  out << "hmap " << "["
+      << format_fixed_width(level_to_string(level), HIGHMAP_LOG_LEVEL_WIDTH)
+      << "] ["
+      << format_fixed_width(get_filename(loc.file_name()),
+                            HIGHMAP_LOG_FILE_WIDTH)
+      << ":" << loc.line() << "] " << msg << std::endl;
+}
+
+} // namespace detail
+
+// -----------------------------------------------------------------------------
+// trace
+// -----------------------------------------------------------------------------
+
+template <typename... Args>
+inline void trace(format_string_with_loc<std::type_identity_t<Args>...> fl,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fl.fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Trace, msg, fl.loc);
+}
+
+inline void trace(
+    std::string_view            message,
+    const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Trace, message, loc);
+}
+
+template <typename... Args>
+inline void trace(const std::source_location &loc,
+                  std::format_string<Args...> fmt,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Trace, msg, loc);
+}
+
+inline void trace(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Trace, message, loc);
+}
+
+// -----------------------------------------------------------------------------
+// info
+// -----------------------------------------------------------------------------
+
+template <typename... Args>
+inline void info(format_string_with_loc<std::type_identity_t<Args>...> fl,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fl.fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Info, msg, fl.loc);
+}
+
+inline void info(
+    std::string_view            message,
+    const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Info, message, loc);
+}
+
+template <typename... Args>
+inline void info(const std::source_location &loc,
+                 std::format_string<Args...> fmt,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Info, msg, loc);
+}
+
+inline void info(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Info, message, loc);
+}
+
+// -----------------------------------------------------------------------------
+// warn
+// -----------------------------------------------------------------------------
+
+template <typename... Args>
+inline void warn(format_string_with_loc<std::type_identity_t<Args>...> fl,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fl.fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Warn, msg, fl.loc);
+}
+
+inline void warn(
+    std::string_view            message,
+    const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Warn, message, loc);
+}
+
+template <typename... Args>
+inline void warn(const std::source_location &loc,
+                 std::format_string<Args...> fmt,
+                 Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Warn, msg, loc);
+}
+
+inline void warn(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Warn, message, loc);
+}
+
+// -----------------------------------------------------------------------------
+// error
+// -----------------------------------------------------------------------------
+
+template <typename... Args>
+inline void error(format_string_with_loc<std::type_identity_t<Args>...> fl,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fl.fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Error, msg, fl.loc);
+}
+
+inline void error(
+    std::string_view            message,
+    const std::source_location &loc = std::source_location::current())
+{
+  detail::log_impl(detail::Level::Error, message, loc);
+}
+
+template <typename... Args>
+inline void error(const std::source_location &loc,
+                  std::format_string<Args...> fmt,
+                  Args &&...args)
+{
+  std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
+  detail::log_impl(detail::Level::Error, msg, loc);
+}
+
+inline void error(const std::source_location &loc, std::string_view message)
+{
+  detail::log_impl(detail::Level::Error, message, loc);
+}
+
+#endif
+
+} // namespace hmap::log

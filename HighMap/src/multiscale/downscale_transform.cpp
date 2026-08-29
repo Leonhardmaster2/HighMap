@@ -5,11 +5,10 @@
 #include <functional>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/logger.hpp"
 
 namespace hmap
 {
@@ -69,7 +68,7 @@ void downscale_transform_multi(
 
   for (auto kc : kc_list)
   {
-    LOG_DEBUG("kc: %f", kc);
+    hmap::log::trace("kc: {}", kc);
 
     auto unary_op_single = [current_index, &unary_op](Array &x)
     { unary_op(x, current_index); };

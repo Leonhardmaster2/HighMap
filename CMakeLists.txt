@@ -12,6 +12,7 @@ project(highmap-root LANGUAGES C CXX)
 # -----------------------------------------------------------------------------
 
 option(HIGHMAP_ENABLE_OPENCL "" ON)
+option(HIGHMAP_ENABLE_LOGS "Enable logging" ON)
 option(HIGHMAP_ENABLE_EXAMPLES "" ON)
 option(HIGHMAP_ENABLE_TESTS "" ON)
 option(HIGHMAP_ENABLE_BENCHMARKS "" ON)
@@ -60,8 +61,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     -Wno-header-guard
     -Wno-gnu-zero-variadic-macro-arguments)
 
-  add_compile_definitions(LOG_LEVEL=3)
-
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
   message(STATUS "Compiler: GCC")
@@ -76,8 +75,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     -fPIC
     -Wno-free-nonheap-object
     -Wno-deprecated-enum-enum-conversion)
-
-  add_compile_definitions(LOG_LEVEL=3)
 
 endif()
 
@@ -107,12 +104,20 @@ add_compile_options(${OpenMP_CXX_FLAGS})
 add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
                         CL_HPP_TARGET_OPENCL_VERSION=120)
 
+# Logging
+if(HIGHMAP_ENABLE_LOGS)
+  add_compile_definitions(HIGHMAP_ENABLE_LOGS=1)
+else()
+  add_compile_definitions(HIGHMAP_ENABLE_LOGS=0)
+endif()
+
 # -----------------------------------------------------------------------------
 # Status output
 # -----------------------------------------------------------------------------
 
 message(STATUS "┌─ HighMap configuration ─────────────")
 message(STATUS "│ HIGHMAP_ENABLE_OPENCL:              ${HIGHMAP_ENABLE_OPENCL}")
+message(STATUS "│ HIGHMAP_ENABLE_LOGS:                ${HIGHMAP_ENABLE_LOGS}")
 message(
   STATUS "│ HIGHMAP_ENABLE_EXAMPLES:            ${HIGHMAP_ENABLE_EXAMPLES}")
 message(STATUS "│ HIGHMAP_ENABLE_TESTS:               ${HIGHMAP_ENABLE_TESTS}")

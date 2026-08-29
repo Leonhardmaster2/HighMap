@@ -6,13 +6,12 @@
 #include <string>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/colormaps.hpp"
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/internal/string_utils.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -104,7 +103,7 @@ void helper_smooth_triple_corner(Array &zfull,
                                  int    ir,
                                  int    config)
 {
-  LOG_DEBUG("triple corner smoothing");
+  hmap::log::trace("triple corner smoothing");
 
   int nradius = static_cast<int>(1.5f * noverlap);
 
@@ -194,9 +193,9 @@ void export_as_cubemap(const std::string &fname,
 
   int noverlap = static_cast<int>(overlap * cubemap_resolution);
 
-  LOG_DEBUG("cubemap_resolution: %d", cubemap_resolution);
-  LOG_DEBUG("noverlap: %d", noverlap);
-  LOG_DEBUG("overlap: %f", overlap);
+  hmap::log::trace("cubemap_resolution: {}", cubemap_resolution);
+  hmap::log::trace("noverlap: {}", noverlap);
+  hmap::log::trace("overlap: {}", overlap);
 
   // rebuild a larger arrays with buffer arrays and the proper
   // shape. In this array must fit 4 arrays + their buffers in the
@@ -259,7 +258,7 @@ void export_as_cubemap(const std::string &fname,
 
   // --- enforce continuity
 
-  LOG_DEBUG("enforce base continuity");
+  hmap::log::trace("enforce base continuity");
 
   // coefficient to smooth the transition
   std::vector<float> t = linspace(0.f, 0.5f, noverlap, true);
@@ -390,7 +389,7 @@ void export_as_cubemap(const std::string &fname,
 
   // --- triple corners
 
-  LOG_DEBUG("triple corners: 1 to 4");
+  hmap::log::trace("triple corners: 1 to 4");
 
   helper_smooth_triple_corner(zfull,
                               idx_front.x - 1,
@@ -409,9 +408,9 @@ void export_as_cubemap(const std::string &fname,
 
   // zfull.to_png("cubemap3.png", Cmap::TERRAIN, false);
 
-  LOG_DEBUG("triple corners: 5 to 8");
+  hmap::log::trace("triple corners: 5 to 8");
 
-  LOG_DEBUG("reorganize array");
+  hmap::log::trace("reorganize array");
 
   // put the back in the center of the cubemap
 
@@ -483,7 +482,7 @@ void export_as_cubemap(const std::string &fname,
 
   // --- extract maps
 
-  LOG_DEBUG("extract map");
+  hmap::log::trace("extract map");
 
   // return cubemap array if requested
   if (p_cubemap) *p_cubemap = zfull;

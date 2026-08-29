@@ -5,11 +5,10 @@
 #include <cmath>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/interpolate/interpolate_array.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -24,14 +23,16 @@ namespace
 // violated when lo > hi and which in practice returns -1, indexing before the
 // buffer. 1 / shape.x is also inf. Leave the target as-is — it is zero-filled
 // by its constructor, which is the only sensible result here.
-bool empty_source(const Array &source, const char *caller)
+bool empty_source(
+    const Array                &source,
+    const std::source_location &loc = std::source_location::current())
 {
   if (source.shape.x < 1 || source.shape.y < 1)
   {
-    LOG_DEBUG("%s: empty source (%dx%d), leaving target unchanged",
-              caller,
-              source.shape.x,
-              source.shape.y);
+    hmap::log::trace(loc,
+                     "empty source ({}x{}), leaving target unchanged",
+                     source.shape.x,
+                     source.shape.y);
     return true;
   }
   return false;
@@ -62,7 +63,7 @@ void interpolate_array_bicubic(const Array     &source,
                                bool             endpoint,
                                bool             pixel_centered)
 {
-  if (empty_source(source, "interpolate_array_bicubic")) return;
+  if (empty_source(source)) return;
 
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -155,7 +156,7 @@ void interpolate_array_bilinear(const Array     &source,
                                 bool             endpoint,
                                 bool             pixel_centered)
 {
-  if (empty_source(source, "interpolate_array_bilinear")) return;
+  if (empty_source(source)) return;
 
   float dx_s = 1.f / static_cast<float>(source.shape.x);
   float dy_s = 1.f / static_cast<float>(source.shape.y);
@@ -231,7 +232,7 @@ void interpolate_array_nearest(const Array     &source,
                                const glm::vec4 &bbox_target,
                                bool             endpoint)
 {
-  if (empty_source(source, "interpolate_array_nearest")) return;
+  if (empty_source(source)) return;
 
   std::vector<float> x = linspace(bbox_target.x,
                                   bbox_target.y,

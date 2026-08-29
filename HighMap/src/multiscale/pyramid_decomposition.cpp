@@ -8,11 +8,10 @@
 #include <string>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/multiscale/pyramid.hpp"
@@ -34,11 +33,11 @@ PyramidDecomposition::PyramidDecomposition(Array &array, int nlevels_)
     this->nlevels = np2 + nlevels_;
 
   if (this->nlevels != nlevels_)
-    LOG_DEBUG("number of levels adjusted, effective / maximum: %d / %d, "
-              "requested: %d",
-              this->nlevels,
-              np2,
-              nlevels_);
+    hmap::log::trace("number of levels adjusted, effective / maximum: {} / {}, "
+                     "requested: {}",
+                     this->nlevels,
+                     np2,
+                     nlevels_);
 
   // default filter is a Laplace filter
   this->low_pass_filter_function = [](const Array &input)
@@ -182,7 +181,7 @@ Array PyramidDecomposition::transform(
     break;
 
     default:
-      LOG_ERROR("unknown support");
+      hmap::log::error("unknown support");
       throw std::runtime_error("unknown support");
     }
 

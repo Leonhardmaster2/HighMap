@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-#include "macrologger.h"
+#include "highmap/logger.hpp"
 
 namespace hmap
 {
@@ -23,7 +23,7 @@ void export_points_to_ply(
   // check input vector sizes
   if (x.size() != y.size() || x.size() != z.size())
   {
-    LOG_DEBUG("HighMap - Error: x, y, and z vectors must have the same size.");
+    hmap::log::error("x, y, and z vectors must have the same size.");
     return;
   }
 
@@ -32,11 +32,10 @@ void export_points_to_ply(
   {
     if (values.size() != n_points)
     {
-      LOG_DEBUG(
-          "HighMap - Error: custom field %s has size %ld but expected %ld.",
-          name.c_str(),
-          values.size(),
-          n_points);
+      hmap::log::error("custom field {} has size {} but expected {}.",
+                       name,
+                       values.size(),
+                       n_points);
       return;
     }
   }
@@ -44,8 +43,7 @@ void export_points_to_ply(
   std::ofstream out(fname);
   if (!out)
   {
-    LOG_DEBUG("HighMap - Error: could not open file %s for writing.",
-              fname.c_str());
+    hmap::log::error("could not open file {} for writing.", fname);
     return;
   }
 

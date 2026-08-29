@@ -19,7 +19,6 @@
 #include <vector>
 
 #include "delaunator-cpp.hpp"
-#include "macrologger.h"
 #include "point_sampler/metrics.hpp"
 #include "point_sampler/point.hpp"
 #include "point_sampler/utils.hpp"
@@ -30,6 +29,7 @@
 #include "highmap/geometry/point.hpp"
 #include "highmap/geometry/point_sampling.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 
@@ -109,7 +109,7 @@ bool Cloud::from_csv(const std::string &fname)
   std::ifstream file(fname);
   if (!file.is_open())
   {
-    LOG_ERROR("Could not open file: %s", fname.c_str());
+    hmap::log::error("Could not open file: {}", fname);
     return false;
   }
 
@@ -135,9 +135,9 @@ bool Cloud::from_csv(const std::string &fname)
       }
       catch (const std::invalid_argument &)
       {
-        LOG_ERROR("Invalid number format in CSV line %zu: '%s'",
-                  line_num,
-                  token.c_str());
+        hmap::log::error("Invalid number format in CSV line {}: '{}'",
+                         line_num,
+                         token);
         std::locale::global(old_locale);
         return false;
       }
@@ -153,9 +153,9 @@ bool Cloud::from_csv(const std::string &fname)
     }
     else
     {
-      LOG_ERROR("Invalid number of values (%zu) in CSV line %zu",
-                values.size(),
-                line_num);
+      hmap::log::error("Invalid number of values ({}) in CSV line {}",
+                       values.size(),
+                       line_num);
       std::locale::global(old_locale);
       return false;
     }

@@ -10,11 +10,10 @@
 #include <utility>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/kernels.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -101,7 +100,8 @@ Array non_parametric_sampling(const Array  &array,
   while (queue.size() > 0)
   {
 
-    if (queue.size() % 5000 == 0) LOG_DEBUG("queue size: %ld", queue.size());
+    if (queue.size() % 5000 == 0)
+      hmap::log::trace("queue size: {}", queue.size());
 
     std::pair<int, std::pair<int, int>> current = queue.back();
     queue.pop_back();

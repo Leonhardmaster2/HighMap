@@ -1,5 +1,3 @@
-#include "macrologger.h"
-
 #include "highmap.hpp"
 #include "highmap/dbg/timer.hpp"
 

@@ -22,7 +22,6 @@
 #include <vector>
 
 #include "FastNoiseLite.h"
-#include "macrologger.h"
 
 #include "highmap/array.hpp"
 #include "highmap/math/core.hpp"

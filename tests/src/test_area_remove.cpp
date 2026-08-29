@@ -1,7 +1,5 @@
 #include <map>
 
-#include "macrologger.h"
-
 #include "highmap/dbg/assert.hpp"
 #include "highmap/morphology.hpp"
 
