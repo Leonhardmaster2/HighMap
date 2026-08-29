@@ -348,6 +348,7 @@ Array flow_fixing_mst(const Array  &z,
                       float         valley_affinity,
                       float         path_sinuosity,
                       int           prefilter_ir,
+                      float         minimum_depth,
                       bool          carve_riverbed,
                       bool          smooth_river_bottom,
                       float         talus_riverbank,
@@ -732,6 +733,8 @@ Array flow_fixing_mst(const Array  &z,
     const auto &path = dp.path;
     if (path.size() < 2) continue;
 
+    float min_d = std::max(minimum_depth, 0.f);
+    zb(path.front()) = std::min(zb(path.front()), z(path.front()) - min_d);
     float current_z = zb(path.front());
 
     for (size_t idx = 1; idx < path.size(); ++idx)
@@ -742,11 +745,17 @@ Array flow_fixing_mst(const Array  &z,
       int        dy = curr.y - prev.y;
       float      dist = (dx != 0 && dy != 0) ? M_SQRT2 : 1.f;
 
-      current_z -= riverbed_talus * dist;
-      if (zb(curr) > current_z)
-        zb(curr) = current_z;
-      else
-        current_z = zb(curr);
+      // Decrement elevation along downstream flow direction
+      current_z -= std::max(riverbed_talus, 1e-6f) * dist;
+
+      // Ensure the elevation is strictly lower than the initial terrain
+      // elevation so that zb(curr) < z(curr) and river carving is always active
+      // along the entire path
+      float target_z = std::min(current_z, z(curr) - min_d);
+
+      if (zb(curr) > target_z) zb(curr) = target_z;
+
+      current_z = zb(curr);
     }
   }
 

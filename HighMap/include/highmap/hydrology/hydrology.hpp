@@ -506,6 +506,8 @@ Array flow_fixing_drainage_basin(
  *                               search.
  * @param  prefilter_ir          Radius of Gaussian/cpulse prefilter applied
  *                               before sink detection.
+ * @param  minimum_depth         Minimum incision depth below initial terrain
+ *                               elevation.
  * @param  carve_riverbed        Whether to apply riverbank carving and
  *                               smoothing along altered paths.
  * @param  smooth_river_bottom   Whether to apply Laplace smoothing along the
@@ -529,6 +531,7 @@ Array flow_fixing_mst(const Array  &z,
                       float         valley_affinity = 0.5f,
                       float         path_sinuosity = 0.25f,
                       int           prefilter_ir = 8,
+                      float         minimum_depth = 1e-4f,
                       bool          carve_riverbed = true,
                       bool          smooth_river_bottom = true,
                       float         talus_riverbank = 0.01f,

@@ -10,21 +10,25 @@ int main(void)
   hmap::remap(z0);
 
   float riverbed_talus = 0.01f / shape.x;
-  auto  z1 = hmap::flow_fixing(z0, riverbed_talus);
-  auto  z2 = hmap::flow_fixing_drainage_basin(z0,
+
+  auto z1 = hmap::flow_fixing(z0, riverbed_talus);
+  auto z2 = hmap::flow_fixing_drainage_basin(z0,
                                              hmap::FlowDirectionMethod::FDM_D8,
                                              riverbed_talus,
                                              50,
                                              true);
-  auto  z3 = hmap::flow_fixing_mst(z0,
+  auto z3 = hmap::flow_fixing_mst(z0,
                                   riverbed_talus,
-                                  0.95f, // elevation_ratio
+                                  0.99f, // elevation_ratio
                                   2.f,   // distance_exponent
-                                  50.f,  // upward_penalization
-                                  0.3f,  // valley_affinity
-                                  0.3f,  // path_sinuosity
-                                  1,     // prefilter_ir
+                                  100.f, // upward_penalization
+                                  0.5f,  // valley_affinity
+                                  0.f,   // path_sinuosity
+                                  8,     // prefilter_ir
+                                  1e-4f, // minimum_depth
                                   true); // carve_riverbed
+
+  z3.dump();
 
   hmap::export_banner_png("ex_flow_fixing.png",
                           {z0, z1, z2, z3},
