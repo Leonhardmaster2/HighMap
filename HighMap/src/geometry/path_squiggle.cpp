@@ -122,12 +122,12 @@ int select_edge_segment(const Point  &p_start,
 // Subdivides an edge (p1 -> p2) within triangle (apex, p1, p2)
 // using the 4 productions of the squiggle curve (Prusinkiewicz et al.)
 std::vector<Point> subdivide_edge_squiggle(const Point  &p1,
-                                            const Point  &p2,
-                                            const Point  &apex,
-                                            std::uint32_t seed,
-                                            const Array  *p_weights,
-                                            const Array  *p_mask,
-                                            glm::vec4     bbox)
+                                           const Point  &p2,
+                                           const Point  &apex,
+                                           std::uint32_t seed,
+                                           const Array  *p_weights,
+                                           const Array  *p_mask,
+                                           glm::vec4     bbox)
 {
   Point m_in = get_midpoint(p1, apex);
   Point m_out = get_midpoint(p2, apex);
@@ -223,12 +223,12 @@ Path squiggle(const Path   &path,
       std::uint32_t edge_seed = seed + static_cast<std::uint32_t>(it * 10007 +
                                                                   k * 7919);
       std::vector<Point> sub_pts = subdivide_edge_squiggle(p1,
-                                                            p2,
-                                                            apex,
-                                                            edge_seed,
-                                                            p_weights,
-                                                            p_mask,
-                                                            bbox);
+                                                           p2,
+                                                           apex,
+                                                           edge_seed,
+                                                           p_weights,
+                                                           p_mask,
+                                                           bbox);
 
       if (new_points.empty())
       {
@@ -371,12 +371,12 @@ std::vector<Path> squiggle_branches(const Path   &path,
       }
 
       std::vector<Point> sub_pts = subdivide_edge_squiggle(p1,
-                                                            p2,
-                                                            apex,
-                                                            edge_seed,
-                                                            p_weights,
-                                                            p_mask,
-                                                            bbox);
+                                                           p2,
+                                                           apex,
+                                                           edge_seed,
+                                                           p_weights,
+                                                           p_mask,
+                                                           bbox);
 
       if (new_points.empty())
       {

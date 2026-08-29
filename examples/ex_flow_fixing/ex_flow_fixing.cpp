@@ -11,9 +11,14 @@ int main(void)
 
   float riverbed_talus = 0.01f / shape.x;
   auto  z1 = hmap::flow_fixing(z0, riverbed_talus);
+  auto  z2 = hmap::flow_fixing_drainage_basin(z0,
+                                             hmap::FlowDirectionMethod::FDM_D8,
+                                             riverbed_talus,
+                                             50,
+                                             true);
 
   hmap::export_banner_png("ex_flow_fixing.png",
-                          {z0, z1},
+                          {z0, z1, z2},
                           hmap::Cmap::TERRAIN,
                           true);
 }

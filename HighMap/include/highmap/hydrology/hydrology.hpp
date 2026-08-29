@@ -439,6 +439,52 @@ Array flow_fixing(const Array  &z,
                   const Array  *p_noise_y = nullptr);
 
 /**
+ * @brief Fixes flow paths and unwanted upslopes using a cell-based drainage
+ * basin tree network and elevation updates.
+ *
+ * This function constructs a stream tree network on the heightmap, resolves
+ * internal depressions/lakes towards boundary outlets, and iteratively adjusts
+ * terrain elevations along upstream-downstream paths to guarantee unbroken flow
+ * while preserving realistic terrain slope gradients.
+ *
+ * @param  z                Input elevation array.
+ * @param  iterations       Number of iterative tree-building and elevation
+ *                          update passes.
+ * @param  min_slope        Minimum allowed downslope gradient along flow paths.
+ * @param  max_slope        Maximum allowed slope gradient.
+ * @param  uplift_rate      Rate of elevation adjustment / uplift per unit
+ *                          response time.
+ * @param  m_exp            Drainage area exponent for response time
+ *                          calculations.
+ * @param  seed             Random seed for stochastic receiver variations.
+ * @param  noise_strength   Strength of random perturbation during receiver
+ *                          computation.
+ * @param  carve_riverbed   Whether to apply riverbank carving and smoothing
+ *                          along altered paths.
+ * @param  talus_riverbank  Talus value used when expanding and carving the
+ *                          riverbed.
+ * @param  merging_distance Distance (in pixels) for blending modified flow
+ *                          paths.
+ * @param  p_noise_x        Optional noise array for riverbank domain warping in
+ *                          X.
+ * @param  p_noise_y        Optional noise array for riverbank domain warping in
+ *                          Y.
+ * @return                  Array with unbroken flow paths.
+ */
+Array flow_fixing_drainage_basin(
+    const Array        &z,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    float               riverbed_talus = 1e-4f,
+    int                 iterations = 3,
+    bool                carve_riverbed = false,
+    float               talus_riverbank = 0.01f,
+    float               merging_distance = 8.f,
+    std::uint32_t       seed = 0,
+    float               noise_strength = 0.f,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr);
+
+/**
  * @brief Computes the optimal flow path from a starting point to the boundary
  * of a given elevation array.
  *

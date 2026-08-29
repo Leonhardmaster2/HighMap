@@ -11,6 +11,7 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
@@ -259,6 +260,91 @@ Array flow_fixing(const Array  &z,
     expand_talus(zr, mask, talus_riverbank, seed, ir, riverbank_noise_ratio);
 
     if (smooth_river_bottom) laplace(zr);
+
+    // transition mask
+    mask = distance_transform(mask);
+    mask = exp(-mask / merging_distance);
+    laplace(mask);
+
+    warp(mask, p_noise_x, p_noise_y);
+
+    return lerp(z, zr, mask);
+  }
+  else
+  {
+    return zb;
+  }
+}
+
+Array flow_fixing_drainage_basin(const Array        &z,
+                                 FlowDirectionMethod fd_method,
+                                 float               riverbed_talus,
+                                 int                 iterations,
+                                 bool                carve_riverbed,
+                                 float               talus_riverbank,
+                                 float               merging_distance,
+                                 std::uint32_t       seed,
+                                 float               noise_strength,
+                                 const Array        *p_noise_x,
+                                 const Array        *p_noise_y)
+{
+  const glm::ivec2 shape = z.shape;
+  Array            zb = z;
+
+  for (int it = 0; it < iterations; ++it)
+  {
+    DrainageBasinCellBased db(zb);
+
+    if (fd_method == FlowDirectionMethod::FDM_D8)
+    {
+      db.compute_receivers(seed + it, noise_strength);
+      auto [subroots, has_lake] = db.find_subroots();
+      if (has_lake) db.remove_lakes(subroots);
+    }
+    else
+    {
+      db.compute_receivers_priority_flood();
+    }
+
+    db.update_traversals();
+
+    // Correct upslopes by moving downstream from the highest headwater cells to
+    // the outlets. Since db.traversals stores each outlet's tree in
+    // upstream->downstream order (nodes ordered from leaves to outlet),
+    // traversing in normal order visits every cell before its downstream
+    // receiver.
+    for (const auto &[outlet, traversal] : db.traversals)
+    {
+      for (const glm::ivec2 &i : traversal)
+      {
+        const glm::ivec2 &j = db.receivers(i);
+        if (j == i) continue; // outlet cell
+
+        int   dx = i.x - j.x;
+        int   dy = i.y - j.y;
+        float dist = (dx != 0 && dy != 0) ? M_SQRT2 : 1.f;
+        float max_receiver_z = zb(i) - riverbed_talus * dist;
+
+        // If the downstream receiver is higher than the current node, carve the
+        // receiver down
+        if (zb(j) > max_receiver_z) zb(j) = max_receiver_z;
+      }
+    }
+  }
+
+  // --- optional riverbed carving
+  if (carve_riverbed)
+  {
+    Array mask(shape);
+    Array zr = zb;
+
+    for (int j = 0; j < shape.y; j++)
+      for (int i = 0; i < shape.x; i++)
+        if (zb(i, j) != z(i, j)) mask(i, j) = 1.f;
+
+    int ir = 2;
+    expand_talus(zr, mask, talus_riverbank, seed, ir, 0.f);
+    laplace(zr);
 
     // transition mask
     mask = distance_transform(mask);
