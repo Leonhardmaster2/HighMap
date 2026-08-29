@@ -480,6 +480,7 @@ Array flow_fixing_mst(const Array  &z,
       pq;
 
   // ---- Initialize boundary outlets (Source ID = n_sinks)
+
   // Weight initial distance by border elevation so flow actively steers
   // towards lowest natural exit saddles/valleys along the boundary rather than
   // perpendicular lines.
@@ -502,6 +503,7 @@ Array flow_fixing_mst(const Array  &z,
     init_boundary_cell(i, 0);
     init_boundary_cell(i, shape.y - 1);
   }
+
   for (int j = 1; j < shape.y - 1; ++j)
   {
     init_boundary_cell(0, j);
@@ -509,6 +511,7 @@ Array flow_fixing_mst(const Array  &z,
   }
 
   // --- Initialize sinks (Source ID = 0 ... n_sinks - 1)
+
   for (int s = 0; s < n_sinks; ++s)
   {
     glm::ivec2 p = sinks[s];
@@ -528,6 +531,7 @@ Array flow_fixing_mst(const Array  &z,
   };
 
   // --- Multi-source Dijkstra expansion
+
   while (!pq.empty())
   {
     DijkstraNode top = pq.top();
