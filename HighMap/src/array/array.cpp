@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -19,11 +20,21 @@ Array::Array()
 
 Array::Array(glm::ivec2 shape) : shape(shape)
 {
+  if (!validate_shape(shape))
+  {
+    this->shape = glm::ivec2(0, 0);
+    return;
+  }
   this->vector.resize(this->shape.x * this->shape.y);
 }
 
 Array::Array(glm::ivec2 shape, float value) : shape(shape)
 {
+  if (!validate_shape(shape))
+  {
+    this->shape = glm::ivec2(0, 0);
+    return;
+  }
   this->vector.resize(this->shape.x * this->shape.y);
   std::fill(this->vector.begin(), this->vector.end(), value);
 }
@@ -41,6 +52,12 @@ Array::Array(const std::string &filename, bool flip_j)
 
 Array::Array(const std::vector<std::vector<float>> &data)
 {
+  if (data.empty() || data[0].empty())
+  {
+    (void)validate_shape(glm::ivec2(0, 0));
+    return;
+  }
+
   this->shape = glm::ivec2(data.size(), data[0].size());
   *this = Array(shape);
 
@@ -72,6 +89,12 @@ std::vector<float> Array::get_vector() const
 
 void Array::set_shape(glm::ivec2 new_shape)
 {
+  if (!validate_shape(new_shape))
+  {
+    this->shape = glm::ivec2(0, 0);
+    this->vector.clear();
+    return;
+  }
   this->shape = new_shape;
   this->vector.resize(this->shape.x * this->shape.y);
 }
@@ -93,6 +116,8 @@ Array &Array::operator*=(const float value)
 
 Array &Array::operator*=(const Array &array)
 {
+  if (!validate_same_shape(*this, array)) return *this;
+
   std::transform(this->vector.begin(),
                  this->vector.end(),
                  array.vector.begin(),
@@ -103,6 +128,8 @@ Array &Array::operator*=(const Array &array)
 
 Array &Array::operator/=(const float value)
 {
+  (void)validate_not_zero(value);
+
   std::transform(this->vector.begin(),
                  this->vector.end(),
                  this->vector.begin(),
@@ -112,6 +139,8 @@ Array &Array::operator/=(const float value)
 
 Array &Array::operator/=(const Array &array)
 {
+  if (!validate_same_shape(*this, array)) return *this;
+
   std::transform(this->vector.begin(),
                  this->vector.end(),
                  array.vector.begin(),
@@ -131,6 +160,8 @@ Array &Array::operator+=(const float value)
 
 Array &Array::operator+=(const Array &array)
 {
+  if (!validate_same_shape(*this, array)) return *this;
+
   std::transform(this->vector.begin(),
                  this->vector.end(),
                  array.vector.begin(),
@@ -150,6 +181,8 @@ Array &Array::operator-=(const float value)
 
 Array &Array::operator-=(const Array &array)
 {
+  if (!validate_same_shape(*this, array)) return *this;
+
   std::transform(this->vector.begin(),
                  this->vector.end(),
                  array.vector.begin(),
@@ -171,6 +204,8 @@ Array Array::operator*(const float value) const
 
 Array Array::operator*(const Array &array) const
 {
+  if (!validate_same_shape(*this, array)) return Array();
+
   Array array_out = Array(array.shape);
 
   std::transform(this->vector.begin(),
@@ -194,6 +229,8 @@ Array operator*(const float value, const Array &array) // friend function
 
 Array Array::operator/(const float value) const
 {
+  (void)validate_not_zero(value);
+
   Array array_out = Array(this->shape);
 
   std::transform(this->vector.begin(),
@@ -205,6 +242,8 @@ Array Array::operator/(const float value) const
 
 Array Array::operator/(const Array &array) const
 {
+  if (!validate_same_shape(*this, array)) return Array();
+
   Array array_out = Array(array.shape);
 
   std::transform(this->vector.begin(),
@@ -239,6 +278,8 @@ Array Array::operator+(const float value) const
 
 Array Array::operator+(const Array &array) const
 {
+  if (!validate_same_shape(*this, array)) return Array();
+
   Array array_out = Array(array.shape);
 
   std::transform(this->vector.begin(),
@@ -284,6 +325,8 @@ Array Array::operator-(float value) const
 
 Array Array::operator-(const Array &array) const
 {
+  if (!validate_same_shape(*this, array)) return Array();
+
   Array array_out = Array(array.shape);
 
   std::transform(this->vector.begin(),
