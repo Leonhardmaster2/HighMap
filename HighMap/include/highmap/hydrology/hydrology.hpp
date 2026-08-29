@@ -485,6 +485,60 @@ Array flow_fixing_drainage_basin(
     const Array        *p_noise_y = nullptr);
 
 /**
+ * @brief Resolves flow sinks and unwanted upslopes using Dijkstra pathfinding
+ * and a Minimum Spanning Tree (MST) over sinks and boundary outlets.
+ *
+ * This function identifies all flow sinks and boundary outlets, computes
+ * candidate optimal path connections via multi-source Dijkstra search,
+ * constructs a Minimum Spanning Forest (Kruskal's algorithm) guaranteeing that
+ * each sink connects to an outlet through the lowest-effort saddle pass, and
+ * carves monotonic riverbeds along the MST paths.
+ *
+ * @param  z                     Input elevation array.
+ * @param  riverbed_talus        Minimum talus (slope) along carved riverbeds.
+ * @param  iterations            Number of iterative sink detection and MST
+ *                               breaching passes.
+ * @param  elevation_ratio       Balance factor between elevation level and
+ *                               slope in Dijkstra cost.
+ * @param  distance_exponent     Exponent applied to elevation differences in
+ *                               Dijkstra cost.
+ * @param  upward_penalization   Penalty factor for uphill moves in Dijkstra
+ *                               search.
+ * @param  prefilter_ir          Radius of Gaussian/cpulse prefilter applied
+ *                               before sink detection.
+ * @param  carve_riverbed        Whether to apply riverbank carving and
+ *                               smoothing along altered paths.
+ * @param  smooth_river_bottom   Whether to apply Laplace smoothing along the
+ *                               river bottom.
+ * @param  talus_riverbank       Talus value used when expanding riverbanks.
+ * @param  seed                  Random seed for noise generation.
+ * @param  riverbank_noise_ratio Noise ratio for riverbank expansion.
+ * @param  merging_distance      Distance (in pixels) for blending modified flow
+ *                               paths.
+ * @param  p_noise_x             Optional noise array for riverbank domain
+ *                               warping in X.
+ * @param  p_noise_y             Optional noise array for riverbank domain
+ *                               warping in Y.
+ * @return                       Array with unbroken flow paths.
+ */
+Array flow_fixing_mst(const Array  &z,
+                      float         riverbed_talus = 0.f,
+                      float         elevation_ratio = 0.95f,
+                      float         distance_exponent = 2.f,
+                      float         upward_penalization = 50.f,
+                      float         valley_affinity = 0.5f,
+                      float         path_sinuosity = 0.25f,
+                      int           prefilter_ir = 8,
+                      bool          carve_riverbed = true,
+                      bool          smooth_river_bottom = true,
+                      float         talus_riverbank = 0.01f,
+                      std::uint32_t seed = 0,
+                      float         riverbank_noise_ratio = 0.f,
+                      float         merging_distance = 8.f,
+                      const Array  *p_noise_x = nullptr,
+                      const Array  *p_noise_y = nullptr);
+
+/**
  * @brief Computes the optimal flow path from a starting point to the boundary
  * of a given elevation array.
  *
