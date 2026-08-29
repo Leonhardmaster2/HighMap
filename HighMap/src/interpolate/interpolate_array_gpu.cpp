@@ -17,11 +17,14 @@ namespace
 // A zero-sized source cannot be bound as an OpenCL image, and interpolating
 // from an empty array has no defined result. Leave the target as-is (its
 // constructor zero-fills it). Mirrors the CPU guard in interpolate_array.cpp.
-bool empty_source(const Array &source)
+bool empty_source(
+    const Array                &source,
+    const std::source_location &loc = std::source_location::current())
 {
   if (source.shape.x < 1 || source.shape.y < 1)
   {
-    hmap::log::trace("empty source ({}x{}), leaving target unchanged",
+    hmap::log::trace(loc,
+                     "empty source ({}x{}), leaving target unchanged",
                      source.shape.x,
                      source.shape.y);
     return true;
