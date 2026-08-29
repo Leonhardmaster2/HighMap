@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2025
  */
 #pragma once
-#include "macrologger.h"
 
 #include "highmap/virtual_array/tile_storage.hpp"
 

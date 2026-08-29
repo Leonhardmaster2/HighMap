@@ -21,7 +21,7 @@ void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
 {
   if (access.outputs.empty())
   {
-    LOG_ERROR("for_each_tile: no output VirtualArray");
+    hmap::log::error("no output VirtualArray");
     return;
   }
 
@@ -39,14 +39,14 @@ void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
   for (auto *va : access.inputs)
     if (!check(va))
     {
-      LOG_ERROR("Incompatible input VirtualArray");
+      hmap::log::error("Incompatible input VirtualArray");
       return;
     }
 
   for (auto *va : access.outputs)
     if (!check(va))
     {
-      LOG_ERROR("Incompatible output VirtualArray");
+      hmap::log::error("Incompatible output VirtualArray");
       return;
     }
 

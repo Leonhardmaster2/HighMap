@@ -11,10 +11,9 @@
 #include <system_error>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
@@ -41,7 +40,7 @@ Array &DiskSequentialTileStorage::get_tile(const TileRegion &region)
 {
   if (current_tile)
   {
-    LOG_ERROR("DiskSequentialTileStorage: tile already loaded");
+    hmap::log::error("tile already loaded");
     throw std::logic_error("DiskSequentialTileStorage misuse");
   }
 
@@ -77,12 +76,11 @@ void DiskSequentialTileStorage::release_tile(const TileRegion &region)
 {
   if (!current_tile)
   {
-    LOG_ERROR("DiskSequentialTileStorage: no tile loaded on release");
+    hmap::log::error("no tile loaded on release");
     return;
   }
 
-  if (region.key != current_key)
-    LOG_ERROR("DiskSequentialTileStorage: releasing wrong tile");
+  if (region.key != current_key) hmap::log::error("releasing wrong tile");
 
   save_tile(region.key, *current_tile);
   current_tile.reset();

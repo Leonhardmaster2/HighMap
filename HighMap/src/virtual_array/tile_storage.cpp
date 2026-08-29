@@ -3,8 +3,7 @@
  * this software. */
 #include <memory>
 
-#include "macrologger.h"
-
+#include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 
@@ -34,7 +33,7 @@ std::unique_ptr<TileStorage> make_storage(glm::ivec2  shape,
   }
 
   // fallback
-  LOG_ERROR("Unknown StorageMode, defaulting to RAM");
+  hmap::log::error("Unknown StorageMode, defaulting to RAM");
   return std::make_unique<RamTileStorage>();
 }
 

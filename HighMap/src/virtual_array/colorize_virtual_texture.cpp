@@ -7,12 +7,11 @@
 #include <initializer_list>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
 #include "highmap/interpolate/interpolate1d.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/virtual_array/tile_region.hpp"
@@ -63,7 +62,8 @@ void colorize(VirtualTexture               &out,
 {
   if (out.channels() < 3)
   {
-    LOG_ERROR("VirtualTexture must have at least 3 channels to be colorized");
+    hmap::log::error(
+        "VirtualTexture must have at least 3 channels to be colorized");
     return;
   }
 
@@ -164,7 +164,8 @@ void colorize_bivariate(VirtualTexture               &out,
 {
   if (out.channels() < 3)
   {
-    LOG_ERROR("VirtualTexture must have at least 3 channels to be colorized");
+    hmap::log::error(
+        "VirtualTexture must have at least 3 channels to be colorized");
     return;
   }
 
@@ -298,8 +299,8 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
 {
   if (tex.channels() < 3)
   {
-    LOG_ERROR("VirtualTexture: inputs mismatch, virtual textures must have 3 "
-              "channels for luminance.");
+    hmap::log::error("inputs mismatch, virtual textures must have 3 channels "
+                     "for luminance.");
     return;
   }
 
@@ -331,8 +332,8 @@ void mix(VirtualTexture    &out,
   if (out.channels() != 4 || tex1.channels() != 4 || tex2.channels() != 4 ||
       out.shape != tex1.shape || out.shape != tex2.shape)
   {
-    LOG_ERROR("VirtualTexture: inputs mismatch, virtual textures must have 4 "
-              "channels and same shape.");
+    hmap::log::error("inputs mismatch, virtual textures must have 4 channels "
+                     "and same shape.");
     return;
   }
 

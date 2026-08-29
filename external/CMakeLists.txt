@@ -3,7 +3,6 @@ include(dkm.cmake)
 include(FastNoiseLite.cmake)
 include(hmm.cmake)
 include(libnpy.cmake)
-include(macro-logger.cmake)
 include(nn-c.cmake)
 include(mixbox.cmake)
 

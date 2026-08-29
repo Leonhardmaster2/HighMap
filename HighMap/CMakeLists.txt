@@ -34,7 +34,6 @@ target_link_libraries(
   FastNoiseLite::FastNoiseLite
   hmm::hmm
   libnpy::libnpy
-  macro-logger::macro-logger
   nanoflann::nanoflann
   nn-c::nn-c
   mixbox

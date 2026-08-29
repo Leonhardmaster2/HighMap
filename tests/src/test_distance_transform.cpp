@@ -1,5 +1,3 @@
-#include "macrologger.h"
-
 #include "highmap/dbg/assert.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/morphology.hpp"

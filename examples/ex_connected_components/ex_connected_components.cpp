@@ -14,9 +14,9 @@ int main(void)
   hmap::Array labels = hmap::connected_components(z);
 
   // unique labels
-  LOG_DEBUG("Labels");
+  hmap::log::trace("Labels");
   for (const auto &v : labels.unique_values())
-    LOG_DEBUG(" - %f", v);
+    hmap::log::trace(" - {}", v);
 
   // --- Secondary outputs
 
@@ -25,9 +25,9 @@ int main(void)
   auto dummy = hmap::connected_components(z, 0.f, 0.f, &surfaces, &centroids);
 
   // centroids of each components in index (i, j) scale
-  LOG_DEBUG("Centroids");
+  hmap::log::trace("Centroids");
   for (auto &[k, v] : centroids)
-    LOG_DEBUG(" - %f %f %f", k, v[0], v[1]);
+    hmap::log::trace(" - {} {} {}", k, v[0], v[1]);
 
   // --- Plots
 

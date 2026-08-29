@@ -5,10 +5,9 @@
 #include <cstddef>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/logger.hpp"
 
 #include <cfloat>
 
@@ -22,7 +21,7 @@ bool assert_start_end_points(const Path &path1,
 {
   if (path1.size() < 1 || path2.size() < 1)
   {
-    LOG_ERROR("not enough Path points");
+    hmap::log::error("not enough Path points");
     return false;
   }
 
@@ -36,7 +35,7 @@ bool assert_start_end_points(const Path &path1,
   bool  assert = ds < tol && de < tol;
 
   if (verbose)
-    LOG_INFO("ds: %f, de: %f, assert: %s", ds, de, assert ? "T" : "F");
+    hmap::log::info("ds: {}, de: {}, assert: {}", ds, de, assert ? "T" : "F");
 
   return assert;
 }

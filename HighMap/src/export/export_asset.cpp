@@ -10,11 +10,11 @@
 
 #include "hmm/src/heightmap.h"
 #include "hmm/src/triangulator.h"
-#include "macrologger.h"
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
 
 #include <assimp/Exporter.hpp>
@@ -182,7 +182,7 @@ void helper_build_mesh(aiMesh      *p_mesh,
     const int max_triangles = 0;
     const int max_points = 0;
 
-    LOG_DEBUG("remeshing (Delaunay)");
+    hmap::log::trace("remeshing (Delaunay)");
     tri.Run(max_error, max_triangles, max_points);
 
     auto points = tri.Points(elevation_scaling);
@@ -196,9 +196,6 @@ void helper_build_mesh(aiMesh      *p_mesh,
 
     p_mesh->mVertices = new aiVector3D[n_vertices];
     p_mesh->mNumVertices = n_vertices;
-
-    p_mesh->mTextureCoords[0] = new aiVector3D[n_vertices];
-    p_mesh->mNumUVComponents[0] = 2;
 
     for (size_t k = 0; k < points.size(); k++)
     {
@@ -226,7 +223,7 @@ void helper_build_mesh(aiMesh      *p_mesh,
   }
   break;
 
-  default: LOG_ERROR("unknown mesh type"); break;
+  default: hmap::log::error("unknown mesh type"); break;
   }
 }
 
@@ -239,9 +236,9 @@ bool export_asset(const std::string &fname,
                   const std::string &normal_map_fname,
                   float              max_error)
 {
-  LOG_DEBUG("exporting asset, format [%s] aka [%s]",
-            asset_export_format_as_string.at(export_format)[0].c_str(),
-            asset_export_format_as_string.at(export_format)[1].c_str());
+  hmap::log::trace("exporting asset, format [{}] aka [{}]",
+                   asset_export_format_as_string.at(export_format)[0],
+                   asset_export_format_as_string.at(export_format)[1]);
 
   aiScene *p_scene = new aiScene();
   aiMesh  *p_mesh = new aiMesh();
@@ -298,7 +295,7 @@ bool export_asset(const std::string &fname,
     return true;
   else
   {
-    LOG_ERROR("failed to export asset");
+    hmap::log::error("failed to export asset");
     return false;
   }
 }
@@ -311,9 +308,9 @@ bool export_asset(const std::string &fname,
                   const std::string &texture_fname,
                   const std::string &normal_map_fname)
 {
-  LOG_DEBUG("exporting asset, format [%s] aka [%s]",
-            asset_export_format_as_string.at(export_format)[0].c_str(),
-            asset_export_format_as_string.at(export_format)[1].c_str());
+  hmap::log::trace("exporting asset, format [{}] aka [{}]",
+                   asset_export_format_as_string.at(export_format)[0],
+                   asset_export_format_as_string.at(export_format)[1]);
 
   aiScene *p_scene = new aiScene();
   aiMesh  *p_mesh = new aiMesh();
@@ -370,7 +367,7 @@ bool export_asset(const std::string &fname,
     return true;
   else
   {
-    LOG_ERROR("failed to export asset");
+    hmap::log::error("failed to export asset");
     return false;
   }
 

@@ -12,12 +12,12 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 
-#include "macrologger.h"
 #include "npy.hpp"
 
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/export.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/range.hpp"
 #include "highmap/texture.hpp"
 
@@ -26,7 +26,7 @@ namespace hmap
 
 void Array::from_file(const std::string &fname)
 {
-  LOG_DEBUG("reading binary file");
+  hmap::log::trace("reading binary file");
   std::ifstream f;
   f.open(fname, std::ios::binary);
 
@@ -109,7 +109,7 @@ void Array::to_exr(const std::string &fname) const
 
 void Array::to_file(const std::string &fname) const
 {
-  LOG_DEBUG("writing binary file");
+  hmap::log::trace("writing binary file");
   std::ofstream f;
   f.open(fname, std::ios::binary);
 

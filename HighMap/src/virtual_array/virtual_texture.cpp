@@ -8,9 +8,8 @@
 #include <string>
 #include <vector>
 
-#include "macrologger.h"
-
 #include "highmap/array.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
@@ -140,10 +139,9 @@ void VirtualTexture::from_arrays(const std::vector<const Array *> &p_arrays,
 
   if (nch != int(arrays.size()))
   {
-    LOG_ERROR("VirtualTexture::from_arrays: size mismatch between arrays and "
-              "channels nb (%d != %ld)",
-              nch,
-              p_arrays.size());
+    hmap::log::error("size mismatch between arrays and channels nb ({} != {})",
+                     nch,
+                     p_arrays.size());
     return;
   }
 
@@ -164,7 +162,7 @@ std::vector<uint8_t> VirtualTexture::to_img_8bit(const glm::ivec2  &img_shape,
 
   if (nch != 3 && nch != 4)
   {
-    LOG_ERROR("to_img_8bit supports only RGB or RGBA (got %d)", nch);
+    hmap::log::error("to_img_8bit supports only RGB or RGBA (got {})", nch);
     return {};
   }
 
@@ -181,7 +179,7 @@ void VirtualTexture::to_png(const glm::ivec2  &img_shape,
 
   if (nch != 3 && nch != 4)
   {
-    LOG_ERROR("PNG supports only RGB or RGBA (got %d)", nch);
+    hmap::log::error("PNG supports only RGB or RGBA (got {})", nch);
     return;
   }
 

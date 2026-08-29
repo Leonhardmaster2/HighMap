@@ -33,6 +33,7 @@
 #include "highmap/interpolate.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/multiscale.hpp"
