@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/range.hpp"
@@ -18,6 +19,9 @@ namespace hmap
 
 Array blend_exclusion(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
   array_out = 0.5f - 2.f * (-0.5f + array1) * (-0.5f + array2);
   return array_out;
@@ -25,6 +29,9 @@ Array blend_exclusion(const Array &array1, const Array &array2)
 
 Array blend_gradients(const Array &array1, const Array &array2, int ir)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array dn1 = gradient_norm(array1);
   Array dn2 = gradient_norm(array2);
 
@@ -39,6 +46,9 @@ Array blend_gradients(const Array &array1, const Array &array2, int ir)
 
 Array blend_negate(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
 
   auto lambda = [](float a, float b) { return a < b ? a : 2.f * b - a; };
@@ -54,6 +64,9 @@ Array blend_negate(const Array &array1, const Array &array2)
 
 Array blend_overlay(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
   auto  lambda = [](float a, float b)
   { return a < 0.5 ? 2.f * a * b : 1.f - 2.f * (1.f - a) * (1.f - b); };
@@ -69,6 +82,9 @@ Array blend_overlay(const Array &array1, const Array &array2)
 
 Array blend_soft(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
   array_out = (1.f - array1) * array1 * array2 +
               array1 * (1.f - (1.f - array1) * (1.f - array2));
@@ -78,6 +94,13 @@ Array blend_soft(const Array &array1, const Array &array2)
 Array blend_power_law(const std::vector<const Array *> &arrays, float alpha)
 {
   if (arrays.empty()) return Array();
+  if (arrays[0] == nullptr || !validate_non_empty(*arrays[0])) return Array();
+
+  for (size_t k = 1; k < arrays.size(); ++k)
+  {
+    if (arrays[k] == nullptr || !validate_same_shape(*arrays[0], *arrays[k]))
+      return Array();
+  }
 
   if (arrays.size() == 1) return *arrays[0];
 
@@ -111,6 +134,16 @@ Array mixer(const Array                      &t,
             const std::vector<const Array *> &arrays,
             float                             gain_factor)
 {
+  if (!validate_non_empty(t)) return Array();
+  if (arrays.empty()) return Array(t.shape);
+
+  for (const auto *arr : arrays)
+  {
+    if (arr == nullptr || !validate_same_shape(t, *arr)) return Array(t.shape);
+  }
+
+  if (arrays.size() == 1) return *arrays[0];
+
   Array               array_out = Array(t.shape);
   const std::uint32_t n = arrays.size();
 
@@ -155,6 +188,9 @@ Array transfer(const Array &source,
                float        amplitude,
                bool         target_prefiltering)
 {
+  if (!validate_non_empty(source) || !validate_same_shape(source, target))
+    return Array();
+
   // high-pass spatial filter
   Array w = -source;
   smooth_cpulse(w, ir);

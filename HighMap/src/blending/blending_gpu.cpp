@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
@@ -17,6 +18,9 @@ namespace hmap::gpu
 
 Array blend_gradients(const Array &array1, const Array &array2, int ir)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array dn1 = hmap::gradient_norm(array1);
   Array dn2 = hmap::gradient_norm(array2);
 
@@ -34,6 +38,10 @@ Array blend_poisson_bf(const Array &array1,
                        const int    iterations,
                        const Array *p_mask)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+  if (p_mask && !validate_same_shape(array1, *p_mask)) return Array();
+
   Array array1_out = array1;
 
   auto run = clwrapper::Run("blend_poisson_bf");
@@ -61,6 +69,9 @@ Array transfer(const Array &source,
                float        amplitude,
                bool         target_prefiltering)
 {
+  if (!validate_non_empty(source) || !validate_same_shape(source, target))
+    return Array();
+
   // high-pass spatial filter
   Array w = -source;
   gpu::smooth_cpulse(w, ir);
