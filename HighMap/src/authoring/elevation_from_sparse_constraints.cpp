@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/authoring.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 
 namespace hmap
@@ -18,6 +19,14 @@ Array elevation_from_sparse_constraints(const Array &mountains,
                                         const Array *p_noise,
                                         float        noise_amplitude)
 {
+  if (!validate_non_empty(mountains)) return Array();
+
+  if (p_coastline && !validate_same_shape(mountains, *p_coastline))
+    return Array();
+  if (p_boundary && !validate_same_shape(mountains, *p_boundary))
+    return Array();
+  if (p_noise && !validate_same_shape(mountains, *p_noise)) return Array();
+
   const glm::ivec2 shape = mountains.shape;
   Array            z_init(shape, 0.0f);
   Array            mask_fixed(shape, 0.0f);

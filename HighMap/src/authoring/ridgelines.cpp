@@ -10,6 +10,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point_sampling.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -31,6 +32,13 @@ Array ridgelines(glm::ivec2                shape,
                  const Array              *p_stretching,
                  glm::vec4                 bbox_array)
 {
+  if (!validate_shape(shape)) return Array();
+
+  Array array = Array(shape);
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return array;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return array;
+  if (p_stretching && !validate_same_shape(array, *p_stretching)) return array;
+
   // normalized node coordinates
   std::vector<float> xrs = xr;
   std::vector<float> yrs = yr;
@@ -89,7 +97,6 @@ Array ridgelines(glm::ivec2                shape,
     };
 
   // eventually fill array
-  Array array = Array(shape);
   fill_array_using_xy_function(array,
                                bbox_array,
                                nullptr,
@@ -115,6 +122,13 @@ Array ridgelines_bezier(glm::ivec2                shape,
                         const Array              *p_stretching,
                         glm::vec4                 bbox_array)
 {
+  if (!validate_shape(shape)) return Array();
+
+  Array array = Array(shape);
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return array;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return array;
+  if (p_stretching && !validate_same_shape(array, *p_stretching)) return array;
+
   // normalized node coordinates
   std::vector<float> xrs = xr;
   std::vector<float> yrs = yr;
@@ -298,7 +312,6 @@ Array ridgelines_bezier(glm::ivec2                shape,
     };
 
   // eventually fill array
-  Array array = Array(shape);
   fill_array_using_xy_function(array,
                                bbox_array,
                                nullptr,
