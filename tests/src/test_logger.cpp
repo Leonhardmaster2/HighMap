@@ -33,9 +33,9 @@ TEST(LoggerTest, FormattedOutput)
 
 #if HIGHMAP_ENABLE_LOGS
   std::string output = buffer.str();
-  EXPECT_NE(output.find("[info]"), std::string::npos);
+  EXPECT_NE(output.find("[info ]"), std::string::npos);
   EXPECT_NE(output.find("Hello World"), std::string::npos);
-  EXPECT_NE(output.find("[test_logger.cpp:"), std::string::npos);
+  EXPECT_NE(output.find("test_logger.cpp"), std::string::npos);
   EXPECT_EQ(output.find("/test_logger.cpp"), std::string::npos);
 #endif
 }
@@ -74,10 +74,20 @@ TEST(LoggerTest, ExplicitSourceLocation)
 
 #if HIGHMAP_ENABLE_LOGS
   std::string output = buffer.str();
-  EXPECT_NE(output.find("[info]"), std::string::npos);
+  EXPECT_NE(output.find("[info ]"), std::string::npos);
   EXPECT_NE(output.find("Explicit loc formatted 42"), std::string::npos);
   EXPECT_NE(output.find("[trace]"), std::string::npos);
   EXPECT_NE(output.find("Explicit loc plain message"), std::string::npos);
   EXPECT_NE(output.find("dynamic string"), std::string::npos);
 #endif
+}
+
+TEST(LoggerTest, FixedWidthFormattingAndTruncation)
+{
+  EXPECT_EQ(hmap::log::detail::format_fixed_width("hello", 5), "hello");
+  EXPECT_EQ(hmap::log::detail::format_fixed_width("hi", 5), "hi   ");
+  EXPECT_EQ(hmap::log::detail::format_fixed_width("very_long_string", 8),
+            "very_...");
+  EXPECT_EQ(hmap::log::detail::format_fixed_width("abc", 2), "ab");
+  EXPECT_EQ(hmap::log::detail::format_fixed_width("abc", 0), "abc");
 }

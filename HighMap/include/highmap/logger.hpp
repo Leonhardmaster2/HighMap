@@ -13,6 +13,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include <string_view>
 
 #include <concepts>
@@ -21,6 +22,14 @@
 
 #ifndef HIGHMAP_ENABLE_LOGS
 #define HIGHMAP_ENABLE_LOGS 1
+#endif
+
+#ifndef HIGHMAP_LOG_LEVEL_WIDTH
+#define HIGHMAP_LOG_LEVEL_WIDTH 5
+#endif
+
+#ifndef HIGHMAP_LOG_FILE_WIDTH
+#define HIGHMAP_LOG_FILE_WIDTH 24
 #endif
 
 namespace hmap::log
@@ -90,6 +99,19 @@ constexpr std::string_view get_filename(std::string_view path)
   return (pos == std::string_view::npos) ? path : path.substr(pos + 1);
 }
 
+inline std::string format_fixed_width(std::string_view str, size_t width)
+{
+  if (width == 0) return std::string(str);
+  if (str.length() > width)
+  {
+    if (width <= 3) return std::string(str.substr(0, width));
+    return std::string(str.substr(0, width - 3)) + "...";
+  }
+  std::string res(str);
+  res.append(width - str.length(), ' ');
+  return res;
+}
+
 inline void log_impl(Level                       level,
                      std::string_view            msg,
                      const std::source_location &loc)
@@ -97,9 +119,12 @@ inline void log_impl(Level                       level,
   std::ostream &out = (level == Level::Warn || level == Level::Error)
                           ? std::cerr
                           : std::cout;
-  out << "[" << level_to_string(level) << "] [" << get_filename(loc.file_name())
-      << ":" << loc.line() << " (" << loc.function_name() << ")] " << msg
-      << std::endl;
+  out << "hmap " << "["
+      << format_fixed_width(level_to_string(level), HIGHMAP_LOG_LEVEL_WIDTH)
+      << "] ["
+      << format_fixed_width(get_filename(loc.file_name()),
+                            HIGHMAP_LOG_FILE_WIDTH)
+      << ":" << loc.line() << "] " << msg << std::endl;
 }
 
 } // namespace detail
