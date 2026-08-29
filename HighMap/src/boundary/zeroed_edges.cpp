@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/distance_functions.hpp"
 #include "highmap/math/profiles.hpp"
@@ -25,6 +26,10 @@ void zeroed_edges(Array               &array,
                   const Array         *p_noise_r,
                   glm::vec4            bbox)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise_r && !validate_same_shape(array, *p_noise_r)) return;
+  if (!validate_not_zero(radius)) return;
+
   const glm::ivec2 &shape = array.shape;
 
   auto radial_fct = get_radial_profile_function(radial_profile, profile_param);

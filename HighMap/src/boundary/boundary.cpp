@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/distance_functions.hpp"
 #include "highmap/operator.hpp"
@@ -18,6 +19,9 @@ namespace hmap
 
 void extrapolate_borders(Array &array, int nbuffer, float sigma)
 {
+  if (!validate_non_empty(array)) return;
+  if (nbuffer < 0) return;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
@@ -85,6 +89,9 @@ void falloff(Array           &array,
              const Array     *p_noise,
              glm::vec4        bbox)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+
   glm::vec2 shift = {bbox.x, bbox.z};
   glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
 
@@ -120,8 +127,12 @@ void falloff(Array           &array,
 
 void fill_borders(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
+
+  if (ni < 2 || nj < 2) return;
 
   for (int j = 0; j < nj; j++)
   {
@@ -138,21 +149,30 @@ void fill_borders(Array &array)
 
 void fill_borders(Array &array, int nbuffer)
 {
+  if (!validate_non_empty(array)) return;
+  if (nbuffer < 0) return;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
   for (int j = 0; j < nj; j++)
     for (int i = nbuffer - 1; i >= 0; i--)
     {
-      array(i, j) = array(i + 1, j);
-      array(ni - i - 1, j) = array(ni - i - 2, j);
+      if (i + 1 < ni && ni - i - 2 >= 0)
+      {
+        array(i, j) = array(i + 1, j);
+        array(ni - i - 1, j) = array(ni - i - 2, j);
+      }
     }
 
   for (int j = nbuffer - 1; j >= 0; j--)
     for (int i = 0; i < ni; i++)
     {
-      array(i, j) = array(i, j + 1);
-      array(i, nj - j - 1) = array(i, nj - j - 2);
+      if (j + 1 < nj && nj - j - 2 >= 0)
+      {
+        array(i, j) = array(i, j + 1);
+        array(i, nj - j - 1) = array(i, nj - j - 2);
+      }
     }
 }
 
@@ -160,6 +180,10 @@ Array generate_buffered_array(const Array &array,
                               glm::ivec4   buffers,
                               bool         zero_padding)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (buffers.x < 0 || buffers.y < 0 || buffers.z < 0 || buffers.w < 0)
+    return Array();
+
   Array array_out = Array(glm::ivec2(array.shape.x + buffers.x + buffers.y,
                                      array.shape.y + buffers.z + buffers.w));
 
@@ -198,6 +222,8 @@ void make_periodic(Array                 &array,
                    int                    nbuffer,
                    const PeriodicityType &periodicity_type)
 {
+  if (!validate_non_empty(array)) return;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
@@ -265,6 +291,8 @@ void make_periodic(Array                 &array,
 
 Array make_periodic_stitching(const Array &array, float overlap)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array      array_p = array;
   glm::ivec2 shape = array.shape;
 
@@ -333,7 +361,8 @@ Array make_periodic_stitching(const Array &array, float overlap)
 
 Array make_periodic_tiling(const Array &array, float overlap, glm::ivec2 tiling)
 {
-  //
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_shape(tiling)) return Array(array.shape);
 
   Array array_periodic = make_periodic_stitching(array, overlap);
 
@@ -358,6 +387,8 @@ Array make_periodic_tiling(const Array &array, float overlap, glm::ivec2 tiling)
 
 void set_borders(Array &array, glm::vec4 border_values, glm::ivec4 buffer_sizes)
 {
+  if (!validate_non_empty(array)) return;
+
   // west
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < buffer_sizes.x; i++)
@@ -412,6 +443,8 @@ void set_borders(Array &array, float border_values, int buffer_sizes)
 
 void sym_borders(Array &array, glm::ivec4 buffer_sizes)
 {
+  if (!validate_non_empty(array)) return;
+
   const int i1 = buffer_sizes.x;
   const int i2 = buffer_sizes.y;
   const int j1 = buffer_sizes.z;
@@ -437,6 +470,8 @@ void sym_borders(Array &array, glm::ivec4 buffer_sizes)
 
 void zeroed_borders(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
