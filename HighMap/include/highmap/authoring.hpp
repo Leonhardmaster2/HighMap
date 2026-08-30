@@ -125,6 +125,51 @@ Array base_elevation(glm::ivec2                             shape,
                      glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
+ * @brief Synthesize a smooth heightmap from sparse elevation constraints using
+ * GPU harmonic interpolation (Laplacian PDE).
+ *
+ * This function allows generating a continuous terrain elevation model from
+ * sparse sketch data by treating the provided constraints as Dirichlet boundary
+ * conditions and solving the discrete Laplace equation ($\Delta z = 0$) using
+ * GPU-accelerated Red-Black SOR.
+ *
+ * @param  mountains           Array specifying mountain peak/ridge elevations
+ *                             (> 0).
+ * @param  p_coastline         Optional pointer to coastline mask (fixed to
+ *                             coastline_elevation).
+ * @param  p_boundary          Optional pointer to outer boundary/ocean mask
+ *                             (fixed to boundary_elevation). If null, a 1-pixel
+ *                             boundary border around the domain perimeter is
+ *                             used.
+ * @param  mountain_elevation  Target elevation scaling for mountains (default:
+ *                             1.0).
+ * @param  coastline_elevation Elevation at coastline (default: 0.0).
+ * @param  boundary_elevation  Elevation at boundary/ocean (default: -1.0).
+ * @param  iterations_max      Max iterations for GPU solver (default: 500).
+ * @param  tolerance           Convergence tolerance for early exit (default:
+ *                             1e-5).
+ * @param  p_noise             Optional noise array to modulate the free terrain
+ *                             regions.
+ * @param  noise_amplitude     Amplitude of optional noise detail (default:
+ *                             0.0).
+ * @return                     Array               The resulting smooth
+ *                             synthesized heightmap.
+ *
+ * **Example**
+ * @include ex_elevation_from_sparse_constraints.cpp
+ */
+Array elevation_from_sparse_constraints(const Array &mountains,
+                                        const Array *p_coastline = nullptr,
+                                        const Array *p_boundary = nullptr,
+                                        float        mountain_elevation = 1.0f,
+                                        float        coastline_elevation = 0.0f,
+                                        float        boundary_elevation = -1.0f,
+                                        int          iterations_max = 500,
+                                        float        tolerance = 1e-5f,
+                                        const Array *p_noise = nullptr,
+                                        float        noise_amplitude = 0.0f);
+
+/**
  * @brief Apply the reverse midpoint displacement algorithm to the input array.
  *
  * This function implements the reverse midpoint displacement algorithm as
@@ -348,50 +393,5 @@ Array stamping(glm::ivec2                shape,
                bool                      kernel_flip = true,
                bool                      kernel_rotate = false,
                glm::vec4                 bbox_array = {0.f, 1.f, 0.f, 1.f});
-
-/**
- * @brief Synthesize a smooth heightmap from sparse elevation constraints using
- * GPU harmonic interpolation (Laplacian PDE).
- *
- * This function allows generating a continuous terrain elevation model from
- * sparse sketch data by treating the provided constraints as Dirichlet boundary
- * conditions and solving the discrete Laplace equation ($\Delta z = 0$) using
- * GPU-accelerated Red-Black SOR.
- *
- * @param  mountains           Array specifying mountain peak/ridge elevations
- *                             (> 0).
- * @param  p_coastline         Optional pointer to coastline mask (fixed to
- *                             coastline_elevation).
- * @param  p_boundary          Optional pointer to outer boundary/ocean mask
- *                             (fixed to boundary_elevation). If null, a 1-pixel
- *                             boundary border around the domain perimeter is
- *                             used.
- * @param  mountain_elevation  Target elevation scaling for mountains (default:
- *                             1.0).
- * @param  coastline_elevation Elevation at coastline (default: 0.0).
- * @param  boundary_elevation  Elevation at boundary/ocean (default: -1.0).
- * @param  iterations_max      Max iterations for GPU solver (default: 500).
- * @param  tolerance           Convergence tolerance for early exit (default:
- *                             1e-5).
- * @param  p_noise             Optional noise array to modulate the free terrain
- *                             regions.
- * @param  noise_amplitude     Amplitude of optional noise detail (default:
- *                             0.0).
- * @return                     Array               The resulting smooth
- *                             synthesized heightmap.
- *
- * **Example**
- * @include ex_elevation_from_sparse_constraints.cpp
- */
-Array elevation_from_sparse_constraints(const Array &mountains,
-                                        const Array *p_coastline = nullptr,
-                                        const Array *p_boundary = nullptr,
-                                        float        mountain_elevation = 1.0f,
-                                        float        coastline_elevation = 0.0f,
-                                        float        boundary_elevation = -1.0f,
-                                        int          iterations_max = 500,
-                                        float        tolerance = 1e-5f,
-                                        const Array *p_noise = nullptr,
-                                        float        noise_amplitude = 0.0f);
 
 } // namespace hmap
