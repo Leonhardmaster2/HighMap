@@ -10,6 +10,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/carving.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
@@ -23,18 +24,13 @@
 namespace hmap
 {
 
-Array flow_fixing(const Array  &z,
-                  float         riverbed_talus,
-                  int           iterations,
-                  int           prefilter_ir,
-                  bool          carve_riverbed,
-                  bool          smooth_river_bottom,
-                  float         talus_riverbank,
-                  std::uint32_t seed,
-                  float         riverbank_noise_ratio,
-                  float         merging_distance,
-                  const Array  *p_noise_x,
-                  const Array  *p_noise_y)
+Array flow_fixing(const Array &z,
+                  float        riverbed_talus,
+                  int          iterations,
+                  int          prefilter_ir,
+                  bool         carve_riverbed,
+                  float        merging_distance,
+                  const Array *p_noise_r)
 {
   // local node type for heap queues
   struct Node
@@ -73,6 +69,9 @@ Array flow_fixing(const Array  &z,
   auto is_inside = [&shape](int i, int j)
   { return i >= 0 && i < shape.x && j >= 0 && j < shape.y; };
 
+  std::unordered_map<glm::ivec4, std::vector<glm::ivec2>, IVec4Hash, IVec4Eq>
+      breach_history;
+
   // --- main loop
 
   for (int it = 0; it < iterations; ++it)
@@ -98,8 +97,6 @@ Array flow_fixing(const Array  &z,
 
     Mat<int>        visited(shape, 0);
     Mat<glm::ivec2> flow_map(shape, {0, 0});
-    std::unordered_map<glm::ivec4, std::vector<glm::ivec2>, IVec4Hash, IVec4Eq>
-        breach_history;
 
     // --- initialize heap queue with the lowest cell of each border
 
@@ -250,20 +247,41 @@ Array flow_fixing(const Array  &z,
 
   if (carve_riverbed)
   {
-    return hmap::carve_riverbed(z,
-                                zb,
-                                talus_riverbank,
-                                smooth_river_bottom,
-                                merging_distance,
-                                seed,
-                                riverbank_noise_ratio,
-                                p_noise_x,
-                                p_noise_y);
+    float trench_width = merging_distance / float(shape.x);
+    for (const auto &[key, path_cells] : breach_history)
+    {
+      if (path_cells.size() < 2) continue;
+      std::vector<Point> pts;
+      pts.reserve(path_cells.size());
+      for (const auto &p : path_cells)
+      {
+        float x = (float(p.x) + 0.5f) / float(shape.x);
+        float y = (float(p.y) + 0.5f) / float(shape.y);
+        pts.push_back(Point(x, y, zb(p)));
+      }
+      Path river_path(pts);
+      trench(zb,
+             river_path,
+             trench_width,
+             /* enable_width_depth_scaling */ true,
+             /* enable_width_distance_scaling */ false,
+             /* enable_width_curvature_scaling */ false,
+             /* curvature_radius_min */ 1.f,
+             /* curv_width_ratio_min */ 0.5f,
+             /* curv_width_ratio_max */ 2.f,
+             RadialProfile::RP_SMOOTHSTEP_UPPER,
+             /* radial_profile_parameter */ 2.f,
+             ElevationLongitudinalProfile::ELP_DECREASING,
+             /* elevation_shift */ 0.f,
+             /* shift_ramp_start_ratio */ 0.f,
+             /* shift_ramp_end_ratio */ 0.f,
+             /* min_slope */ std::max(riverbed_talus, 1e-4f),
+             /* k_neighbors */ 4,
+             /* p_noise_r */ p_noise_r);
+    }
   }
-  else
-  {
-    return zb;
-  }
+
+  return zb;
 }
 
 Array flow_fixing_drainage_basin(const Array        &z,
@@ -350,13 +368,9 @@ Array flow_fixing_mst(const Array  &z,
                       int           prefilter_ir,
                       float         minimum_depth,
                       bool          carve_riverbed,
-                      bool          smooth_river_bottom,
-                      float         talus_riverbank,
                       std::uint32_t seed,
-                      float         riverbank_noise_ratio,
                       float         merging_distance,
-                      const Array  *p_noise_x,
-                      const Array  *p_noise_y)
+                      const Array  *p_noise_r)
 {
   const glm::ivec2 shape = z.shape;
   Array            zb = z;
@@ -759,24 +773,52 @@ Array flow_fixing_mst(const Array  &z,
     }
   }
 
-  // --- Optional riverbed carving and smoothing
+  // --- Optional riverbed carving and smoothing with trench
 
   if (carve_riverbed)
   {
-    return hmap::carve_riverbed(z,
-                                zb,
-                                talus_riverbank,
-                                smooth_river_bottom,
-                                merging_distance,
-                                seed,
-                                riverbank_noise_ratio,
-                                p_noise_x,
-                                p_noise_y);
+    float trench_width = merging_distance / float(shape.x);
+
+    // Carve riverbed using continuous trench along each path from inner sinks
+    // to outlets
+    for (const auto &dp : directed_paths)
+    {
+      const auto &path_cells = dp.path;
+      if (path_cells.size() < 2) continue;
+
+      std::vector<Point> pts;
+      pts.reserve(path_cells.size());
+      for (const auto &p : path_cells)
+      {
+        float x = (float(p.x) + 0.5f) / float(shape.x);
+        float y = (float(p.y) + 0.5f) / float(shape.y);
+        pts.push_back(Point(x, y, zb(p)));
+      }
+
+      Path river_path(pts);
+
+      trench(zb,
+             river_path,
+             trench_width,
+             /* enable_width_depth_scaling */ true,
+             /* enable_width_distance_scaling */ true,
+             /* enable_width_curvature_scaling */ false,
+             /* curvature_radius_min */ 1.f,
+             /* curv_width_ratio_min */ 0.5f,
+             /* curv_width_ratio_max */ 2.f,
+             RadialProfile::RP_SMOOTHSTEP_UPPER,
+             /* radial_profile_parameter */ 2.f,
+             ElevationLongitudinalProfile::ELP_DECREASING,
+             /* elevation_shift */ 0.f,
+             /* shift_ramp_start_ratio */ 0.f,
+             /* shift_ramp_end_ratio */ 0.f,
+             /* min_slope */ std::max(riverbed_talus, 1e-4f),
+             /* k_neighbors */ 4,
+             /* p_noise_r */ p_noise_r);
+    }
   }
-  else
-  {
-    return zb;
-  }
+
+  return zb;
 }
 
 } // namespace hmap
