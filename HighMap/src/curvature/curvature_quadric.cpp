@@ -10,6 +10,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 
 #include "appMetrics/core.h"
@@ -21,6 +22,8 @@ namespace hmap
 
 Array curvature_quadric(const Array &z, int ir, CurvatureType curvature_type)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2 &shape = z.shape;
   const int         w = 2 * ir + 1; // window size
 
@@ -101,6 +104,8 @@ Array curvature_quadric(const Array  &z,
                         CurvatureType curvature_type,
                         bool          approx_algo)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2 shape = z.shape;
   int              type_id = static_cast<int>(curvature_type);
 
