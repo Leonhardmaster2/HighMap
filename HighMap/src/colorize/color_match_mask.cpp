@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -14,6 +15,10 @@ Array color_match_mask(const Array     &r,
                        const glm::vec3 &color,
                        float            tolerance)
 {
+  if (!validate_non_empty(r) || !validate_same_shape(r, g) ||
+      !validate_same_shape(r, b))
+    return Array();
+
   const glm::ivec2 &shape = r.shape;
   const float       tol2 = tolerance * tolerance;
   Array             mask(shape);

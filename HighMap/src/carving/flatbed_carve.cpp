@@ -34,7 +34,7 @@ Array flatbed_carve(glm::ivec2    shape,
   // out
   Array z(shape);
   if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return z;
-  if (path.empty()) return z;
+  if (!validate_non_empty(path, "Path")) return z;
 
   Array mask(shape);
 
@@ -133,7 +133,7 @@ void flatbed_carve(Array        &z,
 {
   if (!validate_non_empty(z)) return;
   if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return;
-  if (path.empty()) return;
+  if (!validate_non_empty(path, "Path")) return;
 
   hmap::Array mask;
 

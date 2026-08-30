@@ -143,3 +143,26 @@ TEST(ValidationTest, ArrayOperationsGracefulFailure)
   EXPECT_EQ(im, -1);
   EXPECT_EQ(jm, -1);
 }
+
+TEST(ValidationTest, ValidateTexture)
+{
+  hmap::Texture empty_tex;
+  EXPECT_FALSE(hmap::validate_non_empty(empty_tex));
+
+  hmap::Texture valid_tex(glm::ivec2(4, 4), 3, 1.0f);
+  EXPECT_TRUE(hmap::validate_non_empty(valid_tex));
+  EXPECT_TRUE(hmap::validate_non_empty(valid_tex, 3));
+  EXPECT_FALSE(hmap::validate_non_empty(valid_tex, 4));
+
+  EXPECT_TRUE(hmap::validate_channels(valid_tex, 3));
+  EXPECT_FALSE(hmap::validate_channels(valid_tex, 4));
+
+  hmap::Texture diff_shape_tex(glm::ivec2(4, 5), 3, 1.0f);
+  EXPECT_FALSE(hmap::validate_same_shape(valid_tex, diff_shape_tex));
+
+  hmap::Array arr(glm::ivec2(4, 4), 1.0f);
+  EXPECT_TRUE(hmap::validate_same_shape(valid_tex, arr));
+
+  hmap::Array arr_diff(glm::ivec2(4, 5), 1.0f);
+  EXPECT_FALSE(hmap::validate_same_shape(valid_tex, arr_diff));
+}

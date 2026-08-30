@@ -11,6 +11,8 @@
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 #include "highmap/shadows.hpp"
@@ -27,6 +29,10 @@ void apply_hillshade(Texture     &color3,
                      float        vmax,
                      float        exponent)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(color3)) return;
+  if (!validate_same_shape(color3, array)) return;
+
   // compute and scale hillshading
   Array hs = Array(array.shape, 1.f);
   hs = hillshade(array, 180.f, 45.f, 10.f * array.ptp() / (float)array.shape.y);
@@ -39,7 +45,7 @@ void apply_hillshade(Texture     &color3,
   // apply to image
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
-      for (int ch = 0; ch < 3; ch++)
+      for (int ch = 0; ch < 3 && ch < color3.num_channels(); ch++)
         color3(i, j, ch) *= hs(i, j);
 }
 
@@ -50,6 +56,17 @@ void apply_hillshade(std::vector<uint8_t> &img,
                      float                 exponent,
                      bool                  is_img_rgba)
 {
+  if (!validate_non_empty(array)) return;
+  size_t expected_size = (size_t)array.shape.x * (size_t)array.shape.y *
+                         (is_img_rgba ? 4 : 3);
+  if (img.size() < expected_size)
+  {
+    hmap::log::warn("Image buffer size ({}) is smaller than required size ({})",
+                    img.size(),
+                    expected_size);
+    return;
+  }
+
   // compute and scale hillshading
   Array hs = Array(array.shape, 1.f);
   hs = hillshade(array, 180.f, 45.f, 10.f * array.ptp() / (float)array.shape.y);
@@ -95,6 +112,9 @@ Texture colorize(const Array &array,
                  bool         reverse,
                  const Array *p_noise)
 {
+  if (!validate_non_empty(array)) return Texture();
+  if (p_noise && !validate_same_shape(array, *p_noise)) return Texture();
+
   // get the colormap and reverse if needed
   const auto colormap_colors = get_colormap_data(cmap);
   if (reverse) std::swap(vmin, vmax);
@@ -154,6 +174,19 @@ Texture colorize(const Array                  &array,
                  bool                          reverse,
                  const Array                  *p_noise)
 {
+  if (!validate_non_empty(array)) return Texture();
+  if (p_noise && !validate_same_shape(array, *p_noise)) return Texture();
+  if (!validate_non_empty(positions, "Colormap positions")) return Texture();
+  if (!validate_non_empty(colormap_colors, "Colormap colors")) return Texture();
+  if (positions.size() != colormap_colors.size())
+  {
+    hmap::log::warn(
+        "Colormap positions size ({}) does not match colors size ({})",
+        positions.size(),
+        colormap_colors.size());
+    return Texture();
+  }
+
   auto cpos = positions;
   auto colors = colormap_colors;
 
@@ -220,6 +253,30 @@ Texture colorize_bivariate(const Array                  &a1,
                            const Array                  *p_noise1,
                            const Array                  *p_noise2)
 {
+  if (!validate_non_empty(a1) || !validate_same_shape(a1, a2)) return Texture();
+  if (p_noise1 && !validate_same_shape(a1, *p_noise1)) return Texture();
+  if (p_noise2 && !validate_same_shape(a1, *p_noise2)) return Texture();
+  if (!validate_non_empty(positions1, "Colormap positions 1")) return Texture();
+  if (!validate_non_empty(colormap_colors1, "Colormap colors 1")) return Texture();
+  if (positions1.size() != colormap_colors1.size())
+  {
+    hmap::log::warn(
+        "Colormap 1 positions size ({}) does not match colors size ({})",
+        positions1.size(),
+        colormap_colors1.size());
+    return Texture();
+  }
+  if (!validate_non_empty(positions2, "Colormap positions 2")) return Texture();
+  if (!validate_non_empty(colormap_colors2, "Colormap colors 2")) return Texture();
+  if (positions2.size() != colormap_colors2.size())
+  {
+    hmap::log::warn(
+        "Colormap 2 positions size ({}) does not match colors size ({})",
+        positions2.size(),
+        colormap_colors2.size());
+    return Texture();
+  }
+
   const glm::ivec2 shape = a1.shape;
   Texture          color3(shape, 3);
 
@@ -344,6 +401,7 @@ Texture colorize_bivariate(const Array                  &a1,
 
 Texture colorize_grayscale(const Array &array)
 {
+  if (!validate_non_empty(array)) return Texture();
   Texture color1 = Texture(array);
   color1.remap();
   return color1;
@@ -351,6 +409,7 @@ Texture colorize_grayscale(const Array &array)
 
 Texture colorize_histogram(const Array &array)
 {
+  if (!validate_non_empty(array)) return Texture();
   Texture color1 = Texture(array.shape, 1);
 
   // normalization factors
@@ -387,6 +446,7 @@ Texture colorize_histogram(const Array &array)
 
 Texture colorize_slope_height_heatmap(const Array &array, int cmap)
 {
+  if (!validate_non_empty(array)) return Texture();
   Array dz = gradient_norm(array);
 
   // normalization factors / 1
@@ -433,6 +493,9 @@ Texture colorize_slope_height_heatmap(const Array &array, int cmap)
 
 Texture colorize_vec2(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Texture();
+
   // create image
   Texture col3 = Texture(array1.shape, 3);
 
@@ -477,22 +540,17 @@ Texture colorize_vec2(const Array &array1, const Array &array2)
 
 Array luminance(const Texture &tex)
 {
-  if (tex.num_channels() < 3)
-  {
-    throw std::runtime_error(
-        "Texture must have at least 3 channels for luminance.");
-  }
+  if (!validate_non_empty(tex, 3)) return Array();
   return 0.299f * tex[0] + 0.587f * tex[1] + 0.114f * tex[2];
 }
 
 Texture mix(const Texture &tex1, const Texture &tex2, MixMethod method)
 {
-  if (tex1.num_channels() != 4 || tex2.num_channels() != 4 ||
-      tex1.shape != tex2.shape)
-  {
-    throw std::runtime_error(
-        "mix: Textures must have 4 channels and matching shapes.");
-  }
+  if (!validate_non_empty(tex1, 4) || !validate_channels(tex1, 4))
+    return Texture();
+  if (!validate_non_empty(tex2, 4) || !validate_channels(tex2, 4))
+    return Texture();
+  if (!validate_same_shape(tex1, tex2)) return Texture();
 
   Texture out(tex1.shape, 4);
 
@@ -552,7 +610,19 @@ Texture mix(const Texture &tex1, const Texture &tex2, MixMethod method)
 
 Texture mix(const std::vector<const Texture *> &texs, MixMethod method)
 {
-  if (texs.empty()) return Texture();
+  if (!validate_non_empty(texs, "Texture list")) return Texture();
+  for (const auto *t : texs)
+  {
+    if (!t)
+    {
+      hmap::log::warn("Null texture pointer encountered in mix");
+      return Texture();
+    }
+    if (!validate_non_empty(*t, 4) || !validate_channels(*t, 4))
+    {
+      return Texture();
+    }
+  }
 
   Texture out = *texs.front();
 
@@ -569,11 +639,9 @@ Texture mix_normal_map(const Texture          &nmap_base,
                        float                   detail_scaling,
                        NormalMapBlendingMethod blending_method)
 {
-  if (nmap_base.shape != nmap_detail.shape)
-  {
-    throw std::runtime_error(
-        "mix_normal_map: normal maps must have matching shapes.");
-  }
+  if (!validate_non_empty(nmap_base, 3)) return Texture();
+  if (!validate_non_empty(nmap_detail, 3)) return Texture();
+  if (!validate_same_shape(nmap_base, nmap_detail)) return Texture();
 
   Texture out(nmap_base.shape, 4);
   // Copy alpha from base (or detail)

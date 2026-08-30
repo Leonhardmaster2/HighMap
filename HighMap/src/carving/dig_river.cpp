@@ -30,6 +30,7 @@ void dig_river(Array                   &z,
                Array                   *p_mask)
 {
   if (!validate_non_empty(z)) return;
+  if (!validate_non_empty(path_list, "Path list")) return;
 
   // generate mask where the river path lies and dig rivers
   Array       mask(z.shape);

@@ -26,7 +26,7 @@ void dig_path(Array    &z,
               float     depth)
 {
   if (!validate_non_empty(z)) return;
-  if (path.empty()) return;
+  if (!validate_non_empty(path, "Path")) return;
 
   Array mask = Array(z.shape);
   Path  path_copy = path;

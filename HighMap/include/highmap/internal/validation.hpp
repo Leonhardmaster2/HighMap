@@ -16,6 +16,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/logger.hpp"
+#include "highmap/texture.hpp"
 
 #include <source_location>
 
@@ -82,6 +83,32 @@ namespace hmap
 }
 
 /**
+ * @brief Validates that a container or object with an empty() method is not
+ * empty.
+ *
+ * @param  container Container to check.
+ * @param  name      Name or description of the container for logging.
+ * @param  loc       Source location of the caller.
+ * @return           true if container is not empty, false otherwise.
+ */
+template <typename T>
+  requires requires(const T &t) {
+    { t.empty() } -> std::convertible_to<bool>;
+  }
+[[nodiscard]] inline bool validate_non_empty(
+    const T                    &container,
+    std::string_view            name = "Container",
+    const std::source_location &loc = std::source_location::current())
+{
+  if (container.empty())
+  {
+    hmap::log::warn(loc, "{} is empty", name);
+    return false;
+  }
+  return true;
+}
+
+/**
  * @brief Validates that two arrays have identical shapes and buffer sizes.
  *
  * @param  a   First array.
@@ -106,6 +133,135 @@ namespace hmap
         b.shape.x,
         b.shape.y,
         b.vector.size());
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @brief Validates that a Texture is initialized, non-empty, and has valid
+ * channel buffers.
+ *
+ * @param  tex          Texture to check.
+ * @param  min_channels Minimum required number of channels.
+ * @param  loc          Source location of the caller.
+ * @return              true if the Texture is non-empty and channels are valid,
+ * false otherwise.
+ */
+[[nodiscard]] inline bool validate_non_empty(
+    const Texture              &tex,
+    int                         min_channels = 1,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (tex.shape.x <= 0 || tex.shape.y <= 0 || tex.channels.empty())
+  {
+    hmap::log::warn(
+        loc,
+        "Texture is empty or uninitialized (shape: {}x{}, channels: {})",
+        tex.shape.x,
+        tex.shape.y,
+        tex.channels.size());
+    return false;
+  }
+  if (static_cast<int>(tex.channels.size()) < min_channels)
+  {
+    hmap::log::warn(loc,
+                    "Texture has {} channels, but at least {} are required",
+                    tex.channels.size(),
+                    min_channels);
+    return false;
+  }
+  for (size_t k = 0; k < tex.channels.size(); ++k)
+  {
+    if (!validate_non_empty(tex.channels[k], loc)) return false;
+    if (tex.channels[k].shape != tex.shape)
+    {
+      hmap::log::warn(loc,
+                      "Texture channel {} shape mismatch: channel is ({}, {}), "
+                      "texture is ({}, {})",
+                      k,
+                      tex.channels[k].shape.x,
+                      tex.channels[k].shape.y,
+                      tex.shape.x,
+                      tex.shape.y);
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * @brief Validates exact channel count of a Texture.
+ *
+ * @param  tex               Texture to check.
+ * @param  expected_channels Exact number of expected channels.
+ * @param  loc               Source location of the caller.
+ * @return                   true if channel count matches, false otherwise.
+ */
+[[nodiscard]] inline bool validate_channels(
+    const Texture              &tex,
+    int                         expected_channels,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (static_cast<int>(tex.channels.size()) != expected_channels)
+  {
+    hmap::log::warn(loc,
+                    "Texture has {} channels, but exactly {} are required",
+                    tex.channels.size(),
+                    expected_channels);
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @brief Validates that two Textures have matching 2D shapes.
+ *
+ * @param  a   First texture.
+ * @param  b   Second texture.
+ * @param  loc Source location of the caller.
+ * @return     true if shapes match, false otherwise.
+ */
+[[nodiscard]] inline bool validate_same_shape(
+    const Texture              &a,
+    const Texture              &b,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (a.shape != b.shape)
+  {
+    hmap::log::warn(loc,
+                    "Texture shape mismatch: lhs is ({}, {}), rhs is ({}, {})",
+                    a.shape.x,
+                    a.shape.y,
+                    b.shape.x,
+                    b.shape.y);
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @brief Validates that a Texture and an Array have matching 2D shapes.
+ *
+ * @param  tex Texture to check.
+ * @param  arr Array to check.
+ * @param  loc Source location of the caller.
+ * @return     true if shapes match, false otherwise.
+ */
+[[nodiscard]] inline bool validate_same_shape(
+    const Texture              &tex,
+    const Array                &arr,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (tex.shape != arr.shape)
+  {
+    hmap::log::warn(
+        loc,
+        "Texture/Array shape mismatch: texture is ({}, {}), array is ({}, {})",
+        tex.shape.x,
+        tex.shape.y,
+        arr.shape.x,
+        arr.shape.y);
     return false;
   }
   return true;

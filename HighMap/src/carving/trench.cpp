@@ -45,7 +45,7 @@ void trench(Array                       &z,
 {
   if (!validate_non_empty(z)) return;
   if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return;
-  if (path.empty()) return;
+  if (!validate_non_empty(path, "Path")) return;
 
   const glm::ivec2 &shape = z.shape;
 
