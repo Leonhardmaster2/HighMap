@@ -9,11 +9,15 @@
 #include <stdexcept>
 #include <vector>
 
+#include "highmap/internal/validation.hpp"
+
 namespace hmap
 {
 
 std::vector<float> gradient1d(const std::vector<float> &v)
 {
+  if (!validate_non_empty(v, "v")) return {};
+
   size_t             n = v.size();
   std::vector<float> dv(n);
 
@@ -27,8 +31,10 @@ std::vector<float> gradient1d(const std::vector<float> &v)
   return dv;
 }
 
-void laplace1d(std::vector<float> &v, float sigma = 0.5f, int iterations = 1)
+void laplace1d(std::vector<float> &v, float sigma, int iterations)
 {
+  if (!validate_non_empty(v, "v")) return;
+
   size_t             n = v.size();
   std::vector<float> d(n);
 

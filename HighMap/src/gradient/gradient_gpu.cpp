@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -18,6 +19,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
                                         int          ir,
                                         bool         downward)
 {
+  if (!validate_non_empty(array)) return Array();
+
   // gradients
   Array dx = gradient_x(array);
   Array dy = gradient_y(array);
@@ -49,6 +52,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
 
 Array gradient_norm(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dm(array.shape);
 
   auto run = clwrapper::Run("gradient_norm");
@@ -69,6 +74,8 @@ Array gradient_norm(const Array &array)
 
 Array laplacian_fract(const Array &array, float s, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("laplacian_fract");

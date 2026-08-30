@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap
@@ -12,12 +13,16 @@ namespace hmap
 
 Array signed_curvature_from_distance(const Array &array, int prefilter_ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dist = distance_transform(array);
   return level_set_curvature(dist, prefilter_ir);
 }
 
 Array signed_distance_transform(const Array &array, int prefilter_ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dist0 = distance_transform(array);
   Array dist = dist0;
   Array gn = level_set_curvature(dist, prefilter_ir);
@@ -36,12 +41,16 @@ namespace hmap::gpu
 
 Array signed_curvature_from_distance(const Array &array, int prefilter_ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dist = distance_transform(array);
   return gpu::level_set_curvature(dist, prefilter_ir);
 }
 
 Array signed_distance_transform(const Array &array, int prefilter_ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dist0 = distance_transform(array);
   Array dist = dist0;
   Array gn = gpu::level_set_curvature(dist, prefilter_ir);

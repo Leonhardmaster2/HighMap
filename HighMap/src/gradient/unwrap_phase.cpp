@@ -8,12 +8,15 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array unwrap_phase(const Array &alpha)
 {
+  if (!validate_non_empty(alpha)) return Array();
+
   Array    uw_alpha(alpha.shape);
   Mat<int> is_done(alpha.shape);
 

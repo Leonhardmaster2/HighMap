@@ -6,6 +6,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 
 float f(int i, float gi)
@@ -23,6 +24,8 @@ namespace hmap
 
 Array distance_transform(const Array &array, bool return_squared_distance)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dt = Array(array.shape); // output distance
   Array g = Array(array.shape);
   int   ni = array.shape.x;
@@ -104,6 +107,9 @@ Array distance_transform_with_closest(const Array     &array,
                                       Mat<glm::ivec2> &closest,
                                       bool             return_squared_distance)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (closest.shape != array.shape) closest = Mat<glm::ivec2>(array.shape);
+
   Array dt = Array(array.shape); // output distance
   Array g = Array(array.shape);
   int   ni = array.shape.x;

@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
@@ -17,6 +18,12 @@ namespace hmap::gpu
 
 void phase_averaging(Array &field_real, Array &field_imag, int ir)
 {
+  if (!validate_non_empty(field_real) ||
+      !validate_same_shape(field_real, field_imag))
+  {
+    return;
+  }
+
   const glm::ivec2 shape = field_real.shape;
 
   auto run = clwrapper::Run("phase_averaging");
@@ -53,6 +60,14 @@ Array phase_field(const Array     &array,
                   Array           *p_angle_jump_mask,
                   glm::vec4        bbox)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_ctrl_param && !validate_same_shape(array, *p_ctrl_param))
+    return Array(array.shape);
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x))
+    return Array(array.shape);
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y))
+    return Array(array.shape);
+
   const glm::ivec2 shape = array.shape;
 
   // --- compute local angle
@@ -119,6 +134,14 @@ Array phase_field(const Array     &array,
                   Array           *p_angle_jump_mask,
                   glm::vec4        bbox)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_ctrl_param && !validate_same_shape(array, *p_ctrl_param))
+    return Array(array.shape);
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x))
+    return Array(array.shape);
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y))
+    return Array(array.shape);
+
   float           kp = std::sqrt(kp_global);
   const glm::vec2 kw = {kp, kp};
 
@@ -151,6 +174,14 @@ Array phase_field_angle(const Array     &angle,
                         Array           *p_angle_jump_mask,
                         glm::vec4        bbox)
 {
+  if (!validate_non_empty(angle)) return Array();
+  if (p_ctrl_param && !validate_same_shape(angle, *p_ctrl_param))
+    return Array(angle.shape);
+  if (p_noise_x && !validate_same_shape(angle, *p_noise_x))
+    return Array(angle.shape);
+  if (p_noise_y && !validate_same_shape(angle, *p_noise_y))
+    return Array(angle.shape);
+
   const glm::ivec2 shape = angle.shape;
 
   if (p_angle_jump_mask)
