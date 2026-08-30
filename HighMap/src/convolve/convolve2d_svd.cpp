@@ -11,6 +11,8 @@
 
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/internal/validation.hpp"
+#include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/random.hpp"
 #include "highmap/transform.hpp"
@@ -20,6 +22,18 @@ namespace hmap
 
 Array convolve2d_svd(const Array &array, const Array &kernel, int rank)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel)) return Array(array.shape);
+
+  if (kernel.shape.x < kernel.shape.y)
+  {
+    hmap::log::warn(
+        "convolve2d_svd requires kernel shape.x >= shape.y (got {}x{})",
+        kernel.shape.x,
+        kernel.shape.y);
+    return Array(array.shape);
+  }
+
   Array array_out = Array(array.shape);
 
   // --- perform SVD decomposition of the kernel
@@ -73,6 +87,9 @@ Array convolve2d_svd_rotated_kernel(const Array  &array,
                                     int           n_rotations,
                                     std::uint32_t seed)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel)) return Array(array.shape);
+
   Array array_out = Array(array.shape);
 
   std::vector<float> angles = linspace(0.f, 360.f, n_rotations, false);

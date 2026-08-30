@@ -9,12 +9,17 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/internal/validation.hpp"
+#include "highmap/logger.hpp"
 
 namespace hmap
 {
 
 Array convolve1d_i(const Array &array, const std::vector<float> &kernel)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel, "Kernel")) return Array(array.shape);
+
   Array     array_out = Array(array.shape);
   const int nk = (int)kernel.size();
   const int i1 = nk / 2;
@@ -33,6 +38,9 @@ Array convolve1d_i(const Array &array, const std::vector<float> &kernel)
 
 Array convolve1d_j(const Array &array, const std::vector<float> &kernel)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel, "Kernel")) return Array(array.shape);
+
   Array     array_out = Array(array.shape);
   const int nk = (int)kernel.size();
   const int j1 = nk / 2;
@@ -53,6 +61,9 @@ Array convolve1d_j(const Array &array, const std::vector<float> &kernel)
 
 Array convolve2d(const Array &array, const Array &kernel)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel)) return Array(array.shape);
+
   const int i1 = (int)ceil(0.5f * (float)kernel.shape.x);
   const int i2 = kernel.shape.x - i1;
   const int j1 = (int)ceil(0.5f * (float)kernel.shape.y);
@@ -66,6 +77,21 @@ Array convolve2d(const Array &array, const Array &kernel)
 
 Array convolve2d_truncated(const Array &array, const Array &kernel)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel)) return Array();
+
+  if (array.shape.x <= kernel.shape.x || array.shape.y <= kernel.shape.y)
+  {
+    hmap::log::warn(
+        "Array shape ({}, {}) must be strictly larger than kernel shape ({}, "
+        "{}) for truncated convolution",
+        array.shape.x,
+        array.shape.y,
+        kernel.shape.x,
+        kernel.shape.y);
+    return Array();
+  }
+
   Array array_out = Array(glm::ivec2(array.shape.x - kernel.shape.x,
                                      array.shape.y - kernel.shape.y));
 
