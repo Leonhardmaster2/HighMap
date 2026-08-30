@@ -358,17 +358,19 @@ Array flow_fixing_drainage_basin(const Array        &z,
   }
 }
 
-Array flow_fixing_mst(const Array &z,
-                      float        riverbed_talus,
-                      float        elevation_ratio,
-                      float        distance_exponent,
-                      float        upward_penalization,
-                      float        valley_affinity,
-                      int          prefilter_ir,
-                      float        minimum_depth,
-                      bool         carve_riverbed,
-                      float        merging_distance,
-                      const Array *p_noise_r)
+Array flow_fixing_mst(const Array  &z,
+                      float         riverbed_talus,
+                      float         elevation_ratio,
+                      float         distance_exponent,
+                      float         upward_penalization,
+                      float         valley_affinity,
+                      int           prefilter_ir,
+                      float         minimum_depth,
+                      bool          carve_riverbed,
+                      float         merging_distance,
+                      RadialProfile radial_profile,
+                      float         radial_profile_parameter,
+                      const Array  *p_noise_r)
 {
   const glm::ivec2 shape = z.shape;
   Array            zb = z;
@@ -793,8 +795,8 @@ Array flow_fixing_mst(const Array &z,
              /* curvature_radius_min */ 1.f,
              /* curv_width_ratio_min */ 0.5f,
              /* curv_width_ratio_max */ 2.f,
-             RadialProfile::RP_SMOOTHSTEP_UPPER,
-             /* radial_profile_parameter */ 2.f,
+             radial_profile,
+             radial_profile_parameter,
              ElevationLongitudinalProfile::ELP_DECREASING,
              /* elevation_shift */ 0.f,
              /* shift_ramp_start_ratio */ 0.f,

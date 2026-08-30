@@ -28,6 +28,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {
@@ -542,21 +543,27 @@ Array flow_fixing_drainage_basin(
  *                               smoothing along altered paths.
  * @param  merging_distance      Distance (in pixels) for blending modified flow
  *                               paths.
+ * @param  radial_profile        Radial profile cross-section for trench
+ * carving.
+ * @param  radial_profile_parameter Shape parameter for the radial profile.
  * @param  p_noise_r             Optional radial noise array for trench width
  *                               perturbation.
  * @return                       Array with unbroken flow paths.
  */
-Array flow_fixing_mst(const Array &z,
-                      float        riverbed_talus = 0.f,
-                      float        elevation_ratio = 0.95f,
-                      float        distance_exponent = 2.f,
-                      float        upward_penalization = 50.f,
-                      float        valley_affinity = 0.5f,
-                      int          prefilter_ir = 8,
-                      float        minimum_depth = 1e-4f,
-                      bool         carve_riverbed = true,
-                      float        merging_distance = 8.f,
-                      const Array *p_noise_r = nullptr);
+Array flow_fixing_mst(
+    const Array  &z,
+    float         riverbed_talus = 0.f,
+    float         elevation_ratio = 0.95f,
+    float         distance_exponent = 2.f,
+    float         upward_penalization = 50.f,
+    float         valley_affinity = 0.5f,
+    int           prefilter_ir = 8,
+    float         minimum_depth = 1e-4f,
+    bool          carve_riverbed = true,
+    float         merging_distance = 8.f,
+    RadialProfile radial_profile = RadialProfile::RP_SMOOTHSTEP_UPPER,
+    float         radial_profile_parameter = 2.f,
+    const Array  *p_noise_r = nullptr);
 
 /**
  * @brief Computes the optimal flow path from a starting point to the boundary
