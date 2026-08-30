@@ -304,6 +304,12 @@ public:
   void set_values_from_min_distance();
 
   /**
+   * @brief Check whether the cloud has no points.
+   * @return true if the cloud contains no points, false otherwise.
+   */
+  bool empty() const;
+
+  /**
    * @brief Get the number of points in the cloud.
    * @return size_t The number of points in the cloud.
    */

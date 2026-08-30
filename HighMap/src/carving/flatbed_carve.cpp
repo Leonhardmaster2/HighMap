@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/profiles.hpp"
@@ -28,8 +29,13 @@ Array flatbed_carve(glm::ivec2    shape,
                     const Array  *p_noise_r,
                     glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   // out
   Array z(shape);
+  if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return z;
+  if (path.empty()) return z;
+
   Array mask(shape);
 
   // project path to the array
@@ -125,6 +131,10 @@ void flatbed_carve(Array        &z,
                    const Array  *p_noise_r,
                    glm::vec4     bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return;
+  if (path.empty()) return;
+
   hmap::Array mask;
 
   Array flatbed = flatbed_carve(z.shape,

@@ -413,6 +413,11 @@ void Cloud::set_values_from_min_distance()
   this->set_values(dist);
 }
 
+bool Cloud::empty() const
+{
+  return this->points.empty();
+}
+
 size_t Cloud::size() const
 {
   return this->points.size();
