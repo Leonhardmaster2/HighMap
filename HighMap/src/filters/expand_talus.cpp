@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -22,6 +23,9 @@ void expand_talus(Array        &z,
                   int           ir,
                   float         noise_ratio)
 {
+  if (!validate_non_empty(z)) return;
+  if (!validate_same_shape(z, mask)) return;
+
   // heap queue structure
   struct HeapNode
   {

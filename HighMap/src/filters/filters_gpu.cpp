@@ -10,6 +10,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
@@ -22,12 +23,17 @@ namespace hmap::gpu
 
 void expand(Array &array, int ir, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   Array kernel = cubic_pulse({2 * ir + 1, 2 * ir + 1});
   gpu::expand(array, kernel, iterations);
 }
 
 void expand(Array &array, int ir, const Array *p_mask, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   Array kernel = cubic_pulse({2 * ir + 1, 2 * ir + 1});
 
   if (!p_mask)
@@ -42,6 +48,9 @@ void expand(Array &array, int ir, const Array *p_mask, int iterations)
 
 void expand(Array &array, const Array &kernel, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+
   auto run = clwrapper::Run("expand");
 
   run.bind_imagef("z", array.vector, array.shape.x, array.shape.y);
@@ -69,6 +78,10 @@ void expand(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gpu::expand(a, kernel, iterations); });
@@ -76,6 +89,8 @@ void expand(Array       &array,
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   Array amin = gpu::local_min(array, ir);
   Array amax = gpu::local_max(array, ir);
 
@@ -113,6 +128,9 @@ void gamma_correction_local(Array       &array,
                             const Array *p_mask,
                             float        k)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -121,6 +139,8 @@ void gamma_correction_local(Array       &array,
 
 void laplace(Array &array, float sigma, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   auto run = clwrapper::Run("laplace");
 
   run.bind_buffer<float>("array", array.vector);
@@ -136,6 +156,9 @@ void laplace(Array &array, float sigma, int iterations)
 
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gpu::laplace(a, sigma, iterations); });
@@ -147,6 +170,8 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 shape = array.shape;
   Array            array_next = Array(shape);
   Array            array_prev = array;
@@ -181,6 +206,9 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_mask && !validate_same_shape(array, *p_mask)) return Array(array.shape);
+
   return transform_with_mask(
       array,
       p_mask,
@@ -190,6 +218,8 @@ Array mean_shift(const Array &array,
 
 void median_3x3(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   auto run = clwrapper::Run("median_3x3");
 
   run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
@@ -203,11 +233,16 @@ void median_3x3(Array &array)
 
 void median_3x3(Array &array, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { gpu::median_3x3(a); });
 }
 
 Array median_pseudo(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   return (gpu::local_min(array, ir) + gpu::local_max(array, ir) +
           gpu::local_mean(array, ir)) /
          3.f;
@@ -215,6 +250,8 @@ Array median_pseudo(const Array &array, int ir)
 
 void normal_displacement(Array &array, float amount, int ir, bool reverse)
 {
+  if (!validate_non_empty(array)) return;
+
   auto run = clwrapper::Run("normal_displacement");
 
   Array array_f = array;
@@ -238,6 +275,9 @@ void normal_displacement(Array       &array,
                          int          ir,
                          bool         reverse)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -246,6 +286,9 @@ void normal_displacement(Array       &array,
 
 void plateau(Array &array, const Array *p_mask, int ir, float factor)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   Array amin = gpu::local_min(array, ir);
   Array amax = gpu::local_max(array, ir);
 
@@ -274,6 +317,7 @@ void plateau(Array &array, const Array *p_mask, int ir, float factor)
 
 void plateau(Array &array, int ir, float factor)
 {
+  if (!validate_non_empty(array)) return;
   gpu::plateau(array, nullptr, ir, factor);
 }
 
@@ -282,6 +326,9 @@ Array project_talus_along_direction(const Array &array,
                                     int          direction,
                                     float        vmin)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, talus)) return Array(array.shape);
+
   const glm::ivec2 &shape = array.shape;
 
   // no negative values, raises issue with atomic max in OpenCL
@@ -331,6 +378,10 @@ Array project_talus_along_direction(const Array &array,
                                     int          direction,
                                     float        vmin)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, talus)) return Array(array.shape);
+  if (p_mask && !validate_same_shape(array, *p_mask)) return Array(array.shape);
+
   return transform_with_mask(
       array,
       p_mask,
@@ -340,12 +391,17 @@ Array project_talus_along_direction(const Array &array,
 
 void shrink(Array &array, int ir, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   Array kernel = cubic_pulse({2 * ir + 1, 2 * ir + 1});
   gpu::shrink(array, kernel, iterations);
 }
 
 void shrink(Array &array, int ir, const Array *p_mask, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   Array kernel = cubic_pulse({2 * ir + 1, 2 * ir + 1});
 
   if (!p_mask)
@@ -360,6 +416,8 @@ void shrink(Array &array, int ir, const Array *p_mask, int iterations)
 
 void shrink(Array &array, const Array &kernel, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
 
   auto run = clwrapper::Run("expand");
 
@@ -395,6 +453,10 @@ void shrink(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gpu::shrink(a, kernel, iterations); });
@@ -402,6 +464,8 @@ void shrink(Array       &array,
 
 void smooth_cpulse(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   // define kernel
   const int          nk = 2 * ir + 1;
   std::vector<float> k1d(nk);
@@ -450,6 +514,9 @@ void smooth_cpulse(Array &array, int ir)
 
 void smooth_cpulse(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { gpu::smooth_cpulse(a, ir); });
 }
 
@@ -458,6 +525,8 @@ void smooth_cpulse_edge_removing(Array &array,
                                  float  talus_width,
                                  int    ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array c = hmap::gradient_norm(array); // CPU version
   c = sigmoid(c, talus_width, 0.f /* vmin */, 1.f /* vmax */, talus);
   gpu::expand(c, ir);
@@ -466,6 +535,8 @@ void smooth_cpulse_edge_removing(Array &array,
 
 void smooth_fill(Array &array, int ir, float k, Array *p_deposition_map)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_bckp = array;
 
   gpu::smooth_cpulse(array, ir);
@@ -480,6 +551,9 @@ void smooth_fill(Array       &array,
                  float        k,
                  Array       *p_deposition_map)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -488,6 +562,8 @@ void smooth_fill(Array       &array,
 
 void smooth_fill_holes(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_smooth = array;
   gpu::smooth_cpulse(array_smooth, ir);
 
@@ -504,6 +580,9 @@ void smooth_fill_holes(Array &array, int ir)
 
 void smooth_fill_holes(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gpu::smooth_fill_holes(a, ir); });
@@ -511,6 +590,8 @@ void smooth_fill_holes(Array &array, int ir, const Array *p_mask)
 
 void smooth_fill_smear_peaks(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_smooth = array;
   gpu::smooth_cpulse(array_smooth, ir);
 
@@ -527,6 +608,9 @@ void smooth_fill_smear_peaks(Array &array, int ir)
 
 void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gpu::smooth_fill_smear_peaks(a, ir); });

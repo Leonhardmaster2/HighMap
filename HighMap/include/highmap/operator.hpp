@@ -18,6 +18,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 
 namespace hmap
@@ -405,6 +406,9 @@ Array vstack(const Array &array1, const Array &array2);
 template <typename Fn>
 void apply_with_mask(Array &array, const Array *p_mask, Fn &&fn)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   if (!p_mask)
   {
     fn(array);
@@ -432,6 +436,9 @@ void apply_with_mask(Array &array, const Array *p_mask, Fn &&fn)
 template <typename Fn>
 Array transform_with_mask(const Array &array, const Array *p_mask, Fn &&fn)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_mask && !validate_same_shape(array, *p_mask)) return Array(array.shape);
+
   Array result = fn(array);
 
   if (p_mask)

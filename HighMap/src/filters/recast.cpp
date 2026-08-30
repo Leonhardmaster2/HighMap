@@ -11,6 +11,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
@@ -24,11 +25,14 @@ namespace hmap
 
 void recast_billow(Array &array, float vref, float k)
 {
+  if (!validate_non_empty(array)) return;
   array = 2.f * (vref + abs_smooth(array - vref, k)) - 1.f;
 }
 
 void recast_canyon(Array &array, const Array &vcut, float gamma)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vcut)) return;
+
   auto lambda = [&gamma](float a, float b)
   { return a > b ? a : b * std::pow(a / b, gamma); };
 
@@ -44,6 +48,9 @@ void recast_canyon(Array       &array,
                    const Array *p_mask,
                    float        gamma)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vcut)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { recast_canyon(a, vcut, gamma); });
@@ -51,6 +58,9 @@ void recast_canyon(Array       &array,
 
 void recast_canyon(Array &array, float vcut, float gamma, const Array *p_noise)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+
   if (!p_noise)
   {
     auto lambda = [&vcut, &gamma](float a)
@@ -81,6 +91,10 @@ void recast_canyon(Array       &array,
                    float        gamma,
                    const Array *p_noise)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   if (!p_mask)
     recast_canyon(array, vcut, gamma, p_noise);
   else
@@ -97,6 +111,8 @@ void recast_cliff(Array &array,
                   float  amplitude,
                   float  gain)
 {
+  if (!validate_non_empty(array)) return;
+
   // scale with gradient regions where the gradient is larger than the
   // reference talus (0 elsewhere)
   Array dn = gradient_norm(array);
@@ -131,6 +147,9 @@ void recast_cliff(Array       &array,
                   const Array *p_mask,
                   float        gain)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -144,6 +163,8 @@ void recast_cliff_directional(Array &array,
                               float  angle,
                               float  gain)
 {
+  if (!validate_non_empty(array)) return;
+
   float alpha = angle / 180.f * M_PI;
 
   // scale with gradient regions where the gradient is larger than the
@@ -188,6 +209,9 @@ void recast_cliff_directional(Array       &array,
                               const Array *p_mask,
                               float        gain)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(
       array,
       p_mask,
@@ -202,6 +226,8 @@ void recast_cracks(Array &array,
                    float  vmin,
                    float  vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   // redefine min/max if sentinels values are detected
   if (vmax < vmin)
   {
@@ -227,6 +253,8 @@ void recast_escarpment(Array &array,
                        bool   transpose_effect,
                        float  global_scaling)
 {
+  if (!validate_non_empty(array)) return;
+
   if (transpose_effect) array = transpose(array);
 
   if (global_scaling == 0.f)
@@ -274,6 +302,9 @@ void recast_escarpment(Array       &array,
                        bool         transpose_effect,
                        float        global_scaling)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -290,6 +321,8 @@ void recast_escarpment(Array       &array,
 
 void recast_peak(Array &array, int ir, float gamma, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   Array ac = array;
   smooth_cpulse(ac, ir);
   array = maximum_smooth(array, ac, k);
@@ -303,6 +336,9 @@ void recast_peak(Array       &array,
                  float        gamma,
                  float        k)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { recast_peak(a, ir, gamma, k); });
@@ -318,6 +354,9 @@ void recast_rocky_slopes(Array        &array,
                          const Array  *p_noise,
                          glm::vec4     bbox)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+
   // slope-based criteria
   Array c = select_gradient_binary(array, talus);
   smooth_cpulse(c, ir);
@@ -358,6 +397,10 @@ void recast_rocky_slopes(Array        &array,
                          const Array  *p_noise,
                          glm::vec4     bbox)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -376,11 +419,15 @@ void recast_rocky_slopes(Array        &array,
 
 void recast_sag(Array &array, float vref, float k)
 {
+  if (!validate_non_empty(array)) return;
   array = 0.5f * array + vref - abs_smooth(array - vref, k);
 }
 
 void recast_sag(Array &array, float vref, float k, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { recast_sag(a, vref, k); });
 }
 

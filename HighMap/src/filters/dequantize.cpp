@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/random.hpp"
 
 namespace hmap
@@ -16,6 +17,8 @@ Array dequantize(const Array  &array,
                  float         dither_amplitude,
                  int           filtering_iterations)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 &shape = array.shape;
   Array             out(shape);
 
@@ -29,6 +32,8 @@ Array dequantize(const Array  &array,
 
 Array quantize(const Array &array, int nlevels, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 &shape = array.shape;
   Array             out(shape);
 
@@ -48,6 +53,7 @@ Array quantize(const Array &array, int nlevels, float vmin, float vmax)
 
 Array quantize(const Array &array, int nlevels)
 {
+  if (!validate_non_empty(array)) return Array();
   return quantize(array, nlevels, array.min(), array.max());
 }
 

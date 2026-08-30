@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 
 namespace hmap
@@ -15,6 +16,10 @@ Array bulkify(const Array         &z,
               glm::vec2            center,
               glm::vec4            bbox)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array(z.shape);
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array(z.shape);
+
   return z + amp * get_primitive_base(primitive_type,
                                       z.shape,
                                       p_noise_x,
