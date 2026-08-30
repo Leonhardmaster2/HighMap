@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
@@ -34,6 +35,8 @@ Array island_land_mask(glm::ivec2       shape,
                        const glm::vec2 &center,
                        const glm::vec4 &bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array mask(shape);
 
   std::unique_ptr<NoiseFunction> p = create_noise_function_from_type(
@@ -134,6 +137,10 @@ Array island(const Array &land_mask,
              Array       *p_water_depth,
              Array       *p_inland_mask)
 {
+  if (!validate_non_empty(land_mask)) return Array();
+  if (p_noise_r && !validate_same_shape(land_mask, *p_noise_r))
+    return Array(land_mask.shape);
+
   glm::ivec2 shape = land_mask.shape;
   float      lee_alpha = lee_angle * (float(M_PI) / 180.f);
 
@@ -262,6 +269,8 @@ Array island(const Array  &land_mask,
              Array        *p_water_depth,
              Array        *p_inland_mask)
 {
+  if (!validate_non_empty(land_mask)) return Array();
+
   glm::ivec2 shape = land_mask.shape;
 
   // --- generate ready-made noise

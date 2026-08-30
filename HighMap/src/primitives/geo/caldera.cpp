@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/primitives/geo.hpp"
 
@@ -21,6 +22,9 @@ Array caldera(glm::ivec2   shape,
               glm::vec2    center,
               glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise && !validate_same_shape(shape, *p_noise)) return Array(shape);
+
   Array z = Array(shape);
 
   glm::vec2 shift = {bbox.x, bbox.z};
@@ -74,6 +78,8 @@ Array caldera(glm::ivec2 shape,
               glm::vec2  center,
               glm::vec4  bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array noise = constant(shape, 0.f);
   Array z = caldera(shape,
                     radius,

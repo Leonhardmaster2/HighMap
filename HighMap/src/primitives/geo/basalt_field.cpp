@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/geo.hpp"
@@ -37,6 +38,10 @@ Array basalt_field(glm::ivec2    shape,
                    const Array  *p_noise_y,
                    glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   // --- large scales
 
   Array z_large;

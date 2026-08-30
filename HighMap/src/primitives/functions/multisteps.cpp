@@ -6,6 +6,7 @@
 #include <functional>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
@@ -28,6 +29,12 @@ Array multisteps(glm::ivec2       shape,
                  const glm::vec2 &center,
                  const glm::vec4 &bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   float alpha = angle / 180.f * M_PI;
@@ -100,6 +107,10 @@ Array multisteps(glm::ivec2       shape,
                  const glm::vec2 &center,
                  const glm::vec4 &bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+
   // built-in noise
   glm::vec2         jitter(1.f, 1.f);
   VoronoiReturnType return_type = VoronoiReturnType::EDGE_DISTANCE_SQUARED;

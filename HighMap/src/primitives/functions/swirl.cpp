@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -15,6 +16,9 @@ void swirl(Array       &dx,
            const Array *p_noise,
            glm::vec4    bbox)
 {
+  if (!validate_non_empty(dx) || !validate_same_shape(dx, dy)) return;
+  if (p_noise && !validate_same_shape(dx, *p_noise)) return;
+
   const glm::ivec2 shape = dx.shape;
 
   glm::vec2 shift = {bbox.x, bbox.z};

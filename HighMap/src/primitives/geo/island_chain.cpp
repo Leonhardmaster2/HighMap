@@ -13,6 +13,7 @@
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/geo.hpp"
 
 namespace hmap
@@ -35,9 +36,12 @@ Array island_chain_land_mask(glm::ivec2    shape,
                              float         lacunarity,
                              glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_non_empty(path, "Path")) return Array(shape);
+
   Array mask(shape);
 
-  if (path.size() < 2 || island_count < 1) return mask;
+  if (island_count < 1) return mask;
 
   const std::vector<float> arc = path.get_arc_length();
 

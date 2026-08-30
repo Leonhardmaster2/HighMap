@@ -140,6 +140,36 @@ template <typename T>
 }
 
 /**
+ * @brief Validates that an array has the expected 2D shape.
+ *
+ * @param  shape Expected shape {x, y}.
+ * @param  b     Array to check.
+ * @param  loc   Source location of the caller.
+ * @return       true if b.shape matches shape and b is non-empty, false otherwise.
+ */
+[[nodiscard]] inline bool validate_same_shape(
+    glm::ivec2                  shape,
+    const Array                &b,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (shape != b.shape ||
+      static_cast<size_t>(shape.x * shape.y) != b.vector.size())
+  {
+    hmap::log::warn(
+        loc,
+        "Array shape mismatch: expected shape ({}, {}), actual is ({}, {}) "
+        "[size: {}]",
+        shape.x,
+        shape.y,
+        b.shape.x,
+        b.shape.y,
+        b.vector.size());
+    return false;
+  }
+  return true;
+}
+
+/**
  * @brief Validates that a Texture is initialized, non-empty, and has valid
  * channel buffers.
  *
