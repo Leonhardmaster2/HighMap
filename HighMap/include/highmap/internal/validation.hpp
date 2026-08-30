@@ -15,6 +15,7 @@
 #include <string_view>
 
 #include "highmap/array.hpp"
+#include "highmap/colormaps.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/texture.hpp"
 
@@ -410,6 +411,26 @@ template <typename T>
                       k);
       return false;
     }
+  }
+  return true;
+}
+
+/**
+ * @brief Validates that a colormap ID corresponds to a valid Cmap enum value.
+ *
+ * @param  cmap Colormap ID.
+ * @param  loc  Source location of the caller.
+ * @return      true if cmap is a valid Cmap enum value, false otherwise.
+ */
+[[nodiscard]] inline bool validate_cmap(
+    int                         cmap,
+    const std::source_location &loc = std::source_location::current())
+{
+  if (cmap < static_cast<int>(Cmap::BONE) ||
+      cmap > static_cast<int>(Cmap::WHITE_UNIFORM))
+  {
+    hmap::log::warn(loc, "Invalid colormap ID ({})", cmap);
+    return false;
   }
   return true;
 }

@@ -166,3 +166,17 @@ TEST(ValidationTest, ValidateTexture)
   hmap::Array arr_diff(glm::ivec2(4, 5), 1.0f);
   EXPECT_FALSE(hmap::validate_same_shape(valid_tex, arr_diff));
 }
+
+TEST(ValidationTest, ValidateCmap)
+{
+  EXPECT_TRUE(hmap::validate_cmap(hmap::Cmap::VIRIDIS));
+  EXPECT_TRUE(hmap::validate_cmap(hmap::Cmap::BONE));
+  EXPECT_TRUE(hmap::validate_cmap(hmap::Cmap::WHITE_UNIFORM));
+  EXPECT_FALSE(hmap::validate_cmap(-1));
+  EXPECT_FALSE(hmap::validate_cmap(999));
+
+  // get_colormap_data graceful fallback on invalid cmap ID
+  auto colors_invalid = hmap::get_colormap_data(999);
+  auto colors_default = hmap::get_colormap_data(hmap::Cmap::WHITE_UNIFORM);
+  EXPECT_EQ(colors_invalid.size(), colors_default.size());
+}

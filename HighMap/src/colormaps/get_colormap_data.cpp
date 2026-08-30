@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "highmap/colormaps.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -20,6 +21,11 @@ std::vector<glm::vec3> helper_tov3(
 
 std::vector<glm::vec3> get_colormap_data(int cmap)
 {
+  if (!validate_cmap(cmap))
+  {
+    return helper_tov3(CMAP_WHITE_UNIFORM);
+  }
+
   switch (cmap)
   {
   case Cmap::BONE: return helper_tov3(CMAP_BONE);

@@ -257,7 +257,8 @@ Texture colorize_bivariate(const Array                  &a1,
   if (p_noise1 && !validate_same_shape(a1, *p_noise1)) return Texture();
   if (p_noise2 && !validate_same_shape(a1, *p_noise2)) return Texture();
   if (!validate_non_empty(positions1, "Colormap positions 1")) return Texture();
-  if (!validate_non_empty(colormap_colors1, "Colormap colors 1")) return Texture();
+  if (!validate_non_empty(colormap_colors1, "Colormap colors 1"))
+    return Texture();
   if (positions1.size() != colormap_colors1.size())
   {
     hmap::log::warn(
@@ -267,7 +268,8 @@ Texture colorize_bivariate(const Array                  &a1,
     return Texture();
   }
   if (!validate_non_empty(positions2, "Colormap positions 2")) return Texture();
-  if (!validate_non_empty(colormap_colors2, "Colormap colors 2")) return Texture();
+  if (!validate_non_empty(colormap_colors2, "Colormap colors 2"))
+    return Texture();
   if (positions2.size() != colormap_colors2.size())
   {
     hmap::log::warn(
