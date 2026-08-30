@@ -23,7 +23,6 @@ int main(void)
                                   2.f,   // distance_exponent
                                   100.f, // upward_penalization
                                   0.5f,  // valley_affinity
-                                  0.f,   // path_sinuosity
                                   8,     // prefilter_ir
                                   1e-4f, // minimum_depth
                                   true); // carve_riverbed

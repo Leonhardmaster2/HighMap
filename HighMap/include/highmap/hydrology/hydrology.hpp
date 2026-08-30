@@ -534,33 +534,29 @@ Array flow_fixing_drainage_basin(
  * @param  upward_penalization   Penalty factor for uphill moves in Dijkstra
  *                               search.
  * @param  valley_affinity       Weight for valley/concavity affinity in cost.
- * @param  path_sinuosity        Weight for noise-based path sinuosity.
  * @param  prefilter_ir          Radius of Gaussian/cpulse prefilter applied
  *                               before sink detection.
  * @param  minimum_depth         Minimum incision depth below initial terrain
  *                               elevation.
  * @param  carve_riverbed        Whether to apply riverbank carving and
  *                               smoothing along altered paths.
- * @param  seed                  Random seed for noise generation.
  * @param  merging_distance      Distance (in pixels) for blending modified flow
  *                               paths.
  * @param  p_noise_r             Optional radial noise array for trench width
  *                               perturbation.
  * @return                       Array with unbroken flow paths.
  */
-Array flow_fixing_mst(const Array  &z,
-                      float         riverbed_talus = 0.f,
-                      float         elevation_ratio = 0.95f,
-                      float         distance_exponent = 2.f,
-                      float         upward_penalization = 50.f,
-                      float         valley_affinity = 0.5f,
-                      float         path_sinuosity = 0.25f,
-                      int           prefilter_ir = 8,
-                      float         minimum_depth = 1e-4f,
-                      bool          carve_riverbed = true,
-                      std::uint32_t seed = 0,
-                      float         merging_distance = 8.f,
-                      const Array  *p_noise_r = nullptr);
+Array flow_fixing_mst(const Array &z,
+                      float        riverbed_talus = 0.f,
+                      float        elevation_ratio = 0.95f,
+                      float        distance_exponent = 2.f,
+                      float        upward_penalization = 50.f,
+                      float        valley_affinity = 0.5f,
+                      int          prefilter_ir = 8,
+                      float        minimum_depth = 1e-4f,
+                      bool         carve_riverbed = true,
+                      float        merging_distance = 8.f,
+                      const Array *p_noise_r = nullptr);
 
 /**
  * @brief Computes the optimal flow path from a starting point to the boundary

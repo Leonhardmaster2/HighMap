@@ -358,19 +358,17 @@ Array flow_fixing_drainage_basin(const Array        &z,
   }
 }
 
-Array flow_fixing_mst(const Array  &z,
-                      float         riverbed_talus,
-                      float         elevation_ratio,
-                      float         distance_exponent,
-                      float         upward_penalization,
-                      float         valley_affinity,
-                      float         path_sinuosity,
-                      int           prefilter_ir,
-                      float         minimum_depth,
-                      bool          carve_riverbed,
-                      std::uint32_t seed,
-                      float         merging_distance,
-                      const Array  *p_noise_r)
+Array flow_fixing_mst(const Array &z,
+                      float        riverbed_talus,
+                      float        elevation_ratio,
+                      float        distance_exponent,
+                      float        upward_penalization,
+                      float        valley_affinity,
+                      int          prefilter_ir,
+                      float        minimum_depth,
+                      bool         carve_riverbed,
+                      float        merging_distance,
+                      const Array *p_noise_r)
 {
   const glm::ivec2 shape = z.shape;
   Array            zb = z;
@@ -597,23 +595,12 @@ Array flow_fixing_mst(const Array  &z,
 
       cost_step += elevation_ratio * std::max(0.f, zb(ni, nj));
 
-      // 1. Valley / concavity affinity: reduce cost in natural valleys and
+      // Valley / concavity affinity: reduce cost in natural valleys and
       // depressions
       if (valley_affinity > 0.f)
       {
         float val_factor = 1.f - valley_affinity * valley_field(ni, nj);
         cost_step *= std::max(0.1f, val_factor);
-      }
-
-      // 2. Spatial noise modulation: break Euclidean straight-line symmetry in
-      // flat coastal/boundary zones
-      if (path_sinuosity > 0.f)
-      {
-        float rnd = fast_hash32_to_unit_float(seed,
-                                              (ni * shape.y + nj) ^
-                                                  (ci * shape.y + cj));
-        float noise_mod = 1.f + path_sinuosity * (2.f * rnd - 1.f);
-        cost_step *= std::max(0.1f, noise_mod);
       }
 
       float new_dist = dist_map(ci, cj) + cost_step;
