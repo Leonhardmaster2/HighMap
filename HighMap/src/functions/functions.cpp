@@ -110,7 +110,14 @@ BiquadFunction::BiquadFunction(float gain, glm::vec2 center)
   this->set_delegate(
       [this](float x, float y, float ctrl_param)
       {
-        float v = 16.f * x * (x - 1.f) * y * (y - 1.f);
+        const float dx = x - this->center.x;
+        const float dy = y - this->center.y;
+
+        if (std::abs(dx) > 0.5f || std::abs(dy) > 0.5f) return 0.0f;
+
+        float vx = 1.f - 4.f * dx * dx;
+        float vy = 1.f - 4.f * dy * dy;
+        float v = vx * vy;
         v = std::clamp(v, 0.f, 1.f);
         return std::pow(v, 1.f / (this->gain * ctrl_param));
       });

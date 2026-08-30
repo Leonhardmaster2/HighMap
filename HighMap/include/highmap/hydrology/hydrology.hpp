@@ -28,6 +28,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {
@@ -54,6 +55,41 @@ namespace hmap
 Array basin_id(const Array        &z,
                FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
                bool                remove_lakes = true);
+
+/**
+ * @brief Blends and carves smooth riverbanks around modified riverbed profiles.
+ *
+ * Compares an initial elevation terrain @p z with an updated/carved riverbed @p
+ * z_river, identifies modified cells, expands riverbanks using talus slopes,
+ * smooths the channel bottom, and blends the carved river with the original
+ * terrain using distance-transform based exponential falloff and optional
+ * domain warping.
+ *
+ * @param  z                     Original terrain elevation array.
+ * @param  z_river               Carved riverbed elevation array (or stream
+ * bottom).
+ * @param  talus_riverbank       Talus slope angle/ratio for riverbank
+ * expansion.
+ * @param  smooth_river_bottom   Whether to apply Laplace smoothing along the
+ * river bottom.
+ * @param  merging_distance      Transition distance (in pixels) for blending
+ * riverbanks into terrain.
+ * @param  seed                  Random seed for riverbank noise.
+ * @param  riverbank_noise_ratio Noise ratio for talus expansion roughness.
+ * @param  p_noise_x             Optional noise array for domain warping in X.
+ * @param  p_noise_y             Optional noise array for domain warping in Y.
+ * @return                       Merged terrain array with smoothly carved river
+ * channels.
+ */
+Array carve_riverbed(const Array  &z,
+                     const Array  &z_river,
+                     float         talus_riverbank = 0.01f,
+                     bool          smooth_river_bottom = true,
+                     float         merging_distance = 8.f,
+                     std::uint32_t seed = 0,
+                     float         riverbank_noise_ratio = 0.f,
+                     const Array  *p_noise_x = nullptr,
+                     const Array  *p_noise_y = nullptr);
 
 /**
  * @brief Computes the number of drainage paths for each cell based on the D8
@@ -425,18 +461,109 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref);
  */
 Array flow_direction_dinf_angle(const Array &z, float talus_ref);
 
-Array flow_fixing(const Array  &z,
-                  float         riverbed_talus = 0.f,
-                  int           iterations = 5,
-                  int           prefilter_ir = 8,
-                  bool          carve_riverbed = true,
-                  bool          smooth_river_bottom = true,
-                  float         talus_riverbank = 0.01f, // 4 / shape.X
-                  std::uint32_t seed = 0,
-                  float         riverbank_noise_ratio = 0.f,
-                  float         merging_distance = 8.f, // pixels
-                  const Array  *p_noise_x = nullptr,
-                  const Array  *p_noise_y = nullptr);
+Array flow_fixing(const Array &z,
+                  float        riverbed_talus = 0.f,
+                  int          iterations = 5,
+                  int          prefilter_ir = 8,
+                  bool         carve_riverbed = true,
+                  float        merging_distance = 8.f, // pixels
+                  const Array *p_noise_r = nullptr);
+
+/**
+ * @brief Fixes flow paths and unwanted upslopes using a cell-based drainage
+ * basin tree network and elevation updates.
+ *
+ * This function constructs a stream tree network on the heightmap, resolves
+ * internal depressions/lakes towards boundary outlets, and iteratively adjusts
+ * terrain elevations along upstream-downstream paths to guarantee unbroken flow
+ * while preserving realistic terrain slope gradients.
+ *
+ * @param  z                Input elevation array.
+ * @param  iterations       Number of iterative tree-building and elevation
+ *                          update passes.
+ * @param  min_slope        Minimum allowed downslope gradient along flow paths.
+ * @param  max_slope        Maximum allowed slope gradient.
+ * @param  uplift_rate      Rate of elevation adjustment / uplift per unit
+ *                          response time.
+ * @param  m_exp            Drainage area exponent for response time
+ *                          calculations.
+ * @param  seed             Random seed for stochastic receiver variations.
+ * @param  noise_strength   Strength of random perturbation during receiver
+ *                          computation.
+ * @param  carve_riverbed   Whether to apply riverbank carving and smoothing
+ *                          along altered paths.
+ * @param  talus_riverbank  Talus value used when expanding and carving the
+ *                          riverbed.
+ * @param  merging_distance Distance (in pixels) for blending modified flow
+ *                          paths.
+ * @param  p_noise_x        Optional noise array for riverbank domain warping in
+ *                          X.
+ * @param  p_noise_y        Optional noise array for riverbank domain warping in
+ *                          Y.
+ * @return                  Array with unbroken flow paths.
+ */
+Array flow_fixing_drainage_basin(
+    const Array        &z,
+    FlowDirectionMethod fd_method = FlowDirectionMethod::FDM_D8,
+    float               riverbed_talus = 1e-4f,
+    int                 iterations = 3,
+    bool                carve_riverbed = false,
+    float               talus_riverbank = 0.01f,
+    float               merging_distance = 8.f,
+    std::uint32_t       seed = 0,
+    float               noise_strength = 0.f,
+    const Array        *p_noise_x = nullptr,
+    const Array        *p_noise_y = nullptr);
+
+/**
+ * @brief Resolves flow sinks and unwanted upslopes using Dijkstra pathfinding
+ * and a Minimum Spanning Tree (MST) over sinks and boundary outlets.
+ *
+ * This function identifies all flow sinks and boundary outlets, computes
+ * candidate optimal path connections via multi-source Dijkstra search,
+ * constructs a Minimum Spanning Forest (Kruskal's algorithm) guaranteeing that
+ * each sink connects to an outlet through the lowest-effort saddle pass, and
+ * carves monotonic riverbeds along the MST paths using continuous trench
+ * profiles.
+ *
+ * @param  z                     Input elevation array.
+ * @param  riverbed_talus        Minimum talus (slope) along carved riverbeds.
+ * @param  elevation_ratio       Balance factor between elevation level and
+ *                               slope in Dijkstra cost.
+ * @param  distance_exponent     Exponent applied to elevation differences in
+ *                               Dijkstra cost.
+ * @param  upward_penalization   Penalty factor for uphill moves in Dijkstra
+ *                               search.
+ * @param  valley_affinity       Weight for valley/concavity affinity in cost.
+ * @param  prefilter_ir          Radius of Gaussian/cpulse prefilter applied
+ *                               before sink detection.
+ * @param  minimum_depth         Minimum incision depth below initial terrain
+ *                               elevation.
+ * @param  carve_riverbed        Whether to apply riverbank carving and
+ *                               smoothing along altered paths.
+ * @param  merging_distance      Distance (in pixels) for blending modified flow
+ *                               paths.
+ * @param  radial_profile        Radial profile cross-section for trench
+ * carving.
+ * @param  radial_profile_parameter Shape parameter for the radial profile.
+ * @param  p_noise_r             Optional radial noise array for trench width
+ *                               perturbation.
+ * @return                       Array with unbroken flow paths.
+ */
+Array flow_fixing_mst(
+    const Array  &z,
+    float         riverbed_talus = 0.f,
+    float         elevation_ratio = 0.95f,
+    float         distance_exponent = 2.f,
+    float         upward_penalization = 50.f,
+    float         valley_affinity = 0.5f,
+    int           prefilter_ir = 8,
+    float         minimum_depth = 1e-4f,
+    bool          carve_riverbed = true,
+    float         merging_distance = 8.f,
+    RadialProfile radial_profile = RadialProfile::RP_SMOOTHSTEP_UPPER,
+    float         radial_profile_parameter = 2.f,
+    const Array  *p_noise_r = nullptr);
 
 /**
  * @brief Computes the optimal flow path from a starting point to the boundary

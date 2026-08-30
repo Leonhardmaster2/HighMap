@@ -181,7 +181,7 @@ Array DrainageBasinCellBased::compute_response_times(const Array &area_acc,
 
   for (const auto &[outlet, traversal] : traversals)
   {
-    // downstream => upstream
+    // traversal is stored upstream -> downstream (rbegin is outlet -> upstream)
     for (auto it = traversal.rbegin(); it != traversal.rend(); ++it)
     {
       const glm::ivec2 &i = *it;
@@ -499,11 +499,13 @@ float DrainageBasinCellBased::update_elevations(const Array &response_times,
   float     zmax = zr.y;
   float     zptp = zmax - zmin;
 
-  // iterate upstream (outlet first)
+  // iterate upstream (outlet first, using reverse traversal since traversal is
+  // upstream->downstream)
   for (const auto &[outlet, traversal] : traversals)
   {
-    for (const glm::ivec2 &i : traversal)
+    for (auto it = traversal.rbegin(); it != traversal.rend(); ++it)
     {
+      const glm::ivec2 &i = *it;
       const glm::ivec2 &j = receivers(i);
 
       if (j == i) continue; // outlet

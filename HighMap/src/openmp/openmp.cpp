@@ -1,13 +1,11 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
-#include <iostream>
-#include <string>
-
 #ifdef _OPENMP
 #include <omp.h>
 #endif
 
+#include "highmap/logger.hpp"
 #include "highmap/openmp.hpp"
 
 namespace hmap
@@ -20,7 +18,7 @@ bool init_openmp(int num_threads)
   log_openmp_info();
   return true;
 #else
-  std::cout << "[HighMap/OpenMP] Not enabled (no _OPENMP macro)\n";
+  hmap::log::info("OpenMP not enabled (no _OPENMP macro)");
   return false;
 #endif
 }
@@ -28,39 +26,35 @@ bool init_openmp(int num_threads)
 void log_openmp_info()
 {
 #ifdef _OPENMP
-  std::cout << "[HighMap/OpenMP] Enabled\n";
+  hmap::log::info("OpenMP enabled");
 
   // Version
-  std::cout << "[HighMap/OpenMP] Version: " << _OPENMP << "\n";
+  hmap::log::info("Version: {}", _OPENMP);
 
   // Number of processors
-  std::cout << "[HighMap/OpenMP] Num processors: " << omp_get_num_procs()
-            << "\n";
+  hmap::log::info("Num processors: {}", omp_get_num_procs());
 
   // Max threads
-  std::cout << "[HighMap/OpenMP] Max threads: " << omp_get_max_threads()
-            << "\n";
+  hmap::log::info("Max threads: {}", omp_get_max_threads());
 
   // Dynamic threads
-  std::cout << "[HighMap/OpenMP] Dynamic threads: "
-            << (omp_get_dynamic() ? "ON" : "OFF") << "\n";
+  hmap::log::info("Dynamic threads: {}", (omp_get_dynamic() ? "ON" : "OFF"));
 
   // Nested parallelism
-  std::cout << "[HighMap/OpenMP] Nested parallelism: "
-            << (omp_get_nested() ? "ON" : "OFF") << "\n";
+  hmap::log::info("Nested parallelism: {}", (omp_get_nested() ? "ON" : "OFF"));
 
 // Parallel region test
 #pragma omp parallel
   {
 #pragma omp single
     {
-      std::cout << "[HighMap/OpenMP] Actual threads in parallel region: "
-                << omp_get_num_threads() << "\n";
+      hmap::log::info("Actual threads in parallel region: {}",
+                      omp_get_num_threads());
     }
   }
 
 #else
-  std::cout << "[HighMap/OpenMP] Not enabled (no _OPENMP macro)\n";
+  hmap::log::info("OpenMP not enabled (no _OPENMP macro)");
 #endif
 }
 
