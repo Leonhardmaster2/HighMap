@@ -14,6 +14,7 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
 
@@ -236,6 +237,8 @@ bool export_asset(const std::string &fname,
                   const std::string &normal_map_fname,
                   float              max_error)
 {
+  if (!validate_non_empty(array)) return false;
+
   hmap::log::trace("exporting asset, format [{}] aka [{}]",
                    asset_export_format_as_string.at(export_format)[0],
                    asset_export_format_as_string.at(export_format)[1]);
@@ -308,6 +311,9 @@ bool export_asset(const std::string &fname,
                   const std::string &texture_fname,
                   const std::string &normal_map_fname)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, mask))
+    return false;
+
   hmap::log::trace("exporting asset, format [{}] aka [{}]",
                    asset_export_format_as_string.at(export_format)[0],
                    asset_export_format_as_string.at(export_format)[1]);

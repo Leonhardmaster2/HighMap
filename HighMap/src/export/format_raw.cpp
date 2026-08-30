@@ -6,12 +6,16 @@
 #include <string>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
+#include "highmap/logger.hpp"
 
 namespace hmap
 {
 
 void write_raw_16bit(const std::string &fname, const Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   const float vmin = array.min();
   const float vmax = array.max();
   float       a = 0.f;
@@ -28,18 +32,18 @@ void write_raw_16bit(const std::string &fname, const Array &array)
   std::ofstream f;
   f.open(fname, std::ios::binary);
 
+  if (!f.is_open())
+  {
+    hmap::log::warn("Could not open file {} for writing raw 16bit", fname);
+    return;
+  }
+
   for (int j = array.shape.y - 1; j > -1; j -= 1)
     for (int i = 0; i < array.shape.x; i++)
     {
       uint16_t v = (uint32_t)(a * array(i, j) + b);
       f.write(reinterpret_cast<const char *>(&v), sizeof(uint16_t));
     }
-
-  // for (auto &v : array.vector)
-  // {
-  //   uint16_t d = (uint32_t)(a * v + b);
-  //   f.write(reinterpret_cast<const char *>(&d), sizeof(uint16_t));
-  // }
 
   f.close();
 }

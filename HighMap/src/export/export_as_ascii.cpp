@@ -5,6 +5,7 @@
 #include <string>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -14,6 +15,10 @@ std::string export_as_ascii(const Array      &array,
                             const glm::ivec2 &export_shape,
                             const std::string chars_map)
 {
+  if (!validate_non_empty(array)) return "";
+  if (!validate_shape(export_shape)) return "";
+  if (!validate_non_empty(chars_map, "chars_map")) return "";
+
   std::string out = "";
   size_t      nc = chars_map.size();
 

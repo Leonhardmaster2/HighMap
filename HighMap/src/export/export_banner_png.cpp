@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -18,6 +19,13 @@ void export_banner_png(const std::string        &fname,
                        bool                      hillshading,
                        bool                      normalize_arrays)
 {
+  if (!validate_non_empty(arrays, "Array list")) return;
+  if (!validate_cmap(cmap)) return;
+  for (const auto &arr : arrays)
+  {
+    if (!validate_non_empty(arr)) return;
+  }
+
   // build up big array by stacking input arrays
   if (arrays.size() > 1)
   {

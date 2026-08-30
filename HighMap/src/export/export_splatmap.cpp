@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/texture.hpp"
 
 namespace hmap
@@ -15,6 +16,11 @@ Texture compute_splatmap(const Array *p_r,
                          const Array *p_b,
                          const Array *p_a)
 {
+  if (!p_r || !validate_non_empty(*p_r)) return Texture();
+  if (p_g && !validate_same_shape(*p_r, *p_g)) return Texture();
+  if (p_b && !validate_same_shape(*p_r, *p_b)) return Texture();
+  if (p_a && !validate_same_shape(*p_r, *p_a)) return Texture();
+
   Texture smap = Texture(p_r->shape, 4);
 
   smap[0] = *p_r;
@@ -32,6 +38,8 @@ void export_splatmap_png(const std::string &fname,
                          const Array       *p_a,
                          int                depth)
 {
+  if (!p_r || !validate_non_empty(*p_r)) return;
+
   Texture smap = compute_splatmap(p_r, p_g, p_b, p_a);
   smap.to_png(fname, depth);
 }
