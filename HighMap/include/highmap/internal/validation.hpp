@@ -110,6 +110,38 @@ template <typename T>
 }
 
 /**
+ * @brief Validates that a container has at least min_size elements.
+ *
+ * @param  container Container to check.
+ * @param  min_size  Minimum required number of elements.
+ * @param  name      Name or description of the container for logging.
+ * @param  loc       Source location of the caller.
+ * @return           true if container has at least min_size elements, false
+ * otherwise.
+ */
+template <typename T>
+  requires requires(const T &t) {
+    { t.size() } -> std::convertible_to<size_t>;
+  }
+[[nodiscard]] inline bool validate_min_size(
+    const T                    &container,
+    size_t                      min_size,
+    std::string_view            name = "Container",
+    const std::source_location &loc = std::source_location::current())
+{
+  if (container.size() < min_size)
+  {
+    hmap::log::warn(loc,
+                    "{} has {} elements, but at least {} are required",
+                    name,
+                    container.size(),
+                    min_size);
+    return false;
+  }
+  return true;
+}
+
+/**
  * @brief Validates that two arrays have identical shapes and buffer sizes.
  *
  * @param  a   First array.

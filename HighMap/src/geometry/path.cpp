@@ -15,6 +15,7 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate1d.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
@@ -274,7 +275,7 @@ void Path::reorder_nns(int start_index)
 
 void Path::resample_by_spacing(float delta, InterpolationMethod1D itp_method)
 {
-  if (this->size() < 2) return;
+  if (!validate_min_size(this->points, 2, "Path points")) return;
 
   std::vector<float> cdist = this->get_cumulative_distance();
   int                npoints = std::max(2, int(cdist.back() / delta));
@@ -284,7 +285,7 @@ void Path::resample_by_spacing(float delta, InterpolationMethod1D itp_method)
 
 void Path::resample_interp(int npoints, InterpolationMethod1D itp_method)
 {
-  if (this->size() < 2) return;
+  if (!validate_min_size(this->points, 2, "Path points")) return;
 
   // work on a copy to manage open/close paths
   Path path_wrk = *this;
@@ -323,7 +324,7 @@ void Path::resample_interp(int npoints, InterpolationMethod1D itp_method)
 
 void Path::resample_uniform(InterpolationMethod1D itp_method)
 {
-  if (this->size() < 2) return;
+  if (!validate_min_size(this->points, 2, "Path points")) return;
 
   // determine smallest distance between two consecutive points (and
   // store distances because there are used for the interpolation
@@ -411,6 +412,8 @@ void Path::subsample(int step)
 
 void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
 {
+  if (!validate_non_empty(array)) return;
+
   // number of pixels per unit length
   float lx = bbox.y - bbox.x;
   float ly = bbox.w - bbox.z;
@@ -459,6 +462,8 @@ void Path::to_array(Array &array, glm::vec4 bbox, bool filled) const
 
 Array Path::to_array(glm::ivec2 shape, glm::vec4 bbox, bool filled) const
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array(shape);
   this->to_array(array, bbox, filled);
   return array;
@@ -466,6 +471,8 @@ Array Path::to_array(glm::ivec2 shape, glm::vec4 bbox, bool filled) const
 
 void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
 {
+  if (!validate_non_empty(array)) return;
+
   Path path_copy = *this;
   path_copy.set_values(1.f);
   path_copy.to_array(array, bbox, filled);
@@ -473,6 +480,8 @@ void Path::to_array_mask(Array &array, glm::vec4 bbox, bool filled) const
 
 void Path::to_png(std::string fname, glm::ivec2 shape)
 {
+  if (!validate_shape(shape)) return;
+
   Array array = Array(shape);
   this->to_array(array, this->get_bbox());
   array.to_png(fname, Cmap::INFERNO, false);

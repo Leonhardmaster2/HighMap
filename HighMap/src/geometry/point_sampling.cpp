@@ -22,6 +22,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point_sampling.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -44,6 +45,9 @@ std::array<std::pair<float, float>, 2> bbox_to_ranges2d(const glm::vec4 &bbox)
 std::function<float(const ps::Point<float, 2> &)>
 make_pointwise_function_from_array(const Array &array, const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(array))
+    return [](const ps::Point<float, 2> &) -> float { return 0.f; };
+
   return [&array, &bbox](const ps::Point<float, 2> &p) -> float
   {
     float x = (p[0] - bbox.x) / (bbox.y - bbox.x);
@@ -109,6 +113,9 @@ std::array<std::vector<float>, 2> random_points_density(size_t        count,
                                                         std::uint32_t seed,
                                                         const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(density))
+    return {std::vector<float>{}, std::vector<float>{}};
+
   auto ranges = bbox_to_ranges2d(bbox);
   auto density_fct = make_pointwise_function_from_array(density, bbox);
 
@@ -139,6 +146,9 @@ std::array<std::vector<float>, 2> random_points_distance(float         min_dist,
                                                          std::uint32_t seed,
                                                          const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(density))
+    return {std::vector<float>{}, std::vector<float>{}};
+
   auto ranges = bbox_to_ranges2d(bbox);
 
   // convert density [0, 1] to scale (when density = 0, enforce

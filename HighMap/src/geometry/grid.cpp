@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "highmap/geometry/point_sampling.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -113,6 +114,13 @@ void grid_xy_vector(std::vector<float> &x,
                     glm::vec4           bbox,
                     bool                endpoint)
 {
+  if (!validate_shape(shape))
+  {
+    x.clear();
+    y.clear();
+    return;
+  }
+
   x = linspace(bbox.x, bbox.y, shape.x, endpoint);
   y = linspace(bbox.z, bbox.w, shape.y, endpoint);
 }

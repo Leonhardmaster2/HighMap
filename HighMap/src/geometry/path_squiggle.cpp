@@ -10,6 +10,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -174,7 +175,9 @@ Path squiggle(const Path   &path,
               const Array  *p_mask,
               glm::vec4     bbox)
 {
-  if (path.size() < 2) return path;
+  if (p_weights && !validate_non_empty(*p_weights)) return path;
+  if (p_mask && !validate_non_empty(*p_mask)) return path;
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
 
   iterations = std::max(1, iterations);
   bool is_closed = path.is_closed();
@@ -288,7 +291,9 @@ std::vector<Path> squiggle_branches(const Path   &path,
                                     const Array  *p_mask,
                                     glm::vec4     bbox)
 {
-  if (path.size() < 2) return {path};
+  if (p_weights && !validate_non_empty(*p_weights)) return {path};
+  if (p_mask && !validate_non_empty(*p_mask)) return {path};
+  if (!validate_min_size(path.points, 2, "Path points")) return {path};
 
   iterations = std::max(1, iterations);
   bool is_closed = path.is_closed();

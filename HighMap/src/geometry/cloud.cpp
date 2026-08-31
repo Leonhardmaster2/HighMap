@@ -28,6 +28,7 @@
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/point.hpp"
 #include "highmap/geometry/point_sampling.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
@@ -168,7 +169,7 @@ bool Cloud::from_csv(const std::string &fname)
 
 glm::vec4 Cloud::get_bbox() const
 {
-  if (this->size() == 0) return glm::vec4();
+  if (!validate_non_empty(this->points, "Cloud points")) return glm::vec4();
 
   std::vector<float> x = this->get_x();
   std::vector<float> y = this->get_y();
@@ -185,7 +186,7 @@ glm::vec4 Cloud::get_bbox() const
 
 Point Cloud::get_center() const
 {
-  if (this->size() == 0) return Point(0.f, 0.f);
+  if (!validate_non_empty(this->points, "Cloud points")) return Point(0.f, 0.f);
 
   Point center = Point();
   for (auto &p : this->points)
@@ -220,7 +221,7 @@ std::vector<float> Cloud::get_values() const
 
 float Cloud::get_values_max() const
 {
-  if (this->size() == 0) return 0.f;
+  if (!validate_non_empty(this->points, "Cloud points")) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::max_element(values.begin(), values.end());
@@ -228,7 +229,7 @@ float Cloud::get_values_max() const
 
 float Cloud::get_values_min() const
 {
-  if (this->size() == 0) return 0.f;
+  if (!validate_non_empty(this->points, "Cloud points")) return 0.f;
 
   std::vector<float> values = this->get_values();
   return *std::min_element(values.begin(), values.end());
@@ -367,6 +368,8 @@ void Cloud::set_values(float new_value)
 
 void Cloud::set_values_from_array(const Array &array, const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(array)) return;
+
   for (auto &p : this->points)
     p.set_value_from_array(array, bbox);
 }
@@ -426,7 +429,7 @@ size_t Cloud::size() const
 void Cloud::snap_points_to_bounding_box(const glm::vec4 &bbox,
                                         float            tolerance_ratio)
 {
-  if (!this->size()) return;
+  if (!validate_non_empty(this->points, "Cloud points")) return;
 
   // reference distance based on point density
   float lx = bbox.y - bbox.x;
@@ -503,6 +506,8 @@ void Cloud::shuffle(float dx, float dy, std::uint32_t seed, float dv)
 
 void Cloud::to_array(Array &array, glm::vec4 bbox) const
 {
+  if (!validate_non_empty(array)) return;
+
   int   ni = array.shape.x;
   int   nj = array.shape.y;
   float ai = (ni - 1) / (bbox.y - bbox.x);
@@ -521,6 +526,8 @@ void Cloud::to_array(Array &array, glm::vec4 bbox) const
 
 Array Cloud::to_array(glm::ivec2 shape, glm::vec4 bbox) const
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array(shape);
   this->to_array(array, bbox);
   return array;
@@ -533,6 +540,10 @@ void Cloud::to_array_interp(Array                &array,
                             Array                *p_noise_y,
                             glm::vec4             bbox_array) const
 {
+  if (!validate_shape(array.shape)) return;
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return;
+
   std::vector<float> x = this->get_x();
   std::vector<float> y = this->get_y();
   std::vector<float> v = this->get_values();
@@ -593,6 +604,8 @@ void Cloud::to_png(const std::string &fname,
                    int                depth,
                    glm::ivec2         shape)
 {
+  if (!validate_shape(shape)) return;
+
   Array array = Array(shape);
   this->to_array(array, bbox);
   array.to_png(fname, cmap, depth);
@@ -670,6 +683,8 @@ Cloud random_cloud_density(size_t           count,
                            std::uint32_t    seed,
                            const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(density)) return Cloud();
+
   auto xy = random_points_density(count, density, seed, bbox);
   auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
   return Cloud(xy[0], xy[1], v);
@@ -690,6 +705,8 @@ Cloud random_cloud_distance(float            min_dist,
                             std::uint32_t    seed,
                             const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(density)) return Cloud();
+
   auto xy = random_points_distance(min_dist, max_dist, density, seed, bbox);
   auto v = random_vector(0.f, 1.f, xy[0].size(), ++seed);
   return Cloud(xy[0], xy[1], v);

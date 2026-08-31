@@ -16,6 +16,7 @@
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate1d.hpp"
 #include "highmap/interpolate/interpolate_curve.hpp"
 #include "highmap/operator.hpp"
@@ -46,6 +47,8 @@ Path bezier(const Path            &path,
             int                    edge_divisions,
             Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+
   // --- generate a new set of points by adding control points
   // --- inbetween path points
 
@@ -100,6 +103,8 @@ Path bezier_round(const Path            &path,
                   int                    edge_divisions,
                   Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+
   // --- generate a new set of points by adding control points
   // --- inbetween path points
 
@@ -153,6 +158,8 @@ Path bezier_round(const Path            &path,
 
 Path bspline(const Path &path, int edge_divisions, Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+
   std::vector<Point> new_points = path.points;
 
   if (path.is_closed()) new_points.push_back(path.points.front());
@@ -173,6 +180,7 @@ Path catmullrom(const Path            &path,
                 int                    edge_divisions,
                 Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
 
   std::vector<Point> new_points = path.points;
 
@@ -194,6 +202,8 @@ Path decasteljau(const Path            &path,
                  int                    edge_divisions,
                  Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+
   std::vector<Point> new_points = path.points;
 
   if (path.is_closed()) new_points.push_back(path.points.front());
@@ -253,6 +263,9 @@ Path fractalize(const Path   &path,
                 glm::vec4     bbox,
                 bool          bounded)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+  if (p_ctrl_array && !validate_non_empty(*p_ctrl_array)) return path;
+
   Path new_path = path;
 
   std::mt19937                    gen(seed);
@@ -344,7 +357,7 @@ Path fractalize(const Path   &path,
 
 Path inflate(const Path &path, float radius, bool resample)
 {
-  if (path.size() < 3) return path;
+  if (!validate_min_size(path.points, 3, "Path points")) return path;
 
   Path new_path = path;
 
@@ -380,6 +393,8 @@ Path meanderize(const Path            &path,
                 int                    edge_divisions,
                 Path::EdgeDivisionMode edm)
 {
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+
   Path path_wrk = path;
 
   std::mt19937                    gen(seed);
@@ -445,10 +460,12 @@ Array path_sdf_to_array(const Path  &path,
                         const Array *p_noise_x,
                         const Array *p_noise_y)
 {
-  Array        array(shape);
-  const size_t npts = path.size();
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
 
-  if (npts < 2) return array;
+  Array array(shape);
+  if (!validate_min_size(path.points, 2, "Path points")) return array;
 
   // array base grid
   std::vector<float> xg, yg;
@@ -536,9 +553,9 @@ Path smooth(const Path &path,
 {
   Path new_path = path;
 
-  const int n = (int)new_path.size();
-  if (n == 0) return new_path;
+  if (!validate_non_empty(new_path.points, "Path points")) return new_path;
 
+  const int  n = (int)new_path.size();
   const bool is_closed = new_path.is_closed();
 
   auto get_index = [&](int i) -> int
