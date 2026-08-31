@@ -15,6 +15,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
@@ -27,6 +28,9 @@ Array merge_water_depths(const Array &depth1,
                          const Array &depth2,
                          float        k_smooth)
 {
+  if (!validate_non_empty(depth1)) return Array();
+  if (!validate_same_shape(depth1, depth2)) return Array();
+
   Array water_depth(depth1.shape);
 
   if (k_smooth == 0.f)
@@ -42,6 +46,9 @@ void water_depth_dry_out(Array       &water_depth,
                          const Array *p_mask,
                          float        depth_max)
 {
+  if (!validate_non_empty(water_depth)) return;
+  if (p_mask && !validate_same_shape(water_depth, *p_mask)) return;
+
   if (depth_max == std::numeric_limits<float>::max())
     depth_max = water_depth.max();
 
@@ -71,6 +78,9 @@ Array water_depth_from_mask(const Array &z,
                             int          iterations_max,
                             float        tolerance)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, mask)) return Array();
+
   Array water_depth(z.shape);
 
   // transform to binary 0|1 mask
@@ -88,6 +98,9 @@ Array water_depth_increase(const Array &water_depth,
                            const Array &z,
                            float        additional_depth)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+  if (!validate_same_shape(water_depth, z)) return Array();
+
   const int ni = water_depth.shape.x;
   const int nj = water_depth.shape.y;
   Array     water_depth_extended(water_depth.shape);
@@ -229,6 +242,9 @@ Array water_depth_increase_with_flooding(const Array &water_depth,
                                          const Array &z,
                                          float        additional_depth)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+  if (!validate_same_shape(water_depth, z)) return Array();
+
   // WSE == Water Surface Elevation (z + water_depth)
 
   const int ni = water_depth.shape.x;
@@ -287,6 +303,8 @@ Array water_frontier_curvature(const Array &water_depth,
                                int          prefilter_ir,
                                bool         extend_values_from_interface)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+
   const glm::ivec2 &shape = water_depth.shape;
 
   Mat<glm::ivec2> closest_in(shape);
@@ -315,6 +333,8 @@ Array water_frontier_curvature(const Array &water_depth,
 
 Array water_mask(const Array &water_depth)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+
   Array mask = water_depth;
   make_binary(mask);
   return mask;
@@ -324,6 +344,9 @@ Array water_mask(const Array &water_depth,
                  const Array &z,
                  float        additional_depth)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+  if (!validate_same_shape(water_depth, z)) return Array();
+
   Array mask(water_depth.shape);
   Array water_depth_extended = water_depth_increase(water_depth,
                                                     z,
@@ -348,6 +371,10 @@ void water_depth_filter(Array       &depth,
                         bool         smooth_contour,
                         float        transition_ratio)
 {
+  if (!validate_non_empty(depth)) return;
+  if (!validate_same_shape(depth, z)) return;
+  if (p_water_mask && !validate_same_shape(depth, *p_water_mask)) return;
+
   const glm::ivec2 shape = depth.shape;
   Array            zt = z + depth;
 
@@ -387,6 +414,9 @@ Array water_depth_from_mask(const Array &z,
                             int          iterations_max,
                             float        tolerance)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, mask)) return Array();
+
   Array water_depth(z.shape);
 
   // transform to binary 0|1 mask
@@ -407,6 +437,8 @@ Array water_frontier_curvature(const Array &water_depth,
                                int          prefilter_ir,
                                bool         extend_values_from_interface)
 {
+  if (!validate_non_empty(water_depth)) return Array();
+
   const glm::ivec2 &shape = water_depth.shape;
 
   Mat<glm::ivec2> closest_in(shape);

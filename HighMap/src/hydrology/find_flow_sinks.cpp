@@ -7,17 +7,19 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 void find_flow_apex(const Array &z, std::vector<int> &is, std::vector<int> &js)
 {
-  Array d8 = flow_direction_d8(z);
-  Array nidp = d8_compute_ndip(d8);
-
   is.clear();
   js.clear();
+  if (!validate_non_empty(z)) return;
+
+  Array d8 = flow_direction_d8(z);
+  Array nidp = d8_compute_ndip(d8);
 
   const int nx = z.shape.x;
   const int ny = z.shape.y;
@@ -37,6 +39,7 @@ void find_flow_sinks(const Array &z, std::vector<int> &is, std::vector<int> &js)
 {
   is.clear();
   js.clear();
+  if (!validate_non_empty(z)) return;
 
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
   const std::vector<int> dj = {0, 1, 1, 1, 0, -1, -1, -1};
@@ -65,6 +68,8 @@ void find_flow_sinks(const Array &z, std::vector<int> &is, std::vector<int> &js)
 
 std::vector<glm::ivec2> find_flow_sinks(const Array &z)
 {
+  if (!validate_non_empty(z)) return {};
+
   std::vector<glm::ivec2> indices;
 
   const std::vector<int> di = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -92,6 +97,8 @@ std::vector<glm::ivec2> find_flow_sinks(const Array &z)
 
 std::vector<glm::ivec2> find_flow_sinks_border(const Array &z)
 {
+  if (!validate_non_empty(z)) return {};
+
   std::vector<glm::ivec2> indices;
 
   const int rows = z.shape.x;

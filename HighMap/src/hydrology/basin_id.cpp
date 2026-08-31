@@ -7,12 +7,15 @@
 #include "highmap/array.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array basin_id(const Array &z, FlowDirectionMethod fd_method, bool remove_lakes)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array ids(z.shape);
 
   // --- stream structure

@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/shortest_path.hpp"
 
 namespace hmap
@@ -52,8 +53,7 @@ Path flow_stream(const Array     &z,
                  const float      distance_exponent,
                  const float      upward_penalization)
 {
-
-  // --
+  if (!validate_non_empty(z)) return Path();
 
   glm::ivec2 shape = z.shape;
 

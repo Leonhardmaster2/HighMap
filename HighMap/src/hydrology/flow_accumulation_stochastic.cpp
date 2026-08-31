@@ -14,6 +14,7 @@
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/random.hpp"
 
 namespace hmap
@@ -45,6 +46,10 @@ Array flow_accumulation_stochastic(const Array  &z,
                                    const Array  *p_source,
                                    const Array  *p_decay)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_source && !validate_same_shape(z, *p_source)) return Array();
+  if (p_decay && !validate_same_shape(z, *p_decay)) return Array();
+
   int nx = z.shape.x;
   int ny = z.shape.y;
 

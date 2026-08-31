@@ -10,6 +10,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/features.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -17,6 +18,8 @@ namespace hmap
 
 Array flooding_uniform_level(const Array &z, float zref)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array water_depth(z.shape, 0.f);
 
   water_depth = zref - z;
@@ -32,6 +35,8 @@ Array flooding_from_boundaries(const Array &z,
                                bool         from_north,
                                bool         from_south)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array water_depth = Array(z.shape);
 
   // find lowest points on the boundaries and starts the flooding there
@@ -112,6 +117,8 @@ Array flooding_from_point(const Array &z,
                           const int    j,
                           float        depth_min)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array water_depth(z.shape, 0.f);
 
   std::vector<glm::ivec2> nbrs =
@@ -152,6 +159,15 @@ Array flooding_from_point(const Array            &z,
                           const std::vector<int> &j,
                           float                   depth_min)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (i.size() != j.size())
+  {
+    hmap::log::warn("Vector size mismatch: i is {}, j is {}",
+                    i.size(),
+                    j.size());
+    return Array();
+  }
+
   Array water_depth(z.shape);
 
   for (size_t k = 0; k < i.size(); k++)
@@ -163,6 +179,8 @@ Array flooding_from_point(const Array            &z,
 
 Array flooding_lake_system(const Array &z, float surface_threshold)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array water_depth = z;
 
   // use a rough depression filling algo to get the lake zones and depths
