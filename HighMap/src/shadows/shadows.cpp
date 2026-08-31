@@ -7,6 +7,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 
 namespace hmap
@@ -14,6 +15,8 @@ namespace hmap
 
 Array hillshade(const Array &z, float azimuth, float zenith, float talus_ref)
 {
+  if (!validate_non_empty(z)) return Array();
+
   float azimuth_rad = M_PI * azimuth / 180.f;
   float zenith_rad = M_PI * zenith / 180.f;
 
@@ -32,6 +35,8 @@ Array topographic_shading(const Array &z,
                           float        zenith,
                           float        talus_ref)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const float azimuth_rad = M_PI * azimuth / 180.f;
   const float zenith_rad = M_PI * zenith / 180.f;
 
@@ -46,6 +51,8 @@ Array topographic_shading(const Array &z,
 
 Array shadow_grid(const Array &z, float shadow_talus)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array sh = Array(z.shape);
 
   for (int j = 0; j < z.shape.y; j++)
@@ -66,6 +73,8 @@ Array shadow_heightmap(const Array &z,
                        float        zenith,
                        float        distance)
 {
+  if (!validate_non_empty(z)) return Array();
+
   // https://www.shadertoy.com/view/Xlsfzl
   Array sh = Array(z.shape);
   float azimuth_rad = -M_PI * azimuth / 180.f;

@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/transform.hpp"
@@ -27,6 +28,16 @@ Array quilting(const std::vector<const Array *> &p_arrays,
                bool                              patch_transpose,
                float                             filter_width_ratio)
 {
+  if (p_arrays.empty() || !validate_shape(patch_base_shape) ||
+      !validate_shape(tiling))
+    return Array();
+
+  for (const auto *p : p_arrays)
+    if (!p || !validate_non_empty(*p)) return Array();
+
+  for (const auto *p : secondary_arrays)
+    if (!p || !validate_non_empty(*p)) return Array();
+
   std::mt19937 gen(seed);
 
   std::uniform_int_distribution<int> dis_a(0, (int)p_arrays.size() - 1);
@@ -209,6 +220,11 @@ Array quilting_blend(const std::vector<const Array *> &p_arrays,
                      bool                              patch_transpose,
                      float                             filter_width_ratio)
 {
+  if (p_arrays.empty() || !validate_shape(patch_base_shape)) return Array();
+
+  for (const auto *p : p_arrays)
+    if (!p || !validate_non_empty(*p)) return Array();
+
   glm::ivec2 shape = p_arrays.back()->shape;
 
   glm::ivec2 tiling = glm::ivec2(
@@ -242,6 +258,12 @@ Array quilting_expand(const Array         &array,
                       bool                 patch_transpose,
                       float                filter_width_ratio)
 {
+  if (!validate_non_empty(array) || !validate_shape(patch_base_shape))
+    return Array();
+
+  for (const auto *p : secondary_arrays)
+    if (!p || !validate_non_empty(*p)) return Array();
+
   expansion_ratio = std::max(1.f, expansion_ratio);
 
   if (keep_input_shape)
@@ -336,6 +358,12 @@ Array quilting_shuffle(const Array         &array,
                        bool                 patch_transpose,
                        float                filter_width_ratio)
 {
+  if (!validate_non_empty(array) || !validate_shape(patch_base_shape))
+    return Array();
+
+  for (const auto *p : secondary_arrays)
+    if (!p || !validate_non_empty(*p)) return Array();
+
   glm::ivec2 tiling = glm::ivec2(
       (int)(std::ceil(array.shape.x / patch_base_shape.x)),
       (int)(std::ceil(array.shape.y / patch_base_shape.y)));
