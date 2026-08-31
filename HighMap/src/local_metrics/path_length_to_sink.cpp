@@ -4,12 +4,15 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array path_length_to_outlet(const Array &z)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2 &shape = z.shape;
   Array             out(shape, -1.f);
 
@@ -102,6 +105,8 @@ Array path_length_to_outlet(const Array &z)
 
 Array path_length_to_sink(const Array &z)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2 &shape = z.shape;
   Array             out(shape, -1.f);
 

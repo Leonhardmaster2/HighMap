@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 
@@ -15,6 +16,8 @@ namespace hmap
 
 Array abs(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -25,6 +28,8 @@ Array abs(const Array &array)
 
 Array abs_smooth(const Array &array, float k)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   float k2 = k * k;
   std::transform(array.vector.begin(),
@@ -36,6 +41,8 @@ Array abs_smooth(const Array &array, float k)
 
 Array abs_smooth(const Array &array, float k, float vshift)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   float k2 = k * k;
   std::transform(array.vector.begin(),
@@ -51,6 +58,9 @@ Array abs_smooth(const Array &array, float k, float vshift)
 
 Array abs_smooth(const Array &array, float k, const Array &vshift)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, vshift)) return Array();
+
   Array array_out = Array(array.shape);
   float k2 = k * k;
   std::transform(array.vector.begin(),
@@ -67,6 +77,8 @@ Array abs_smooth(const Array &array, float k, const Array &vshift)
 
 Array almost_unit_identity(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -77,6 +89,8 @@ Array almost_unit_identity(const Array &array)
 
 Array almost_unit_identity_c2(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -87,6 +101,8 @@ Array almost_unit_identity_c2(const Array &array)
 
 Array atan(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -97,8 +113,10 @@ Array atan(const Array &array)
 
 Array atan2(const Array &y, const Array &array)
 {
-  Array array_out = Array(array.shape);
+  if (!validate_non_empty(y)) return Array();
+  if (!validate_same_shape(y, array)) return Array();
 
+  Array array_out = Array(array.shape);
   std::transform(y.vector.begin(),
                  y.vector.end(),
                  array.vector.begin(),
@@ -109,6 +127,8 @@ Array atan2(const Array &y, const Array &array)
 
 Array cos(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -119,6 +139,8 @@ Array cos(const Array &array)
 
 Array exp(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -129,6 +151,8 @@ Array exp(const Array &array)
 
 Array gaussian_decay(const Array &array, float sigma)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array       array_out = Array(array.shape);
   const float coeff = 0.5f / (sigma * sigma);
 
@@ -141,6 +165,9 @@ Array gaussian_decay(const Array &array, float sigma)
 
 Array hypot(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1)) return Array();
+  if (!validate_same_shape(array1, array2)) return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -152,6 +179,8 @@ Array hypot(const Array &array1, const Array &array2)
 
 Array is_equal(const Array &array, float value)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -162,6 +191,8 @@ Array is_equal(const Array &array, float value)
 
 Array is_non_zero(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -172,6 +203,8 @@ Array is_non_zero(const Array &array)
 
 Array is_zero(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -182,6 +215,10 @@ Array is_zero(const Array &array)
 
 Array lerp(const Array &array1, const Array &array2, const Array &t)
 {
+  if (!validate_non_empty(array1)) return Array();
+  if (!validate_same_shape(array1, array2)) return Array();
+  if (!validate_same_shape(array1, t)) return Array();
+
   Array        array_out(array1.shape);
   const size_t n = array1.vector.size();
 
@@ -196,6 +233,9 @@ Array lerp(const Array &array1, const Array &array2, const Array &t)
 
 Array lerp(const Array &array1, const Array &array2, float t)
 {
+  if (!validate_non_empty(array1)) return Array();
+  if (!validate_same_shape(array1, array2)) return Array();
+
   Array        array_out(array1.shape);
   const size_t n = array1.vector.size();
 
@@ -207,6 +247,8 @@ Array lerp(const Array &array1, const Array &array2, float t)
 
 Array log10(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -217,6 +259,8 @@ Array log10(const Array &array)
 
 Array pow(const Array &array, float exp)
 {
+  if (!validate_non_empty(array)) return Array();
+
   if (exp == 2.f) return array * array;
   if (exp == 0.5f) return sqrt(array);
   if (exp == 3.f)
@@ -235,6 +279,9 @@ Array pow(const Array &array, float exp)
 
 Array r_min(const Array &array1, const Array &array2, float alpha)
 {
+  if (!validate_non_empty(array1)) return Array();
+  if (!validate_same_shape(array1, array2)) return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -246,6 +293,9 @@ Array r_min(const Array &array1, const Array &array2, float alpha)
 
 Array r_max(const Array &array1, const Array &array2, float alpha)
 {
+  if (!validate_non_empty(array1)) return Array();
+  if (!validate_same_shape(array1, array2)) return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -257,6 +307,8 @@ Array r_max(const Array &array1, const Array &array2, float alpha)
 
 Array sigmoid(const Array &array, float width, float vmin, float vmax, float x0)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -268,6 +320,8 @@ Array sigmoid(const Array &array, float width, float vmin, float vmax, float x0)
 
 Array sin(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -278,6 +332,8 @@ Array sin(const Array &array)
 
 Array smoothstep3(const Array &array, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
 
   const float inv_range = 1.f / (vmax - vmin);
@@ -300,6 +356,8 @@ Array smoothstep3(const Array &array, float vmin, float vmax)
 
 Array smoothstep3_lower(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -310,6 +368,8 @@ Array smoothstep3_lower(const Array &array)
 
 Array smoothstep3_upper(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -320,6 +380,8 @@ Array smoothstep3_upper(const Array &array)
 
 Array smoothstep5(const Array &array, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -342,6 +404,10 @@ Array smoothstep5(const Array &array, float vmin, float vmax)
 
 Array smoothstep5(const Array &array, const Array &vmin, const Array &vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, vmin)) return Array();
+  if (!validate_same_shape(array, vmax)) return Array();
+
   Array        array_out(array.shape);
   const size_t n = array.vector.size();
 
@@ -371,6 +437,8 @@ Array smoothstep5(const Array &array, const Array &vmin, const Array &vmax)
 
 Array smoothstep5_lower(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -381,6 +449,8 @@ Array smoothstep5_lower(const Array &array)
 
 Array smoothstep5_upper(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -391,6 +461,8 @@ Array smoothstep5_upper(const Array &array)
 
 Array smoothstep7(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -401,6 +473,8 @@ Array smoothstep7(const Array &array)
 
 Array sqrt(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -411,6 +485,8 @@ Array sqrt(const Array &array)
 
 Array sqrt_safe(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -421,6 +497,8 @@ Array sqrt_safe(const Array &array)
 
 Array threshold(const Array &array, float x0, float x1)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),
@@ -431,6 +509,8 @@ Array threshold(const Array &array, float x0, float x1)
 
 Array threshold_smooth(const Array &array, float x0, float x1)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
   std::transform(array.vector.begin(),
                  array.vector.end(),

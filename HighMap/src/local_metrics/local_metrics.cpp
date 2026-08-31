@@ -10,6 +10,7 @@
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -18,6 +19,8 @@ namespace hmap
 
 Array local_max(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const int nx = array.shape.x;
   const int ny = array.shape.y;
 
@@ -83,6 +86,8 @@ Array local_max(const Array &array, int ir)
 
 Array local_mean(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(array.shape);
 
   std::vector<float> k1d(2 * ir + 1);
@@ -97,11 +102,15 @@ Array local_mean(const Array &array, int ir)
 
 Array local_min(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   return -local_max(-array, ir);
 }
 
 Array local_median_deviation(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array mean = local_mean(array, ir);
   Array med = median_pseudo(array, ir); // TODO exact
   return abs(mean - med);
@@ -109,6 +118,8 @@ Array local_median_deviation(const Array &array, int ir)
 
 Array relative_elevation(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array amin = local_min(array, ir);
   Array amax = local_max(array, ir);
 
@@ -117,6 +128,8 @@ Array relative_elevation(const Array &array, int ir)
 
 Array ruggedness(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array rg(array.shape);
 
   for (int j = 0; j < array.shape.y; j++)
@@ -144,6 +157,8 @@ Array ruggedness(const Array &array, int ir)
 
 Array rugosity(const Array &z, int ir, bool convex)
 {
+  if (!validate_non_empty(z)) return Array();
+
   hmap::Array z_avg = Array(z.shape);
   hmap::Array z_std = Array(z.shape);
   hmap::Array z_skw = Array(z.shape);

@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
 
@@ -17,12 +18,16 @@ namespace hmap::gpu
 
 Array local_aspect_variance(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array alpha = gradient_angle(array);
   return local_variance(alpha, ir);
 }
 
 Array local_max(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_max");
@@ -41,6 +46,8 @@ Array local_max(const Array &array, int ir)
 
 Array local_mean(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = array;
 
   auto run = clwrapper::Run("local_mean");
@@ -63,6 +70,8 @@ Array local_mean(const Array &array, int ir)
 
 Array local_min(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_min");
@@ -81,6 +90,8 @@ Array local_min(const Array &array, int ir)
 
 Array local_median_deviation(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array mean = gpu::local_mean(array, ir);
   Array med = gpu::median_pseudo(array, ir); // TODO exact
   return abs(mean - med);
@@ -88,6 +99,8 @@ Array local_median_deviation(const Array &array, int ir)
 
 Array local_relief(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_relief");
@@ -106,6 +119,8 @@ Array local_relief(const Array &array, int ir)
 
 Array local_skewness(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_skewness");
@@ -124,6 +139,8 @@ Array local_skewness(const Array &array, int ir)
 
 Array local_variance(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_variance");
@@ -142,6 +159,8 @@ Array local_variance(const Array &array, int ir)
 
 Array local_z_score(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_z_score");
@@ -160,6 +179,8 @@ Array local_z_score(const Array &array, int ir)
 
 Array relative_elevation(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array amin = gpu::local_min(array, ir);
   Array amax = gpu::local_max(array, ir);
 
@@ -168,6 +189,8 @@ Array relative_elevation(const Array &array, int ir)
 
 Array relative_elevation_square_kernel(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array amin = hmap::local_min(array, ir);
   Array amax = hmap::local_max(array, ir);
 
@@ -176,6 +199,8 @@ Array relative_elevation_square_kernel(const Array &array, int ir)
 
 Array ruggedness(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array rg(array.shape);
 
   auto run = clwrapper::Run("ruggedness");
@@ -193,6 +218,8 @@ Array ruggedness(const Array &array, int ir)
 
 Array rugosity(const Array &z, int ir, bool convex)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array z_avg(z.shape);
   Array z_std(z.shape);
   Array z_skw(z.shape);
@@ -227,6 +254,8 @@ Array rugosity(const Array &z, int ir, bool convex)
 
 Array topographic_position_index(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("topographic_position_index");
