@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate_curve.hpp"
 
 namespace hmap
@@ -27,6 +28,11 @@ InterpolatorCurve::InterpolatorCurve(std::vector<Point>       points,
                                      InterpolationMethodCurve method)
     : points_data(points), method(method)
 {
+  if (!validate_min_size(points, 2, "Curve points"))
+  {
+    this->interp = [](float) { return Point(0.f, 0.f); };
+    return;
+  }
 
   // normalized cumulaive distance of each points
   this->arc_length.reserve(this->points_data.size());

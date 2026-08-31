@@ -7,12 +7,15 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
 
 Array flow_direction_d8(const Array &z)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array d8 = Array(z.shape);
 
   auto run = clwrapper::Run("flow_direction_d8");

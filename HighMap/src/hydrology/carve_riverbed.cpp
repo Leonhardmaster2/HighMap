@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/transform.hpp"
@@ -25,6 +26,11 @@ Array carve_riverbed(const Array  &z,
                      const Array  *p_noise_x,
                      const Array  *p_noise_y)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, z_river)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+
   const glm::ivec2 shape = z.shape;
   Array            mask(shape);
   Array            zr = z_river;

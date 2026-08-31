@@ -4,6 +4,7 @@
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 
@@ -12,6 +13,8 @@ namespace hmap::gpu
 
 Array select_cavities(const Array &array, int ir, bool concave)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_smooth = array;
   gpu::smooth_cpulse(array_smooth, ir);
   Array c = -gpu::curvature_quadric(array_smooth, 0, CurvatureType::CT_MEAN);
@@ -24,6 +27,8 @@ Array select_cavities(const Array &array, int ir, bool concave)
 
 Array select_valley(const Array &z, int ir, bool ridge_select)
 {
+  if (!validate_non_empty(z)) return Array();
+
   if (ridge_select)
     return gpu::morphological_top_hat(z, ir);
   else

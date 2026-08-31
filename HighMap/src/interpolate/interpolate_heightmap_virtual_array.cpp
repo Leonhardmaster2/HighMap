@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "highmap/coord_frame.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate_array.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
@@ -61,9 +62,13 @@ void flatten_heightmap(const std::vector<const VirtualArray *> &h_sources,
                        const CoordFrame                        &t_target,
                        const ComputeMode                       &cm)
 {
-  if (!h_sources.size() || !t_sources.size())
+  if (!validate_non_empty(h_sources, "h_sources") ||
+      !validate_non_empty(t_sources, "t_sources"))
+    return;
+
+  if (h_sources.size() != t_sources.size())
   {
-    hmap::log::trace("empty h_sources or t_sources");
+    hmap::log::warn("Size mismatch between h_sources and t_sources");
     return;
   }
 

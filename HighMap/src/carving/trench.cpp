@@ -14,6 +14,7 @@
 #include "highmap/geometry/kd_tree.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/profiles.hpp"
 #include "highmap/vectors.hpp"
@@ -42,7 +43,9 @@ void trench(Array                       &z,
             Array                       *p_bending_mask,
             glm::vec4                    bbox)
 {
-  if (path.points.empty()) return;
+  if (!validate_non_empty(z)) return;
+  if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return;
+  if (!validate_non_empty(path, "Path")) return;
 
   const glm::ivec2 &shape = z.shape;
 

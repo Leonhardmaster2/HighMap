@@ -6,6 +6,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -15,6 +16,9 @@ Array sparse_max_convolution(const Array &array,
                              bool         scale_kernel_with_value,
                              float        k_smoothmax)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel)) return Array(array.shape);
+
   const glm::ivec2 &shape = array.shape;
 
   // no negative values, raises issue with atomic max in OpenCL
@@ -49,6 +53,11 @@ Array sparse_max_convolution(const Array &array_values,
                              const Array &kernel,
                              float        k_smoothmax)
 {
+  if (!validate_non_empty(array_values)) return Array();
+  if (!validate_same_shape(array_values, array_sizes))
+    return Array(array_values.shape);
+  if (!validate_non_empty(kernel)) return Array(array_values.shape);
+
   const glm::ivec2 &shape = array_values.shape;
 
   // no negative values, raises issue with atomic max in OpenCL

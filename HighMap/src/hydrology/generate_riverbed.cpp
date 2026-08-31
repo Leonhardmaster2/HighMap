@@ -10,6 +10,7 @@
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/range.hpp"
 #include "highmap/sdf.hpp"
@@ -33,11 +34,11 @@ Array generate_riverbed(const Path &path,
                         Array      *p_noise_y,
                         Array      *p_noise_r)
 {
-  if (path.size() < 2)
-  {
-    hmap::log::error("at least 2 points needed");
-    return Array(shape);
-  }
+  if (!validate_shape(shape)) return Array();
+  if (!validate_min_size(path.points, 2, "Path points")) return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+  if (p_noise_r && !validate_same_shape(shape, *p_noise_r)) return Array();
 
   Array sdf;
   if (bezier_smoothing)

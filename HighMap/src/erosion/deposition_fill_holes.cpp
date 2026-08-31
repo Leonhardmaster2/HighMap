@@ -5,6 +5,7 @@
 #include "highmap/blending.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 
@@ -16,6 +17,8 @@ void deposition_fill_holes(Array &z,
                            float  deposition_strength,
                            int    iterations)
 {
+  if (!validate_non_empty(z)) return;
+
   Array zd;
 
   for (int it = 0; it < iterations; ++it)

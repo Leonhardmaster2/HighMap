@@ -8,6 +8,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap::gpu
@@ -19,6 +20,9 @@ Array harmonic_interpolation(const Array &array,
                              float        tolerance,
                              float        omega)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, mask_fixed_values)) return Array();
+
   Array u = array;
 
   // If omega <= 0, analytically compute the optimal SOR relaxation factor
@@ -90,6 +94,11 @@ Array harmonic_interpolation(const Array &array,
                              float        tolerance,
                              float        omega)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, mask_fixed_values)) return Array();
+  if (!validate_same_shape(array, dx)) return Array();
+  if (!validate_same_shape(array, dy)) return Array();
+
   Array u = array;
 
   if (omega <= 0.f)

@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/internal/string_utils.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 
 namespace hmap
@@ -51,7 +52,8 @@ void export_tiled(const std::string &fname_radical,
                   bool               overlapping_edges,
                   bool               reverse_tile_y_indexing)
 {
-  if (tiling.x <= 0 || tiling.y <= 0) return;
+  if (!validate_non_empty(array)) return;
+  if (!validate_shape(tiling)) return;
 
   const float vmin = array.min();
   const float vmax = array.max();

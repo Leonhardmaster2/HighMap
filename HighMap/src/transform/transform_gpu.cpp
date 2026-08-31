@@ -7,12 +7,15 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
 
 void rotate(Array &array, float angle, bool zoom_in)
 {
+  if (!validate_non_empty(array)) return;
+
   auto run = clwrapper::Run("rotate_hmap");
   run.bind_imagef("in", array.vector, array.shape.x, array.shape.y);
   run.bind_imagef("out",

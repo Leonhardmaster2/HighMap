@@ -12,6 +12,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/profiles.hpp"
@@ -45,6 +46,11 @@ void hydraulic_procedural(Array         &z,
                           Array         *p_ridge_mask,
                           glm::vec4      bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_kp_multiplier && !validate_same_shape(z, *p_kp_multiplier)) return;
+  if (p_angle_shift && !validate_same_shape(z, *p_angle_shift)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
 
   // ---Resolve derived parameters
 
@@ -218,6 +224,12 @@ void hydraulic_procedural_fbm(Array         &z,
                               Array         *p_ridge_mask,
                               glm::vec4      bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_kp_multiplier && !validate_same_shape(z, *p_kp_multiplier)) return;
+  if (p_angle_shift && !validate_same_shape(z, *p_angle_shift)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
+
   float a = 1.f;
   float m = 1.f;
 
@@ -290,6 +302,13 @@ void hydraulic_procedural_fbm(Array         &z,
                               Array         *p_ridge_mask,
                               glm::vec4      bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_kp_multiplier && !validate_same_shape(z, *p_kp_multiplier)) return;
+  if (p_angle_shift && !validate_same_shape(z, *p_angle_shift)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
+
   if (!p_mask)
   {
     hydraulic_procedural_fbm(z,

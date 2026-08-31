@@ -6,6 +6,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 
 namespace hmap::gpu
@@ -15,6 +16,9 @@ Array bilateral_filter(const Array &array,
                        const Array &kernel1d,
                        float        kernel1d_value_scaling)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(kernel2d)) return Array(array.shape);
+  if (!validate_non_empty(kernel1d)) return Array(array.shape);
 
   const glm::ivec2 shape = array.shape;
 
@@ -46,6 +50,8 @@ Array bilateral_filter(const Array &array,
 
 Array bilateral_filter(const Array &array, int ir, float kernel1d_value_scaling)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array kernel2d = cubic_pulse({2 * ir + 1, 2 * ir + 1});
   Array kernel1d = cubic_pulse({2 * ir + 1, 1});
   return bilateral_filter(array, kernel2d, kernel1d, kernel1d_value_scaling);

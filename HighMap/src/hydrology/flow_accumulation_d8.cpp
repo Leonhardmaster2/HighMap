@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 
 // neighbor pattern search based on D8 flow direction neighborhood
@@ -28,6 +29,8 @@ namespace hmap
 
 Array d8_compute_ndip(const Array &d8)
 {
+  if (!validate_non_empty(d8)) return Array();
+
   Array nidp = Array(d8.shape); // output
 
   const std::vector<int> di = HMAP_D8_DI;
@@ -50,6 +53,8 @@ Array d8_compute_ndip(const Array &d8)
 
 Array flow_accumulation_d8(const Array &z)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array facc = constant(z.shape, 1.f);
   Array d8 = flow_direction_d8(z);
   Array nidp = d8_compute_ndip(d8);
@@ -101,6 +106,8 @@ Array flow_accumulation_d8(const Array &z)
 
 Array flow_direction_d8(const Array &z)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array d8 = Array(z.shape);
 
   const std::vector<int>   di = HMAP_D8_DI;

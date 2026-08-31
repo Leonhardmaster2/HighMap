@@ -13,6 +13,7 @@
 #include <opencv2/core.hpp>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/interpolate/interpolate_array.hpp"
 #include "highmap/range.hpp"
@@ -26,6 +27,8 @@ void Array::argmax(float &max, int &im, int &jm) const
   max = -std::numeric_limits<float>::infinity();
   im = -1;
   jm = -1;
+
+  if (!validate_non_empty(*this)) return;
 
   for (int j = 0; j < shape.y; j++)
     for (int i = 0; i < shape.x; i++)
@@ -117,6 +120,8 @@ void Array::dump_histogram(int bins, const std::string &msg) const
 
 Array Array::extract_slice(glm::ivec4 idx) const
 {
+  if (!validate_slice(*this, idx)) return Array();
+
   Array array_out = Array(glm::ivec2(idx.y - idx.x, idx.w - idx.z));
 
   for (int j = idx.z; j < idx.w; j++)
@@ -269,26 +274,32 @@ glm::ivec2 Array::linear_index_reverse(int k) const
 
 float Array::max() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return *std::max_element(this->vector.begin(), this->vector.end());
 }
 
 float Array::mean() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return this->sum() / (float)this->size();
 };
 
 float Array::median() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return compute_median(this->vector);
 }
 
 float Array::min() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return *std::min_element(this->vector.begin(), this->vector.end());
 };
 
 void Array::normalize()
 {
+  if (!validate_non_empty(*this)) return;
+
   float sum = this->sum();
 
   if (sum != 0.f)
@@ -300,11 +311,13 @@ void Array::normalize()
 
 float Array::ptp() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return this->max() - this->min();
 }
 
 glm::vec2 Array::range() const
 {
+  if (!validate_non_empty(*this)) return glm::vec2(0.f, 0.f);
   auto [min_it, max_it] = std::minmax_element(this->vector.begin(),
                                               this->vector.end());
   return glm::vec2(*min_it, *max_it);
@@ -312,6 +325,13 @@ glm::vec2 Array::range() const
 
 glm::vec2 Array::range_percentile(float p_low, float p_high, size_t bins) const
 {
+  if (!validate_non_empty(*this) ||
+      !validate_parameter_range(glm::vec2(p_low, p_high),
+                                0.f,
+                                1.f,
+                                "Percentile range"))
+    return glm::vec2(0.f, 0.f);
+
   const std::vector<float> &data = this->vector;
 
   const glm::vec2 range = this->range();
@@ -369,6 +389,8 @@ Array Array::resample_to_shape(glm::ivec2 new_shape) const
 
 Array Array::resample_to_shape_bicubic(glm::ivec2 new_shape) const
 {
+  if (!validate_shape(new_shape)) return Array();
+
   Array array_out = Array(new_shape);
   interpolate_array_bicubic(*this, array_out);
 
@@ -377,6 +399,8 @@ Array Array::resample_to_shape_bicubic(glm::ivec2 new_shape) const
 
 Array Array::resample_to_shape_bilinear(glm::ivec2 new_shape) const
 {
+  if (!validate_shape(new_shape)) return Array();
+
   Array array_out = Array(new_shape);
   interpolate_array_bilinear(*this, array_out);
 
@@ -385,6 +409,8 @@ Array Array::resample_to_shape_bilinear(glm::ivec2 new_shape) const
 
 Array Array::resample_to_shape_nearest(glm::ivec2 new_shape) const
 {
+  if (!validate_shape(new_shape)) return Array();
+
   Array array_out = Array(new_shape);
   interpolate_array_nearest(*this, array_out);
 
@@ -401,6 +427,8 @@ std::vector<float> Array::row_to_vector(int i)
 
 void Array::set_slice(glm::ivec4 idx, float value)
 {
+  if (!validate_slice(*this, idx)) return;
+
   for (int i = idx.x; i < idx.y; i++)
     for (int j = idx.z; j < idx.w; j++)
       (*this)(i, j) = value;
@@ -408,6 +436,8 @@ void Array::set_slice(glm::ivec4 idx, float value)
 
 void Array::set_slice(glm::ivec4 idx, const Array &array)
 {
+  if (!validate_slice_for_array(*this, idx, array)) return;
+
   for (int i = idx.x; i < idx.y; i++)
     for (int j = idx.z; j < idx.w; j++)
       (*this)(i, j) = array(i - idx.x, j - idx.z);
@@ -420,6 +450,8 @@ int Array::size() const
 
 float Array::std() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
+
   float mean = this->mean();
   Array a2 = (*this) - mean;
   a2 *= a2;
@@ -428,11 +460,13 @@ float Array::std() const
 
 float Array::sum() const
 {
+  if (!validate_non_empty(*this)) return 0.f;
   return std::accumulate(this->vector.begin(), this->vector.end(), 0.f);
 }
 
 std::vector<float> Array::unique_values() const
 {
+  if (!validate_non_empty(*this)) return {};
   std::vector<float> v = this->vector;
   vector_unique_values(v);
   return v;

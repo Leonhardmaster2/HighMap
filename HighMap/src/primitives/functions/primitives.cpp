@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
 
@@ -22,6 +23,12 @@ Array biquad_pulse(glm::ivec2   shape,
                    glm::vec2    center,
                    glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array          array = Array(shape);
   BiquadFunction f = BiquadFunction(gain, center);
 
@@ -37,6 +44,8 @@ Array biquad_pulse(glm::ivec2   shape,
 
 Array biquad_pulse_x(glm::ivec2 shape, glm::vec4 bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array = Array(shape);
 
   auto fct = [](float x, float, float)
@@ -57,6 +66,8 @@ Array biquad_pulse_x(glm::ivec2 shape, glm::vec4 bbox)
 
 Array biquad_pulse_y(glm::ivec2 shape, glm::vec4 bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array = Array(shape);
 
   auto fct = [](float, float y, float)
@@ -83,6 +94,12 @@ Array bump(glm::ivec2   shape,
            glm::vec2    center,
            glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array        array = Array(shape);
   BumpFunction f = BumpFunction(gain, center);
 
@@ -105,6 +122,12 @@ Array bump_lorentzian(glm::ivec2   shape,
                       glm::vec2    center,
                       glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   float radius_sq = radius * radius;
@@ -137,6 +160,8 @@ Array bump_lorentzian(glm::ivec2   shape,
 
 Array constant(glm::ivec2 shape, float value)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array = Array(shape);
   for (auto &v : array.vector)
     v = value;
@@ -149,6 +174,10 @@ Array cubic_pulse(glm::ivec2   shape,
                   glm::vec2    center,
                   glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   auto lambda = [center](float x, float y, float)
@@ -182,6 +211,12 @@ Array disk(glm::ivec2   shape,
            glm::vec2    center,
            glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array        array = Array(shape);
   DiskFunction f = DiskFunction(radius, slope, center);
 
@@ -203,6 +238,12 @@ Array gaussian_pulse(glm::ivec2   shape,
                      glm::vec2    center,
                      glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array                 array = Array(shape);
   GaussianPulseFunction f = GaussianPulseFunction(sigma, center);
 
@@ -228,6 +269,10 @@ Array paraboloid(glm::ivec2   shape,
                  glm::vec2    center,
                  glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   float ca = std::cos(-angle / 180.f * M_PI);
@@ -266,6 +311,12 @@ Array rectangle(glm::ivec2   shape,
                 glm::vec2    center,
                 glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array             array = Array(shape);
   RectangleFunction f = RectangleFunction(rx, ry, angle, slope, center);
 
@@ -288,6 +339,12 @@ Array slope(glm::ivec2   shape,
             glm::vec2    center,
             glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array               array = Array(shape);
   hmap::SlopeFunction f = hmap::SlopeFunction(angle, slope, center);
 
@@ -307,6 +364,10 @@ Array smooth_cosine(glm::ivec2   shape,
                     glm::vec2    center,
                     glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   auto lambda = [center](float x, float y, float)
@@ -340,6 +401,12 @@ Array step(glm::ivec2   shape,
            glm::vec2    center,
            glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array              array = Array(shape);
   hmap::StepFunction f = hmap::StepFunction(angle, slope, center);
 
@@ -362,6 +429,10 @@ Array get_primitive_base(const PrimitiveType &primitive_type,
                          glm::vec2            center,
                          glm::vec4            bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   switch (primitive_type)
   {
   case PrimitiveType::PRIM_BIQUAD_PULSE:

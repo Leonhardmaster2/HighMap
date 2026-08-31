@@ -8,6 +8,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -234,6 +235,8 @@ Array reverse_midpoint(const Array  &array,
                        float         noise_scale,
                        float         threshold)
 {
+  if (!validate_non_empty(array)) return Array();
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-1.f, 1.f);
 

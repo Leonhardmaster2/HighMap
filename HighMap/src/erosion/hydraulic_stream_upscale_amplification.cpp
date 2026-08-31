@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/multiscale/upscaling.hpp"
 
@@ -20,6 +21,8 @@ void hydraulic_stream_upscale_amplification(Array &z,
                                             int    ir,
                                             float  clipping_ratio)
 {
+  if (!validate_non_empty(z)) return;
+
   auto lambda_erode =
       [c_erosion, talus_ref, ir, clipping_ratio](Array &x,
                                                  float  current_scaling)
@@ -46,6 +49,9 @@ void hydraulic_stream_upscale_amplification(Array &z,
                                             int    ir,
                                             float  clipping_ratio)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   if (!p_mask)
     hydraulic_stream_upscale_amplification(z,
                                            c_erosion,

@@ -12,6 +12,7 @@
 
 #include "highmap/functions.hpp"
 #include "highmap/geometry/cell_path.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -64,7 +65,8 @@ void add_noise(std::vector<glm::ivec2> &indices,
                float                    persistence,
                float                    lacunarity)
 {
-  if (indices.size() < 2) return;
+  if (!validate_shape(shape)) return;
+  if (!validate_min_size(indices, 2, "CellPath indices")) return;
 
   std::unique_ptr<NoiseFunction> p = create_noise_function_from_type(noise_type,
                                                                      {kw, kw},

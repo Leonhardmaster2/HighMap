@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -20,7 +21,14 @@ Array base_elevation(glm::ivec2                             shape,
                      const Array                           *p_stretching,
                      glm::vec4                              bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array = Array(shape);
+
+  if (values.empty() || values[0].empty()) return array;
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return array;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return array;
+  if (p_stretching && !validate_same_shape(array, *p_stretching)) return array;
 
   // get number of control points per direction
   size_t ni = values.size();

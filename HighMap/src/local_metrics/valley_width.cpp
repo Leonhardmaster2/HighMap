@@ -3,6 +3,7 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap
@@ -10,6 +11,8 @@ namespace hmap
 
 Array valley_width(const Array &z, int ir, bool ridge_select)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array vw = z;
 
   if (ridge_select) vw *= -1.f;
@@ -27,6 +30,8 @@ namespace hmap::gpu
 
 Array valley_width(const Array &z, int ir, bool ridge_select)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array vw = z;
 
   if (ridge_select) vw *= -1.f;

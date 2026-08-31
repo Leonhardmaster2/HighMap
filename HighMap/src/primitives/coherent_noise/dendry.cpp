@@ -23,6 +23,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/internal/dendry_array_control_function.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -45,6 +46,11 @@ Array dendry(glm::ivec2    shape,
              glm::vec4     bbox,
              int           subsampling)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_non_empty(control_array)) return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   int nbuffer = (int)(control_function_overlap * control_array.shape.x);
@@ -115,6 +121,10 @@ Array dendry(glm::ivec2     shape,
              const Array *p_noise_y,
              glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   std::unique_ptr<XyControlFunction> control_function(

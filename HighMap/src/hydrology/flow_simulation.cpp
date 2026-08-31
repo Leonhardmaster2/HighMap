@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -32,6 +33,9 @@ Array flow_simulation(const Array &z,
                       float        flux_diffusion_strength,
                       float        dry_out_ratio)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, depth_map)) return Array();
+
   const glm::ivec2 shape = z.shape;
 
   Array d = water_height * depth_map;
@@ -117,6 +121,9 @@ Array flow_simulation_viscous(const Array &z,
                               float        viscosity,
                               float        power)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, depth_map)) return Array();
+
   const glm::ivec2 shape = z.shape;
 
   Array d = water_height * depth_map;

@@ -10,6 +10,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
@@ -28,6 +29,11 @@ Array watershed_ridge(const Array        &z,
                       const Array        *p_noise_y,
                       const Array        *p_scaling)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+  if (p_scaling && !validate_same_shape(z, *p_scaling)) return Array();
+
   const glm::ivec2 shape = z.shape;
 
   // --- distance transform to main channel
@@ -92,6 +98,12 @@ Array watershed_ridge(const Array        &z,
                       const Array        *p_noise_y,
                       const Array        *p_scaling)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_mask && !validate_same_shape(z, *p_mask)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+  if (p_scaling && !validate_same_shape(z, *p_scaling)) return Array();
+
   if (!p_mask)
     return watershed_ridge(z,
                            amplitude,

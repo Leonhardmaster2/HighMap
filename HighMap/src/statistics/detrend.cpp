@@ -2,12 +2,15 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array detrend_reg(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out = Array(array.shape);
 
   // --- columns

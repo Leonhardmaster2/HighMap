@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
 
@@ -19,6 +20,8 @@ void thermal_schott(Array       &z,
                     int          iterations,
                     float        intensity)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   // https://www.shadertoy.com/view/XX2XWD
 
   std::vector<int>    di = HMAP_DI;
@@ -64,6 +67,9 @@ void thermal_schott(Array       &z,
                     int          iterations,
                     float        intensity)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   if (!p_mask)
     thermal_schott(z, talus, iterations, intensity);
   else
@@ -79,6 +85,8 @@ void thermal_schott(Array      &z,
                     int         iterations,
                     float       intensity)
 {
+  if (!validate_non_empty(z)) return;
+
   Array talus_map = constant(z.shape, talus);
   thermal_schott(z, talus_map, iterations, intensity);
 }
@@ -89,6 +97,9 @@ void thermal_schott(Array      &z,
                     int         iterations,
                     float       intensity)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   if (!p_mask)
     thermal_schott(z, talus, iterations, intensity);
   else

@@ -10,6 +10,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/transform.hpp"
@@ -19,6 +20,8 @@ namespace hmap
 
 void flip_lr(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < (int)(0.5f * array.shape.x); i++)
       std::swap(array(i, j), array(array.shape.x - i - 1, j));
@@ -26,6 +29,8 @@ void flip_lr(Array &array)
 
 void flip_ud(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   for (int j = 0; j < (int)(0.5f * array.shape.y); j++)
     for (int i = 0; i < array.shape.x; i++)
       std::swap(array(i, j), array(i, array.shape.y - j - 1));
@@ -38,6 +43,8 @@ void radial_displacement_to_xy(const Array &dr,
                                glm::vec2    center,
                                glm::vec4    bbox)
 {
+  if (!validate_non_empty(dr)) return;
+
   glm::ivec2 shape = dr.shape;
   dx = Array(shape);
   dy = Array(shape);
@@ -60,24 +67,32 @@ void radial_displacement_to_xy(const Array &dr,
 
 void rot180(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   flip_lr(array);
   flip_ud(array);
 }
 
 void rot270(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   array = transpose(array);
   flip_lr(array);
 }
 
 void rot90(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   array = transpose(array);
   flip_ud(array);
 }
 
 void rotate(Array &array, float angle, bool zoom_in, bool zero_padding)
 {
+  if (!validate_non_empty(array)) return;
+
   float ca = std::cos(-angle / 180.f * M_PI);
   float sa = std::sin(-angle / 180.f * M_PI);
 
@@ -120,6 +135,8 @@ void rotate(Array &array, float angle, bool zoom_in, bool zero_padding)
 
 void rotate_displacement(const Array &delta, float angle, Array &dx, Array &dy)
 {
+  if (!validate_non_empty(delta)) return;
+
   const float alpha = angle / 180.f * M_PI;
   dx = delta * std::cos(alpha);
   dy = delta * std::sin(alpha);
@@ -133,6 +150,12 @@ Array translate(const Array &array,
                 const Array *p_noise_y,
                 glm::vec4    bbox)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x))
+    return Array(array.shape);
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y))
+    return Array(array.shape);
+
   hmap::ArrayFunction f = hmap::ArrayFunction(array,
                                               glm::vec2(1.f, 1.f),
                                               periodic);
@@ -159,6 +182,8 @@ Array translate(const Array &array,
 
 Array transpose(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_out = Array(glm::ivec2(array.shape.y, array.shape.x));
 
   for (int j = 0; j < array.shape.y; j++)
@@ -176,6 +201,11 @@ Array zoom(const Array &array,
            const Array *p_noise_y,
            glm::vec4    bbox)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x))
+    return Array(array.shape);
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y))
+    return Array(array.shape);
 
   hmap::ArrayFunction f = hmap::ArrayFunction(
       array,

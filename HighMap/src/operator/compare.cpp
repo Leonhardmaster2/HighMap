@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -11,6 +12,8 @@ Array compare(const Array &a,
               float        slice_x_pos,
               float        slice_y_pos)
 {
+  if (!validate_non_empty(a) || !validate_same_shape(a, b)) return Array();
+
   const glm::ivec2 &shape = a.shape;
   Array             out(shape);
 

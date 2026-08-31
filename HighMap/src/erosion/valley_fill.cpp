@@ -4,6 +4,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -22,6 +23,9 @@ void valley_fill(Array       &z,
                  const Array *p_noise,
                  Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_noise && !validate_same_shape(z, *p_noise)) return;
+
   if (zmax <= zmin)
   {
     zmin = z.min();
@@ -76,6 +80,10 @@ void valley_fill(Array       &z,
                  const Array *p_noise,
                  Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_noise && !validate_same_shape(z, *p_noise)) return;
+
   if (!p_mask)
   {
     gpu::valley_fill(z,

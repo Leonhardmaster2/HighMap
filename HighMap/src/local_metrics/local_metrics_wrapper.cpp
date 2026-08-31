@@ -1,9 +1,7 @@
-/* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
- * Public License. The full license is in the file LICENSE, distributed with
- * this software. */
 #include <stdexcept>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/local_metrics.hpp"
 
 namespace hmap::gpu
@@ -11,6 +9,8 @@ namespace hmap::gpu
 
 Array local_metrics(const Array &array, int ir, LocalMetrics metric)
 {
+  if (!validate_non_empty(array)) return Array();
+
   // clang-format off
   switch (metric)
   {

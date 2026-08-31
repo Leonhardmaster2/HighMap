@@ -10,12 +10,18 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 void Point::set_value_from_array(const Array &array, glm::vec4 bbox)
 {
+  if (!validate_non_empty(array))
+  {
+    this->v = 0.f;
+    return;
+  }
   // scale to unit interval
   float xn = (this->x - bbox.x) / (bbox.y - bbox.x);
   float yn = (this->y - bbox.z) / (bbox.w - bbox.z);

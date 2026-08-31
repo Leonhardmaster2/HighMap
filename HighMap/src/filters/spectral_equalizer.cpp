@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 
@@ -19,6 +20,9 @@ Array spectral_equalizer(const Array              &array,
                          int                       ir_min,
                          int                       ir_max)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_non_empty(weights, "weights")) return array;
+
   const glm::ivec2 &shape = array.shape;
   const size_t      nbands = weights.size();
 
@@ -92,6 +96,10 @@ Array spectral_equalizer(const Array              &array,
                          int                       ir_max,
                          const Array              *p_mask)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_mask && !validate_same_shape(array, *p_mask)) return Array(array.shape);
+  if (!validate_non_empty(weights, "weights")) return array;
+
   if (!p_mask)
   {
     return spectral_equalizer(array, weights, ir_min, ir_max);

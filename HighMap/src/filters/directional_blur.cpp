@@ -6,13 +6,18 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
+#include "highmap/operator.hpp"
 
 namespace hmap::gpu
 {
 
 void directional_blur(Array &array, float radius, const Array &angle, int steps)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_same_shape(array, angle)) return;
+
   const glm::ivec2 &shape = array.shape;
 
   Array out(shape);
@@ -38,16 +43,13 @@ void directional_blur(Array       &array,
                       const Array *p_mask,
                       int          steps)
 {
-  if (!p_mask)
-  {
-    directional_blur(array, radius, angle, steps);
-  }
-  else
-  {
-    Array array_f = array;
-    directional_blur(array_f, radius, angle, steps);
-    array = lerp(array, array_f, *(p_mask));
-  }
+  if (!validate_non_empty(array)) return;
+  if (!validate_same_shape(array, angle)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
+  apply_with_mask(array,
+                  p_mask,
+                  [&](Array &a) { directional_blur(a, radius, angle, steps); });
 }
 
 } // namespace hmap::gpu

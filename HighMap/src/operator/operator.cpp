@@ -6,6 +6,7 @@
 #include <utility>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -13,6 +14,8 @@ namespace hmap
 
 void add_kernel(Array &array, const Array &kernel, int ic, int jc)
 {
+  if (!validate_non_empty(array) || !validate_non_empty(kernel)) return;
+
   // truncate kernel to make it fit into the heightmap array
   int nk_i0 = (int)(std::floor(0.5f * kernel.shape.x)); // left
   int nk_i1 = kernel.shape.x - nk_i0;                   // right
@@ -41,6 +44,8 @@ void add_kernel_maximum_smooth(Array       &array,
                                int          ic,
                                int          jc)
 {
+  if (!validate_non_empty(array) || !validate_non_empty(kernel)) return;
+
   // truncate kernel to make it fit into the heightmap array
   int nk_i0 = (int)(std::floor(0.5f * kernel.shape.x)); // left
   int nk_i1 = kernel.shape.x - nk_i0;                   // right
@@ -70,6 +75,20 @@ void add_kernel_maximum_smooth(Array       &array,
 
 Array hstack(const Array &array1, const Array &array2) // friend function
 {
+  if (!validate_non_empty(array1) || !validate_non_empty(array2))
+    return Array();
+
+  if (array1.shape.y != array2.shape.y)
+  {
+    hmap::log::warn(std::source_location::current(),
+                    "hstack height mismatch: lhs is ({}, {}), rhs is ({}, {})",
+                    array1.shape.x,
+                    array1.shape.y,
+                    array2.shape.x,
+                    array2.shape.y);
+    return Array();
+  }
+
   Array array_out = Array(
       glm::ivec2(array1.shape.x + array2.shape.x, array1.shape.y));
 
@@ -86,6 +105,8 @@ Array hstack(const Array &array1, const Array &array2) // friend function
 
 void swap(Array &a, Array &b)
 {
+  if (!validate_non_empty(a) || !validate_same_shape(a, b)) return;
+
   for (int j = 0; j < a.shape.y; j++)
     for (int i = 0; i < a.shape.x; i++)
       std::swap(a(i, j), b(i, j));
@@ -93,6 +114,20 @@ void swap(Array &a, Array &b)
 
 Array vstack(const Array &array1, const Array &array2) // friend function
 {
+  if (!validate_non_empty(array1) || !validate_non_empty(array2))
+    return Array();
+
+  if (array1.shape.x != array2.shape.x)
+  {
+    hmap::log::warn(std::source_location::current(),
+                    "vstack width mismatch: lhs is ({}, {}), rhs is ({}, {})",
+                    array1.shape.x,
+                    array1.shape.y,
+                    array2.shape.x,
+                    array2.shape.y);
+    return Array();
+  }
+
   Array array_out = Array(
       glm::ivec2(array1.shape.x, array1.shape.y + array2.shape.y));
 

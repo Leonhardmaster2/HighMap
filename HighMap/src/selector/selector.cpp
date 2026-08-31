@@ -10,6 +10,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
@@ -20,6 +21,8 @@ namespace hmap
 
 Array scan_mask(const Array &array, float contrast, float brightness)
 {
+  if (!validate_non_empty(array)) return Array();
+
   brightness *= 0.5f;
   float low = std::clamp(contrast - brightness, 0.f, 1.f);
   float high = std::clamp(contrast + brightness, 0.f, 1.f);
@@ -42,6 +45,8 @@ Array scan_mask(const Array &array, float contrast, float brightness)
 
 Array select_angle(const Array &array, float angle, float sigma, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
 
   // prefiltering
@@ -55,6 +60,8 @@ Array select_angle(const Array &array, float angle, float sigma, int ir)
 
 Array select_blob_log(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   smooth_cpulse(c, ir);
   c = -laplacian(c);
@@ -64,6 +71,8 @@ Array select_blob_log(const Array &array, int ir)
 
 Array select_cavities(const Array &array, int ir, bool concave)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_smooth = array;
   smooth_cpulse(array_smooth, ir);
   Array c = -curvature_quadric(array_smooth, 0, CurvatureType::CT_MEAN);
@@ -78,6 +87,8 @@ Array select_elevation_slope(const Array &array,
                              float        gradient_scale,
                              float        vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array da = gradient_norm(array) * gradient_scale * (float)array.shape.x;
   clamp_max(da, vmax);
 
@@ -86,11 +97,14 @@ Array select_elevation_slope(const Array &array,
 
 Array select_elevation_slope(const Array &array, float gradient_scale)
 {
+  if (!validate_non_empty(array)) return Array();
   return select_elevation_slope(array, gradient_scale, array.max());
 }
 
 Array select_eq(const Array &array, float value)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -100,6 +114,8 @@ Array select_eq(const Array &array, float value)
 
 Array select_gt(const Array &array, float value)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -109,6 +125,8 @@ Array select_gt(const Array &array, float value)
 
 Array select_gradient_angle(const Array &array, float angle)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = gradient_angle(array);
   float alpha = angle / 180.f * M_PI;
 
@@ -120,6 +138,8 @@ Array select_gradient_angle(const Array &array, float angle)
 
 Array select_gradient_binary(const Array &array, float talus_center)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = gradient_norm(array);
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -131,6 +151,8 @@ Array select_gradient_exp(const Array &array,
                           float        talus_center,
                           float        talus_sigma)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = gradient_norm(array);
   c -= talus_center;
   c = exp(-c * c / (2.f * talus_sigma * talus_sigma));
@@ -141,6 +163,8 @@ Array select_gradient_inv(const Array &array,
                           float        talus_center,
                           float        talus_sigma)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = gradient_norm(array);
   c -= talus_center;
   c = 1.f / (1.f + c * c / (talus_sigma * talus_sigma));
@@ -149,6 +173,8 @@ Array select_gradient_inv(const Array &array,
 
 Array select_interval(const Array &array, float value1, float value2)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -165,6 +191,8 @@ Array select_inward_outward_slope(const Array &array,
                                   glm::vec2    center,
                                   glm::vec4    bbox)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = Array(array.shape);
 
   glm::vec2 shift = {bbox.x, bbox.z};
@@ -197,6 +225,8 @@ Array select_inward_outward_slope(const Array &array,
 
 Array select_lt(const Array &array, float value)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 0; i < array.shape.x; i++)
@@ -206,6 +236,8 @@ Array select_lt(const Array &array, float value)
 
 Array select_midrange(const Array &array, float gain, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = array;
   hmap::remap(c, -1.f, 1.f, vmin, vmax);
 
@@ -226,6 +258,7 @@ Array select_midrange(const Array &array, float gain, float vmin, float vmax)
 
 Array select_midrange(const Array &array, float gain)
 {
+  if (!validate_non_empty(array)) return Array();
   return select_midrange(array, gain, array.min(), array.max());
 }
 
@@ -239,6 +272,8 @@ void select_multiband3(const Array &array,
                        float        vmin,
                        float        vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   band_low = Array(array.shape);
   band_mid = Array(array.shape);
   band_high = Array(array.shape);
@@ -281,6 +316,8 @@ void select_multiband3(const Array &array,
                        float        ratio2,
                        float        overlap)
 {
+  if (!validate_non_empty(array)) return;
+
   float vmin = array.min();
   float vmax = array.max();
 
@@ -297,6 +334,8 @@ void select_multiband3(const Array &array,
 
 Array select_pulse(const Array &array, float value, float sigma)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array c = Array(array.shape);
   float a = 1.f / sigma;
   float b = -value / sigma;
@@ -312,6 +351,8 @@ Array select_pulse(const Array &array, float value, float sigma)
 
 Array select_rivers(const Array &array, float talus_ref, float clipping_ratio)
 {
+  if (!validate_non_empty(array)) return Array();
+
   // see erosion/hydraulic_stream
   Array facc = flow_accumulation_dinf(array, talus_ref);
   float vmax = clipping_ratio * std::pow(facc.sum() / (float)facc.size(), 0.5f);
@@ -327,6 +368,10 @@ Array select_transitions(const Array &array1,
                          const Array &array2,
                          const Array &array_blend)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2) ||
+      !validate_same_shape(array1, array_blend))
+    return Array();
+
   // set the whole mask to 1 and look for "non-transitioning" regions
   Array mask = Array(array1.shape, 1.f);
 
@@ -386,6 +431,8 @@ Array select_transitions(const Array &array1,
 
 Array select_valley(const Array &z, int ir, bool ridge_select)
 {
+  if (!validate_non_empty(z)) return Array();
+
   if (ridge_select)
     return morphological_top_hat(z, ir);
   else

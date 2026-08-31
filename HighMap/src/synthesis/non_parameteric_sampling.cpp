@@ -12,6 +12,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/operator.hpp"
@@ -50,6 +51,9 @@ Array non_parametric_sampling(const Array  &array,
                               std::uint32_t seed,
                               float         error_threshold)
 {
+  if (!validate_non_empty(array) || !validate_shape(patch_shape))
+    return Array();
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis;
 
@@ -75,8 +79,6 @@ Array non_parametric_sampling(const Array  &array,
         is_cell_done(i, j) = 1;
       }
   }
-
-  array_out.infos();
 
   // --- build queue (number of neighbors, index (i, j))
 

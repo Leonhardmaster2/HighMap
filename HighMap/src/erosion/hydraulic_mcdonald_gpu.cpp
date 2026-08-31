@@ -16,6 +16,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -181,6 +182,8 @@ void hydraulic_mcdonald(Array        &z,
                         float         suspension_rate,
                         float         exit_slope)
 {
+  if (!validate_non_empty(z)) return;
+
   Array sed(z.shape), dis(z.shape), mx(z.shape), my(z.shape);
 
   detail::mcdonald_run_steps(z,
@@ -239,6 +242,8 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
                                    float                   suspension_rate,
                                    float                   exit_slope)
 {
+  if (!validate_non_empty(z)) return;
+
   int nlevels = (int)steps_per_level.size();
   if (nlevels == 0) return;
 

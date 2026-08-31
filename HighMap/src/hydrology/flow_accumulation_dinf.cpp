@@ -13,6 +13,7 @@
 #include "highmap/functions.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
@@ -40,6 +41,8 @@ namespace hmap
 
 Array flow_accumulation_dinf(const Array &z, float talus_ref)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2       &shape = z.shape;
   const std::vector<int> &di = HMAP_DINF_DI;
   const std::vector<int> &dj = HMAP_DINF_DJ;
@@ -117,6 +120,10 @@ Array flow_accumulation_dinf_perturbed(const Array  &z,
                                        const Array  *p_perturb_scaling,
                                        glm::vec4     bbox)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_perturb_scaling && !validate_same_shape(z, *p_perturb_scaling))
+    return Array();
+
   const glm::ivec2 shape = z.shape;
   Array            facc(shape);
 
@@ -142,6 +149,8 @@ Array flow_accumulation_dinf_perturbed(const Array  &z,
 
 std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 {
+  if (!validate_non_empty(z)) return {};
+
   const std::vector<int>   di = HMAP_DINF_DI;
   const std::vector<int>   dj = HMAP_DINF_DJ;
   const std::vector<float> c = HMAP_DINF_C;
@@ -185,6 +194,8 @@ std::vector<Array> flow_direction_dinf(const Array &z, float talus_ref)
 
 std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
 {
+  if (!validate_non_empty(z)) return {};
+
   const glm::ivec2         &shape = z.shape;
   const std::vector<int>   &di = HMAP_DINF_DI;
   const std::vector<int>   &dj = HMAP_DINF_DJ;
@@ -241,6 +252,8 @@ std::vector<float> flow_direction_dinf_flat(const Array &z, float talus_ref)
 
 Array flow_direction_dinf_angle(const Array &z, float talus_ref)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const std::vector<int>   di = HMAP_DINF_DI;
   const std::vector<int>   dj = HMAP_DINF_DJ;
   const std::vector<float> c = HMAP_DINF_C;

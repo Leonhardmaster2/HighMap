@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/shortest_path.hpp"
 
 namespace hmap
@@ -24,6 +25,8 @@ Path find_cut_path_dijkstra(const Array   &z,
                             bool           favor_lower_elevation,
                             bool           favor_sinks)
 {
+  if (!validate_non_empty(z)) return Path();
+
   const int nx = z.shape.x;
   const int ny = z.shape.y;
 
@@ -82,6 +85,8 @@ Path find_cut_path_midpoint(const Array   &z,
                             bool           favor_lower_elevation,
                             bool           favor_sinks)
 {
+  if (!validate_non_empty(z)) return Path();
+
   const int nx = z.shape.x;
   const int ny = z.shape.y;
 

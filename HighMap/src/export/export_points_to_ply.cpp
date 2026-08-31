@@ -8,6 +8,7 @@
 #include <utility>
 #include <vector>
 
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 
 namespace hmap
@@ -20,10 +21,20 @@ void export_points_to_ply(
     const std::vector<float>                        &z,
     const std::map<std::string, std::vector<float>> &custom_fields)
 {
+  if (!validate_non_empty(x, "x") || !validate_non_empty(y, "y") ||
+      !validate_non_empty(z, "z"))
+  {
+    return;
+  }
+
   // check input vector sizes
   if (x.size() != y.size() || x.size() != z.size())
   {
-    hmap::log::error("x, y, and z vectors must have the same size.");
+    hmap::log::warn(
+        "x, y, and z vectors must have the same size (x: {}, y: {}, z: {})",
+        x.size(),
+        y.size(),
+        z.size());
     return;
   }
 
@@ -32,18 +43,18 @@ void export_points_to_ply(
   {
     if (values.size() != n_points)
     {
-      hmap::log::error("custom field {} has size {} but expected {}.",
-                       name,
-                       values.size(),
-                       n_points);
+      hmap::log::warn("custom field {} has size {} but expected {}.",
+                      name,
+                      values.size(),
+                      n_points);
       return;
     }
   }
 
   std::ofstream out(fname);
-  if (!out)
+  if (!out.is_open())
   {
-    hmap::log::error("could not open file {} for writing.", fname);
+    hmap::log::warn("could not open file {} for writing.", fname);
     return;
   }
 

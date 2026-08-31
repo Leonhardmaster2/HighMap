@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
@@ -21,22 +22,27 @@ namespace hmap::gpu
 
 Array border(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return array - gpu::erosion(array, ir);
 }
 
 Array closing(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return gpu::erosion(gpu::dilation(array, ir), ir);
 }
 
 Array closing_by_reconstruction(const Array &array, int ir, float k_smooth_max)
 {
+  if (!validate_non_empty(array)) return Array();
   Array marker = gpu::dilation(array, ir);
   return gpu::reconstruction_by_erosion(marker, array, ir, k_smooth_max);
 }
 
 Array contour_smoothing(const Array &array, int ir, float transition_ratio)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array edt = distance_transform(is_zero(array)) - distance_transform(array);
   gpu::smooth_cpulse(edt, 2 * ir);
 
@@ -50,11 +56,14 @@ Array contour_smoothing(const Array &array, int ir, float transition_ratio)
 
 Array dilation(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return gpu::local_max(array, ir);
 }
 
 Array dilation_expand_border_only(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 &shape = array.shape;
   Array             out = gpu::dilation(array, ir);
 
@@ -71,22 +80,26 @@ Array dilation_expand_border_only(const Array &array, int ir)
 
 Array erosion(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return gpu::local_min(array, ir);
 }
 
 Array morphological_black_hat(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return gpu::closing(array, ir) - array;
 }
 
 Array morphological_gradient(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   float vmin = array.min();
   return gpu::dilation(array - vmin, ir) - gpu::erosion(array - vmin, ir);
 }
 
 Array morphological_laplacian(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   float vmin = array.min();
   return gpu::dilation(array - vmin, ir) + gpu::erosion(array - vmin, ir) -
          2.f * array;
@@ -94,16 +107,19 @@ Array morphological_laplacian(const Array &array, int ir)
 
 Array morphological_top_hat(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return array - gpu::opening(array, ir);
 }
 
 Array opening(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
   return gpu::dilation(gpu::erosion(array, ir), ir);
 }
 
 Array opening_by_reconstruction(const Array &array, int ir, float k_smooth_min)
 {
+  if (!validate_non_empty(array)) return Array();
   Array marker = gpu::erosion(array, ir);
   return gpu::reconstruction_by_dilation(marker, array, ir, k_smooth_min);
 }
@@ -113,6 +129,9 @@ Array reconstruction_by_dilation(const Array &marker,
                                  int          ir,
                                  float        k_smooth_min)
 {
+  if (!validate_non_empty(marker) || !validate_same_shape(marker, mask))
+    return Array();
+
   constexpr float tol = 1e-6f;
   Array           current = marker;
   Array           next;
@@ -138,6 +157,9 @@ Array reconstruction_by_erosion(const Array &marker,
                                 int          ir,
                                 float        k_smooth_max)
 {
+  if (!validate_non_empty(marker) || !validate_same_shape(marker, mask))
+    return Array();
+
   constexpr float tol = 1e-6f;
   Array           current = marker;
   Array           next;
@@ -163,6 +185,9 @@ Array relative_distance_from_skeleton(const Array &array,
                                       int          ir_search,
                                       int          ir_erosion)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, skeleton))
+    return Array();
+
   const glm::ivec2 &shape = array.shape;
 
   Array border = array - gpu::erosion(array, ir_erosion);
@@ -188,12 +213,16 @@ Array relative_distance_from_skeleton(const Array &array,
                                       bool         zero_at_borders,
                                       int          ir_erosion)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array sk = gpu::skeleton(array, zero_at_borders);
   return gpu::relative_distance_from_skeleton(array, sk, ir_search, ir_erosion);
 }
 
 Array skeleton(const Array &array, bool zero_at_borders)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array sk = generate_buffered_array(array, {1, 1, 1, 1});
   set_borders(sk, 0.f, 1);
 

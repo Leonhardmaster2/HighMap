@@ -19,6 +19,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/random.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
@@ -949,6 +950,8 @@ std::vector<glm::vec3> heightmap_retopology(const Array &z,
                                             int          max_triangles,
                                             int          max_points)
 {
+  if (!validate_non_empty(z)) return {};
+
   const glm::ivec2 &shape = z.shape;
 
   const auto   p_hmap = std::make_shared<Heightmap>(shape.y,

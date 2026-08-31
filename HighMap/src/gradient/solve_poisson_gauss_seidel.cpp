@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -11,6 +12,9 @@ void solve_poisson_gauss_seidel(const Array &rhs,
                                 int          iterations,
                                 float        omega)
 {
+  if (!validate_non_empty(rhs)) return;
+  if (!validate_same_shape(rhs, h)) h = Array(rhs.shape);
+
   int nx = rhs.shape.x;
   int ny = rhs.shape.y;
 

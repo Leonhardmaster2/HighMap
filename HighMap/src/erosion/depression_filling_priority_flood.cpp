@@ -10,12 +10,15 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 void depression_filling_priority_flood(Array &z, bool apply_post_filter)
 {
+  if (!validate_non_empty(z)) return;
+
   Array z_bckp = apply_post_filter ? z : Array();
 
   auto db = DrainageBasinCellBased(z);

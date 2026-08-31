@@ -12,6 +12,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/range.hpp"
 
@@ -29,6 +30,8 @@ Array snow_melting_map(const Array &z,
                        float        slope_exp,
                        float        slope_strength)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const glm::ivec2 shape = z.shape;
   Array            map(shape); // output
 
@@ -95,6 +98,11 @@ Array snow_simulation(const Array &z,
                       bool         post_filter,
                       float        thermal_talus_ratio)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, fall_map)) return Array();
+  if (!validate_same_shape(z, melting_map)) return Array();
+  if (!validate_same_shape(z, talus)) return Array();
+
   const glm::ivec2 shape = z.shape;
   Array            s(shape); // output
 

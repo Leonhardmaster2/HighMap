@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/math/profiles.hpp"
 #include "highmap/range.hpp"
@@ -28,6 +29,10 @@ Array phasor(PhasorProfile   phasor_profile,
              const Array    *p_noise_y,
              glm::vec4       bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_angle && !validate_same_shape(shape, *p_angle)) return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
 
   // wavenumbers
   float           kp = std::sqrt(kp_global);
@@ -89,6 +94,11 @@ Array phasor_fbm(PhasorProfile   phasor_profile,
                  const Array    *p_noise_y,
                  glm::vec4       bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_angle && !validate_same_shape(shape, *p_angle)) return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array sum(shape, 0.f);
   Array amp(shape, 1.f);
 

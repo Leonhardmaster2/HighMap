@@ -14,6 +14,7 @@
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/geometry/cloud.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
@@ -57,6 +58,9 @@ Array gabor_wave(glm::ivec2    shape,
                  float         angle_spread_ratio,
                  glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_same_shape(shape, angle)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("gabor_wave");
@@ -85,6 +89,8 @@ Array gabor_wave(glm::ivec2    shape,
                  float         angle_spread_ratio,
                  glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array array(shape);
   Array array_angle(shape, angle);
 
@@ -107,6 +113,13 @@ Array gabor_wave_fbm(glm::ivec2    shape,
                      const Array  *p_noise_y,
                      glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_same_shape(shape, angle)) return Array(shape);
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("gabor_wave_fbm");
@@ -154,6 +167,12 @@ Array gabor_wave_fbm(glm::ivec2    shape,
                      const Array  *p_noise_y,
                      glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
   Array array_angle(shape, angle);
 
@@ -193,6 +212,13 @@ Array gavoronoise(glm::ivec2    shape,
                   const Array  *p_noise_y,
                   glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_same_shape(shape, angle)) return Array(shape);
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("gavoronoise");
@@ -251,6 +277,12 @@ Array gavoronoise(glm::ivec2    shape,
                   const Array  *p_noise_y,
                   glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
   Array array_angle(shape, angle);
 
@@ -293,6 +325,14 @@ Array gavoronoise(const Array  &base,
                   const Array  *p_noise_y,
                   glm::vec4     bbox)
 {
+  if (!validate_non_empty(base)) return Array();
+  if (p_ctrl_param && !validate_same_shape(base, *p_ctrl_param))
+    return Array(base.shape);
+  if (p_noise_x && !validate_same_shape(base, *p_noise_x))
+    return Array(base.shape);
+  if (p_noise_y && !validate_same_shape(base, *p_noise_y))
+    return Array(base.shape);
+
   Array array(base.shape);
 
   auto run = clwrapper::Run("gavoronoise_with_base");
@@ -348,6 +388,17 @@ Array hemisphere_field(glm::ivec2    shape,
                        const Array  *p_size_multiplier,
                        glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+  if (p_noise_distance && !validate_same_shape(shape, *p_noise_distance))
+    return Array(shape);
+  if (p_density_multiplier &&
+      !validate_same_shape(shape, *p_density_multiplier))
+    return Array(shape);
+  if (p_size_multiplier && !validate_same_shape(shape, *p_size_multiplier))
+    return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("hemisphere_field");
@@ -405,6 +456,17 @@ Array hemisphere_field_fbm(glm::ivec2    shape,
                            const Array  *p_size_multiplier,
                            glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+  if (p_noise_distance && !validate_same_shape(shape, *p_noise_distance))
+    return Array(shape);
+  if (p_density_multiplier &&
+      !validate_same_shape(shape, *p_density_multiplier))
+    return Array(shape);
+  if (p_size_multiplier && !validate_same_shape(shape, *p_size_multiplier))
+    return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("hemisphere_field_fbm");
@@ -463,6 +525,13 @@ Array mountain_range_radial(glm::ivec2    shape,
                             const Array  *p_angle,
                             glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+  if (p_angle && !validate_same_shape(shape, *p_angle)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("mountain_range_radial");
@@ -510,6 +579,10 @@ Array noise(NoiseType     noise_type,
             glm::vec4     bbox,
             glm::ivec2    period)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
@@ -553,6 +626,12 @@ Array noise_fbm(NoiseType     noise_type,
                 glm::vec4     bbox,
                 glm::ivec2    period)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);
@@ -607,6 +686,17 @@ Array polygon_field(glm::ivec2    shape,
                     const Array  *p_size_multiplier,
                     glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+  if (p_noise_distance && !validate_same_shape(shape, *p_noise_distance))
+    return Array(shape);
+  if (p_density_multiplier &&
+      !validate_same_shape(shape, *p_density_multiplier))
+    return Array(shape);
+  if (p_size_multiplier && !validate_same_shape(shape, *p_size_multiplier))
+    return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("polygon_field");
@@ -670,6 +760,17 @@ Array polygon_field_fbm(glm::ivec2    shape,
                         const Array  *p_size_multiplier,
                         glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+  if (p_noise_distance && !validate_same_shape(shape, *p_noise_distance))
+    return Array(shape);
+  if (p_density_multiplier &&
+      !validate_same_shape(shape, *p_density_multiplier))
+    return Array(shape);
+  if (p_size_multiplier && !validate_same_shape(shape, *p_size_multiplier))
+    return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("polygon_field_fbm");
@@ -727,6 +828,10 @@ Array vorolines(glm::ivec2        shape,
                 glm::vec4         bbox,
                 glm::vec4         bbox_points)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   // --- generate random set of points
 
   // density is the number of pts per unit surface
@@ -810,6 +915,10 @@ Array vorolines_fbm(glm::ivec2        shape,
                     glm::vec4         bbox,
                     glm::vec4         bbox_points)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array n = Array(shape);
   Array na = Array(shape, 0.6f);
   float nf = 1.f;
@@ -850,6 +959,12 @@ Array voronoi(glm::ivec2        shape,
               const Array      *p_noise_y,
               glm::vec4         bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("voronoi");
@@ -896,6 +1011,12 @@ Array voronoi_fbm(glm::ivec2        shape,
                   const Array      *p_noise_y,
                   glm::vec4         bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("voronoi_fbm");
@@ -939,6 +1060,10 @@ Array voronoise(glm::ivec2    shape,
                 const Array  *p_noise_y,
                 glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("voronoise");
@@ -979,6 +1104,12 @@ Array voronoise_fbm(glm::ivec2    shape,
                     const Array  *p_noise_y,
                     glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("voronoise_fbm");
@@ -1020,6 +1151,12 @@ Array voronoi_edge_distance(glm::ivec2    shape,
                             const Array  *p_noise_y,
                             glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("voronoi_edge_distance");
@@ -1059,6 +1196,10 @@ Array vororand(glm::ivec2        shape,
                glm::vec4         bbox,
                glm::vec4         bbox_points)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   // --- generate random set of points
 
   // TODO adjust extension with respect to the density?
@@ -1103,10 +1244,12 @@ Array vororand(glm::ivec2                shape,
                const Array              *p_noise_y,
                glm::vec4                 bbox)
 {
-  // do some checking first
-  if (xp.empty() || yp.empty() || xp.size() != yp.size())
-    throw std::runtime_error(
-        "Invalid point cloud: empty or mismatched coordinate arrays.");
+  if (!validate_shape(shape)) return Array();
+  if (!validate_non_empty(xp, "xp") || !validate_non_empty(yp, "yp") ||
+      xp.size() != yp.size())
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
 
   Array array(shape);
 
@@ -1154,6 +1297,12 @@ Array wavelet_noise(glm::ivec2    shape,
                     const Array  *p_noise_y,
                     glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array(shape);
 
   auto run = clwrapper::Run("wavelet_noise");

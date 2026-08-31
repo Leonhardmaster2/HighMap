@@ -1,6 +1,6 @@
 /* Copyright (c) 2026 Otto Link. Distributed under the terms of the GNU General
-   Public License. The full license is in the file LICENSE, distributed with
-   this software. */
+ * Public License. The full license is in the file LICENSE, distributed with
+ * this software. */
 
 #include <algorithm>
 #include <cstdint>
@@ -13,6 +13,7 @@
 #include <opencv2/imgproc.hpp>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/texture.hpp"
 
@@ -176,6 +177,8 @@ float Texture::min() const
 
 void Texture::remap(float vmin, float vmax)
 {
+  if (!validate_non_empty(*this)) return;
+
   float min_val = this->min();
   float max_val = this->max();
 
@@ -200,6 +203,9 @@ void Texture::remap(float vmin, float vmax)
 
 Texture Texture::resample_to_shape(glm::ivec2 new_shape_xy) const
 {
+  if (!validate_non_empty(*this) || !validate_shape(new_shape_xy))
+    return Texture();
+
   Texture out;
   out.shape = new_shape_xy;
   out.channels.reserve(this->channels.size());
@@ -212,8 +218,9 @@ Texture Texture::resample_to_shape(glm::ivec2 new_shape_xy) const
 
 cv::Mat Texture::to_cv_mat() const
 {
+  if (!validate_non_empty(*this)) return cv::Mat();
+
   int nch = num_channels();
-  if (nch == 0) return cv::Mat();
 
   std::vector<cv::Mat> cv_channels;
   cv_channels.reserve(nch);
@@ -245,6 +252,8 @@ cv::Mat Texture::to_cv_mat() const
 
 void Texture::to_png(const std::string &fname, int depth) const
 {
+  if (!validate_non_empty(*this)) return;
+
   cv::Mat mat = to_cv_mat();
   int     scale_factor = (depth == CV_8U) ? 255 : 65535;
   mat.convertTo(mat, depth, scale_factor);
@@ -254,6 +263,8 @@ void Texture::to_png(const std::string &fname, int depth) const
 
 std::vector<uint8_t> Texture::to_img_8bit(bool flip_y) const
 {
+  if (!validate_non_empty(*this)) return {};
+
   std::vector<uint8_t> vec;
   int                  nch = num_channels();
   vec.reserve(shape.x * shape.y * nch);

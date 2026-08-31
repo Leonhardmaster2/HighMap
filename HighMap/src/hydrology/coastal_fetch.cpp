@@ -8,6 +8,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -16,6 +17,10 @@ Array coastal_fetch(const Array &z,
                     int          ndirections,
                     const Array *p_compute_mask)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_compute_mask && !validate_same_shape(z, *p_compute_mask))
+    return Array();
+
   const glm::ivec2 &shape = z.shape;
   Array             out(shape);
   Array             compute_mask(shape, 1.f);
@@ -43,6 +48,10 @@ Array coastal_fetch_directional(const Array &z,
                                 int          ndirections,
                                 const Array *p_compute_mask)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_compute_mask && !validate_same_shape(z, *p_compute_mask))
+    return Array();
+
   const glm::ivec2 &shape = z.shape;
   Array             out(shape);
   Array             compute_mask(shape, 1.f);

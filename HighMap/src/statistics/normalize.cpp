@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 #include "highmap/statistics.hpp"
 
@@ -14,6 +15,8 @@ namespace hmap
 
 void normalize(Array &array, NormalizationMethod method)
 {
+  if (!validate_non_empty(array)) return;
+
   switch (method)
   {
   case NormalizationMethod::NM_MIN_MAX:
@@ -47,6 +50,8 @@ void normalize(Array &array, NormalizationMethod method)
 
 Array normalized(const Array &array, NormalizationMethod method)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array out = array;
   normalize(out, method);
   return out;

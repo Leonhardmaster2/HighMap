@@ -9,6 +9,7 @@
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -23,6 +24,9 @@ void find_path_dijkstra(const Array                   &z,
                         float                          upward_penalization,
                         const Array                   *p_mask_nogo)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask_nogo && !validate_same_shape(z, *p_mask_nogo)) return;
+
   // https://math.stackexchange.com/questions/3088292
 
   glm::ivec2 shape = z.shape;

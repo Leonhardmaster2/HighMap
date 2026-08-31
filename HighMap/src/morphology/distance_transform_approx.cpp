@@ -6,6 +6,7 @@
 #include <limits>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -13,6 +14,8 @@ namespace hmap
 Array distance_transform_approx(const Array &array,
                                 bool         return_squared_distance)
 {
+  if (!validate_non_empty(array)) return Array();
+
   glm::ivec2 shape = array.shape;
 
   Array edt(shape);
@@ -55,6 +58,8 @@ Array distance_transform_approx(const Array &array,
 Array distance_transform_manhattan(const Array &array,
                                    bool         return_squared_distance)
 {
+  if (!validate_non_empty(array)) return Array();
+
   glm::ivec2 shape = array.shape;
 
   Array edt(shape);

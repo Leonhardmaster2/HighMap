@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap
@@ -11,6 +12,8 @@ Array morphological_operators(const Array        &array,
                               int                 ir,
                               MorphologyOperation operation)
 {
+  if (!validate_non_empty(array)) return Array();
+
   switch (operation)
   {
   case MorphologyOperation::MO_BORDER:
@@ -59,6 +62,8 @@ Array morphological_operators(const Array        &array,
                               int                 ir,
                               MorphologyOperation operation)
 {
+  if (!validate_non_empty(array)) return Array();
+
   switch (operation)
   {
   case MorphologyOperation::MO_BORDER:

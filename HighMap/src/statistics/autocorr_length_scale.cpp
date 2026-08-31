@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/statistics.hpp"
 
 namespace hmap
@@ -11,6 +12,8 @@ namespace hmap
 
 float autocorr_length_scale(const Array &array, float max_lag_fraction)
 {
+  if (!validate_non_empty(array)) return 0.f;
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 
@@ -64,6 +67,8 @@ float autocorr_length_scale(const Array &array, float max_lag_fraction)
 glm::vec2 autocorr_length_scale_axial(const Array &array,
                                       float        max_lag_fraction)
 {
+  if (!validate_non_empty(array)) return {0.f, 0.f};
+
   const int ni = array.shape.x;
   const int nj = array.shape.y;
 

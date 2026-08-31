@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -20,6 +21,10 @@ void fill_talus(Array        &z,
                 float         noise_ratio,
                 const Array  *p_seed_mask)
 {
+  if (!validate_non_empty(z)) return;
+  if (!validate_same_shape(z, talus)) return;
+  if (p_seed_mask && !validate_same_shape(z, *p_seed_mask)) return;
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(1.f - noise_ratio,
                                             1.f + noise_ratio);
@@ -99,6 +104,9 @@ void fill_talus(Array        &z,
                 float         noise_ratio,
                 const Array  *p_seed_mask)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_seed_mask && !validate_same_shape(z, *p_seed_mask)) return;
+
   fill_talus(z, Array(z.shape, talus), seed, ir, noise_ratio, p_seed_mask);
 }
 

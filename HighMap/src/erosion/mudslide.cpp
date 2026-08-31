@@ -8,6 +8,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
@@ -24,6 +25,8 @@ void mudslide(Array       &z,
               Array       *p_depth_end,
               Array       *p_depth_init)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, landslide_mask)) return;
+
   Array depth_map = distance_transform(is_zero(landslide_mask));
   hmap::laplace(depth_map);
   remap(depth_map);
@@ -59,6 +62,8 @@ void mudslide(Array &z,
               Array *p_depth_end,
               Array *p_depth_init)
 {
+  if (!validate_non_empty(z)) return;
+
   Array mask = hmap::gradient_norm(z);
   make_binary(mask, talus_limit);
 

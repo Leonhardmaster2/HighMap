@@ -6,12 +6,15 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array white(glm::ivec2 shape, float a, float b, std::uint32_t seed)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(a, b);
@@ -24,6 +27,8 @@ Array white(glm::ivec2 shape, float a, float b, std::uint32_t seed)
 
 Array white_density_map(const Array &density_map, std::uint32_t seed)
 {
+  if (!validate_non_empty(density_map)) return Array();
+
   Array                                 array = Array(density_map.shape);
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
@@ -43,6 +48,8 @@ Array white_sparse(glm::ivec2    shape,
                    float         density,
                    std::uint32_t seed)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis1(0.f, 1.f);
@@ -57,6 +64,8 @@ Array white_sparse(glm::ivec2    shape,
 
 Array white_sparse_binary(glm::ivec2 shape, float density, std::uint32_t seed)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array                                 array = Array(shape);
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);

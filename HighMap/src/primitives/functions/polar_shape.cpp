@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/primitives/functions.hpp"
 
@@ -30,6 +31,11 @@ Array polar_shape(glm::ivec2   shape,
                   glm::vec2    center,
                   glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_r && !validate_same_shape(shape, *p_noise_r)) return Array(shape);
+  if (p_noise_theta && !validate_same_shape(shape, *p_noise_theta))
+    return Array(shape);
+
   const float alpha = angle / 180.f * M_PI;
   const float ca = std::cos(alpha);
   const float sa = std::sin(alpha);

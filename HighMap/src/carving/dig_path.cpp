@@ -8,6 +8,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
@@ -24,6 +25,9 @@ void dig_path(Array    &z,
               glm::vec4 bbox,
               float     depth)
 {
+  if (!validate_non_empty(z)) return;
+  if (!validate_non_empty(path, "Path")) return;
+
   Array mask = Array(z.shape);
   Path  path_copy = path;
   Array zf;

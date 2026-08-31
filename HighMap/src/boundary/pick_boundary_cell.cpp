@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -20,6 +21,8 @@ glm::ivec2 pick_boundary_cell(const Array   &z,
                               bool           favor_lower_elevation,
                               bool           favor_sinks)
 {
+  if (!validate_non_empty(z)) return glm::ivec2(0, 0);
+
   const int       nx = z.shape.x;
   const int       ny = z.shape.y;
   const glm::vec2 range = z.range();

@@ -5,6 +5,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -23,6 +24,8 @@ void sediment_deposition(Array       &z,
                          int          iterations,
                          int          thermal_subiterations)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   float deposition_step = max_deposition / (int)iterations;
   Array smap = Array(z.shape); // sediment map
 
@@ -47,6 +50,9 @@ void sediment_deposition(Array       &z,
                          int          iterations,
                          int          thermal_subiterations)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   if (!p_mask)
     sediment_deposition(z,
                         talus,
@@ -74,6 +80,10 @@ void sediment_layer(Array       &z,
                     bool         apply_post_filter,
                     Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus_layer) ||
+      !validate_same_shape(z, talus_upper_limit))
+    return;
+
   // backup input
   Array z_bckp = z;
 

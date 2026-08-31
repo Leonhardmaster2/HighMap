@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/texture.hpp"
 
 namespace hmap
@@ -14,6 +15,8 @@ namespace hmap
 
 Texture normal_map(const Array &array)
 {
+  if (!validate_non_empty(array)) return Texture();
+
   Texture nmap = Texture(array.shape, 3);
 
   Array dx = gradient_x(array) * array.shape.x;
@@ -34,6 +37,8 @@ Texture normal_map(const Array &array)
 
 Array normal_map_to_heightmap(const Texture &nmap)
 {
+  if (!validate_non_empty(nmap, 3)) return Array();
+
   glm::ivec2 shape(nmap.shape.x, nmap.shape.y);
   Array      z1(shape);
   Array      z2(shape);
@@ -69,6 +74,8 @@ Array normal_map_to_heightmap_poisson(const Texture &nmap,
                                       int            iterations,
                                       float          omega)
 {
+  if (!validate_non_empty(nmap, 3)) return Array();
+
   glm::ivec2 shape(nmap.shape.x, nmap.shape.y);
   Array      z1(shape);
   Array      z2(shape);

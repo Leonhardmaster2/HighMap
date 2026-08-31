@@ -4,12 +4,15 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array level_set_curvature(const Array &array, int prefilter_ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array array_f = array;
   if (prefilter_ir) smooth_cpulse(array_f, prefilter_ir);
 

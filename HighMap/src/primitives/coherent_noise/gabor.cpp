@@ -5,6 +5,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/random.hpp"
@@ -21,6 +22,8 @@ Array gabor_noise(glm::ivec2    shape,
                   float         density,
                   std::uint32_t seed)
 {
+  if (!validate_shape(shape)) return Array();
+
   Array weight = white_sparse(shape, 0.f, 1.f, density, seed);
   Array kernel = gabor({width, width}, kw, angle);
 

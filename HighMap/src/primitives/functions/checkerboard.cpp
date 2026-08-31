@@ -6,6 +6,7 @@
 #include <functional>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/functions.hpp"
 
@@ -18,6 +19,10 @@ Array checkerboard(glm::ivec2   shape,
                    const Array *p_noise_y,
                    glm::vec4    bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   Array array = Array(shape);
 
   auto lambda = [&kw](float x, float y, float)

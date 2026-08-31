@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
@@ -21,6 +22,10 @@ Array sdf_2d_polyline(const Path  &path,
                       const Array *p_noise_x,
                       const Array *p_noise_y)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   if (path.size() < 2)
   {
     hmap::log::error("at least 2 points needed in the Path to compute the SDF");
@@ -65,6 +70,10 @@ Array sdf_2d_polyline_bezier(const Path  &path,
                              const Array *p_noise_x,
                              const Array *p_noise_y)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   if (path.size() < 3)
   {
     hmap::log::error("at least 3 points needed in the Path to compute the SDF");

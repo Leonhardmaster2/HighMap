@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/primitives/geo.hpp"
 
@@ -84,6 +85,9 @@ Array crater(glm::ivec2   shape,
              Array       *p_crater_mask,
              Array       *p_inner_crater_mask)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_r && !validate_same_shape(shape, *p_noise_r)) return Array(shape);
+
   const float alpha = angle / 180.f * M_PI;
   const float ap = 1.f + asym_ratio;
   const float am = std::max(0.f, 1.f - asym_ratio);

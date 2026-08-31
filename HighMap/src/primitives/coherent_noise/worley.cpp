@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 
@@ -22,6 +23,12 @@ Array worley_double(glm::ivec2    shape,
                     const Array  *p_noise_y,
                     glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_ctrl_param && !validate_same_shape(shape, *p_ctrl_param))
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   hmap::Array                array = hmap::Array(shape);
   hmap::WorleyDoubleFunction f = hmap::WorleyDoubleFunction(kw, seed, ratio, k);
 

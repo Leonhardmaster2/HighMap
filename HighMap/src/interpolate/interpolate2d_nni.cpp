@@ -7,6 +7,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 
 namespace hmap
@@ -20,6 +21,13 @@ Array interpolate2d_nni(glm::ivec2                shape,
                         const Array              *p_noise_y,
                         glm::vec4                 bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_min_size(x, 3, "Point coordinates x") || x.size() != y.size() ||
+      x.size() != values.size())
+    return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   std::vector<float> xg, yg;
   grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);
 

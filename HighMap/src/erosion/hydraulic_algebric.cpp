@@ -6,6 +6,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -22,6 +23,9 @@ void hydraulic_algebric(Array &z,
                         float  c_deposition,
                         int    iterations)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+
   Array talus = Array(z.shape);
   Array zf = Array(z.shape);
 
@@ -78,6 +82,10 @@ void hydraulic_algebric(Array &z,
                         float  c_deposition,
                         int    iterations)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+
   if (!p_mask)
     hydraulic_algebric(z,
                        talus_ref,

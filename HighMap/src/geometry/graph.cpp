@@ -21,6 +21,7 @@
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/operator.hpp"
 
 namespace hmap
@@ -270,6 +271,8 @@ Graph Graph::remove_orphan_points()
 
 void Graph::to_array(Array &array, glm::vec4 bbox, bool color_by_edge_weight)
 {
+  if (!validate_non_empty(array)) return;
+
   if (color_by_edge_weight)
     for (std::size_t k = 0; k < this->get_nedges(); k++)
     {
@@ -298,6 +301,8 @@ void Graph::to_array_fractalize(Array        &array,
                                 int           orientation,
                                 float         persistence)
 {
+  if (!validate_non_empty(array)) return;
+
   // find smallest edge length
   float dmin = std::numeric_limits<float>::max();
 
@@ -326,6 +331,10 @@ Array Graph::to_array_sdf(glm::ivec2 shape,
                           Array     *p_noise_y,
                           glm::vec4  bbox_array)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   // nodes
   std::vector<float> xp = this->get_edge_x_pairs();
   std::vector<float> yp = this->get_edge_y_pairs();
@@ -393,6 +402,8 @@ void Graph::to_csv(std::string fname_xy, std::string fname_adjacency)
 
 void Graph::to_png(std::string fname, glm::ivec2 shape)
 {
+  if (!validate_shape(shape)) return;
+
   Array array = Array(shape);
   this->to_array(array, this->get_bbox());
   array.to_png(fname, Cmap::INFERNO, false);

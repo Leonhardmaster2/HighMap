@@ -4,6 +4,7 @@
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 #include "highmap/selector.hpp"
@@ -20,6 +21,8 @@ Array select_soil_weathered(const Array &z,
                             float        gradient_weight,
                             float        gradient_scaling_factor)
 {
+  if (!validate_non_empty(z)) return Array();
+
   if (gradient_scaling_factor <= 0.f) gradient_scaling_factor = z.shape.x;
 
   // gradient (scaling is empirical)
@@ -45,6 +48,9 @@ Array select_soil_weathered(const Array &z,
                             float        gradient_weight,
                             float        gradient_scaling_factor)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, gradient_norm))
+    return Array();
+
   // curvature
   Array cm = z;
 

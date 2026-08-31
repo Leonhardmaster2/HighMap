@@ -5,6 +5,7 @@
 #include <functional>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -15,6 +16,8 @@ void upscale_amplification(
     float                                                persistence,
     std::function<void(Array &x, float current_scaling)> unary_op)
 {
+  if (!validate_non_empty(array)) return;
+
   glm::ivec2 initial_shape = array.shape;
 
   // upscale amplification (NB, k = 0 corresponds to initial resolution)

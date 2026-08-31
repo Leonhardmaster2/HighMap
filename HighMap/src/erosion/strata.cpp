@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
@@ -40,6 +41,9 @@ void strata(Array           &z,
             const Array     *p_mask,
             const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   auto run = clwrapper::Run("strata");
 
   run.bind_buffer<float>("z", z.vector);
@@ -90,6 +94,10 @@ void strata_cells(Array        &z,
                   const Array  *p_noise_y,
                   glm::vec4     bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
+
   const Array *p_mask = nullptr;
 
   //
@@ -177,6 +185,9 @@ void strata_cells_fbm(Array        &z,
                       const Array  *p_noise_y,
                       glm::vec4     bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
 
   // --- Default noise
 
@@ -296,6 +307,9 @@ void strata_terrace(Array        &z,
                     const Array  *p_noise,
                     glm::vec4     bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_noise && !validate_same_shape(z, *p_noise)) return;
+
   auto run = clwrapper::Run("strata_terrace");
 
   run.bind_buffer<float>("z", z.vector);

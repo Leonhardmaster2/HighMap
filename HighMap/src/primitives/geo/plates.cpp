@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/geo.hpp"
@@ -25,6 +26,8 @@ Array plates(glm::ivec2    shape,
              float         rugosity,
              glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+
   const float persistence = 0.5f;
   const float lacunarity = 2.f;
   const float k_smoothing = 0.f;

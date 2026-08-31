@@ -14,6 +14,7 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/random.hpp"
 
 #include <unordered_map>
@@ -36,6 +37,8 @@ DrainageBasinCellBased::DrainageBasinCellBased(const Array &z_) : z(z_)
 
 void DrainageBasinCellBased::accumulate_area_by_outlet(Array &acc) const
 {
+  if (!validate_non_empty(acc)) return;
+
   for (const glm::ivec2 &o : this->get_outlets())
   {
     const auto &traversal = this->traversals.at(o);

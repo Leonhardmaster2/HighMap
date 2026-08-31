@@ -7,6 +7,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/primitives/geo.hpp"
@@ -32,6 +33,10 @@ Array mountain_stump(glm::ivec2    shape,
                      const Array  *p_noise_y,
                      glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   // apply global scaling to reference values
   const float     half_width = 0.1f * scale;
   const glm::vec2 kw = glm::vec2(peak_kw / scale, peak_kw / scale);

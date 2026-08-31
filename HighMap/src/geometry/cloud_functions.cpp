@@ -15,6 +15,7 @@
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/kd_tree.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -25,9 +26,13 @@ Array cloud_sdf_to_array(const Cloud &cloud,
                          const Array *p_noise_x,
                          const Array *p_noise_y)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   Array array(shape);
 
-  if (cloud.size() < 1) return array;
+  if (!validate_min_size(cloud.points, 1, "Cloud points")) return array;
 
   // --- KD-tree
 
@@ -96,6 +101,9 @@ std::vector<float> interpolate_values_from_array(const Cloud &cloud,
                                                  const Array &array,
                                                  glm::vec4    bbox)
 {
+  if (!validate_non_empty(array))
+    return std::vector<float>(cloud.points.size(), 0.f);
+
   const float      inv_width = 1.0f / (bbox.y - bbox.x);
   const float      inv_height = 1.0f / (bbox.w - bbox.z);
   const glm::ivec2 shape = {array.shape.x - 1, array.shape.y - 1};
@@ -138,6 +146,8 @@ void rejection_filter_density(Cloud           &cloud,
                               std::uint32_t    seed,
                               const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(density_mask)) return;
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
 

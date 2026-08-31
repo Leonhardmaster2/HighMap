@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
@@ -23,6 +24,8 @@ namespace hmap
 PyramidDecomposition::PyramidDecomposition(Array &array, int nlevels_)
     : nlevels(nlevels_), p_array(&array)
 {
+  if (!validate_non_empty(array)) return;
+
   // check and/or adjust number of levels
   int np2 = std::min(highest_power_of_2(array.shape.x),
                      highest_power_of_2(array.shape.y));
@@ -54,6 +57,8 @@ PyramidDecomposition::PyramidDecomposition(Array &array, int nlevels_)
 
 void PyramidDecomposition::decompose()
 {
+  if (!p_array || !validate_non_empty(*p_array)) return;
+
   // reset any existing decomposition
   this->components.clear();
 

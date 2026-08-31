@@ -23,6 +23,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/cloud.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
 
@@ -874,6 +875,8 @@ Array TerrainTriMesh::to_array(const glm::ivec2         &shape,
                                const std::vector<float> &values,
                                const glm::vec4          &bbox) const
 {
+  if (!validate_shape(shape)) return Array();
+
   // prepare data
   std::vector<float> xc, yc, zc;
   const size_t       np = this->points.size();
@@ -1027,6 +1030,8 @@ TerrainTriMesh generate_terrain_tri_mesh_from_heightmap(const Array &z,
                                                         int max_triangles,
                                                         int max_points)
 {
+  if (!validate_non_empty(z)) return TerrainTriMesh();
+
   const glm::ivec2 &shape = z.shape;
 
   const auto   p_hmap = std::make_shared<Heightmap>(shape.y,
@@ -1055,6 +1060,8 @@ TerrainTriMesh generate_terrain_tri_mesh_from_heightmap_random(
     int           control_points_count,
     std::uint32_t seed)
 {
+  if (!validate_non_empty(z)) return TerrainTriMesh();
+
   const glm::ivec2 &shape = z.shape;
   const glm::vec4   bbox = {0.f, 1.f, 0.f, 1.f};
 

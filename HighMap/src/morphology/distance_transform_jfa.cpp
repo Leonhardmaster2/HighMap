@@ -7,6 +7,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 
@@ -15,6 +16,8 @@ namespace hmap::gpu
 
 Array distance_transform_jfa(const Array &array, bool return_squared_distance)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 shape = array.shape;
 
   // --- prepare

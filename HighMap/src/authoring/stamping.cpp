@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/authoring.hpp"
 #include "highmap/geometry/point_sampling.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 #include "highmap/transform.hpp"
 #include "highmap/vectors.hpp"
@@ -33,10 +34,13 @@ Array stamping(glm::ivec2                shape,
                bool                      kernel_rotate,
                glm::vec4                 bbox_array)
 {
-  std::mt19937                          gen(seed);
-  std::uniform_real_distribution<float> dis(0.f, 1.f);
+  if (!validate_shape(shape)) return Array();
 
   Array array = Array(shape);
+  if (!validate_non_empty(kernel)) return array;
+
+  std::mt19937                          gen(seed);
+  std::uniform_real_distribution<float> dis(0.f, 1.f);
 
   // normalized node coordinates
   std::vector<float> xrs = xr;

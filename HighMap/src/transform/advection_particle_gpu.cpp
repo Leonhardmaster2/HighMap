@@ -11,6 +11,7 @@
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/transform.hpp"
@@ -32,6 +33,8 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
+  if (!validate_non_empty(z)) return Array();
+
   auto res = advection_particle(z,
                                 std::vector<Array>{advected_field},
                                 iterations,
@@ -45,6 +48,7 @@ Array advection_particle(const Array  &z,
                                 inertia,
                                 p_advection_mask,
                                 p_mask);
+  if (res.empty()) return Array();
   return res[0];
 }
 
@@ -62,6 +66,8 @@ std::vector<Array> advection_particle(const Array              &z,
                                       const Array *p_advection_mask,
                                       const Array *p_mask)
 {
+  if (!validate_non_empty(z)) return {};
+
   std::vector<Array> out = advected_fields;
 
   for (int it = 0; it < iterations; ++it)
@@ -94,6 +100,8 @@ Array advection_particle(const Array  &z,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
+  if (!validate_non_empty(z)) return Array();
+
   auto res = advection_particle(z,
                                 std::vector<Array>{advected_field},
                                 nparticles,
@@ -106,6 +114,7 @@ Array advection_particle(const Array  &z,
                                 inertia,
                                 p_advection_mask,
                                 p_mask);
+  if (res.empty()) return Array();
   return res[0];
 }
 
@@ -122,6 +131,8 @@ std::vector<Array> advection_particle(const Array              &z,
                                       const Array *p_advection_mask,
                                       const Array *p_mask)
 {
+  if (!validate_non_empty(z)) return {};
+
   Array dx = -hmap::gradient_x(z);
   Array dy = -hmap::gradient_y(z);
 
@@ -154,6 +165,8 @@ Array advection_particle(const Array  &dx,
                          const Array  *p_advection_mask,
                          const Array  *p_mask)
 {
+  if (!validate_non_empty(dx)) return Array();
+
   auto res = advection_particle(dx,
                                 dy,
                                 std::vector<Array>{advected_field},
@@ -167,6 +180,7 @@ Array advection_particle(const Array  &dx,
                                 inertia,
                                 p_advection_mask,
                                 p_mask);
+  if (res.empty()) return Array();
   return res[0];
 }
 
@@ -184,7 +198,15 @@ std::vector<Array> advection_particle(const Array              &dx,
                                       const Array *p_advection_mask,
                                       const Array *p_mask)
 {
-  if (advected_fields.empty()) return {};
+  if (!validate_non_empty(dx) || !validate_same_shape(dx, dy)) return {};
+  if (!validate_non_empty(advected_fields, "advected_fields")) return {};
+
+  for (const auto &field : advected_fields)
+    if (!validate_same_shape(dx, field)) return {};
+
+  if (p_advection_mask && !validate_same_shape(dx, *p_advection_mask))
+    return {};
+  if (p_mask && !validate_same_shape(dx, *p_mask)) return {};
 
   auto run = clwrapper::Run("advection_particle");
 

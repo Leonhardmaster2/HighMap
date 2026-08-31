@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/primitives/geo.hpp"
 
@@ -24,6 +25,10 @@ Array badlands(glm::ivec2    shape,
                const Array  *p_noise_y,
                glm::vec4     bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   const float persistence = 0.5f;
   const float lacunarity = 2.3f;
   const float alpha = angle / 180.f * M_PI;

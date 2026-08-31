@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -33,6 +34,10 @@ void color_adjust(Array      &r,
                   ColorAdjust param,
                   glm::ivec2  dither_seed)
 {
+  if (!validate_non_empty(r) || !validate_same_shape(r, g) ||
+      !validate_same_shape(r, b))
+    return;
+
   const glm::ivec2 &shape = r.shape;
   const float       inv_gamma = 1.f / param.gamma;
 

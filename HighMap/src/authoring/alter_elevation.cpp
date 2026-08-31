@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 
 namespace hmap
@@ -20,6 +21,8 @@ void alter_elevation(Array       &array,
                      glm::vec2    shift,
                      glm::vec2    scale)
 {
+  if (!validate_non_empty(array)) return;
+
   Array amp = Array(array.shape);
   for (auto &p : cloud.points)
   {

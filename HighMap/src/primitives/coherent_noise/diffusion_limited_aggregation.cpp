@@ -15,6 +15,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/primitives/coherent_noise.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
@@ -30,6 +31,8 @@ Array diffusion_limited_aggregation(glm::ivec2    shape,
                                     float         slope,
                                     float         noise_ratio)
 {
+  if (!validate_shape(shape)) return Array();
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(0.f, 1.f);
 
@@ -122,6 +125,10 @@ Array diffusion_limited_aggregation_trimesh(
     const Array          *p_noise_x,
     const Array          *p_noise_y)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
+
   // --- Generate triangle mesh
 
   const glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f};

@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -15,6 +16,9 @@ Array inpainting_diffusion(const Array &array,
                            const Array &mask,
                            int          iterations)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, mask))
+    return Array();
+
   // M. M. Oliveira, B. Bowen, R. McKenna, Y.-S. Chang: Fast Digital
   // Image Inpainting, Proc. of Int. Conf. on Visualization, Imaging
   // and Image Processing (VIIP), pp. 261-266, 2001.

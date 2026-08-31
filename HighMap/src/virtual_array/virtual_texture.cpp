@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/virtual_array/tile_storage.hpp"
@@ -135,9 +136,11 @@ void VirtualTexture::fill(int c, float value, const ComputeMode &cm)
 void VirtualTexture::from_arrays(const std::vector<const Array *> &p_arrays,
                                  const ComputeMode                &cm)
 {
+  if (!validate_non_empty(p_arrays, "Array pointer list")) return;
+
   const int nch = this->channels();
 
-  if (nch != int(arrays.size()))
+  if (nch != int(p_arrays.size()))
   {
     hmap::log::error("size mismatch between arrays and channels nb ({} != {})",
                      nch,
@@ -146,7 +149,7 @@ void VirtualTexture::from_arrays(const std::vector<const Array *> &p_arrays,
   }
 
   for (int c = 0; c < nch; ++c)
-    this->channel(c).from_array(*p_arrays[c], cm);
+    if (p_arrays[c]) this->channel(c).from_array(*p_arrays[c], cm);
 }
 
 std::vector<VirtualArray> &VirtualTexture::get_arrays()
@@ -223,6 +226,8 @@ std::vector<float> VirtualTexture::to_raw(const ComputeMode &cm, bool flip_y)
 Texture VirtualTexture::to_texture(const glm::ivec2  &img_shape,
                                    const ComputeMode &cm) const
 {
+  if (!validate_shape(img_shape)) return Texture();
+
   const int nch = this->channels();
 
   if (nch < 1) throw std::runtime_error("VirtualTexture has no channels");

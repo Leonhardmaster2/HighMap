@@ -11,6 +11,7 @@
 #include "highmap/export.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/internal/string_utils.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/operator.hpp"
@@ -186,6 +187,8 @@ void export_as_cubemap(const std::string &fname,
                        bool               splitted,
                        Array             *p_cubemap)
 {
+  if (!validate_non_empty(z)) return;
+  if (!validate_cmap(cmap)) return;
 
   // shape of individual texture of the cubemap (work with square
   // arrays to simplify and fasten things...)

@@ -2,12 +2,15 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 float variance(const Array &array, float *p_mean)
 {
+  if (!validate_non_empty(array)) return 0.f;
+
   const glm::ivec2 &shape = array.shape;
   float             mean = p_mean ? *p_mean : array.mean();
   float             var = 0.f;

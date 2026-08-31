@@ -11,6 +11,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 
 #include "dkm.hpp"
 
@@ -25,6 +26,9 @@ Array kmeans_clustering2(const Array        &array1,
                          glm::vec2           weights,
                          std::uint32_t       seed)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   glm::ivec2 shape = array1.shape;
   Array      kmeans = Array(shape); // output
 
@@ -146,6 +150,10 @@ Array kmeans_clustering3(const Array        &array1,
                          glm::vec3           weights,
                          std::uint32_t       seed)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2) ||
+      !validate_same_shape(array1, array3))
+    return Array();
+
   glm::ivec2 shape = array1.shape;
   Array      kmeans = Array(shape); // output
 

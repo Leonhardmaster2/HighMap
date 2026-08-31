@@ -9,6 +9,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/range.hpp"
 
@@ -62,6 +63,8 @@ Array compute_gradient_norm(const Array &array,
 
 Array divergence_from_gradients(const Array &dx, const Array &dy)
 {
+  if (!validate_non_empty(dx) || !validate_same_shape(dx, dy)) return Array();
+
   Array ddx = gradient_x(dx);
   Array ddy = gradient_y(dy);
   return ddx + ddy;
@@ -69,6 +72,8 @@ Array divergence_from_gradients(const Array &dx, const Array &dy)
 
 Array gradient_angle(const Array &array, bool downward)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dx = gradient_x(array);
   Array dy = gradient_y(array);
   Array alpha = Array(array.shape);
@@ -92,6 +97,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
                                         int          ir,
                                         bool         downward)
 {
+  if (!validate_non_empty(array)) return Array();
+
   // gradients
   Array dx = gradient_x(array);
   Array dy = gradient_y(array);
@@ -123,6 +130,8 @@ Array gradient_angle_circular_smoothing(const Array &array,
 
 Array gradient_norm(const Array &array, Array *p_dx, Array *p_dy)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dx = gradient_x(array);
   Array dy = gradient_y(array);
 
@@ -136,6 +145,8 @@ Array gradient_norm(const Array &array, Array *p_dx, Array *p_dy)
 
 Array gradient_norm_filtered(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 &shape = array.shape;
   const glm::ivec2  shape_f = {int(float(shape.x) / ir),
                                int(float(shape.y) / ir)};
@@ -149,6 +160,8 @@ Array gradient_norm_filtered(const Array &array, int ir)
 
 Array gradient_norm_prewitt(const Array &array, Array *p_dx, Array *p_dy)
 {
+  if (!validate_non_empty(array)) return Array();
+
   float x_coeff[3] = {1.0f, 1.0f, 1.0f};
   float y_coeff[3] = {1.0f, 1.0f, 1.0f};
   return compute_gradient_norm(array,
@@ -162,6 +175,8 @@ Array gradient_norm_prewitt(const Array &array, Array *p_dx, Array *p_dy)
 // Sobel gradient function
 Array gradient_norm_sobel(const Array &array, Array *p_dx, Array *p_dy)
 {
+  if (!validate_non_empty(array)) return Array();
+
   float x_coeff[3] = {2.0f, 1.0f, 1.0f};
   float y_coeff[3] = {2.0f, 1.0f, 1.0f};
   return compute_gradient_norm(array,
@@ -175,6 +190,8 @@ Array gradient_norm_sobel(const Array &array, Array *p_dx, Array *p_dy)
 // Scharr gradient function
 Array gradient_norm_scharr(const Array &array, Array *p_dx, Array *p_dy)
 {
+  if (!validate_non_empty(array)) return Array();
+
   float x_coeff[3] = {10.0f, 3.0f, 3.0f};
   float y_coeff[3] = {10.0f, 3.0f, 3.0f};
   return compute_gradient_norm(array,
@@ -187,6 +204,8 @@ Array gradient_norm_scharr(const Array &array, Array *p_dx, Array *p_dy)
 
 Array gradient_x(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dx = Array(array.shape);
   gradient_x(array, dx);
   return dx;
@@ -194,6 +213,9 @@ Array gradient_x(const Array &array)
 
 void gradient_x(const Array &array, Array &dx)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_same_shape(array, dx)) dx = Array(array.shape);
+
   for (int j = 0; j < array.shape.y; j++)
     for (int i = 1; i < array.shape.x - 1; i++)
       dx(i, j) = 0.5f * (array(i + 1, j) - array(i - 1, j));
@@ -208,6 +230,8 @@ void gradient_x(const Array &array, Array &dx)
 
 Array gradient_y(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array dy = Array(array.shape);
   gradient_y(array, dy);
   return dy;
@@ -215,6 +239,9 @@ Array gradient_y(const Array &array)
 
 void gradient_y(const Array &array, Array &dy)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_same_shape(array, dy)) dy = Array(array.shape);
+
   for (int j = 1; j < array.shape.y - 1; j++)
     for (int i = 0; i < array.shape.x; i++)
       dy(i, j) = 0.5f * (array(i, j + 1) - array(i, j - 1));
@@ -229,6 +256,8 @@ void gradient_y(const Array &array, Array &dy)
 
 Array gradient_talus(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array talus = Array(array.shape);
   gradient_talus(array, talus);
   return talus;
@@ -236,6 +265,9 @@ Array gradient_talus(const Array &array)
 
 void gradient_talus(const Array &array, Array &talus)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_same_shape(array, talus)) talus = Array(array.shape);
+
   for (int j = 0; j < talus.shape.y; j++)
     for (int i = 1; i < talus.shape.x - 1; i += 2)
     {
@@ -257,6 +289,8 @@ void gradient_talus(const Array &array, Array &talus)
 
 Array laplacian(const Array &array)
 {
+  if (!validate_non_empty(array)) return Array();
+
   Array delta = Array(array.shape);
 
   for (int j = 1; j < array.shape.y - 1; j++)
@@ -270,6 +304,8 @@ Array laplacian(const Array &array)
 
 Array talus_jump_mask(const Array &z, float threshold, float sigma)
 {
+  if (!validate_non_empty(z)) return Array();
+
   const Array talus = gradient_norm(z);
   Array c = sigmoid(talus, sigma, 0.f /* vmin */, 1.f /* vmax */, threshold);
   return c;

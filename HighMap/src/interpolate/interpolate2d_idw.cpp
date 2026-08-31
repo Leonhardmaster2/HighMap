@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
 #include "highmap/geometry/kd_tree.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/core.hpp"
 
 #include "nanoflann.hpp"
@@ -25,10 +26,12 @@ Array interpolate2d_idw(glm::ivec2                shape,
                         float                     distance_exp,
                         float                     radius)
 {
-  // failsafe
-  if (x.empty() || x.size() != y.size() || values.size() != x.size() ||
-      x.size() < 2)
+  if (!validate_shape(shape)) return Array();
+  if (!validate_min_size(x, 2, "Point coordinates x") || x.size() != y.size() ||
+      x.size() != values.size())
     return Array(shape);
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
 
   // KD-tree
   KDTreeContext tree(x, y);

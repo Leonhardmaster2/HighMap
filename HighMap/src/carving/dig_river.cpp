@@ -11,6 +11,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 
@@ -28,6 +29,9 @@ void dig_river(Array                   &z,
                std::uint32_t            seed,
                Array                   *p_mask)
 {
+  if (!validate_non_empty(z)) return;
+  if (!validate_non_empty(path_list, "Path list")) return;
+
   // generate mask where the river path lies and dig rivers
   Array       mask(z.shape);
   hmap::Array z_carved(z.shape);

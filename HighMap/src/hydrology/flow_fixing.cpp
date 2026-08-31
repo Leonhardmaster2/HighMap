@@ -14,6 +14,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/drainage_basin_cell_based.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/random.hpp"
@@ -32,6 +33,9 @@ Array flow_fixing(const Array &z,
                   float        merging_distance,
                   const Array *p_noise_r)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return Array();
+
   // local node type for heap queues
   struct Node
   {
@@ -296,6 +300,10 @@ Array flow_fixing_drainage_basin(const Array        &z,
                                  const Array        *p_noise_x,
                                  const Array        *p_noise_y)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+
   Array zb = z;
 
   for (int it = 0; it < iterations; ++it)
@@ -372,6 +380,9 @@ Array flow_fixing_mst(const Array  &z,
                       float         radial_profile_parameter,
                       const Array  *p_noise_r)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return Array();
+
   const glm::ivec2 shape = z.shape;
   Array            zb = z;
 

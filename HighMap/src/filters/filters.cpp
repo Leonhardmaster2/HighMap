@@ -15,6 +15,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
@@ -32,17 +33,23 @@ namespace hmap
 
 void equalize(Array &array)
 {
+  if (!validate_non_empty(array)) return;
   Array flat_ref = hmap::white(array.shape, 0.f, 1.f, 0);
   match_histogram(array, flat_ref);
 }
 
 void equalize(Array &array, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [](Array &a) { equalize(a); });
 }
 
 void expand(Array &array, int ir, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_new = array;
   int   ni = array.shape.x;
   int   nj = array.shape.y;
@@ -74,11 +81,17 @@ void expand(Array &array, int ir, int iterations)
 
 void expand(Array &array, int ir, const Array *p_mask, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { expand(a, ir, iterations); });
 }
 
 void expand(Array &array, const Array &kernel, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+
   Array array_new = array;
   int   ni = array.shape.x;
   int   nj = array.shape.y;
@@ -116,6 +129,10 @@ void expand(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { expand(a, kernel, iterations); });
@@ -128,6 +145,9 @@ void expand_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
@@ -137,11 +157,14 @@ void expand_directional(Array       &array,
 
 void fold(Array &array, int iterations, float k)
 {
+  if (!validate_non_empty(array)) return;
   fold(array, array.min(), array.max(), iterations, k);
 }
 
 void fold(Array &array, float vmin, float vmax, int iterations, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   array -= vmin;
   float vref = (vmax - vmin) / (iterations + 1.f);
 
@@ -158,6 +181,8 @@ void fold(Array &array, float vmin, float vmax, int iterations, float k)
 
 void gain(Array &array, float factor)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [&factor](float x)
   {
     return x < 0.5 ? 0.5f * std::pow(2.f * x, factor)
@@ -172,11 +197,16 @@ void gain(Array &array, float factor)
 
 void gain(Array &array, float factor, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { gain(a, factor); });
 }
 
 void gamma_correction(Array &array, float gamma)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [&gamma](float x) { return std::pow(x, gamma); };
 
   std::transform(array.vector.begin(),
@@ -187,11 +217,16 @@ void gamma_correction(Array &array, float gamma)
 
 void gamma_correction(Array &array, float gamma, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { gamma_correction(a, gamma); });
 }
 
 void gamma_correction_local(Array &array, float gamma, int ir, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   Array amin = local_min(array, ir);
   Array amax = local_max(array, ir);
 
@@ -229,6 +264,9 @@ void gamma_correction_local(Array       &array,
                             const Array *p_mask,
                             float        k)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { gamma_correction_local(a, gamma, ir, k); });
@@ -236,6 +274,7 @@ void gamma_correction_local(Array       &array,
 
 void kuwahara(Array &array, int ir, float mix_ratio)
 {
+  if (!validate_non_empty(array)) return;
   if (ir <= 0) return;
 
   Array array_buffered = generate_buffered_array(array,
@@ -307,6 +346,9 @@ void kuwahara(Array &array, int ir, float mix_ratio)
 
 void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { kuwahara(a, ir, p_mask ? 1.f : mix_ratio); });
@@ -314,6 +356,8 @@ void kuwahara(Array &array, int ir, const Array *p_mask, float mix_ratio)
 
 void laplace(Array &array, float sigma, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   glm::ivec2 shape = array.shape;
 
   for (int it = 0; it < iterations; it++)
@@ -350,6 +394,9 @@ void laplace(Array &array, float sigma, int iterations)
 
 void laplace(Array &array, const Array *p_mask, float sigma, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { laplace(a, sigma, iterations); });
@@ -360,6 +407,8 @@ void laplace_edge_preserving(Array &array,
                              float  sigma,
                              int    iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   for (int it = 0; it < iterations; it++)
   {
     Array c = gradient_norm(array);
@@ -381,6 +430,9 @@ void laplace_edge_preserving(Array       &array,
                              float        sigma,
                              int          iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -389,6 +441,8 @@ void laplace_edge_preserving(Array       &array,
 
 void low_pass_high_order(Array &array, int order, float sigma)
 {
+  if (!validate_non_empty(array)) return;
+
   Array df = array;
 
   // filtering coefficients
@@ -430,6 +484,8 @@ void low_pass_high_order(Array &array, int order, float sigma)
 
 void make_binary(Array &array, float threshold)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [&threshold](float a) { return a > threshold ? 1.f : 0.f; };
 
   std::transform(array.vector.begin(),
@@ -440,6 +496,11 @@ void make_binary(Array &array, float threshold)
 
 void match_histogram(Array &array, const Array &array_reference)
 {
+  if (!validate_non_empty(array) || !validate_non_empty(array_reference))
+  {
+    return;
+  }
+
   std::vector<size_t> ki = argsort(array.vector);
   std::vector<size_t> kr = argsort(array_reference.vector);
 
@@ -465,6 +526,8 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 shape = array.shape;
   Array            array_next = Array(shape);
   Array            array_prev = array;
@@ -533,6 +596,9 @@ Array mean_shift(const Array &array,
                  int          iterations,
                  bool         talus_weighted)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (p_mask && !validate_same_shape(array, *p_mask)) return Array(array.shape);
+
   return transform_with_mask(
       array,
       p_mask,
@@ -542,6 +608,8 @@ Array mean_shift(const Array &array,
 
 void median_3x3(Array &array)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_out = Array(array.shape);
 
   std::vector<float> v(9);
@@ -570,17 +638,24 @@ void median_3x3(Array &array)
 
 void median_3x3(Array &array, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [](Array &a) { median_3x3(a); });
 }
 
 Array median_pseudo(const Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return Array();
+
   return (local_min(array, ir) + local_max(array, ir) + local_mean(array, ir)) /
          3.f;
 }
 
 void normal_displacement(Array &array, float amount, int ir, bool reverse)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_f = array;
   Array array_new = Array(array.shape);
 
@@ -619,6 +694,9 @@ void normal_displacement(Array       &array,
                          int          ir,
                          bool         reverse)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -627,6 +705,8 @@ void normal_displacement(Array       &array,
 
 void plateau(Array &array, int ir, float factor)
 {
+  if (!validate_non_empty(array)) return;
+
   Array amin = local_min(array, ir);
   Array amax = local_max(array, ir);
 
@@ -641,6 +721,9 @@ void plateau(Array &array, int ir, float factor)
 
 void plateau(Array &array, const Array *p_mask, int ir, float factor)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { plateau(a, ir, factor); });
 }
 
@@ -649,6 +732,9 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, threshold))
+    return;
+
   for (int j = 0; j < array.shape.y; ++j)
     for (int i = 0; i < array.shape.x; ++i)
     {
@@ -678,6 +764,8 @@ void reverse_above_theshold(Array &array,
                             float  scaling,
                             float  transition_extent)
 {
+  if (!validate_non_empty(array)) return;
+
   Array threshold_array = Array(array.shape, threshold);
 
   reverse_above_theshold(array, threshold_array, scaling, transition_extent);
@@ -689,6 +777,10 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, threshold))
+    return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(
       array,
       p_mask,
@@ -702,6 +794,9 @@ void reverse_above_theshold(Array       &array,
                             float        scaling,
                             float        transition_extent)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(
       array,
       p_mask,
@@ -711,6 +806,8 @@ void reverse_above_theshold(Array       &array,
 
 void sharpen(Array &array, float ratio)
 {
+  if (!validate_non_empty(array)) return;
+
   Array lp = Array(array.shape);
 
   for (int j = 1; j < array.shape.y - 1; j++)
@@ -725,11 +822,16 @@ void sharpen(Array &array, float ratio)
 
 void sharpen(Array &array, const Array *p_mask, float ratio)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { sharpen(a, ratio); });
 }
 
 void sharpen_cone(Array &array, int ir, float scale)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_low_pass = array;
   smooth_cone(array_low_pass, ir);
   array += scale * (array - array_low_pass);
@@ -737,11 +839,16 @@ void sharpen_cone(Array &array, int ir, float scale)
 
 void sharpen_cone(Array &array, const Array *p_mask, int ir, float scale)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { sharpen_cone(a, ir, scale); });
 }
 
 void shrink(Array &array, int ir, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+
   float amax = array.max();
   array = amax - array;
   expand(array, ir, iterations);
@@ -750,11 +857,17 @@ void shrink(Array &array, int ir, int iterations)
 
 void shrink(Array &array, int ir, const Array *p_mask, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { shrink(a, ir, iterations); });
 }
 
 void shrink(Array &array, const Array &kernel, int iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+
   float amax = array.max();
   array = amax - array;
   expand(array, kernel, iterations);
@@ -766,6 +879,10 @@ void shrink(Array       &array,
             const Array *p_mask,
             int          iterations)
 {
+  if (!validate_non_empty(array)) return;
+  if (!validate_non_empty(kernel)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { shrink(a, kernel, iterations); });
@@ -778,6 +895,9 @@ void shrink_directional(Array       &array,
                         float        anisotropy,
                         const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   Array kernel = cubic_pulse_directional(glm::ivec2(2 * ir + 1, 2 * ir + 1),
                                          angle,
                                          aspect_ratio,
@@ -787,6 +907,8 @@ void shrink_directional(Array       &array,
 
 void smooth_cone(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   // define kernel
   const int          nk = 2 * ir + 1;
   std::vector<float> k(nk);
@@ -813,11 +935,16 @@ void smooth_cone(Array &array, int ir)
 
 void smooth_cone(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { smooth_cone(a, ir); });
 }
 
 void smooth_cpulse(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   // define kernel
   const int          nk = 2 * ir + 1;
   std::vector<float> k1d(nk);
@@ -844,6 +971,9 @@ void smooth_cpulse(Array &array, int ir)
 
 void smooth_cpulse(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { smooth_cpulse(a, ir); });
 }
 
@@ -852,6 +982,8 @@ void smooth_cpulse_edge_removing(Array &array,
                                  float  talus_width,
                                  int    ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array c = gradient_norm(array);
   c = sigmoid(c, talus_width, 0.f /* vmin */, 1.f /* vmax */, talus);
   expand(c, ir);
@@ -860,6 +992,8 @@ void smooth_cpulse_edge_removing(Array &array,
 
 void smooth_flat(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   // define kernel
   const int          nk = 2 * ir + 1;
   std::vector<float> k(nk);
@@ -873,6 +1007,8 @@ void smooth_flat(Array &array, int ir)
 
 void smooth_gaussian(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   // define Gaussian kernel (we keep NSIGMA standard deviations of the
   // kernel support)
   const int          nk = NSIGMA * (2 * ir + 1);
@@ -902,11 +1038,16 @@ void smooth_gaussian(Array &array, int ir)
 
 void smooth_gaussian(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { smooth_gaussian(a, ir); });
 }
 
 void smooth_fill(Array &array, int ir, float k, Array *p_deposition_map)
 {
+  if (!validate_non_empty(array)) return;
+
   // keep a backup of the input for the deposition map
   Array array_bckp = Array();
   if (p_deposition_map != nullptr) array_bckp = array;
@@ -930,6 +1071,9 @@ void smooth_fill(Array       &array,
                  float        k,
                  Array       *p_deposition_map)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { smooth_fill(a, ir, k, p_deposition_map); });
@@ -937,6 +1081,8 @@ void smooth_fill(Array       &array,
 
 void smooth_fill_holes(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_smooth = array;
   smooth_cpulse(array_smooth, ir);
 
@@ -953,11 +1099,16 @@ void smooth_fill_holes(Array &array, int ir)
 
 void smooth_fill_holes(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { smooth_fill_holes(a, ir); });
 }
 
 void smooth_fill_smear_peaks(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_smooth = array;
   smooth_cpulse(array_smooth, ir);
 
@@ -974,6 +1125,9 @@ void smooth_fill_smear_peaks(Array &array, int ir)
 
 void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a) { smooth_fill_smear_peaks(a, ir); });
@@ -981,6 +1135,8 @@ void smooth_fill_smear_peaks(Array &array, int ir, const Array *p_mask)
 
 void smoothstep_local(Array &array, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array amin = local_min(array, ir);
   Array amax = local_max(array, ir);
 
@@ -997,11 +1153,16 @@ void smoothstep_local(Array &array, int ir)
 
 void smoothstep_local(Array &array, int ir, const Array *p_mask)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { smoothstep_local(a, ir); });
 }
 
 void steepen(Array &array, float scale, int ir)
 {
+  if (!validate_non_empty(array)) return;
+
   Array dx = gradient_x(array) * ((float)array.shape.x * -scale);
   Array dy = gradient_y(array) * ((float)array.shape.y * -scale);
 
@@ -1013,6 +1174,9 @@ void steepen(Array &array, float scale, int ir)
 
 void steepen(Array &array, float scale, const Array *p_mask, int ir)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array, p_mask, [&](Array &a) { steepen(a, scale, ir); });
 }
 
@@ -1022,6 +1186,8 @@ void steepen_convective(Array &array,
                         int    ir,
                         float  dt)
 {
+  if (!validate_non_empty(array)) return;
+
   Array dx = Array(array.shape);
   Array dy = Array(array.shape);
   float alpha = angle / 180.f * M_PI;
@@ -1056,6 +1222,9 @@ void steepen_convective(Array       &array,
                         int          ir,
                         float        dt)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(array,
                   p_mask,
                   [&](Array &a)
@@ -1071,6 +1240,9 @@ void terrace(Array        &array,
              float         vmin,
              float         vmax)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+
   std::mt19937                          gen(seed);
   std::uniform_real_distribution<float> dis(-noise_ratio, noise_ratio);
 
@@ -1138,6 +1310,10 @@ void terrace(Array        &array,
              float         vmin,
              float         vmax)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_noise && !validate_same_shape(array, *p_noise)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   apply_with_mask(
       array,
       p_mask,
