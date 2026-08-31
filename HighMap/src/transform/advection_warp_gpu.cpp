@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -19,6 +20,11 @@ Array advection_warp(const Array &z,
                      float        value_persistence,
                      const Array *p_mask)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, advected_field) ||
+      !validate_same_shape(z, dx) || !validate_same_shape(z, dy))
+    return Array();
+  if (p_mask && !validate_same_shape(z, *p_mask)) return Array();
+
   auto run = clwrapper::Run("advection_warp");
 
   glm::ivec2 shape = z.shape;
@@ -55,6 +61,10 @@ Array advection_warp(const Array &z,
                      float        value_persistence,
                      const Array *p_mask)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, advected_field))
+    return Array();
+  if (p_mask && !validate_same_shape(z, *p_mask)) return Array();
+
   Array dx = hmap::gradient_x(z);
   Array dy = hmap::gradient_y(z);
 

@@ -6,6 +6,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/grids.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -19,6 +20,12 @@ void fill_array_using_xy_function(
     const Array                              *p_stretching,
     std::function<float(float, float, float)> fct_xy)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_ctrl_param && !validate_same_shape(array, *p_ctrl_param)) return;
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return;
+  if (p_stretching && !validate_same_shape(array, *p_stretching)) return;
+
   glm::ivec2         shape = array.shape;
   std::vector<float> x, y;
   grid_xy_vector(x, y, shape, bbox, false);
@@ -107,6 +114,12 @@ void fill_array_using_xy_function(
     std::function<float(float, float, float)> fct_xy,
     int                                       subsampling)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_ctrl_param && !validate_same_shape(array, *p_ctrl_param)) return;
+  if (p_noise_x && !validate_same_shape(array, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(array, *p_noise_y)) return;
+  if (p_stretching && !validate_same_shape(array, *p_stretching)) return;
+
   glm::ivec2 shape = array.shape;
   glm::ivec2 shape_sub = glm::ivec2(shape.x / subsampling,
                                     shape.y / subsampling);

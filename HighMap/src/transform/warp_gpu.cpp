@@ -7,12 +7,17 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
 
 void warp(Array &array, const Array *p_dx, const Array *p_dy)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_dx && !validate_same_shape(array, *p_dx)) return;
+  if (p_dy && !validate_same_shape(array, *p_dy)) return;
+
   if (p_dx && p_dy)
   {
     auto run = clwrapper::Run("warp_xy");

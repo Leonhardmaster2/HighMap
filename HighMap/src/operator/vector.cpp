@@ -153,7 +153,7 @@ std::vector<float> random_vector(float min, float max, int num, int seed)
 
 void rescale_vector(std::vector<float> &vec, float vmin, float vmax)
 {
-  if (vec.empty()) return;
+  if (!validate_non_empty(vec, "vec")) return;
 
   // fringe case: flatten all values if target range is degenerate
   if (vmin == vmax)
@@ -187,6 +187,8 @@ std::vector<float> rescaled_vector(const std::vector<float> &vec,
                                    float                     vmin,
                                    float                     vmax)
 {
+  if (!validate_non_empty(vec, "vec")) return {};
+
   std::vector<float> out = vec;
   rescale_vector(out, vmin, vmax);
   return out;

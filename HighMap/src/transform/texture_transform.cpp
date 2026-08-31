@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 
+#include "highmap/internal/validation.hpp"
 #include "highmap/texture.hpp"
 #include "highmap/transform.hpp"
 
@@ -13,6 +14,8 @@ namespace hmap
 
 void flip_lr(Texture &texture)
 {
+  if (!validate_non_empty(texture)) return;
+
   for (auto &ch : texture.channels)
   {
     flip_lr(ch);
@@ -21,6 +24,8 @@ void flip_lr(Texture &texture)
 
 void flip_ud(Texture &texture)
 {
+  if (!validate_non_empty(texture)) return;
+
   for (auto &ch : texture.channels)
   {
     flip_ud(ch);
@@ -29,6 +34,8 @@ void flip_ud(Texture &texture)
 
 void rot90(Texture &texture)
 {
+  if (!validate_non_empty(texture)) return;
+
   for (auto &ch : texture.channels)
   {
     rot90(ch);
@@ -38,6 +45,8 @@ void rot90(Texture &texture)
 
 void rot180(Texture &texture)
 {
+  if (!validate_non_empty(texture)) return;
+
   for (auto &ch : texture.channels)
   {
     rot180(ch);
@@ -46,6 +55,8 @@ void rot180(Texture &texture)
 
 void rot270(Texture &texture)
 {
+  if (!validate_non_empty(texture)) return;
+
   for (auto &ch : texture.channels)
   {
     rot270(ch);
@@ -55,6 +66,8 @@ void rot270(Texture &texture)
 
 Texture transpose(const Texture &texture)
 {
+  if (!validate_non_empty(texture)) return Texture();
+
   std::vector<Array> transposed_channels;
   transposed_channels.reserve(texture.channels.size());
   for (const auto &ch : texture.channels)

@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/range.hpp"
 
@@ -14,6 +15,8 @@ namespace hmap
 
 void chop(Array &array, float vmin)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [vmin](float x) { return x > vmin ? x : 0.f; };
 
   std::transform(array.vector.begin(),
@@ -24,6 +27,8 @@ void chop(Array &array, float vmin)
 
 void chop_max_smooth(Array &array, float vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [vmax](float x)
   {
     if (x > vmax)
@@ -41,6 +46,8 @@ void chop_max_smooth(Array &array, float vmax)
 
 void clamp(Array &array, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [vmin, vmax](float x) { return std::clamp(x, vmin, vmax); };
 
   std::transform(array.vector.begin(),
@@ -51,6 +58,8 @@ void clamp(Array &array, float vmin, float vmax)
 
 void clamp(Array &array, float vmax, ClampMode mode)
 {
+  if (!validate_non_empty(array)) return;
+
   switch (mode)
   {
   case ClampMode::POSITIVE_ONLY:
@@ -76,6 +85,8 @@ void clamp(Array &array, float vmax, ClampMode mode)
 
 void clamp_max(Array &array, float vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [vmax](float x) { return x < vmax ? x : vmax; };
 
   std::transform(array.vector.begin(),
@@ -86,6 +97,8 @@ void clamp_max(Array &array, float vmax)
 
 void clamp_max(Array &array, const Array &vmax)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vmax)) return;
+
   auto lambda = [](float x, float vmax) { return x < vmax ? x : vmax; };
 
   std::transform(array.vector.begin(),
@@ -97,6 +110,8 @@ void clamp_max(Array &array, const Array &vmax)
 
 void clamp_max_smooth(Array &array, float vmax, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [k, vmax](float x)
   {
     float h = std::max(k - std::abs(x - vmax), 0.f) / k;
@@ -111,6 +126,8 @@ void clamp_max_smooth(Array &array, float vmax, float k)
 
 void clamp_max_smooth(Array &array, const Array &vmax, float k)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vmax)) return;
+
   auto lambda = [k](float x, float vmax)
   {
     float h = std::max(k - std::abs(x - vmax), 0.f) / k;
@@ -126,6 +143,8 @@ void clamp_max_smooth(Array &array, const Array &vmax, float k)
 
 void clamp_min(Array &array, float vmin)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [vmin](float x) { return x > vmin ? x : vmin; };
 
   std::transform(array.vector.begin(),
@@ -136,6 +155,8 @@ void clamp_min(Array &array, float vmin)
 
 void clamp_min(Array &array, const Array &vmin)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vmin)) return;
+
   auto lambda = [](float x, float vmin) { return x > vmin ? x : vmin; };
 
   std::transform(array.vector.begin(),
@@ -147,6 +168,8 @@ void clamp_min(Array &array, const Array &vmin)
 
 void clamp_min_smooth(Array &array, float vmin, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   auto lambda = [k, vmin](float x)
   {
     float h = std::max(k - std::abs(x - vmin), 0.f) / k;
@@ -161,6 +184,8 @@ void clamp_min_smooth(Array &array, float vmin, float k)
 
 void clamp_min_smooth(Array &array, const Array &vmin, float k)
 {
+  if (!validate_non_empty(array) || !validate_same_shape(array, vmin)) return;
+
   auto lambda = [k](float x, float vmin)
   {
     float h = std::max(k - std::abs(x - vmin), 0.f) / k;
@@ -189,6 +214,8 @@ void clamp_oblique_plane(Array    &array,
                          glm::vec2 center,
                          glm::vec4 bbox)
 {
+  if (!validate_non_empty(array)) return;
+
   // create plane
   Array plane = slope(array.shape,
                       angle,
@@ -219,6 +246,8 @@ void clamp_oblique_plane(Array    &array,
 
 void clamp_smooth(Array &array, float vmin, float vmax, float k)
 {
+  if (!validate_non_empty(array)) return;
+
   const float inv6k = k / 6.f;
 
   auto lambda = [k, vmin, vmax, inv6k](float x)
@@ -240,6 +269,9 @@ void clamp_smooth(Array &array, float vmin, float vmax, float k)
 
 Array maximum(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -251,6 +283,8 @@ Array maximum(const Array &array1, const Array &array2)
 
 Array maximum(const Array &array1, const float value)
 {
+  if (!validate_non_empty(array1)) return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -261,6 +295,9 @@ Array maximum(const Array &array1, const float value)
 
 Array maximum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   if (k > 0.f)
   {
     Array array_out = Array(array1.shape);
@@ -290,6 +327,9 @@ float maximum_smooth(const float a, const float b, float k)
 
 Array minimum(const Array &array1, const Array &array2)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -301,6 +341,8 @@ Array minimum(const Array &array1, const Array &array2)
 
 Array minimum(const Array &array1, const float value)
 {
+  if (!validate_non_empty(array1)) return Array();
+
   Array array_out = Array(array1.shape);
   std::transform(array1.vector.begin(),
                  array1.vector.end(),
@@ -311,6 +353,9 @@ Array minimum(const Array &array1, const float value)
 
 Array minimum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   if (k > 0.f)
   {
     Array array_out = Array(array1.shape);
@@ -340,6 +385,8 @@ float minimum_smooth(const float a, const float b, float k)
 
 void remap(Array &array, float vmin, float vmax)
 {
+  if (!validate_non_empty(array)) return;
+
   // keep separate min/max (actually vectorizes better than minmax_element)
   const float min = array.min();
   const float max = array.max();
@@ -361,6 +408,8 @@ void remap(Array &array, float vmin, float vmax)
 
 void remap(Array &array, float vmin, float vmax, float from_min, float from_max)
 {
+  if (!validate_non_empty(array)) return;
+
   if (from_min == from_max)
   {
     std::fill(array.vector.begin(), array.vector.end(), vmin);
@@ -378,6 +427,8 @@ void remap(Array &array, float vmin, float vmax, float from_min, float from_max)
 
 void rescale(Array &array, float scaling, float vref)
 {
+  if (!validate_non_empty(array)) return;
+
   if (vref == 0.f)
     // simply multiply the values by the scaling
     array *= scaling;

@@ -7,12 +7,16 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
 
 Array maximum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = array1;
 
   auto run = clwrapper::Run("maximum_smooth");
@@ -33,6 +37,9 @@ Array maximum_smooth(const Array &array1, const Array &array2, float k)
 
 Array minimum_smooth(const Array &array1, const Array &array2, float k)
 {
+  if (!validate_non_empty(array1) || !validate_same_shape(array1, array2))
+    return Array();
+
   Array array_out = array1;
 
   auto run = clwrapper::Run("minimum_smooth");

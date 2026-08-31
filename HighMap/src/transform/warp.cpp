@@ -7,6 +7,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/functions.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 
@@ -15,6 +16,10 @@ namespace hmap
 
 void warp(Array &array, const Array *p_dx, const Array *p_dy)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_dx && !validate_same_shape(array, *p_dx)) return;
+  if (p_dy && !validate_same_shape(array, *p_dy)) return;
+
   hmap::ArrayFunction f = hmap::ArrayFunction(array, glm::vec2(1.f, 1.f), true);
 
   fill_array_using_xy_function(array,
@@ -32,6 +37,8 @@ void warp_directional(Array &array,
                       int    ir,
                       bool   reverse)
 {
+  if (!validate_non_empty(array)) return;
+
   // --- define displacement: same as warp_downslope but add a
   // --- reference angle to scale the amount of warping
   float angle_rad = angle / 180.f * M_PI;
@@ -61,6 +68,9 @@ void warp_directional(Array       &array,
                       int          ir,
                       bool         reverse)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   if (!p_mask)
     warp_directional(array, angle, amount, ir, reverse);
   else
@@ -73,6 +83,8 @@ void warp_directional(Array       &array,
 
 void warp_downslope(Array &array, float amount, int ir, bool reverse)
 {
+  if (!validate_non_empty(array)) return;
+
   Array array_new = Array(array.shape);
   Array alpha = Array(array.shape);
 
@@ -97,6 +109,9 @@ void warp_downslope(Array       &array,
                     int          ir,
                     bool         reverse)
 {
+  if (!validate_non_empty(array)) return;
+  if (p_mask && !validate_same_shape(array, *p_mask)) return;
+
   if (!p_mask)
     warp_downslope(array, amount, ir, reverse);
   else

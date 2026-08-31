@@ -11,6 +11,7 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/transform.hpp"
 
 namespace hmap
@@ -26,6 +27,8 @@ bool cmp_path(std::pair<float, std::vector<int>> &a,
 // with the minimum cost using Dijkstra's algorithm
 void find_vertical_cut_path(const Array &error, std::vector<int> &path_i)
 {
+  if (!validate_non_empty(error)) return;
+
   glm::ivec2 shape = error.shape;
 
   path_i.clear();
@@ -79,6 +82,17 @@ void find_vertical_cut_path(const Array &error, std::vector<int> &path_i)
 
 Array generate_mask(glm::ivec2 shape, std::vector<int> cut_path_i, int ir)
 {
+  if (!validate_shape(shape)) return Array();
+  if (!validate_non_empty(cut_path_i, "cut_path_i")) return Array(shape);
+  if ((int)cut_path_i.size() < shape.y)
+  {
+    hmap::log::warn(std::source_location::current(),
+                    "cut_path_i size ({}) is smaller than shape height ({})",
+                    cut_path_i.size(),
+                    shape.y);
+    return Array(shape);
+  }
+
   Array mask = Array(shape);
 
   // make sure there will be a minimum transition length in the mask
@@ -144,6 +158,9 @@ Array get_random_patch(const Array          &array,
                        std::vector<Array *> *p_secondary_arrays,
                        std::vector<Array>   *p_secondary_patches)
 {
+  if (!validate_non_empty(array) || !validate_shape(patch_shape))
+    return Array();
+
   std::uniform_int_distribution<int> dis_i(0, array.shape.x - 1);
   std::uniform_int_distribution<int> dis_j(0, array.shape.y - 1);
 
@@ -188,6 +205,8 @@ Array get_random_patch(const Array          &array,
 
     for (auto pa : *p_secondary_arrays)
     {
+      if (!pa || !validate_same_shape(array, *pa)) continue;
+
       Array sec_patch = pa->extract_slice(
           glm::ivec4(i_start, i_end, j_start, j_end));
       helper_flip_rot_transpose(sec_patch,
