@@ -187,11 +187,15 @@ void kernel hydraulic_particle(global float *z_in,
       gz_norm = SLOPE_MIN;
     }
 
-    // particle goes downhill, opposite local gradient
-    float2 new_dir = (float2)(-gz.x, -gz.y);
-    dir = mix(new_dir, dir, c_inertia);
+    // Particle direction:
+    // When hitting an adverse slope (dot product with downhill gradient is low/negative) or flat ground,
+    // boost inertia so the particle carries forward over the barrier/lip rather than rebounding.
+    float2 downhill_dir = (float2)(-gz.x, -gz.y);
+    float dot_dir = (gz_norm > 1e-4f && length(dir) > 1e-4f) ? dot(dir, downhill_dir / gz_norm) : 1.f;
+    float eff_inertia = (dot_dir < 0.2f || gz_norm < 1e-3f) ? max(c_inertia, 0.65f) : c_inertia;
+    dir = mix(downhill_dir, dir, eff_inertia);
 
-    if (length(dir))
+    if (length(dir) > 0.f)
       dir /= length(dir);
     else
       dir = (float2)(0.f, 0.f);
@@ -215,14 +219,20 @@ void kernel hydraulic_particle(global float *z_in,
 
     float z = helper_sample_height(z_in, i, j, nx, ny, u, v);
     float dz = zp - z;
-
-    // B4: use local slope combined with elevation drop for capacity
-    // sc scales with stream power (volume * vel * dz)
+    // Elevation drop and stream power capacity
     float sc = max(0.f, c_capacity * volume * vel * dz);
     float delta_sc = dt * (sc - s);
     float amount = 0.f;
 
-    // if more sediments than capacity or if uphill motion
+    // Sample local sediment thickness if bedrock is present
+    float local_sed = 0.f;
+    if (has_bedrock != 0)
+    {
+      float zb = helper_sample_height(bedrock, i, j, nx, ny, u, v);
+      local_sed = max(0.f, z - zb);
+    }
+
+    // Deposition / Erosion
     if (delta_sc < 0.f || dz < 0.f)
     {
       // Deposition: amount is negative so helper_bilinear_deposition adds
@@ -234,17 +244,23 @@ void kernel hydraulic_particle(global float *z_in,
     else
     {
       // Erosion: amount is positive so helper_bilinear_deposition subtracts
-      // height from z_in, and adding amount to s increases sediment carried.
-      // Clamp erosion to dz to prevent digging below the target cell elevation
-      // in a single step
+      // height from z_in.
+      // Soft sediment / deposited alluvium has higher erodibility than hard bedrock.
+      float eff_c_erosion = c_erosion;
+      if (has_bedrock != 0 && local_sed > 1e-4f)
+      {
+        // Boost erosion rate on loose deposited sediment so depressions are easily flushed
+        eff_c_erosion = min(1.f, c_erosion * 4.f);
+      }
+
       float max_erode = (dz > 0.f) ? dz : delta_sc;
-      amount = c_erosion * min(delta_sc, max_erode);
+      amount = eff_c_erosion * min(delta_sc, max_erode);
       helper_bilinear_deposition(z_in, ip, jp, nx, ny, up, vp, amount);
     }
 
     s += amount;
 
-    // bedrock limit enforcement across interpolated footprint
+    // Bedrock limit enforcement across interpolated footprint
     if (amount > 0.f && has_bedrock != 0)
     {
       int i0 = ip, j0 = jp;
@@ -260,49 +276,13 @@ void kernel hydraulic_particle(global float *z_in,
       z_in[idx11] = max(bedrock[idx11], z_in[idx11]);
     }
 
-    // Depression / Pit Spillover:
-    // If the particle enters a depression (flat gradient or trapped uphill),
-    // probe the surrounding neighbourhood (virtual water level) to find the lowest
-    // saddle/spillover rim rather than dying and cementing the depression.
-    if (gz_norm < 1e-3f || dz < 0.f)
-    {
-      float min_rim_height = 1e10f;
-      float2 best_spill_dir = dir;
-      // Search in 8 directions with adaptive radius (2 to 4 cells)
-      for (int rad = 2; rad <= 4; rad += 2)
-      {
-        for (int angle_step = 0; angle_step < 8; ++angle_step)
-        {
-          float ang = (float)angle_step * (2.f * 3.14159265f / 8.f);
-          float2 probe_pos = pos + (float2)(cos(ang), sin(ang)) * (float)rad;
-          int pi_idx, pj_idx;
-          float pu_idx, pv_idx;
-          update_interp_param(probe_pos, &pi_idx, &pj_idx, &pu_idx, &pv_idx);
-          if (is_inside(pi_idx, pj_idx, nx, ny))
-          {
-            float probe_z = helper_sample_height(z_in, pi_idx, pj_idx, nx, ny, pu_idx, pv_idx);
-            if (probe_z < min_rim_height)
-            {
-              min_rim_height = probe_z;
-              best_spill_dir = normalize(probe_pos - pos);
-            }
-          }
-        }
-      }
+    // Velocity update:
+    // When moving uphill (dz < 0), apply softened kinetic resistance (0.5x gravity)
+    // so particles with sufficient incoming speed can climb short lips and breach obstacles
+    float g_eff = (dz < 0.f) ? (0.5f * c_gravity) : c_gravity;
+    vel = sqrt(max(0.f, vel * vel - dz * g_eff));
 
-      // If a valid spillway direction is found, steer particle across the depression toward the exit
-      if (min_rim_height < 1e9f)
-      {
-        dir = mix(best_spill_dir, dir, 0.3f);
-        if (length(dir) > 0.f) dir = normalize(dir);
-        // Maintain minimum gliding velocity across virtual lake surface
-        vel = max(vel, VELOCITY_INIT * 0.5f);
-      }
-    }
-
-    vel = sqrt(max(0.f, vel * vel - dz * c_gravity));
-
-    // B3: apply drag so particles decelerate on flats and deposit
+    // Damping drag
     vel *= (1.f - drag_rate);
 
     volume *= evap_factor;

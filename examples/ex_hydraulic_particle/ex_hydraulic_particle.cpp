@@ -15,7 +15,7 @@ int main(void)
                                    seed,
                                    8,
                                    0.f);
-  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
+  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 2.f);
   hmap::remap(z0);
 
   int nparticles = int(0.5f * shape.x * shape.y);
@@ -30,15 +30,15 @@ int main(void)
                                 /* p_erosion_map */ nullptr,
                                 /* p_deposition_map */ nullptr,
                                 /* c_capacity */ 10.f,
-                                /* c_erosion */ 0.05f,
-                                /* c_deposition */ 0.01f,
+                                /* c_erosion */ 0.1f,
+                                /* c_deposition */ 0.05f,
                                 /* c_inertia */ 0.f,
                                 /* c_gravity */ 1.f,
                                 /* drag_rate */ 0.001f,
                                 /* evap_rate */ 0.001f,
                                 /* enable_directional_bias */ false,
                                 /* angle_bias */ 30.f,
-                                /* iterations */ 16);
+                                /* iterations */ 1);
 
   auto z2 = z0;
   auto zb2 = hmap::generate_bedrock(z2,
