@@ -9,6 +9,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -80,6 +81,8 @@ std::vector<glm::ivec2> find_path_midpoint(const Array &z,
                                            int          max_it,
                                            int          steps)
 {
+  if (!validate_non_empty(z)) return {};
+
   const glm::ivec2 &shape = z.shape;
 
   // --- adaptive number of iterations if not provided

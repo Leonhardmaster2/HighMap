@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/logger.hpp"
 
@@ -18,6 +19,8 @@ void downscale_transform(Array                        &array,
                          std::function<void(Array &x)> unary_op,
                          bool                          apply_prefiltering)
 {
+  if (!validate_non_empty(array)) return;
+
   int        nc_x = std::min(array.shape.x, std::max(4, (int)(2.f * kc)));
   int        nc_y = std::min(array.shape.y, std::max(4, (int)(2.f * kc)));
   glm::ivec2 shape_coarse(nc_x, nc_y);

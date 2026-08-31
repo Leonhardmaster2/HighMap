@@ -5,6 +5,7 @@
 #include <cmath>
 #include <random>
 
+#include "highmap/internal/validation.hpp"
 #include "highmap/particles.hpp"
 
 namespace hmap
@@ -14,6 +15,8 @@ glm::ivec2 spawn_borders(std::mt19937     &rng,
                          int               nbuffer,
                          const glm::ivec2 &shape)
 {
+  if (!validate_shape(shape)) return {0, 0};
+
   nbuffer = std::max(1, nbuffer);
 
   const int nx = shape.x;
@@ -73,6 +76,8 @@ glm::ivec2 spawn_disc(std::mt19937     &rng,
                       float             radius,
                       const glm::ivec2 &shape)
 {
+  if (!validate_shape(shape)) return {0, 0};
+
   std::uniform_real_distribution<float> dist_angle(0.f, 2.f * M_PI);
   std::uniform_real_distribution<float> dist01(0.f, 1.f);
 
@@ -95,6 +100,8 @@ glm::ivec2 spawn_gaussian(std::mt19937     &rng,
                           float             sigma,
                           const glm::ivec2 &shape)
 {
+  if (!validate_shape(shape)) return {0, 0};
+
   std::normal_distribution<float> dist_x(center.x, sigma);
   std::normal_distribution<float> dist_y(center.y, sigma);
 
@@ -113,6 +120,8 @@ glm::ivec2 spawn_ring(std::mt19937     &rng,
                       float             radius_max,
                       const glm::ivec2 &shape)
 {
+  if (!validate_shape(shape)) return {0, 0};
+
   std::uniform_real_distribution<float> dist_angle(0.f, 2.f * M_PI);
   std::uniform_real_distribution<float> dist01(0.f, 1.f);
 
@@ -135,6 +144,8 @@ glm::ivec2 spawn_ring(std::mt19937     &rng,
 
 glm::ivec2 spawn_uniform(std::mt19937 &rng, const glm::ivec2 &shape)
 {
+  if (!validate_shape(shape)) return {0, 0};
+
   std::uniform_int_distribution<int> dist_x(0, shape.x - 1);
   std::uniform_int_distribution<int> dist_y(0, shape.y - 1);
 

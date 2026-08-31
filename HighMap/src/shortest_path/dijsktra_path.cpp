@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/shortest_path.hpp"
 
 namespace hmap
@@ -21,7 +22,9 @@ Path dijkstra(const Path  &path,
               float        upward_penalization,
               Array       *p_mask_nogo)
 {
-  if (path.size() < 2) return path;
+  if (!validate_non_empty(array)) return path;
+  if (!validate_min_size(path.points, 2, "Path points")) return path;
+  if (p_mask_nogo && !validate_same_shape(array, *p_mask_nogo)) return path;
 
   Path new_path = path;
 

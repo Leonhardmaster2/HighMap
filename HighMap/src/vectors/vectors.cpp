@@ -11,11 +11,15 @@
 #include <string>
 #include <vector>
 
+#include "highmap/internal/validation.hpp"
+
 namespace hmap
 {
 
 std::vector<size_t> argsort(const std::vector<float> &v)
 {
+  if (!validate_non_empty(v, "Vector")) return {};
+
   // https://stackoverflow.com/questions/1577475
   std::vector<size_t> idx(v.size());
   std::iota(idx.begin(), idx.end(), 0);
@@ -27,6 +31,8 @@ std::vector<size_t> argsort(const std::vector<float> &v)
 
 float compute_median(std::vector<float> values)
 {
+  if (!validate_non_empty(values, "Vector")) return 0.f;
+
   size_t n = values.size();
   if (n == 0) return 0.f; // or handle error
 
@@ -47,6 +53,8 @@ float compute_median(std::vector<float> values)
 
 std::vector<size_t> find_sign_changes(const std::vector<float> &data)
 {
+  if (!validate_min_size(data, 2, "Vector")) return {};
+
   std::vector<size_t> indices;
 
   if (data.size() < 2) return indices;
@@ -209,7 +217,8 @@ std::string make_histogram(const std::vector<float> &values,
 
 std::vector<float> moving_average(const std::vector<float> &input, int radius)
 {
-  if (input.empty() || radius <= 0) return input;
+  if (!validate_non_empty(input, "Vector")) return {};
+  if (radius <= 0) return input;
 
   std::vector<float> output(input.size(), 0.0f);
 
@@ -252,7 +261,7 @@ std::vector<float> remap(const std::vector<float> &data,
                          float                     new_min,
                          float                     new_max)
 {
-  if (data.empty()) return {};
+  if (!validate_non_empty(data, "Vector")) return {};
 
   auto [min_it, max_it] = std::minmax_element(data.begin(), data.end());
   float old_min = *min_it;
