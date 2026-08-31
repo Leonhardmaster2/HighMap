@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 
 namespace hmap
@@ -19,6 +20,10 @@ Array interpolate2d(glm::ivec2                shape,
                     const Array              *p_noise_y,
                     glm::vec4                 bbox)
 {
+  if (!validate_shape(shape)) return Array();
+  if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array();
+
   switch (interpolation_method)
   {
   case InterpolationMethod2D::ITP2D_DELAUNAY:

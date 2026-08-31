@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <vector>
 
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 
 #include "delaunay.h"
@@ -21,6 +22,10 @@ NaturalNeighborInterpolator::~NaturalNeighborInterpolator()
 void NaturalNeighborInterpolator::build(const std::vector<float> &xin,
                                         const std::vector<float> &yin)
 {
+  if (!validate_min_size(xin, 3, "Input points xin") ||
+      xin.size() != yin.size())
+    return;
+
   int npoints = static_cast<int>(xin.size());
 
   // create delaunay triangulation

@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -15,6 +16,9 @@ Array harmonic_interpolation(const Array &array,
                              float        tolerance,
                              float        omega)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, mask_fixed_values)) return Array();
+
   Array out = array;
   int   nx = out.shape.x;
   int   ny = out.shape.y;
@@ -58,6 +62,11 @@ Array harmonic_interpolation(const Array &array,
                              float        tolerance,
                              float        omega)
 {
+  if (!validate_non_empty(array)) return Array();
+  if (!validate_same_shape(array, mask_fixed_values)) return Array();
+  if (!validate_same_shape(array, dx)) return Array();
+  if (!validate_same_shape(array, dy)) return Array();
+
   Array out = array;
   int   nx = out.shape.x;
   int   ny = out.shape.y;
