@@ -798,11 +798,18 @@ void deposition_fill_holes(Array       &z,
  * @param c_deposition            Deposition rate coefficient.
  * @param c_inertia               Particle inertia factor.
  * @param c_gravity               Gravity effect on particle movement.
- * @param drag_rate               Particle velocity damping.
+ * @param drag_rate               Particle velocity damping per step.
  * @param evap_rate               Sediment evaporation rate.
  * @param enable_directional_bias Enable bias along a preferred slope direction.
  * @param angle_bias              Bias angle in degrees (if directional bias
  *                                enabled).
+ * @param iterations              Number of multi-pass iterations.  Particles
+ *                                are split evenly across passes and the terrain
+ *                                is re-uploaded between passes so later
+ *                                particles follow channels carved by earlier
+ *                                ones.  Higher values produce more coherent
+ *                                drainage networks at the cost of serializing
+ *                                the GPU work.
  *
  *  **Example**
  * @include ex_hydraulic_particle.cpp
@@ -821,12 +828,13 @@ void hydraulic_particle(Array        &z,
                         float         c_capacity = 10.f,
                         float         c_erosion = 0.05f,
                         float         c_deposition = 0.05f,
-                        float         c_inertia = 0.1f,
+                        float         c_inertia = 0.f,
                         float         c_gravity = 1.f,
                         float         drag_rate = 0.001f,
                         float         evap_rate = 0.001f,
                         bool          enable_directional_bias = false,
-                        float         angle_bias = 30.f);
+                        float         angle_bias = 30.f,
+                        int           iterations = 1);
 
 /*! @brief See hmap::hydraulic_particle */
 void hydraulic_particle(Array        &z,
@@ -846,7 +854,8 @@ void hydraulic_particle(Array        &z,
                         float         drag_rate = 0.001f,
                         float         evap_rate = 0.001f,
                         bool          enable_directional_bias = false,
-                        float         angle_bias = 30.f);
+                        float         angle_bias = 30.f,
+                        int           iterations = 1);
 
 /**
  * @brief Particle-based hydraulic erosion with flow-field coupling (McDonald's

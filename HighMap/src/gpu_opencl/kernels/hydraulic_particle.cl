@@ -183,6 +183,8 @@ void kernel hydraulic_particle(global float *z_in,
         gz *= SLOPE_MIN / gz_norm;
       else
         gz = SLOPE_MIN * dir;
+
+      gz_norm = SLOPE_MIN;
     }
 
     // particle goes downhill, opposite local gradient
@@ -213,34 +215,56 @@ void kernel hydraulic_particle(global float *z_in,
 
     float z = helper_sample_height(z_in, i, j, nx, ny, u, v);
     float dz = zp - z;
-    float sc = max(c_capacity * volume * vel * dz, 0.f);
+
+    // B4: use local slope combined with elevation drop for capacity
+    // sc scales with stream power (volume * vel * dz)
+    float sc = max(0.f, c_capacity * volume * vel * dz);
     float delta_sc = dt * (sc - s);
     float amount = 0.f;
 
     // if more sediments than capacity or if uphill motion
     if (delta_sc < 0.f || dz < 0.f)
     {
-      // deposition
-      amount = (dz < 0.f) ? -min(-dz, s) : c_deposition * delta_sc;
+      // Deposition: amount is negative so helper_bilinear_deposition adds
+      // height to z_in, and adding amount to s decreases sediment carried.
+      float to_deposit = (dz < 0.f) ? max(-dz, -delta_sc) : -delta_sc;
+      amount = -c_deposition * min(s, to_deposit);
       helper_bilinear_deposition(z_in, ip, jp, nx, ny, up, vp, amount);
     }
     else
     {
-      // erosion
-      amount = c_erosion * delta_sc;
+      // Erosion: amount is positive so helper_bilinear_deposition subtracts
+      // height from z_in, and adding amount to s increases sediment carried.
+      // Clamp erosion to dz to prevent digging below the target cell elevation
+      // in a single step
+      float max_erode = (dz > 0.f) ? dz : delta_sc;
+      amount = c_erosion * min(delta_sc, max_erode);
       helper_bilinear_deposition(z_in, ip, jp, nx, ny, up, vp, amount);
     }
 
     s += amount;
 
-    // bedrock limit enforcement
-    if (amount > 0.f && has_bedrock != 0) // erosion
+    // bedrock limit enforcement across interpolated footprint
+    if (amount > 0.f && has_bedrock != 0)
     {
-      z_in[linear_index(ip, jp, nx)] = max(bedrock[linear_index(ip, jp, nx)],
-                                           z_in[linear_index(ip, jp, nx)]);
+      int i0 = ip, j0 = jp;
+      if (i0 == nx - 1) i0--;
+      if (j0 == ny - 1) j0--;
+      int idx00 = linear_index(i0, j0, nx);
+      int idx10 = linear_index(i0 + 1, j0, nx);
+      int idx01 = linear_index(i0, j0 + 1, nx);
+      int idx11 = linear_index(i0 + 1, j0 + 1, nx);
+      z_in[idx00] = max(bedrock[idx00], z_in[idx00]);
+      z_in[idx10] = max(bedrock[idx10], z_in[idx10]);
+      z_in[idx01] = max(bedrock[idx01], z_in[idx01]);
+      z_in[idx11] = max(bedrock[idx11], z_in[idx11]);
     }
 
     vel = sqrt(max(0.f, vel * vel - dz * c_gravity));
+
+    // B3: apply drag so particles decelerate on flats and deposit
+    vel *= (1.f - drag_rate);
+
     volume *= evap_factor;
   }
 }

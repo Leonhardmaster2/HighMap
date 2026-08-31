@@ -18,7 +18,7 @@ int main(void)
   z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
   hmap::remap(z0);
 
-  int nparticles = int(0.5f * shape.x * shape.y);
+  int nparticles = int(1.f * shape.x * shape.y);
 
   auto z1 = z0;
   hmap::gpu::hydraulic_particle(z1, nparticles, seed);
