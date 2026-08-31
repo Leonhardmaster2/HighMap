@@ -14,6 +14,7 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/geometry/graph.hpp"
 #include "highmap/geometry/point.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/vectors.hpp"
 
 namespace hmap
@@ -30,6 +31,11 @@ Graph generate_network_alpha_model(const std::vector<float> &xc,
                                    float                     dz_weight,
                                    const Array              *p_weight)
 {
+  if (!validate_non_empty(z)) return Graph();
+  if (xc.empty() || xc.size() != yc.size() || xc.size() != size.size())
+    return Graph();
+  if (p_weight && !validate_same_shape(z, *p_weight)) return Graph();
+
   size_t nc = xc.size();
 
   //--- tesselation: randomly add "dummy" nodes and use Delaunay
