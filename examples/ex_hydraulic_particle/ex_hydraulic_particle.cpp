@@ -18,10 +18,27 @@ int main(void)
   z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
   hmap::remap(z0);
 
-  int nparticles = int(1.f * shape.x * shape.y);
+  int nparticles = int(0.5f * shape.x * shape.y);
 
   auto z1 = z0;
-  hmap::gpu::hydraulic_particle(z1, nparticles, seed);
+  hmap::gpu::hydraulic_particle(z1,
+                                nparticles,
+                                seed,
+                                /* p_bedrock */ nullptr,
+                                /* p_moisture_map */ nullptr,
+                                /* p_elevation_shift */ nullptr,
+                                /* p_erosion_map */ nullptr,
+                                /* p_deposition_map */ nullptr,
+                                /* c_capacity */ 10.f,
+                                /* c_erosion */ 0.05f,
+                                /* c_deposition */ 0.01f,
+                                /* c_inertia */ 0.f,
+                                /* c_gravity */ 1.f,
+                                /* drag_rate */ 0.001f,
+                                /* evap_rate */ 0.001f,
+                                /* enable_directional_bias */ false,
+                                /* angle_bias */ 30.f,
+                                /* iterations */ 16);
 
   auto z2 = z0;
   auto zb2 = hmap::generate_bedrock(z2,
