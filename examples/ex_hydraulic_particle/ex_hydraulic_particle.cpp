@@ -15,7 +15,7 @@ int main(void)
                                    seed,
                                    8,
                                    0.f);
-  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 2.f);
+  z0 = hmap::bulkify(z0, hmap::PrimitiveType::PRIM_CONE_SMOOTH, 1.f);
   hmap::remap(z0);
 
   int nparticles = int(0.5f * shape.x * shape.y);
@@ -31,7 +31,7 @@ int main(void)
                                 /* p_deposition_map */ nullptr,
                                 /* c_capacity */ 10.f,
                                 /* c_erosion */ 0.1f,
-                                /* c_deposition */ 0.05f,
+                                /* c_deposition */ 0.1f,
                                 /* c_inertia */ 0.f,
                                 /* c_gravity */ 1.f,
                                 /* drag_rate */ 0.001f,

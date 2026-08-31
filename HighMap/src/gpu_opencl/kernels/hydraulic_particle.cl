@@ -177,22 +177,23 @@ void kernel hydraulic_particle(global float *z_in,
     // ensure minimum slope
     float gz_norm = length(gz);
 
-    if (gz_norm < SLOPE_MIN)
+    // Option 4: Across flats (||grad z|| -> 0), preserve existing momentum dir
+    // rather than resetting or artificially locking to a default vector
+    float2 downhill_dir;
+    if (gz_norm > SLOPE_MIN)
     {
-      if (gz_norm > 0.f)
-        gz *= SLOPE_MIN / gz_norm;
-      else
-        gz = SLOPE_MIN * dir;
-
+      downhill_dir = (float2)(-gz.x / gz_norm, -gz.y / gz_norm);
+    }
+    else
+    {
+      downhill_dir = (length(dir) > 1e-4f) ? dir : (float2)(0.f, 0.f);
       gz_norm = SLOPE_MIN;
     }
 
-    // Particle direction:
-    // When hitting an adverse slope (dot product with downhill gradient is low/negative) or flat ground,
-    // boost inertia so the particle carries forward over the barrier/lip rather than rebounding.
-    float2 downhill_dir = (float2)(-gz.x, -gz.y);
-    float dot_dir = (gz_norm > 1e-4f && length(dir) > 1e-4f) ? dot(dir, downhill_dir / gz_norm) : 1.f;
-    float eff_inertia = (dot_dir < 0.2f || gz_norm < 1e-3f) ? max(c_inertia, 0.65f) : c_inertia;
+    // Blend downhill direction with particle momentum
+    // If terrain is flat, inertia dominates so particle carries smoothly across
+    float eff_inertia = (gz_norm <= 2.f * SLOPE_MIN) ? max(c_inertia, 0.9f)
+                                                     : c_inertia;
     dir = mix(downhill_dir, dir, eff_inertia);
 
     if (length(dir) > 0.f)
@@ -245,11 +246,13 @@ void kernel hydraulic_particle(global float *z_in,
     {
       // Erosion: amount is positive so helper_bilinear_deposition subtracts
       // height from z_in.
-      // Soft sediment / deposited alluvium has higher erodibility than hard bedrock.
+      // Soft sediment / deposited alluvium has higher erodibility than hard
+      // bedrock.
       float eff_c_erosion = c_erosion;
       if (has_bedrock != 0 && local_sed > 1e-4f)
       {
-        // Boost erosion rate on loose deposited sediment so depressions are easily flushed
+        // Boost erosion rate on loose deposited sediment so depressions are
+        // easily flushed
         eff_c_erosion = min(1.f, c_erosion * 4.f);
       }
 
@@ -277,9 +280,17 @@ void kernel hydraulic_particle(global float *z_in,
     }
 
     // Velocity update:
-    // When moving uphill (dz < 0), apply softened kinetic resistance (0.5x gravity)
-    // so particles with sufficient incoming speed can climb short lips and breach obstacles
-    float g_eff = (dz < 0.f) ? (0.5f * c_gravity) : c_gravity;
+    // Option 4: Soften uphill deceleration for low-angle depressions/obstacles
+    // (scale uphill gravity loss with local adverse slope ratio)
+    float g_eff = c_gravity;
+    if (dz < 0.f)
+    {
+      // Shallow uphill rises (e.g. -dz < 0.05) face significantly reduced
+      // deceleration, allowing incoming fast water to glide over low-angle
+      // sills.
+      float slope_atten = clamp(-dz * 20.f, 0.2f, 1.f);
+      g_eff = c_gravity * slope_atten;
+    }
     vel = sqrt(max(0.f, vel * vel - dz * g_eff));
 
     // Damping drag
