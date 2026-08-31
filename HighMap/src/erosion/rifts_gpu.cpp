@@ -7,6 +7,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
@@ -33,6 +34,11 @@ void rifts(Array           &z,
            const glm::vec2 &center,
            const glm::vec4 &bbox)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return;
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   auto run = clwrapper::Run("rifts");
 
   run.bind_buffer<float>("z", z.vector);

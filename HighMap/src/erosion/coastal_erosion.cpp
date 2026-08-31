@@ -8,6 +8,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/morphology.hpp"
@@ -22,6 +23,9 @@ void coastal_erosion_diffusion(Array       &z,
                                const Array *p_mask,
                                Array       *p_water_mask)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, water_depth)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+
   const glm::ivec2 &shape = z.shape;
 
   Array mask;
@@ -65,6 +69,9 @@ void coastal_erosion_profile(Array       &z,
                              Array       *p_shore_mask,
                              Array       *p_scarp_mask)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, water_depth)) return;
+  if (p_noise && !validate_same_shape(z, *p_noise)) return;
+
   const glm::ivec2 &shape = z.shape;
   Array             z_bckp = z;
   Array             shore_mask(shape); // includes ground & water
@@ -203,6 +210,10 @@ void coastal_erosion_profile(Array       &z,
                              Array       *p_shore_mask,
                              Array       *p_scarp_mask)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, water_depth)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_noise && !validate_same_shape(z, *p_noise)) return;
+
   if (!p_mask)
   {
     coastal_erosion_profile(z,

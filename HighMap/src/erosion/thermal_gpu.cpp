@@ -7,6 +7,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -20,6 +21,9 @@ void thermal(Array       &z,
              Array       *p_bedrock,
              Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 
@@ -91,6 +95,9 @@ void thermal(Array &z,
              Array *p_bedrock,
              Array *p_deposition_map)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+
   Array talus_map(z.shape, talus);
   gpu::thermal(z, talus_map, iterations, p_bedrock, p_deposition_map);
 }
@@ -100,6 +107,8 @@ void thermal_auto_bedrock(Array       &z,
                           int          iterations,
                           Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   Array z_bckp = z;
   Array bedrock(z.shape);
 
@@ -134,6 +143,8 @@ void thermal_auto_bedrock(Array &z,
                           int    iterations,
                           Array *p_deposition_map)
 {
+  if (!validate_non_empty(z)) return;
+
   Array talus_map(z.shape, talus);
   gpu::thermal_auto_bedrock(z, talus_map, iterations, p_deposition_map);
 }
@@ -157,6 +168,8 @@ void thermal_flatten(Array       &z,
                      float        sigma_inf,
                      float        sigma_sup)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   const glm::ivec2 &shape = z.shape;
 
   auto run = clwrapper::Run("thermal_flatten");
@@ -191,6 +204,8 @@ void thermal_flatten(Array       &z,
 
 void thermal_inflate(Array &z, const Array &talus, int iterations)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   auto run = clwrapper::Run("thermal_inflate");
 
   run.bind_buffer<float>("z", z.vector);
@@ -220,6 +235,8 @@ void thermal_inflate(Array       &z,
 
 void thermal_olsen(Array &z, const Array &talus, int iterations)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   auto run = clwrapper::Run("thermal_olsen");
 
   run.bind_buffer<float>("z", z.vector);
@@ -248,6 +265,8 @@ void thermal_olsen(Array       &z,
 
 void thermal_rib(Array &z, int iterations)
 {
+  if (!validate_non_empty(z)) return;
+
   auto run = clwrapper::Run("thermal_rib");
 
   run.bind_buffer<float>("z", z.vector);
@@ -276,6 +295,8 @@ void thermal_ridge(Array       &z,
                    int          iterations,
                    Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 
@@ -316,6 +337,8 @@ void thermal_schott(Array       &z,
                     float        intensity,
                     Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 
@@ -358,6 +381,10 @@ void thermal_scree(Array       &z,
                    int          iterations,
                    Array       *p_deposition_map)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus) ||
+      !validate_same_shape(z, zmax))
+    return;
+
   Array z_bckp = Array();
   if (p_deposition_map != nullptr) z_bckp = z;
 

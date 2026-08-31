@@ -10,6 +10,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/range.hpp"
@@ -34,6 +35,10 @@ void hydraulic_benes(Array &z,
                      float  evap_rate,
                      float  rain_rate)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   std::vector<int>    di = HMAP_DI;
   std::vector<int>    dj = HMAP_DJ;
   const std::uint32_t nb = di.size();
@@ -218,6 +223,11 @@ void hydraulic_benes(Array &z,
                      float  evap_rate,
                      float  rain_rate)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   if (!p_mask)
     hydraulic_benes(z,
                     iterations,

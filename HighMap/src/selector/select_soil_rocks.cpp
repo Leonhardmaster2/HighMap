@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 #include "highmap/selector.hpp"
 
@@ -20,6 +21,8 @@ Array select_soil_rocks(const Array &z,
                         ClampMode    curvature_clamp_mode,
                         float        curvature_clamping)
 {
+  if (!validate_non_empty(z)) return Array();
+
   Array sr(z.shape); // output
 
   float actual_min = (ir_min == 0 ? 1.f : float(ir_min));

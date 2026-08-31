@@ -3,6 +3,7 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 
 namespace hmap
@@ -15,6 +16,8 @@ Array generate_bedrock(const Array &z,
                        float        zmin,
                        float        zmax)
 {
+  if (!validate_non_empty(z)) return Array();
+
   // resolve elevation range
   if (zmin > zmax)
   {

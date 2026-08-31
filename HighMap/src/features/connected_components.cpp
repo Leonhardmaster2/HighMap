@@ -12,6 +12,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -22,6 +23,8 @@ Array connected_components(const Array            &array,
                            std::map<float, float> *p_surfaces,
                            std::map<float, std::array<float, 2>> *p_centroids)
 {
+  if (!validate_non_empty(array)) return Array();
+
   const glm::ivec2 &shape = array.shape;
 
   // neighbor search pattern

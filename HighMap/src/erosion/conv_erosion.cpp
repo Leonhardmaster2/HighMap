@@ -17,6 +17,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/particles.hpp"
@@ -177,6 +178,8 @@ void conv_erosion(Array        &z,
                   float         gradient_exp,
                   float         gradient_strength_min)
 {
+  if (!validate_non_empty(z)) return;
+
   float bulk_amp = 0.1f;
   float filling_strength = 0.5f;
 

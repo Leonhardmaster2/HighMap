@@ -8,6 +8,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/math/core.hpp"
 #include "highmap/transform.hpp"
@@ -29,6 +30,11 @@ void strata_plates(Array        &z,
                    const Array  *p_dx,
                    const Array  *p_dy)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_dx && !validate_same_shape(z, *p_dx)) return;
+  if (p_dy && !validate_same_shape(z, *p_dy)) return;
+
   // --- List of directions to project the talus along
 
   direction_count = std::min(8, direction_count);

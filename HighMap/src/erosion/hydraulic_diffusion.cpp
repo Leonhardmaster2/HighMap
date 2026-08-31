@@ -5,6 +5,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/gradient.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
@@ -14,6 +15,8 @@ void hydraulic_diffusion(Array &z,
                          float  talus,
                          int    iterations)
 {
+  if (!validate_non_empty(z)) return;
+
   Array dx = Array(z.shape);
   Array dy = Array(z.shape);
   Array qx = Array(z.shape);

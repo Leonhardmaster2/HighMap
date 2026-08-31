@@ -9,12 +9,15 @@
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"
 #include "highmap/features.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 Array geomorphons(const Array &array, int irmin, int irmax, float epsilon)
 {
+  if (!validate_non_empty(array)) return Array();
+
   float epsilon_normed = epsilon / (float)array.shape.x;
 
   // output array containing the geomorphon labels

@@ -11,6 +11,7 @@
 #include "highmap/erosion.hpp"
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/hydrology/drainage_basin.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/array.hpp"
 #include "highmap/primitives/functions.hpp"
@@ -85,6 +86,10 @@ Array hydraulic_saleve(const Array          &z,
                        const Array          *p_noise_x,
                        const Array          *p_noise_y)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+
   const glm::ivec2 shape = z.shape;
   const glm::vec4  bbox = {0.f, 1.f, 0.f, 1.f};
   const float      zmin = z.min();
@@ -208,6 +213,11 @@ Array hydraulic_saleve(const Array          &z,
                        const Array          *p_noise_x,
                        const Array          *p_noise_y)
 {
+  if (!validate_non_empty(z)) return Array();
+  if (p_mask && !validate_same_shape(z, *p_mask)) return Array();
+  if (p_noise_x && !validate_same_shape(z, *p_noise_x)) return Array();
+  if (p_noise_y && !validate_same_shape(z, *p_noise_y)) return Array();
+
   Array ze = hydraulic_saleve(z,
                               seed,
                               control_points_count,

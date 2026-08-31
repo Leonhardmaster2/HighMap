@@ -8,6 +8,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap::gpu
 {
@@ -31,6 +32,9 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_rain_map && !validate_same_shape(z, *p_rain_map)) return;
+
   const glm::ivec2 shape = z.shape;
 
   Array rain_map(shape, 1.f);
@@ -58,118 +62,147 @@ void hydraulic_vpipes(Array &z,
 
   for (int it = 0; it < iterations; ++it)
   {
-    // --- water increase (CPU)
-
-    d1 = d; // TODO kept as reference, TO REMOVE
-
-    // --- flux update
-
-    auto run_fp = clwrapper::Run("hydraulic_vpipes_flow_pass");
-
-    run_fp.bind_imagef("z", z.vector, shape.x, shape.y); // inputs
-    run_fp.bind_imagef("fl", fl.vector, shape.x, shape.y);
-    run_fp.bind_imagef("fr", fr.vector, shape.x, shape.y);
-    run_fp.bind_imagef("ft", ft.vector, shape.x, shape.y);
-    run_fp.bind_imagef("fb", fb.vector, shape.x, shape.y);
-    run_fp.bind_imagef("d1", d1.vector, shape.x, shape.y);
-
-    run_fp.bind_imagef("fl_out", fl.vector, shape.x, shape.y, true); // outputs
-    run_fp.bind_imagef("fr_out", fr.vector, shape.x, shape.y, true);
-    run_fp.bind_imagef("ft_out", ft.vector, shape.x, shape.y, true);
-    run_fp.bind_imagef("fb_out", fb.vector, shape.x, shape.y, true);
-
-    run_fp.bind_arguments(shape.x,
-                          shape.y,
-                          dt,
-                          flux_diffusion ? 1 : 0,
-                          flux_diffusion_strength);
-
-    run_fp.execute({shape.x, shape.y});
-
-    // update flux (from GPU to CPU)
-    run_fp.read_imagef("fl_out");
-    run_fp.read_imagef("fr_out");
-    run_fp.read_imagef("ft_out");
-    run_fp.read_imagef("fb_out");
-
-    // --- water transport
-
-    auto run_wa = clwrapper::Run("hydraulic_vpipes_water_pass");
-
-    run_wa.bind_imagef("z", z.vector, shape.x, shape.y); // inputs
-    run_wa.bind_imagef("fl", fl.vector, shape.x, shape.y);
-    run_wa.bind_imagef("fr", fr.vector, shape.x, shape.y);
-    run_wa.bind_imagef("ft", ft.vector, shape.x, shape.y);
-    run_wa.bind_imagef("fb", fb.vector, shape.x, shape.y);
-    run_wa.bind_imagef("d1", d1.vector, shape.x, shape.y);
-
-    run_wa.bind_imagef("d2_out", d2.vector, shape.x, shape.y, true); // outputs
-    run_wa.bind_imagef("u_out", u.vector, shape.x, shape.y, true);
-    run_wa.bind_imagef("v_out", v.vector, shape.x, shape.y, true);
-
-    run_wa.bind_arguments(shape.x, shape.y, dt, water_height);
-
-    run_wa.execute({shape.x, shape.y});
-
-    run_wa.read_imagef("d2_out");
-    run_wa.read_imagef("u_out");
-    run_wa.read_imagef("v_out");
-
-    // --- erosion and deposition
-
-    auto run_er = clwrapper::Run("hydraulic_vpipes_erosion_pass");
-
-    run_er.bind_imagef("z", z.vector, shape.x, shape.y); // inputs
-    run_er.bind_imagef("d2", d2.vector, shape.x, shape.y);
-    run_er.bind_imagef("u", u.vector, shape.x, shape.y);
-    run_er.bind_imagef("v", v.vector, shape.x, shape.y);
-    run_er.bind_imagef("s", s.vector, shape.x, shape.y);
-
-    run_er.bind_imagef("z_out", z.vector, shape.x, shape.y, true); // outputs
-    run_er.bind_imagef("s_out", s.vector, shape.x, shape.y, true);
-
-    run_er.bind_arguments(shape.x,
-                          shape.y,
-                          water_height,
-                          k_capacity,
-                          k_erode,
-                          k_depose,
-                          k_discharge_exp,
-                          downcutting_max_depth_ratio);
-
-    run_er.execute({shape.x, shape.y});
-
-    run_er.read_imagef("z_out");
-    run_er.read_imagef("s_out");
-
-    // --- sediment transport
-
-    auto run_st = clwrapper::Run("hydraulic_vpipes_sediment_transport_pass");
-
-    run_st.bind_imagef("u", u.vector, shape.x, shape.y); // inputs
-    run_st.bind_imagef("v", v.vector, shape.x, shape.y);
-    run_st.bind_imagef("s", s.vector, shape.x, shape.y);
-
-    run_st.bind_imagef("s_out", s.vector, shape.x, shape.y, true); // outputs
-
-    run_st.bind_arguments(shape.x, shape.y, dt);
-
-    run_st.execute({shape.x, shape.y});
-
-    run_st.read_imagef("s_out");
-
-    // --- water evaporation
-
-    d = d2 * (1.f - dt * evap_rate);
-
+    // (1) water volume increment
     if (maintain_water_volume)
     {
-      float water_to_add = water_volume_init - d.sum();
-      d += water_to_add * rain_map / rain_map_volume;
+      float water_volume = d.sum();
+      float rain_rate = (water_volume_init - water_volume) / rain_map_volume;
+      d += rain_rate * rain_map;
     }
+
+    // (2) flow simulation
+    {
+      auto run = clwrapper::Run("hydraulic_vpipes_flow_simulation");
+
+      run.bind_buffer<float>("z", z.vector);
+      run.bind_buffer<float>("d", d.vector);
+      run.bind_buffer<float>("fl", fl.vector);
+      run.bind_buffer<float>("fr", fr.vector);
+      run.bind_buffer<float>("ft", ft.vector);
+      run.bind_buffer<float>("fb", fb.vector);
+      run.bind_buffer<float>("d1", d1.vector);
+
+      run.bind_arguments(shape.x, shape.y, dt);
+
+      run.write_buffer("z");
+      run.write_buffer("d");
+      run.write_buffer("fl");
+      run.write_buffer("fr");
+      run.write_buffer("ft");
+      run.write_buffer("fb");
+
+      run.execute({shape.x, shape.y});
+
+      run.read_buffer("fl");
+      run.read_buffer("fr");
+      run.read_buffer("ft");
+      run.read_buffer("fb");
+      run.read_buffer("d1");
+    }
+
+    // (3) calculate velocity field, update water level and apply
+    // evaporation
+    {
+      auto run = clwrapper::Run("hydraulic_vpipes_velocity");
+
+      run.bind_buffer<float>("d", d.vector);
+      run.bind_buffer<float>("fl", fl.vector);
+      run.bind_buffer<float>("fr", fr.vector);
+      run.bind_buffer<float>("ft", ft.vector);
+      run.bind_buffer<float>("fb", fb.vector);
+      run.bind_buffer<float>("d1", d1.vector);
+      run.bind_buffer<float>("u", u.vector);
+      run.bind_buffer<float>("v", v.vector);
+      run.bind_buffer<float>("d2", d2.vector);
+
+      run.bind_arguments(shape.x,
+                         shape.y,
+                         dt,
+                         evap_rate,
+                         flux_diffusion ? 1 : 0,
+                         flux_diffusion_strength);
+
+      run.write_buffer("d");
+      run.write_buffer("fl");
+      run.write_buffer("fr");
+      run.write_buffer("ft");
+      run.write_buffer("fb");
+      run.write_buffer("d1");
+
+      run.execute({shape.x, shape.y});
+
+      run.read_buffer("u");
+      run.read_buffer("v");
+      run.read_buffer("d2");
+      run.read_buffer("fl");
+      run.read_buffer("fr");
+      run.read_buffer("ft");
+      run.read_buffer("fb");
+    }
+
+    // (4) erosion & deposition
+    {
+      auto run = clwrapper::Run("hydraulic_vpipes_erosion_deposition");
+
+      run.bind_buffer<float>("z", z.vector);
+      run.bind_buffer<float>("s", s.vector);
+      run.bind_buffer<float>("d2", d2.vector);
+      run.bind_buffer<float>("fl", fl.vector);
+      run.bind_buffer<float>("fr", fr.vector);
+      run.bind_buffer<float>("ft", ft.vector);
+      run.bind_buffer<float>("fb", fb.vector);
+      run.bind_buffer<float>("u", u.vector);
+      run.bind_buffer<float>("v", v.vector);
+
+      run.bind_arguments(shape.x,
+                         shape.y,
+                         dt,
+                         k_capacity,
+                         k_erode,
+                         k_depose,
+                         k_discharge_exp,
+                         downcutting_max_depth_ratio);
+
+      run.write_buffer("z");
+      run.write_buffer("s");
+      run.write_buffer("d2");
+      run.write_buffer("fl");
+      run.write_buffer("fr");
+      run.write_buffer("ft");
+      run.write_buffer("fb");
+      run.write_buffer("u");
+      run.write_buffer("v");
+
+      run.execute({shape.x, shape.y});
+
+      run.read_buffer("z");
+      run.read_buffer("s");
+    }
+
+    // (5) sediment transportation (advection)
+    {
+      auto run = clwrapper::Run("hydraulic_vpipes_advection");
+
+      run.bind_buffer<float>("s", s.vector);
+      run.bind_buffer<float>("u", u.vector);
+      run.bind_buffer<float>("v", v.vector);
+
+      run.bind_arguments(shape.x, shape.y, dt);
+
+      run.write_buffer("s");
+      run.write_buffer("u");
+      run.write_buffer("v");
+
+      run.execute({shape.x, shape.y});
+
+      run.read_buffer("s");
+    }
+
+    // state variable update
+    d = d2;
   }
 
-  // --- optional outputs
+  // --- outputs
 
   if (p_water_depth) *p_water_depth = d;
   if (p_sediment) *p_sediment = s;

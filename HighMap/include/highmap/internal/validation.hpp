@@ -145,7 +145,8 @@ template <typename T>
  * @param  shape Expected shape {x, y}.
  * @param  b     Array to check.
  * @param  loc   Source location of the caller.
- * @return       true if b.shape matches shape and b is non-empty, false otherwise.
+ * @return       true if b.shape matches shape and b is non-empty, false
+ * otherwise.
  */
 [[nodiscard]] inline bool validate_same_shape(
     glm::ivec2                  shape,

@@ -6,6 +6,7 @@
 #include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/math/array.hpp"
 
 namespace hmap::gpu
@@ -24,6 +25,9 @@ void hydraulic_schott(Array       &z,
                       float        deposition_weight,
                       Array       *p_flow)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_flow && !validate_same_shape(z, *p_flow)) return;
+
   Array flow = p_flow ? *p_flow : Array(z.shape, 1.f);
   Array sediment(z.shape, 0.f);
 
@@ -58,12 +62,10 @@ void hydraulic_schott(Array       &z,
                      flow_acc_exponent_depo,
                      flow_routing_exponent,
                      erosion_it,
-                     thermal_it,
-                     0);
+                     thermal_it);
 
   for (int it = 0; it < iterations; it++)
   {
-    run.set_argument(17, it);
     run.execute({shape.x, shape.y});
 
     // z <- z_new
@@ -81,9 +83,9 @@ void hydraulic_schott(Array       &z,
 }
 
 void hydraulic_schott(Array       &z,
+                      const Array *p_mask,
                       int          iterations,
                       const Array &talus,
-                      Array       *p_mask,
                       float        c_erosion,
                       float        c_thermal,
                       float        c_deposition,
@@ -94,6 +96,10 @@ void hydraulic_schott(Array       &z,
                       float        deposition_weight,
                       Array       *p_flow)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, talus)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_flow && !validate_same_shape(z, *p_flow)) return;
+
   if (!p_mask)
     hydraulic_schott(z,
                      iterations,
@@ -134,6 +140,10 @@ void hydraulic_schott_erosion(Array       &z,
                               const Array *p_moisture_map,
                               Array       *p_flow)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+  if (p_flow && !validate_same_shape(z, *p_flow)) return;
+
   Array flow = p_flow ? *p_flow : Array(z.shape, 1.f);
   Array moisture_map = p_moisture_map ? *p_moisture_map : Array(z.shape, 1.f);
 

@@ -9,6 +9,7 @@
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 
 namespace hmap
@@ -31,6 +32,8 @@ void hydraulic_musgrave(Array &z,
                         float  water_level,
                         float  evap_rate)
 {
+  if (!validate_non_empty(z) || !validate_same_shape(z, moisture_map)) return;
+
   Array s = constant(z.shape);          // sediment level
   Array w = water_level * moisture_map; // backup initial moisture map
 
@@ -58,58 +61,46 @@ void hydraulic_musgrave(Array &z,
           float dw = std::min(w(i, j),
                               (w(i, j) + z(i, j) - w(p, q) - z(p, q)) * c[k]);
 
-          if (dw <= 0.f)
+          if (dw > 0.f)
           {
-            // sediment deposition
-            z(i, j) = z(i, j) + c_deposition * s(i, j);
-            s(i, j) = (1.f - c_deposition) * s(i, j);
-          }
-          else
-          {
-            w(i, j) = w(i, j) - 0.5f * dw;
-            w(p, q) = w(p, q) + 0.5f * dw;
+            // water transfer
+            w(i, j) -= dw;
+            w(p, q) += dw;
 
-            // differential of sediment capacity of water gap (ks *
-            // dw)
-            float sc = c_capacity * dw;
-            float delta_sc = s(i, j) - sc;
-            if (delta_sc > 0.f)
+            // sediment capacity
+            float cs = c_capacity * dw;
+
+            if (s(i, j) >= cs)
             {
               // deposition
-              s(p, q) = s(p, q) + sc;
-              z(i, j) = z(i, j) + c_deposition * delta_sc;
-              s(i, j) = (1.f - c_deposition) * delta_sc;
+              float ds = c_deposition * (s(i, j) - cs);
+              s(i, j) -= ds;
+              z(i, j) += ds;
             }
             else
             {
               // erosion
-              s(p, q) = s(p, q) + s(i, j) - c_erosion * delta_sc;
-              z(i, j) = z(i, j) + c_erosion * delta_sc;
-              s(i, j) = 0.f;
+              float ds = c_erosion * (cs - s(i, j));
+              s(i, j) += ds;
+              z(i, j) -= ds;
             }
+
+            // sediment transport with water
+            float ds_transport = s(i, j) * dw / w(i, j);
+            s(i, j) -= ds_transport;
+            s(p, q) += ds_transport;
           }
-        } // k
+        }
 
-    // fix boundaries
-    fill_borders(z);
-    fill_borders(w);
-    fill_borders(s);
-
-    // apply low-pass filtering to smooth spurious spatial
-    // oscillations
-    if (it % LAPLACE_PERIOD == 0) laplace(z, LAPLACE_SIGMA, LAPLACE_ITERATIONS);
-
-  } // it
-
-  extrapolate_borders(z);
-  laplace(z, LAPLACE_SIGMA, LAPLACE_ITERATIONS);
+    // regularize the surface to avoid high frequency numerical
+    // artifacts
+    if ((it % LAPLACE_PERIOD == 0) && (it != 0))
+    {
+      hmap::laplace(z, LAPLACE_SIGMA, LAPLACE_ITERATIONS);
+    }
+  }
 }
 
-//----------------------------------------------------------------------
-// Overloading
-//----------------------------------------------------------------------
-
-// uniform moisture map
 void hydraulic_musgrave(Array &z,
                         int    iterations,
                         float  c_capacity,
@@ -118,9 +109,11 @@ void hydraulic_musgrave(Array &z,
                         float  water_level,
                         float  evap_rate)
 {
-  Array mmap = constant(z.shape, 1.f);
+  if (!validate_non_empty(z)) return;
+
+  Array moisture_map = constant(z.shape, 1.f);
   hydraulic_musgrave(z,
-                     mmap,
+                     moisture_map,
                      iterations,
                      c_capacity,
                      c_erosion,

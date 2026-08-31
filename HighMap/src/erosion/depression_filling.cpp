@@ -7,12 +7,15 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 
 namespace hmap
 {
 
 void depression_filling(Array &z, int iterations, float epsilon)
 {
+  if (!validate_non_empty(z)) return;
+
   std::vector<int>    di = HMAP_DI;
   std::vector<int>    dj = HMAP_DJ;
   std::vector<float>  c = HMAP_CD;

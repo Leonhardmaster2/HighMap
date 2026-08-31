@@ -3,6 +3,7 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/range.hpp"
 #include "highmap/selector.hpp"
@@ -20,6 +21,8 @@ Array select_soil_flow(const Array &z,
                        float        flow_gamma,
                        float        k_smooth)
 {
+  if (!validate_non_empty(z)) return Array();
+
   if (gradient_scaling_factor <= 0.f) gradient_scaling_factor = z.shape.x;
   if (talus_ref <= 0.f) talus_ref = 1.f / z.shape.x;
 

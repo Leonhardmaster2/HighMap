@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/operator.hpp"
 #include "highmap/range.hpp"
@@ -34,6 +35,11 @@ void hydraulic_particle(Array        &z,
                         bool          enable_directional_bias,
                         float         angle_bias)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+  if (p_elevation_shift && !validate_same_shape(z, *p_elevation_shift)) return;
+
   const glm::ivec2 shape = z.shape;
 
   Array z_bckp = Array();
@@ -65,10 +71,8 @@ void hydraulic_particle(Array        &z,
                      p_elevation_shift ? 1 : 0);
 
   run.write_buffer("z");
-  run.execute(nparticles);
+  run.execute({1});
   run.read_buffer("z");
-
-  // --- post-treatments
 
   extrapolate_borders(z);
 

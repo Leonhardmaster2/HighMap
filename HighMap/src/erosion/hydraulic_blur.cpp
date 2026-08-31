@@ -6,6 +6,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -13,6 +14,8 @@ namespace hmap
 
 void hydraulic_blur(Array &z, float vmax, float radius, float k_smoothing)
 {
+  if (!validate_non_empty(z)) return;
+
   int ir = std::max(1, (int)(radius * z.shape.x));
 
   Array z_clamped = z;

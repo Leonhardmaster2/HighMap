@@ -10,6 +10,7 @@
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/hydrology/hydrology.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
 #include "highmap/local_metrics.hpp"
 #include "highmap/math/array.hpp"
@@ -27,6 +28,10 @@ void hydraulic_stream(Array &z,
                       int    ir,
                       float  clipping_ratio)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   // keep a backup of the input if the erosion / deposition maps need
   // to be computed
   Array z_bckp = Array();
@@ -74,6 +79,11 @@ void hydraulic_stream(Array &z,
                       int    ir,
                       float  clipping_ratio)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   if (!p_mask)
     hydraulic_stream(z,
                      c_erosion,
@@ -113,6 +123,10 @@ void hydraulic_stream_log(Array &z,
                           Array *p_deposition_map,
                           Array *p_flow_map)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   // keep a backup of the input if the erosion / deposition maps need
   // to be computed
   Array z_bckp = Array();
@@ -191,6 +205,11 @@ void hydraulic_stream_log(Array       &z,
                           Array       *p_deposition_map,
                           Array       *p_flow_map)
 {
+  if (!validate_non_empty(z)) return;
+  if (p_mask && !validate_same_shape(z, *p_mask)) return;
+  if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
+
   if (!p_mask)
     hydraulic_stream_log(z,
                          c_erosion,

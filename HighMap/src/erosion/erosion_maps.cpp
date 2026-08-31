@@ -3,6 +3,7 @@
  * this software. */
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/range.hpp"
 
 namespace hmap
@@ -14,6 +15,9 @@ void erosion_maps(Array &z_before,
                   Array &deposition_map,
                   float  tolerance)
 {
+  if (!validate_non_empty(z_before) || !validate_same_shape(z_before, z_after))
+    return;
+
   erosion_map = z_before - z_after + tolerance;
   clamp_min(erosion_map, 0.f);
 

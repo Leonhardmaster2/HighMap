@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "highmap/array.hpp"
+#include "highmap/internal/validation.hpp"
 #include "highmap/morphology.hpp"
 
 namespace hmap
@@ -15,6 +16,9 @@ Array perturb_mask_contour(const Array &mask,
                            float        max_displacement,
                            int          ir)
 {
+  if (!validate_non_empty(mask) || !validate_same_shape(mask, noise))
+    return Array();
+
   glm::ivec2 shape = mask.shape;
 
   Array mask_out(shape);
