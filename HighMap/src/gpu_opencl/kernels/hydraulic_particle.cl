@@ -260,6 +260,46 @@ void kernel hydraulic_particle(global float *z_in,
       z_in[idx11] = max(bedrock[idx11], z_in[idx11]);
     }
 
+    // Depression / Pit Spillover:
+    // If the particle enters a depression (flat gradient or trapped uphill),
+    // probe the surrounding neighbourhood (virtual water level) to find the lowest
+    // saddle/spillover rim rather than dying and cementing the depression.
+    if (gz_norm < 1e-3f || dz < 0.f)
+    {
+      float min_rim_height = 1e10f;
+      float2 best_spill_dir = dir;
+      // Search in 8 directions with adaptive radius (2 to 4 cells)
+      for (int rad = 2; rad <= 4; rad += 2)
+      {
+        for (int angle_step = 0; angle_step < 8; ++angle_step)
+        {
+          float ang = (float)angle_step * (2.f * 3.14159265f / 8.f);
+          float2 probe_pos = pos + (float2)(cos(ang), sin(ang)) * (float)rad;
+          int pi_idx, pj_idx;
+          float pu_idx, pv_idx;
+          update_interp_param(probe_pos, &pi_idx, &pj_idx, &pu_idx, &pv_idx);
+          if (is_inside(pi_idx, pj_idx, nx, ny))
+          {
+            float probe_z = helper_sample_height(z_in, pi_idx, pj_idx, nx, ny, pu_idx, pv_idx);
+            if (probe_z < min_rim_height)
+            {
+              min_rim_height = probe_z;
+              best_spill_dir = normalize(probe_pos - pos);
+            }
+          }
+        }
+      }
+
+      // If a valid spillway direction is found, steer particle across the depression toward the exit
+      if (min_rim_height < 1e9f)
+      {
+        dir = mix(best_spill_dir, dir, 0.3f);
+        if (length(dir) > 0.f) dir = normalize(dir);
+        // Maintain minimum gliding velocity across virtual lake surface
+        vel = max(vel, VELOCITY_INIT * 0.5f);
+      }
+    }
+
     vel = sqrt(max(0.f, vel * vel - dz * c_gravity));
 
     // B3: apply drag so particles decelerate on flats and deposit
