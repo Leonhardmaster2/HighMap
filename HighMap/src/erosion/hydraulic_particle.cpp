@@ -176,13 +176,15 @@ void hydraulic_particle_multiscale(Array                  &z,
                                    float                   drag_rate,
                                    float                   evap_rate,
                                    float                   talus_slope,
-                                   float                   collapse_rate)
+                                   float                   collapse_rate,
+                                   float                   mix)
 {
   if (!validate_non_empty(z)) return;
 
   int nlevels = static_cast<int>(steps_per_level.size());
   if (nlevels == 0) return;
 
+  Array z_orig = z;
   Array z_bckp = Array();
   if ((p_erosion_map != nullptr) || (p_deposition_map != nullptr)) z_bckp = z;
 
@@ -195,12 +197,24 @@ void hydraulic_particle_multiscale(Array                  &z,
                  std::max(2, z.shape.y >> shift)};
   }
 
-  Array current_z = z.resample_to_shape_nearest(ladder[0]);
+  Array current_z = z_orig.resample_to_shape(ladder[0]);
 
   for (int i = 0; i < nlevels; ++i)
   {
     if (i > 0)
-      current_z = current_z.resample_to_shape_bicubic(ladder[i]);
+    {
+      current_z = current_z.resample_to_shape(ladder[i]);
+
+      // Blend with the original input heightmap resampled at the current level
+      // resolution to preserve high-frequency structures
+      if (mix < 1.f)
+      {
+        Array z_input_level = z_orig.resample_to_shape(ladder[i]);
+        current_z = hmap::lerp(z_input_level,
+                               current_z,
+                               std::clamp(mix, 0.f, 1.f));
+      }
+    }
 
     int level_particles = static_cast<int>(particles_ratio * ladder[i].x *
                                            ladder[i].y);

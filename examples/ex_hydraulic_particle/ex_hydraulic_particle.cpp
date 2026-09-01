@@ -75,7 +75,8 @@ int main(void)
       /* drag_rate */ 0.001f,
       /* evap_rate */ 0.001f,
       /* talus_slope */ 2.f,
-      /* collapse_rate */ 0.25f);
+      /* collapse_rate */ 0.25f,
+      /* mix */ 0.8f);
 
   // --- output
 
