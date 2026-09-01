@@ -36,9 +36,13 @@ int main(void)
                                 /* c_gravity */ 1.f,
                                 /* drag_rate */ 0.001f,
                                 /* evap_rate */ 0.001f,
+                                /* talus_slope */ 0.1f / shape.x,
+                                /* collapse_rate */ 0.25f,
                                 /* enable_directional_bias */ false,
                                 /* angle_bias */ 30.f,
                                 /* iterations */ 1);
+
+  z1.dump();
 
   auto z2 = z0;
   auto zb2 = hmap::generate_bedrock(z2,

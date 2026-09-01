@@ -66,6 +66,50 @@ inline void helper_bilinear_deposition(global float *z,
   z[linear_index(i + 1, j + 1, nx)] -= amount * d4;
 }
 
+inline void helper_bank_collapse(global float *z,
+                                 global float *bedrock,
+                                 int           i,
+                                 int           j,
+                                 int           nx,
+                                 int           ny,
+                                 float         talus_slope,
+                                 float         collapse_rate,
+                                 int           has_bedrock)
+{
+  if (collapse_rate <= 0.f) return;
+
+  int   idx_c = linear_index(i, j, nx);
+  float z_c = z[idx_c];
+
+  int di[4] = {-1, 1, 0, 0};
+  int dj[4] = {0, 0, -1, 1};
+
+  for (int k = 0; k < 4; ++k)
+  {
+    int ni = i + di[k];
+    int nj = j + dj[k];
+
+    if (ni >= 0 && ni < nx && nj >= 0 && nj < ny)
+    {
+      int   idx_n = linear_index(ni, nj, nx);
+      float z_n = z[idx_n];
+      float slope = z_n - z_c;
+
+      if (slope > talus_slope)
+      {
+        float excess = (slope - talus_slope) * collapse_rate;
+        if (has_bedrock != 0)
+        {
+          float max_avail = max(0.f, z_n - bedrock[idx_n]);
+          excess = min(excess, max_avail);
+        }
+        z[idx_n] -= excess * 0.5f;
+        z[idx_c] += excess * 0.5f;
+      }
+    }
+  }
+}
+
 // --- MAIN KERNEL
 
 void kernel hydraulic_particle(global float *z_in,
@@ -83,6 +127,8 @@ void kernel hydraulic_particle(global float *z_in,
                                const float   c_gravity,
                                const float   drag_rate,
                                const float   evap_rate,
+                               const float   talus_slope,
+                               const float   collapse_rate,
                                const int     enable_directional_bias,
                                const float   angle_bias,
                                const int     has_bedrock,
@@ -277,6 +323,22 @@ void kernel hydraulic_particle(global float *z_in,
       z_in[idx10] = max(bedrock[idx10], z_in[idx10]);
       z_in[idx01] = max(bedrock[idx01], z_in[idx01]);
       z_in[idx11] = max(bedrock[idx11], z_in[idx11]);
+    }
+
+    // Bank collapse / Talus relaxation:
+    // When erosion deepens the channel beyond the stable talus angle,
+    // adjacent bank walls collapse into the channel, widening the valley.
+    if (amount > 0.f && collapse_rate > 0.f)
+    {
+      helper_bank_collapse(z_in,
+                           bedrock,
+                           ip,
+                           jp,
+                           nx,
+                           ny,
+                           talus_slope,
+                           collapse_rate,
+                           has_bedrock);
     }
 
     // Velocity update:
