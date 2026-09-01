@@ -81,10 +81,12 @@ inline void helper_bank_collapse(global float *z,
   int   idx_c = linear_index(i, j, nx);
   float z_c = z[idx_c];
 
-  int di[4] = {-1, 1, 0, 0};
-  int dj[4] = {0, 0, -1, 1};
+  int   di[8] = {-1, 1, 0, 0, -1, 1, -1, 1};
+  int   dj[8] = {0, 0, -1, 1, -1, -1, 1, 1};
+  float inv_dist[8] =
+      {1.f, 1.f, 1.f, 1.f, 0.70710678f, 0.70710678f, 0.70710678f, 0.70710678f};
 
-  for (int k = 0; k < 4; ++k)
+  for (int k = 0; k < 8; ++k)
   {
     int ni = i + di[k];
     int nj = j + dj[k];
@@ -93,7 +95,7 @@ inline void helper_bank_collapse(global float *z,
     {
       int   idx_n = linear_index(ni, nj, nx);
       float z_n = z[idx_n];
-      float slope = z_n - z_c;
+      float slope = (z_n - z_c) * inv_dist[k];
 
       if (slope > talus_slope)
       {
@@ -129,8 +131,6 @@ void kernel hydraulic_particle(global float *z_in,
                                const float   evap_rate,
                                const float   talus_slope,
                                const float   collapse_rate,
-                               const int     enable_directional_bias,
-                               const float   angle_bias,
                                const int     has_bedrock,
                                const int     has_moisture_map,
                                const int     has_elevation_shift)
@@ -152,11 +152,6 @@ void kernel hydraulic_particle(global float *z_in,
                                       : 1.f;
 
   float2 dir = {0.f, 0.f};
-  if (enable_directional_bias)
-  {
-    float alpha_bias = angle_bias / 180.f * 3.1459f;
-    dir = (float2)(cos(alpha_bias), sin(alpha_bias));
-  }
 
   float s = 0.f;
   float evap_factor = 1.f - evap_rate;
