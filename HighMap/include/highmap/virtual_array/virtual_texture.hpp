@@ -88,6 +88,9 @@ public:
 
   Texture to_texture(const glm::ivec2 &img_shape, const ComputeMode &cm) const;
 
+  void   trim_storage() const;
+  size_t live_memory_bytes() const;
+
   // --- Members
 
   glm::ivec2 shape;

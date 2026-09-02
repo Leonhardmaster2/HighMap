@@ -26,10 +26,11 @@ void for_each_pixel(VirtualTexture &tex, Func &&func, const ComputeMode &cm)
         int h = region.shape.y;
         int c = int(chs.size());
 
+        std::vector<float> px(c);
+
         for (int y = 0; y < h; ++y)
           for (int x = 0; x < w; ++x)
           {
-            std::vector<float> px(c);
             for (int k = 0; k < c; ++k)
               px[k] = (*chs[k])(x, y);
 

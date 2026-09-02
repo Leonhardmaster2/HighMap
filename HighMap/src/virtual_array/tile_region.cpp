@@ -14,7 +14,7 @@ namespace hmap
 TileRegion::TileRegion(const TileKey    &key,
                        const glm::vec4  &bbox,
                        const glm::ivec2 &shape,
-                       const glm::vec4  &halo)
+                       const glm::ivec4 &halo)
     : key(key), bbox(bbox), shape(shape), halo(halo)
 {
 }

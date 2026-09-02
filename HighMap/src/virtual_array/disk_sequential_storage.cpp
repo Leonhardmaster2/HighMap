@@ -72,6 +72,18 @@ size_t DiskSequentialTileStorage::max_live_tiles() const
   return 1;
 }
 
+size_t DiskSequentialTileStorage::live_tile_count() const
+{
+  return current_tile ? 1 : 0;
+}
+
+size_t DiskSequentialTileStorage::live_memory_bytes() const
+{
+  return current_tile
+             ? (current_tile->vector.capacity() * sizeof(float) + sizeof(Array))
+             : 0;
+}
+
 void DiskSequentialTileStorage::release_tile(const TileRegion &region)
 {
   if (!current_tile)

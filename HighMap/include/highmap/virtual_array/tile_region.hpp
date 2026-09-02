@@ -45,7 +45,7 @@ struct TileRegion
   TileRegion(const TileKey    &key,
              const glm::vec4  &bbox,
              const glm::ivec2 &shape,
-             const glm::vec4  &halo = {0, 0, 0, 0});
+             const glm::ivec4 &halo = {0, 0, 0, 0});
 
   glm::vec2   cell_center(int i, int j) const;
   glm::vec2   cell_corner(int i, int j) const;

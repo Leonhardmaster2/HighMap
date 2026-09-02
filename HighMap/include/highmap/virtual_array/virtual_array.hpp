@@ -147,7 +147,9 @@ struct VirtualArray
                            int               global_i,
                            int               global_j) const;
 
-  void trim_storage() const;
+  void   trim_storage() const;
+  size_t live_tile_count() const;
+  size_t live_memory_bytes() const;
 
   // --- Members
 

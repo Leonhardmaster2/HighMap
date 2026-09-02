@@ -83,6 +83,24 @@ size_t LruTileStorage::max_live_tiles() const
   return this->max_tiles;
 }
 
+size_t LruTileStorage::live_tile_count() const
+{
+  std::lock_guard<std::mutex> lock(mutex);
+  return tiles.size();
+}
+
+size_t LruTileStorage::live_memory_bytes() const
+{
+  std::lock_guard<std::mutex> lock(mutex);
+  size_t                      bytes = 0;
+  for (const auto &[key, entry] : tiles)
+  {
+    bytes += entry.value.vector.capacity() * sizeof(float) +
+             sizeof(LruTileEntry) + sizeof(key);
+  }
+  return bytes;
+}
+
 void LruTileStorage::release_tile(const TileRegion & /* region */)
 {
   // no-op

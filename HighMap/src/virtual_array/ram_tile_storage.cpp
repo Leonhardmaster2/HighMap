@@ -41,4 +41,20 @@ void RamTileStorage::release_tile(const TileRegion & /* region */)
   // nothing for RAM
 }
 
+size_t RamTileStorage::live_tile_count() const
+{
+  return tiles.size();
+}
+
+size_t RamTileStorage::live_memory_bytes() const
+{
+  size_t bytes = 0;
+  for (const auto &[key, arr] : tiles)
+  {
+    bytes += arr.vector.capacity() * sizeof(float) + sizeof(Array) +
+             sizeof(key);
+  }
+  return bytes;
+}
+
 } // namespace hmap

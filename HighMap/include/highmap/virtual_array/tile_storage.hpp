@@ -68,6 +68,10 @@ public:
   virtual std::unique_ptr<TileStorage> clone() const = 0;
   virtual std::string                  info_string() const = 0;
 
+  // Live memory tracking
+  virtual size_t live_tile_count() const = 0;
+  virtual size_t live_memory_bytes() const = 0;
+
   // Opportunistically free memory while keeping data persistent.
   virtual void trim()
   {
@@ -86,6 +90,8 @@ public:
   Array      &get_tile(const TileRegion &region) override;
   void        release_tile(const TileRegion &region) override;
   size_t      max_live_tiles() const override;
+  size_t      live_tile_count() const override;
+  size_t      live_memory_bytes() const override;
   std::string info_string() const override
   {
     return "RAM";
@@ -115,13 +121,15 @@ public:
   Array      &get_tile(const TileRegion &region) override;
   void        release_tile(const TileRegion &region) override;
   size_t      max_live_tiles() const override;
+  size_t      live_tile_count() const override;
+  size_t      live_memory_bytes() const override;
   std::string info_string() const override;
 
 protected:
   size_t                                                 max_tiles;
   std::list<TileKey>                                     lru;
   std::unordered_map<TileKey, LruTileEntry, TileKeyHash> tiles;
-  std::mutex                                             mutex;
+  mutable std::mutex                                     mutex;
 
   Array       &get_tile_no_mutex_lock(const TileRegion &region);
   virtual void on_evict(const TileKey &key, Array &tile);
@@ -168,6 +176,8 @@ public:
   Array      &get_tile(const TileRegion &region) override;
   void        release_tile(const TileRegion &region) override;
   size_t      max_live_tiles() const override;
+  size_t      live_tile_count() const override;
+  size_t      live_memory_bytes() const override;
   void        trim() override;
   std::string info_string() const override
   {

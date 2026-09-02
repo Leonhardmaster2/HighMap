@@ -489,8 +489,8 @@ Array VirtualArray::to_array(const glm::ivec2  &array_shape,
     const float rx = float(array.shape.x - 1) / float(this->shape.x - 1);
     const float ry = float(array.shape.y - 1) / float(this->shape.y - 1);
 
-    const glm::ivec2 ij0 = this->tile_region_global_indices(region);
-    const glm::vec4 &b = region.halo;
+    const glm::ivec2  ij0 = this->tile_region_global_indices(region);
+    const glm::ivec4 &b = region.halo;
 
     // iterate only inner tile cells
     for (int j = b.z; j < region.shape.y - b.w; ++j)
@@ -534,7 +534,17 @@ Array VirtualArray::to_array_dbg() const
 
 void VirtualArray::trim_storage() const
 {
-  this->storage->trim();
+  if (this->storage) this->storage->trim();
+}
+
+size_t VirtualArray::live_tile_count() const
+{
+  return this->storage ? this->storage->live_tile_count() : 0;
+}
+
+size_t VirtualArray::live_memory_bytes() const
+{
+  return this->storage ? this->storage->live_memory_bytes() : 0;
 }
 
 // --- FUNCTIONS

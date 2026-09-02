@@ -242,4 +242,18 @@ Texture VirtualTexture::to_texture(const glm::ivec2  &img_shape,
   return t;
 }
 
+void VirtualTexture::trim_storage() const
+{
+  for (const auto &va : this->arrays)
+    va.trim_storage();
+}
+
+size_t VirtualTexture::live_memory_bytes() const
+{
+  size_t bytes = 0;
+  for (const auto &va : this->arrays)
+    bytes += va.live_memory_bytes();
+  return bytes;
+}
+
 } // namespace hmap

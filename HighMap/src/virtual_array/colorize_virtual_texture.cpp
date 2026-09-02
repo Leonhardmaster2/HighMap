@@ -127,14 +127,13 @@ void colorize(VirtualTexture               &out,
         b(i, j) = citp_b(v);
       }
 
-    // alpha channel
-    if (pa_alpha && p_arrays.size() == 7)
+    // alpha channel if out has at least 4 channels
+    if (p_arrays.size() >= 7 && p_arrays[6])
     {
-      *p_arrays[6] = *pa_alpha;
-    }
-    else
-    {
-      *p_arrays[6] = 1.f;
+      if (pa_alpha)
+        *p_arrays[6] = *pa_alpha;
+      else
+        *p_arrays[6] = 1.f;
     }
   };
 
@@ -395,18 +394,22 @@ void mix_normal_map(VirtualTexture         &out,
   // output, also used to store first normal map
   out.copy_from(nmap_base, cm);
 
+  const int out_nch = out.channels();
+  const int detail_offset = out_nch;
+
   // mix and then re-normalize values assuming a RGB channels
   // represent a normal vector
-  auto lambda = [detail_scaling, blending_method](std::vector<Array *> p_arrays,
-                                                  const TileRegion    &region)
+  auto lambda = [detail_scaling, blending_method, detail_offset](
+                    std::vector<Array *> p_arrays,
+                    const TileRegion    &region)
   {
     Array *pa_r1 = p_arrays[0];
     Array *pa_g1 = p_arrays[1];
     Array *pa_b1 = p_arrays[2];
-    // skip alpha channel
-    Array *pa_r2 = p_arrays[4];
-    Array *pa_g2 = p_arrays[5];
-    Array *pa_b2 = p_arrays[6];
+
+    Array *pa_r2 = p_arrays[detail_offset];
+    Array *pa_g2 = p_arrays[detail_offset + 1];
+    Array *pa_b2 = p_arrays[detail_offset + 2];
 
     std::function<glm::vec3(glm::vec3 &, glm::vec3 &)> blending_fct;
 
