@@ -8,7 +8,7 @@ Date: 2026-09-02
 Repository: Leonhardmaster2/HighMap
 Branch: feature/apple-metal-backend
 Upstream base: upstream/dev at 269e9b6b77fa0926916d97c18656d8344800c9da
-Hardening commit: cd76774f2
+Published implementation commit validated from a clean clone: d93bdfa8a
 ```
 
 The Phase 1–8 Metal implementation was rebased onto current upstream `dev` without a feature-range merge commit. HighMap is standalone; no Hesiod changes were made.
@@ -53,6 +53,8 @@ Runtime MSL compilation is validated on the M3 host. Precompiled metallib was no
 The current Metal-enabled Release suite has 398 tests: 395 pass, 2 skip (the no-Metal portability cases), and 1 known pre-existing `PathSplines.PreservePathShape` failure. The no-Metal Release suite has 398 tests: 347 pass, 50 skip, and the same one pre-existing failure. The focused Metal/Phase 8/hardening gate is 50/50 in Release and Debug. The no-Metal portability/hardening gate is 13 tests: 2 pass and 11 correctly skip native-Metal-only cases.
 
 The sanitizer configuration (`build-asan-no-metal`) built successfully. Its practical no-Metal portability/validation subset passed under AddressSanitizer with no memory findings. A full UBSan run stops on a signed integer overflow in upstream `external/FastNoiseLite/Cpp/FastNoiseLite.h`; this is a third-party diagnostic, not a Metal-path finding. Existing compile warnings are dominated by upstream third-party headers (`nn-c`, legacy C prototypes, and external deprecations), not new Metal diagnostics.
+
+A fresh clone of the published feature branch at `d93bdfa8a`, with all submodules initialized, configured and built successfully in a clean Metal-disabled build directory. Its full test run reproduced the expected 347 pass / 50 skip / 1 known PathSplines failure result.
 
 ## Performance characteristics and limitations
 
