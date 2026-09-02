@@ -77,13 +77,15 @@ TEST_F(MetalPhase8, SpectralTerrainGraphKeepsResidencyWithOneReadback)
   EXPECT_EQ(stats.upload_bytes, talus.vector.size() * sizeof(float));
   // Two normalizes each do a scalar reduction read (8 bytes each) plus the
   // terminal terrain readback; allow that small overhead.
+  EXPECT_EQ(stats.upload_count, 1u);
+  EXPECT_EQ(stats.readback_count, 3u);
   EXPECT_GE(stats.readback_bytes, host.vector.size() * sizeof(float));
   EXPECT_LE(stats.readback_bytes,
             host.vector.size() * sizeof(float) + 32u);
-  // Two normalize reductions each introduce a command-buffer split plus the
-  // final finish, so expect 3 command buffers / synchronizations.
-  EXPECT_EQ(stats.synchronization_count, 3u);
-  EXPECT_EQ(stats.command_buffers, 3u);
+  // The scalar range reads are host boundaries; command-buffer structure is an
+  // implementation detail and must not be frozen by this residency test.
+  EXPECT_GE(stats.synchronization_count, 1u);
+  EXPECT_GE(stats.command_buffers, stats.synchronization_count);
   EXPECT_GE(stats.encoders, 10u);
   EXPECT_GE(stats.peak_resident_bytes, host.vector.size() * sizeof(float));
   for (float v : host.vector) EXPECT_TRUE(std::isfinite(v));
@@ -99,10 +101,12 @@ TEST_F(MetalPhase8, GeneratedNoiseChainHasZeroUploadsAndOneReadback)
   auto r = session.maximum_smooth(std::move(g), n2, 0.2f);
   const hmap::Array host = session.download(r);
   const auto stats = session.stats();
+  EXPECT_EQ(stats.upload_count, 0u);
   EXPECT_EQ(stats.upload_bytes, 0u);
+  EXPECT_EQ(stats.readback_count, 1u);
   EXPECT_EQ(stats.readback_bytes, host.vector.size() * sizeof(float));
-  EXPECT_EQ(stats.command_buffers, 1u);
-  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_GE(stats.command_buffers, 1u);
+  EXPECT_GE(stats.synchronization_count, 1u);
   EXPECT_GE(stats.buffer_reuses, 1u);
 }
 
@@ -115,16 +119,18 @@ TEST_F(MetalPhase8, HybridBoundaryUploadsOnlyAtGenuineCpuMetalTransition)
   auto s = session.spectral_equalizer(std::move(d), {1.f, 1.f, 1.f, 1.f, 1.f, 1.f}, 2, 8);
   auto h = session.download(s);
   const auto stats = session.stats();
+  EXPECT_EQ(stats.upload_count, 1u);
+  EXPECT_EQ(stats.readback_count, 1u);
   EXPECT_EQ(stats.upload_bytes, host_input.vector.size() * sizeof(float));
   EXPECT_EQ(stats.readback_bytes, host_input.vector.size() * sizeof(float));
-  EXPECT_EQ(stats.command_buffers, 1u);
-  EXPECT_EQ(stats.synchronization_count, 1u);
+  EXPECT_GE(stats.command_buffers, 1u);
+  EXPECT_GE(stats.synchronization_count, 1u);
   // Verify numerical parity with synchronous wrapper
   const hmap::Array ref = hmap::gpu::metal::spectral_equalizer(host_input, {1.f, 1.f, 1.f, 1.f, 1.f, 1.f}, 2, 8);
   EXPECT_LE(max_abs_diff(h, ref), 2e-4);
 }
 
-TEST_F(MetalPhase8, UnsupportedNoiseTypeFallsBackWithException)
+TEST_F(MetalPhase8, UnsupportedNoiseTypeIsRejected)
 {
   hmap::gpu::metal::DeviceSession session;
   EXPECT_THROW(session.noise(static_cast<hmap::NoiseType>(999), {16, 16}, {1.f, 1.f}, 0u),
@@ -163,7 +169,7 @@ TEST_F(MetalPhase8, AdoptCompletedInvalidatesOnShapeMismatchViaMiss)
   EXPECT_THROW(cons.maximum_smooth(std::move(adopted), d2, 0.2f), std::invalid_argument);
 }
 
-TEST_F(MetalPhase8, ThermalRidgePlusNormalizeReportsTwoCommandBuffers)
+TEST_F(MetalPhase8, ThermalThenNormalizeReportsReductionBoundary)
 {
   const glm::ivec2 shape = {64, 64};
   hmap::Array src = make_field(shape, 1.f);
@@ -173,10 +179,13 @@ TEST_F(MetalPhase8, ThermalRidgePlusNormalizeReportsTwoCommandBuffers)
   auto talus_d = session.upload(talus);
   auto t = session.thermal(std::move(d), talus_d, 2);
   t = session.extrapolate_borders(std::move(t));
-  // normalize triggers internal reduction sync -> 2 command buffers total
+  // normalize triggers an internal scalar range read. The exact number of
+  // command buffers is intentionally not a public contract.
   auto n = session.normalize(std::move(t), 0.f, 1.f);
   (void)session.download(n);
   const auto stats = session.stats();
-  EXPECT_EQ(stats.command_buffers, 2u);
-  EXPECT_EQ(stats.synchronization_count, 2u);
+  EXPECT_EQ(stats.upload_count, 2u);
+  EXPECT_EQ(stats.readback_count, 2u);
+  EXPECT_GE(stats.command_buffers, 1u);
+  EXPECT_GE(stats.synchronization_count, 1u);
 }

@@ -486,7 +486,10 @@ void record_metal_timing(benchmark::State                  &state,
       static_cast<double>(stats.command_buffers);
   state.counters["encoders"] = static_cast<double>(stats.encoders);
   state.counters["blit_encoders"] = static_cast<double>(stats.blit_encoders);
+  state.counters["upload_count"] = static_cast<double>(stats.upload_count);
   state.counters["upload_bytes"] = static_cast<double>(stats.upload_bytes);
+  state.counters["readback_count"] =
+      static_cast<double>(stats.readback_count);
   state.counters["readback_bytes"] = static_cast<double>(stats.readback_bytes);
   state.counters["bytes_allocated"] =
       static_cast<double>(stats.bytes_allocated);
@@ -998,7 +1001,9 @@ void add_execution_stats(
   destination.command_buffers += source.command_buffers;
   destination.encoders += source.encoders;
   destination.synchronization_count += source.synchronization_count;
+  destination.upload_count += source.upload_count;
   destination.upload_bytes += source.upload_bytes;
+  destination.readback_count += source.readback_count;
   destination.readback_bytes += source.readback_bytes;
   destination.bytes_allocated += source.bytes_allocated;
   destination.bytes_reused += source.bytes_reused;

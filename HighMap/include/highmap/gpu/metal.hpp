@@ -62,7 +62,9 @@ struct ExecutionStats
   std::uint64_t command_buffers = 0;
   std::uint64_t encoders = 0;
   std::uint64_t synchronization_count = 0;
+  std::uint64_t upload_count = 0;
   std::uint64_t upload_bytes = 0;
+  std::uint64_t readback_count = 0;
   std::uint64_t readback_bytes = 0;
   std::uint64_t bytes_allocated = 0;
   std::uint64_t bytes_reused = 0;

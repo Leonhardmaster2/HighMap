@@ -416,6 +416,7 @@ id<MTLBuffer> input_buffer(const std::vector<float> &values)
   std::memcpy([buffer contents], values.data(), values.size() * sizeof(float));
   current_stats.upload_ms += elapsed_ms(upload_start);
   ++current_stats.buffer_allocations;
+  ++current_stats.upload_count;
   current_stats.upload_bytes += values.size() * sizeof(float);
   current_stats.bytes_allocated += values.size() * sizeof(float);
   current_stats.peak_resident_bytes = std::max(
@@ -596,11 +597,13 @@ void read_buffer(id<MTLBuffer> buffer,
   if (stats)
   {
     stats->readback_ms += elapsed_ms(readback_start);
+    ++stats->readback_count;
     stats->readback_bytes += values.size() * sizeof(float);
   }
   else
   {
     current_stats.readback_ms += elapsed_ms(readback_start);
+    ++current_stats.readback_count;
     current_stats.readback_bytes += values.size() * sizeof(float);
   }
 }
@@ -985,6 +988,7 @@ id<MTLBuffer> upload_session_values(
     encode_copy(session, staging, destination, bytes);
   }
   session->stats.upload_ms += elapsed_ms(upload_start);
+  ++session->stats.upload_count;
   session->stats.upload_bytes += bytes;
   return destination;
 }
@@ -1062,6 +1066,7 @@ Array download_array_state(
               [source contents],
               array->byte_size);
   session->stats.readback_ms += elapsed_ms(start);
+  ++session->stats.readback_count;
   session->stats.readback_bytes += array->byte_size;
   array->residency = ResidencyState::both_valid;
   return result;
