@@ -67,19 +67,19 @@ Array basin_id(const Array        &z,
  *
  * @param  z                     Original terrain elevation array.
  * @param  z_river               Carved riverbed elevation array (or stream
- * bottom).
+ *                               bottom).
  * @param  talus_riverbank       Talus slope angle/ratio for riverbank
- * expansion.
+ *                               expansion.
  * @param  smooth_river_bottom   Whether to apply Laplace smoothing along the
- * river bottom.
+ *                               river bottom.
  * @param  merging_distance      Transition distance (in pixels) for blending
- * riverbanks into terrain.
+ *                               riverbanks into terrain.
  * @param  seed                  Random seed for riverbank noise.
  * @param  riverbank_noise_ratio Noise ratio for talus expansion roughness.
  * @param  p_noise_x             Optional noise array for domain warping in X.
  * @param  p_noise_y             Optional noise array for domain warping in Y.
  * @return                       Merged terrain array with smoothly carved river
- * channels.
+ *                               channels.
  */
 Array carve_riverbed(const Array  &z,
                      const Array  &z_river,
@@ -526,29 +526,31 @@ Array flow_fixing_drainage_basin(
  * carves monotonic riverbeds along the MST paths using continuous trench
  * profiles.
  *
- * @param  z                     Input elevation array.
- * @param  riverbed_talus        Minimum talus (slope) along carved riverbeds.
- * @param  elevation_ratio       Balance factor between elevation level and
- *                               slope in Dijkstra cost.
- * @param  distance_exponent     Exponent applied to elevation differences in
- *                               Dijkstra cost.
- * @param  upward_penalization   Penalty factor for uphill moves in Dijkstra
- *                               search.
- * @param  valley_affinity       Weight for valley/concavity affinity in cost.
- * @param  prefilter_ir          Radius of Gaussian/cpulse prefilter applied
- *                               before sink detection.
- * @param  minimum_depth         Minimum incision depth below initial terrain
- *                               elevation.
- * @param  carve_riverbed        Whether to apply riverbank carving and
- *                               smoothing along altered paths.
- * @param  merging_distance      Distance (in pixels) for blending modified flow
- *                               paths.
- * @param  radial_profile        Radial profile cross-section for trench
- * carving.
+ * @param  z                        Input elevation array.
+ * @param  riverbed_talus           Minimum talus (slope) along carved
+ *                                  riverbeds.
+ * @param  elevation_ratio          Balance factor between elevation level and
+ *                                  slope in Dijkstra cost.
+ * @param  distance_exponent        Exponent applied to elevation differences in
+ *                                  Dijkstra cost.
+ * @param  upward_penalization      Penalty factor for uphill moves in Dijkstra
+ *                                  search.
+ * @param  valley_affinity          Weight for valley/concavity affinity in
+ *                                  cost.
+ * @param  prefilter_ir             Radius of Gaussian/cpulse prefilter applied
+ *                                  before sink detection.
+ * @param  minimum_depth            Minimum incision depth below initial terrain
+ *                                  elevation.
+ * @param  carve_riverbed           Whether to apply riverbank carving and
+ *                                  smoothing along altered paths.
+ * @param  merging_distance         Distance (in pixels) for blending modified
+ *                                  flow paths.
+ * @param  radial_profile           Radial profile cross-section for trench
+ *                                  carving.
  * @param  radial_profile_parameter Shape parameter for the radial profile.
- * @param  p_noise_r             Optional radial noise array for trench width
- *                               perturbation.
- * @return                       Array with unbroken flow paths.
+ * @param  p_noise_r                Optional radial noise array for trench width
+ *                                  perturbation.
+ * @return                          Array with unbroken flow paths.
  */
 Array flow_fixing_mst(
     const Array  &z,

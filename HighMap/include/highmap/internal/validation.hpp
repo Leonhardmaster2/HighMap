@@ -117,7 +117,7 @@ template <typename T>
  * @param  name      Name or description of the container for logging.
  * @param  loc       Source location of the caller.
  * @return           true if container has at least min_size elements, false
- * otherwise.
+ *                   otherwise.
  */
 template <typename T>
   requires requires(const T &t) {
@@ -178,7 +178,7 @@ template <typename T>
  * @param  b     Array to check.
  * @param  loc   Source location of the caller.
  * @return       true if b.shape matches shape and b is non-empty, false
- * otherwise.
+ *               otherwise.
  */
 [[nodiscard]] inline bool validate_same_shape(
     glm::ivec2                  shape,
@@ -210,7 +210,7 @@ template <typename T>
  * @param  min_channels Minimum required number of channels.
  * @param  loc          Source location of the caller.
  * @return              true if the Texture is non-empty and channels are valid,
- * false otherwise.
+ *                      false otherwise.
  */
 [[nodiscard]] inline bool validate_non_empty(
     const Texture              &tex,

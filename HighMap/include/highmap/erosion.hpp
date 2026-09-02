@@ -818,43 +818,43 @@ void deposition_fill_holes(Array       &z,
  * @image html ex_hydraulic_particle.png
  */
 void hydraulic_particle(Array        &z,
-                         int           nparticles,
-                         std::uint32_t seed,
-                         const Array  *p_bedrock = nullptr,
-                         const Array  *p_moisture_map = nullptr,
-                         const Array  *p_elevation_shift = nullptr,
-                         Array        *p_erosion_map = nullptr,
-                         Array        *p_deposition_map = nullptr,
-                         float         c_capacity = 10.f,
-                         float         c_erosion = 0.05f,
-                         float         c_deposition = 0.05f,
-                         float         c_inertia = 0.01f,
-                         float         c_gravity = 1.f,
-                         float         drag_rate = 0.001f,
-                         float         evap_rate = 0.001f,
-                         float         talus_slope = 2.f,
-                         float         collapse_rate = 0.1f,
-                         int           iterations = 1);
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock = nullptr,
+                        const Array  *p_moisture_map = nullptr,
+                        const Array  *p_elevation_shift = nullptr,
+                        Array        *p_erosion_map = nullptr,
+                        Array        *p_deposition_map = nullptr,
+                        float         c_capacity = 10.f,
+                        float         c_erosion = 0.05f,
+                        float         c_deposition = 0.05f,
+                        float         c_inertia = 0.01f,
+                        float         c_gravity = 1.f,
+                        float         drag_rate = 0.001f,
+                        float         evap_rate = 0.001f,
+                        float         talus_slope = 2.f,
+                        float         collapse_rate = 0.1f,
+                        int           iterations = 1);
 
 void hydraulic_particle(Array        &z,
-                         const Array  *p_mask,
-                         int           nparticles,
-                         std::uint32_t seed,
-                         const Array  *p_bedrock = nullptr,
-                         const Array  *p_moisture_map = nullptr,
-                         const Array  *p_elevation_shift = nullptr,
-                         Array        *p_erosion_map = nullptr,
-                         Array        *p_deposition_map = nullptr,
-                         float         c_capacity = 10.f,
-                         float         c_erosion = 0.05f,
-                         float         c_deposition = 0.05f,
-                         float         c_inertia = 0.01f,
-                         float         c_gravity = 1.f,
-                         float         drag_rate = 0.001f,
-                         float         evap_rate = 0.001f,
-                         float         talus_slope = 2.f,
-                         float         collapse_rate = 0.1f,
-                         int           iterations = 1);
+                        const Array  *p_mask,
+                        int           nparticles,
+                        std::uint32_t seed,
+                        const Array  *p_bedrock = nullptr,
+                        const Array  *p_moisture_map = nullptr,
+                        const Array  *p_elevation_shift = nullptr,
+                        Array        *p_erosion_map = nullptr,
+                        Array        *p_deposition_map = nullptr,
+                        float         c_capacity = 10.f,
+                        float         c_erosion = 0.05f,
+                        float         c_deposition = 0.05f,
+                        float         c_inertia = 0.01f,
+                        float         c_gravity = 1.f,
+                        float         drag_rate = 0.001f,
+                        float         evap_rate = 0.001f,
+                        float         talus_slope = 2.f,
+                        float         collapse_rate = 0.1f,
+                        int           iterations = 1);
 
 /**
  * @brief Multiscale particle-based hydraulic erosion cascade.
@@ -863,30 +863,31 @@ void hydraulic_particle(Array        &z,
  * to z.shape). Coarse levels carve broad continental valleys and major river
  * corridors, while fine levels carve detailed tributaries and gullies.
  *
- * @param z                       Heightmap array to modify.
- * @param seed                    Random seed.
- * @param steps_per_level         Number of iteration steps per level (coarsest
- * to finest, e.g. {4, 2, 1}).
- * @param p_bedrock               Optional bedrock array.
- * @param p_moisture_map          Optional moisture map.
- * @param p_elevation_shift       Optional elevation shift map.
- * @param p_erosion_map           Optional output erosion map.
- * @param p_deposition_map        Optional output deposition map.
- * @param particles_ratio         Particles per level as a multiple of
- * resolution (e.g. 0.5 * nx * ny).
- * @param c_capacity              Sediment capacity factor.
- * @param c_erosion               Erosion rate coefficient.
- * @param c_deposition            Deposition rate coefficient.
- * @param c_inertia               Inertia factor.
- * @param c_gravity               Gravity factor.
- * @param drag_rate               Velocity damping.
- * @param evap_rate               Evaporation rate.
- * @param talus_slope             Domain-normalized talus slope threshold
- * (e.g. 2.0, adjusted automatically to talus_slope / shape.x).
- * @param collapse_rate           Bank collapse rate.
- * @param mix                     Interpolation blend factor in [0, 1] between
- * original input heightmap (0) and eroded heightmap (1) at each upsampling step
- * to retain original high-frequency details.
+ * @param z                 Heightmap array to modify.
+ * @param seed              Random seed.
+ * @param steps_per_level   Number of iteration steps per level (coarsest to
+ *                          finest, e.g. {4, 2, 1}).
+ * @param p_bedrock         Optional bedrock array.
+ * @param p_moisture_map    Optional moisture map.
+ * @param p_elevation_shift Optional elevation shift map.
+ * @param p_erosion_map     Optional output erosion map.
+ * @param p_deposition_map  Optional output deposition map.
+ * @param particles_ratio   Particles per level as a multiple of resolution
+ *                          (e.g. 0.5 * nx * ny).
+ * @param c_capacity        Sediment capacity factor.
+ * @param c_erosion         Erosion rate coefficient.
+ * @param c_deposition      Deposition rate coefficient.
+ * @param c_inertia         Inertia factor.
+ * @param c_gravity         Gravity factor.
+ * @param drag_rate         Velocity damping.
+ * @param evap_rate         Evaporation rate.
+ * @param talus_slope       Domain-normalized talus slope threshold (e.g. 2.0,
+ *                          adjusted automatically to talus_slope / shape.x).
+ * @param collapse_rate     Bank collapse rate.
+ * @param mix               Interpolation blend factor in [0, 1] between
+ *                          original input heightmap (0) and eroded heightmap
+ *                          (1) at each upsampling step to retain original
+ *                          high-frequency details.
  */
 void hydraulic_particle_multiscale(
     Array                  &z,
