@@ -10,7 +10,7 @@ The current HighMap Metal branch is rebased onto current upstream, builds in the
 ## Required answers
 
 1. **Current `upstream/dev` SHA:** `269e9b6b77fa0926916d97c18656d8344800c9da`.
-2. **Final feature HEAD at audit time:** `cd76774f2` before the documentation commit; the final published HEAD is recorded in the final report/branch audit.
+2. **Published implementation HEAD validated from a clean clone:** `d93bdfa8a`; the final branch tip including this documentation update is recorded in the final report/branch audit.
 3. **Old merge base:** `e0d1279fced75cf7556de233128abfb5650e25b5`.
 4. **Upstream commits since that base:** logger migration, validation expansion, path/geometry additions, hydrology flow/MST changes, erosion hydraulic-particle/multiscale changes, CMake/OpenMP cleanup, and the associated formatting/tests; exact representative hashes and classifications are in `HIGHMAP_UPSTREAM_SYNC_AUDIT.md`.
 5. **Upstream changes interacting with Metal:** build/logger/API changes and current validation; no existing Metal kernel had a conflicting semantic change. Hydraulic-particle changes are a documented new Metal opportunity, not an existing wrapper conflict.
@@ -59,12 +59,12 @@ The current HighMap Metal branch is rebased onto current upstream, builds in the
 48. **Important-size regressions:** none in the focused parity sweep or full source tests beyond the same upstream PathSplines baseline failure.
 49. **Standalone/no Qt/Hesiod:** yes; no Qt/Hesiod/GNode/QTerrainRenderer dependency appears in the Metal backend.
 50. **Objective-C isolation:** yes; public GPU headers remain standard C++ and Objective-C++ syntax is confined to `.mm` implementation code.
-51. **Clean clone build:** pending final post-push clean-clone verification; local clean builds already pass and no build artifacts are tracked.
+51. **Clean clone build:** yes; `/tmp/highmap-clean-jkiXmj` cloned the published branch at `d93bdfa8a`, initialized every submodule, configured a clean Metal-disabled build, built `highmap_tests`, and reproduced 347 passed / 50 skipped / 1 known PathSplines failure.
 52. **Local paths absent:** yes in tracked HighMap source/build configuration; the host-specific Homebrew paths were only supplied to the temporary upstream baseline and are not project settings.
 53. **Linear history:** yes.
 54. **Merge commits in feature range:** 0.
 55. **AI author/co-author counts:** 0/0; full commit bodies were audited case-insensitively.
-56. **Branch publication:** pending final force-with-lease push after documentation and clean-clone checks.
+56. **Branch publication:** yes for the implementation commit via `git push --force-with-lease origin feature/apple-metal-backend`; this final documentation update is pushed with the same safe mechanism.
 57. **Remaining macOS HighMap issues:** precompiled metallib cannot be tested on this CLT-only host; OpenCL is still effectively required; upstream hydraulic-particle/multiscale has no Metal path; 4096²/8192² memory evidence is still outstanding; PathSplines remains an upstream baseline failure.
 58. **Next HighMap-only focus:** install/use a full Metal shader toolchain for metallib parity, then profile 2048²–4096² resident hydraulic and advection workloads with Instruments/Metal validation before considering another narrowly measured optimization.
 
