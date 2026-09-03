@@ -18,6 +18,7 @@
 
 #pragma once
 #include "highmap/array.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap
 {
@@ -253,6 +254,27 @@ Array blend_poisson_bf(const Array &array1,
                        const Array &array2,
                        const int    iterations = 500,
                        const Array *p_mask = nullptr);
+
+/**
+ * @brief Blends two textures using Poisson blending with a brute-force solver.
+ *
+ * This function performs Poisson blending between @p texture1 and @p texture2
+ * channel by channel over a specified number of iterations. Optionally, a mask
+ * can be provided to control the blending regions.
+ *
+ * @param  texture1   The first input texture.
+ * @param  texture2   The second input texture.
+ * @param  iterations The number of iterations for the blending process
+ *                    (default: 500).
+ * @param  p_mask     Optional pointer to an array defining the blending mask.
+ *                    If null, blending is applied globally.
+ * @return            The blended texture resulting from the Poisson blending
+ *                    operation.
+ */
+Texture blend_poisson_bf(const Texture &texture1,
+                         const Texture &texture2,
+                         const int      iterations = 500,
+                         const Array   *p_mask = nullptr);
 
 /*! @brief See hmap::transfer */
 Array transfer(const Array &source,

@@ -1,3 +1,4 @@
+#include "highmap/blending.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
 #include "highmap/dbg/assert.hpp"
@@ -293,4 +294,68 @@ TEST(TextureTransform, BasicTransforms)
       }
     }
   }
+}
+
+TEST(TextureBlending, BlendPoissonBf)
+{
+  glm::ivec2 shape = {32, 32};
+  glm::vec2  kw = {2.f, 2.f};
+
+  Array   z1_r = noise_fbm(NoiseType::PERLIN, shape, kw, 1);
+  Array   z1_g = noise_fbm(NoiseType::PERLIN, shape, kw, 2);
+  Array   z1_b = noise_fbm(NoiseType::PERLIN, shape, kw, 3);
+  Texture tex1(z1_r, z1_g, z1_b);
+
+  Array   z2_r = noise_fbm(NoiseType::WORLEY, shape, 2.f * kw, 4);
+  Array   z2_g = noise_fbm(NoiseType::WORLEY, shape, 2.f * kw, 5);
+  Array   z2_b = noise_fbm(NoiseType::WORLEY, shape, 2.f * kw, 6);
+  Texture tex2(z2_r, z2_g, z2_b);
+
+  const int iterations = 50;
+
+  // Test global Poisson blending
+  Texture blended = gpu::blend_poisson_bf(tex1, tex2, iterations);
+  EXPECT_EQ(blended.shape, shape);
+  EXPECT_EQ(blended.num_channels(), 3);
+
+  for (int c = 0; c < 3; ++c)
+  {
+    Array expected_ch = gpu::blend_poisson_bf(tex1[c], tex2[c], iterations);
+    EXPECT_TRUE(assert_almost_equal(blended[c], expected_ch, 1e-5f));
+  }
+
+  // Test masked Poisson blending
+  Array   mask(shape, 0.5f);
+  Texture blended_mask = gpu::blend_poisson_bf(tex1, tex2, iterations, &mask);
+  EXPECT_EQ(blended_mask.shape, shape);
+  EXPECT_EQ(blended_mask.num_channels(), 3);
+
+  for (int c = 0; c < 3; ++c)
+  {
+    Array expected_ch = gpu::blend_poisson_bf(tex1[c],
+                                              tex2[c],
+                                              iterations,
+                                              &mask);
+    EXPECT_TRUE(assert_almost_equal(blended_mask[c], expected_ch, 1e-5f));
+  }
+
+  // Invalid / mismatched inputs
+  Texture empty_tex;
+  EXPECT_EQ(gpu::blend_poisson_bf(empty_tex, tex2, iterations).num_channels(),
+            0);
+
+  Texture mismatched_channels(shape, 2);
+  EXPECT_EQ(gpu::blend_poisson_bf(tex1, mismatched_channels, iterations)
+                .num_channels(),
+            0);
+
+  Texture mismatched_shape({16, 16}, 3);
+  EXPECT_EQ(
+      gpu::blend_poisson_bf(tex1, mismatched_shape, iterations).num_channels(),
+      0);
+
+  Array mismatched_mask({16, 16}, 1.f);
+  EXPECT_EQ(gpu::blend_poisson_bf(tex1, tex2, iterations, &mismatched_mask)
+                .num_channels(),
+            0);
 }

@@ -12,6 +12,7 @@
 #include "highmap/math/array.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
 #include "highmap/range.hpp"
+#include "highmap/texture.hpp"
 
 namespace hmap::gpu
 {
@@ -61,6 +62,30 @@ Array blend_poisson_bf(const Array &array1,
   run.read_buffer("array1_out");
 
   return array1_out;
+}
+
+Texture blend_poisson_bf(const Texture &texture1,
+                         const Texture &texture2,
+                         const int      iterations,
+                         const Array   *p_mask)
+{
+  if (!validate_non_empty(texture1) || !validate_same_shape(texture1, texture2))
+    return Texture();
+  if (!validate_channels(texture2, texture1.num_channels())) return Texture();
+  if (p_mask && !validate_same_shape(texture1, *p_mask)) return Texture();
+
+  std::vector<Array> blended_channels;
+  blended_channels.reserve(texture1.num_channels());
+
+  for (size_t c = 0; c < texture1.channels.size(); ++c)
+  {
+    blended_channels.push_back(blend_poisson_bf(texture1.channels[c],
+                                                texture2.channels[c],
+                                                iterations,
+                                                p_mask));
+  }
+
+  return Texture(blended_channels);
 }
 
 Array transfer(const Array &source,
