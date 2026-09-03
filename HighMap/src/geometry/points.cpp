@@ -256,6 +256,18 @@ Point midpoint(const Point &p1,
   return displaced_midpoint;
 }
 
+Point scale(const Point &p, glm::vec2 scale, glm::vec2 center)
+{
+  return Point(center.x + scale.x * (p.x - center.x),
+               center.y + scale.y * (p.y - center.y),
+               p.v);
+}
+
+Point scale(const Point &p, float scale_factor, glm::vec2 center)
+{
+  return scale(p, glm::vec2(scale_factor, scale_factor), center);
+}
+
 std::optional<Point> segment_intersection(const Point &p1,
                                           const Point &p2,
                                           const Point &q1,

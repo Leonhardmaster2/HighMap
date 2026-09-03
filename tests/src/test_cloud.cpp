@@ -282,3 +282,73 @@ TEST(CloudTest, MergeCloudsConcatenates)
 
   EXPECT_EQ(merged.size(), 2);
 }
+
+// ------------------------------------------------------------
+// Scale (Free functions)
+// ------------------------------------------------------------
+
+TEST(CloudTest, ScaleUniformDefaultCenter)
+{
+  Cloud cloud(std::vector<Point>{{0.f, 0.f, 10.f}, {1.f, 1.f, 20.f}});
+
+  // Default center of unit bbox is (0.5, 0.5). Scale 0.8 should shrink towards
+  // (0.5, 0.5) x: 0.5 + 0.8 * (0 - 0.5) = 0.1 y: 0.5 + 0.8 * (1 - 0.5) = 0.9
+  Cloud scaled = scale(cloud, 0.8f);
+
+  ASSERT_EQ(scaled.size(), 2);
+  EXPECT_NEAR(scaled.points[0].x, 0.1f, eps);
+  EXPECT_NEAR(scaled.points[0].y, 0.1f, eps);
+  EXPECT_NEAR(scaled.points[0].v, 10.f, eps);
+
+  EXPECT_NEAR(scaled.points[1].x, 0.9f, eps);
+  EXPECT_NEAR(scaled.points[1].y, 0.9f, eps);
+  EXPECT_NEAR(scaled.points[1].v, 20.f, eps);
+}
+
+TEST(CloudTest, ScaleNonUniformCustomCenter)
+{
+  Cloud cloud(std::vector<Point>{{1.f, 2.f, 5.f}});
+
+  // Scale x by 2, y by 0.5 relative to (1.f, 1.f)
+  // x: 1 + 2 * (1 - 1) = 1
+  // y: 1 + 0.5 * (2 - 1) = 1.5
+  Cloud scaled = scale(cloud, glm::vec2(2.f, 0.5f), glm::vec2(1.f, 1.f));
+
+  ASSERT_EQ(scaled.size(), 1);
+  EXPECT_NEAR(scaled.points[0].x, 1.f, eps);
+  EXPECT_NEAR(scaled.points[0].y, 1.5f, eps);
+  EXPECT_NEAR(scaled.points[0].v, 5.f, eps);
+}
+
+TEST(CloudTest, ScaleCustomCenter)
+{
+  Cloud     cloud(std::vector<Point>{{10.f, 20.f, 1.f}, {20.f, 40.f, 2.f}});
+  glm::vec2 center = {15.f, 30.f};
+
+  // Scale 0.5 relative to custom center (15, 30)
+  // p0: x = 15 + 0.5 * (10 - 15) = 12.5, y = 30 + 0.5 * (20 - 30) = 25
+  // p1: x = 15 + 0.5 * (20 - 15) = 17.5, y = 30 + 0.5 * (40 - 30) = 35
+  Cloud scaled = scale(cloud, 0.5f, center);
+
+  ASSERT_EQ(scaled.size(), 2);
+  EXPECT_NEAR(scaled.points[0].x, 12.5f, eps);
+  EXPECT_NEAR(scaled.points[0].y, 25.f, eps);
+  EXPECT_NEAR(scaled.points[1].x, 17.5f, eps);
+  EXPECT_NEAR(scaled.points[1].y, 35.f, eps);
+}
+
+TEST(CloudTest, ScalePreservesPointValues)
+{
+  Cloud cloud(std::vector<Point>{
+      {0.1f, 0.2f, 100.5f},
+      {0.5f, 0.5f, -42.0f},
+      {0.9f, 0.8f, 3.1415f},
+  });
+
+  Cloud scaled = scale(cloud, glm::vec2(0.5f, 1.5f));
+
+  ASSERT_EQ(scaled.size(), 3u);
+  EXPECT_FLOAT_EQ(scaled.points[0].v, 100.5f);
+  EXPECT_FLOAT_EQ(scaled.points[1].v, -42.0f);
+  EXPECT_FLOAT_EQ(scaled.points[2].v, 3.1415f);
+}

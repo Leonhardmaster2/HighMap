@@ -546,6 +546,21 @@ Path remove_geometric_loops(const Path &path)
   return result;
 }
 
+Path scale(const Path &path, glm::vec2 scale, glm::vec2 center)
+{
+  Path result = path;
+
+  for (auto &p : result.points)
+    p = hmap::scale(p, scale, center);
+
+  return result;
+}
+
+Path scale(const Path &path, float scale_factor, glm::vec2 center)
+{
+  return scale(path, glm::vec2(scale_factor, scale_factor), center);
+}
+
 Path smooth(const Path &path,
             int         navg,
             float       averaging_intensity,
