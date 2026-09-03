@@ -1,6 +1,8 @@
 /* Copyright (c) 2023 Otto Link. Distributed under the terms of the GNU General
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
+#include <algorithm>
+#include <cmath>
 #include <vector>
 
 #include "cl_wrapper/run.hpp"
@@ -43,23 +45,51 @@ Array blend_poisson_bf(const Array &array1,
     return Array();
   if (p_mask && !validate_same_shape(array1, *p_mask)) return Array();
 
+  int nx = array1.shape.x;
+  int ny = array1.shape.y;
+
+  // Analytically compute optimal SOR relaxation factor omega:
+  // rho_jacobi = 0.5 * (cos(pi / nx) + cos(pi / ny))
+  // omega_opt  = 2.0 / (1.0 + sqrt(1.0 - rho_jacobi^2))
+  float pi = static_cast<float>(M_PI);
+  float rho = 0.5f * (std::cos(pi / static_cast<float>(nx)) +
+                      std::cos(pi / static_cast<float>(ny)));
+  float omega = 2.f / (1.f + std::sqrt(std::max(0.f, 1.f - rho * rho)));
+
   Array array1_out = p_mask ? lerp(array1, array2, *p_mask) : array1;
+  Array delta2(array1.shape);
 
-  auto run = clwrapper::Run("blend_poisson_bf");
+  // Precompute Laplacian of array2 (RHS)
+  auto run_laplacian = clwrapper::Run("poisson_compute_laplacian");
+  run_laplacian.bind_buffer<float>("src", array2.vector);
+  run_laplacian.bind_buffer<float>("laplacian", delta2.vector);
+  run_laplacian.bind_arguments(nx, ny);
+  run_laplacian.write_buffer("src");
+  run_laplacian.execute({nx, ny});
+  run_laplacian.read_buffer("laplacian");
 
-  run.bind_buffer<float>("array1_out", array1_out.vector);
-  run.bind_buffer<float>("array2", array2.vector);
+  // Run Red-Black SOR solver
+  auto run = clwrapper::Run("blend_poisson_red_black");
+  run.bind_buffer<float>("array1", array1_out.vector);
+  run.bind_buffer<float>("delta2", delta2.vector);
   helper_bind_optional_buffer(run, "mask", p_mask);
+  run.bind_arguments(nx, ny, 0, omega, p_mask ? 1 : 0);
 
-  run.bind_arguments(array1.shape.x, array1.shape.y, p_mask ? 1 : 0);
-
-  run.write_buffer("array1_out");
-  run.write_buffer("array2");
+  run.write_buffer("array1");
+  run.write_buffer("delta2");
 
   for (int it = 0; it < iterations; it++)
-    run.execute({array1.shape.x, array1.shape.y});
+  {
+    // Pass 0: Red cells ((x + y) % 2 == 0)
+    run.set_argument(5, 0);
+    run.execute({nx, ny});
 
-  run.read_buffer("array1_out");
+    // Pass 1: Black cells ((x + y) % 2 == 1)
+    run.set_argument(5, 1);
+    run.execute({nx, ny});
+  }
+
+  run.read_buffer("array1");
 
   return array1_out;
 }
