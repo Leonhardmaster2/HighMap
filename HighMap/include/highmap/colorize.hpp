@@ -415,6 +415,27 @@ Texture mix(const Texture &tex1,
             MixMethod      method = MM_SQRT_AVG);
 
 /**
+ * @brief Mix two textures based on a transparency mask.
+ *
+ * Blends @p tex1 and @p tex2 according to the values in @p mask.
+ * When mask is 0, @p tex1 is selected; when mask is 1, @p tex2 is selected.
+ * If @p gain is different from 1.0, a gain curve is applied to the mask
+ * beforehand.
+ *
+ * @param  tex1   First input texture (background).
+ * @param  tex2   Second input texture (foreground).
+ * @param  mask   Transparency mask array with values in [0, 1].
+ * @param  method Mixing method to use (default: MM_SQRT_AVG).
+ * @param  gain   Gain factor applied to the mask when != 1.0 (default: 1.0).
+ * @return        Mixed Texture.
+ */
+Texture mix(const Texture &tex1,
+            const Texture &tex2,
+            const Array   &mask,
+            MixMethod      method = MM_SQRT_AVG,
+            float          gain = 1.f);
+
+/**
  * @brief Mix a list of textures sequentially.
  * @param  texs   Input list of textures.
  * @param  method Mixing method to use.

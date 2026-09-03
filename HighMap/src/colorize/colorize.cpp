@@ -10,6 +10,7 @@
 #include "highmap/array.hpp"
 #include "highmap/colorize.hpp"
 #include "highmap/colormaps.hpp"
+#include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/internal/validation.hpp"
 #include "highmap/logger.hpp"
@@ -607,6 +608,80 @@ Texture mix(const Texture &tex1, const Texture &tex2, MixMethod method)
   }
 
   out[3] = a1 + a2 * (1.f - a1);
+  return out;
+}
+
+Texture mix(const Texture &tex1,
+            const Texture &tex2,
+            const Array   &mask,
+            MixMethod      method,
+            float          gain_factor)
+{
+  if (!validate_non_empty(tex1, 3)) return Texture();
+  if (!validate_non_empty(tex2, 3)) return Texture();
+  if (!validate_same_shape(tex1, tex2)) return Texture();
+  if (!validate_non_empty(mask)) return Texture();
+  if (!validate_same_shape(tex1, mask)) return Texture();
+
+  int     num_channels = std::min(tex1.num_channels(), tex2.num_channels());
+  Texture out(tex1.shape, num_channels);
+
+  Array t = mask;
+  if (gain_factor != 1.f)
+  {
+    gain(t, gain_factor);
+  }
+
+  if (method == MM_MIXBOX)
+  {
+    for (int nch = 0; nch < 3; ++nch)
+    {
+      out[nch] = Array(tex1.shape, 0.f);
+    }
+
+    int size = tex1.shape.x * tex1.shape.y;
+    for (int idx = 0; idx < size; ++idx)
+    {
+      float r1 = tex1[0].vector[idx];
+      float g1 = tex1[1].vector[idx];
+      float b1 = tex1[2].vector[idx];
+
+      float r2 = tex2[0].vector[idx];
+      float g2 = tex2[1].vector[idx];
+      float b2 = tex2[2].vector[idx];
+
+      float ratio = t.vector[idx];
+
+      float r, g, b;
+      mixbox_lerp_float(r1, g1, b1, r2, g2, b2, ratio, &r, &g, &b);
+
+      out[0].vector[idx] = r;
+      out[1].vector[idx] = g;
+      out[2].vector[idx] = b;
+    }
+  }
+  else
+  {
+    for (int nch = 0; nch < 3; ++nch)
+    {
+      if (method == MM_SQRT_AVG)
+      {
+        out[nch] = pow((1.f - t) * tex1[nch] * tex1[nch] +
+                           t * tex2[nch] * tex2[nch],
+                       0.5f);
+      }
+      else
+      {
+        out[nch] = lerp(tex1[nch], tex2[nch], t);
+      }
+    }
+  }
+
+  for (int nch = 3; nch < num_channels; ++nch)
+  {
+    out[nch] = lerp(tex1[nch], tex2[nch], t);
+  }
+
   return out;
 }
 

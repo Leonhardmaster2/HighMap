@@ -127,6 +127,80 @@ TEST(TextureColorize, CustomColormapAndOperations)
   EXPECT_EQ(blended.num_channels(), 4);
 }
 
+TEST(TextureColorize, MixWithMask)
+{
+  glm::ivec2 shape = {4, 4};
+  Texture    t1(shape, 3, 0.0f); // all black
+  Texture    t2(shape, 3, 1.0f); // all white
+
+  // 1. Mask = 0.0 -> result should be t1 (0.0)
+  Array   mask_0(shape, 0.0f);
+  Texture mixed_0 = mix(t1, t2, mask_0, MixMethod::MM_LINEAR);
+  EXPECT_EQ(mixed_0.num_channels(), 3);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_0[c].vector[idx], 0.0f, 1e-5f);
+
+  // 2. Mask = 1.0 -> result should be t2 (1.0)
+  Array   mask_1(shape, 1.0f);
+  Texture mixed_1 = mix(t1, t2, mask_1, MixMethod::MM_LINEAR);
+  EXPECT_EQ(mixed_1.num_channels(), 3);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_1[c].vector[idx], 1.0f, 1e-5f);
+
+  // 3. Mask = 0.5 with MM_LINEAR -> result should be 0.5
+  Array   mask_half(shape, 0.5f);
+  Texture mixed_half = mix(t1, t2, mask_half, MixMethod::MM_LINEAR);
+  EXPECT_EQ(mixed_half.num_channels(), 3);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_half[c].vector[idx], 0.5f, 1e-5f);
+
+  // 4. MM_SQRT_AVG with 0.5
+  Texture mixed_sqrt = mix(t1, t2, mask_half, MixMethod::MM_SQRT_AVG);
+  EXPECT_EQ(mixed_sqrt.num_channels(), 3);
+  float expected_sqrt = std::sqrt(0.5f * 0.f * 0.f + 0.5f * 1.f * 1.f);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_sqrt[c].vector[idx], expected_sqrt, 1e-5f);
+
+  // 5. MM_MIXBOX
+  Texture mixed_mixbox = mix(t1, t2, mask_half, MixMethod::MM_MIXBOX);
+  EXPECT_EQ(mixed_mixbox.num_channels(), 3);
+
+  // 6. Test with gain on mask
+  // With mask = 0.25 and gain = 2.0:
+  // gain(0.25, 2.0) = 0.5 * (2 * 0.25)^2 = 0.5 * 0.25 = 0.125
+  Array   mask_quarter(shape, 0.25f);
+  Texture mixed_gain = mix(t1, t2, mask_quarter, MixMethod::MM_LINEAR, 2.0f);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_gain[c].vector[idx], 0.125f, 1e-5f);
+
+  // 7. 4-channel textures
+  Texture t1_rgba(shape, 4, 0.2f);
+  Texture t2_rgba(shape, 4, 0.8f);
+  t1_rgba[3] = Array(shape, 0.4f);
+  t2_rgba[3] = Array(shape, 0.9f);
+  Texture mixed_rgba = mix(t1_rgba, t2_rgba, mask_half, MixMethod::MM_LINEAR);
+  EXPECT_EQ(mixed_rgba.num_channels(), 4);
+  for (int c = 0; c < 3; ++c)
+    for (int idx = 0; idx < shape.x * shape.y; ++idx)
+      EXPECT_NEAR(mixed_rgba[c].vector[idx], 0.5f, 1e-5f);
+  for (int idx = 0; idx < shape.x * shape.y; ++idx)
+    EXPECT_NEAR(mixed_rgba[3].vector[idx], 0.65f, 1e-5f);
+
+  // 8. Invalid inputs
+  Texture empty_tex;
+  EXPECT_EQ(mix(empty_tex, t2, mask_half).num_channels(), 0);
+  EXPECT_EQ(mix(t1, empty_tex, mask_half).num_channels(), 0);
+  Array empty_mask;
+  EXPECT_EQ(mix(t1, t2, empty_mask).num_channels(), 0);
+  Array mismatched_mask({8, 8}, 0.5f);
+  EXPECT_EQ(mix(t1, t2, mismatched_mask).num_channels(), 0);
+}
+
 TEST(TextureColorize, BivariateReverseAndNoise)
 {
   glm::ivec2 shape = {4, 4};
