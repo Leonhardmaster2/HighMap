@@ -43,7 +43,7 @@ Array blend_poisson_bf(const Array &array1,
     return Array();
   if (p_mask && !validate_same_shape(array1, *p_mask)) return Array();
 
-  Array array1_out = array1;
+  Array array1_out = p_mask ? lerp(array1, array2, *p_mask) : array1;
 
   auto run = clwrapper::Run("blend_poisson_bf");
 
