@@ -1,0 +1,2 @@
+add_executable(ex_path_scale ex_path_scale.cpp)
+target_link_libraries(ex_path_scale highmap)

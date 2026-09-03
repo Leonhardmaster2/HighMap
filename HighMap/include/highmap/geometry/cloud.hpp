@@ -22,6 +22,7 @@
  */
 #pragma once
 #include <cmath>
+#include <optional>
 
 #include "highmap/array.hpp"
 #include "highmap/geometry/point.hpp"
@@ -782,5 +783,25 @@ void rejection_filter_density(Cloud           &cloud,
                               const Array     &density_mask,
                               std::uint32_t    seed,
                               const glm::vec4 &bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Scales the point coordinates in a cloud relative to a center point.
+ *
+ * Scales the (x, y) coordinates of all points in the cloud relative to a
+ * specified center point while preserving each point's value (v). A scale
+ * factor smaller than 1 shrinks the point distribution toward the center
+ * (creating a margin from domain boundaries), while a scale factor greater than
+ * 1 expands it.
+ *
+ * @param  cloud  Input point cloud.
+ * @param  scale  Scale factor(s) for x and y axes.
+ * @param  center Center of scaling (defaults to (0.5, 0.5)).
+ * @return Cloud  A new point cloud with scaled point coordinates.
+ */
+Cloud scale(const Cloud &cloud,
+            glm::vec2    scale,
+            glm::vec2    center = {0.5f, 0.5f});
+
+Cloud scale(const Cloud &cloud, float scale, glm::vec2 center = {0.5f, 0.5f});
 
 } // namespace hmap

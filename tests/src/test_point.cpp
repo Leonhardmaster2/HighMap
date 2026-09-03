@@ -305,3 +305,27 @@ TEST(PointTest, SortPointsLexicographic)
   EXPECT_TRUE(pts[1] == Point(1, 2, 0));
   EXPECT_TRUE(pts[2] == Point(2, 1, 0));
 }
+
+// ------------------------------------------------------------
+// Scale
+// ------------------------------------------------------------
+
+TEST(PointTest, ScaleUniformDefaultCenter)
+{
+  Point p(0.f, 1.f, 5.f);
+  Point scaled = scale(p, 0.8f);
+
+  EXPECT_NEAR(scaled.x, 0.1f, eps);
+  EXPECT_NEAR(scaled.y, 0.9f, eps);
+  EXPECT_NEAR(scaled.v, 5.f, eps);
+}
+
+TEST(PointTest, ScaleNonUniformCustomCenter)
+{
+  Point p(1.f, 2.f, 3.f);
+  Point scaled = scale(p, glm::vec2(2.f, 0.5f), glm::vec2(0.f, 0.f));
+
+  EXPECT_NEAR(scaled.x, 2.f, eps);
+  EXPECT_NEAR(scaled.y, 1.f, eps);
+  EXPECT_NEAR(scaled.v, 3.f, eps);
+}

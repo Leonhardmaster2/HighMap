@@ -742,6 +742,30 @@ Array path_sdf_to_array(const Path  &path,
 Path remove_geometric_loops(const Path &path);
 
 /**
+ * @brief Scales the point coordinates in a path relative to a center point.
+ *
+ * Scales the (x, y) coordinates of all points in the path relative to a
+ * specified center point while preserving each point's value (v) and the
+ * open/closed state of the path. A scale factor smaller than 1 shrinks the
+ * point distribution toward the center (creating a margin from domain
+ * boundaries), while a scale factor greater than 1 expands it.
+ *
+ * @param  path   Input path.
+ * @param  scale  Scale factor(s) for x and y axes.
+ * @param  center Center of scaling (defaults to (0.5, 0.5)).
+ * @return Path   A new path with scaled point coordinates.
+ *
+ * **Example**
+ * @include ex_path_scale.cpp
+ *
+ * **Result**
+ * @image html ex_path_scale.png
+ */
+Path scale(const Path &path, glm::vec2 scale, glm::vec2 center = {0.5f, 0.5f});
+
+Path scale(const Path &path, float scale, glm::vec2 center = {0.5f, 0.5f});
+
+/**
  * @brief Applies a smoothing operation to the path points using a moving
  * average filter.
  *

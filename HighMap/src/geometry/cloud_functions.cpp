@@ -162,4 +162,19 @@ void rejection_filter_density(Cloud           &cloud,
                  });
 }
 
+Cloud scale(const Cloud &cloud, glm::vec2 scale, glm::vec2 center)
+{
+  Cloud result = cloud;
+
+  for (auto &p : result.points)
+    p = hmap::scale(p, scale, center);
+
+  return result;
+}
+
+Cloud scale(const Cloud &cloud, float scale_factor, glm::vec2 center)
+{
+  return scale(cloud, glm::vec2(scale_factor, scale_factor), center);
+}
+
 } // namespace hmap
