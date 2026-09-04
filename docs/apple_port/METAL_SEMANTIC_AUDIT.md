@@ -38,3 +38,29 @@ The public `hmap::gpu` wrappers retain the established CPU/OpenCL fallback routi
 
 The new upstream hydraulic-particle/multiscale semantics, including the detail-preserving `mix` parameter, are not currently Metal-backed. They remain available through the current CPU/OpenCL implementation. Because no existing Metal wrapper claims to implement that algorithm, this is an explicit coverage boundary rather than a stale-parameter bug.
 
+## Phase 4 build and backend boundary audit
+
+Date: 2026-09-04
+
+Phase 4 keeps the semantic rule above intact while making the legacy OpenCL
+backend optional. `HIGHMAP_ENABLE_OPENCL=OFF` removes OpenCL discovery,
+CLWrapper compilation, OpenCL include paths, and OpenCL framework linkage. The
+GPU wrapper translation units still compile against the internal
+`opencl_run.hpp` compatibility boundary, whose disabled `clwrapper::Run`
+stand-in throws a deterministic `std::runtime_error` if an explicitly
+OpenCL-only operation is requested. This preserves a clear failure instead of
+silently producing an incomplete result.
+
+The public Metal path is unaffected by this boundary: native Metal wrappers
+and resident `DeviceSession` operations continue to use the same MSL source,
+buffer ownership, transfer counters, and synchronization rules. The optional
+backend contract is covered by `OpenCLBackend.BuildTimeContract` in all four
+matrix configurations. OpenCL-requiring tests now skip when the optional
+backend is disabled or has no runtime device; Metal and CPU coverage remains
+active.
+
+The only known source-level semantic failure in the complete matrix is the
+pre-existing `PathSplines.PreservePathShape` tolerance failure (chamfer
+distance `0.15608564019203186` versus tolerance `0.15000000596046448`). It is
+also present on an unmodified upstream baseline and is not attributable to
+the Phase 4 backend boundary.
