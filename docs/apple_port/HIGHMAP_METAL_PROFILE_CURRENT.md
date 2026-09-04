@@ -1,6 +1,6 @@
 # Current HighMap Metal profile
 
-Date: 2026-09-02  
+Date: 2026-09-04
 Host: Apple M3 MacBook Air, 8 GB  
 Compiler: AppleClang 21.0.0.21000327  
 Build: Release, `HIGHMAP_ENABLE_METAL=ON`, runtime MSL enabled, tests and benchmarks enabled
@@ -43,9 +43,29 @@ The existing capability-based default uses a compact 16-wide neighborhood layout
 
 ## Memory and pooling
 
-Repeated resident operations reuse scratch buffers and return `resident_bytes` to zero after download/finish. Chain A reports one reuse; Chain C reports three reuses. No 4096² or 8192² workload was run in this pass, so no peak-memory claim is made for those sizes. Existing benchmarks guard 8192² behind `HIGHMAP_PHASE3_EXTENDED=1` to avoid accidental pathological runs.
+Repeated resident operations reuse scratch buffers and report peak allocation through `peak_resident_bytes`; the completed sample returns `resident_bytes` to zero after download/finish. Phase 4 single-iteration samples measured Chain A peak allocation of 12.583 MB / 50.332 MB / 201.327 MB at 1024² / 2048² / 4096², and Chain C peak allocation of 100.696 MB / 402.784 MB / 1.611 GB at the same sizes. Chain A reports one reuse; Chain C reports three reuses. Existing benchmarks guard 8192² behind `HIGHMAP_PHASE3_EXTENDED=1` to avoid accidental pathological runs.
 
 ## Optimization decision
 
-The retained improvements in this pass are authoritative transfer accounting and regression coverage around residency, lifetime, reductions, non-square shapes, non-finite values, and no-Metal behavior. The dispatch alternatives were measured and rejected as insufficiently stable to justify changing the generic default. No kernel fusion, MTLHeap, scheduler, or broad new kernel port was introduced.
+The retained improvements in this pass are authoritative transfer accounting and regression coverage around residency, lifetime, reductions, non-square shapes, non-finite values, and no-Metal behavior. The dispatch alternatives were measured and rejected as insufficiently stable to justify changing the generic default. No kernel fusion, MTLHeap, scheduler, or broad new kernel port was introduced. Phase 4 profiling did not justify an additional numerical kernel optimization: the dominant risks are large-workload memory pressure, synchronization/encoding in hydraulic chains, and the absence of full Xcode Instruments/Metal compiler tooling on this host.
 
+## Phase 4 workload evidence
+
+The following targeted runs used the Release Metal-enabled benchmark binary,
+one warm-up, `--benchmark_min_time=1x`, one measured iteration, and the shared
+resident storage path. The machine was under variable system load, so these
+measurements are comparative evidence rather than hard performance budgets.
+
+| Workload | 1024² | 2048² | 4096² |
+|---|---:|---:|---:|
+| Resident Chain A, real time | 2.878 ms | 10.217 ms | 27.106 ms |
+| Resident Chain A, peak resident | 12.583 MB | 50.332 MB | 201.327 MB |
+| Resident Chain C, 10 iterations, real time | 32.839 ms | 148.381 ms | 752.933 ms |
+| Resident Chain C, peak resident | 100.696 MB | 402.784 MB | 1.611 GB |
+
+Both chains reported one command buffer and one final synchronization. Chain A
+performed no input uploads and one final readback; Chain C performed eight
+input uploads and one final readback. Chain C includes advection, thermal, and
+hydraulic virtual pipes, so its synchronization and memory growth are expected
+to dominate at 4096². The first attempt with an omitted benchmark time suffix
+was killed after over-repetition; it is excluded from the measurements above.
