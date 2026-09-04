@@ -16,6 +16,10 @@ HIGHMAP_METAL_RUNTIME_COMPILE=ON
 
 The Metal tests exercise source loading, runtime shader compilation, pipeline creation, dispatch, and result download. A precompiled metallib parity run could not be performed because the `metal` and `metallib` executables are missing; there is no claim that a precompiled artifact was tested.
 
+The representative table below is the earlier Phase 1–8 profile retained for
+historical comparison. The authoritative post-rebase Phase 4 sweep is recorded
+in the final section and in `PHASE4_LARGE_WORKLOADS.md`.
+
 ## Representative measured results
 
 Google Benchmark was run warm, with five measured repetitions and aggregate statistics. Times below are real-time medians; the workload includes the transfer boundary stated in each row.

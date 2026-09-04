@@ -48,10 +48,11 @@ cmake -S . -B build-phase4-cpu-only -DCMAKE_BUILD_TYPE=Release \
 ```
 
 Each build completed. `OpenCLBackend.BuildTimeContract` passed in all four
-configurations. In B, the focused Metal/portability/hardening gate ran 45
-tests: 33 passed and 12 expected parity/portability skips. The native Metal
-runtime tests themselves executed successfully; parity tests that require a
-second OpenCL implementation skipped because B deliberately disables it.
+configurations. The focused Metal/portability/hardening gate ran 45 tests in
+A: 43 passed and 2 expected portability skips. In B, it ran 45 tests: 33
+passed and 12 expected parity/portability skips. The native Metal runtime
+tests themselves executed successfully; parity tests that require a second
+OpenCL implementation skipped because B deliberately disables it.
 
 ## Interpretation
 
