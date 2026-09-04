@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-#include "cl_wrapper/run.hpp"
+#include "highmap/internal/opencl_run.hpp"
 
 #include "highmap/algebra.hpp"
 #include "highmap/array.hpp"

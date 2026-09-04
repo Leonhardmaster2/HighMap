@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <memory>
 
-#include "cl_wrapper/run.hpp"
+#include "highmap/internal/opencl_run.hpp"
 
 #include "highmap/array.hpp"
 #include "highmap/boundary.hpp"

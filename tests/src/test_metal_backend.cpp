@@ -9,7 +9,7 @@
 
 #include <gtest/gtest.h>
 
-#include "cl_wrapper/run.hpp"
+#include "highmap/internal/opencl_run.hpp"
 
 #include "highmap.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"

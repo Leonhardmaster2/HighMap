@@ -1,6 +1,7 @@
 project(highmap_tests)
 
 include(FetchContent)
+find_package(spdlog REQUIRED)
 
 FetchContent_Declare(
   googletest
@@ -18,5 +19,6 @@ target_link_libraries(${PROJECT_NAME}
   PRIVATE
     GTest::gtest
     GTest::gtest_main
+    spdlog::spdlog
     highmap
 )

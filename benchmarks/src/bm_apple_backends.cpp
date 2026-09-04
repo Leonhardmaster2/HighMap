@@ -10,7 +10,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include "cl_wrapper/run.hpp"
+#include "highmap/internal/opencl_run.hpp"
 
 #include "highmap.hpp"
 

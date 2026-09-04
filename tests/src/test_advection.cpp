@@ -1,5 +1,6 @@
 #include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -22,6 +23,8 @@ Array helper_generate_array()
 
 TEST(Advection, MultiField)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array z = helper_generate_array();
 
   // Create two distinct arrays of the same shape

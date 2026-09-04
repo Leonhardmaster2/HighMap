@@ -1,4 +1,5 @@
 #include "highmap/dbg/assert.hpp"
+#include "opencl_test_utils.hpp"
 #include "highmap/morphology.hpp"
 
 #include <gtest/gtest.h>
@@ -104,6 +105,8 @@ TEST(Skeleton, ReductionButNotFullRemoval)
 
 TEST(Skeleton_CPU_GPU, RandomBinaryFields)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   std::mt19937                       rng(42);
   std::uniform_int_distribution<int> dist(0, 1);
 
