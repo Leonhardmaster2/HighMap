@@ -27,16 +27,18 @@ virtual pipes for 10 iterations. Both cases perform one terminal download.
 
 | Workload | 1024² | 2048² | 4096² |
 |---|---:|---:|---:|
-| Chain A wall time | 2.878 ms | 10.217 ms | 27.106 ms |
+| Chain A wall time | 6.790 ms | 8.971 ms | 27.481 ms |
 | Chain A peak resident | 12.583 MB | 50.332 MB | 201.327 MB |
-| Chain C wall time, 10 iterations | 32.839 ms | 148.381 ms | 752.933 ms |
+| Chain C wall time, 10 iterations | 35.747 ms | 136.185 ms | 828.614 ms |
 | Chain C peak resident | 100.696 MB | 402.784 MB | 1.611 GB |
 
 Chain A reported 0 input uploads, 1 final readback, 1 command buffer, and 1
 final synchronization. Chain C reported 8 input uploads, 1 final readback, 1
 command buffer, and 1 final synchronization. The 4096² Chain C sample
 completed successfully; its peak allocation is the relevant memory-pressure
-signal for future graph planning.
+signal for future graph planning. These are the post-rebase validation samples
+from `upstream/dev` at `c63c44b16e4ffa0e73f035999009d42f83f8a6dd`; the earlier
+Phase 4 exploratory samples remain in the profile history for comparison.
 
 ## Caveats
 

@@ -1,16 +1,16 @@
 # HighMap Phase 4 — backend configuration matrix
 
 Date: 2026-09-04
-Test binary: `highmap_tests`, 399 registered tests per configuration
+Test binary: `highmap_tests`, 436 registered tests per configuration
 
 ## Matrix result
 
 | Config | Metal | OpenCL | Build | Passed | Skipped | Known failure | Result |
 |---|---:|---:|---|---:|---:|---|---|
-| A | ON | ON | Release tests + benchmarks | 396 | 2 | `PathSplines.PreservePathShape` | expected baseline-only failure |
-| B | ON | OFF | Release tests + benchmarks | 357 | 41 | `PathSplines.PreservePathShape` | Metal-only gate passed |
-| C | OFF | ON | Release tests | 348 | 50 | `PathSplines.PreservePathShape` | OpenCL-only gate passed |
-| D | OFF | OFF | Release tests | 318 | 80 | `PathSplines.PreservePathShape` | CPU-only gate passed |
+| A | ON | ON | Release tests + benchmarks | 433 | 2 | `PathSplines.PreservePathShape` | expected baseline-only failure |
+| B | ON | OFF | Release tests + benchmarks | 387 | 42 | `PathSplines.PreservePathShape` | Metal-only gate passed |
+| C | OFF | ON | Release tests | 385 | 50 | `PathSplines.PreservePathShape` | OpenCL-only gate passed |
+| D | OFF | OFF | Release tests | 348 | 81 | `PathSplines.PreservePathShape` | CPU-only gate passed |
 
 The skipped tests are backend-specific: B skips OpenCL-dependent coverage, C
 skips native Metal coverage, and D skips both. No new test failure appeared in

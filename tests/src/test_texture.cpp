@@ -6,6 +6,8 @@
 #include "highmap/texture.hpp"
 #include "highmap/transform.hpp"
 
+#include "opencl_test_utils.hpp"
+
 #include <gtest/gtest.h>
 
 using namespace hmap;
@@ -372,6 +374,8 @@ TEST(TextureTransform, BasicTransforms)
 
 TEST(TextureBlending, BlendPoissonBf)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {32, 32};
   glm::vec2  kw = {2.f, 2.f};
 

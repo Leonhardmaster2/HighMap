@@ -58,9 +58,9 @@ measurements are comparative evidence rather than hard performance budgets.
 
 | Workload | 1024² | 2048² | 4096² |
 |---|---:|---:|---:|
-| Resident Chain A, real time | 2.878 ms | 10.217 ms | 27.106 ms |
+| Resident Chain A, real time | 6.790 ms | 8.971 ms | 27.481 ms |
 | Resident Chain A, peak resident | 12.583 MB | 50.332 MB | 201.327 MB |
-| Resident Chain C, 10 iterations, real time | 32.839 ms | 148.381 ms | 752.933 ms |
+| Resident Chain C, 10 iterations, real time | 35.747 ms | 136.185 ms | 828.614 ms |
 | Resident Chain C, peak resident | 100.696 MB | 402.784 MB | 1.611 GB |
 
 Both chains reported one command buffer and one final synchronization. Chain A
