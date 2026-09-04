@@ -150,30 +150,42 @@ else()
 endif()
 
 find_package(OpenCV REQUIRED)
-find_package(OpenCL REQUIRED)
 
-# Apple SDKs provide the OpenCL framework but not the Khronos C++ wrapper
-# header. Homebrew installs the header and C headers as separate packages, so
-# locate both explicitly when FindOpenCL only reports the framework library.
-find_path(HIGHMAP_OPENCL_CPP_INCLUDE_DIR
-          CL/opencl.hpp
-          HINTS
-            /opt/homebrew/include
-            /opt/homebrew/opt/opencl-clhpp-headers/include
-            /usr/local/include
-            /usr/local/opt/opencl-clhpp-headers/include)
-find_path(HIGHMAP_OPENCL_C_INCLUDE_DIR
-          CL/cl.h
-          HINTS
-            /opt/homebrew/include
-            /opt/homebrew/opt/opencl-headers/include
-            /usr/local/include
-            /usr/local/opt/opencl-headers/include)
-if(HIGHMAP_OPENCL_CPP_INCLUDE_DIR)
-  include_directories(${HIGHMAP_OPENCL_CPP_INCLUDE_DIR})
-endif()
-if(HIGHMAP_OPENCL_C_INCLUDE_DIR)
-  include_directories(${HIGHMAP_OPENCL_C_INCLUDE_DIR})
+if(HIGHMAP_ENABLE_OPENCL)
+  find_package(OpenCL REQUIRED)
+
+  # Apple SDKs provide the OpenCL framework but not the Khronos C++ wrapper
+  # header. Homebrew installs the header and C headers as separate packages,
+  # so locate both explicitly when FindOpenCL only reports the framework
+  # library.
+  find_path(HIGHMAP_OPENCL_CPP_INCLUDE_DIR
+            CL/opencl.hpp
+            HINTS
+              /opt/homebrew/include
+              /opt/homebrew/opt/opencl-clhpp-headers/include
+              /usr/local/include
+              /usr/local/opt/opencl-clhpp-headers/include)
+  find_path(HIGHMAP_OPENCL_C_INCLUDE_DIR
+            CL/cl.h
+            HINTS
+              /opt/homebrew/include
+              /opt/homebrew/opt/opencl-headers/include
+              /usr/local/include
+              /usr/local/opt/opencl-headers/include)
+  if(NOT HIGHMAP_OPENCL_CPP_INCLUDE_DIR OR NOT HIGHMAP_OPENCL_C_INCLUDE_DIR)
+    message(FATAL_ERROR
+            "HIGHMAP_ENABLE_OPENCL=ON requires both CL/opencl.hpp and CL/cl.h")
+  endif()
+  include_directories(${HIGHMAP_OPENCL_CPP_INCLUDE_DIR}
+                      ${HIGHMAP_OPENCL_C_INCLUDE_DIR})
+  add_compile_definitions(HIGHMAP_HAS_OPENCL=1
+                          CL_HPP_MINIMUM_OPENCL_VERSION=120
+                          CL_HPP_TARGET_OPENCL_VERSION=120)
+else()
+  # The source-level compatibility boundary keeps the hmap::gpu API linkable
+  # while preventing any OpenCL discovery, header inclusion, CLWrapper target,
+  # or framework dependency from entering a Metal-only/CPU-only build.
+  add_compile_definitions(HIGHMAP_HAS_OPENCL=0)
 endif()
 
 # Metal is deliberately detected by framework headers/library rather than by
@@ -236,10 +248,6 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 # use it. Do not add `OpenMP_CXX_FLAGS` globally: Apple Clang's
 # `-Xpreprocessor` would also capture CMake's dependency flags (`-MD`, `-MF`)
 # and break otherwise unrelated external targets.
-
-# OpenCL
-add_compile_definitions(CL_HPP_MINIMUM_OPENCL_VERSION=120
-                        CL_HPP_TARGET_OPENCL_VERSION=120)
 
 # Logging
 if(HIGHMAP_ENABLE_LOGS)

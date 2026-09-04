@@ -76,6 +76,25 @@ target_compile_definitions(
   ${PROJECT_NAME} INTERFACE GLM_FORCE_SWIZZLE GLM_FORCE_INLINE
                             GLM_ENABLE_EXPERIMENTAL _USE_MATH_DEFINES)
 
+# Export the backend contract to consumers that link the CMake target. The
+# root-level definitions cover this superproject's own targets; these PUBLIC
+# definitions keep installed/embedded users from accidentally including the
+# real OpenCL wrapper headers in an OpenCL-disabled build.
+if(HIGHMAP_ENABLE_OPENCL)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC
+                             HIGHMAP_HAS_OPENCL=1
+                             CL_HPP_MINIMUM_OPENCL_VERSION=120
+                             CL_HPP_TARGET_OPENCL_VERSION=120)
+else()
+  target_compile_definitions(${PROJECT_NAME} PUBLIC HIGHMAP_HAS_OPENCL=0)
+endif()
+
+if(HIGHMAP_METAL_AVAILABLE)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC HIGHMAP_HAS_METAL=1)
+else()
+  target_compile_definitions(${PROJECT_NAME} PUBLIC HIGHMAP_HAS_METAL=0)
+endif()
+
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
@@ -94,9 +113,11 @@ target_link_libraries(
   NoiseLib
   terrain-descriptors
   ${OpenCV_LIBS}
-  point_sampler
-  clwrapper
-  ${OpenCL_LIBRARIES})
+  point_sampler)
+
+if(HIGHMAP_ENABLE_OPENCL)
+  target_link_libraries(${PROJECT_NAME} PUBLIC clwrapper ${OpenCL_LIBRARIES})
+endif()
 
 if(HIGHMAP_ENABLE_OPENMP)
   target_link_libraries(${PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)

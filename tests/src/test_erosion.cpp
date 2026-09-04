@@ -1,5 +1,6 @@
 #include "highmap/dbg/assert.hpp"
 #include "highmap/morphology.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -7,6 +8,8 @@ using namespace hmap;
 
 TEST(Erosion, IdentityWhenRadiusZero)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{1, 2}, {3, 4}});
   Array cpu = erosion(input, 0);
   Array gpu = gpu::erosion(input, 0);
@@ -17,6 +20,8 @@ TEST(Erosion, IdentityWhenRadiusZero)
 
 TEST(Erosion, SingleMinimumPropagation)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{5, 5, 5}, {5, 1, 5}, {5, 5, 5}});
 
   // square kernel for GPU
@@ -33,6 +38,8 @@ TEST(Erosion, SingleMinimumPropagation)
 
 TEST(Erosion, EdgeHandling)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{3, 3, 3}, {3, 1, 3}, {3, 3, 3}});
 
   Array cpu = erosion(input, 1);
@@ -47,6 +54,8 @@ TEST(Erosion, EdgeHandling)
 
 TEST(Erosion, LargerRadius)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{9, 8, 7, 6}, {8, 5, 4, 7}, {7, 4, 3, 8}, {6, 7, 8, 9}});
   Array expected = Array(
       {{3, 3, 3, 3}, {3, 3, 3, 3}, {3, 3, 3, 3}, {3, 3, 3, 3}});
@@ -60,6 +69,8 @@ TEST(Erosion, LargerRadius)
 
 TEST(Erosion, MonotonicDecrease)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{5, 6}, {7, 8}});
 
   Array cpu = erosion(input, 1);
@@ -75,6 +86,8 @@ TEST(Erosion, MonotonicDecrease)
 
 TEST(Erosion, FlatRegionUnchanged)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{2, 2, 2}, {2, 2, 2}, {2, 2, 2}});
 
   Array cpu = erosion(input, 1);
@@ -86,6 +99,8 @@ TEST(Erosion, FlatRegionUnchanged)
 
 TEST(Erosion, NonSquareArray)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{5, 4, 3, 2}});
   Array expected = Array({{4, 3, 2, 2}});
 

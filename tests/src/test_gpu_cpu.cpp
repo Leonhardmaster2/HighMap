@@ -1,6 +1,7 @@
 #include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/dbg/timer.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -18,6 +19,8 @@ Array helper_generate_array()
 
 TEST(GpuCpu, ClosingByReconstruction)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Timer::Clear();
 
   const float tol = 1e0f;
@@ -58,6 +61,8 @@ TEST(GpuCpu, ClosingByReconstruction)
 
 TEST(GpuCpu, MorphologicalOperators)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Timer::Clear();
 
   const float tol = 1e0f;
@@ -100,6 +105,8 @@ TEST(GpuCpu, MorphologicalOperators)
 
 TEST(GpuCpu, HarmonicInterpolation)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Timer::Clear();
 
   const glm::ivec2 shape = {64, 64};
@@ -122,6 +129,8 @@ TEST(GpuCpu, HarmonicInterpolation)
 
 TEST(GpuCpu, WaterDepthFromMask)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Timer::Clear();
 
   const glm::ivec2 shape = {64, 64};

@@ -1,6 +1,7 @@
 #include "highmap/curvature.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/primitives.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -68,6 +69,8 @@ TEST(LevelSetCurvature, CpuGpuParaboloid)
 
 TEST(LevelSetCurvature, CpuGpuWithPrefilter)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array z{
       {0.f, 1.f, 0.f, 1.f},
       {1.f, 0.f, 1.f, 0.f},
@@ -86,6 +89,8 @@ TEST(LevelSetCurvature, CpuGpuWithPrefilter)
 
 TEST(LevelSetCurvature, CpuGpuRandomField)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array z = white({64, 64}, -1.f, 1.f, 42);
 
   int ir = 1;

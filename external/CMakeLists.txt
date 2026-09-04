@@ -6,7 +6,9 @@ include(libnpy.cmake)
 include(nn-c.cmake)
 include(mixbox.cmake)
 
-add_subdirectory(CLWrapper)
+if(HIGHMAP_ENABLE_OPENCL)
+  add_subdirectory(CLWrapper)
+endif()
 add_subdirectory(PointSampler)
 add_subdirectory(Noise/NoiseLib) # dendry
 add_subdirectory(terrain-descriptors/lib)

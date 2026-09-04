@@ -1,4 +1,5 @@
 #include "highmap/dbg/assert.hpp"
+#include "opencl_test_utils.hpp"
 #include "highmap/filters.hpp"
 
 #include <gtest/gtest.h>
@@ -76,6 +77,8 @@ TEST(SmoothCPulse, NoNewExtremaCreated)
 
 TEST(SmoothCPulse_CPU_GPU, RandomBinaryFields)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   std::mt19937                          rng(42);
   std::uniform_real_distribution<float> dist(0.f, 1.f);
 

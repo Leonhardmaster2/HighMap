@@ -2,6 +2,7 @@
 #include "highmap/geometry/cloud.hpp"
 #include "highmap/morphology.hpp"
 #include "highmap/primitives.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -9,6 +10,8 @@ using namespace hmap;
 
 TEST(DistanceTransform, ProducesCorrectDistances)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2    shape = {128, 64};
   std::uint32_t seed = 42;
 

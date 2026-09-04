@@ -14,6 +14,7 @@
 #include "highmap.hpp"
 #include "highmap/gpu/metal.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "opencl_test_utils.hpp"
 
 namespace
 {
@@ -255,6 +256,7 @@ TEST(MetalHardening, SmallResolutionCoreParitySweep)
 {
   if (!metal_available())
     GTEST_SKIP() << "No usable Metal device or shader compiler is available";
+  HMAP_SKIP_IF_NO_OPENCL();
 
   constexpr std::array<int, 6> resolutions = {32, 64, 128, 256, 512, 1024};
   for (const int resolution : resolutions)

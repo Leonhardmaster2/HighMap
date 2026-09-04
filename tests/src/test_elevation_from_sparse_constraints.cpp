@@ -1,6 +1,7 @@
 #include "highmap/authoring.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/opencl/gpu_opencl.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -8,7 +9,7 @@ using namespace hmap;
 
 TEST(ElevationFromSparseConstraints, ExactConstraintsPreservation)
 {
-  gpu::init_opencl();
+  HMAP_SKIP_IF_NO_OPENCL();
 
   glm::ivec2 shape = {64, 64};
 
@@ -70,7 +71,7 @@ TEST(ElevationFromSparseConstraints, ExactConstraintsPreservation)
 
 TEST(ElevationFromSparseConstraints, DefaultPerimeterBoundary)
 {
-  gpu::init_opencl();
+  HMAP_SKIP_IF_NO_OPENCL();
 
   glm::ivec2 shape = {65, 65};
 
@@ -100,7 +101,7 @@ TEST(ElevationFromSparseConstraints, DefaultPerimeterBoundary)
 
 TEST(HarmonicInterpolation, VaryingDiffusionAnisotropy)
 {
-  gpu::init_opencl();
+  HMAP_SKIP_IF_NO_OPENCL();
 
   glm::ivec2 shape = {65, 65};
 
@@ -146,7 +147,7 @@ TEST(HarmonicInterpolation, VaryingDiffusionAnisotropy)
 
 TEST(HarmonicInterpolation, CpuGpuConsistencyWithDxDy)
 {
-  gpu::init_opencl();
+  HMAP_SKIP_IF_NO_OPENCL();
 
   glm::ivec2 shape = {33, 33};
   Array      u_init(shape, 0.0f);

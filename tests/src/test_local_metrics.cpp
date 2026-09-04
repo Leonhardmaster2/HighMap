@@ -1,5 +1,6 @@
 #include "highmap/dbg/assert.hpp"
 #include "highmap/local_metrics.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -11,6 +12,8 @@ using namespace hmap;
 
 TEST(LocalMetrics, LocalMax_BasicPeakPropagation)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{1, 2, 1}, {1, 5, 1}, {1, 1, 1}});
 
   Array cpu = local_max(input, 1);
@@ -27,6 +30,8 @@ TEST(LocalMetrics, LocalMax_BasicPeakPropagation)
 
 TEST(LocalMetrics, LocalMax_Convergence)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
 
   Array a_cpu = local_max(local_max(input, 1), 1);
@@ -44,6 +49,8 @@ TEST(LocalMetrics, LocalMax_Convergence)
 
 TEST(LocalMetrics, LocalMax_Monotonicity)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{1, 3, 2}, {4, 1, 0}, {2, 5, 1}});
 
   Array cpu = local_max(input, 1);
@@ -63,6 +70,8 @@ TEST(LocalMetrics, LocalMax_Monotonicity)
 
 TEST(LocalMetrics, LocalMin_DualityWithMax)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{3, 2, 1}, {4, 0, 5}, {6, 7, 8}});
 
   Array cpu = local_min(input, 1);
@@ -77,6 +86,8 @@ TEST(LocalMetrics, LocalMin_DualityWithMax)
 
 TEST(LocalMetrics, LocalMin_Monotonicity)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{5, 6, 7}, {2, 1, 3}, {4, 8, 9}});
 
   Array cpu = local_min(input, 1);
@@ -96,6 +107,8 @@ TEST(LocalMetrics, LocalMin_Monotonicity)
 
 TEST(LocalMetrics, LocalMean_SmoothingEffect)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{0, 0, 0}, {0, 10, 0}, {0, 0, 0}});
 
   Array cpu = local_mean(input, 1);
@@ -107,6 +120,8 @@ TEST(LocalMetrics, LocalMean_SmoothingEffect)
 
 TEST(LocalMetrics, LocalMean_PreservationOfConstantField)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array({{2, 2, 2}, {2, 2, 2}, {2, 2, 2}});
 
   Array cpu = local_mean(input, 1);
@@ -118,6 +133,8 @@ TEST(LocalMetrics, LocalMean_PreservationOfConstantField)
 
 TEST(LocalMetrics, LocalMean_Linearity)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array a = Array({{1, 1, 1}, {1, 1, 1}});
   Array b = Array({{2, 2, 2}, {2, 2, 2}});
 

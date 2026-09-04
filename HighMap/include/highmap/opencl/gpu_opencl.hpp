@@ -15,10 +15,8 @@
 #pragma once
 #include <string>
 
-#include "cl_wrapper.hpp"
-#include "cl_wrapper/run.hpp"
-
 #include "highmap/array.hpp"
+#include "highmap/internal/opencl_run.hpp"
 
 namespace hmap::gpu
 {

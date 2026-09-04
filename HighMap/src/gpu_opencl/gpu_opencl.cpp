@@ -4,15 +4,21 @@
 #include <string>
 #include <vector>
 
+#include "highmap/opencl/gpu_opencl.hpp"
+
+#if HIGHMAP_HAS_OPENCL
+
 #include "cl_wrapper/device_manager.hpp"
 #include "cl_wrapper/kernel_manager.hpp"
-#include "cl_wrapper/run.hpp"
 
 #include "highmap/array.hpp"
-#include "highmap/opencl/gpu_opencl.hpp"
+
+#endif
 
 namespace hmap::gpu
 {
+
+#if HIGHMAP_HAS_OPENCL
 
 void helper_bind_optional_buffer(clwrapper::Run    &run,
                                  const std::string &id,
@@ -301,5 +307,21 @@ bool init_opencl()
 
   return true;
 }
+
+#else
+
+void helper_bind_optional_buffer(clwrapper::Run    &,
+                                 const std::string &,
+                                 const Array       *)
+{
+  clwrapper::throw_opencl_disabled();
+}
+
+bool init_opencl()
+{
+  return false;
+}
+
+#endif
 
 } // namespace hmap::gpu
