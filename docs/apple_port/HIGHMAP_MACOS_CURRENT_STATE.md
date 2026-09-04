@@ -7,9 +7,9 @@ Date: 2026-09-04
 ```text
 Repository: Leonhardmaster2/HighMap
 Branch: feature/apple-metal-backend
-Upstream base: upstream/dev at 269e9b6b77fa0926916d97c18656d8344800c9da
+Upstream base: upstream/dev at c63c44b16e4ffa0e73f035999009d42f83f8a6dd
 Published implementation baseline validated from a clean clone: 4350fbb819c5f9106de76a538e372945a1cbe749
-Phase 4 source/docs are being prepared on top of that baseline; the final tip is recorded in the release audit and push report.
+Phase 4 source/docs are recorded on top of that historical baseline; the final tip is recorded in the release audit and push report.
 ```
 
 The Phase 1–8 Metal implementation was rebased onto current upstream `dev` without a feature-range merge commit. HighMap is standalone; no Hesiod changes were made.
@@ -51,7 +51,7 @@ Runtime MSL compilation is validated on the M3 host. Precompiled metallib was no
 
 ## Current test status
 
-The Phase 4 matrix has 399 tests in each configuration. Metal+OpenCL ON: 396 pass, 2 skip, and 1 known pre-existing `PathSplines.PreservePathShape` failure. Metal ON/OpenCL OFF: 357 pass, 41 skip, and the same failure. Metal OFF/OpenCL ON: 348 pass, 50 skip, and the same failure. Metal OFF/OpenCL OFF: 318 pass, 80 skip, and the same failure. The focused Metal gate on the Metal-only build is 33 pass / 12 expected skips; the optional-backend contract test passes in all four configurations.
+The Phase 4 matrix has 436 tests in each configuration. Metal+OpenCL ON: 433 pass, 2 skip, and 1 known pre-existing `PathSplines.PreservePathShape` failure. Metal ON/OpenCL OFF: 387 pass, 42 skip, and the same failure. Metal OFF/OpenCL ON: 385 pass, 50 skip, and the same failure. Metal OFF/OpenCL OFF: 348 pass, 81 skip, and the same failure. The focused Metal gate on the Metal-only build is 33 pass / 12 expected skips; the optional-backend contract test passes in all four configurations.
 
 The sanitizer configuration (`build-asan-no-metal`) built successfully. Its practical no-Metal portability/validation subset passed under AddressSanitizer with no memory findings. A full UBSan run stops on a signed integer overflow in upstream `external/FastNoiseLite/Cpp/FastNoiseLite.h`; this is a third-party diagnostic, not a Metal-path finding. Existing compile warnings are dominated by upstream third-party headers (`nn-c`, legacy C prototypes, and external deprecations), not new Metal diagnostics.
 
@@ -59,6 +59,6 @@ A fresh clone gate for the post-Phase 4 branch is part of the final release chec
 
 ## Performance characteristics and limitations
 
-Resident execution is strongest when a graph contains multiple GPU operations and only one terminal download. A fresh single-sample sweep measured shared-storage Chain A at 2.878 ms / 10.217 ms / 27.106 ms for 1024² / 2048² / 4096², and resident Chain C (advection + thermal + hydraulic virtual pipes, 10 iterations) at 32.839 ms / 148.381 ms / 752.933 ms. These are workload evidence, not release thresholds: the host was under substantial system load and the benchmark reports one measured iteration to avoid over-repeating high-memory cases. Peak resident allocation reached 201.327 MB for Chain A 4096² and 1.611 GB for Chain C 4096².
+Resident execution is strongest when a graph contains multiple GPU operations and only one terminal download. The post-rebase single-sample sweep measured shared-storage Chain A at 6.790 ms / 8.971 ms / 27.481 ms for 1024² / 2048² / 4096², and resident Chain C (advection + thermal + hydraulic virtual pipes, 10 iterations) at 35.747 ms / 136.185 ms / 828.614 ms. These are workload evidence, not release thresholds: the host was under substantial system load and the benchmark reports one measured iteration to avoid over-repeating high-memory cases. Peak resident allocation reached 201.327 MB for Chain A 4096² and 1.611 GB for Chain C 4096².
 
 Known limitations are the pre-existing PathSplines baseline failure, no precompiled shader-tool validation on this host because only Command Line Tools are installed, the benchmark harness's tendency to over-repeat expensive cases when a time suffix is omitted, and the fact that upstream hydraulic-particle/multiscale additions are not Metal-backed. OpenCL is now optional and remains a first-class ON configuration. No Qt, Hesiod, GNode, or QTerrainRenderer dependency is present in the Metal backend, and Objective-C++ types remain isolated in implementation files.

@@ -8,11 +8,11 @@ Branch: `feature/apple-metal-backend`
 
 | Gate | Status | Evidence |
 |---|---|---|
-| Latest upstream base revalidated | PASS | `upstream/dev = 269e9b6b77fa0926916d97c18656d8344800c9da` |
-| Metal ON / OpenCL ON | PASS with known baseline failure | 396 pass, 2 skip, 1 `PathSplines` failure |
-| Metal ON / OpenCL OFF | PASS | 357 pass, 41 skip, 1 same baseline failure |
-| Metal OFF / OpenCL ON | PASS | 348 pass, 50 skip, 1 same baseline failure |
-| Metal OFF / OpenCL OFF | PASS | 318 pass, 80 skip, 1 same baseline failure |
+| Latest upstream base revalidated | PASS | `upstream/dev = c63c44b16e4ffa0e73f035999009d42f83f8a6dd` |
+| Metal ON / OpenCL ON | PASS with known baseline failure | 433 pass, 2 skip, 1 `PathSplines` failure (436 total) |
+| Metal ON / OpenCL OFF | PASS | 387 pass, 42 skip, 1 same baseline failure (436 total) |
+| Metal OFF / OpenCL ON | PASS | 385 pass, 50 skip, 1 same baseline failure (436 total) |
+| Metal OFF / OpenCL OFF | PASS | 348 pass, 81 skip, 1 same baseline failure (436 total) |
 | Metal-only dependency proof | PASS | no OpenCL/CLWrapper symbols or framework in `otool`/`nm` audit |
 | Runtime MSL path | PASS | focused Metal tests execute on Apple M3 |
 | Precompiled metallib path | NOT AVAILABLE | standalone `metal`/`metallib` tools absent |

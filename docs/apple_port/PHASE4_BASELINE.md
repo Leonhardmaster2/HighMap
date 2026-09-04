@@ -11,8 +11,8 @@ OpenCL available as an optional, first-class configuration. The work is scoped
 to HighMap. No Hesiod, Qt, GNode, QTerrainRenderer, or application-level files
 are part of this change.
 
-The feature branch was already based directly on current upstream `dev` before
-this phase:
+The feature branch was already based directly on the upstream `dev` snapshot
+used when this phase began:
 
 ```text
 upstream/dev: 269e9b6b77fa0926916d97c18656d8344800c9da
@@ -20,8 +20,14 @@ feature baseline: 4350fbb819c5f9106de76a538e372945a1cbe749
 ```
 
 `git fetch upstream --prune` was run at the start of the phase and the fetched
-`upstream/dev` resolved to the SHA above. No upstream commit authorship was
-changed.
+`upstream/dev` resolved to the SHA above. That branch then advanced. The final
+Phase 4 revalidation fetched and used:
+
+```text
+latest upstream/dev: c63c44b16e4ffa0e73f035999009d42f83f8a6dd
+```
+
+No upstream commit authorship was changed.
 
 ## Host and toolchain
 
