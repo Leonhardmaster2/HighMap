@@ -55,7 +55,7 @@ The Phase 4 matrix has 436 tests in each configuration. Metal+OpenCL ON: 433 pas
 
 The sanitizer configuration (`build-asan-no-metal`) built successfully. Its practical no-Metal portability/validation subset passed under AddressSanitizer with no memory findings. A full UBSan run stops on a signed integer overflow in upstream `external/FastNoiseLite/Cpp/FastNoiseLite.h`; this is a third-party diagnostic, not a Metal-path finding. Existing compile warnings are dominated by upstream third-party headers (`nn-c`, legacy C prototypes, and external deprecations), not new Metal diagnostics.
 
-A fresh clone gate for the post-Phase 4 branch is part of the final release checklist. The earlier clean clone at `d93bdfa8a` remains historical evidence; the new clean-clone result and exact commit are recorded in `PHASE4_RELEASE_READINESS.md`.
+A fresh clone gate for the post-Phase 4 branch was completed at `/tmp/highmap-phase4-clean.9FqKh9`. The earlier clean clone at `d93bdfa8a` remains historical evidence; the new clean-clone result is recorded in `PHASE4_RELEASE_READINESS.md`.
 
 ## Performance characteristics and limitations
 
