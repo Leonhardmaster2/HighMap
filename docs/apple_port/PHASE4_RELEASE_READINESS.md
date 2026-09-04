@@ -13,6 +13,8 @@ Branch: `feature/apple-metal-backend`
 | Metal ON / OpenCL OFF | PASS | 387 pass, 42 skip, 1 same baseline failure (436 total) |
 | Metal OFF / OpenCL ON | PASS | 385 pass, 50 skip, 1 same baseline failure (436 total) |
 | Metal OFF / OpenCL OFF | PASS | 348 pass, 81 skip, 1 same baseline failure (436 total) |
+| Clean-clone Metal-only gate | PASS with known baseline failure | `/tmp/highmap-phase4-clean.9FqKh9`: configure/build succeeded; 387 pass, 42 skip |
+| Clean-clone CPU-only gate | PASS with known baseline failure | same clone: configure/build succeeded; 348 pass, 81 skip |
 | Metal-only dependency proof | PASS | no OpenCL/CLWrapper symbols or framework in `otool`/`nm` audit |
 | Runtime MSL path | PASS | focused Metal tests execute on Apple M3 |
 | Precompiled metallib path | NOT AVAILABLE | standalone `metal`/`metallib` tools absent |
