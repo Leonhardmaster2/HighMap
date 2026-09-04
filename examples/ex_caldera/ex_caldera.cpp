@@ -4,9 +4,9 @@ int main(void)
 {
   glm::ivec2 shape = {256, 256};
 
-  float radius = 48.f;
-  float sigma_inner = 8.f;
-  float sigma_outer = 32.f;
+  float radius = 0.2f;
+  float sigma_inner = 0.03f;
+  float sigma_outer = 0.12f;
   float z_bottom = 0.3f;
 
   // without noise
@@ -24,7 +24,7 @@ int main(void)
                                       shape,
                                       res,
                                       seed);
-  float       noise_r_amp = 8.f;    // pixels
+  float       noise_r_amp = 0.03f;
   float       noise_z_ratio = 0.4f; // in [0, 1]
 
   hmap::remap(noise);

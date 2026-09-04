@@ -26,7 +26,7 @@ namespace hmap
  * @param  sigma_outer   Outer half-width.
  * @param  z_bottom      Bottom elevation (ridge is at elevation `1`).
  * @param  p_noise       Displacement noise.
- * @param  noise_amp_r   Radial noise absolute scale (in pixels).
+ * @param  noise_r_amp   Radial noise amplitude.
  * @param  noise_ratio_z Vertical noise relative scale (in [0, 1]).
  * @param  center        Primitive reference center.
  * @param  bbox          Domain bounding box.
@@ -44,7 +44,7 @@ Array caldera(glm::ivec2   shape,
               float        sigma_outer,
               float        z_bottom,
               const Array *p_noise,
-              float        noise_amp_r,
+              float        noise_r_amp,
               float        noise_ratio_z,
               glm::vec2    center = {0.5f, 0.5f},
               glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});

@@ -2,8 +2,10 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <cmath>
+#include <vector>
 
 #include "highmap/array.hpp"
+#include "highmap/geometry/grids.hpp"
 #include "highmap/internal/validation.hpp"
 #include "highmap/primitives/functions.hpp"
 #include "highmap/primitives/geo.hpp"
@@ -27,11 +29,8 @@ Array caldera(glm::ivec2   shape,
 
   Array z = Array(shape);
 
-  glm::vec2 shift = {bbox.x, bbox.z};
-  glm::vec2 scale = {bbox.y - bbox.x, bbox.w - bbox.z};
-
-  int ic = (int)((center.x - shift.x) / scale.x * z.shape.x);
-  int jc = (int)((center.y - shift.y) / scale.y * z.shape.y);
+  std::vector<float> x, y;
+  grid_xy_vector(x, y, shape, bbox, false);
 
   float si2 = sigma_inner * sigma_inner;
   float so2 = sigma_outer * sigma_outer;
@@ -41,14 +40,16 @@ Array caldera(glm::ivec2   shape,
     for (int j = 0; j < z.shape.y; j++)
       for (int i = 0; i < z.shape.x; i++)
       {
-        float r = std::hypot((float)(i - ic), (float)(j - jc)) - radius;
+        float dx = x[i] - center.x;
+        float dy = y[j] - center.y;
+        float r = std::hypot(dx, dy) - radius;
 
         r += noise_r_amp * (2 * (*p_noise)(i, j) - 1);
 
         if (r < 0.f)
           z(i, j) = z_bottom + std::exp(-0.5f * r * r / si2) * (1 - z_bottom);
         else
-          z(i, j) = 1 / (1 + r * r / so2);
+          z(i, j) = 1.f / (1.f + r * r / so2);
 
         z(i, j) *= 1.f + noise_z_ratio * (2.f * (*p_noise)(i, j) - 1.f);
       }
@@ -58,12 +59,14 @@ Array caldera(glm::ivec2   shape,
     for (int j = 0; j < z.shape.y; j++)
       for (int i = 0; i < z.shape.x; i++)
       {
-        float r = std::hypot((float)(i - ic), (float)(j - jc)) - radius;
+        float dx = x[i] - center.x;
+        float dy = y[j] - center.y;
+        float r = std::hypot(dx, dy) - radius;
 
         if (r < 0.f)
           z(i, j) = z_bottom + std::exp(-0.5f * r * r / si2) * (1 - z_bottom);
         else
-          z(i, j) = 1 / (1 + r * r / so2);
+          z(i, j) = 1.f / (1.f + r * r / so2);
       }
   }
 
