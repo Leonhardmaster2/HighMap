@@ -51,7 +51,7 @@ Runtime MSL compilation is validated on the M3 host. Precompiled metallib was no
 
 ## Current test status
 
-The Phase 4 matrix has 436 tests in each configuration. Metal+OpenCL ON: 433 pass, 2 skip, and 1 known pre-existing `PathSplines.PreservePathShape` failure. Metal ON/OpenCL OFF: 387 pass, 42 skip, and the same failure. Metal OFF/OpenCL ON: 385 pass, 50 skip, and the same failure. Metal OFF/OpenCL OFF: 348 pass, 81 skip, and the same failure. The focused Metal gate on the Metal-only build is 33 pass / 12 expected skips; the optional-backend contract test passes in all four configurations.
+The Phase 4 matrix has 436 tests in each configuration. Metal+OpenCL ON: 433 pass, 2 skip, and 1 known pre-existing `PathSplines.PreservePathShape` failure. Metal ON/OpenCL OFF: 387 pass, 42 skip, and the same failure. Metal OFF/OpenCL ON: 385 pass, 50 skip, and the same failure. Metal OFF/OpenCL OFF: 348 pass, 81 skip, and the same failure. The focused Metal gate is 43 pass / 2 expected portability skips in A, and 33 pass / 12 expected parity or portability skips in B; the optional-backend contract test passes in all four configurations.
 
 The sanitizer configuration (`build-asan-no-metal`) built successfully. Its practical no-Metal portability/validation subset passed under AddressSanitizer with no memory findings. A full UBSan run stops on a signed integer overflow in upstream `external/FastNoiseLite/Cpp/FastNoiseLite.h`; this is a third-party diagnostic, not a Metal-path finding. Existing compile warnings are dominated by upstream third-party headers (`nn-c`, legacy C prototypes, and external deprecations), not new Metal diagnostics.
 
