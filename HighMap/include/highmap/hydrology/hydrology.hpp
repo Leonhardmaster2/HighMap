@@ -1037,6 +1037,9 @@ Array flow_direction_d8(const Array &z);
  * @brief GPU hydraulic flow simulation using a virtual-pipes model; simulates
  * shallow-water transport over a height field using iterative flux computation
  * and water transport passes, with optional flux diffusion and post-simulation
+ * dry-out. The whole iteration loop runs on the device: the terrain is uploaded
+ * once, depth and fluxes ping-pong between device images, and only the final
+ * depth (and velocity, if requested) are read back.
  * @param  z                       Terrain height field.
  * @param  water_height            Global water scaling factor.
  * @param  depth_map               Initial relative water distribution.
@@ -1082,7 +1085,7 @@ Array flow_simulation(const Array &z,
  * @param  water_depth        Global initial water scaling factor.
  * @param  depth_map          Initial relative water distribution.
  * @param  iterations         Number of simulation steps.
- * @param  dt                 Time step size.
+ * @param  dt                 Time step size (-1 for adaptive).
  * @param  dry_out_ratio      Ratio for removing thin remaining water layers.
  * @param  viscosity          Fluid dynamic viscosity.
  * @param  power              Non-linear mobility depth exponent.
@@ -1096,7 +1099,7 @@ Array flow_simulation_viscous(const Array &z,
                               float        water_depth,
                               const Array &depth_map,
                               int          iterations,
-                              float        dt = 0.5f,
+                              float        dt = -1.f,
                               float        dry_out_ratio = 0.f,
                               float        viscosity = 1.f,
                               float        power = 2.5f,
@@ -1143,6 +1146,8 @@ Array generate_riverbed(const Path &path,
  * @param  k_depth_slope_ratio   Depth influence on repose angle.
  * @param  post_filter           Apply final smoothing pass if true.
  * @param  thermal_talus_ratio   Controls creep strength relative to talus.
+ * @param  outflow_boundaries    Allows snow to freely discharge outside the
+ *                               domain at boundaries.
  *
  * @return                       Final snow depth field.
  *
@@ -1165,8 +1170,10 @@ Array snow_simulation(const Array &z,
                       float        k_melt_factor = 0.8f,
                       float        k_depth_ratio = 1.f,
                       float        k_depth_slope_ratio = 1.f,
+                      float        k_creep = 0.1f,
                       bool         post_filter = true,
-                      float        thermal_talus_ratio = 0.2f);
+                      float        thermal_talus_ratio = 0.2f,
+                      bool         outflow_boundaries = true);
 
 /**
  * @brief Filters water depth values using elevation data and a given radius.

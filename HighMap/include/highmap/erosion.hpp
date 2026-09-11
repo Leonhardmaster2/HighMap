@@ -910,6 +910,28 @@ void hydraulic_particle_multiscale(
     float                   collapse_rate = 0.1f,
     float                   mix = 1.f);
 
+void hydraulic_particle_multiscale(
+    Array                  &z,
+    const Array            *p_mask,
+    std::uint32_t           seed,
+    const std::vector<int> &steps_per_level = {4, 2, 1},
+    const Array            *p_bedrock = nullptr,
+    const Array            *p_moisture_map = nullptr,
+    const Array            *p_elevation_shift = nullptr,
+    Array                  *p_erosion_map = nullptr,
+    Array                  *p_deposition_map = nullptr,
+    float                   particles_ratio = 0.5f,
+    float                   c_capacity = 10.f,
+    float                   c_erosion = 0.05f,
+    float                   c_deposition = 0.05f,
+    float                   c_inertia = 0.01f,
+    float                   c_gravity = 1.f,
+    float                   drag_rate = 0.001f,
+    float                   evap_rate = 0.001f,
+    float                   talus_slope = 2.f,
+    float                   collapse_rate = 0.1f,
+    float                   mix = 1.f);
+
 /**
  * @brief Particle-based hydraulic erosion with flow-field coupling (McDonald's
  * model): persistent per-cell discharge and momentum fields, exponentially
@@ -1901,21 +1923,21 @@ void strata_terrace(Array        &z,
 void thermal(Array       &z,
              const Array &talus,
              int          iterations = 10,
-             Array       *p_bedrock = nullptr,
+             const Array *p_bedrock = nullptr,
              Array       *p_deposition_map = nullptr);
 
 void thermal(Array       &z,
              const Array *p_mask,
              const Array &talus,
              int          iterations = 10,
-             Array       *p_bedrock = nullptr,
+             const Array *p_bedrock = nullptr,
              Array       *p_deposition_map = nullptr); ///< @overload
 
-void thermal(Array &z,
-             float  talus,
-             int    iterations = 10,
-             Array *p_bedrock = nullptr,
-             Array *p_deposition_map = nullptr); ///< @overload
+void thermal(Array       &z,
+             float        talus,
+             int          iterations = 10,
+             const Array *p_bedrock = nullptr,
+             Array       *p_deposition_map = nullptr); ///< @overload
 
 /**
  * @brief Apply thermal weathering erosion with automatic determination of the
@@ -1953,6 +1975,39 @@ void thermal_auto_bedrock(Array &z,
                           float,
                           int    iterations = 10,
                           Array *p_deposition_map = nullptr); ///< @overload
+
+/**
+ * @brief Apply mass-preserving thermal weathering erosion.
+ *
+ * @param z                Input array.
+ * @param talus            Talus limit.
+ * @param iterations       Number of iterations.
+ * @param rate             Erosion rate factor.
+ * @param p_bedrock        Lower elevation limit.
+ * @param p_deposition_map [out] Reference to the deposition map, provided as an
+ *                         output field.
+ */
+void thermal_conserve(Array       &z,
+                      const Array &talus,
+                      int          iterations = 10,
+                      float        rate = 0.5f,
+                      const Array *p_bedrock = nullptr,
+                      Array       *p_deposition_map = nullptr);
+
+void thermal_conserve(Array       &z,
+                      const Array *p_mask,
+                      const Array &talus,
+                      int          iterations = 10,
+                      float        rate = 0.5f,
+                      const Array *p_bedrock = nullptr,
+                      Array       *p_deposition_map = nullptr); ///< @overload
+
+void thermal_conserve(Array       &z,
+                      float        talus,
+                      int          iterations = 10,
+                      float        rate = 0.5f,
+                      const Array *p_bedrock = nullptr,
+                      Array       *p_deposition_map = nullptr); ///< @overload
 
 /**
  * @brief Apply iterative thermal flattening erosion on a heightmap.

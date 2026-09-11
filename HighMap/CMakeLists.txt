@@ -122,3 +122,20 @@ endif()
 if(HIGHMAP_ENABLE_OPENMP)
   target_link_libraries(${PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)
 endif()
+
+if(HIGHMAP_ENABLE_PCH)
+  message(STATUS "Precompiled Headers (PCH) enabled for target ${PROJECT_NAME}")
+  target_precompile_headers(
+    ${PROJECT_NAME}
+    PRIVATE
+    <vector>
+    <string>
+    <memory>
+    <cmath>
+    <algorithm>
+    <functional>
+    <map>
+    <unordered_map>
+    <iostream>
+    <glm/glm.hpp>)
+endif()
