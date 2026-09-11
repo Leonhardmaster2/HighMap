@@ -1,5 +1,6 @@
 #include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -7,6 +8,7 @@ using namespace hmap;
 
 TEST(SnowSimulation, ZeroIterationsReturnsEmpty)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -27,6 +29,7 @@ TEST(SnowSimulation, ZeroIterationsReturnsEmpty)
 
 TEST(SnowSimulation, IterationParityAndDeterminism)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -57,6 +60,7 @@ TEST(SnowSimulation, IterationParityAndDeterminism)
 
 TEST(SnowSimulation, SnowAccumulationWithoutMelting)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -76,6 +80,7 @@ TEST(SnowSimulation, SnowAccumulationWithoutMelting)
 
 TEST(SnowSimulation, MeltingReducesSnowVolume)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};

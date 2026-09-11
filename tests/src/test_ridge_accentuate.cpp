@@ -3,6 +3,7 @@
 #include "highmap/dbg/assert.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/primitives.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -148,6 +149,7 @@ TEST(RidgeAccentuate, ReverseFormsValleys)
 
 TEST(RidgeAccentuate_CPU_GPU, RandomFieldsEquivalence)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   std::mt19937                          rng(42);
   std::uniform_real_distribution<float> dist(0.f, 1.f);
 

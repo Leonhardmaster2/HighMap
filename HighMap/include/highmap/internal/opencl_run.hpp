@@ -26,8 +26,40 @@
 
 #else
 
+namespace cl
+{
+
+struct Image2D
+{
+};
+
+} // namespace cl
+
 namespace clwrapper
 {
+
+// Keep the disabled-build façade source-compatible with the current
+// CLWrapper Run API. These lightweight handles never reach a caller because
+// every operation throws before a handle can be used.
+struct Buffer
+{
+};
+
+struct Image2D
+{
+  cl::Image2D cl_image;
+};
+
+struct Queue
+{
+};
+
+enum Direction
+{
+  IN,
+  OUT,
+  INOUT
+};
 
 [[noreturn]] inline void throw_opencl_disabled()
 {
@@ -48,6 +80,7 @@ class Run
 {
 public:
   explicit Run(const std::string &) { throw_opencl_disabled(); }
+  Run(const std::string &, const Queue &) { throw_opencl_disabled(); }
   ~Run() = default;
 
   template <typename... Args> void bind_arguments(Args &&...)
@@ -72,7 +105,27 @@ public:
     throw_opencl_disabled();
   }
 
+  void bind_buffer(const std::string &, const Buffer &)
+  {
+    throw_opencl_disabled();
+  }
+
   template <typename... Args> void bind_imagef(Args &&...)
+  {
+    throw_opencl_disabled();
+  }
+
+  void bind_image2d(const std::string &, const Image2D &)
+  {
+    throw_opencl_disabled();
+  }
+
+  Buffer get_buffer(const std::string &) const
+  {
+    throw_opencl_disabled();
+  }
+
+  Image2D get_image2d(const std::string &) const
   {
     throw_opencl_disabled();
   }
@@ -81,6 +134,25 @@ public:
   {
     throw_opencl_disabled();
   }
+
+  template <typename... Args> void execute_async(Args &&...)
+  {
+    throw_opencl_disabled();
+  }
+
+  void execute_async(std::initializer_list<int>)
+  {
+    throw_opencl_disabled();
+  }
+
+  void execute_async(const std::vector<int> &)
+  {
+    throw_opencl_disabled();
+  }
+
+  void finish() { throw_opencl_disabled(); }
+
+  Queue get_queue() const { throw_opencl_disabled(); }
 
   void execute(std::initializer_list<int>, float * = nullptr)
   {

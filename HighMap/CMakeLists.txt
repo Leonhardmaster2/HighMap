@@ -33,7 +33,12 @@ if(HIGHMAP_METAL_AVAILABLE)
                              PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
   set_source_files_properties(
     ${PROJECT_SOURCE_DIR}/src/gpu_metal/metal_backend.mm
-    PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+    PROPERTIES
+    COMPILE_OPTIONS "-fobjc-arc"
+    # CMake generates an Objective-C++ PCH for this target, but that PCH is
+    # compiled without ARC and cannot be consumed by this ARC-enabled source.
+    # The C++ sources still use the PCH; only the Metal bridge opts out.
+    SKIP_PRECOMPILE_HEADERS ON)
 
   if(HIGHMAP_METAL_PRECOMPILED)
     set(HIGHMAP_METAL_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/metal")

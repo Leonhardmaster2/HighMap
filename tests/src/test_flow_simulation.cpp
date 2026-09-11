@@ -1,5 +1,6 @@
 #include "highmap.hpp"
 #include "highmap/dbg/assert.hpp"
+#include "opencl_test_utils.hpp"
 
 #include <gtest/gtest.h>
 
@@ -7,6 +8,7 @@ using namespace hmap;
 
 TEST(FlowSimulation, NonNegativity)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -22,6 +24,7 @@ TEST(FlowSimulation, NonNegativity)
 
 TEST(FlowSimulationViscous, MassConservationFlatDomain)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -53,6 +56,7 @@ TEST(FlowSimulationViscous, MassConservationFlatDomain)
 
 TEST(FlowSimulationViscous, NoSpuriousMassFromDryRidge)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -99,6 +103,7 @@ TEST(FlowSimulationViscous, NoSpuriousMassFromDryRidge)
 
 TEST(FlowSimulationViscous, IterationParityAndDeterminism)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -129,6 +134,7 @@ TEST(FlowSimulationViscous, IterationParityAndDeterminism)
 
 TEST(FlowSimulationViscous, ZeroIterationsReturnsInitialState)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {32, 48};
@@ -145,6 +151,7 @@ TEST(FlowSimulationViscous, ZeroIterationsReturnsInitialState)
 
 TEST(FlowSimulationViscous, OutflowBoundaries)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -185,6 +192,7 @@ TEST(FlowSimulationViscous, OutflowBoundaries)
 
 TEST(FlowSimulationViscous, Evaporation)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -217,6 +225,7 @@ TEST(FlowSimulationViscous, Evaporation)
 
 TEST(FlowSimulation, VelocityExport)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -249,6 +258,7 @@ TEST(FlowSimulation, VelocityExport)
 
 TEST(FlowSimulation, OutflowBoundaries)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -296,6 +306,7 @@ TEST(FlowSimulation, OutflowBoundaries)
 
 TEST(FlowSimulation, RainAndEvaporation)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -336,6 +347,7 @@ TEST(FlowSimulation, RainAndEvaporation)
 
 TEST(FlowSimulation, IterationParityAndDeterminism)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
@@ -363,6 +375,7 @@ TEST(FlowSimulation, IterationParityAndDeterminism)
 
 TEST(FlowSimulation, ZeroIterationsReturnsInitialState)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {32, 48};
@@ -399,6 +412,7 @@ TEST(FlowSimulation, ZeroIterationsReturnsInitialState)
 
 TEST(FlowSimulation, RainMapOfOnesEqualsUniformRain)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
   gpu::init_opencl();
 
   const glm::ivec2 shape = {64, 64};
