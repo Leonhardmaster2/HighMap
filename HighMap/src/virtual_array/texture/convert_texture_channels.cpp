@@ -35,33 +35,27 @@ VirtualTexture convert_texture_channels(const VirtualTexture &src,
                      src.channel(0).storage->clone());
 
   // Build VirtualArray pointer lists
-  std::vector<VirtualArray *> src_vas;
-  std::vector<VirtualArray *> dst_vas;
+  std::vector<const VirtualArray *> src_vas;
+  std::vector<VirtualArray *>       dst_vas;
 
   for (int c = 0; c < copy_channels; ++c)
   {
-    src_vas.push_back(const_cast<VirtualArray *>(&src.channel(c)));
+    src_vas.push_back(&src.channel(c));
     dst_vas.push_back(&dst.channel(c));
   }
 
   // Tile-wise copy
   for_each_tile(
       src_vas,
-      [&](std::vector<Array *> &src_tiles, const TileRegion &region)
+      dst_vas,
+      [&](const std::vector<const Array *> &src_tiles,
+          std::vector<Array *>             &dst_tiles,
+          const TileRegion                 &region)
       {
-        std::vector<Array *> dst_tiles;
-        dst_tiles.reserve(copy_channels);
-
-        for (int c = 0; c < copy_channels; ++c)
-          dst_tiles.push_back(&dst_vas[c]->storage->get_tile(region));
-
         for (int j = 0; j < region.shape.y; ++j)
           for (int i = 0; i < region.shape.x; ++i)
             for (int c = 0; c < copy_channels; ++c)
               (*dst_tiles[c])(i, j) = (*src_tiles[c])(i, j);
-
-        for (int c = 0; c < copy_channels; ++c)
-          dst_vas[c]->storage->release_tile(region);
       },
       cm);
 

@@ -133,21 +133,6 @@ void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
       cm);
 }
 
-template <typename Func>
-void for_each_tile(const std::vector<VirtualArray *> &outputs,
-                   Func                             &&func,
-                   const ComputeMode                 &cm)
-{
-  TileAccess acc;
-  acc.outputs = outputs;
-
-  for_each_tile(
-      acc,
-      [&](const std::vector<const Array *> &,
-          std::vector<Array *> &out,
-          const TileRegion     &region) { func(out, region); },
-      cm);
-}
 
 template <typename Func>
 void for_each_tile(const std::vector<const VirtualArray *> &inputs,

@@ -482,14 +482,14 @@ size_t VirtualArray::live_memory_bytes() const
 
 void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
 {
-  // 'src' should be const...
   for_each_tile(
-      {&src, &dst},
-      [](std::vector<Array *> p_arrays, const TileRegion &)
+      {&src},
+      {&dst},
+      [](std::vector<const Array *> p_arrays_in,
+         std::vector<Array *>       p_arrays_out,
+         const TileRegion          &)
       {
-        Array &src_arr = *p_arrays[0];
-        Array &dst_arr = *p_arrays[1];
-        dst_arr = src_arr;
+        *p_arrays_out[0] = *p_arrays_in[0];
       },
       cm);
 }

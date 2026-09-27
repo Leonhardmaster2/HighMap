@@ -19,10 +19,13 @@ void VirtualArray::inverse(const ComputeMode &cm)
   float hmax = this->max(cm);
 
   for_each_tile(
+      {},
       {this},
-      [hmax](std::vector<hmap::Array *> p_arrays, const TileRegion &)
+      [hmax](std::vector<const hmap::Array *>,
+             std::vector<hmap::Array *>       p_arrays_out,
+             const TileRegion                &)
       {
-        hmap::Array *pa_out = p_arrays[0];
+        hmap::Array *pa_out = p_arrays_out[0];
         *pa_out *= -1.f;
         *pa_out += hmax;
       },

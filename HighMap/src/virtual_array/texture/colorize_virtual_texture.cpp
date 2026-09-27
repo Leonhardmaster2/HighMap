@@ -81,14 +81,16 @@ void colorize(VirtualTexture               &out,
   }
 
   // colorize fct
-  auto lambda = [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+  auto lambda = [&](std::vector<const Array *> p_arrays_in,
+                    std::vector<Array *>       p_arrays_out,
+                    const TileRegion          &region)
   {
-    Array &z = *p_arrays[0];
-    Array *pa_noise = p_arrays[1];
-    Array *pa_alpha = p_arrays[2];
-    Array &r = *p_arrays[3];
-    Array &g = *p_arrays[4];
-    Array &b = *p_arrays[5];
+    const Array &z = *p_arrays_in[0];
+    const Array *pa_noise = p_arrays_in[1];
+    const Array *pa_alpha = p_arrays_in[2];
+    Array &r = *p_arrays_out[0];
+    Array &g = *p_arrays_out[1];
+    Array &b = *p_arrays_out[2];
 
     // color interpolators
     std::vector<float> cc_r, cc_g, cc_b;
@@ -128,21 +130,20 @@ void colorize(VirtualTexture               &out,
       }
 
     // alpha channel if out has at least 4 channels
-    if (p_arrays.size() >= 7 && p_arrays[6])
+    if (p_arrays_out.size() >= 4 && p_arrays_out[3])
     {
       if (pa_alpha)
-        *p_arrays[6] = *pa_alpha;
+        *p_arrays_out[3] = *pa_alpha;
       else
-        *p_arrays[6] = 1.f;
+        *p_arrays_out[3] = 1.f;
     }
   };
 
   // apply
-  std::vector<VirtualArray *> ptrs = {&level, p_noise, p_alpha};
-  for (auto &ptr : out.channels_ptr())
-    ptrs.push_back(ptr);
+  std::vector<const VirtualArray *> vas_in = {&level, p_noise, p_alpha};
+  std::vector<VirtualArray *> vas_out = out.channels_ptr();
 
-  for_each_tile(ptrs, lambda, cm);
+  for_each_tile(vas_in, vas_out, lambda, cm);
 }
 
 void colorize_bivariate(VirtualTexture               &out,
@@ -248,15 +249,17 @@ void colorize_bivariate(VirtualTexture               &out,
   float denom1 = (range1.y != range1.x) ? (range1.y - range1.x) : 1.f;
   float denom2 = (range2.y != range2.x) ? (range2.y - range2.x) : 1.f;
 
-  auto lambda = [&](std::vector<Array *> &p_arrays, const TileRegion &region)
+  auto lambda = [&](std::vector<const Array *> p_arrays_in,
+                    std::vector<Array *>       p_arrays_out,
+                    const TileRegion          &region)
   {
-    Array &za1 = *p_arrays[0];
-    Array &za2 = *p_arrays[1];
-    Array *pa_noise1 = p_arrays[2];
-    Array *pa_noise2 = p_arrays[3];
-    Array &r = *p_arrays[4];
-    Array &g = *p_arrays[5];
-    Array &b = *p_arrays[6];
+    const Array &za1 = *p_arrays_in[0];
+    const Array &za2 = *p_arrays_in[1];
+    const Array *pa_noise1 = p_arrays_in[2];
+    const Array *pa_noise2 = p_arrays_in[3];
+    Array &r = *p_arrays_out[0];
+    Array &g = *p_arrays_out[1];
+    Array &b = *p_arrays_out[2];
 
     for (int j = 0; j < region.shape.y; ++j)
       for (int i = 0; i < region.shape.x; ++i)
@@ -281,17 +284,16 @@ void colorize_bivariate(VirtualTexture               &out,
       }
 
     // alpha channel if 4 channels
-    if (p_arrays.size() >= 8 && p_arrays[7])
+    if (p_arrays_out.size() >= 4 && p_arrays_out[3])
     {
-      *p_arrays[7] = 1.f;
+      *p_arrays_out[3] = 1.f;
     }
   };
 
-  std::vector<VirtualArray *> ptrs = {&a1, &a2, p_noise1, p_noise2};
-  for (auto &ptr : out.channels_ptr())
-    ptrs.push_back(ptr);
+  std::vector<const VirtualArray *> vas_in = {&a1, &a2, p_noise1, p_noise2};
+  std::vector<VirtualArray *> vas_out = out.channels_ptr();
 
-  for_each_tile(ptrs, lambda, cm);
+  for_each_tile(vas_in, vas_out, lambda, cm);
 }
 
 void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
@@ -303,21 +305,24 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
     return;
   }
 
-  auto lambda = [](std::vector<Array *> &p_arrays, const TileRegion &)
+  auto lambda = [](std::vector<const Array *> p_arrays_in,
+                   std::vector<Array *>       p_arrays_out,
+                   const TileRegion          &)
   {
-    hmap::Array &lum = *p_arrays[0];
-    hmap::Array &r = *p_arrays[1];
-    hmap::Array &g = *p_arrays[2];
-    hmap::Array &b = *p_arrays[3];
+    hmap::Array       &lum = *p_arrays_out[0];
+    const hmap::Array &r = *p_arrays_in[0];
+    const hmap::Array &g = *p_arrays_in[1];
+    const hmap::Array &b = *p_arrays_in[2];
 
     lum = 0.299f * r + 0.587f * g + 0.114f * b;
   };
 
-  std::vector<VirtualArray *> ptrs = {&out};
-  for (auto ptr : tex.channels_ptr())
-    ptrs.push_back(ptr);
+  std::vector<const VirtualArray *> vas_in;
+  for (const auto &ch : tex.get_arrays())
+    vas_in.push_back(&ch);
+  std::vector<VirtualArray *> vas_out = {&out};
 
-  for_each_tile(ptrs, lambda, cm);
+  for_each_tile(vas_in, vas_out, lambda, cm);
 }
 
 void mix(VirtualTexture    &out,
@@ -338,16 +343,17 @@ void mix(VirtualTexture    &out,
 
   // --- colorize fct
 
-  auto lambda = [method](std::vector<Array *> &p_arrays, const TileRegion &)
+  auto lambda = [method](std::vector<const Array *> p_arrays_in,
+                         std::vector<Array *>       p_arrays_out,
+                         const TileRegion          &)
   {
-    //      R  G  B  A
-    // out  0  1  2  3
-    // tex1 4  5  6  7
-    // tex2 8  9  10 11
+    // tex1: in 0..3
+    // tex2: in 4..7
+    // out:  out 0..3
 
     // Construct temporary textures for the tiles
-    Texture t1(*p_arrays[4], *p_arrays[5], *p_arrays[6], *p_arrays[7]);
-    Texture t2(*p_arrays[8], *p_arrays[9], *p_arrays[10], *p_arrays[11]);
+    Texture t1(*p_arrays_in[0], *p_arrays_in[1], *p_arrays_in[2], *p_arrays_in[3]);
+    Texture t2(*p_arrays_in[4], *p_arrays_in[5], *p_arrays_in[6], *p_arrays_in[7]);
 
     // Mix using the standard mix function
     Texture blended = mix(t1, t2, method);
@@ -355,20 +361,20 @@ void mix(VirtualTexture    &out,
     // Write back the result to the output tile
     for (int c = 0; c < 4; ++c)
     {
-      *p_arrays[c] = blended[c];
+      *p_arrays_out[c] = blended[c];
     }
   };
 
   // apply
-  std::vector<VirtualArray *> ptrs = {};
-  for (auto &plist :
-       {out.channels_ptr(), tex1.channels_ptr(), tex2.channels_ptr()})
-  {
-    for (auto &ptr : plist)
-      ptrs.push_back(ptr);
-  }
+  std::vector<const VirtualArray *> vas_in;
+  for (const auto &ch : tex1.get_arrays())
+    vas_in.push_back(&ch);
+  for (const auto &ch : tex2.get_arrays())
+    vas_in.push_back(&ch);
 
-  for_each_tile(ptrs, lambda, cm);
+  std::vector<VirtualArray *> vas_out = out.channels_ptr();
+
+  for_each_tile(vas_in, vas_out, lambda, cm);
 }
 
 void mix(VirtualTexture                &out,
@@ -394,22 +400,20 @@ void mix_normal_map(VirtualTexture         &out,
   // output, also used to store first normal map
   out.copy_from(nmap_base, cm);
 
-  const int out_nch = out.channels();
-  const int detail_offset = out_nch;
-
   // mix and then re-normalize values assuming a RGB channels
   // represent a normal vector
-  auto lambda = [detail_scaling, blending_method, detail_offset](
-                    std::vector<Array *> p_arrays,
-                    const TileRegion    &region)
+  auto lambda = [detail_scaling, blending_method](
+                    std::vector<const Array *> p_arrays_in,
+                    std::vector<Array *>       p_arrays_out,
+                    const TileRegion          &region)
   {
-    Array *pa_r1 = p_arrays[0];
-    Array *pa_g1 = p_arrays[1];
-    Array *pa_b1 = p_arrays[2];
+    Array *pa_r1 = p_arrays_out[0];
+    Array *pa_g1 = p_arrays_out[1];
+    Array *pa_b1 = p_arrays_out[2];
 
-    Array *pa_r2 = p_arrays[detail_offset];
-    Array *pa_g2 = p_arrays[detail_offset + 1];
-    Array *pa_b2 = p_arrays[detail_offset + 2];
+    const Array *pa_r2 = p_arrays_in[0];
+    const Array *pa_g2 = p_arrays_in[1];
+    const Array *pa_b2 = p_arrays_in[2];
 
     std::function<glm::vec3(glm::vec3 &, glm::vec3 &)> blending_fct;
 
@@ -500,12 +504,13 @@ void mix_normal_map(VirtualTexture         &out,
   };
 
   // apply
-  std::vector<VirtualArray *> ptrs = {};
-  for (auto &plist : {out.channels_ptr(), nmap_detail.channels_ptr()})
-    for (auto &ptr : plist)
-      ptrs.push_back(ptr);
+  std::vector<const VirtualArray *> vas_in;
+  for (const auto &ch : nmap_detail.get_arrays())
+    vas_in.push_back(&ch);
 
-  for_each_tile(ptrs, lambda, cm);
+  std::vector<VirtualArray *> vas_out = out.channels_ptr();
+
+  for_each_tile(vas_in, vas_out, lambda, cm);
 }
 
 } // namespace hmap

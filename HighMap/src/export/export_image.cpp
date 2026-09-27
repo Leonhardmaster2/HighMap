@@ -165,7 +165,7 @@ bool export_virtual_array(const VirtualTexture &vt,
 
   for_each_tile(
       vt,
-      [&](const std::vector<Array *> &tiles, const TileRegion &region)
+      [&](const std::vector<const Array *> &tiles, const TileRegion &region)
       {
         std::vector<Array> ch_tiles;
         ch_tiles.reserve(tiles.size());

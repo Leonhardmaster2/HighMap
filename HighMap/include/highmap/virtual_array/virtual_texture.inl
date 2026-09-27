@@ -12,7 +12,13 @@ void for_each_tile(VirtualTexture &tex, Func &&func, const ComputeMode &cm)
   for (auto &ch : tex.get_arrays())
     p_vas.push_back(&ch);
 
-  for_each_tile(p_vas, std::forward<Func>(func), cm);
+  for_each_tile(
+      {},
+      p_vas,
+      [&](const std::vector<const Array *> &,
+          std::vector<Array *> &out,
+          const TileRegion     &region) { func(out, region); },
+      cm);
 }
 
 template <typename Func>
@@ -21,7 +27,19 @@ void for_each_tile(const VirtualTexture &tex,
                    const ComputeMode    &cm)
 {
   auto &mutable_tex = const_cast<VirtualTexture &>(tex);
-  for_each_tile(mutable_tex, std::forward<Func>(func), cm);
+  std::vector<const VirtualArray *> p_vas;
+  p_vas.reserve(mutable_tex.channels());
+
+  for (const auto &ch : mutable_tex.get_arrays())
+    p_vas.push_back(&ch);
+
+  for_each_tile(
+      p_vas,
+      {},
+      [&](const std::vector<const Array *> &in,
+          std::vector<Array *>             &,
+          const TileRegion                 &region) { func(in, region); },
+      cm);
 }
 
 template <typename Func>
