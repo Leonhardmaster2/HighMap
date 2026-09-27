@@ -487,10 +487,7 @@ void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
       {&dst},
       [](std::vector<const Array *> p_arrays_in,
          std::vector<Array *>       p_arrays_out,
-         const TileRegion          &)
-      {
-        *p_arrays_out[0] = *p_arrays_in[0];
-      },
+         const TileRegion &) { *p_arrays_out[0] = *p_arrays_in[0]; },
       cm);
 }
 

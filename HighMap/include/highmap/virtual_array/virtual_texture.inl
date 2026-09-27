@@ -37,8 +37,8 @@ void for_each_tile(const VirtualTexture &tex,
       p_vas,
       {},
       [&](const std::vector<const Array *> &in,
-          std::vector<Array *>             &,
-          const TileRegion                 &region) { func(in, region); },
+          std::vector<Array *> &,
+          const TileRegion &region) { func(in, region); },
       cm);
 }
 

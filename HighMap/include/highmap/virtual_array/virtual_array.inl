@@ -133,7 +133,6 @@ void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
       cm);
 }
 
-
 template <typename Func>
 void for_each_tile(const std::vector<const VirtualArray *> &inputs,
                    const std::vector<VirtualArray *>       &outputs,

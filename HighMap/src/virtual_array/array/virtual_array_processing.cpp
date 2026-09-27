@@ -22,8 +22,8 @@ void VirtualArray::inverse(const ComputeMode &cm)
       {},
       {this},
       [hmax](std::vector<const hmap::Array *>,
-             std::vector<hmap::Array *>       p_arrays_out,
-             const TileRegion                &)
+             std::vector<hmap::Array *> p_arrays_out,
+             const TileRegion &)
       {
         hmap::Array *pa_out = p_arrays_out[0];
         *pa_out *= -1.f;

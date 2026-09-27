@@ -88,9 +88,9 @@ void colorize(VirtualTexture               &out,
     const Array &z = *p_arrays_in[0];
     const Array *pa_noise = p_arrays_in[1];
     const Array *pa_alpha = p_arrays_in[2];
-    Array &r = *p_arrays_out[0];
-    Array &g = *p_arrays_out[1];
-    Array &b = *p_arrays_out[2];
+    Array       &r = *p_arrays_out[0];
+    Array       &g = *p_arrays_out[1];
+    Array       &b = *p_arrays_out[2];
 
     // color interpolators
     std::vector<float> cc_r, cc_g, cc_b;
@@ -141,7 +141,7 @@ void colorize(VirtualTexture               &out,
 
   // apply
   std::vector<const VirtualArray *> vas_in = {&level, p_noise, p_alpha};
-  std::vector<VirtualArray *> vas_out = out.channels_ptr();
+  std::vector<VirtualArray *>       vas_out = out.channels_ptr();
 
   for_each_tile(vas_in, vas_out, lambda, cm);
 }
@@ -257,9 +257,9 @@ void colorize_bivariate(VirtualTexture               &out,
     const Array &za2 = *p_arrays_in[1];
     const Array *pa_noise1 = p_arrays_in[2];
     const Array *pa_noise2 = p_arrays_in[3];
-    Array &r = *p_arrays_out[0];
-    Array &g = *p_arrays_out[1];
-    Array &b = *p_arrays_out[2];
+    Array       &r = *p_arrays_out[0];
+    Array       &g = *p_arrays_out[1];
+    Array       &b = *p_arrays_out[2];
 
     for (int j = 0; j < region.shape.y; ++j)
       for (int i = 0; i < region.shape.x; ++i)
@@ -291,7 +291,7 @@ void colorize_bivariate(VirtualTexture               &out,
   };
 
   std::vector<const VirtualArray *> vas_in = {&a1, &a2, p_noise1, p_noise2};
-  std::vector<VirtualArray *> vas_out = out.channels_ptr();
+  std::vector<VirtualArray *>       vas_out = out.channels_ptr();
 
   for_each_tile(vas_in, vas_out, lambda, cm);
 }
@@ -307,7 +307,7 @@ void luminance(VirtualArray &out, VirtualTexture &tex, const ComputeMode &cm)
 
   auto lambda = [](std::vector<const Array *> p_arrays_in,
                    std::vector<Array *>       p_arrays_out,
-                   const TileRegion          &)
+                   const TileRegion &)
   {
     hmap::Array       &lum = *p_arrays_out[0];
     const hmap::Array &r = *p_arrays_in[0];
@@ -345,15 +345,21 @@ void mix(VirtualTexture    &out,
 
   auto lambda = [method](std::vector<const Array *> p_arrays_in,
                          std::vector<Array *>       p_arrays_out,
-                         const TileRegion          &)
+                         const TileRegion &)
   {
     // tex1: in 0..3
     // tex2: in 4..7
     // out:  out 0..3
 
     // Construct temporary textures for the tiles
-    Texture t1(*p_arrays_in[0], *p_arrays_in[1], *p_arrays_in[2], *p_arrays_in[3]);
-    Texture t2(*p_arrays_in[4], *p_arrays_in[5], *p_arrays_in[6], *p_arrays_in[7]);
+    Texture t1(*p_arrays_in[0],
+               *p_arrays_in[1],
+               *p_arrays_in[2],
+               *p_arrays_in[3]);
+    Texture t2(*p_arrays_in[4],
+               *p_arrays_in[5],
+               *p_arrays_in[6],
+               *p_arrays_in[7]);
 
     // Mix using the standard mix function
     Texture blended = mix(t1, t2, method);
@@ -402,10 +408,10 @@ void mix_normal_map(VirtualTexture         &out,
 
   // mix and then re-normalize values assuming a RGB channels
   // represent a normal vector
-  auto lambda = [detail_scaling, blending_method](
-                    std::vector<const Array *> p_arrays_in,
-                    std::vector<Array *>       p_arrays_out,
-                    const TileRegion          &region)
+  auto lambda =
+      [detail_scaling, blending_method](std::vector<const Array *> p_arrays_in,
+                                        std::vector<Array *>       p_arrays_out,
+                                        const TileRegion          &region)
   {
     Array *pa_r1 = p_arrays_out[0];
     Array *pa_g1 = p_arrays_out[1];
