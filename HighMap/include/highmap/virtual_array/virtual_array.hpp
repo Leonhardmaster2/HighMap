@@ -25,6 +25,17 @@ namespace hmap
 // Peripheric classes
 // =====================================
 
+enum class SyncOperation
+{
+  Average,
+  CopyFirst,
+  CopySecond,
+  Min,
+  Max,
+  Mean,
+  SmoothBlend // current sync
+};
+
 enum ForEachMode : int
 {
   VA_SEQUENTIAL,             // tile-by-tile, single thread
@@ -136,7 +147,7 @@ struct VirtualArray
 
   std::vector<float> unique_values(const ComputeMode &cm) const;
 
-  void smooth_overlap_buffers();
+  void sync_overlap_buffers(SyncOperation op = SyncOperation::SmoothBlend);
 
   // Find which tile covers a given index
   glm::vec2  tile_region_global_position(const TileRegion &region) const;

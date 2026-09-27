@@ -244,3 +244,138 @@ TEST(VirtualArrayTest, MemoryFootprintTracking)
     EXPECT_EQ(va.live_memory_bytes(), 0);
   }
 }
+
+TEST(VirtualArrayTest, SyncOverlapBuffersOperations)
+{
+  glm::ivec2 shape{32, 32};
+  glm::ivec2 tile_shape{16, 16};
+  int        halo = 4;
+
+  auto setup_va = [&]()
+  {
+    VirtualArray va(shape, tile_shape, halo, StorageMode::VA_RAM);
+    ComputeMode  cm{.mode = ForEachMode::VA_SEQUENTIAL};
+    for_each_tile(
+        va,
+        [](Array &tile, const TileRegion &region)
+        {
+          float base_val = float(region.key.tx + region.key.ty * 10);
+          tile = base_val;
+        },
+        cm);
+    return va;
+  };
+
+  // Test Average / Mean
+  for (auto op : {SyncOperation::Average, SyncOperation::Mean})
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(op);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 0.5f);
+    EXPECT_FLOAT_EQ(t1(0, 0), 0.5f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+
+  // Test CopyFirst
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(SyncOperation::CopyFirst);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 0.f);
+    EXPECT_FLOAT_EQ(t1(0, 0), 0.f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+
+  // Test CopySecond
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(SyncOperation::CopySecond);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 1.f);
+    EXPECT_FLOAT_EQ(t1(0, 0), 1.f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+
+  // Test Min
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(SyncOperation::Min);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 0.f);
+    EXPECT_FLOAT_EQ(t1(0, 0), 0.f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+
+  // Test Max
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(SyncOperation::Max);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 1.f);
+    EXPECT_FLOAT_EQ(t1(0, 0), 1.f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+
+  // Test SmoothBlend
+  {
+    VirtualArray va = setup_va();
+    va.sync_overlap_buffers(SyncOperation::SmoothBlend);
+
+    TileRegion r0 = va.tile_region_from_tile_coords(0, 0);
+    TileRegion r1 = va.tile_region_from_tile_coords(1, 0);
+    Array     &t0 = va.storage->get_tile(r0);
+    Array     &t1 = va.storage->get_tile(r1);
+
+    int pbuf = t0.shape.x - 2 * halo;
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), t1(0, 0));
+    EXPECT_FLOAT_EQ(t0(pbuf, 0), 0.f);
+
+    int pbuf_end = t0.shape.x - halo - 1;
+    EXPECT_FLOAT_EQ(t0(pbuf_end, 0), t1(halo - 1, 0));
+    EXPECT_FLOAT_EQ(t0(pbuf_end, 0), 1.f);
+
+    va.storage->release_tile(r0);
+    va.storage->release_tile(r1);
+  }
+}

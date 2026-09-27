@@ -122,7 +122,7 @@ int main()
   // Global operations
   // ===========================================================================
 
-  varray.smooth_overlap_buffers();
+  varray.sync_overlap_buffers();
   varray.remap(0.f, 1.f, cm);
 
   // ===========================================================================
@@ -240,7 +240,7 @@ int main()
     hmap::VirtualArray v_small(shape, bbox, small_tile, big_halo, storage_mode);
 
     hmap::for_each_tile(v_small, generate_noise, cm);
-    v_small.smooth_overlap_buffers();
+    v_small.sync_overlap_buffers();
     v_small.remap(0.f, 1.f, cm);
 
     float min_v = v_small.min(cm);
