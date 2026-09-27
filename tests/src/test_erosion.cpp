@@ -214,3 +214,67 @@ TEST(ConvErosion, BasicExecution)
   EXPECT_EQ(z.shape, shape);
   EXPECT_FALSE(assert_almost_equal(z, z0));
 }
+
+TEST(DepressionFilling, BoundaryConditions)
+{
+  // A 5x5 bowl with a pit in the center and high borders
+  Array z({{5.f, 5.f, 5.f, 5.f, 5.f},
+           {5.f, 1.f, 1.f, 1.f, 5.f},
+           {5.f, 1.f, 0.f, 1.f, 5.f},
+           {5.f, 1.f, 1.f, 1.f, 5.f},
+           {5.f, 5.f, 5.f, 5.f, 5.f}});
+
+  // Create an outlet on the right boundary (i = 4, j = 2) and lower the lip at
+  // (3, 2)
+  z(3, 2) = 0.2f;
+  z(4, 2) = 0.1f;
+
+  // Case 1: outflow allowed on all boundaries
+  {
+    Array z_test = z;
+    depression_filling(z_test, 100, 1e-4f, true, true, true, true);
+    // Pit (2, 2) fills up to the outlet level (approx 0.2f)
+    EXPECT_NEAR(z_test(2, 2), 0.2f, 0.01f);
+  }
+
+  // Case 2: outflow closed on the right boundary (where the outlet is)
+  {
+    Array z_test = z;
+    depression_filling(z_test, 100, 1e-4f, true, false, true, true);
+    // Since right boundary is closed and all other boundaries are 5.0f, the pit
+    // fills up to 5.0f
+    EXPECT_NEAR(z_test(2, 2), 5.0f, 0.01f);
+  }
+}
+
+TEST(DepressionFillingPriorityFlood, BoundaryConditions)
+{
+  // A 5x5 bowl with a pit in the center and high borders
+  Array z({{5.f, 5.f, 5.f, 5.f, 5.f},
+           {5.f, 1.f, 1.f, 1.f, 5.f},
+           {5.f, 1.f, 0.f, 1.f, 5.f},
+           {5.f, 1.f, 1.f, 1.f, 5.f},
+           {5.f, 5.f, 5.f, 5.f, 5.f}});
+
+  // Create an outlet on the right boundary (i = 4, j = 2) and lower the lip at
+  // (3, 2)
+  z(3, 2) = 0.2f;
+  z(4, 2) = 0.1f;
+
+  // Case 1: outflow allowed on all boundaries
+  {
+    Array z_test = z;
+    depression_filling_priority_flood(z_test, false, true, true, true, true);
+    // Pit (2, 2) fills up to the outlet level (approx 0.2f)
+    EXPECT_NEAR(z_test(2, 2), 0.2f, 0.01f);
+  }
+
+  // Case 2: outflow closed on the right boundary (where the outlet is)
+  {
+    Array z_test = z;
+    depression_filling_priority_flood(z_test, false, true, false, true, true);
+    // Since right boundary is closed and all other boundaries are 5.0f, the pit
+    // fills up to 5.0f
+    EXPECT_NEAR(z_test(2, 2), 5.0f, 0.01f);
+  }
+}
