@@ -19,9 +19,9 @@ struct TileAccess
 template <typename Func>
 void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
 {
-  if (access.outputs.empty())
+  if (access.outputs.empty() && access.inputs.empty())
   {
-    hmap::log::error("no output VirtualArray");
+    hmap::log::error("no input or output VirtualArray");
     return;
   }
 

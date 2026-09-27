@@ -540,24 +540,24 @@ Array hydraulic_saleve(const Array          &z,
  * @image html ex_hydraulic_stream0.png
  * @image html ex_hydraulic_stream1.png
  */
-void hydraulic_stream(Array &z,
-                      float  c_erosion,
-                      float  talus_ref,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr, // -> out
-                      int    ir = 1,
-                      float  clipping_ratio = 10.f);
+void hydraulic_stream(Array       &z,
+                      float        c_erosion,
+                      float        talus_ref,
+                      const Array *p_bedrock = nullptr,
+                      const Array *p_moisture_map = nullptr,
+                      Array       *p_erosion_map = nullptr, // -> out
+                      int          ir = 1,
+                      float        clipping_ratio = 10.f);
 
-void hydraulic_stream(Array &z,
-                      Array *p_mask,
-                      float  c_erosion,
-                      float  talus_ref,
-                      Array *p_bedrock = nullptr,
-                      Array *p_moisture_map = nullptr,
-                      Array *p_erosion_map = nullptr, // -> out
-                      int    ir = 1,
-                      float  clipping_ratio = 10.f); ///< @overload
+void hydraulic_stream(Array       &z,
+                      const Array *p_mask,
+                      float        c_erosion,
+                      float        talus_ref,
+                      const Array *p_bedrock = nullptr,
+                      const Array *p_moisture_map = nullptr,
+                      Array       *p_erosion_map = nullptr, // -> out
+                      int          ir = 1,
+                      float        clipping_ratio = 10.f); ///< @overload
 
 /**
  * @brief Apply hydraulic erosion based on a flow accumulation map, alternative
@@ -597,20 +597,20 @@ void hydraulic_stream(Array &z,
  * @image html ex_hydraulic_stream0.png
  * @image html ex_hydraulic_stream1.png
  */
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          int    deposition_ir = 32,
-                          float  deposition_scale_ratio = 1.f,
-                          float  gradient_power = 0.8f,
-                          float  gradient_scaling_ratio = 1.f,
-                          int    gradient_prefilter_ir = 16,
-                          float  saturation_ratio = 1.f,
-                          Array *p_bedrock = nullptr,
-                          Array *p_moisture_map = nullptr,
-                          Array *p_erosion_map = nullptr,
-                          Array *p_deposition_map = nullptr,
-                          Array *p_flow_map = nullptr);
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          int          deposition_ir = 32,
+                          float        deposition_scale_ratio = 1.f,
+                          float        gradient_power = 0.8f,
+                          float        gradient_scaling_ratio = 1.f,
+                          int          gradient_prefilter_ir = 16,
+                          float        saturation_ratio = 1.f,
+                          const Array *p_bedrock = nullptr,
+                          const Array *p_moisture_map = nullptr,
+                          Array       *p_erosion_map = nullptr,
+                          Array       *p_deposition_map = nullptr,
+                          Array       *p_flow_map = nullptr);
 
 void hydraulic_stream_log(Array       &z,
                           float        c_erosion,
@@ -622,8 +622,8 @@ void hydraulic_stream_log(Array       &z,
                           float        gradient_scaling_ratio = 1.f,
                           int          gradient_prefilter_ir = 16,
                           float        saturation_ratio = 1.f,
-                          Array       *p_bedrock = nullptr,
-                          Array       *p_moisture_map = nullptr,
+                          const Array *p_bedrock = nullptr,
+                          const Array *p_moisture_map = nullptr,
                           Array       *p_erosion_map = nullptr,
                           Array       *p_deposition_map = nullptr,
                           Array       *p_flow_map = nullptr); ///< @overload
@@ -702,14 +702,14 @@ void hydraulic_stream_upscale_amplification(Array &z,
  * @image html ex_hydraulic_stream_upscale_amplification.png
  */
 void hydraulic_stream_upscale_amplification(
-    Array &z,
-    Array *p_mask,
-    float  c_erosion,
-    float  talus_ref,
-    int    upscaling_levels = 1,
-    float  persistence = 1.f,
-    int    ir = 1,
-    float  clipping_ratio = 10.f); ///< @overload
+    Array       &z,
+    const Array *p_mask,
+    float        c_erosion,
+    float        talus_ref,
+    int          upscaling_levels = 1,
+    float        persistence = 1.f,
+    int          ir = 1,
+    float        clipping_ratio = 10.f); ///< @overload
 
 } // namespace hmap
 
@@ -1489,7 +1489,7 @@ void rifts(Array           &z,
  * @image html ex_sediment_deposition.png
  */
 void sediment_deposition(Array       &z,
-                         Array       *p_mask,
+                         const Array *p_mask,
                          const Array &talus,
                          Array       *p_deposition_map = nullptr,
                          float        max_deposition = 0.01,

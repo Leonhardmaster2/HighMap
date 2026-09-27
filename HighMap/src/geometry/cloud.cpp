@@ -692,8 +692,8 @@ Array Cloud::to_array(glm::ivec2 shape, glm::vec4 bbox) const
 void Cloud::to_array_interp(Array                &array,
                             glm::vec4             bbox,
                             InterpolationMethod2D interpolation_method,
-                            Array                *p_noise_x,
-                            Array                *p_noise_y,
+                            const Array          *p_noise_x,
+                            const Array          *p_noise_y,
                             glm::vec4             bbox_array) const
 {
   if (!validate_shape(array.shape)) return;

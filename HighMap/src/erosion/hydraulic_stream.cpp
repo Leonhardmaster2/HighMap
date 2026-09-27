@@ -19,14 +19,14 @@
 namespace hmap
 {
 
-void hydraulic_stream(Array &z,
-                      float  c_erosion,
-                      float  talus_ref,
-                      Array *p_bedrock,
-                      Array *p_moisture_map,
-                      Array *p_erosion_map,
-                      int    ir,
-                      float  clipping_ratio)
+void hydraulic_stream(Array       &z,
+                      float        c_erosion,
+                      float        talus_ref,
+                      const Array *p_bedrock,
+                      const Array *p_moisture_map,
+                      Array       *p_erosion_map,
+                      int          ir,
+                      float        clipping_ratio)
 {
   if (!validate_non_empty(z)) return;
   if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
@@ -69,15 +69,15 @@ void hydraulic_stream(Array &z,
   }
 }
 
-void hydraulic_stream(Array &z,
-                      Array *p_mask,
-                      float  c_erosion,
-                      float  talus_ref,
-                      Array *p_moisture_map,
-                      Array *p_bedrock,
-                      Array *p_erosion_map,
-                      int    ir,
-                      float  clipping_ratio)
+void hydraulic_stream(Array       &z,
+                      const Array *p_mask,
+                      float        c_erosion,
+                      float        talus_ref,
+                      const Array *p_bedrock,
+                      const Array *p_moisture_map,
+                      Array       *p_erosion_map,
+                      int          ir,
+                      float        clipping_ratio)
 {
   if (!validate_non_empty(z)) return;
   if (p_mask && !validate_same_shape(z, *p_mask)) return;
@@ -108,20 +108,20 @@ void hydraulic_stream(Array &z,
   }
 }
 
-void hydraulic_stream_log(Array &z,
-                          float  c_erosion,
-                          float  talus_ref,
-                          int    deposition_ir,
-                          float  deposition_scale_ratio,
-                          float  gradient_power,
-                          float  gradient_scaling_ratio,
-                          int    gradient_prefilter_ir,
-                          float  saturation_ratio,
-                          Array *p_bedrock,
-                          Array *p_moisture_map,
-                          Array *p_erosion_map,
-                          Array *p_deposition_map,
-                          Array *p_flow_map)
+void hydraulic_stream_log(Array       &z,
+                          float        c_erosion,
+                          float        talus_ref,
+                          int          deposition_ir,
+                          float        deposition_scale_ratio,
+                          float        gradient_power,
+                          float        gradient_scaling_ratio,
+                          int          gradient_prefilter_ir,
+                          float        saturation_ratio,
+                          const Array *p_bedrock,
+                          const Array *p_moisture_map,
+                          Array       *p_erosion_map,
+                          Array       *p_deposition_map,
+                          Array       *p_flow_map)
 {
   if (!validate_non_empty(z)) return;
   if (p_bedrock && !validate_same_shape(z, *p_bedrock)) return;
@@ -199,8 +199,8 @@ void hydraulic_stream_log(Array       &z,
                           float        gradient_scaling_ratio,
                           int          gradient_prefilter_ir,
                           float        saturation_ratio,
-                          Array       *p_moisture_map,
-                          Array       *p_bedrock,
+                          const Array *p_bedrock,
+                          const Array *p_moisture_map,
                           Array       *p_erosion_map,
                           Array       *p_deposition_map,
                           Array       *p_flow_map)
