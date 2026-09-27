@@ -262,7 +262,10 @@ std::pair<Mat<glm::ivec2>, bool> DrainageBasinCellBased::find_subroots()
       std::vector<glm::ivec2> path;
       glm::ivec2              p(i, j);
 
-      while (subroot(p) == this->null_cell && receivers(p) != p)
+      while (subroot(p) == this->null_cell && receivers(p) != p &&
+             receivers(p) != this->null_cell && receivers(p).x >= 0 &&
+             receivers(p).x < rows && receivers(p).y >= 0 &&
+             receivers(p).y < cols)
       {
         path.push_back(p);
         p = receivers(p);
@@ -598,7 +601,11 @@ Mat<std::vector<glm::ivec2>> invert_receiver_map(
     {
       const glm::ivec2 &r = receivers(i, j);
 
-      if (r != glm::ivec2(i, j)) children(r.x, r.y).push_back(glm::ivec2(i, j));
+      if (r.x >= 0 && r.x < rows && r.y >= 0 && r.y < cols)
+      {
+        if (r != glm::ivec2(i, j))
+          children(r.x, r.y).push_back(glm::ivec2(i, j));
+      }
     }
 
   return children;
