@@ -278,3 +278,67 @@ TEST(DepressionFillingPriorityFlood, BoundaryConditions)
     EXPECT_NEAR(z_test(2, 2), 5.0f, 0.01f);
   }
 }
+
+TEST(HydraulicMusgrave, BasicExecution)
+{
+  glm::ivec2 shape = {64, 64};
+  glm::vec2  kw = {4.f, 4.f};
+  Array      z0 = noise_fbm(NoiseType::PERLIN, shape, kw, 42);
+  Array      z = z0;
+
+  hydraulic_musgrave(z, 20);
+
+  EXPECT_EQ(z.shape, shape);
+  EXPECT_FALSE(assert_almost_equal(z, z0));
+
+  for (int j = 0; j < z.shape.y; j++)
+    for (int i = 0; i < z.shape.x; i++)
+    {
+      EXPECT_FALSE(std::isnan(z(i, j)));
+      EXPECT_FALSE(std::isinf(z(i, j)));
+    }
+}
+
+TEST(HydraulicMusgrave, FlatRegionUnchanged)
+{
+  Array z = constant(glm::ivec2(16, 16), 5.f);
+  Array z0 = z;
+
+  hydraulic_musgrave(z, 10);
+
+  EXPECT_TRUE(assert_almost_equal(z, z0));
+}
+
+TEST(HydraulicMusgraveGPU, BasicExecution)
+{
+  hmap::gpu::init_opencl();
+
+  glm::ivec2 shape = {64, 64};
+  glm::vec2  kw = {4.f, 4.f};
+  Array      z0 = noise_fbm(NoiseType::PERLIN, shape, kw, 42);
+  Array      z = z0;
+
+  gpu::hydraulic_musgrave(z, 20);
+
+  EXPECT_EQ(z.shape, shape);
+  EXPECT_FALSE(assert_almost_equal(z, z0));
+
+  for (int j = 0; j < z.shape.y; j++)
+    for (int i = 0; i < z.shape.x; i++)
+    {
+      EXPECT_FALSE(std::isnan(z(i, j)));
+      EXPECT_FALSE(std::isinf(z(i, j)));
+    }
+}
+
+TEST(HydraulicMusgraveGPU, FlatRegionUnchanged)
+{
+  hmap::gpu::init_opencl();
+
+  Array z = constant(glm::ivec2(16, 16), 5.f);
+  Array z0 = z;
+
+  gpu::hydraulic_musgrave(z, 10);
+
+  EXPECT_TRUE(assert_almost_equal(z, z0));
+}

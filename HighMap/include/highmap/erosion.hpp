@@ -23,8 +23,8 @@
 // 5 3 7
 #define HMAP_DI {-1, 0, 0, 1, -1, -1, 1, 1}
 #define HMAP_DJ {0, 1, -1, 0, -1, 1, -1, 1}
-#define HMAP_CD  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
-#define HMAP_CD_INV  {1.f, 1.f, 1.f, 1.f, M_SQRT2, M_SQRT2, M_SQRT2, M_SQRT2}
+#define HMAP_CD  {1.f, 1.f, 1.f, 1.f, (float)M_SQRT2, (float)M_SQRT2, (float)M_SQRT2, (float)M_SQRT2}
+#define HMAP_CD_INV  {1.f, 1.f, 1.f, 1.f, 1.f / (float)M_SQRT2, 1.f / (float)M_SQRT2, 1.f / (float)M_SQRT2, 1.f / (float)M_SQRT2}
 // clang-format on
 
 namespace hmap
@@ -1153,6 +1153,43 @@ void hydraulic_mcdonald_multiscale(
     float                   deposition_rate = 5e-3f,
     float                   suspension_rate = 2.5e-4f,
     float                   exit_slope = 0.01f);
+
+/**
+ * @brief Apply cell-based hydraulic erosion/deposition of Musgrave et al.
+ * (1989) on the GPU.
+ *
+ * @param z            Input array.
+ * @param moisture_map Moisture map (quantity of rain), expected to be in [0,
+ *                     1].
+ * @param iterations   Number of iterations.
+ * @param c_capacity   Sediment capacity.
+ * @param c_deposition Deposition coefficient.
+ * @param c_erosion    Erosion coefficient.
+ * @param water_level  Water level.
+ * @param evap_rate    Water evaporation rate.
+ *
+ * **Example**
+ * @include ex_hydraulic_musgrave.cpp
+ *
+ * **Result**
+ * @image html ex_hydraulic_musgrave.png
+ */
+void hydraulic_musgrave(Array &z,
+                        Array &moisture_map,
+                        int    iterations = 100,
+                        float  c_capacity = 1.f,
+                        float  c_erosion = 0.1f,
+                        float  c_deposition = 0.1f,
+                        float  water_level = 0.01f,
+                        float  evap_rate = 0.01f);
+
+void hydraulic_musgrave(Array &z,
+                        int    iterations = 100,
+                        float  c_capacity = 1.f,
+                        float  c_erosion = 0.1f,
+                        float  c_deposition = 0.1f,
+                        float  water_level = 0.01f,
+                        float  evap_rate = 0.01f); ///< @overload
 
 /**
  * @brief Apply phase-guided hydraulic procedural erosion to a heightmap.

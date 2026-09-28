@@ -112,6 +112,9 @@ bool init_opencl()
 #include "kernels/hydraulic_mcdonald.cl"
   );
   add(
+#include "kernels/hydraulic_musgrave.cl"
+  );
+  add(
 #include "kernels/hydraulic_particle.cl"
   );
   add(
