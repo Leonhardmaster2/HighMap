@@ -192,6 +192,10 @@ void kernel mcdonald_solve(global float       *bed,
     float tmax = sedm;
     transfer = fmin(fmax(transfer, tmin), tmax);
 
+    // clamp erosion transfer to prevent numerical explosion
+    float max_erode = 0.5f * fmax(0.f, h0) * Ac * Q;
+    transfer = fmax(transfer, -max_erode);
+
     if (transfer > 0.f)
     {
       atomic_add_float(&sed[find], transfer / Z / Q);
