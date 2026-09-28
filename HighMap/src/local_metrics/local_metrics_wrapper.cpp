@@ -50,6 +50,9 @@ Array local_metrics(const Array &array,
   case LocalMetrics::LM_RELATIVE_ELEVATION:
     return gpu::relative_elevation(array, ir, kernel_type);
     //
+  case LocalMetrics::LM_ROUGHNESS:
+    return gpu::roughness(array, ir);
+    //
   case LocalMetrics::LM_RUGGEDNESS:
     return gpu::ruggedness(array, ir);
     //

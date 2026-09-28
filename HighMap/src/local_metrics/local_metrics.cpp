@@ -126,6 +126,15 @@ Array relative_elevation(const Array &array, int ir)
   return (array - amin) / (amax - amin + std::numeric_limits<float>::min());
 }
 
+Array roughness(const Array &array, int ir)
+{
+  if (!validate_non_empty(array)) return Array();
+
+  Array smoothed = array;
+  smooth_cpulse(smoothed, ir);
+  return abs(array - smoothed);
+}
+
 Array ruggedness(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();

@@ -174,3 +174,48 @@ TEST(LocalMetrics, LocalRelief_Definition)
 
   EXPECT_TRUE(assert_almost_equal(relief_gpu, expected_gpu));
 }
+
+// ------------------------------------------------------------
+// ROUGHNESS
+// ------------------------------------------------------------
+
+TEST(LocalMetrics, Roughness_FlatTerrain)
+{
+  Array flat = Array(glm::ivec2(16, 16), 5.f);
+
+  Array r_cpu = roughness(flat, 2);
+  Array r_gpu = gpu::roughness(flat, 2);
+
+  for (int j = 0; j < flat.shape.y; ++j)
+    for (int i = 0; i < flat.shape.x; ++i)
+    {
+      EXPECT_NEAR(r_cpu(i, j), 0.f, 1e-6);
+      EXPECT_NEAR(r_gpu(i, j), 0.f, 1e-6);
+    }
+}
+
+TEST(LocalMetrics, Roughness_CpuGpuEquivalenceAndWrapper)
+{
+  Array input = Array(glm::ivec2(16, 16));
+  for (int j = 0; j < 16; ++j)
+    for (int i = 0; i < 16; ++i)
+      input(i, j) = std::sin(static_cast<float>(i) * 0.5f) +
+                    std::cos(static_cast<float>(j) * 0.7f);
+
+  Array r_cpu = roughness(input, 3);
+  Array r_gpu = gpu::roughness(input, 3);
+  Array r_wrapper = gpu::local_metrics(input,
+                                       3,
+                                       gpu::LocalMetrics::LM_ROUGHNESS);
+
+  EXPECT_TRUE(assert_almost_equal(r_cpu, r_gpu, 1e-4f));
+  EXPECT_TRUE(assert_almost_equal(r_gpu, r_wrapper));
+
+  // ensure non-negative everywhere
+  for (int j = 0; j < input.shape.y; ++j)
+    for (int i = 0; i < input.shape.x; ++i)
+    {
+      EXPECT_GE(r_cpu(i, j), 0.f);
+      EXPECT_GE(r_gpu(i, j), 0.f);
+    }
+}

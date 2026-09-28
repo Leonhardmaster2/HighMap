@@ -358,6 +358,22 @@ Array relative_elevation_square_kernel(const Array &array, int ir)
   return (array - amin) / (amax - amin + std::numeric_limits<float>::min());
 }
 
+Array roughness(const Array &array, int ir)
+{
+  if (!validate_non_empty(array)) return Array();
+
+  Array smoothed = array;
+  gpu::smooth_cpulse(smoothed, ir);
+  Array out = abs(array - smoothed);
+
+  out = gpu::local_mean(out, ir);
+  gpu::smooth_cpulse(out, ir);
+
+  extrapolate_borders(out, ir, /* sigma */ 0.f, /* vmin */ 0.f);
+
+  return out;
+}
+
 Array ruggedness(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();

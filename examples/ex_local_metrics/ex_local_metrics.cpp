@@ -2,16 +2,25 @@
 
 int main(void)
 {
-  glm::ivec2 shape = {256, 256};
-  glm::vec2  res = {4.f, 4.f};
-  int        seed = 1;
+  hmap::gpu::init_opencl();
 
-  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN, shape, res, seed);
+  glm::ivec2 shape = {256, 256};
+  glm::vec2  res = {2.f, 2.f};
+  int        seed = 0;
+
+  const int ir = 16;
+
+  hmap::Array z = hmap::noise_fbm(hmap::NoiseType::PERLIN,
+                                  shape,
+                                  res,
+                                  seed,
+                                  8,
+                                  0.f);
   hmap::remap(z);
 
-  int ir = 8;
-
-  hmap::gpu::init_opencl();
+  // smooth lower elevations
+  auto mask = 1.f - z;
+  hmap::gpu::smooth_cpulse(z, ir, &mask);
 
   std::vector<hmap::Array> arrays = {z};
 
@@ -27,6 +36,7 @@ int main(void)
       hmap::gpu::LocalMetrics::LM_LOCAL_Z_SCORE,
       hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX,
       hmap::gpu::LocalMetrics::LM_RELATIVE_ELEVATION,
+      hmap::gpu::LocalMetrics::LM_ROUGHNESS,
       hmap::gpu::LocalMetrics::LM_RUGGEDNESS,
       hmap::gpu::LocalMetrics::LM_RUGOSITY_CONCAVE,
       hmap::gpu::LocalMetrics::LM_RUGOSITY_CONVEX,

@@ -68,7 +68,10 @@ enum DomainBoundary : int
  *
  * @see           fill_borders()
  */
-void extrapolate_borders(Array &array, int nbuffer = 1, float sigma = 0.f);
+void extrapolate_borders(Array &array,
+                         int    nbuffer = 1,
+                         float  sigma = 0.f,
+                         float  vmin = -FLT_MAX);
 
 /**
  * @brief Applies a falloff effect to the input array based on distance.

@@ -185,6 +185,25 @@ Array local_mean(const Array &array, int ir);
 Array relative_elevation(const Array &array, int ir);
 
 /**
+ * @brief Measures the local surface roughness within a given radius.
+ *
+ * Compares the original heightmap with a locally smoothed version (using a
+ * smooth cubic pulse filter) within the specified radius @p ir. The result is
+ * the magnitude of the local deviation.
+ *
+ * @param  array The input array representing the terrain elevation data.
+ * @param  ir    The radius within which local roughness is computed.
+ * @return       Array An output array containing roughness values.
+ *
+ * **Example**
+ * @include ex_local_metrics.cpp
+ *
+ * **Result**
+ * @image html ex_local_metrics.png
+ */
+Array roughness(const Array &array, int ir);
+
+/**
  * @brief Computes the ruggedness of each element in the input array.
  *
  * The ruggedness is calculated as the square root of the sum of squared
@@ -512,6 +531,9 @@ Array relative_elevation(const Array &array,
 /*! @brief See hmap::relative_elevation */
 Array relative_elevation_square_kernel(const Array &array, int ir);
 
+/*! @brief See hmap::roughness */
+Array roughness(const Array &array, int ir);
+
 /*! @brief See hmap::ruggedness */
 Array ruggedness(const Array &array, int ir);
 
@@ -547,6 +569,7 @@ enum LocalMetrics : int
 	LM_LOCAL_Z_SCORE,              ///< Standardized value.
 	LM_TOPOGRAPHIC_POSITION_INDEX, ///< Topographic index.
 	LM_RELATIVE_ELEVATION,         ///< Normalized elevation.
+	LM_ROUGHNESS,                  ///< Local terrain roughness.
 	LM_RUGGEDNESS,                 ///< Measure of terrain roughness.
 	LM_RUGOSITY_CONCAVE,           ///< Roughness of concave features.
 	LM_RUGOSITY_CONVEX,            ///< Roughness of convex features.
