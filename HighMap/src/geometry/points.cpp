@@ -49,15 +49,12 @@ void Point::set_value_from_array(const Array &array, const glm::vec4 &bbox)
   int i = static_cast<int>(xn);
   int j = static_cast<int>(yn);
 
+  // NB - if outisde the bbox, dont do anything
   if (i >= 0 && i < array.shape.x && j >= 0 && j < array.shape.y)
   {
     float uu = xn - static_cast<float>(i);
     float vv = yn - static_cast<float>(j);
     this->v = array.get_value_bilinear_at(i, j, uu, vv);
-  }
-  else
-  {
-    this->v = 0.f; // if outside array bounding box
   }
 }
 

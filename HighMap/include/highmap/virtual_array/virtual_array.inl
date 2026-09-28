@@ -8,11 +8,13 @@ struct TileAccess
   std::vector<const VirtualArray *> inputs;
   std::vector<VirtualArray *>       outputs;
 
+  // reference virtual array used to get shape, tiling, etc. for all other VAs
   const VirtualArray *ref_va() const
   {
-    return this->outputs.front()
-               ? this->outputs.front()
-               : (!this->inputs.empty() ? this->inputs.front() : nullptr);
+    if (!this->outputs.empty() && this->outputs.front())
+      return this->outputs.front();
+    if (!this->inputs.empty()) return this->inputs.front();
+    return nullptr;
   }
 };
 
