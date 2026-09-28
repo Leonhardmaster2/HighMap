@@ -21,7 +21,7 @@ int main(void)
 
   hmap::gpu::McDonaldParams params = {.strength = 0.5f,
                                       .deposition = 0.5f,
-                                      .crit_slope = 0.5f,
+                                      .crit_slope = 0.4f,
                                       .meandering = 1.f,
                                       .scale = 1.f,
                                       .relief_scale = 1.f};

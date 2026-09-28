@@ -342,6 +342,10 @@ void kernel mcdonald_debris(global float *bed,
       float maxtransfer = fmax(0.f, hf - stable1) * Ac * Q;
       transfer = -fmin(-transfer, maxtransfer);
 
+      // clamp erosion transfer to prevent numerical explosion
+      float max_erode = 0.5f * fmax(0.f, hf) * Ac * Q;
+      transfer = fmax(transfer, -max_erode);
+
       float maxt1 = hf1 * Ac * Q;
       float t1 = transfer * fmin(1.f, fabs(maxt1 / transfer));
       atomic_add_float(&sed[find], t1 / Q / z_m / Ac);
