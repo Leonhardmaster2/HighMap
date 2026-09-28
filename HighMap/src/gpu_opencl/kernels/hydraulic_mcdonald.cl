@@ -104,6 +104,7 @@ void kernel mcdonald_solve(global float       *bed,
                            global float       *tr_d,
                            global float       *tr_mx,
                            global float       *tr_my,
+                           global const float *moisture_map,
                            const int           nx,
                            const int           ny,
                            const int           n_samples,
@@ -120,7 +121,8 @@ void kernel mcdonald_solve(global float       *bed,
                            const float         deposition_rate,
                            const float         suspension_rate,
                            const float         exit_slope,
-                           const int           maxage)
+                           const int           maxage,
+                           const int           has_moisture_map)
 {
   int n = get_global_id(0);
   if (n >= n_samples) return;
@@ -141,7 +143,8 @@ void kernel mcdonald_solve(global float       *bed,
   const float Z = Ac * z_m;
   const float Q = P * (float)n_samples;
 
-  float vol = Ac * rainfall;
+  float m = (has_moisture_map != 0) ? moisture_map[find] : 1.f;
+  float vol = Ac * rainfall * m;
   float sedm = 0.f;
 
   float2 grad = mcd_grad5(bed, sed, (int2)(ci, cj), nx, ny, zs);

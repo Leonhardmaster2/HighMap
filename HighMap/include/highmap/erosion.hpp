@@ -1079,12 +1079,14 @@ void hydraulic_mcdonald(Array                &z,
                         int                   steps,
                         std::uint32_t         seed,
                         const McDonaldParams &params,
+                        const Array          *p_moisture_map = nullptr,
                         Array                *p_sediment_map = nullptr,
                         Array                *p_discharge_map = nullptr);
 
 void hydraulic_mcdonald(Array        &z,
                         int           steps,
                         std::uint32_t seed,
+                        const Array  *p_moisture_map = nullptr,
                         Array        *p_sediment_map = nullptr,
                         Array        *p_discharge_map = nullptr,
                         float         world_extent_km = 40.f,
@@ -1123,13 +1125,15 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
                                    std::uint32_t           seed,
                                    const std::vector<int> &steps_per_level,
                                    const McDonaldParams   &params,
-                                   Array *p_sediment_map = nullptr,
-                                   Array *p_discharge_map = nullptr);
+                                   const Array *p_moisture_map = nullptr,
+                                   Array       *p_sediment_map = nullptr,
+                                   Array       *p_discharge_map = nullptr);
 
 void hydraulic_mcdonald_multiscale(
     Array                  &z,
     std::uint32_t           seed,
     const std::vector<int> &steps_per_level = {512, 256, 128},
+    const Array            *p_moisture_map = nullptr,
     Array                  *p_sediment_map = nullptr,
     Array                  *p_discharge_map = nullptr,
     float                   world_extent_km = 40.f,
