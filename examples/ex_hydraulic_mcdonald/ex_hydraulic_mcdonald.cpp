@@ -19,16 +19,20 @@ int main(void)
   hmap::Array z0 = z;
   hmap::Array sediment, discharge;
 
-  hmap::gpu::McDonaldParams params = {
-      .strength = 0.5f,
-      .deposition = 0.5f,
-      .crit_slope = 0.5f,
-      .meandering = 1.f,
-      .scale = 1.f,
-      .relief_scale = 1.f
-  };
+  hmap::gpu::McDonaldParams params = {.strength = 0.5f,
+                                      .deposition = 0.5f,
+                                      .crit_slope = 0.5f,
+                                      .meandering = 1.f,
+                                      .scale = 1.f,
+                                      .relief_scale = 1.f};
 
-  hmap::gpu::hydraulic_mcdonald(z, steps, seed, params, &sediment, &discharge);
+  hmap::gpu::hydraulic_mcdonald(z,
+                                steps,
+                                seed,
+                                params,
+                                nullptr,
+                                &sediment,
+                                &discharge);
 
   // output
   {
@@ -60,6 +64,7 @@ int main(void)
                                            seed,
                                            steps_per_level,
                                            params,
+                                           nullptr,
                                            &sediment_m,
                                            &discharge_m);
 

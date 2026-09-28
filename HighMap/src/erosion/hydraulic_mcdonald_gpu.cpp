@@ -384,4 +384,6 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
   z = bed;
   for (size_t k = 0; k < z.vector.size(); ++k)
     z.vector[k] += sed.vector[k];
+}
+
 } // namespace hmap::gpu
