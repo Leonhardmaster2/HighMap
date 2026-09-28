@@ -159,6 +159,38 @@ void mcdonald_run_steps(Array        &bed,
 
 } // namespace detail
 
+void hydraulic_mcdonald(Array                &z,
+                        int                   steps,
+                        std::uint32_t         seed,
+                        const McDonaldParams &params,
+                        Array                *p_sediment_map,
+                        Array                *p_discharge_map)
+{
+  auto p = params.to_physical();
+  hydraulic_mcdonald(z,
+                     steps,
+                     seed,
+                     p_sediment_map,
+                     p_discharge_map,
+                     p.world_extent_km,
+                     p.z_scale_km,
+                     p.samples,
+                     p.maxage,
+                     p.lrate,
+                     p.time_step,
+                     p.rainfall,
+                     p.evap_rate,
+                     p.gravity,
+                     p.viscosity,
+                     p.bed_shear,
+                     p.crit_slope,
+                     p.settle_rate,
+                     p.thermal_rate,
+                     p.deposition_rate,
+                     p.suspension_rate,
+                     p.exit_slope);
+}
+
 void hydraulic_mcdonald(Array        &z,
                         int           steps,
                         std::uint32_t seed,
@@ -217,6 +249,38 @@ void hydraulic_mcdonald(Array        &z,
   // total surface = bedrock + sediment
   for (size_t k = 0; k < z.vector.size(); ++k)
     z.vector[k] += sed.vector[k];
+}
+
+void hydraulic_mcdonald_multiscale(Array                  &z,
+                                   std::uint32_t           seed,
+                                   const std::vector<int> &steps_per_level,
+                                   const McDonaldParams   &params,
+                                   Array                  *p_sediment_map,
+                                   Array                  *p_discharge_map)
+{
+  auto p = params.to_physical();
+  hydraulic_mcdonald_multiscale(z,
+                                seed,
+                                steps_per_level,
+                                p_sediment_map,
+                                p_discharge_map,
+                                p.world_extent_km,
+                                p.z_scale_km,
+                                p.samples,
+                                p.maxage,
+                                p.lrate,
+                                p.time_step,
+                                p.rainfall,
+                                p.evap_rate,
+                                p.gravity,
+                                p.viscosity,
+                                p.bed_shear,
+                                p.crit_slope,
+                                p.settle_rate,
+                                p.thermal_rate,
+                                p.deposition_rate,
+                                p.suspension_rate,
+                                p.exit_slope);
 }
 
 void hydraulic_mcdonald_multiscale(Array                  &z,

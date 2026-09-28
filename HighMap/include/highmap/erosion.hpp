@@ -1006,14 +1006,82 @@ void hydraulic_particle_multiscale(
  * @param suspension_rate Fluvial suspension rate.
  * @param exit_slope      Boundary exit slope [m/m].
  *
- * **Example**
- * @include ex_hydraulic_mcdonald.cpp
+ * **  * @include ex_hydraulic_mcdonald.cpp
  *
  * **Result**
  * @image html ex_hydraulic_mcdonald0.png
  * @image html ex_hydraulic_mcdonald1.png
  * @image html ex_hydraulic_mcdonald2.png
  */
+struct McDonaldParams
+{
+  float strength =
+      0.5f; // overall erosion power (scales suspension & thermal rates)
+  float deposition = 0.5f;  // sediment retention vs transport
+  float crit_slope = 0.57f; // critical slope [m/m]
+  float meandering = 0.5f;  // flow-coupling & momentum inertia
+  float scale = 1.0f; // domain extent multiplier (scales world_extent_km and
+                      // base z_scale_km)
+  float relief_scale = 1.0f; // relative vertical relief scale multiplier
+
+  struct PhysicalParams
+  {
+    float world_extent_km;
+    float z_scale_km;
+    int   samples;
+    int   maxage;
+    float lrate;
+    float time_step;
+    float rainfall;
+    float evap_rate;
+    float gravity;
+    float viscosity;
+    float bed_shear;
+    float crit_slope;
+    float settle_rate;
+    float thermal_rate;
+    float deposition_rate;
+    float suspension_rate;
+    float exit_slope;
+  };
+
+  PhysicalParams to_physical() const
+  {
+    PhysicalParams p;
+    float          s = std::max(1e-4f, this->scale);
+    float          r = std::max(1e-4f, this->relief_scale);
+    p.world_extent_km = 40.f * s;
+    p.z_scale_km = 4.f * s * r;
+    p.samples = 8192;
+    p.maxage = 512;
+    p.lrate = 0.1f + 0.8f * std::clamp(this->meandering, 0.f, 1.f);
+    p.time_step = 10.f;
+    p.rainfall = 1.f;
+    p.evap_rate = 1e-9f;
+    p.gravity = 9.81f;
+    p.viscosity = 0.01f + 0.03f * std::clamp(this->meandering, 0.f, 1.f);
+    p.bed_shear = 0.02f - 0.015f * std::clamp(this->meandering, 0.f, 1.f);
+    p.crit_slope = std::max(1e-4f, this->crit_slope);
+    p.settle_rate = 0.1f *
+                    (0.2f + 1.6f * std::clamp(this->deposition, 0.f, 1.f));
+    p.thermal_rate = 2.5e-3f *
+                     (0.2f + 1.6f * std::clamp(this->strength, 0.f, 1.f));
+    p.deposition_rate = 5e-3f *
+                        (0.2f + 1.6f * std::clamp(this->deposition, 0.f, 1.f));
+    p.suspension_rate = 2.5e-4f *
+                        (0.2f + 1.6f * std::clamp(this->strength, 0.f, 1.f));
+    p.exit_slope = 0.01f;
+    return p;
+  }
+};
+
+void hydraulic_mcdonald(Array                &z,
+                        int                   steps,
+                        std::uint32_t         seed,
+                        const McDonaldParams &params,
+                        Array                *p_sediment_map = nullptr,
+                        Array                *p_discharge_map = nullptr);
+
 void hydraulic_mcdonald(Array        &z,
                         int           steps,
                         std::uint32_t seed,
@@ -1051,6 +1119,13 @@ void hydraulic_mcdonald(Array        &z,
  * **Result**
  * @image html ex_hydraulic_mcdonald3.png
  */
+void hydraulic_mcdonald_multiscale(Array                  &z,
+                                   std::uint32_t           seed,
+                                   const std::vector<int> &steps_per_level,
+                                   const McDonaldParams   &params,
+                                   Array *p_sediment_map = nullptr,
+                                   Array *p_discharge_map = nullptr);
+
 void hydraulic_mcdonald_multiscale(
     Array                  &z,
     std::uint32_t           seed,

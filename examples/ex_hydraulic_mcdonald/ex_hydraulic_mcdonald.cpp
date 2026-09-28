@@ -19,48 +19,16 @@ int main(void)
   hmap::Array z0 = z;
   hmap::Array sediment, discharge;
 
-  // parameters for hydraulic_mcdonald and hydraulic_mcdonald_multiscale
-  std::vector<int> steps_per_level = {steps / 4, steps / 2, steps};
-  float            world_extent_km = 40.f;
-  float            z_scale_km = 4.f;
-  int              samples = 8192;
-  int              maxage = 512;
-  float            lrate = 0.2f;
-  float            time_step = 10.f;
-  float            rainfall = 1.f;
-  float            evap_rate = 1e-9f;
-  float            gravity = 9.81f;
-  float            viscosity = 0.025f;
-  float            bed_shear = 0.01f;
-  float            crit_slope = 0.5f;
-  float            settle_rate = 0.1f;
-  float            thermal_rate = 2.5e-3f;
-  float            deposition_rate = 5e-3f;
-  float            suspension_rate = 2.5e-4f;
-  float            exit_slope = 0.05f;
+  hmap::gpu::McDonaldParams params = {
+      .strength = 0.5f,
+      .deposition = 0.5f,
+      .crit_slope = 0.5f,
+      .meandering = 1.f,
+      .scale = 1.f,
+      .relief_scale = 1.f
+  };
 
-  hmap::gpu::hydraulic_mcdonald(z,
-                                steps,
-                                seed,
-                                &sediment,
-                                &discharge,
-                                world_extent_km,
-                                z_scale_km,
-                                samples,
-                                maxage,
-                                lrate,
-                                time_step,
-                                rainfall,
-                                evap_rate,
-                                gravity,
-                                viscosity,
-                                bed_shear,
-                                crit_slope,
-                                settle_rate,
-                                thermal_rate,
-                                deposition_rate,
-                                suspension_rate,
-                                exit_slope);
+  hmap::gpu::hydraulic_mcdonald(z, steps, seed, params, &sediment, &discharge);
 
   // output
   {
@@ -86,28 +54,14 @@ int main(void)
 
   hmap::Array sediment_m, discharge_m;
 
+  std::vector<int> steps_per_level = {steps / 4, steps / 2, steps};
+
   hmap::gpu::hydraulic_mcdonald_multiscale(zm,
                                            seed,
                                            steps_per_level,
+                                           params,
                                            &sediment_m,
-                                           &discharge_m,
-                                           world_extent_km,
-                                           z_scale_km,
-                                           samples,
-                                           maxage,
-                                           lrate,
-                                           time_step,
-                                           rainfall,
-                                           evap_rate,
-                                           gravity,
-                                           viscosity,
-                                           bed_shear,
-                                           crit_slope,
-                                           settle_rate,
-                                           thermal_rate,
-                                           deposition_rate,
-                                           suspension_rate,
-                                           exit_slope);
+                                           &discharge_m);
 
   std::cout << "multiscale z min/max: " << zm.min() << " " << zm.max() << "\n";
   zm.to_png("ex_hydraulic_mcdonald3.png", hmap::Cmap::TERRAIN, true);
