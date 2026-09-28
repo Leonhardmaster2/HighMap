@@ -369,7 +369,7 @@ Array roughness(const Array &array, int ir)
   out = gpu::local_mean(out, ir);
   gpu::smooth_cpulse(out, ir);
 
-  extrapolate_borders(out, ir, /* sigma */ 0.f, /* vmin */ 0.f);
+  extrapolate_borders(out, ir / 2, /* sigma */ 0.f, /* vmin */ 0.f);
 
   return out;
 }
