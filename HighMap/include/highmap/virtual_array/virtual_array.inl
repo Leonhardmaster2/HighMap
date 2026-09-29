@@ -193,7 +193,8 @@ void distributed_tile_loop(const VirtualArray &ref_va,
   const int ny = ceil_div(ref_va.shape.y, ref_va.tile_shape.y);
   const int ntasks = nx * ny;
 
-  if (nthreads <= 0) nthreads = std::thread::hardware_concurrency();
+  if (nthreads <= 0)
+    nthreads = std::max(1u, std::thread::hardware_concurrency());
 
   nthreads = std::min(nthreads, ntasks);
 

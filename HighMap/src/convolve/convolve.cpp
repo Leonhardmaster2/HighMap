@@ -21,16 +21,26 @@ Array convolve1d_i(const Array &array, const std::vector<float> &kernel)
   if (!validate_non_empty(kernel, "Kernel")) return Array(array.shape);
 
   Array     array_out = Array(array.shape);
+  const int nx = array.shape.x;
+  const int ny = array.shape.y;
   const int nk = (int)kernel.size();
   const int i1 = nk / 2;
 
-  for (int p = 0; p < nk; p++)
+  // Array storage is row-major. Keep the row and kernel loops outside the
+  // contiguous x traversal so both input and output accesses stay cache
+  // friendly; the kernel loop remains in the same order for each output cell.
+  for (int j = 0; j < ny; ++j)
   {
-    for (int i = 0; i < array.shape.x; i++)
+    const int row_offset = j * nx;
+    for (int p = 0; p < nk; ++p)
     {
-      const int ii = std::clamp(i + p - i1, 0, array.shape.x - 1);
-      for (int j = 0; j < array.shape.y; j++)
-        array_out(i, j) += array(ii, j) * kernel[p];
+      const float weight = kernel[p];
+      for (int i = 0; i < nx; ++i)
+      {
+        const int ii = std::clamp(i + p - i1, 0, nx - 1);
+        array_out.vector[row_offset + i] +=
+            array.vector[row_offset + ii] * weight;
+      }
     }
   }
   return array_out;
@@ -42,17 +52,25 @@ Array convolve1d_j(const Array &array, const std::vector<float> &kernel)
   if (!validate_non_empty(kernel, "Kernel")) return Array(array.shape);
 
   Array     array_out = Array(array.shape);
+  const int nx = array.shape.x;
+  const int ny = array.shape.y;
   const int nk = (int)kernel.size();
   const int j1 = nk / 2;
 
-  for (int p = 0; p < nk; p++)
+  // Traverse complete rows so the row-major output and source rows are
+  // accessed contiguously. Hoisting jj also removes one clamp per pixel.
+  for (int j = 0; j < ny; ++j)
   {
-    for (int i = 0; i < array.shape.x; i++)
+    const int row_offset = j * nx;
+    for (int p = 0; p < nk; ++p)
     {
-      for (int j = 0; j < array.shape.y; j++)
+      const int jj = std::clamp(j + p - j1, 0, ny - 1);
+      const int source_offset = jj * nx;
+      const float weight = kernel[p];
+      for (int i = 0; i < nx; ++i)
       {
-        const int jj = std::clamp(j + p - j1, 0, array.shape.y - 1);
-        array_out(i, j) += array(i, jj) * kernel[p];
+        array_out.vector[row_offset + i] +=
+            array.vector[source_offset + i] * weight;
       }
     }
   }

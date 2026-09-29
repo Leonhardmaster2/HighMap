@@ -366,7 +366,8 @@ void VirtualArray::smooth_overlap_buffers()
       for (int p = 0; p < this->halo; p++)
         for (int q = 0; q < tile0.shape.y; q++)
         {
-          float r = float(p) / float(this->halo - 1);
+          float r = this->halo == 1 ? 0.5f
+                                    : float(p) / float(this->halo - 1);
           r = smoothstep5(r);
 
           int pbuf = tile0.shape.x - 2 * this->halo + p;
@@ -394,7 +395,8 @@ void VirtualArray::smooth_overlap_buffers()
       for (int p = 0; p < tile0.shape.x; p++)
         for (int q = 0; q < this->halo; q++)
         {
-          float r = float(q) / float(this->halo - 1);
+          float r = this->halo == 1 ? 0.5f
+                                    : float(q) / float(this->halo - 1);
           r = smoothstep5(r);
 
           int qbuf = tile0.shape.y - 2 * this->halo + q;

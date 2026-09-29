@@ -1045,7 +1045,7 @@ void smooth_flat(Array &array, int ir)
   const int          nk = 2 * ir + 1;
   std::vector<float> k(nk);
 
-  std::fill(k.begin(), k.end(), 1.f / (2.f * nk + 1.f));
+  std::fill(k.begin(), k.end(), 1.f / float(nk));
 
   // eventually convolve
   array = convolve1d_i(array, k);

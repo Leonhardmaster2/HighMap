@@ -105,3 +105,15 @@ TEST(SmoothCPulse_CPU_GPU, RandomBinaryFields)
     EXPECT_TRUE(assert_almost_equal(cpu, gpu, 1e-6f));
   }
 }
+
+TEST(SmoothFlat, PreservesConstantField)
+{
+  Array input = Array({{2, 2, 2, 2},
+                       {2, 2, 2, 2},
+                       {2, 2, 2, 2},
+                       {2, 2, 2, 2}});
+
+  smooth_flat(input, 1);
+
+  EXPECT_TRUE(assert_almost_equal(input, Array(input.shape, 2.f)));
+}

@@ -33,7 +33,10 @@ DiskSequentialTileStorage::~DiskSequentialTileStorage()
 
 std::unique_ptr<TileStorage> DiskSequentialTileStorage::clone() const
 {
-  return std::make_unique<DiskSequentialTileStorage>(*this);
+  // A clone owns a fresh directory. Data is copied by VirtualArray::clone or
+  // copy_from when requested; sharing root_dir would let either destructor
+  // remove the other storage's files.
+  return std::make_unique<DiskSequentialTileStorage>();
 }
 
 Array &DiskSequentialTileStorage::get_tile(const TileRegion &region)

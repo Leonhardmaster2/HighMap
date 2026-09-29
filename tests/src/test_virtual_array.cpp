@@ -2,6 +2,7 @@
 #include "highmap/primitives.hpp"
 #include "highmap/virtual_array/virtual_array.hpp"
 
+#include <cmath>
 #include <gtest/gtest.h>
 
 using namespace hmap;
@@ -243,4 +244,32 @@ TEST(VirtualArrayTest, MemoryFootprintTracking)
     EXPECT_EQ(va.live_tile_count(), 0);
     EXPECT_EQ(va.live_memory_bytes(), 0);
   }
+}
+
+TEST(VirtualArrayTest, SequentialCloneOwnsStorage)
+{
+  const glm::ivec2 shape{32, 32};
+  ComputeMode      cm{.mode = ForEachMode::VA_SEQUENTIAL};
+
+  VirtualArray source(shape, {16, 16}, 2, StorageMode::VA_DISK_SEQUENTIAL);
+  source.fill(3.f, cm);
+
+  auto clone = source.clone(cm, /*deep_copy=*/true);
+  clone->set(0, 0, 9.f);
+
+  EXPECT_FLOAT_EQ(source.get(0, 0), 3.f);
+  EXPECT_FLOAT_EQ(clone->get(0, 0), 9.f);
+}
+
+TEST(VirtualArrayTest, SingleCellOverlapRemainsFinite)
+{
+  const glm::ivec2 shape{32, 8};
+  ComputeMode      cm{.mode = ForEachMode::VA_SEQUENTIAL};
+  VirtualArray     va(shape, {16, 8}, 1, StorageMode::VA_RAM);
+  va.fill(1.f, cm);
+
+  va.smooth_overlap_buffers();
+
+  const Array result = va.to_array(cm);
+  for (float value : result.vector) EXPECT_TRUE(std::isfinite(value));
 }
