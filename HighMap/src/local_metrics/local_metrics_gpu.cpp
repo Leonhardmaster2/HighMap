@@ -7,6 +7,7 @@
 #include "highmap/internal/opencl_run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/internal/validation.hpp"
@@ -41,6 +42,9 @@ Array local_max_disk(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
 
+  if (metal::is_available())
+    return metal::local_max(array, ir, MinMaxKernel::DISK);
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_max");
@@ -60,6 +64,9 @@ Array local_max_disk(const Array &array, int ir)
 Array local_max_octagon(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
+
+  if (metal::is_available())
+    return metal::local_max(array, ir, MinMaxKernel::OCTAGON);
 
   // compute axis-aligned (a) and diagonal (b) decomposition radii
   const int b = static_cast<int>(
@@ -110,6 +117,9 @@ Array local_max_octagon(const Array &array, int ir)
 Array local_max_square(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
+
+  if (metal::is_available())
+    return metal::local_max(array, ir, MinMaxKernel::SQUARE);
 
   Array array_out = array;
 
@@ -172,6 +182,9 @@ Array local_min_disk(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
 
+  if (metal::is_available())
+    return metal::local_min(array, ir, MinMaxKernel::DISK);
+
   Array out(array.shape);
 
   auto run = clwrapper::Run("local_min");
@@ -191,6 +204,9 @@ Array local_min_disk(const Array &array, int ir)
 Array local_min_octagon(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
+
+  if (metal::is_available())
+    return metal::local_min(array, ir, MinMaxKernel::OCTAGON);
 
   // compute axis-aligned (a) and diagonal (b) decomposition radii
   const int b = static_cast<int>(
@@ -241,6 +257,9 @@ Array local_min_octagon(const Array &array, int ir)
 Array local_min_square(const Array &array, int ir)
 {
   if (!validate_non_empty(array)) return Array();
+
+  if (metal::is_available())
+    return metal::local_min(array, ir, MinMaxKernel::SQUARE);
 
   Array array_out = array;
 

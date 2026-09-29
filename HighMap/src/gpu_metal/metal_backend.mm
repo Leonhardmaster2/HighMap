@@ -114,6 +114,15 @@ struct LocalExtremaParams
   int ir;
 };
 
+struct MinMaxPassParams
+{
+  int nx;
+  int ny;
+  int ir;
+  int pass;
+  int is_max;
+};
+
 struct BinarySmoothParams
 {
   int nx;
@@ -191,7 +200,6 @@ struct SmoothCpulseParams
   int ny;
   int ir;
   int pass;
-  float weight_sum;
 };
 
 struct NormalizeParams
@@ -440,6 +448,23 @@ id<MTLBuffer> zero_buffer(size_t count)
   return buffer;
 }
 
+// Output buffer for kernels that overwrite every element; skips the memset
+// that zero_buffer pays for (tens of ms at 4096^2).
+id<MTLBuffer> output_buffer(size_t count)
+{
+  const auto allocation_start = Clock::now();
+  id<MTLBuffer> buffer = [context().device
+      newBufferWithLength:count * sizeof(float)
+                  options:MTLResourceStorageModeShared];
+  if (!buffer) throw std::runtime_error("Metal output buffer allocation failed");
+  current_stats.allocation_ms += elapsed_ms(allocation_start);
+  ++current_stats.buffer_allocations;
+  current_stats.bytes_allocated += count * sizeof(float);
+  current_stats.peak_resident_bytes = std::max(
+      current_stats.peak_resident_bytes, current_stats.bytes_allocated);
+  return buffer;
+}
+
 struct DispatchShape
 {
   NSUInteger width;
@@ -614,6 +639,26 @@ void set_bytes(id<MTLComputeCommandEncoder> encoder,
                NSUInteger index)
 {
   [encoder setBytes:bytes length:size atIndex:index];
+}
+
+// Bind a small read-only float table. setBytes is limited to 4 KB, so larger
+// tables (e.g. very wide blur radii) fall back to a transient shared buffer.
+void set_float_table(id<MTLComputeCommandEncoder> encoder,
+                     const std::vector<float>    &values,
+                     NSUInteger                   index)
+{
+  const size_t size = values.size() * sizeof(float);
+  if (size <= 4096)
+  {
+    [encoder setBytes:values.data() length:size atIndex:index];
+    return;
+  }
+  id<MTLBuffer> buffer =
+      [context().device newBufferWithBytes:values.data()
+                                    length:size
+                                   options:MTLResourceStorageModeShared];
+  if (!buffer) throw std::runtime_error("Metal could not allocate a weight table");
+  [encoder setBuffer:buffer offset:0 atIndex:index];
 }
 
 void require_ready()
@@ -1262,6 +1307,92 @@ Array morphological_gradient(const Array &array, int ir)
   wait_for_completion(command_buffer);
   read_buffer(result, output.vector);
   return output;
+}
+
+namespace
+{
+
+Array local_extrema(const Array &array,
+                    int          ir,
+                    MinMaxKernel kernel_type,
+                    bool         is_max)
+{
+  begin_operation();
+  require_ready();
+  check_shape_2d(array.shape);
+  if (ir <= 0) return array;
+
+  struct Pass
+  {
+    const char *kernel;
+    int         ir;
+    int         pass;
+  };
+  constexpr const char *line = "local_extrema_line";
+  std::vector<Pass>     passes;
+  switch (kernel_type)
+  {
+  case MinMaxKernel::DISK: passes = {{"local_extrema_disk", ir, 0}}; break;
+  case MinMaxKernel::SQUARE: passes = {{line, ir, 0}, {line, ir, 1}}; break;
+  case MinMaxKernel::OCTAGON:
+  {
+    // Same axis-aligned (a) / diagonal (b) split as the OpenCL wrapper.
+    const int b = static_cast<int>(
+        std::round((std::sqrt(2.f) - 1.f) * static_cast<float>(ir)));
+    const int a = ir - b;
+    passes = {{line, a, 0}, {line, a, 1}};
+    if (b > 0)
+    {
+      passes.push_back({line, b, 2});
+      passes.push_back({line, b, 3});
+    }
+    break;
+  }
+  default: throw std::invalid_argument("Unknown MinMaxKernel type");
+  }
+
+  Array         output(array.shape);
+  id<MTLBuffer> source = input_buffer(array.vector);
+  id<MTLBuffer> target = output_buffer(output.vector.size());
+  id<MTLCommandBuffer> command_buffer = make_command_buffer();
+  const auto           encoding_start = Clock::now();
+
+  // All passes stay on the GPU in one command buffer; the OpenCL octagon
+  // path round-trips through the host between each of its four passes.
+  for (const Pass &pass : passes)
+  {
+    id<MTLComputePipelineState> pipeline = context().pipeline(pass.kernel);
+    MinMaxPassParams params{array.shape.x,
+                            array.shape.y,
+                            pass.ir,
+                            pass.pass,
+                            is_max ? 1 : 0};
+    id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
+    [encoder setComputePipelineState:pipeline];
+    [encoder setBuffer:source offset:0 atIndex:0];
+    [encoder setBuffer:target offset:0 atIndex:1];
+    set_bytes(encoder, &params, sizeof(params), 2);
+    dispatch(encoder, pipeline, params.nx, params.ny, pass.kernel);
+    [encoder endEncoding];
+    std::swap(source, target);
+  }
+
+  record_encoding(encoding_start);
+  wait_for_completion(command_buffer);
+  read_buffer(source, output.vector);
+  return output;
+}
+
+} // namespace
+
+Array local_max(const Array &array, int ir, MinMaxKernel kernel_type)
+{
+  return local_extrema(array, ir, kernel_type, true);
+}
+
+Array local_min(const Array &array, int ir, MinMaxKernel kernel_type)
+{
+  return local_extrema(array, ir, kernel_type, false);
 }
 
 Array noise(NoiseType     noise_type,
@@ -2172,18 +2303,23 @@ DeviceArray DeviceSession::smooth_cpulse(DeviceArray array, int ir)
   const glm::ivec2 shape = array.state_->shape;
   const StorageMode mode = array.state_->storage;
   const std::size_t bytes = array.state_->byte_size;
-  float weight_sum = 0.f;
-  for (int k = -ir; k <= ir; ++k)
+  // Same normalized kernel as gpu::smooth_cpulse (OpenCL) and the CPU path.
+  const int          nk = 2 * ir + 1;
+  std::vector<float> weights(nk);
+  float              weight_sum = 0.f;
+  for (int i = 0; i < nk; ++i)
   {
-    const float d = std::abs(static_cast<float>(k)) / static_cast<float>(ir);
-    weight_sum += std::exp(-0.5f * d * d * 9.f);
+    const float d = std::abs(static_cast<float>(i - ir)) / static_cast<float>(ir);
+    weights[i] = std::exp(-0.5f * d * d * 9.f);
+    weight_sum += weights[i];
   }
+  for (float &w : weights) w /= weight_sum;
 
   id<MTLBuffer> first = acquire_session_buffer(state_, bytes, mode);
   id<MTLBuffer> second = acquire_session_buffer(state_, bytes, mode);
   id<MTLComputePipelineState> pipeline =
       context().pipeline("smooth_cpulse", &state_->stats);
-  SmoothCpulseParams params{shape.x, shape.y, ir, 0, weight_sum};
+  SmoothCpulseParams params{shape.x, shape.y, ir, 0};
   const auto encoding_start = Clock::now();
   id<MTLComputeCommandEncoder> encoder =
       compute_encoder(state_->command_buffer, &state_->stats);
@@ -2191,6 +2327,7 @@ DeviceArray DeviceSession::smooth_cpulse(DeviceArray array, int ir)
   [encoder setBuffer:array.state_->buffer offset:0 atIndex:0];
   [encoder setBuffer:first offset:0 atIndex:1];
   set_bytes(encoder, &params, sizeof(params), 2);
+  set_float_table(encoder, weights, 3);
   dispatch(encoder, pipeline, shape.x, shape.y, "smooth_cpulse");
   [encoder endEncoding];
 
@@ -2200,6 +2337,7 @@ DeviceArray DeviceSession::smooth_cpulse(DeviceArray array, int ir)
   [encoder setBuffer:first offset:0 atIndex:0];
   [encoder setBuffer:second offset:0 atIndex:1];
   set_bytes(encoder, &params, sizeof(params), 2);
+  set_float_table(encoder, weights, 3);
   dispatch(encoder, pipeline, shape.x, shape.y, "smooth_cpulse");
   [encoder endEncoding];
   record_encoding(encoding_start, &state_->stats);

@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <algorithm>
 #include <numeric>
+#include <string>
 #include <utility>
 
 #include <gtest/gtest.h>
@@ -96,6 +97,20 @@ Array opencl_advection(const Array &z,
   return out;
 }
 
+// Upstream's thermal kernels (OpenCL apply_boundaries_io) copy the adjacent
+// interior value into each border cell on every pass.
+bool apply_reference_boundary(const Array &z, Array &next, int i, int j)
+{
+  const int nx = z.shape.x;
+  const int ny = z.shape.y;
+  if (i == 0) next(i, j) = z(1, j);
+  else if (i == nx - 1) next(i, j) = z(nx - 2, j);
+  else if (j == 0) next(i, j) = z(i, 1);
+  else if (j == ny - 1) next(i, j) = z(i, ny - 2);
+  else return false;
+  return true;
+}
+
 Array thermal_reference(Array z, const Array &talus, int iterations)
 {
   for (int iteration = 0; iteration < iterations; ++iteration)
@@ -104,16 +119,12 @@ Array thermal_reference(Array z, const Array &talus, int iterations)
     for (int j = 0; j < z.shape.y; ++j)
       for (int i = 0; i < z.shape.x; ++i)
       {
-        if (i == 0 || i == z.shape.x - 1 || j == 0 || j == z.shape.y - 1)
-        {
-          next(i, j) = z(i, j);
-          continue;
-        }
+        if (apply_reference_boundary(z, next, i, j)) continue;
 
         const int di[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
         const int dj[8] = {0, 1, -1, 0, -1, 1, -1, 1};
         const float distance[8] = {
-            1.f, 1.f, 1.f, 1.f, 1.414f, 1.414f, 1.414f, 1.414f};
+            1.f, 1.f, 1.f, 1.f, 1.41421356f, 1.41421356f, 1.41421356f, 1.41421356f};
         const float value = z(i, j);
         float amount = 0.f;
         for (int k = 0; k < 8; ++k)
@@ -143,16 +154,12 @@ Array thermal_ridge_reference(Array z, const Array &talus, int iterations)
     for (int j = 0; j < z.shape.y; ++j)
       for (int i = 0; i < z.shape.x; ++i)
       {
-        if (i == 0 || i == z.shape.x - 1 || j == 0 || j == z.shape.y - 1)
-        {
-          next(i, j) = z(i, j);
-          continue;
-        }
+        if (apply_reference_boundary(z, next, i, j)) continue;
 
         const int di[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
         const int dj[8] = {0, 1, -1, 0, -1, 1, -1, 1};
         const float distance[8] = {
-            1.f, 1.f, 1.f, 1.f, 1.414f, 1.414f, 1.414f, 1.414f};
+            1.f, 1.f, 1.f, 1.f, 1.41421356f, 1.41421356f, 1.41421356f, 1.41421356f};
         const float value = z(i, j);
         float sum = 0.f;
         float slope_max = 0.f;
@@ -201,6 +208,34 @@ void expect_finite_and_close(const Array &actual,
   ::testing::Test::RecordProperty("max_abs_error", max_abs);
   ::testing::Test::RecordProperty("mean_abs_error", sum_abs / count);
   ::testing::Test::RecordProperty("rmse", std::sqrt(sum_squared / count));
+}
+
+// Direct OpenCL ping-pong reference for the thermal family. Each pass goes
+// through the host so the helper stays independent of the routed wrappers.
+Array opencl_thermal_kernel(const std::string &kernel,
+                            Array              z,
+                            const Array       &talus,
+                            int                iterations)
+{
+  for (int it = 0; it < iterations; ++it)
+  {
+    Array out(z.shape);
+    clwrapper::Run run(kernel);
+    run.bind_buffer<float>("z_in", z.vector);
+    run.bind_buffer<float>("z_out", out.vector);
+    run.bind_buffer<float>("talus",
+                           const_cast<std::vector<float> &>(talus.vector));
+    if (kernel == "thermal")
+      run.bind_arguments(z.shape.x, z.shape.y, it);
+    else
+      run.bind_arguments(z.shape.x, z.shape.y);
+    run.write_buffer("z_in");
+    run.write_buffer("talus");
+    run.execute({z.shape.x, z.shape.y});
+    run.read_buffer("z_out");
+    z = std::move(out);
+  }
+  return z;
 }
 
 bool opencl_available()
@@ -851,6 +886,39 @@ TEST_F(MetalBackend, ThermalMatchesDeterministicReference)
 
   hmap::gpu::metal::thermal(actual, talus, 4);
   expect_finite_and_close(actual, expected, 1e-5f);
+}
+
+TEST_F(MetalBackend, ThermalMatchesOpenCLKernel)
+{
+  if (!opencl_available())
+    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
+
+  const glm::ivec2 shape = {37, 23};
+  Array source(shape);
+  fill_field(source);
+  Array talus(shape);
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+      talus(i, j) = 0.005f + 0.0005f * float((i + 2 * j) % 7);
+
+  for (const int iterations : {1, 2, 9})
+  {
+    Array expected =
+        opencl_thermal_kernel("thermal", source, talus, iterations);
+    hmap::extrapolate_borders(expected);
+
+    Array actual = source;
+    hmap::gpu::thermal(actual, talus, iterations);
+    expect_finite_and_close(actual, expected, 2e-5f);
+
+    Array expected_ridge =
+        opencl_thermal_kernel("thermal_ridge", source, talus, iterations);
+    hmap::extrapolate_borders(expected_ridge);
+
+    Array actual_ridge = source;
+    hmap::gpu::thermal_ridge(actual_ridge, talus, iterations);
+    expect_finite_and_close(actual_ridge, expected_ridge, 2e-5f);
+  }
 }
 
 TEST_F(MetalBackend, BoundaryAndFlatGradientStress)

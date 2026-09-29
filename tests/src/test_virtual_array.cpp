@@ -143,9 +143,7 @@ TEST(VirtualArrayTest, CloneAndCopyFrom)
   EXPECT_EQ(cloned->shape, va.shape);
   EXPECT_NEAR(cloned->mean(cm), 12.34f, 1e-4f);
 
-  VirtualArray va_copy(shape, {16, 16}, 2, StorageMode::VA_RAM);
-  va_copy.copy_from(va, cm, /*copy_src_data=*/true);
-  EXPECT_NEAR(va_copy.mean(cm), 12.34f, 1e-4f);
+  // Not named va_copy: that is a <stdarg.h> macro on Apple Clang.
   VirtualArray copied(shape, {16, 16}, 2, StorageMode::VA_RAM);
   copied.copy_from(va, cm, /*copy_src_data=*/true);
   EXPECT_NEAR(copied.mean(cm), 12.34f, 1e-4f);

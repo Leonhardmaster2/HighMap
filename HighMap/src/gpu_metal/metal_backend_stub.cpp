@@ -317,6 +317,16 @@ Array morphological_gradient(const Array &, int)
   unavailable();
 }
 
+Array local_max(const Array &, int, MinMaxKernel)
+{
+  unavailable();
+}
+
+Array local_min(const Array &, int, MinMaxKernel)
+{
+  unavailable();
+}
+
 Array maximum_smooth(const Array &, const Array &, float)
 {
   unavailable();

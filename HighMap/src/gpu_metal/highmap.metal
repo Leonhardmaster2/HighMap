@@ -95,7 +95,6 @@ struct SmoothCpulseParams
   int ny;
   int ir;
   int pass;
-  float weight_sum;
 };
 
 struct NormalizeParams
@@ -480,6 +479,70 @@ kernel void minimum_smooth(device const float *array1 [[buffer(0)]],
   output[i] = smooth_minimum(array1[i], array2[i], p.k);
 }
 
+struct MinMaxPassParams
+{
+  int nx;
+  int ny;
+  int ir;
+  int pass;   // line passes: 0 = x, 1 = y, 2 = (+1, +1), 3 = (+1, -1)
+  int is_max; // 1 = local maximum, 0 = local minimum
+};
+
+// Disk neighbourhood extremum. Out-of-grid samples are clamped to the edge,
+// which is equivalent to OpenCL's "skip outside cells" for min/max because a
+// clamped offset never leaves the disk. Each row visits only its disk span.
+kernel void local_extrema_disk(device const float        *input [[buffer(0)]],
+                               device float              *output [[buffer(1)]],
+                               constant MinMaxPassParams &p [[buffer(2)]],
+                               uint2                      gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int x = int(gid.x);
+  const int y = int(gid.y);
+  const int r2 = p.ir * p.ir;
+  float     v = input[index_at(x, y, p.nx)];
+
+  for (int dy = -p.ir; dy <= p.ir; ++dy)
+  {
+    const int rem = r2 - dy * dy;
+    int       w = int(sqrt(float(rem)));
+    while (w * w > rem) --w;
+    while ((w + 1) * (w + 1) <= rem) ++w;
+
+    const uint row = uint(clamp(y + dy, 0, p.ny - 1)) * uint(p.nx);
+    const int  x0 = max(x - w, 0);
+    const int  x1 = min(x + w, p.nx - 1);
+    if (p.is_max)
+      for (int i = x0; i <= x1; ++i) v = max(v, input[row + uint(i)]);
+    else
+      for (int i = x0; i <= x1; ++i) v = min(v, input[row + uint(i)]);
+  }
+  output[index_at(x, y, p.nx)] = v;
+}
+
+// One 1D pass of the separable square / octagon decompositions used by the
+// OpenCL local_{max,min}_{square,octagon} kernels (clamp-to-edge sampling).
+kernel void local_extrema_line(device const float        *input [[buffer(0)]],
+                               device float              *output [[buffer(1)]],
+                               constant MinMaxPassParams &p [[buffer(2)]],
+                               uint2                      gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int x = int(gid.x);
+  const int y = int(gid.y);
+  const int sx = p.pass == 1 ? 0 : 1;
+  const int sy = p.pass == 0 ? 0 : (p.pass == 3 ? -1 : 1);
+  float     v = input[index_at(x, y, p.nx)];
+
+  if (p.is_max)
+    for (int k = -p.ir; k <= p.ir; ++k)
+      v = max(v, load_clamped(input, x + k * sx, y + k * sy, p.nx, p.ny));
+  else
+    for (int k = -p.ir; k <= p.ir; ++k)
+      v = min(v, load_clamped(input, x + k * sx, y + k * sy, p.nx, p.ny));
+  output[index_at(x, y, p.nx)] = v;
+}
+
 kernel void morphological_gradient(device const float          *input [[buffer(0)]],
                                    device float                *output [[buffer(1)]],
                                    constant LocalExtremaParams &p [[buffer(2)]],
@@ -589,24 +652,32 @@ kernel void gabor_wave_fbm(device float       *output [[buffer(0)]],
       fseed);
 }
 
+// Separable Gaussian pass. The normalized 1D weights (2 * ir + 1 taps) are
+// computed once on the host, exactly as the OpenCL/CPU paths do, instead of
+// evaluating exp() for every tap of every pixel.
 kernel void smooth_cpulse(device const float *input [[buffer(0)]],
                           device float       *output [[buffer(1)]],
                           constant SmoothCpulseParams &p [[buffer(2)]],
+                          constant float     *weights [[buffer(3)]],
                           uint2 gid [[thread_position_in_grid]])
 {
   if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int x0 = int(gid.x);
+  const int y0 = int(gid.y);
   float value = 0.f;
-  for (int k = -p.ir; k <= p.ir; ++k)
+  if (p.pass == 0)
   {
-    int x = p.pass == 0 ? int(gid.x) + k : int(gid.x);
-    int y = p.pass == 0 ? int(gid.y) : int(gid.y) + k;
-    x = clamp(x, 0, p.nx - 1);
-    y = clamp(y, 0, p.ny - 1);
-    float d = float(abs(k)) / float(p.ir);
-    float w = exp(-0.5f * d * d * 9.f) / p.weight_sum;
-    value += input[index_at(x, y, p.nx)] * w;
+    const uint row = uint(y0) * uint(p.nx);
+    for (int k = -p.ir; k <= p.ir; ++k)
+      value += input[row + uint(clamp(x0 + k, 0, p.nx - 1))] * weights[k + p.ir];
   }
-  output[index_at(int(gid.x), int(gid.y), p.nx)] = value;
+  else
+  {
+    for (int k = -p.ir; k <= p.ir; ++k)
+      value += input[index_at(x0, clamp(y0 + k, 0, p.ny - 1), p.nx)] *
+               weights[k + p.ir];
+  }
+  output[index_at(x0, y0, p.nx)] = value;
 }
 
 kernel void normalize(device const float *input [[buffer(0)]],
@@ -721,6 +792,41 @@ kernel void advection_warp_texture(
   output.write(float4(value), uint2(gid.x, gid.y));
 }
 
+// Mirrors OpenCL apply_boundaries_io: each border cell takes the value of its
+// adjacent interior cell (x takes precedence over y at corners). Returns true
+// when the cell was a border cell and has been written. Indices are clamped so
+// degenerate 1- or 2-cell grids stay in bounds.
+inline bool apply_boundaries_io(device const float *z_in,
+                                device float       *z_out,
+                                int                 x,
+                                int                 y,
+                                int                 nx,
+                                int                 ny)
+{
+  const uint index = index_at(x, y, nx);
+  if (x == 0)
+  {
+    z_out[index] = z_in[index_at(min(1, nx - 1), y, nx)];
+    return true;
+  }
+  if (x == nx - 1)
+  {
+    z_out[index] = z_in[index_at(max(nx - 2, 0), y, nx)];
+    return true;
+  }
+  if (y == 0)
+  {
+    z_out[index] = z_in[index_at(x, min(1, ny - 1), nx)];
+    return true;
+  }
+  if (y == ny - 1)
+  {
+    z_out[index] = z_in[index_at(x, max(ny - 2, 0), nx)];
+    return true;
+  }
+  return false;
+}
+
 inline float thermal_exchange(float self, float other, float distance, float talus)
 {
   float max_difference = distance * talus;
@@ -744,13 +850,9 @@ kernel void thermal_pass(device const float *z_in [[buffer(0)]],
   int x = int(gid.x);
   int y = int(gid.y);
   uint index = index_at(x, y, p.nx);
-  if (x == 0 || x == p.nx - 1 || y == 0 || y == p.ny - 1)
-  {
-    z_out[index] = z_in[index];
-    return;
-  }
+  if (apply_boundaries_io(z_in, z_out, x, y, p.nx, p.ny)) return;
 
-  constexpr float diagonal = 1.414f;
+  constexpr float diagonal = 1.41421356f;
   const int dx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
   const int dy[8] = {0, 1, -1, 0, -1, 1, -1, 1};
   const float distance[8] = {1.f, 1.f, 1.f, 1.f, diagonal, diagonal, diagonal, diagonal};
@@ -774,13 +876,9 @@ kernel void thermal_ridge_pass(device const float *z_in [[buffer(0)]],
   int x = int(gid.x);
   int y = int(gid.y);
   uint index = index_at(x, y, p.nx);
-  if (x == 0 || x == p.nx - 1 || y == 0 || y == p.ny - 1)
-  {
-    z_out[index] = z_in[index];
-    return;
-  }
+  if (apply_boundaries_io(z_in, z_out, x, y, p.nx, p.ny)) return;
 
-  constexpr float diagonal = 1.414f;
+  constexpr float diagonal = 1.41421356f;
   const int dx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
   const int dy[8] = {0, 1, -1, 0, -1, 1, -1, 1};
   const float distance[8] = {1.f, 1.f, 1.f, 1.f, diagonal, diagonal, diagonal, diagonal};

@@ -11,6 +11,7 @@
 
 #include "highmap/array.hpp"
 #include "highmap/functions.hpp"
+#include "highmap/local_metrics.hpp"
 
 #ifndef HIGHMAP_HAS_METAL
 #define HIGHMAP_HAS_METAL 0
@@ -303,6 +304,21 @@ Array gradient_norm(const Array &array);
 
 /** @brief Compute a morphological gradient with the staged Metal backend. */
 Array morphological_gradient(const Array &array, int ir);
+
+/**
+ * @brief Local maximum over a DISK, SQUARE or OCTAGON footprint.
+ *
+ * Matches gpu::local_max_{disk,square,octagon}; every separable pass stays on
+ * the device in a single command buffer. ir <= 0 returns the input.
+ */
+Array local_max(const Array &array,
+                int          ir,
+                MinMaxKernel kernel_type = MinMaxKernel::DISK);
+
+/** @brief Local minimum counterpart of local_max(). */
+Array local_min(const Array &array,
+                int          ir,
+                MinMaxKernel kernel_type = MinMaxKernel::DISK);
 
 Array maximum_smooth(const Array &array1, const Array &array2, float k);
 

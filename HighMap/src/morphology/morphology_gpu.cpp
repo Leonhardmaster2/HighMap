@@ -9,6 +9,7 @@
 #include "highmap/internal/opencl_run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/boundary.hpp"
 #include "highmap/filters.hpp"
 #include "highmap/internal/validation.hpp"
@@ -106,6 +107,11 @@ Array morphological_gradient(const Array &array,
                              MinMaxKernel kernel_type)
 {
   if (!validate_non_empty(array)) return Array();
+
+  // Single fused max - min pass on Metal (the vmin shift below cancels out).
+  if (kernel_type == MinMaxKernel::DISK && metal::is_available())
+    return metal::morphological_gradient(array, std::max(ir, 0));
+
   float vmin = array.min();
   return gpu::dilation(array - vmin, ir, kernel_type) -
          gpu::erosion(array - vmin, ir, kernel_type);

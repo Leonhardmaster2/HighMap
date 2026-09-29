@@ -9,6 +9,7 @@
 #include "highmap/array.hpp"
 #include "highmap/curvature.hpp"
 #include "highmap/filters.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/gradient.hpp"
 #include "highmap/internal/validation.hpp"
 #include "highmap/kernels.hpp"
@@ -511,6 +512,14 @@ void shrink(Array       &array,
 void smooth_cpulse(Array &array, int ir)
 {
   if (!validate_non_empty(array)) return;
+
+  if (metal::is_available())
+  {
+    // ir <= 0 is the identity on the Metal path (the OpenCL weight table is
+    // 0/0 there).
+    if (ir > 0) array = metal::smooth_cpulse(array, ir);
+    return;
+  }
 
   // define kernel
   const int          nk = 2 * ir + 1;
