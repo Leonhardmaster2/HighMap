@@ -1,22 +1,28 @@
 # HighMap macOS / Apple Silicon current state
 
-Date: 2026-09-04
+Date: 2026-09-29
 
 ## Repository state
 
 ```text
 Repository: Leonhardmaster2/HighMap
 Branch: feature/apple-metal-backend
-Upstream base: upstream/dev at c63c44b16e4ffa0e73f035999009d42f83f8a6dd
-Published implementation baseline validated from a clean clone: 4350fbb819c5f9106de76a538e372945a1cbe749
-Phase 4 source/docs are recorded on top of that historical baseline; the final tip is recorded in the release audit and push report.
+Upstream base: upstream/dev at 7f439892f (merged, see UPSTREAM_SYNC_2026-09-29.md)
+Pre-sync tip: backup/apple-metal-pre-sync-2026-09-29
 ```
 
-The Phase 1–8 Metal implementation was rebased onto current upstream `dev` without a feature-range merge commit. HighMap is standalone; no Hesiod changes were made.
+The 2026-09-29 sync merged 103 upstream commits and then re-optimized the
+macOS backend: the thermal kernels were aligned with upstream's new border rule,
+Metal routes were added for `smooth_cpulse`, `local_max`/`local_min`
+(DISK/SQUARE/OCTAGON), `morphological_gradient` and `noise_fbm`, and the
+synchronous wrappers now reuse their buffers. The sections below still
+describe the backend surface and build options. The current test matrix and
+timings are in `UPSTREAM_SYNC_2026-09-29.md`; older numbers further down are
+historical Phase 4 evidence.
 
 ## Backend surface
 
-The explicit Metal API provides capability queries, synchronous wrappers, and the advanced resident `DeviceSession`/`DeviceArray` API. Current resident coverage includes generated noise, gradient, smooth extrema, morphology, normalization, spectral equalization, advection, thermal/thermal-ridge, border extrapolation, linear combination, Gabor-wave fBm, and virtual-pipes chains. Public `hmap::gpu` wrappers continue to prefer the established GPU route and fall back to OpenCL when native Metal is unavailable.
+The explicit Metal API provides capability queries, synchronous wrappers, and the advanced resident `DeviceSession`/`DeviceArray` API. Current resident coverage includes generated noise, gradient, smooth extrema, morphology, normalization, spectral equalization, advection, thermal/thermal-ridge, border extrapolation, linear combination, Gabor-wave fBm, and virtual-pipes chains. Public `hmap::gpu` wrappers with a native kernel (`noise`, `noise_fbm`, `smooth_cpulse`, `local_max`/`local_min` and the morphology built on them, `morphological_gradient`, `advection_warp`, `thermal` and `thermal_ridge` without bedrock or deposition outputs, `hydraulic_vpipes`) dispatch to Metal when it is available and fall back to OpenCL otherwise.
 
 Resident sessions keep intermediate arrays on the device and expose upload/readback, finish, submit, completed-resource adoption, storage modes, and execution statistics. Transfer counters now report actual host copies rather than Metal-internal blits.
 
