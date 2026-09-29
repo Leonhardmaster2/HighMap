@@ -46,19 +46,27 @@ encode on those buffers directly instead of going through a `DeviceSession`.
 An 8-thread stress test (`MetalRoutes.ConcurrentSyncCallsShareBufferCacheSafely`)
 passes 30/30 repeated runs.
 
-Timings from a direct probe, Apple M3 / 8 GB, radius 16, median of the later
-repetitions. The host was swapping (~4 GB), so absolute numbers are noisy.
+`highmap_benchmarks --benchmark_filter=BM_Route_ --benchmark_repetitions=5`,
+median wall time, radius 16, Apple M3 / 8 GB, Release. Each call includes
+upload and readback. The OpenCL side runs the upstream host code (including
+its host round trips); the Metal side calls the public `hmap::gpu` wrapper.
 
-| Operation | OpenCL | Metal before this sync | Metal now |
-|---|---:|---:|---:|
-| `smooth_cpulse` 2048² | 28 ms | ~12 ms | ~7 ms |
-| `smooth_cpulse` 4096² | 111 ms | ~45 ms | ~21–28 ms |
-| `local_max` OCTAGON 2048² | 46 ms | (OpenCL only) | ~8 ms |
-| `local_max` OCTAGON 4096² | 148 ms | (OpenCL only) | ~25 ms |
-| `local_max` DISK 2048² | 172 ms | (OpenCL only) | ~61 ms |
+| Operation | Size | OpenCL | Metal | Speed-up |
+|---|---|---:|---:|---:|
+| `smooth_cpulse` | 1024² | 9.08 ms | 3.18 ms | 2.9× |
+| | 2048² | 22.59 ms | 5.36 ms | 4.2× |
+| | 4096² | 78.86 ms | 19.93 ms | 4.0× |
+| `local_max` DISK | 1024² | 20.61 ms | 9.06 ms | 2.3× |
+| | 2048² | 83.24 ms | 33.48 ms | 2.5× |
+| | 4096² | 331.06 ms | 132.62 ms | 2.5× |
+| `local_max` OCTAGON | 1024² | 8.17 ms | 1.53 ms | 5.3× |
+| | 2048² | 24.06 ms | 5.48 ms | 4.4× |
+| | 4096² | 92.79 ms | 20.43 ms | 4.5× |
 
-`benchmarks/src/bm_apple_routes.cpp` reproduces the OpenCL-vs-Metal
-comparison (`--benchmark_filter=BM_Route_`).
+Before buffer reuse, a direct probe measured sync Metal `smooth_cpulse` at
+~12 ms (2048²) and ~45 ms (4096²).
+
+The benchmarks live in `benchmarks/src/bm_apple_routes.cpp`.
 
 ## Test matrix (Release, Apple M3)
 
