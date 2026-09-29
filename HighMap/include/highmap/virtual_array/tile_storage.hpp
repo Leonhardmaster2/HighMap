@@ -98,6 +98,10 @@ public:
   };
 
 private:
+  // Tile workers in VA_DISTRIBUTED mode call get_tile concurrently; the first
+  // access to a tile inserts it, so the map needs the same guard as the LRU
+  // storages. References to mapped values stay valid across rehashing.
+  mutable std::mutex                              mutex;
   std::unordered_map<TileKey, Array, TileKeyHash> tiles;
 };
 

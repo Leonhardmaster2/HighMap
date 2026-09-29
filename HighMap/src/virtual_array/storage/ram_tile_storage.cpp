@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <limits>
 #include <memory>
+#include <mutex>
 #include <utility>
 
 #include "highmap/array.hpp"
@@ -17,11 +18,16 @@ namespace hmap
 
 std::unique_ptr<TileStorage> RamTileStorage::clone() const
 {
-  return std::make_unique<RamTileStorage>(*this);
+  auto                        copy = std::make_unique<RamTileStorage>();
+  std::lock_guard<std::mutex> lock(this->mutex);
+  copy->tiles = this->tiles;
+  return copy;
 }
 
 Array &RamTileStorage::get_tile(const TileRegion &region)
 {
+  std::lock_guard<std::mutex> lock(this->mutex);
+
   auto it = tiles.find(region.key);
   if (it != tiles.end()) return it->second;
 
@@ -43,12 +49,14 @@ void RamTileStorage::release_tile(const TileRegion & /* region */)
 
 size_t RamTileStorage::live_tile_count() const
 {
+  std::lock_guard<std::mutex> lock(this->mutex);
   return tiles.size();
 }
 
 size_t RamTileStorage::live_memory_bytes() const
 {
-  size_t bytes = 0;
+  std::lock_guard<std::mutex> lock(this->mutex);
+  size_t                      bytes = 0;
   for (const auto &[key, arr] : tiles)
   {
     bytes += arr.vector.capacity() * sizeof(float) + sizeof(Array) +

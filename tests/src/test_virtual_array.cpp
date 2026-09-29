@@ -409,3 +409,20 @@ TEST(VirtualArrayTest, SingleCellOverlapRemainsFinite)
   const Array result = va.to_array(cm);
   for (float value : result.vector) EXPECT_TRUE(std::isfinite(value));
 }
+
+TEST(VirtualArrayTest, RamStorageConcurrentFirstTileAccess)
+{
+  // Distributed workers create RAM tiles lazily on first access; before the
+  // storage was guarded this raced on the tile map and crashed (seen in
+  // Hesiod's to_array on macOS).
+  const glm::ivec2 shape{256, 256};
+  ComputeMode      cm{.mode = ForEachMode::VA_DISTRIBUTED};
+
+  for (int rep = 0; rep < 50; ++rep)
+  {
+    VirtualArray va(shape, {16, 16}, 2, StorageMode::VA_RAM);
+    const Array  result = va.to_array(cm);
+    ASSERT_EQ(result.shape, shape);
+    EXPECT_EQ(va.storage->live_tile_count(), size_t(256));
+  }
+}
