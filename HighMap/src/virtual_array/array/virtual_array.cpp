@@ -93,6 +93,11 @@ std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,
   return va;
 }
 
+bool VirtualArray::empty() const
+{
+  return this->shape.x * this->shape.y == 0;
+}
+
 void VirtualArray::fill(float value, const ComputeMode &cm)
 {
   for_each_tile(

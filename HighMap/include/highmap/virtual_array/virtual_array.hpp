@@ -162,6 +162,8 @@ struct VirtualArray
   size_t live_tile_count() const;
   size_t live_memory_bytes() const;
 
+  bool empty() const;
+
   // --- Members
 
   glm::ivec2                   shape;
