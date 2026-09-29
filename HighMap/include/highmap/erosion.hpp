@@ -11,6 +11,7 @@
 #include "highmap/interpolate/interpolate2d.hpp"
 #include "highmap/math/profiles.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
+#include "highmap/virtual_array/virtual_array.hpp"
 
 // neighbor pattern search based on Moore pattern and define diagonal
 // weight coefficients ('c' corresponds to a weight coefficient
@@ -2433,3 +2434,31 @@ Array watershed_ridge(
     const Array        *p_scaling = nullptr);
 
 } // namespace hmap::gpu
+
+namespace hmap::va
+{
+
+VirtualArray hydraulic_saleve(
+    const ComputeMode    &cm,
+    const VirtualArray   &z,
+    std::uint32_t         seed,
+    size_t                control_points_count = 10000,
+    float                 m_exp = 0.8f,
+    float                 uplift_rate = 1.f,
+    float                 tolerance = 1e-3f,
+    int                   max_iterations = 200,
+    float                 smin = 0.f,
+    float                 smax = 6.f,
+    float                 strength = 0.5f,
+    bool                  scale_erodibility_with_z = true,
+    float                 erodibility_distrib_exp = 1.f,
+    float                 noise_strength = 0.f,
+    bool                  enable_post_slope_limiter = false,
+    float                 post_slope_limit = 0.f,
+    bool                  enable_post_smoothing = false,
+    InterpolationMethod2D interpolation_method =
+        InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
+    const VirtualArray *p_noise_x = nullptr,
+    const VirtualArray *p_noise_y = nullptr);
+
+}

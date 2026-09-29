@@ -10,7 +10,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {

@@ -56,9 +56,9 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
-void VirtualArray::copy_from(VirtualArray      &src,
-                             const ComputeMode &cm,
-                             bool               copy_src_data)
+void VirtualArray::copy_from(const VirtualArray &src,
+                             const ComputeMode  &cm,
+                             bool                copy_src_data)
 {
   if (this == &src) return;
 
@@ -480,7 +480,9 @@ size_t VirtualArray::live_memory_bytes() const
 
 // --- FUNCTIONS
 
-void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
+void copy_data(const VirtualArray &src,
+               VirtualArray       &dst,
+               const ComputeMode  &cm)
 {
   for_each_tile(
       {&src},
