@@ -269,7 +269,8 @@ VirtualArray hydraulic_saleve(const ComputeMode    &cm,
                               bool                  enable_post_smoothing,
                               InterpolationMethod2D interpolation_method,
                               const VirtualArray   *p_noise_x,
-                              const VirtualArray   *p_noise_y)
+                              const VirtualArray   *p_noise_y,
+                              const VirtualArray   *p_mask)
 {
   const glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f};
   const float     zmin = z.min(cm);
@@ -398,16 +399,19 @@ VirtualArray hydraulic_saleve(const ComputeMode    &cm,
   ze.remap(zmin, zmax, cm);
 
   hmap::for_each_tile(
-      {&z},
+      {&z, p_mask},
       {&ze},
       [&](std::vector<const hmap::Array *> p_arrays_in,
           std::vector<hmap::Array *>       p_arrays_out,
           const hmap::TileRegion &)
       {
-        auto [pa_z] = unpack<1>(p_arrays_in);
+        auto [pa_z, pa_mask] = unpack<2>(p_arrays_in);
         auto [pa_ze] = unpack<1>(p_arrays_out);
 
-        *pa_ze = lerp(*pa_z, *pa_ze, strength);
+        if (pa_mask)
+          *pa_ze = lerp(*pa_z, *pa_ze, strength * (*pa_mask));
+        else
+          *pa_ze = lerp(*pa_z, *pa_ze, strength);
       },
       cm);
 

@@ -2459,6 +2459,7 @@ VirtualArray hydraulic_saleve(
     InterpolationMethod2D interpolation_method =
         InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
     const VirtualArray *p_noise_x = nullptr,
-    const VirtualArray *p_noise_y = nullptr);
+    const VirtualArray *p_noise_y = nullptr,
+    const VirtualArray *p_mask = nullptr);
 
 }
