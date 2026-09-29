@@ -183,7 +183,19 @@ void VirtualArray::remap(float vmin, float vmax, const ComputeMode &cm)
   float global_min = this->min(cm);
   float global_max = this->max(cm);
 
-  this->remap(vmin, vmax, global_min, global_max, cm);
+  // Remapping onto the data's own range: clamp the FMA rounding residue so
+  // the result stays inside [vmin, vmax] (see hmap::remap).
+  const float lo = std::min(vmin, vmax);
+  const float hi = std::max(vmin, vmax);
+  auto        lambda = [vmin, vmax, global_min, global_max, lo, hi](
+                    Array &tile,
+                    const TileRegion &)
+  {
+    hmap::remap(tile, vmin, vmax, global_min, global_max);
+    for (float &v : tile.vector) v = std::clamp(v, lo, hi);
+  };
+
+  for_each_tile(*this, lambda, cm);
 }
 
 void VirtualArray::remap(float              vmin,

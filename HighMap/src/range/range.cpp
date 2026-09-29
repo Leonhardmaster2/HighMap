@@ -398,12 +398,21 @@ void remap(Array &array, float vmin, float vmax)
   }
 
   const float scale = (vmax - vmin) / (max - min);
-  const float offset = vmin - min * scale;
+
+  // (x - min) * scale + vmin rather than x * scale + (vmin - min * scale):
+  // the subtraction is exact near the minimum, whereas the folded offset
+  // cancels badly for data far from zero and, once fused into an FMA (the
+  // default on Apple Silicon), left the minimum slightly below vmin, which a
+  // later pow()/sqrt() turned into NaN. The source range is the array's own
+  // range, so the exact result lies in [vmin, vmax]: clamp the rounding.
+  const float lo = std::min(vmin, vmax);
+  const float hi = std::max(vmin, vmax);
 
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array.vector.begin(),
-                 [scale, offset](float x) { return x * scale + offset; });
+                 [scale, min, vmin, lo, hi](float x)
+                 { return std::clamp((x - min) * scale + vmin, lo, hi); });
 }
 
 void remap(Array &array, float vmin, float vmax, float from_min, float from_max)
@@ -417,12 +426,14 @@ void remap(Array &array, float vmin, float vmax, float from_min, float from_max)
   }
 
   const float scale = (vmax - vmin) / (from_max - from_min);
-  const float offset = vmin - from_min * scale;
 
+  // See remap(array, vmin, vmax) for why the subtraction comes first. Values
+  // outside [from_min, from_max] intentionally map outside [vmin, vmax].
   std::transform(array.vector.begin(),
                  array.vector.end(),
                  array.vector.begin(),
-                 [scale, offset](float x) { return x * scale + offset; });
+                 [scale, from_min, vmin](float x)
+                 { return (x - from_min) * scale + vmin; });
 }
 
 void rescale(Array &array, float scaling, float vref)
