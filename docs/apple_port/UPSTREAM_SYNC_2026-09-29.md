@@ -76,6 +76,12 @@ The benchmarks live in `benchmarks/src/bm_apple_routes.cpp`.
 | Metal OFF / OpenCL ON | 613 | 58 | 3 |
 | Metal ON / OpenCL OFF | 581 | 92 | 1 (`PathSplines`) |
 
+These numbers were recorded right after the merge. After the stability fixes
+below, Metal ON / OpenCL ON is 673 passed, 2 skipped, 2 failed (`PathSplines`
+and the upstream roughness CPU/GPU mismatch; `ConvErosion.BasicExecution` now
+passes). `HIGHMAP_DISABLE_METAL=1` gives 617 passed, 58 skipped, the same 2
+failures.
+
 For the Metal-only configuration, 28 new upstream tests (jagged, recast
 cliff, Musgrave GPU, conv-erosion, GPU roughness, convolution scaling) call
 OpenCL-only kernels. They now start with `HMAP_SKIP_IF_NO_OPENCL()`, like the
@@ -99,3 +105,30 @@ Upstream `gpu::hydraulic_vpipes` (OpenCL) still calls the kernels
 `_advection`, none of which exist in the upstream kernel set any more. On
 macOS the Metal route bypasses that code, so the Metal implementation is the
 only working GPU path for this function.
+
+## Stability fixes found through Hesiod (second pass)
+
+Hesiod was run headless over all 258 example graphs. Each graph was also
+evaluated with Metal on and with `HIGHMAP_DISABLE_METAL=1`, and every node
+output was dumped and diffed. That turned up these HighMap issues, all present
+upstream as well:
+
+| Issue | Symptom | Fix |
+|---|---|---|
+| `RamTileStorage::get_tile` inserted into an unguarded `unordered_map` while `VA_DISTRIBUTED` workers created tiles lazily | SIGSEGV in `VirtualArray::to_array`, heap corruption, or a hung graph update in 9 of 258 examples | Mutex, same as the LRU storages; clone copies under the lock |
+| nn-c / `triangle.c` keep global state | Natural-neighbour interpolation is unsafe from concurrent tile workers | One process-wide mutex around all nn-c calls |
+| `remap` computed `x * scale + (vmin - min * scale)` | Cancellation for data far from zero; with FMA (Apple Silicon) the minimum became slightly negative, and `pow()` made it NaN. `hydraulic_stream_log` then spread one NaN pixel into a ~43k-pixel NaN region (HydraulicSaleve), and many graphs had NaN outputs | `(x - min) * scale + vmin`, clamped to `[vmin, vmax]` when remapping onto the array's own range |
+
+`HIGHMAP_DISABLE_METAL=1` is a new runtime switch that sends every wrapper back
+to the CPU/OpenCL path, for this kind of A/B check.
+
+Result of the final A/B (512², 2×2 tiles), 1106 node outputs:
+
+* The Metal and OpenCL host paths agree to within 1e-4 relative, except for
+  `HydraulicParticle`. That upstream OpenCL kernel is non-deterministic: two
+  OpenCL runs differ by up to 59%.
+* NaN outputs dropped from 59 to 2 (`PolarShape`, NaN on both backends).
+* Untiled, resident source nodes match the host path to about 1e-7. Downstream
+  erosion nodes amplify that into at most a few percent at isolated pixels;
+  with 2×2 tiling, the untiled resident evaluation differs from the tiled host
+  evaluation near tile seams.
