@@ -74,73 +74,6 @@ void record_opencl_finish(TimingBreakdown *timing, float kernel_ms)
   timing->synchronization_ms += kernel_ms;
 }
 
-Array opencl_gradient_norm(const Array &input, TimingBreakdown *timing = nullptr)
-{
-  const auto total_start = Clock::now();
-  Array out(input.shape);
-
-  auto pipeline_start = Clock::now();
-  clwrapper::Run run("gradient_norm");
-  if (timing) timing->pipeline_lookup_ms += elapsed_ms(pipeline_start);
-
-  auto allocation_start = Clock::now();
-  run.bind_buffer<float>("array",
-                         const_cast<std::vector<float> &>(input.vector));
-  run.bind_buffer<float>("dm", out.vector);
-  run.bind_arguments(input.shape.x, input.shape.y);
-  if (timing) timing->allocation_ms += elapsed_ms(allocation_start);
-
-  auto upload_start = Clock::now();
-  run.write_buffer("array");
-  if (timing) timing->upload_ms += elapsed_ms(upload_start);
-
-  float kernel_ms = 0.f;
-  run.execute({input.shape.x, input.shape.y}, &kernel_ms);
-  record_opencl_finish(timing, kernel_ms);
-
-  auto readback_start = Clock::now();
-  run.read_buffer("dm");
-  if (timing) timing->readback_ms += elapsed_ms(readback_start);
-
-  if (timing) timing->total_ms = elapsed_ms(total_start);
-  return out;
-}
-
-Array opencl_maximum_smooth(const Array       &array1,
-                            const Array       &array2,
-                            TimingBreakdown *timing = nullptr)
-{
-  const auto total_start = Clock::now();
-  Array out = array1;
-
-  auto pipeline_start = Clock::now();
-  clwrapper::Run run("maximum_smooth");
-  if (timing) timing->pipeline_lookup_ms += elapsed_ms(pipeline_start);
-
-  auto allocation_start = Clock::now();
-  run.bind_buffer<float>("array1", out.vector);
-  run.bind_buffer<float>("array2",
-                         const_cast<std::vector<float> &>(array2.vector));
-  run.bind_arguments(array1.shape.x, array1.shape.y, 0.2f);
-  if (timing) timing->allocation_ms += elapsed_ms(allocation_start);
-
-  auto upload_start = Clock::now();
-  run.write_buffer("array1");
-  run.write_buffer("array2");
-  if (timing) timing->upload_ms += elapsed_ms(upload_start);
-
-  float kernel_ms = 0.f;
-  run.execute({array1.shape.x, array1.shape.y}, &kernel_ms);
-  record_opencl_finish(timing, kernel_ms);
-
-  auto readback_start = Clock::now();
-  run.read_buffer("array1");
-  if (timing) timing->readback_ms += elapsed_ms(readback_start);
-
-  if (timing) timing->total_ms = elapsed_ms(total_start);
-  return out;
-}
-
 Array opencl_noise(const glm::ivec2 shape, TimingBreakdown *timing = nullptr)
 {
   const auto total_start = Clock::now();
@@ -531,25 +464,6 @@ static void BM_Apple_CPU_GradientNorm(benchmark::State &state)
   record_pixels(state, size);
 }
 
-static void BM_Apple_OpenCL_GradientNorm(benchmark::State &state)
-{
-  skip_if_opencl_unavailable(state);
-  if (state.skipped()) return;
-  const int size = state.range(0);
-  const Array input = make_field(size);
-  bool warmed = false;
-  TimingBreakdown timing;
-  for (auto _ : state)
-  {
-    warmup_once(state, warmed, [&] { return opencl_gradient_norm(input); });
-    timing = {};
-    Array output = opencl_gradient_norm(input, &timing);
-    benchmark::DoNotOptimize(output.vector.data());
-  }
-  record_timing(state, timing);
-  record_pixels(state, size);
-}
-
 static void BM_Apple_Metal_GradientNorm(benchmark::State &state)
 {
   skip_if_metal_unavailable(state);
@@ -658,27 +572,6 @@ static void BM_Apple_CPU_SmoothMaximum(benchmark::State &state)
     Array output = hmap::maximum_smooth(first, second, 0.2f);
     benchmark::DoNotOptimize(output.vector.data());
   }
-  record_pixels(state, size);
-}
-
-static void BM_Apple_OpenCL_SmoothMaximum(benchmark::State &state)
-{
-  skip_if_opencl_unavailable(state);
-  if (state.skipped()) return;
-  const int size = state.range(0);
-  const Array first = make_field(size);
-  const Array second = make_field(size);
-  bool warmed = false;
-  TimingBreakdown timing;
-  for (auto _ : state)
-  {
-    warmup_once(state, warmed,
-                [&] { return opencl_maximum_smooth(first, second); });
-    timing = {};
-    Array output = opencl_maximum_smooth(first, second, &timing);
-    benchmark::DoNotOptimize(output.vector.data());
-  }
-  record_timing(state, timing);
   record_pixels(state, size);
 }
 
@@ -1044,16 +937,11 @@ Array run_opencl_chain_a(int size, TimingBreakdown *timing = nullptr)
   step = {};
   Array second = opencl_noise(shape, &step);
   if (timing) add_timing(*timing, step);
-  step = {};
-  Array gradient = opencl_gradient_norm(first, &step);
-  if (timing) add_timing(*timing, step);
-  step = {};
-  Array result = opencl_maximum_smooth(gradient, second, &step);
-  if (timing)
-  {
-    add_timing(*timing, step);
-    timing->total_ms = elapsed_ms(total_start);
-  }
+  // Upstream removed the OpenCL gradient_norm/maximum_smooth kernels; the
+  // established non-Metal path now runs these pointwise stages on the CPU.
+  Array gradient = hmap::gradient_norm(first);
+  Array result = hmap::maximum_smooth(gradient, second, 0.2f);
+  if (timing) timing->total_ms = elapsed_ms(total_start);
   return result;
 }
 
@@ -1696,10 +1584,6 @@ BENCHMARK(BM_Apple_CPU_GradientNorm)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_pointwise_sizes); })
     ->UseRealTime();
-BENCHMARK(BM_Apple_OpenCL_GradientNorm)
-    ->Apply([](benchmark::internal::Benchmark *b)
-            { apply_sizes(b, k_pointwise_sizes); })
-    ->UseRealTime();
 BENCHMARK(BM_Apple_Metal_GradientNorm)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_pointwise_sizes); })
@@ -1725,10 +1609,6 @@ BENCHMARK(BM_Phase7_Metal_MorphologicalGradient)
     ->UseRealTime();
 
 BENCHMARK(BM_Apple_CPU_SmoothMaximum)
-    ->Apply([](benchmark::internal::Benchmark *b)
-            { apply_sizes(b, k_pointwise_sizes); })
-    ->UseRealTime();
-BENCHMARK(BM_Apple_OpenCL_SmoothMaximum)
     ->Apply([](benchmark::internal::Benchmark *b)
             { apply_sizes(b, k_pointwise_sizes); })
     ->UseRealTime();

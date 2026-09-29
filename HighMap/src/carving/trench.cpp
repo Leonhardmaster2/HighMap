@@ -4,14 +4,15 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <functional>
+#include <limits>
 #include <utility>
 #include <vector>
 
 #include "highmap/array.hpp"
 #include "highmap/carving.hpp"
 #include "highmap/geometry/grids.hpp"
-#include "highmap/geometry/kd_tree.hpp"
 #include "highmap/geometry/path.hpp"
 #include "highmap/geometry/point.hpp"
 #include "highmap/internal/validation.hpp"
@@ -21,6 +22,21 @@
 
 namespace hmap
 {
+
+namespace
+{
+
+struct Segment
+{
+  float  x0, y0, v0;
+  float  x1, y1, v1;
+  float  dx, dy;
+  float  inv_len_sq;
+  float  s0, s1;
+  size_t k0, k1;
+};
+
+} // namespace
 
 void trench(Array                       &z,
             const Path                  &path,
@@ -43,6 +59,7 @@ void trench(Array                       &z,
             Array                       *p_bending_mask,
             glm::vec4                    bbox)
 {
+  (void)k_neighbors;
   if (!validate_non_empty(z)) return;
   if (p_noise_r && !validate_same_shape(z, *p_noise_r)) return;
   if (!validate_non_empty(path, "Path")) return;
@@ -51,17 +68,7 @@ void trench(Array                       &z,
 
   // path working copy
   Path   path_copy = path;
-  auto  &points = path_copy.points;
-  size_t npts = points.size();
-
-  // --- Force path resolution
-
-  // {
-  //   float lx = bbox.y - bbox.x;
-  //   float ly = bbox.w - bbox.z;
-  //   float dmin = std::min(lx / shape.x, ly / shape.y);
-  //   path_copy.resample(dmin);
-  // }
+  size_t npts = path_copy.size();
 
   // for width with distance scaling
   const std::vector<float> arc_length = path_copy.get_arc_length();
@@ -85,7 +92,7 @@ void trench(Array                       &z,
     t = smoothstep3(t);
 
     // apply
-    points[k].v += t * elevation_shift;
+    path_copy[k].v += t * elevation_shift;
   }
 
   // monotonicity
@@ -93,23 +100,21 @@ void trench(Array                       &z,
   {
     // minimum elevation delta (use when monotonicity is enforced)
     float dz_min = min_slope *
-                   glm::length(glm::vec2(points[k].x - points[k - 1].x,
-                                         points[k].y - points[k - 1].y));
+                   glm::length(glm::vec2(path_copy[k].x - path_copy[k - 1].x,
+                                         path_copy[k].y - path_copy[k - 1].y));
 
     switch (longitudinal_profile)
     {
     case ElevationLongitudinalProfile::ELP_FLAT:
-      points[k].v = points[0].v;
+      path_copy[k].v = path_copy[0].v;
       break;
 
     case ElevationLongitudinalProfile::ELP_DECREASING:
-    {
-      points[k].v = std::min(points[k].v, points[k - 1].v - dz_min);
-    }
-    break;
+      path_copy[k].v = std::min(path_copy[k].v, path_copy[k - 1].v - dz_min);
+      break;
 
     case ElevationLongitudinalProfile::ELP_INCREASING:
-      points[k].v = std::max(points[k].v, points[k - 1].v + dz_min);
+      path_copy[k].v = std::max(path_copy[k].v, path_copy[k - 1].v + dz_min);
       break;
 
     case ElevationLongitudinalProfile::ELP_UNCHANGED:
@@ -118,25 +123,9 @@ void trench(Array                       &z,
     }
   }
 
-  // --- SDF-based transform
+  // --- Curvature scaling
 
-  Array zp(shape);
-  Array blending_mask(shape);
-
-  std::vector<float> xp = path_copy.get_x();
-  std::vector<float> yp = path_copy.get_y();
-
-  KDTreeContext tree(xp, yp);
-
-  // interpolation base grid
-  std::vector<float> xg, yg;
-  grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);
-
-  // for curvature scaling
-  Path path_curv = path_copy;
-  // path_curv.decimate_vw(40);
-  // path_curv.bspline(50);
-
+  Path               path_curv = path_copy;
   std::vector<float> curvature = path_curv.get_curvature();
   std::vector<float> curv_radius;
   std::vector<float> curv_shape_factor;
@@ -228,81 +217,266 @@ void trench(Array                       &z,
   auto profile_fct = get_radial_profile_function(radial_profile,
                                                  radial_profile_parameter);
 
-  std::vector<size_t> indices;
-  std::vector<float>  distances;
+  // --- Calculate maximum influence width
 
-  for (int j = 0; j < shape.y; ++j)
-    for (int i = 0; i < shape.x; ++i)
+  float max_effective_width = width;
+  if (p_noise_r)
+    max_effective_width = std::max(0.f, width * (1.f + p_noise_r->max()));
+  if (enable_width_curvature_scaling)
+    max_effective_width *= std::max(1.f, curv_width_ratio_max);
+
+  if (max_effective_width <= 0.f) return;
+
+  // interpolation base grid
+  std::vector<float> xg, yg;
+  grid_xy_vector(xg, yg, shape, bbox, /* endpoint */ false);
+
+  float dx = (bbox.y - bbox.x) / float(shape.x);
+  float dy = (bbox.w - bbox.z) / float(shape.y);
+
+  Array zp = z;
+  Array blending_mask(shape);
+
+  // --- Continuous segment capsule rasterization with tile culling
+
+  if (npts == 1)
+  {
+    // single point influence
+    float px = path_copy[0].x;
+    float py = path_copy[0].y;
+    float pv = path_copy[0].v;
+
+    int imin = std::clamp(
+        static_cast<int>(std::floor((px - max_effective_width - bbox.x) / dx)),
+        0,
+        shape.x - 1);
+    int imax = std::clamp(
+        static_cast<int>(std::ceil((px + max_effective_width - bbox.x) / dx)),
+        0,
+        shape.x - 1);
+    int jmin = std::clamp(
+        static_cast<int>(std::floor((py - max_effective_width - bbox.z) / dy)),
+        0,
+        shape.y - 1);
+    int jmax = std::clamp(
+        static_cast<int>(std::ceil((py + max_effective_width - bbox.z) / dy)),
+        0,
+        shape.y - 1);
+
+#pragma omp parallel for schedule(dynamic, 16)
+    for (int j = jmin; j <= jmax; ++j)
     {
-      float xi = xg[i];
       float yi = yg[j];
-
-      tree.neighbor_search(xi, yi, k_neighbors, indices, distances);
-
-      float value = 0.f;
-      float value_mask = 0.f;
-      float dr = p_noise_r ? (*p_noise_r)(i, j) : 0.f;
-      float effective_width = std::max(0.f, width * (1.f + dr));
-
-      // use only 1st neighbor for various width scalings
-      size_t k0 = indices[0];
-
-      if (enable_width_distance_scaling)
-        effective_width *= smoothstep3(arc_length[k0]);
-
-      if (enable_width_depth_scaling)
+      for (int i = imin; i <= imax; ++i)
       {
-        float dz = std::abs((z(i, j) - points[k0].v) / elevation_shift);
-        effective_width *= std::clamp(dz, 0.f, 1.f);
-      }
+        float xi = xg[i];
+        float d_sq = (xi - px) * (xi - px) + (yi - py) * (yi - py);
+        float dr = p_noise_r ? (*p_noise_r)(i, j) : 0.f;
+        float effective_width = std::max(0.f, width * (1.f + dr));
 
-      if (enable_width_curvature_scaling)
-      {
-        // determine on which side of the path the cell is
-        size_t km = std::max(k0 - 1, size_t(0));
-        size_t kp = std::min(k0 + 1, npts);
+        if (enable_width_depth_scaling)
+        {
+          float dz = std::abs((z(i, j) - pv) / elevation_shift);
+          effective_width *= std::clamp(dz, 0.f, 1.f);
+        }
 
-        float s = -classify_point(points[km],
-                                  points[k0],
-                                  points[kp],
-                                  Point(xi, yi));
+        if (effective_width <= 0.f || d_sq > effective_width * effective_width)
+          continue;
 
-        // longitudinal scaling
-        float t = arc_length[k0];
-        t = t * (1.f - t) * 4.f;
-
-        // float camp = std::abs(curvature[k0]) * t;
-        float camp = std::abs(curv_radius[k0]) * t;
-
-        effective_width *= lerp(
-            1.f,
-            std::max(curv_width_ratio_min,
-                     1.f + (curv_width_ratio_max - 1.f) * s * camp),
-            curv_shape_factor[k0]);
-      }
-
-      for (size_t k = 0; k < k_neighbors; ++k)
-      {
-        float zref = points[indices[k]].v;
-        float r = std::sqrt(distances[k]) / effective_width;
-
+        float r = std::sqrt(d_sq) / effective_width;
         if (r >= 0.f && r <= 1.f)
         {
           float t = profile_fct(r);
-          value += lerp(zref, z(i, j), t);
-          value_mask += 1.f - t;
-        }
-        else
-        {
-          value += z(i, j);
+          zp(i, j) = lerp(pv, z(i, j), t);
+          blending_mask(i, j) = 1.f - t;
         }
       }
+    }
+  }
+  else
+  {
+    // build segments
+    size_t               num_segments = npts - 1;
+    std::vector<Segment> segments(num_segments);
 
-      zp(i, j) = value / float(k_neighbors);
-      blending_mask(i, j) = value_mask / float(k_neighbors);
+    for (size_t k = 0; k < num_segments; ++k)
+    {
+      const auto &p0 = path_copy[k];
+      const auto &p1 = path_copy[k + 1];
+
+      Segment seg;
+      seg.x0 = p0.x;
+      seg.y0 = p0.y;
+      seg.v0 = p0.v;
+      seg.x1 = p1.x;
+      seg.y1 = p1.y;
+      seg.v1 = p1.v;
+      seg.dx = p1.x - p0.x;
+      seg.dy = p1.y - p0.y;
+      float len_sq = seg.dx * seg.dx + seg.dy * seg.dy;
+      seg.inv_len_sq = (len_sq > 1e-12f) ? (1.f / len_sq) : 0.f;
+      seg.s0 = arc_length[k];
+      seg.s1 = arc_length[k + 1];
+      seg.k0 = k;
+      seg.k1 = k + 1;
+      segments[k] = seg;
     }
 
-  // --- outputs
+    // tile spatial partitioning
+    constexpr int tile_size = 32;
+    int           num_tiles_x = (shape.x + tile_size - 1) / tile_size;
+    int           num_tiles_y = (shape.y + tile_size - 1) / tile_size;
+    int           total_tiles = num_tiles_x * num_tiles_y;
+
+    std::vector<std::vector<uint32_t>> tile_segments(total_tiles);
+
+    for (size_t k = 0; k < num_segments; ++k)
+    {
+      const auto &seg = segments[k];
+
+      float seg_xmin = std::min(seg.x0, seg.x1) - max_effective_width;
+      float seg_xmax = std::max(seg.x0, seg.x1) + max_effective_width;
+      float seg_ymin = std::min(seg.y0, seg.y1) - max_effective_width;
+      float seg_ymax = std::max(seg.y0, seg.y1) + max_effective_width;
+
+      int imin = std::clamp(
+          static_cast<int>(std::floor((seg_xmin - bbox.x) / dx)),
+          0,
+          shape.x - 1);
+      int imax = std::clamp(
+          static_cast<int>(std::ceil((seg_xmax - bbox.x) / dx)),
+          0,
+          shape.x - 1);
+      int jmin = std::clamp(
+          static_cast<int>(std::floor((seg_ymin - bbox.z) / dy)),
+          0,
+          shape.y - 1);
+      int jmax = std::clamp(
+          static_cast<int>(std::ceil((seg_ymax - bbox.z) / dy)),
+          0,
+          shape.y - 1);
+
+      int t_imin = imin / tile_size;
+      int t_imax = imax / tile_size;
+      int t_jmin = jmin / tile_size;
+      int t_jmax = jmax / tile_size;
+
+      for (int ty = t_jmin; ty <= t_jmax; ++ty)
+      {
+        for (int tx = t_imin; tx <= t_imax; ++tx)
+        {
+          tile_segments[ty * num_tiles_x + tx].push_back(
+              static_cast<uint32_t>(k));
+        }
+      }
+    }
+
+#pragma omp parallel for schedule(dynamic, 8)
+    for (int tile_idx = 0; tile_idx < total_tiles; ++tile_idx)
+    {
+      const auto &segs = tile_segments[tile_idx];
+      if (segs.empty()) continue;
+
+      int tx = tile_idx % num_tiles_x;
+      int ty = tile_idx / num_tiles_x;
+
+      int i_start = tx * tile_size;
+      int i_end = std::min(i_start + tile_size, shape.x);
+      int j_start = ty * tile_size;
+      int j_end = std::min(j_start + tile_size, shape.y);
+
+      for (int j = j_start; j < j_end; ++j)
+      {
+        float yi = yg[j];
+
+        for (int i = i_start; i < i_end; ++i)
+        {
+          float xi = xg[i];
+
+          // find closest segment
+          float    min_dist_sq = std::numeric_limits<float>::max();
+          float    best_t = 0.f;
+          uint32_t best_seg_idx = segs[0];
+
+          for (uint32_t seg_idx : segs)
+          {
+            const auto &seg = segments[seg_idx];
+            float       qx = xi - seg.x0;
+            float       qy = yi - seg.y0;
+            float t = std::clamp((qx * seg.dx + qy * seg.dy) * seg.inv_len_sq,
+                                 0.f,
+                                 1.f);
+            float proj_x = seg.x0 + t * seg.dx;
+            float proj_y = seg.y0 + t * seg.dy;
+            float d_sq = (xi - proj_x) * (xi - proj_x) +
+                         (yi - proj_y) * (yi - proj_y);
+
+            if (d_sq < min_dist_sq)
+            {
+              min_dist_sq = d_sq;
+              best_t = t;
+              best_seg_idx = seg_idx;
+            }
+          }
+
+          const auto &seg = segments[best_seg_idx];
+          size_t      k0 = (best_t <= 0.5f) ? seg.k0 : seg.k1;
+          float       zref = (1.f - best_t) * seg.v0 + best_t * seg.v1;
+          float       arc = (1.f - best_t) * seg.s0 + best_t * seg.s1;
+
+          float dr = p_noise_r ? (*p_noise_r)(i, j) : 0.f;
+          float effective_width = std::max(0.f, width * (1.f + dr));
+
+          if (enable_width_distance_scaling)
+            effective_width *= smoothstep3(arc);
+
+          if (enable_width_depth_scaling)
+          {
+            float dz = std::abs((z(i, j) - zref) / elevation_shift);
+            effective_width *= std::clamp(dz, 0.f, 1.f);
+          }
+
+          if (enable_width_curvature_scaling && !curvature.empty())
+          {
+            size_t km = (k0 > 0) ? (k0 - 1) : 0;
+            size_t kp = std::min(k0 + 1, npts - 1);
+
+            float s = -classify_point(path_copy[km],
+                                      path_copy[k0],
+                                      path_copy[kp],
+                                      Point(xi, yi));
+
+            float t_long = arc;
+            t_long = t_long * (1.f - t_long) * 4.f;
+
+            float camp = std::abs(curv_radius[k0]) * t_long;
+
+            effective_width *= lerp(
+                1.f,
+                std::max(curv_width_ratio_min,
+                         1.f + (curv_width_ratio_max - 1.f) * s * camp),
+                curv_shape_factor[k0]);
+          }
+
+          if (effective_width <= 0.f ||
+              min_dist_sq > effective_width * effective_width)
+          {
+            continue;
+          }
+
+          float r = std::sqrt(min_dist_sq) / effective_width;
+          if (r >= 0.f && r <= 1.f)
+          {
+            float t = profile_fct(r);
+            zp(i, j) = lerp(zref, z(i, j), t);
+            blending_mask(i, j) = 1.f - t;
+          }
+        }
+      }
+    }
+  }
+
+  // --- Outputs
 
   if (p_bending_mask) *p_bending_mask = std::move(blending_mask);
 

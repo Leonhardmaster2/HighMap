@@ -8,20 +8,22 @@ struct TileAccess
   std::vector<const VirtualArray *> inputs;
   std::vector<VirtualArray *>       outputs;
 
+  // reference virtual array used to get shape, tiling, etc. for all other VAs
   const VirtualArray *ref_va() const
   {
-    return this->outputs.front()
-               ? this->outputs.front()
-               : (!this->inputs.empty() ? this->inputs.front() : nullptr);
+    if (!this->outputs.empty() && this->outputs.front())
+      return this->outputs.front();
+    if (!this->inputs.empty()) return this->inputs.front();
+    return nullptr;
   }
 };
 
 template <typename Func>
 void for_each_tile(const TileAccess &access, Func &&func, const ComputeMode &cm)
 {
-  if (access.outputs.empty())
+  if (access.outputs.empty() && access.inputs.empty())
   {
-    hmap::log::error("no output VirtualArray");
+    hmap::log::error("no input or output VirtualArray");
     return;
   }
 
@@ -130,22 +132,6 @@ void for_each_tile(VirtualArray &va, Func &&func, const ComputeMode &cm)
       [&](const std::vector<const Array *> &,
           std::vector<Array *> &out,
           const TileRegion     &region) { func(*out[0], region); },
-      cm);
-}
-
-template <typename Func>
-void for_each_tile(const std::vector<VirtualArray *> &outputs,
-                   Func                             &&func,
-                   const ComputeMode                 &cm)
-{
-  TileAccess acc;
-  acc.outputs = outputs;
-
-  for_each_tile(
-      acc,
-      [&](const std::vector<const Array *> &,
-          std::vector<Array *> &out,
-          const TileRegion     &region) { func(out, region); },
       cm);
 }
 

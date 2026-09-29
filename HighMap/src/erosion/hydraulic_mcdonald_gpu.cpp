@@ -17,6 +17,7 @@
 #include "highmap/array.hpp"
 #include "highmap/erosion.hpp"
 #include "highmap/internal/validation.hpp"
+#include "highmap/opencl/gpu_opencl.hpp"
 
 namespace hmap::gpu
 {
@@ -32,6 +33,7 @@ void mcdonald_run_steps(Array        &bed,
                         Array        &dis,
                         Array        &mx,
                         Array        &my,
+                        const Array  *p_moisture_map,
                         int           steps,
                         std::uint32_t seed,
                         float         world_extent_km,
@@ -78,6 +80,7 @@ void mcdonald_run_steps(Array        &bed,
       run.bind_buffer<float>("tr_d", tr_d.vector);
       run.bind_buffer<float>("tr_mx", tr_mx.vector);
       run.bind_buffer<float>("tr_my", tr_my.vector);
+      helper_bind_optional_buffer(run, "moisture_map", p_moisture_map);
       run.bind_arguments(nx,
                          ny,
                          samples,
@@ -94,7 +97,8 @@ void mcdonald_run_steps(Array        &bed,
                          deposition_rate,
                          suspension_rate,
                          exit_slope,
-                         maxage);
+                         maxage,
+                         p_moisture_map ? 1 : 0);
       run.write_buffer("bed");
       run.write_buffer("sed");
       run.write_buffer("dis");
@@ -159,9 +163,44 @@ void mcdonald_run_steps(Array        &bed,
 
 } // namespace detail
 
+void hydraulic_mcdonald(Array                &z,
+                        int                   steps,
+                        std::uint32_t         seed,
+                        const McDonaldParams &params,
+                        const Array          *p_moisture_map,
+                        Array                *p_sediment_map,
+                        Array                *p_discharge_map)
+{
+  auto p = params.to_physical();
+  hydraulic_mcdonald(z,
+                     steps,
+                     seed,
+                     p_moisture_map,
+                     p_sediment_map,
+                     p_discharge_map,
+                     p.world_extent_km,
+                     p.z_scale_km,
+                     p.samples,
+                     p.maxage,
+                     p.lrate,
+                     p.time_step,
+                     p.rainfall,
+                     p.evap_rate,
+                     p.gravity,
+                     p.viscosity,
+                     p.bed_shear,
+                     p.crit_slope,
+                     p.settle_rate,
+                     p.thermal_rate,
+                     p.deposition_rate,
+                     p.suspension_rate,
+                     p.exit_slope);
+}
+
 void hydraulic_mcdonald(Array        &z,
                         int           steps,
                         std::uint32_t seed,
+                        const Array  *p_moisture_map,
                         Array        *p_sediment_map,
                         Array        *p_discharge_map,
                         float         world_extent_km,
@@ -183,6 +222,7 @@ void hydraulic_mcdonald(Array        &z,
                         float         exit_slope)
 {
   if (!validate_non_empty(z)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
 
   Array sed(z.shape), dis(z.shape), mx(z.shape), my(z.shape);
 
@@ -191,6 +231,7 @@ void hydraulic_mcdonald(Array        &z,
                              dis,
                              mx,
                              my,
+                             p_moisture_map,
                              steps,
                              seed,
                              world_extent_km,
@@ -222,6 +263,41 @@ void hydraulic_mcdonald(Array        &z,
 void hydraulic_mcdonald_multiscale(Array                  &z,
                                    std::uint32_t           seed,
                                    const std::vector<int> &steps_per_level,
+                                   const McDonaldParams   &params,
+                                   const Array            *p_moisture_map,
+                                   Array                  *p_sediment_map,
+                                   Array                  *p_discharge_map)
+{
+  auto p = params.to_physical();
+  hydraulic_mcdonald_multiscale(z,
+                                seed,
+                                steps_per_level,
+                                p_moisture_map,
+                                p_sediment_map,
+                                p_discharge_map,
+                                p.world_extent_km,
+                                p.z_scale_km,
+                                p.samples,
+                                p.maxage,
+                                p.lrate,
+                                p.time_step,
+                                p.rainfall,
+                                p.evap_rate,
+                                p.gravity,
+                                p.viscosity,
+                                p.bed_shear,
+                                p.crit_slope,
+                                p.settle_rate,
+                                p.thermal_rate,
+                                p.deposition_rate,
+                                p.suspension_rate,
+                                p.exit_slope);
+}
+
+void hydraulic_mcdonald_multiscale(Array                  &z,
+                                   std::uint32_t           seed,
+                                   const std::vector<int> &steps_per_level,
+                                   const Array            *p_moisture_map,
                                    Array                  *p_sediment_map,
                                    Array                  *p_discharge_map,
                                    float                   world_extent_km,
@@ -243,6 +319,7 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
                                    float                   exit_slope)
 {
   if (!validate_non_empty(z)) return;
+  if (p_moisture_map && !validate_same_shape(z, *p_moisture_map)) return;
 
   int nlevels = (int)steps_per_level.size();
   if (nlevels == 0) return;
@@ -259,6 +336,9 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
   Array bed = z.resample_to_shape(ladder[0]);
   Array sed(ladder[0]), dis(ladder[0]), mx(ladder[0]), my(ladder[0]);
 
+  Array moist;
+  if (p_moisture_map) moist = p_moisture_map->resample_to_shape(ladder[0]);
+
   for (int i = 0; i < nlevels; ++i)
   {
     if (i > 0)
@@ -268,6 +348,7 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
       dis = dis.resample_to_shape(ladder[i]);
       mx = mx.resample_to_shape(ladder[i]);
       my = my.resample_to_shape(ladder[i]);
+      if (p_moisture_map) moist = p_moisture_map->resample_to_shape(ladder[i]);
     }
 
     detail::mcdonald_run_steps(bed,
@@ -275,6 +356,7 @@ void hydraulic_mcdonald_multiscale(Array                  &z,
                                dis,
                                mx,
                                my,
+                               p_moisture_map ? &moist : nullptr,
                                steps_per_level[i],
                                seed + (std::uint32_t)i,
                                world_extent_km,

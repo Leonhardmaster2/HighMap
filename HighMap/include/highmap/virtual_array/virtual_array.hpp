@@ -25,6 +25,17 @@ namespace hmap
 // Peripheric classes
 // =====================================
 
+enum class SyncOperation
+{
+  Average,
+  CopyFirst,
+  CopySecond,
+  Min,
+  Max,
+  Mean,
+  SmoothBlend // current sync
+};
+
 enum ForEachMode : int
 {
   VA_SEQUENTIAL,             // tile-by-tile, single thread
@@ -91,9 +102,9 @@ struct VirtualArray
 
   std::unique_ptr<VirtualArray> clone(const ComputeMode &cm,
                                       bool               deep_copy = false);
-  void                          copy_from(VirtualArray      &src,
-                                          const ComputeMode &cm,
-                                          bool               copy_src_data = true);
+  void                          copy_from(const VirtualArray &src,
+                                          const ComputeMode  &cm,
+                                          bool                copy_src_data = true);
 
   // --- Access individual cells (slower)
 
@@ -136,7 +147,7 @@ struct VirtualArray
 
   std::vector<float> unique_values(const ComputeMode &cm) const;
 
-  void smooth_overlap_buffers();
+  void sync_overlap_buffers(SyncOperation op = SyncOperation::SmoothBlend);
 
   // Find which tile covers a given index
   glm::vec2  tile_region_global_position(const TileRegion &region) const;
@@ -151,6 +162,8 @@ struct VirtualArray
   size_t live_tile_count() const;
   size_t live_memory_bytes() const;
 
+  bool empty() const;
+
   // --- Members
 
   glm::ivec2                   shape;
@@ -164,6 +177,21 @@ struct VirtualArray
 #include "highmap/virtual_array/virtual_array.inl"
 
 // functions
-void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm);
+void copy_data(const VirtualArray &src,
+               VirtualArray       &dst,
+               const ComputeMode  &cm);
+
+// unpack vectors helper
+template <std::size_t N, typename T, std::size_t... Is>
+auto unpack_impl(const std::vector<T *> &v, std::index_sequence<Is...>)
+{
+  assert(v.size() >= N);
+  return std::make_tuple(v[Is]...);
+}
+
+template <std::size_t N, typename T> auto unpack(const std::vector<T *> &v)
+{
+  return unpack_impl<N>(v, std::make_index_sequence<N>{});
+}
 
 } // namespace hmap

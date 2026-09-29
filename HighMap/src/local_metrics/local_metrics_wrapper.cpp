@@ -7,7 +7,10 @@
 namespace hmap::gpu
 {
 
-Array local_metrics(const Array &array, int ir, LocalMetrics metric)
+Array local_metrics(const Array &array,
+                    int          ir,
+                    LocalMetrics metric,
+                    MinMaxKernel kernel_type)
 {
   if (!validate_non_empty(array)) return Array();
 
@@ -18,16 +21,16 @@ Array local_metrics(const Array &array, int ir, LocalMetrics metric)
     return gpu::local_aspect_variance(array, ir);
     //
   case LocalMetrics::LM_LOCAL_MAX:
-    return gpu::local_max(array, ir);
+    return gpu::local_max(array, ir, kernel_type);
     //
   case LocalMetrics::LM_LOCAL_MEDIAN_DEVIATION:
     return gpu::local_median_deviation(array, ir);
     //
   case LocalMetrics::LM_LOCAL_MIN:
-    return gpu::local_min(array, ir);
+    return gpu::local_min(array, ir, kernel_type);
     //
   case LocalMetrics::LM_LOCAL_RELIEF:
-    return gpu::local_relief(array, ir);
+    return gpu::local_relief(array, ir, kernel_type);
     //
   case LocalMetrics::LM_LOCAL_VARIANCE:
     return gpu::local_variance(array, ir);
@@ -44,8 +47,14 @@ Array local_metrics(const Array &array, int ir, LocalMetrics metric)
   case LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX:
     return gpu::topographic_position_index(array, ir);
     //
+  case LocalMetrics::LM_TOPOGRAPHIC_WETNESS_INDEX:
+    return topographic_wetness_index(array);
+    //
   case LocalMetrics::LM_RELATIVE_ELEVATION:
-    return gpu::relative_elevation(array, ir);
+    return gpu::relative_elevation(array, ir, kernel_type);
+    //
+  case LocalMetrics::LM_ROUGHNESS:
+    return gpu::roughness(array, ir);
     //
   case LocalMetrics::LM_RUGGEDNESS:
     return gpu::ruggedness(array, ir);

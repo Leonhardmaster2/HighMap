@@ -130,14 +130,15 @@ TEST(MetalPortability, PublicGpuWrapperRemainsUsableWithoutMetal)
   const glm::ivec2 shape = {31, 17};
   Array input(shape);
   fill_field(input, 0.4f);
-  Array other(shape);
-  fill_field(other, -0.3f);
 
-  const Array gradient = hmap::gpu::gradient_norm(input);
-  expect_close(gradient, hmap::gradient_norm(input), 2e-5f);
-
-  const Array actual = hmap::gpu::maximum_smooth(input, other, 0.2f);
-  expect_close(actual, hmap::maximum_smooth(input, other, 0.2f), 2e-5f);
+  // gpu::smooth_cpulse is a routed public wrapper with an exact CPU
+  // reference, so it checks the OpenCL fallback without depending on the
+  // pointwise helpers upstream moved back to the CPU.
+  Array actual = input;
+  hmap::gpu::smooth_cpulse(actual, 3);
+  Array expected = input;
+  hmap::smooth_cpulse(expected, 3);
+  expect_close(actual, expected, 2e-5f);
 }
 
 TEST(MetalHardening, SessionTransferStatisticsCountHostCopies)

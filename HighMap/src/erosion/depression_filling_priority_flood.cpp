@@ -15,13 +15,33 @@
 namespace hmap
 {
 
-void depression_filling_priority_flood(Array &z, bool apply_post_filter)
+void depression_filling_priority_flood(Array &z,
+                                       bool   apply_post_filter,
+                                       bool   outflow_left,
+                                       bool   outflow_right,
+                                       bool   outflow_bottom,
+                                       bool   outflow_top)
 {
   if (!validate_non_empty(z)) return;
 
   Array z_bckp = apply_post_filter ? z : Array();
 
   auto db = DrainageBasinCellBased(z);
+
+  std::vector<glm::ivec2> outlets;
+  outlets.reserve(2 * (z.shape.x + z.shape.y));
+
+  for (int j = 0; j < z.shape.y; ++j)
+    for (int i = 0; i < z.shape.x; ++i)
+    {
+      if ((outflow_left && i == 0) || (outflow_right && i == z.shape.x - 1) ||
+          (outflow_bottom && j == 0) || (outflow_top && j == z.shape.y - 1))
+      {
+        outlets.push_back({i, j});
+      }
+    }
+
+  db.set_outlets(outlets);
 
   db.compute_receivers_priority_flood();
   db.update_traversals();

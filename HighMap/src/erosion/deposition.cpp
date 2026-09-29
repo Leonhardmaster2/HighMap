@@ -43,7 +43,7 @@ void sediment_deposition(Array       &z,
 }
 
 void sediment_deposition(Array       &z,
-                         Array       *p_mask,
+                         const Array *p_mask,
                          const Array &talus,
                          Array       *p_deposition_map,
                          float        max_deposition,

@@ -64,6 +64,8 @@ Array interpolate2d_nni(glm::ivec2                shape,
   std::vector<float> result;
   nn.interpolate(values, result);
 
+  if (result.empty()) return Array(shape);
+
   Array array_out = Array(shape);
 
   size_t k = 0;

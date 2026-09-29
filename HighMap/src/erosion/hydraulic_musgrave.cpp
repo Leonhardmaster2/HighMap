@@ -15,10 +15,6 @@
 namespace hmap
 {
 
-#define LAPLACE_PERIOD 10
-#define LAPLACE_SIGMA 0.05f
-#define LAPLACE_ITERATIONS 1
-
 //----------------------------------------------------------------------
 // Main operator
 //----------------------------------------------------------------------
@@ -61,43 +57,40 @@ void hydraulic_musgrave(Array &z,
           float dw = std::min(w(i, j),
                               (w(i, j) + z(i, j) - w(p, q) - z(p, q)) * c[k]);
 
-          if (dw > 0.f)
+          if (dw <= 0.f)
+          {
+            // static deposition when water is stagnant
+            float ds = c_deposition * s(i, j);
+            s(i, j) -= ds;
+            z(i, j) += ds;
+          }
+          else
           {
             // water transfer
             w(i, j) -= dw;
             w(p, q) += dw;
 
-            // sediment capacity
+            // sediment carrying capacity
             float cs = c_capacity * dw;
 
-            if (s(i, j) >= cs)
+            if (s(i, j) > cs)
             {
               // deposition
               float ds = c_deposition * (s(i, j) - cs);
-              s(i, j) -= ds;
+              s(p, q) += cs;
               z(i, j) += ds;
+              s(i, j) = (1.f - c_deposition) * (s(i, j) - cs);
             }
             else
             {
               // erosion
               float ds = c_erosion * (cs - s(i, j));
-              s(i, j) += ds;
+              s(p, q) += s(i, j) + ds;
               z(i, j) -= ds;
+              s(i, j) = 0.f;
             }
-
-            // sediment transport with water
-            float ds_transport = s(i, j) * dw / w(i, j);
-            s(i, j) -= ds_transport;
-            s(p, q) += ds_transport;
           }
         }
-
-    // regularize the surface to avoid high frequency numerical
-    // artifacts
-    if ((it % LAPLACE_PERIOD == 0) && (it != 0))
-    {
-      hmap::laplace(z, LAPLACE_SIGMA, LAPLACE_ITERATIONS);
-    }
   }
 }
 

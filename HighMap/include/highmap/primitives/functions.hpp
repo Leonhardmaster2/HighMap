@@ -10,7 +10,7 @@
 #pragma once
 
 #include "highmap/array.hpp"
-#include "highmap/erosion.hpp"
+#include "highmap/math/profiles.hpp"
 
 namespace hmap
 {
@@ -586,6 +586,43 @@ Array polar_shape(glm::ivec2   shape,
                   const Array *p_noise_theta = nullptr,
                   glm::vec2    center = {0.5f, 0.5f},
                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
+
+/**
+ * @brief Generates a surface defined by the four corner values of the domain.
+ *
+ * Interpolates values across the domain using a quadratic / bilinear surface
+ * function derived from the four corner elevations.
+ *
+ * @param  shape        Dimensions of the output array (width, height).
+ * @param  c00          Elevation at bottom-left corner (xmin, ymin).
+ * @param  c10          Elevation at bottom-right corner (xmax, ymin).
+ * @param  c01          Elevation at top-left corner (xmin, ymax).
+ * @param  c11          Elevation at top-right corner (xmax, ymax).
+ * @param  p_ctrl_param Optional pointer to a control parameter array
+ * (multiplier).
+ * @param  p_noise_x    Optional pointer to x-direction displacement noise
+ * array.
+ * @param  p_noise_y    Optional pointer to y-direction displacement noise
+ * array.
+ * @param  bbox         Bounding box defining the domain coordinates (xmin,
+ * xmax, ymin, ymax).
+ * @return              Array containing the generated quadratic surface.
+ *
+ * **Example**
+ * @include ex_quad_surface.cpp
+ *
+ * **Result**
+ * @image html ex_quad_surface.png
+ */
+Array quad_surface(glm::ivec2   shape,
+                   float        c00 = 0.f,
+                   float        c10 = 0.f,
+                   float        c01 = 0.f,
+                   float        c11 = 0.f,
+                   const Array *p_ctrl_param = nullptr,
+                   const Array *p_noise_x = nullptr,
+                   const Array *p_noise_y = nullptr,
+                   glm::vec4    bbox = {0.f, 1.f, 0.f, 1.f});
 
 /**
  * @brief Generates a rectangle-shaped heightmap with optional modifications.

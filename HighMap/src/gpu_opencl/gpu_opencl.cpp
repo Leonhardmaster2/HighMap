@@ -113,9 +113,6 @@ bool init_opencl()
 #include "kernels/generate_riverbed.cl"
   );
   add(
-#include "kernels/gradient_norm.cl"
-  );
-  add(
 #include "kernels/harmonic_interpolation.cl"
   );
   add(
@@ -123,6 +120,9 @@ bool init_opencl()
   );
   add(
 #include "kernels/hydraulic_mcdonald.cl"
+  );
+  add(
+#include "kernels/hydraulic_musgrave.cl"
   );
   add(
 #include "kernels/hydraulic_particle.cl"
@@ -137,6 +137,9 @@ bool init_opencl()
 #include "kernels/interpolate_array.cl"
   );
   add(
+#include "kernels/jagged.cl"
+  );
+  add(
 #include "kernels/jump_flooding.cl"
   );
   add(
@@ -149,10 +152,22 @@ bool init_opencl()
 #include "kernels/local_max.cl"
   );
   add(
+#include "kernels/local_max_octagon.cl"
+  );
+  add(
+#include "kernels/local_max_square.cl"
+  );
+  add(
 #include "kernels/local_mean.cl"
   );
   add(
 #include "kernels/local_min.cl"
+  );
+  add(
+#include "kernels/local_min_octagon.cl"
+  );
+  add(
+#include "kernels/local_min_square.cl"
   );
   add(
 #include "kernels/local_relief.cl"
@@ -167,16 +182,10 @@ bool init_opencl()
 #include "kernels/local_z_score.cl"
   );
   add(
-#include "kernels/maximum_smooth.cl"
-  );
-  add(
 #include "kernels/mean_shift.cl"
   );
   add(
 #include "kernels/median_3x3.cl"
-  );
-  add(
-#include "kernels/minimum_smooth.cl"
   );
   add(
 #include "kernels/mountain_range_radial.cl"

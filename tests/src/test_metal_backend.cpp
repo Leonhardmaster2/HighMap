@@ -27,20 +27,6 @@ void fill_field(Array &array)
                     0.2f * std::sin(0.4f * float(i + j));
 }
 
-Array opencl_gradient_norm(const Array &input)
-{
-  Array out(input.shape);
-  clwrapper::Run run("gradient_norm");
-  run.bind_buffer<float>("array",
-                         const_cast<std::vector<float> &>(input.vector));
-  run.bind_buffer<float>("dm", out.vector);
-  run.bind_arguments(input.shape.x, input.shape.y);
-  run.write_buffer("array");
-  run.execute({input.shape.x, input.shape.y});
-  run.read_buffer("dm");
-  return out;
-}
-
 Array opencl_noise(hmap::NoiseType noise_type,
                    glm::ivec2    shape,
                    glm::vec2     kw,
@@ -612,21 +598,6 @@ TEST_F(MetalBackend, GradientNormMatchesCpu)
   const Array expected = hmap::gradient_norm(input);
   const Array actual = hmap::gpu::metal::gradient_norm(input);
   expect_finite_and_close(actual, expected, 1e-5f);
-
-  const Array routed = hmap::gpu::gradient_norm(input);
-  expect_finite_and_close(routed, actual, 1e-5f);
-}
-
-TEST_F(MetalBackend, GradientNormMatchesOpenCL)
-{
-  if (!opencl_available())
-    GTEST_SKIP() << "No OpenCL device is available for parity comparison";
-
-  Array input(glm::ivec2(17, 11));
-  fill_field(input);
-  const Array actual = hmap::gpu::metal::gradient_norm(input);
-  const Array opencl = opencl_gradient_norm(input);
-  expect_finite_and_close(actual, opencl, 1e-5f);
 }
 
 TEST_F(MetalBackend, SmoothExtremaMatchesCpu)

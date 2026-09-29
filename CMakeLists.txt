@@ -169,6 +169,10 @@ else()
 endif()
 
 find_package(OpenCV REQUIRED)
+find_package(OpenEXR REQUIRED)
+find_package(TIFF REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(zstd REQUIRED)
 
 if(HIGHMAP_ENABLE_OPENCL)
   find_package(OpenCL REQUIRED)

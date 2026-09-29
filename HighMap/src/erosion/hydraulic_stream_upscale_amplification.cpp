@@ -40,14 +40,14 @@ void hydraulic_stream_upscale_amplification(Array &z,
   upscale_amplification(z, upscaling_levels, persistence, lambda_erode);
 }
 
-void hydraulic_stream_upscale_amplification(Array &z,
-                                            Array *p_mask,
-                                            float  c_erosion,
-                                            float  talus_ref,
-                                            int    upscaling_levels,
-                                            float  persistence,
-                                            int    ir,
-                                            float  clipping_ratio)
+void hydraulic_stream_upscale_amplification(Array       &z,
+                                            const Array *p_mask,
+                                            float        c_erosion,
+                                            float        talus_ref,
+                                            int          upscaling_levels,
+                                            float        persistence,
+                                            int          ir,
+                                            float        clipping_ratio)
 {
   if (!validate_non_empty(z)) return;
   if (p_mask && !validate_same_shape(z, *p_mask)) return;

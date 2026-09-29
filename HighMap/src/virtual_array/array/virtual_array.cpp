@@ -56,9 +56,9 @@ VirtualArray::VirtualArray(glm::ivec2  shape,
   this->storage = make_storage(this->shape, this->tile_shape, storage_mode);
 }
 
-void VirtualArray::copy_from(VirtualArray      &src,
-                             const ComputeMode &cm,
-                             bool               copy_src_data)
+void VirtualArray::copy_from(const VirtualArray &src,
+                             const ComputeMode  &cm,
+                             bool                copy_src_data)
 {
   if (this == &src) return;
 
@@ -91,6 +91,11 @@ std::unique_ptr<VirtualArray> VirtualArray::clone(const ComputeMode &cm,
   if (deep_copy) copy_data(*this, *va, cm);
 
   return va;
+}
+
+bool VirtualArray::empty() const
+{
+  return this->shape.x * this->shape.y == 0;
 }
 
 void VirtualArray::fill(float value, const ComputeMode &cm)
@@ -339,77 +344,6 @@ void VirtualArray::set(int global_i, int global_j, float v)
   this->storage->release_tile(region);
 }
 
-void VirtualArray::smooth_overlap_buffers()
-{
-  if (this->storage->max_live_tiles() < 2)
-  {
-    hmap::log::error(
-        "smooth_overlap_buffers requires at least 2 tiles in memory, skipping");
-    return;
-  }
-
-  int nx = ceil_div(this->shape.x, this->tile_shape.x);
-  int ny = ceil_div(this->shape.y, this->tile_shape.y);
-
-  // --- x-direction
-
-  for (int ty = 0; ty < ny; ++ty)
-    for (int tx = 0; tx < nx - 1; ++tx)
-    {
-      // load
-      TileRegion region0 = this->tile_region_from_tile_coords(tx, ty);
-      TileRegion region1 = this->tile_region_from_tile_coords(tx + 1, ty);
-      Array     &tile0 = this->storage->get_tile(region0);
-      Array     &tile1 = this->storage->get_tile(region1);
-
-      // average overlap
-      for (int p = 0; p < this->halo; p++)
-        for (int q = 0; q < tile0.shape.y; q++)
-        {
-          float r = this->halo == 1 ? 0.5f
-                                    : float(p) / float(this->halo - 1);
-          r = smoothstep5(r);
-
-          int pbuf = tile0.shape.x - 2 * this->halo + p;
-          tile1(p, q) = lerp(tile0(pbuf, q), tile1(p, q), r);
-          tile0(pbuf, q) = tile1(p, q);
-        }
-
-      // release
-      this->storage->release_tile(region0);
-      this->storage->release_tile(region1);
-    }
-
-  // --- y-direction
-
-  for (int ty = 0; ty < ny - 1; ++ty)
-    for (int tx = 0; tx < nx; ++tx)
-    {
-      // load
-      TileRegion region0 = this->tile_region_from_tile_coords(tx, ty);
-      TileRegion region1 = this->tile_region_from_tile_coords(tx, ty + 1);
-      Array     &tile0 = this->storage->get_tile(region0);
-      Array     &tile1 = this->storage->get_tile(region1);
-
-      // average overlap
-      for (int p = 0; p < tile0.shape.x; p++)
-        for (int q = 0; q < this->halo; q++)
-        {
-          float r = this->halo == 1 ? 0.5f
-                                    : float(q) / float(this->halo - 1);
-          r = smoothstep5(r);
-
-          int qbuf = tile0.shape.y - 2 * this->halo + q;
-          tile1(p, q) = lerp(tile0(p, qbuf), tile1(p, q), r);
-          tile0(p, qbuf) = tile1(p, q);
-        }
-
-      // release
-      this->storage->release_tile(region0);
-      this->storage->release_tile(region1);
-    }
-}
-
 TileRegion VirtualArray::tile_region_from_global_index(int global_i,
                                                        int global_j) const
 {
@@ -551,17 +485,16 @@ size_t VirtualArray::live_memory_bytes() const
 
 // --- FUNCTIONS
 
-void copy_data(VirtualArray &src, VirtualArray &dst, const ComputeMode &cm)
+void copy_data(const VirtualArray &src,
+               VirtualArray       &dst,
+               const ComputeMode  &cm)
 {
-  // 'src' should be const...
   for_each_tile(
-      {&src, &dst},
-      [](std::vector<Array *> p_arrays, const TileRegion &)
-      {
-        Array &src_arr = *p_arrays[0];
-        Array &dst_arr = *p_arrays[1];
-        dst_arr = src_arr;
-      },
+      {&src},
+      {&dst},
+      [](std::vector<const Array *> p_arrays_in,
+         std::vector<Array *>       p_arrays_out,
+         const TileRegion &) { *p_arrays_out[0] = *p_arrays_in[0]; },
       cm);
 }
 

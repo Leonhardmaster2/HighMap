@@ -9,9 +9,8 @@ int main(void)
   hmap::init_openmp();
 
   glm::ivec2 shape = {256, 256};
-  shape = {1024, 1024};
-  glm::vec2 kw = {4.f, 4.f};
-  int       seed = 0;
+  glm::vec2  kw = {4.f, 4.f};
+  int        seed = 0;
 
   // --- erosion of an heightmap
 
@@ -51,6 +50,7 @@ int main(void)
                                            8,
                                            0.f);
 
+  hmap::Timer::Start("hydraulic_saleve");
   hmap::Array z1 = hmap::hydraulic_saleve(
       z0,
       ++seed,
@@ -71,6 +71,7 @@ int main(void)
       hmap::InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT,
       &dx,
       &dy);
+  hmap::Timer::Stop("hydraulic_saleve");
 
   // mimic deposition
   int   deposition_ir = int(0.1f * shape.x);
@@ -81,6 +82,8 @@ int main(void)
                                    deposition_strength,
                                    iterations);
 
+  hmap::Timer::Dump();
+
   z1.dump();
 
   // --- export
@@ -89,4 +92,51 @@ int main(void)
                           {z0, z1},
                           hmap::Cmap::TERRAIN,
                           true);
+
+  // --- virtual array version
+
+  {
+    const glm::vec4  bbox{0.f, 1.f, 0.f, 1.f};
+    const glm::ivec2 tile_shape{220, 312};
+    const size_t     halo = 32;
+
+    // const auto storage_mode = hmap::StorageMode::VA_RAM;
+    const auto storage_mode = hmap::StorageMode::VA_DISK_LRU;
+    // const auto storage_mode = hmap::StorageMode::VA_DISK_LRU_MIN;
+    // const auto storage_mode = hmap::StorageMode::VA_DISK_SEQUENTIAL;
+
+    const auto foreach_mode = hmap::ForEachMode::VA_DISTRIBUTED;
+    // const auto foreach_mode = hmap::ForEachMode::VA_SEQUENTIAL;
+    // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY;
+    // const auto foreach_mode = hmap::ForEachMode::VA_SINGLE_ARRAY_DOWNSCALED;
+
+    const hmap::ComputeMode cm{.mode = foreach_mode,
+                               .trim_storage = true,
+                               .stride = 1};
+
+    hmap::VirtualArray z0_va(shape, bbox, tile_shape, halo, storage_mode);
+    z0_va.from_array(z0, cm);
+
+    auto ze_va = hmap::va::hydraulic_saleve(
+        cm,
+        z0_va,
+        ++seed,
+        control_points_count,
+        m_exp,
+        uplift_rate,
+        tolerance,
+        max_iterations,
+        smin,
+        smax,
+        strength,
+        scale_erodibility_with_z,
+        erodibility_distrib_exp,
+        noise_strength,
+        /* enable_post_slope_limiter */ false,
+        /* post_slope_limit */ 0.f,
+        /* enable_post_smoothing */ false,
+        hmap::InterpolationMethod2D::ITP2D_DELAUNAY_GRADIENT);
+
+    ze_va.to_array(cm).to_png("out_ze_va.png", hmap::Cmap::JET, true);
+  }
 }

@@ -79,7 +79,6 @@ Array scan_mask(const Array &array,
  * @param  array Input array.
  * @param  angle Selected angle (degree).
  * @param  sigma Selected angle tolerance (degree).
- * @param  ir    Prefilter radius.
  * @return       Output array.
  *
  * **Example**
@@ -88,7 +87,7 @@ Array scan_mask(const Array &array,
  * **Result**
  * @image html ex_select_angle.png
  */
-Array select_angle(const Array &array, float angle, float sigma, int ir = 0);
+Array select_angle(const Array &array, float angle, float sigma);
 
 /**
  * @brief Return blob detection using the Laplacian of Gaussian (LoG) approach.

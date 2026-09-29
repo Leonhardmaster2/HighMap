@@ -104,6 +104,7 @@ void kernel mcdonald_solve(global float       *bed,
                            global float       *tr_d,
                            global float       *tr_mx,
                            global float       *tr_my,
+                           global float       *moisture_map,
                            const int           nx,
                            const int           ny,
                            const int           n_samples,
@@ -120,7 +121,8 @@ void kernel mcdonald_solve(global float       *bed,
                            const float         deposition_rate,
                            const float         suspension_rate,
                            const float         exit_slope,
-                           const int           maxage)
+                           const int           maxage,
+                           const int           has_moisture_map)
 {
   int n = get_global_id(0);
   if (n >= n_samples) return;
@@ -141,7 +143,8 @@ void kernel mcdonald_solve(global float       *bed,
   const float Z = Ac * z_m;
   const float Q = P * (float)n_samples;
 
-  float vol = Ac * rainfall;
+  float m = (has_moisture_map != 0) ? moisture_map[find] : 1.f;
+  float vol = Ac * rainfall * m;
   float sedm = 0.f;
 
   float2 grad = mcd_grad5(bed, sed, (int2)(ci, cj), nx, ny, zs);
@@ -191,6 +194,10 @@ void kernel mcdonald_solve(global float       *bed,
     float tmin = transfer * fmin(1.f, fabs(maxtransfer / suspend));
     float tmax = sedm;
     transfer = fmin(fmax(transfer, tmin), tmax);
+
+    // clamp erosion transfer to prevent numerical explosion
+    float max_erode = 0.5f * fmax(0.f, h0) * Ac * Q;
+    transfer = fmax(transfer, -max_erode);
 
     if (transfer > 0.f)
     {
@@ -334,6 +341,10 @@ void kernel mcdonald_debris(global float *bed,
     {
       float maxtransfer = fmax(0.f, hf - stable1) * Ac * Q;
       transfer = -fmin(-transfer, maxtransfer);
+
+      // clamp erosion transfer to prevent numerical explosion
+      float max_erode = 0.5f * fmax(0.f, hf) * Ac * Q;
+      transfer = fmax(transfer, -max_erode);
 
       float maxt1 = hf1 * Ac * Q;
       float t1 = transfer * fmin(1.f, fabs(maxt1 / transfer));

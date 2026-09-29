@@ -12,7 +12,13 @@
 namespace hmap
 {
 
-void depression_filling(Array &z, int iterations, float epsilon)
+void depression_filling(Array &z,
+                        int    iterations,
+                        float  epsilon,
+                        bool   outflow_left,
+                        bool   outflow_right,
+                        bool   outflow_bottom,
+                        bool   outflow_top)
 {
   if (!validate_non_empty(z)) return;
 
@@ -21,13 +27,42 @@ void depression_filling(Array &z, int iterations, float epsilon)
   std::vector<float>  c = HMAP_CD;
   const std::uint32_t nb = di.size();
 
+  const int nx = z.shape.x;
+  const int ny = z.shape.y;
+
   Array z_new = z;
-  z_new.set_slice({1, z.shape.x - 1, 1, z.shape.y - 1}, 1e6f);
+  z_new.set_slice({1, nx - 1, 1, ny - 1}, 1e6f);
+
+  if (!outflow_left)
+  {
+    for (int j = 0; j < ny; j++)
+      z_new(0, j) = 1e6f;
+  }
+  if (!outflow_right)
+  {
+    for (int j = 0; j < ny; j++)
+      z_new(nx - 1, j) = 1e6f;
+  }
+  if (!outflow_bottom)
+  {
+    for (int i = 0; i < nx; i++)
+      z_new(i, 0) = 1e6f;
+  }
+  if (!outflow_top)
+  {
+    for (int i = 0; i < nx; i++)
+      z_new(i, ny - 1) = 1e6f;
+  }
+
+  int i_min = outflow_left ? 1 : 0;
+  int i_max = outflow_right ? nx - 1 : nx;
+  int j_min = outflow_bottom ? 1 : 0;
+  int j_max = outflow_top ? ny - 1 : ny;
 
   for (int it = 0; it < iterations; it++)
   {
-    for (int j = 1; j < z.shape.y - 1; j++)
-      for (int i = 1; i < z.shape.x - 1; i++)
+    for (int j = j_min; j < j_max; j++)
+      for (int i = i_min; i < i_max; i++)
       {
         if (z_new(i, j) > z(i, j))
         {
@@ -35,6 +70,8 @@ void depression_filling(Array &z, int iterations, float epsilon)
           {
             int p = i + di[k];
             int q = j + dj[k];
+
+            if (p < 0 || p >= nx || q < 0 || q >= ny) continue;
 
             if (z(i, j) >= z_new(p, q) + epsilon * c[k])
             {
@@ -48,6 +85,7 @@ void depression_filling(Array &z, int iterations, float epsilon)
         }
       }
   }
+
   extrapolate_borders(z_new);
   z = z_new;
 }

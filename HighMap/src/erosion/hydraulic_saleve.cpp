@@ -17,6 +17,7 @@
 #include "highmap/primitives/functions.hpp"
 #include "highmap/range.hpp"
 #include "highmap/terrain_tri_mesh.hpp"
+#include "highmap/virtual_array.hpp"
 
 namespace hmap
 {
@@ -245,3 +246,176 @@ Array hydraulic_saleve(const Array          &z,
 }
 
 } // namespace hmap
+
+namespace hmap::va
+{
+
+VirtualArray hydraulic_saleve(const ComputeMode    &cm,
+                              const VirtualArray   &z,
+                              std::uint32_t         seed,
+                              size_t                control_points_count,
+                              float                 m_exp,
+                              float                 uplift_rate,
+                              float                 tolerance,
+                              int                   max_iterations,
+                              float                 smin,
+                              float                 smax,
+                              float                 strength,
+                              bool                  scale_erodibility_with_z,
+                              float                 erodibility_distrib_exp,
+                              float                 noise_strength,
+                              bool                  enable_post_slope_limiter,
+                              float                 post_slope_limit,
+                              bool                  enable_post_smoothing,
+                              InterpolationMethod2D interpolation_method,
+                              const VirtualArray   *p_noise_x,
+                              const VirtualArray   *p_noise_y,
+                              const VirtualArray   *p_mask)
+{
+  const glm::vec4 bbox = {0.f, 1.f, 0.f, 1.f};
+  const float     zmin = z.min(cm);
+  const float     zmax = z.max(cm);
+
+  // safeguard
+  smin = std::min(smin, smax);
+
+  // --- generate triangle mesh
+
+  Cloud cloud = random_cloud_jittered(control_points_count,
+                                      {0.5f, 0.5f},
+                                      {0.f, 0.f},
+                                      seed,
+                                      bbox);
+  cloud.snap_points_to_bounding_box(bbox);
+
+  hmap::for_each_tile(
+      {&z},
+      {},
+      [&](std::vector<const hmap::Array *> p_arrays_in,
+          std::vector<hmap::Array *>,
+          const hmap::TileRegion &region)
+      {
+        auto [pa_z] = unpack<1>(p_arrays_in);
+        cloud.set_values_from_array(*pa_z, region.bbox);
+      },
+      cm);
+
+  auto mesh = TerrainTriMesh(cloud.to_vec3());
+
+  // --- spatial parameters
+
+  // erodibility align with elevation
+  std::vector<float> erodibility;
+
+  if (scale_erodibility_with_z && (zmin != zmax))
+  {
+    erodibility = cloud.get_values();
+
+    for (auto &v : erodibility)
+    {
+      v = (v - zmin) / (zmax - zmin);
+      v = std::pow(1.f - v, erodibility_distrib_exp);
+    }
+  }
+  else
+  {
+    erodibility = std::vector<float>(control_points_count, 1.f);
+  }
+
+  // slope varying with distance to the boundary
+  std::vector<float> max_slope = cubic_pulse(mesh);
+
+  for (auto &v : max_slope)
+    v = (smax - smin) * v + smin;
+
+  // --- erode the triangle mesh
+
+  hydraulic_saleve(mesh,
+                   erodibility,
+                   max_slope,
+                   m_exp,
+                   uplift_rate,
+                   tolerance,
+                   max_iterations,
+                   noise_strength,
+                   seed,
+                   enable_post_slope_limiter,
+                   post_slope_limit,
+                   enable_post_smoothing);
+
+  // --- interpolate back to an heightmap
+
+  // make sure the input noise displacement do not modify the convex
+  // hull limits to avoid issues with the nautral neighbor
+  // interpolation
+
+  std::vector<float> xc, yc, zc;
+  for (const auto &p : mesh.get_points())
+  {
+    xc.push_back(p.x);
+    yc.push_back(p.y);
+    zc.push_back(p.z);
+  }
+
+  VirtualArray ze;
+  ze.copy_from(z, cm, /* copy_src_data */ false);
+
+  hmap::for_each_tile(
+      {p_noise_x, p_noise_y},
+      {&ze},
+      [&](std::vector<const hmap::Array *> p_arrays_in,
+          std::vector<hmap::Array *>       p_arrays_out,
+          const hmap::TileRegion          &region)
+      {
+        auto [pa_noise_x, pa_noise_y] = unpack<2>(p_arrays_in);
+        auto [pa_ze] = unpack<1>(p_arrays_out);
+
+        Array dx;
+        Array dy;
+
+        if (pa_noise_x)
+        {
+          dx = (*pa_noise_x) * biquad_pulse_x(region.shape, region.bbox);
+          pa_noise_x = &dx;
+        }
+
+        if (pa_noise_y)
+        {
+          dy = (*pa_noise_y) * biquad_pulse_y(region.shape, region.bbox);
+          pa_noise_y = &dy;
+        }
+
+        *pa_ze = interpolate2d(region.shape,
+                               xc,
+                               yc,
+                               zc,
+                               interpolation_method,
+                               pa_noise_x,
+                               pa_noise_y,
+                               region.bbox);
+      },
+      cm);
+
+  ze.remap(zmin, zmax, cm);
+
+  hmap::for_each_tile(
+      {&z, p_mask},
+      {&ze},
+      [&](std::vector<const hmap::Array *> p_arrays_in,
+          std::vector<hmap::Array *>       p_arrays_out,
+          const hmap::TileRegion &)
+      {
+        auto [pa_z, pa_mask] = unpack<2>(p_arrays_in);
+        auto [pa_ze] = unpack<1>(p_arrays_out);
+
+        if (pa_mask)
+          *pa_ze = lerp(*pa_z, *pa_ze, strength * (*pa_mask));
+        else
+          *pa_ze = lerp(*pa_z, *pa_ze, strength);
+      },
+      cm);
+
+  return ze;
+}
+
+} // namespace hmap::va
