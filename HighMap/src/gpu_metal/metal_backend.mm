@@ -312,6 +312,16 @@ public:
     if (initialized) return;
 
     initialized = true;
+
+    // Diagnostic switch: HIGHMAP_DISABLE_METAL=1 makes every public wrapper
+    // take its established CPU/OpenCL path, for A/B checks against upstream.
+    if (const char *value = std::getenv("HIGHMAP_DISABLE_METAL");
+        value && *value && std::strcmp(value, "0") != 0)
+    {
+      failure = "disabled by HIGHMAP_DISABLE_METAL";
+      return;
+    }
+
     @autoreleasepool
     {
       device = MTLCreateSystemDefaultDevice();
@@ -3302,6 +3312,9 @@ void DeviceArray::set_debug_name(const std::string &name)
 
 Array DeviceArray::to_array() const
 {
+  // With the backend unavailable (no device, or HIGHMAP_DISABLE_METAL) an
+  // empty array reports that, like the no-Metal stub, instead of a misuse.
+  if (!state_) require_ready();
   return download_array_state(state_);
 }
 

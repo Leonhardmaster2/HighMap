@@ -407,3 +407,7 @@ TEST(MetalRoutes, NoiseFbmMatchesOpenCL)
       expect_close(actual, expected, 1e-5f);
     }
 }
+
+// HIGHMAP_DISABLE_METAL is read once per process, so its effect is covered
+// by running the suite with the variable set (every Metal test then skips and
+// the public wrappers fall back to CPU/OpenCL).
