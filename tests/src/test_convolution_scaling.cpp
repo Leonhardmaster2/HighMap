@@ -1,3 +1,4 @@
+#include "opencl_test_utils.hpp"
 #include "highmap/array.hpp"
 #include "highmap/convolve.hpp"
 #include "highmap/dbg/assert.hpp"
@@ -66,6 +67,8 @@ TEST(ConvolutionScaling, CPU_Convolve2D_SvdScaling)
 
 TEST(ConvolutionScaling, GPU_BilateralFilterScaling)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   // OpenCL 2D brute-force window: test scalability with larger kernel sizes
   // relative to grid
   const std::vector<int> sizes = {64, 128};
@@ -88,6 +91,8 @@ TEST(ConvolutionScaling, GPU_BilateralFilterScaling)
 
 TEST(ConvolutionScaling, GPU_ExpandScaling)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   // OpenCL 2D morphology/dilation with 2D kernel
   const std::vector<int> sizes = {64, 128};
   const std::vector<int> radii = {2, 8, 16};
@@ -110,6 +115,8 @@ TEST(ConvolutionScaling, GPU_ExpandScaling)
 
 TEST(ConvolutionScaling, GPU_LocalMetricsScaling)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   // OpenCL circular window operators: local_max, ruggedness,
   // topographic_position_index
   const std::vector<int> sizes = {64, 128};
@@ -134,6 +141,8 @@ TEST(ConvolutionScaling, GPU_LocalMetricsScaling)
 
 TEST(ConvolutionScaling, GPU_SparseMaxConvolutionScaling)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   // OpenCL scatter/atomic max-convolution
   const std::vector<int> sizes = {64, 128};
   const std::vector<int> radii = {4, 16};

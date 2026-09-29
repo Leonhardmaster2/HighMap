@@ -218,6 +218,8 @@ TEST(ConvErosion, EmptyArray)
 
 TEST(ConvErosion, BasicExecution)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   hmap::gpu::init_opencl();
 
   glm::ivec2 shape = {64, 64};
@@ -327,6 +329,8 @@ TEST(HydraulicMusgrave, FlatRegionUnchanged)
 
 TEST(HydraulicMusgraveGPU, BasicExecution)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   hmap::gpu::init_opencl();
 
   glm::ivec2 shape = {64, 64};
@@ -349,6 +353,8 @@ TEST(HydraulicMusgraveGPU, BasicExecution)
 
 TEST(HydraulicMusgraveGPU, FlatRegionUnchanged)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   hmap::gpu::init_opencl();
 
   Array z = constant(glm::ivec2(16, 16), 5.f);

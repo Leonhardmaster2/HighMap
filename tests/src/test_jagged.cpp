@@ -1,3 +1,4 @@
+#include "opencl_test_utils.hpp"
 #include "highmap/array.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/filters.hpp"
@@ -20,6 +21,8 @@ protected:
 
 TEST_F(JaggedTest, AmpZeroReturnsInput)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -33,6 +36,8 @@ TEST_F(JaggedTest, AmpZeroReturnsInput)
 
 TEST_F(JaggedTest, AmpNonZeroModifies)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -43,6 +48,8 @@ TEST_F(JaggedTest, AmpNonZeroModifies)
 
 TEST_F(JaggedTest, GammaModulatesDomeShape)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -56,6 +63,8 @@ TEST_F(JaggedTest, GammaModulatesDomeShape)
 
 TEST_F(JaggedTest, MaskPreservesUnmaskedArea)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   const int  nx = 64;
   const int  ny = 64;
   glm::ivec2 shape = {nx, ny};
@@ -84,6 +93,8 @@ TEST_F(JaggedTest, MaskPreservesUnmaskedArea)
 
 TEST_F(JaggedTest, ScalarKwOverloadEquivalence)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 123);
 
@@ -101,6 +112,8 @@ TEST_F(JaggedTest, ScalarKwOverloadEquivalence)
 
 TEST_F(JaggedTest, AngleRotatesPattern)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -119,6 +132,8 @@ TEST_F(JaggedTest, EmptyArrayReturnsEmpty)
 
 TEST_F(JaggedTest, FbmAmpZeroReturnsInput)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -141,6 +156,8 @@ TEST_F(JaggedTest, FbmOctavesZeroReturnsInput)
 
 TEST_F(JaggedTest, FbmSingleOctaveMatchesJagged)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -168,6 +185,8 @@ TEST_F(JaggedTest, FbmSingleOctaveMatchesJagged)
 
 TEST_F(JaggedTest, FbmMultipleOctavesAddsDetail)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -180,6 +199,8 @@ TEST_F(JaggedTest, FbmMultipleOctavesAddsDetail)
 
 TEST_F(JaggedTest, FbmPersistenceAndLacunarityEffect)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 
@@ -193,6 +214,8 @@ TEST_F(JaggedTest, FbmPersistenceAndLacunarityEffect)
 
 TEST_F(JaggedTest, FbmMaskPreservesUnmaskedArea)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   const int  nx = 64;
   const int  ny = 64;
   glm::ivec2 shape = {nx, ny};
@@ -225,6 +248,8 @@ TEST_F(JaggedTest, FbmMaskPreservesUnmaskedArea)
 
 TEST_F(JaggedTest, FbmScalarKwOverloadEquivalence)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 123);
 
@@ -263,6 +288,8 @@ TEST_F(JaggedTest, FbmEmptyArrayReturnsEmpty)
 
 TEST_F(JaggedTest, FbmSwitchKxKyAlternatesComponents)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      input = noise_fbm(NoiseType::PERLIN, shape, {2.f, 2.f}, 42);
 

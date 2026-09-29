@@ -1,3 +1,4 @@
+#include "opencl_test_utils.hpp"
 #include "highmap/array.hpp"
 #include "highmap/dbg/assert.hpp"
 #include "highmap/filters.hpp"
@@ -10,6 +11,8 @@ using namespace hmap;
 
 TEST(RecastCliff, CliffMaskFlatTerrainIsZero)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array z = Array(glm::ivec2(64, 64), 0.5f);
   Array cliff_mask;
 
@@ -23,6 +26,8 @@ TEST(RecastCliff, CliffMaskFlatTerrainIsZero)
 
 TEST(RecastCliff, CliffMaskSteepTerrainIsPositive)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      z = noise_fbm(NoiseType::PERLIN, shape, glm::vec2(2.f, 2.f), 42);
   remap(z);
@@ -44,6 +49,8 @@ TEST(RecastCliff, CliffMaskSteepTerrainIsPositive)
 
 TEST(RecastCliff, CliffMaskWithInputMask)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      z = noise_fbm(NoiseType::PERLIN, shape, glm::vec2(2.f, 2.f), 42);
   remap(z);
@@ -74,6 +81,8 @@ TEST(RecastCliff, CliffMaskWithInputMask)
 
 TEST(RecastCliffDirectional, CliffMaskPositive)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      z = noise_fbm(NoiseType::PERLIN, shape, glm::vec2(2.f, 2.f), 42);
   remap(z);
@@ -103,6 +112,8 @@ TEST(RecastCliffDirectional, CliffMaskPositive)
 
 TEST(RecastCliffDirectional, CliffMaskWithInputMask)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      z = noise_fbm(NoiseType::PERLIN, shape, glm::vec2(2.f, 2.f), 42);
   remap(z);
@@ -142,6 +153,8 @@ TEST(RecastCliffDirectional, CliffMaskWithInputMask)
 
 TEST(RecastCliffDirectional, CliffMaskWithVariableAngle)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   glm::ivec2 shape = {64, 64};
   Array      z = noise_fbm(NoiseType::PERLIN, shape, glm::vec2(2.f, 2.f), 42);
   remap(z);

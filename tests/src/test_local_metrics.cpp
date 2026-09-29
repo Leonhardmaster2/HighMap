@@ -198,6 +198,8 @@ TEST(LocalMetrics, LocalRelief_Definition)
 
 TEST(LocalMetrics, Roughness_FlatTerrain)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array flat = Array(glm::ivec2(16, 16), 5.f);
 
   Array r_cpu = roughness(flat, 2);
@@ -213,6 +215,8 @@ TEST(LocalMetrics, Roughness_FlatTerrain)
 
 TEST(LocalMetrics, Roughness_CpuGpuEquivalenceAndWrapper)
 {
+  HMAP_SKIP_IF_NO_OPENCL();
+
   Array input = Array(glm::ivec2(16, 16));
   for (int j = 0; j < 16; ++j)
     for (int i = 0; i < 16; ++i)

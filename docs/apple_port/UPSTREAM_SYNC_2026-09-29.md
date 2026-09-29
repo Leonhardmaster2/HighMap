@@ -66,9 +66,16 @@ comparison (`--benchmark_filter=BM_Route_`).
 |---|---:|---:|---:|
 | Metal ON / OpenCL ON | 669 | 2 | 3 |
 | Metal OFF / OpenCL ON | 613 | 58 | 3 |
+| Metal ON / OpenCL OFF | 581 | 92 | 1 (`PathSplines`) |
 
-The same three tests fail in both configurations, so none of them comes from
-the Metal backend:
+For the Metal-only configuration, 28 new upstream tests (jagged, recast
+cliff, Musgrave GPU, conv-erosion, GPU roughness, convolution scaling) call
+OpenCL-only kernels. They now start with `HMAP_SKIP_IF_NO_OPENCL()`, like the
+fork's earlier tests, instead of failing on the intended "OpenCL disabled"
+exception.
+
+The same three tests fail in both OpenCL configurations, so none of them
+comes from the Metal backend:
 
 * `PathSplines.PreservePathShape`: pre-existing and documented earlier.
 * `ConvErosion.BasicExecution`: upstream's conv-erosion is marked WIP
