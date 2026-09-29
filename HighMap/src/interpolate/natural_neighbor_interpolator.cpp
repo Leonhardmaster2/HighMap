@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 #include <cstddef>
+#include <mutex>
 #include <utility>
 #include <vector>
 
@@ -22,8 +23,25 @@ extern "C"
 namespace hmap
 {
 
+namespace
+{
+
+// nn-c triangulates through Shewchuk's triangle.c, which keeps its exact
+// arithmetic constants and random seed in globals rewritten on every call.
+// VirtualArray tile workers interpolate concurrently (e.g.
+// va::hydraulic_saleve), and overlapping calls corrupted whole tiles into
+// NaN. Serialize every entry into the library.
+std::mutex &nn_c_mutex()
+{
+  static std::mutex mutex;
+  return mutex;
+}
+
+} // namespace
+
 NaturalNeighborInterpolator::~NaturalNeighborInterpolator()
 {
+  std::lock_guard<std::mutex> lock(nn_c_mutex());
   if (this->handle) nnai_destroy(this->handle);
   if (this->d) delaunay_destroy(this->d);
 }
@@ -48,8 +66,11 @@ NaturalNeighborInterpolator &NaturalNeighborInterpolator::operator=(
 {
   if (this != &other)
   {
-    if (this->handle) nnai_destroy(this->handle);
-    if (this->d) delaunay_destroy(this->d);
+    {
+      std::lock_guard<std::mutex> lock(nn_c_mutex());
+      if (this->handle) nnai_destroy(this->handle);
+      if (this->d) delaunay_destroy(this->d);
+    }
 
     this->handle = other.handle;
     this->d = other.d;
@@ -69,6 +90,8 @@ NaturalNeighborInterpolator &NaturalNeighborInterpolator::operator=(
 void NaturalNeighborInterpolator::build(const std::vector<float> &xin,
                                         const std::vector<float> &yin)
 {
+  std::lock_guard<std::mutex> lock(nn_c_mutex());
+
   if (this->handle)
   {
     nnai_destroy(this->handle);
@@ -126,7 +149,10 @@ void NaturalNeighborInterpolator::interpolate(
   std::vector<double> values_out_d(this->nout);
 
   // call the nnai C function
-  nnai_interpolate(this->handle, values_in_d.data(), values_out_d.data());
+  {
+    std::lock_guard<std::mutex> lock(nn_c_mutex());
+    nnai_interpolate(this->handle, values_in_d.data(), values_out_d.data());
+  }
 
   // convert double output back to float
   for (size_t k = 0; k < this->nout; ++k)
