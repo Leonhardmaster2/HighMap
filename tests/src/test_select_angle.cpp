@@ -88,6 +88,18 @@ TEST(SelectAngle, ExactMatchAndOutOfTolerance)
   EXPECT_NEAR(sel_zero_sigma(2, 2), 0.f, 1e-4);
 }
 
+TEST(SelectAngle, FlatTerrainExclusion)
+{
+  // perfectly flat array
+  Array z_flat(glm::ivec2(6, 6), 5.f);
+
+  // should return all 0s even when target angle is 0°
+  Array sel = select_angle(z_flat, 0.f, 30.f);
+  for (int j = 0; j < sel.shape.y; ++j)
+    for (int i = 0; i < sel.shape.x; ++i)
+      EXPECT_EQ(sel(i, j), 0.f);
+}
+
 TEST(SelectAngle, ValidationEmpty)
 {
   Array empty;

@@ -53,21 +53,28 @@ Array select_angle(const Array &array, float angle, float sigma, int ir)
   // prefiltering
   if (ir > 0) smooth_cpulse(c, ir);
 
-  Array aspect = gradient_angle(c, true);
+  Array           aspect = gradient_angle(c, true);
+  Array           gnorm = gradient_norm(c);
+  constexpr float eps = 1e-9f;
+
   float target_rad = angle / 180.f * (float)M_PI;
   float sigma_rad = sigma / 180.f * (float)M_PI;
 
   Array res = Array(array.shape);
   for (int j = 0; j < array.shape.y; j++)
-  {
     for (int i = 0; i < array.shape.x; i++)
     {
+      if (gnorm(i, j) <= eps)
+      {
+        res(i, j) = 0.f;
+        continue;
+      }
+
       float diff = std::atan2(std::sin(aspect(i, j) - target_rad),
                               std::cos(aspect(i, j) - target_rad));
       float d = std::abs(diff);
       res(i, j) = 1.f - threshold_smooth(d, 0.f, sigma_rad);
     }
-  }
 
   return res;
 }
