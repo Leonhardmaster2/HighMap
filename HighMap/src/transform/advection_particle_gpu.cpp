@@ -208,51 +208,58 @@ std::vector<Array> advection_particle(const Array              &dx,
     return {};
   if (p_mask && !validate_same_shape(dx, *p_mask)) return {};
 
-  auto run = clwrapper::Run("advection_particle");
-
   glm::ivec2 shape = dx.shape;
   int        num_fields = static_cast<int>(advected_fields.size());
   int        stride = shape.x * shape.y;
 
-  // Concatenate input fields
-  std::vector<float> concat_advected_field;
-  concat_advected_field.reserve(num_fields * stride);
-  for (const auto &field : advected_fields)
-  {
-    concat_advected_field.insert(concat_advected_field.end(),
-                                 field.vector.begin(),
-                                 field.vector.end());
-  }
-
   std::vector<float> concat_out(num_fields * stride, 0.f);
   Array              count(shape);
 
-  run.bind_buffer<float>("advected_field", concat_advected_field);
-  run.bind_buffer<float>("dx", dx.vector);
-  run.bind_buffer<float>("dy", dy.vector);
-  run.bind_buffer<float>("out", concat_out);
-  run.bind_buffer<float>("count", count.vector);
-  helper_bind_optional_buffer(run, "advection_mask", p_advection_mask);
+  // Apple's OpenCL 1.2 rejects an empty NDRange (CL_INVALID_GLOBAL_WORK_SIZE)
+  // where OpenCL 2.x+ treats it as a no-op. Without particles every cell
+  // keeps count == 0, so skipping the launch passes the fields through
+  // exactly like the no-op launch does elsewhere.
+  if (nparticles > 0)
+  {
+    auto run = clwrapper::Run("advection_particle");
 
-  run.bind_arguments(shape.x,
-                     shape.y,
-                     nparticles,
-                     seed,
-                     reverse ? -1.f : 1.f,
-                     advection_length,
-                     value_persistence,
-                     inertia,
-                     p_advection_mask ? 1 : 0,
-                     num_fields);
+    // Concatenate input fields
+    std::vector<float> concat_advected_field;
+    concat_advected_field.reserve(num_fields * stride);
+    for (const auto &field : advected_fields)
+    {
+      concat_advected_field.insert(concat_advected_field.end(),
+                                   field.vector.begin(),
+                                   field.vector.end());
+    }
 
-  run.write_buffer("advected_field");
-  run.write_buffer("dx");
-  run.write_buffer("dy");
+    run.bind_buffer<float>("advected_field", concat_advected_field);
+    run.bind_buffer<float>("dx", dx.vector);
+    run.bind_buffer<float>("dy", dy.vector);
+    run.bind_buffer<float>("out", concat_out);
+    run.bind_buffer<float>("count", count.vector);
+    helper_bind_optional_buffer(run, "advection_mask", p_advection_mask);
 
-  run.execute(nparticles);
+    run.bind_arguments(shape.x,
+                       shape.y,
+                       nparticles,
+                       seed,
+                       reverse ? -1.f : 1.f,
+                       advection_length,
+                       value_persistence,
+                       inertia,
+                       p_advection_mask ? 1 : 0,
+                       num_fields);
 
-  run.read_buffer("out");
-  run.read_buffer("count");
+    run.write_buffer("advected_field");
+    run.write_buffer("dx");
+    run.write_buffer("dy");
+
+    run.execute(nparticles);
+
+    run.read_buffer("out");
+    run.read_buffer("count");
+  }
 
   // Deconcatenate results and do post-processing for each field
   std::vector<Array> out_fields;
