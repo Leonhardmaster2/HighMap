@@ -23,6 +23,9 @@
 namespace hmap
 {
 
+struct ComputeMode;
+struct VirtualArray;
+
 /**
  * @enum neighborhood
  * @brief Enum representing different types of neighborhood lattices.
@@ -2830,3 +2833,19 @@ Array spectral_equalizer(const Array              &array,
                          const Array              *p_mask); ///< @overload
 
 } // namespace hmap::gpu
+
+namespace hmap::va
+{
+
+/*! @brief See hmap::smooth_cpulse */
+void smooth_cpulse(VirtualArray       &array,
+                   int                 ir,
+                   const VirtualArray *p_mask,
+                   const ComputeMode  &cm);
+
+VirtualArray smooth_cpulse(const VirtualArray &array,
+                           int                 ir,
+                           const VirtualArray *p_mask,
+                           const ComputeMode  &cm); ///< @overload
+
+} // namespace hmap::va
