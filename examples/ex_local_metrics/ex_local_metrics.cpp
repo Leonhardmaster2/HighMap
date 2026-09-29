@@ -35,6 +35,7 @@ int main(void)
       hmap::gpu::LocalMetrics::LM_LOCAL_SKEWNESS,
       hmap::gpu::LocalMetrics::LM_LOCAL_Z_SCORE,
       hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX,
+      hmap::gpu::LocalMetrics::LM_TOPOGRAPHIC_WETNESS_INDEX,
       hmap::gpu::LocalMetrics::LM_RELATIVE_ELEVATION,
       hmap::gpu::LocalMetrics::LM_ROUGHNESS,
       hmap::gpu::LocalMetrics::LM_RUGGEDNESS,

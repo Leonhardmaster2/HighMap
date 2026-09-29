@@ -253,6 +253,36 @@ Array ruggedness(const Array &array, int ir);
 Array rugosity(const Array &z, int ir, bool convex = true);
 
 /**
+ * @brief Computes the Topographic Wetness Index (TWI).
+ *
+ * TWI (compound topographic index) is a steady-state hydrological indicator
+ * estimating the tendency of terrain to accumulate water based on its
+ * topography:
+ * \f[
+ *     \text{TWI} = \ln\left(\frac{a}{\tan(\beta)}\right)
+ * \f]
+ * where \f$a\f$ is the upslope contributing area computed via \f$D_\infty\f$
+ * flow accumulation, and \f$\beta\f$ is the local slope.
+ *
+ * @param  z         Input elevation array.
+ * @param  talus_ref Reference talus slope for flow partitioning in D-infinity
+ *                   accumulation (if <= 0, automatically determined from max
+ * talus).
+ * @param  min_slope Minimum slope threshold \f$\tan(\beta)\f$ to prevent
+ * division by zero in flat areas (default: 1e-4f).
+ * @return           Array Resulting array containing the TWI values.
+ *
+ * **Example**
+ * @include ex_topographic_wetness_index.cpp
+ *
+ * **Result**
+ * @image html ex_topographic_wetness_index.png
+ */
+Array topographic_wetness_index(const Array &z,
+                                float        talus_ref = 0.f,
+                                float        min_slope = 1e-4f);
+
+/**
  * @brief Measures the valley width by calculating the distance from each point
  * in a concave region to the frontier of that region.
  *
@@ -568,6 +598,7 @@ enum LocalMetrics : int
 	LM_LOCAL_SKEWNESS,             ///< Skewness.
 	LM_LOCAL_Z_SCORE,              ///< Standardized value.
 	LM_TOPOGRAPHIC_POSITION_INDEX, ///< Topographic index.
+	LM_TOPOGRAPHIC_WETNESS_INDEX,  ///< Topographic wetness index.
 	LM_RELATIVE_ELEVATION,         ///< Normalized elevation.
 	LM_ROUGHNESS,                  ///< Local terrain roughness.
 	LM_RUGGEDNESS,                 ///< Measure of terrain roughness.

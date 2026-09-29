@@ -219,3 +219,59 @@ TEST(LocalMetrics, Roughness_CpuGpuEquivalenceAndWrapper)
       EXPECT_GE(r_gpu(i, j), 0.f);
     }
 }
+
+// ------------------------------------------------------------
+// TOPOGRAPHIC WETNESS INDEX
+// ------------------------------------------------------------
+
+TEST(LocalMetrics, TopographicWetnessIndex_EmptyArray)
+{
+  Array empty;
+  Array twi = topographic_wetness_index(empty);
+  EXPECT_TRUE(twi.vector.empty());
+}
+
+TEST(LocalMetrics, TopographicWetnessIndex_FlatTerrain)
+{
+  Array flat(glm::ivec2(16, 16), 5.f);
+  Array twi = topographic_wetness_index(flat);
+
+  EXPECT_EQ(twi.shape, flat.shape);
+  for (int j = 0; j < flat.shape.y; ++j)
+    for (int i = 0; i < flat.shape.x; ++i)
+    {
+      EXPECT_FALSE(std::isnan(twi(i, j)));
+      EXPECT_FALSE(std::isinf(twi(i, j)));
+    }
+}
+
+TEST(LocalMetrics, TopographicWetnessIndex_ValleyHighlights)
+{
+  // V-shaped valley sloping downwards along y
+  const int nx = 32;
+  const int ny = 32;
+  Array     z(glm::ivec2(nx, ny));
+
+  for (int j = 0; j < ny; ++j)
+    for (int i = 0; i < nx; ++i)
+    {
+      float dist_center = std::abs(static_cast<float>(i) - 15.5f);
+      z(i, j) = dist_center * 0.1f + static_cast<float>(ny - 1 - j) * 0.05f;
+    }
+
+  Array twi = topographic_wetness_index(z);
+  Array twi_wrapper = gpu::local_metrics(
+      z,
+      0,
+      gpu::LocalMetrics::LM_TOPOGRAPHIC_WETNESS_INDEX);
+
+  EXPECT_TRUE(assert_almost_equal(twi, twi_wrapper));
+
+  // The valley center (i=15 or 16) should have higher wetness index than ridge
+  // (i=0 or 31)
+  for (int j = 5; j < ny - 5; ++j)
+  {
+    EXPECT_GT(twi(15, j), twi(0, j));
+    EXPECT_GT(twi(16, j), twi(31, j));
+  }
+}

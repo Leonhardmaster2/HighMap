@@ -47,6 +47,9 @@ Array local_metrics(const Array &array,
   case LocalMetrics::LM_TOPOGRAPHIC_POSITION_INDEX:
     return gpu::topographic_position_index(array, ir);
     //
+  case LocalMetrics::LM_TOPOGRAPHIC_WETNESS_INDEX:
+    return topographic_wetness_index(array);
+    //
   case LocalMetrics::LM_RELATIVE_ELEVATION:
     return gpu::relative_elevation(array, ir, kernel_type);
     //
