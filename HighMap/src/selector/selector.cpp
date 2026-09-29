@@ -43,16 +43,12 @@ Array scan_mask(const Array &array, float contrast, float brightness)
   return array_out;
 }
 
-Array select_angle(const Array &array, float angle, float sigma, int ir)
+Array select_angle(const Array &array, float angle, float sigma)
 {
   if (!validate_non_empty(array)) return Array();
   if (sigma <= 0.f) return Array(array.shape, 0.f);
 
-  Array c = array;
-
-  // prefiltering
-  if (ir > 0) smooth_cpulse(c, ir);
-
+  Array           c = array;
   Array           aspect = gradient_angle(c, true);
   Array           gnorm = gradient_norm(c);
   constexpr float eps = 1e-9f;
