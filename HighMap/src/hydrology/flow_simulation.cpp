@@ -2,6 +2,7 @@
  * Public License. The full license is in the file LICENSE, distributed with
  * this software. */
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <memory>
@@ -10,8 +11,10 @@
 #include "highmap/internal/opencl_run.hpp"
 
 #include "highmap/array.hpp"
+#include "highmap/gpu/metal.hpp"
 #include "highmap/hydrology/hydrology.hpp"
 #include "highmap/internal/validation.hpp"
+#include "highmap/range.hpp"
 
 namespace hmap::gpu
 {
@@ -67,6 +70,24 @@ Array flow_simulation(const Array &z,
   };
 
   if (iterations <= 0) return finalize();
+
+  if (metal::is_available())
+  {
+    metal::flow_simulation(z,
+                           d,
+                           iterations,
+                           dt,
+                           water_height,
+                           flux_diffusion,
+                           flux_diffusion_strength,
+                           p_rain_map,
+                           rain_rate,
+                           evap_rate,
+                           outflow_boundaries,
+                           &u,
+                           &v);
+    return finalize();
+  }
 
   // --- device state: depth and the four fluxes are ping-pong pairs (A/B)
   // that stay on the GPU for the whole loop; only the terrain is uploaded
@@ -196,6 +217,119 @@ Array flow_simulation(const Array &z,
   if (p_vel_v) run_wa.read_imagef("v");
 
   return finalize();
+}
+
+namespace
+{
+
+// box average for integer factors (no aliasing of fine terrain features),
+// bilinear resampling otherwise
+Array downsample(const Array &array, int factor, glm::ivec2 new_shape)
+{
+  if (array.shape.x != new_shape.x * factor || array.shape.y != new_shape.y * factor)
+    return array.resample_to_shape(new_shape);
+
+  Array       out(new_shape);
+  const float norm = 1.f / float(factor * factor);
+
+  for (int j = 0; j < new_shape.y; ++j)
+    for (int i = 0; i < new_shape.x; ++i)
+    {
+      float sum = 0.f;
+      for (int q = 0; q < factor; ++q)
+        for (int p = 0; p < factor; ++p)
+          sum += array(i * factor + p, j * factor + q);
+      out(i, j) = sum * norm;
+    }
+  return out;
+}
+
+} // namespace
+
+Array flow_simulation_coarse_to_fine(const Array &z,
+                                     float        water_height,
+                                     const Array &depth_map,
+                                     int          iterations,
+                                     int          coarse_factor,
+                                     float        refine_ratio,
+                                     float        dt,
+                                     bool         flux_diffusion,
+                                     float        flux_diffusion_strength,
+                                     float        dry_out_ratio,
+                                     const Array *p_rain_map,
+                                     float        rain_rate,
+                                     float        evap_rate,
+                                     bool         outflow_boundaries)
+{
+  if (!validate_non_empty(z)) return Array();
+  if (!validate_same_shape(z, depth_map)) return Array();
+  if (p_rain_map && !validate_same_shape(z, *p_rain_map)) return Array();
+
+  const glm::ivec2 shape = z.shape;
+  const glm::ivec2 shape_c = shape / std::max(coarse_factor, 1);
+
+  // nothing to gain below a useful coarse grid: reference solver
+  if (coarse_factor <= 1 || std::min(shape_c.x, shape_c.y) < 32)
+    return flow_simulation(z,
+                           water_height,
+                           depth_map,
+                           iterations,
+                           dt,
+                           flux_diffusion,
+                           flux_diffusion_strength,
+                           dry_out_ratio,
+                           p_rain_map,
+                           rain_rate,
+                           evap_rate,
+                           outflow_boundaries);
+
+  // (1) full simulated duration on the coarse grid: the iteration count
+  // scales with the resolution (same physical time per cell), so this costs
+  // ~1 / coarse_factor^3 of the reference run
+  const Array z_c = downsample(z, coarse_factor, shape_c);
+  const Array depth_c = downsample(depth_map, coarse_factor, shape_c);
+  const Array rain_c = p_rain_map ? downsample(*p_rain_map, coarse_factor, shape_c)
+                                  : Array();
+  const int   iterations_c = std::max(
+      1,
+      static_cast<int>(std::lround(float(iterations) * shape_c.x / shape.x)));
+
+  const Array d_c = flow_simulation(z_c,
+                                    water_height,
+                                    depth_c,
+                                    iterations_c,
+                                    dt,
+                                    flux_diffusion,
+                                    flux_diffusion_strength,
+                                    /* dry_out_ratio */ 0.f,
+                                    p_rain_map ? &rain_c : nullptr,
+                                    rain_rate,
+                                    evap_rate,
+                                    outflow_boundaries);
+
+  // (2) water depth back on the fine grid: dry coarse cells stay dry, so
+  // fine-scale pits outside the flow do not fill up
+  Array d_fine = d_c.resample_to_shape_bilinear(shape);
+  clamp_min(d_fine, 0.f);
+
+  // (3) short fine-resolution refinement, starting from that water: it only
+  // has to settle the water over a few coarse cells onto the fine terrain
+  const int iterations_f = std::max(
+      1,
+      static_cast<int>(std::lround(std::clamp(refine_ratio, 0.f, 1.f) * iterations)));
+
+  return flow_simulation(z,
+                         /* water_height: d_fine is the initial depth */ 1.f,
+                         d_fine,
+                         iterations_f,
+                         dt,
+                         flux_diffusion,
+                         flux_diffusion_strength,
+                         dry_out_ratio,
+                         p_rain_map,
+                         rain_rate,
+                         evap_rate,
+                         outflow_boundaries);
 }
 
 Array flow_simulation_viscous(const Array &z,

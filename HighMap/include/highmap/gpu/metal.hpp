@@ -421,4 +421,26 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v);
 
+/**
+ * @brief Water-only virtual pipes flow (hmap::gpu::flow_simulation) with all
+ * simulation state kept on Metal.
+ *
+ * Same arithmetic as the OpenCL kernels. `d` holds the initial water depth on
+ * input and the final depth on output; velocities are computed on the last
+ * iteration only.
+ */
+void flow_simulation(const Array &z,
+                     Array       &d,
+                     int          iterations,
+                     float        dt,
+                     float        water_height,
+                     bool         flux_diffusion,
+                     float        flux_diffusion_strength,
+                     const Array *p_rain_map,
+                     float        rain_rate,
+                     float        evap_rate,
+                     bool         outflow_boundaries,
+                     Array       *p_vel_u,
+                     Array       *p_vel_v);
+
 } // namespace hmap::gpu::metal

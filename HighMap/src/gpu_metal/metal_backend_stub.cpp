@@ -437,6 +437,23 @@ void hydraulic_vpipes(Array &,
   unavailable();
 }
 
+void flow_simulation(const Array &,
+                     Array &,
+                     int,
+                     float,
+                     float,
+                     bool,
+                     float,
+                     const Array *,
+                     float,
+                     float,
+                     bool,
+                     Array *,
+                     Array *)
+{
+  unavailable();
+}
+
 } // namespace hmap::gpu::metal
 
 #endif

@@ -1179,3 +1179,182 @@ kernel void hydraulic_rescale(device float *d [[buffer(0)]],
   float correction = p.rain_volume > 0.f ? (p.initial_water_volume - current) / p.rain_volume : 0.f;
   d[i] += correction * rain[i];
 }
+
+// --- flow_simulation (virtual pipes, water only)
+//
+// Same arithmetic as the OpenCL hydraulic_vpipes_flow_pass / _water_pass /
+// _rain_pass kernels used by hmap::gpu::flow_simulation (gravity and pipe
+// length are 1), on buffers instead of images. Velocities are only written
+// when requested (last iteration), since nothing reads them in between.
+
+struct FlowSimParams
+{
+  int   nx;
+  int   ny;
+  float dt;
+  float water_height;
+  float evap_rate;
+  int   flux_diffusion;
+  float flux_diffusion_strength;
+  int   outflow_boundaries;
+  int   write_velocity;
+  float rain_amount; // rain_rate * dt
+  int   rain_use_map;
+};
+
+kernel void hydraulic_flowsim_flux_pass(device const float *z [[buffer(0)]],
+                                        device const float *fl [[buffer(1)]],
+                                        device const float *fr [[buffer(2)]],
+                                        device const float *ft [[buffer(3)]],
+                                        device const float *fb [[buffer(4)]],
+                                        device const float *d1 [[buffer(5)]],
+                                        device float *fl_out [[buffer(6)]],
+                                        device float *fr_out [[buffer(7)]],
+                                        device float *ft_out [[buffer(8)]],
+                                        device float *fb_out [[buffer(9)]],
+                                        constant FlowSimParams &p [[buffer(10)]],
+                                        uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int  x = int(gid.x);
+  const int  y = int(gid.y);
+  const uint i = index_at(x, y, p.nx);
+
+  const float d0 = d1[i];
+  const float fl_val = fl[i];
+  const float fr_val = fr[i];
+  const float ft_val = ft[i];
+  const float fb_val = fb[i];
+
+  // a dry cell without flux keeps strictly zero outgoing fluxes
+  if (d0 <= 0.f && fl_val <= 0.f && fr_val <= 0.f && ft_val <= 0.f && fb_val <= 0.f)
+  {
+    fl_out[i] = 0.f;
+    fr_out[i] = 0.f;
+    ft_out[i] = 0.f;
+    fb_out[i] = 0.f;
+    return;
+  }
+
+  const float h0 = z[i] + d0;
+
+  const float dhl = (p.outflow_boundaries && x == 0)
+                        ? d0
+                        : (h0 - load_clamped(z, x - 1, y, p.nx, p.ny) -
+                           load_clamped(d1, x - 1, y, p.nx, p.ny));
+  const float dhr = (p.outflow_boundaries && x == p.nx - 1)
+                        ? d0
+                        : (h0 - load_clamped(z, x + 1, y, p.nx, p.ny) -
+                           load_clamped(d1, x + 1, y, p.nx, p.ny));
+  const float dht = (p.outflow_boundaries && y == p.ny - 1)
+                        ? d0
+                        : (h0 - load_clamped(z, x, y + 1, p.nx, p.ny) -
+                           load_clamped(d1, x, y + 1, p.nx, p.ny));
+  const float dhb = (p.outflow_boundaries && y == 0)
+                        ? d0
+                        : (h0 - load_clamped(z, x, y - 1, p.nx, p.ny) -
+                           load_clamped(d1, x, y - 1, p.nx, p.ny));
+
+  float fl_new = max(0.f, fl_val + p.dt * dhl);
+  float fr_new = max(0.f, fr_val + p.dt * dhr);
+  float ft_new = max(0.f, ft_val + p.dt * dht);
+  float fb_new = max(0.f, fb_val + p.dt * dhb);
+
+  if (p.flux_diffusion)
+  {
+    const float c0 = p.flux_diffusion_strength;
+    const float c1 = 1.f - 4.f * c0;
+    const float f_diff = c0 * (fl_new + fr_new + ft_new + fb_new);
+
+    fl_new = c1 * fl_new + f_diff;
+    fr_new = c1 * fr_new + f_diff;
+    ft_new = c1 * ft_new + f_diff;
+    fb_new = c1 * fb_new + f_diff;
+  }
+
+  // normalize: never move more water than the cell holds
+  const float sum = fl_new + fr_new + ft_new + fb_new;
+  float       k = 0.f;
+  if (sum > 1e-5f) k = d0 / (sum * p.dt);
+  k = clamp(k, 0.f, 1.f);
+
+  fl_out[i] = fl_new * k;
+  fr_out[i] = fr_new * k;
+  ft_out[i] = ft_new * k;
+  fb_out[i] = fb_new * k;
+}
+
+kernel void hydraulic_flowsim_water_pass(device const float *fl [[buffer(0)]],
+                                         device const float *fr [[buffer(1)]],
+                                         device const float *ft [[buffer(2)]],
+                                         device const float *fb [[buffer(3)]],
+                                         device const float *d1 [[buffer(4)]],
+                                         device float *d2_out [[buffer(5)]],
+                                         device float *u_out [[buffer(6)]],
+                                         device float *v_out [[buffer(7)]],
+                                         constant FlowSimParams &p [[buffer(8)]],
+                                         uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const int  x = int(gid.x);
+  const int  y = int(gid.y);
+  const uint i = index_at(x, y, p.nx);
+
+  const float d0 = d1[i];
+  const float fl_val = fl[i];
+  const float fr_val = fr[i];
+  const float ft_val = ft[i];
+  const float fb_val = fb[i];
+
+  const float in_l = (p.outflow_boundaries && x == 0)
+                         ? 0.f
+                         : load_clamped(fr, x - 1, y, p.nx, p.ny);
+  const float in_r = (p.outflow_boundaries && x == p.nx - 1)
+                         ? 0.f
+                         : load_clamped(fl, x + 1, y, p.nx, p.ny);
+  const float in_b = (p.outflow_boundaries && y == 0)
+                         ? 0.f
+                         : load_clamped(ft, x, y - 1, p.nx, p.ny);
+  const float in_t = (p.outflow_boundaries && y == p.ny - 1)
+                         ? 0.f
+                         : load_clamped(fb, x, y + 1, p.nx, p.ny);
+
+  // dry cell without incoming or outgoing flux
+  if (d0 <= 0.f && fl_val <= 0.f && fr_val <= 0.f && ft_val <= 0.f && fb_val <= 0.f &&
+      in_l <= 0.f && in_r <= 0.f && in_b <= 0.f && in_t <= 0.f)
+  {
+    d2_out[i] = 0.f;
+    if (p.write_velocity)
+    {
+      u_out[i] = 0.f;
+      v_out[i] = 0.f;
+    }
+    return;
+  }
+
+  const float dv = p.dt *
+                   (in_l + in_b + in_r + in_t - fl_val - fr_val - ft_val - fb_val);
+  float d2_new = max(0.f, d0 + dv);
+
+  if (p.evap_rate > 0.f) d2_new = max(0.f, d2_new * (1.f - p.evap_rate * p.dt));
+
+  d2_out[i] = d2_new;
+
+  if (p.write_velocity)
+  {
+    const float dmean = max(0.001f * p.water_height, d2_new);
+    u_out[i] = 0.5f * (in_l - fl_val + fr_val - in_r) / dmean;
+    v_out[i] = 0.5f * (in_b - fb_val + ft_val - in_t) / dmean;
+  }
+}
+
+kernel void hydraulic_flowsim_rain_pass(device const float *d_in [[buffer(0)]],
+                                        device const float *rain [[buffer(1)]],
+                                        device float *d_out [[buffer(2)]],
+                                        constant FlowSimParams &p [[buffer(3)]],
+                                        uint2 gid [[thread_position_in_grid]])
+{
+  if (gid.x >= uint(p.nx) || gid.y >= uint(p.ny)) return;
+  const uint i = index_at(int(gid.x), int(gid.y), p.nx);
+  d_out[i] = d_in[i] + (p.rain_use_map ? rain[i] * p.rain_amount : p.rain_amount);
+}

@@ -291,6 +291,22 @@ struct HydraulicParams
   int maintain_water_volume;
 };
 
+// mirrors FlowSimParams in highmap.metal
+struct FlowSimParams
+{
+  int   nx;
+  int   ny;
+  float dt;
+  float water_height;
+  float evap_rate;
+  int   flux_diffusion;
+  float flux_diffusion_strength;
+  int   outflow_boundaries;
+  int   write_velocity;
+  float rain_amount;
+  int   rain_use_map;
+};
+
 struct ReduceParams
 {
   int count;
@@ -2070,6 +2086,147 @@ void hydraulic_vpipes(Array &z,
     *p_sediment = Array(shape);
     read_buffer(sediment, p_sediment->vector);
   }
+  if (p_vel_u)
+  {
+    *p_vel_u = Array(shape);
+    read_buffer(velocity_u, p_vel_u->vector);
+  }
+  if (p_vel_v)
+  {
+    *p_vel_v = Array(shape);
+    read_buffer(velocity_v, p_vel_v->vector);
+  }
+}
+
+void flow_simulation(const Array &z,
+                     Array       &d,
+                     int          iterations,
+                     float        dt,
+                     float        water_height,
+                     bool         flux_diffusion,
+                     float        flux_diffusion_strength,
+                     const Array *p_rain_map,
+                     float        rain_rate,
+                     float        evap_rate,
+                     bool         outflow_boundaries,
+                     Array       *p_vel_u,
+                     Array       *p_vel_v)
+{
+  const OperationScope operation_scope;
+  require_ready();
+  const glm::ivec2 shape = z.shape;
+  check_shape_2d(shape);
+  check_shape(d, shape, "water depth");
+  if (p_rain_map) check_shape(*p_rain_map, shape, "rain_map");
+  if (iterations <= 0) return;
+
+  const size_t count = z.vector.size();
+  const bool   use_rain = rain_rate > 0.f;
+  const bool   use_map = use_rain && p_rain_map;
+
+  // depth and the four fluxes ping-pong between A and B; everything lives in
+  // shared unified memory and is only read back after the last iteration
+  id<MTLBuffer> z_buffer = input_buffer(z.vector);
+  id<MTLBuffer> rain_buffer = use_map ? input_buffer(p_rain_map->vector) : z_buffer;
+  id<MTLBuffer> d_buffers[2] = {input_buffer(d.vector), zero_buffer(count)};
+  id<MTLBuffer> f_buffers[2][4] = {
+      {zero_buffer(count), zero_buffer(count), zero_buffer(count), zero_buffer(count)},
+      {zero_buffer(count), zero_buffer(count), zero_buffer(count), zero_buffer(count)}};
+  id<MTLBuffer> velocity_u = zero_buffer(count);
+  id<MTLBuffer> velocity_v = zero_buffer(count);
+
+  id<MTLComputePipelineState> flux_pipeline =
+      context().pipeline("hydraulic_flowsim_flux_pass");
+  id<MTLComputePipelineState> water_pipeline =
+      context().pipeline("hydraulic_flowsim_water_pass");
+  id<MTLComputePipelineState> rain_pipeline =
+      use_rain ? context().pipeline("hydraulic_flowsim_rain_pass") : nil;
+
+  FlowSimParams params{shape.x,
+                       shape.y,
+                       dt,
+                       water_height,
+                       evap_rate,
+                       flux_diffusion ? 1 : 0,
+                       flux_diffusion_strength,
+                       outflow_boundaries ? 1 : 0,
+                       /* write_velocity */ 0,
+                       rain_rate * dt,
+                       use_map ? 1 : 0};
+
+  // Dispatches in one (serial) compute encoder run in order. The loop is cut
+  // into command buffers of a few hundred iterations, committed as they are
+  // encoded, so a long simulation never monopolizes the GPU the window server
+  // also draws with; only the last one is waited for.
+  constexpr int iterations_per_command_buffer = 256;
+
+  id<MTLCommandBuffer>         command_buffer = nil;
+  id<MTLComputeCommandEncoder> encoder = nil;
+  const auto                   encoding_start = Clock::now();
+
+  int dc = 0; // current depth buffer
+  int fc = 0; // current flux buffers
+
+  for (int it = 0; it < iterations; ++it)
+  {
+    if (!encoder)
+    {
+      command_buffer = make_command_buffer();
+      encoder = compute_encoder(command_buffer);
+    }
+
+    // continuous rainfall: d[dc] + rain -> d[1 - dc]
+    if (use_rain)
+    {
+      [encoder setComputePipelineState:rain_pipeline];
+      [encoder setBuffer:d_buffers[dc] offset:0 atIndex:0];
+      [encoder setBuffer:rain_buffer offset:0 atIndex:1];
+      [encoder setBuffer:d_buffers[1 - dc] offset:0 atIndex:2];
+      set_bytes(encoder, &params, sizeof(params), 3);
+      dispatch(encoder, rain_pipeline, shape.x, shape.y, "hydraulic_flowsim_rain_pass");
+      dc = 1 - dc;
+    }
+
+    // fluxes: reads f[fc], d[dc]; writes f[1 - fc]
+    [encoder setComputePipelineState:flux_pipeline];
+    [encoder setBuffer:z_buffer offset:0 atIndex:0];
+    for (int k = 0; k < 4; ++k)
+      [encoder setBuffer:f_buffers[fc][k] offset:0 atIndex:1 + k];
+    [encoder setBuffer:d_buffers[dc] offset:0 atIndex:5];
+    for (int k = 0; k < 4; ++k)
+      [encoder setBuffer:f_buffers[1 - fc][k] offset:0 atIndex:6 + k];
+    set_bytes(encoder, &params, sizeof(params), 10);
+    dispatch(encoder, flux_pipeline, shape.x, shape.y, "hydraulic_flowsim_flux_pass");
+
+    // water transport: reads f[1 - fc], d[dc]; writes d[1 - dc] (and the
+    // velocities on the last iteration)
+    params.write_velocity = (it == iterations - 1) ? 1 : 0;
+    [encoder setComputePipelineState:water_pipeline];
+    for (int k = 0; k < 4; ++k)
+      [encoder setBuffer:f_buffers[1 - fc][k] offset:0 atIndex:k];
+    [encoder setBuffer:d_buffers[dc] offset:0 atIndex:4];
+    [encoder setBuffer:d_buffers[1 - dc] offset:0 atIndex:5];
+    [encoder setBuffer:velocity_u offset:0 atIndex:6];
+    [encoder setBuffer:velocity_v offset:0 atIndex:7];
+    set_bytes(encoder, &params, sizeof(params), 8);
+    dispatch(encoder, water_pipeline, shape.x, shape.y, "hydraulic_flowsim_water_pass");
+
+    fc = 1 - fc;
+    dc = 1 - dc;
+
+    const bool last = it == iterations - 1;
+    if (last || (it + 1) % iterations_per_command_buffer == 0)
+    {
+      [encoder endEncoding];
+      encoder = nil;
+      if (!last) [command_buffer commit];
+    }
+  }
+
+  record_encoding(encoding_start);
+  wait_for_completion(command_buffer);
+
+  read_buffer(d_buffers[dc], d.vector);
   if (p_vel_u)
   {
     *p_vel_u = Array(shape);

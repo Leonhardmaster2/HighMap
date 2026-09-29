@@ -1077,6 +1077,36 @@ Array flow_simulation(const Array &z,
                       Array       *p_vel_v = nullptr);
 
 /**
+ * @brief Coarse-to-fine approximation of flow_simulation for large grids.
+ *
+ * Runs the full simulated duration on a grid `coarse_factor` times smaller
+ * (box-averaged terrain), upsamples the resulting water depth and refines it
+ * at full resolution for `refine_ratio * iterations` iterations. The flow
+ * simulation cost grows roughly with the cube of the resolution, so this is
+ * much faster than the reference solver, at the price of results that are
+ * close to, but not identical with, flow_simulation.
+ *
+ * @param coarse_factor Resolution divider of the coarse pass (<= 1, or a
+ *                      coarse grid under 32 cells: reference solver).
+ * @param refine_ratio  Fraction of `iterations` spent at full resolution.
+ *                      Other parameters: see flow_simulation.
+ */
+Array flow_simulation_coarse_to_fine(const Array &z,
+                                     float        water_depth,
+                                     const Array &depth_map,
+                                     int          iterations,
+                                     int          coarse_factor = 4,
+                                     float        refine_ratio = 0.1f,
+                                     float        dt = 0.5f,
+                                     bool         flux_diffusion = true,
+                                     float        flux_diffusion_strength = 0.01f,
+                                     float        dry_out_ratio = 0.f,
+                                     const Array *p_rain_map = nullptr,
+                                     float        rain_rate = 0.f,
+                                     float        evap_rate = 0.f,
+                                     bool         outflow_boundaries = false);
+
+/**
  * @brief GPU viscous shallow-water flow simulation using non-linear thin-film
  * diffusion with upwind mobility.
  *
