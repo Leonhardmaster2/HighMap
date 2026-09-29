@@ -643,6 +643,21 @@ Array noise_fbm(NoiseType     noise_type,
   if (p_noise_x && !validate_same_shape(shape, *p_noise_x)) return Array(shape);
   if (p_noise_y && !validate_same_shape(shape, *p_noise_y)) return Array(shape);
 
+  if (metal::is_available() && metal::supports_noise_fbm(noise_type))
+    return metal::noise_fbm(noise_type,
+                            shape,
+                            kw,
+                            seed,
+                            octaves,
+                            weight,
+                            persistence,
+                            lacunarity,
+                            p_ctrl_param,
+                            p_noise_x,
+                            p_noise_y,
+                            bbox,
+                            period);
+
   Array array(shape);
 
   int noise_id = static_cast<int>(noise_type);

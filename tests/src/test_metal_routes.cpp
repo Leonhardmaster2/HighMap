@@ -7,6 +7,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
+#include <future>
 #include <string>
 #include <vector>
 
@@ -131,6 +133,49 @@ Array opencl_disk(const Array &in, int ir, bool is_max)
   run.execute({in.shape.x, in.shape.y});
   run.read_imagef("out");
   return out;
+}
+
+// Direct OpenCL noise_fbm (the public gpu::noise_fbm routes to Metal).
+Array opencl_noise_fbm(hmap::NoiseType noise_type,
+                       glm::ivec2      shape,
+                       glm::vec2       kw,
+                       std::uint32_t   seed,
+                       int             octaves,
+                       float           weight,
+                       float           persistence,
+                       float           lacunarity,
+                       const Array    *p_ctrl_param = nullptr,
+                       const Array    *p_noise_x = nullptr,
+                       const Array    *p_noise_y = nullptr,
+                       glm::vec4       bbox = {0.f, 1.f, 0.f, 1.f},
+                       glm::ivec2      period = {0, 0})
+{
+  Array array(shape);
+  auto  run = clwrapper::Run("noise_fbm");
+  run.bind_buffer<float>("array", array.vector);
+  hmap::gpu::helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
+  hmap::gpu::helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  hmap::gpu::helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  run.bind_arguments(shape.x,
+                     shape.y,
+                     static_cast<int>(noise_type),
+                     kw.x,
+                     kw.y,
+                     seed,
+                     octaves,
+                     weight,
+                     persistence,
+                     lacunarity,
+                     p_ctrl_param ? 1 : 0,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     period.x,
+                     period.y,
+                     bbox);
+  run.write_buffer("array");
+  run.execute({shape.x, shape.y});
+  run.read_buffer("array");
+  return array;
 }
 
 const char *kernel_name(MinMaxKernel kt)
@@ -282,4 +327,83 @@ TEST(MetalRoutes, SmoothCpulseMaskedMatchesCpu)
   Array actual = input;
   hmap::gpu::smooth_cpulse(actual, 6, &mask);
   expect_close(actual, expected, 2e-5f);
+}
+
+TEST(MetalRoutes, ConcurrentSyncCallsShareBufferCacheSafely)
+{
+  if (!metal_available()) GTEST_SKIP() << "Metal backend is not available";
+
+  // Tile-parallel callers (VirtualArray distributed mode) invoke the
+  // synchronous wrappers from several threads with identically sized arrays,
+  // which is exactly when the transient buffer cache hands buffers around.
+  const glm::ivec2 shape = {96, 80};
+  auto             run = [&](int seed)
+  {
+    Array input(shape);
+    for (int j = 0; j < shape.y; ++j)
+      for (int i = 0; i < shape.x; ++i)
+        input(i, j) = std::sin(0.13f * float(i * seed) + 0.07f * float(j));
+
+    for (int rep = 0; rep < 20; ++rep)
+    {
+      Array smooth = input;
+      hmap::gpu::smooth_cpulse(smooth, 5);
+      Array smooth_cpu = input;
+      hmap::smooth_cpulse(smooth_cpu, 5);
+      for (size_t k = 0; k < smooth.vector.size(); ++k)
+        if (std::abs(smooth.vector[k] - smooth_cpu.vector[k]) > 2e-5f)
+          return false;
+
+      const Array dil = hmap::gpu::local_max(input, 3, MinMaxKernel::OCTAGON);
+      const Array ref = reference_extrema(input, 3, MinMaxKernel::OCTAGON, true);
+      if (dil.vector != ref.vector) return false;
+    }
+    return true;
+  };
+
+  std::vector<std::future<bool>> jobs;
+  for (int t = 0; t < 8; ++t)
+    jobs.push_back(std::async(std::launch::async, run, t + 1));
+  for (auto &job : jobs) EXPECT_TRUE(job.get());
+}
+
+TEST(MetalRoutes, NoiseFbmMatchesOpenCL)
+{
+  if (!metal_available()) GTEST_SKIP() << "Metal backend is not available";
+  if (!opencl_available()) GTEST_SKIP() << "No OpenCL device for parity";
+
+  const glm::ivec2 shape = {157, 131};
+  Array            ctrl(shape), dx(shape), dy(shape);
+  for (int j = 0; j < shape.y; ++j)
+    for (int i = 0; i < shape.x; ++i)
+    {
+      ctrl(i, j) = float(i) / float(shape.x);
+      dx(i, j) = 0.1f * std::sin(0.1f * float(i));
+      dy(i, j) = 0.1f * std::cos(0.13f * float(j));
+    }
+
+  for (const hmap::NoiseType type : {hmap::NoiseType::PERLIN,
+                                     hmap::NoiseType::PERLIN_BILLOW,
+                                     hmap::NoiseType::PERLIN_HALF,
+                                     hmap::NoiseType::SIMPLEX2,
+                                     hmap::NoiseType::VALUE,
+                                     hmap::NoiseType::VALUE_LINEAR})
+    for (int variant = 0; variant < 4; ++variant)
+    {
+      SCOPED_TRACE("type=" + std::to_string(int(type)) +
+                   " variant=" + std::to_string(variant));
+      const Array     *pc = variant >= 1 ? &ctrl : nullptr;
+      const Array     *px = variant >= 2 ? &dx : nullptr;
+      const Array     *py = variant >= 2 ? &dy : nullptr;
+      const glm::vec4  bbox = variant == 3 ? glm::vec4(-0.5f, 1.7f, 0.2f, 2.f)
+                                           : glm::vec4(0.f, 1.f, 0.f, 1.f);
+      const glm::ivec2 period = variant == 3 ? glm::ivec2(4, 4)
+                                             : glm::ivec2(0, 0);
+
+      const Array expected = opencl_noise_fbm(
+          type, shape, {6.f, 4.f}, 77u, 8, 0.7f, 0.5f, 2.f, pc, px, py, bbox, period);
+      const Array actual = hmap::gpu::noise_fbm(
+          type, shape, {6.f, 4.f}, 77u, 8, 0.7f, 0.5f, 2.f, pc, px, py, bbox, period);
+      expect_close(actual, expected, 1e-5f);
+    }
 }

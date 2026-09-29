@@ -14,6 +14,7 @@
 #include <mutex>
 #include <numeric>
 #include <stdexcept>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -96,10 +97,41 @@ double elapsed_ms(Clock::time_point start)
       .count();
 }
 
-void begin_operation()
+// Buffers handed out to the synchronous wrappers during the current
+// operation(s) on this thread. They are returned to the transient cache when
+// the owning OperationScope ends; every synchronous wrapper commits and waits
+// for its command buffer before returning, so the GPU no longer uses them.
+thread_local std::vector<id<MTLBuffer>> transient_buffers;
+thread_local int                        operation_depth = 0;
+
+void recycle_transient_buffer(id<MTLBuffer> buffer);
+
+/**
+ * Starts a synchronous Metal operation: resets the per-thread statistics and
+ * recycles the transient buffers acquired inside the scope on exit. Scopes may
+ * nest; each one only recycles what was acquired after it began.
+ */
+class OperationScope
 {
-  current_stats = {};
-}
+public:
+  OperationScope() : first_(transient_buffers.size())
+  {
+    current_stats = {};
+    ++operation_depth;
+  }
+  ~OperationScope()
+  {
+    for (std::size_t i = first_; i < transient_buffers.size(); ++i)
+      recycle_transient_buffer(transient_buffers[i]);
+    transient_buffers.resize(first_);
+    --operation_depth;
+  }
+  OperationScope(const OperationScope &) = delete;
+  OperationScope &operator=(const OperationScope &) = delete;
+
+private:
+  std::size_t first_;
+};
 
 struct GridParams
 {
@@ -411,58 +443,125 @@ void check_shape_2d(glm::ivec2 shape)
     throw std::invalid_argument("Metal kernels require a non-empty grid");
 }
 
+// Small cache of shared MTLBuffers for the synchronous wrappers. Reusing
+// buffers of the same size (e.g. a graph evaluated tile by tile) avoids a new
+// allocation plus first-touch page faults on every call, which dominated the
+// upload/readback cost at 2048^2 and above. Bounded by bytes and count.
+class TransientBufferCache
+{
+public:
+  id<MTLBuffer> acquire(std::size_t bytes)
+  {
+    std::lock_guard<std::mutex> lock(mutex_);
+    for (auto it = entries_.rbegin(); it != entries_.rend(); ++it)
+      if ([*it length] == bytes)
+      {
+        id<MTLBuffer> buffer = *it;
+        cached_bytes_ -= bytes;
+        entries_.erase(std::next(it).base());
+        return buffer;
+      }
+    return nil;
+  }
+
+  void release(id<MTLBuffer> buffer)
+  {
+    const std::size_t bytes = [buffer length];
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (capacity_ == 0)
+    {
+      // A fraction of the GPU working set, capped so an 8 GB machine keeps
+      // at most a few 4096^2 buffers around.
+      const std::uint64_t working_set =
+          [context().device recommendedMaxWorkingSetSize];
+      capacity_ = static_cast<std::size_t>(
+          std::min<std::uint64_t>(256ull << 20, working_set / 8));
+    }
+    if (bytes > capacity_) return;
+    entries_.push_back(buffer);
+    cached_bytes_ += bytes;
+    while (cached_bytes_ > capacity_ || entries_.size() > k_max_entries)
+    {
+      cached_bytes_ -= [entries_.front() length];
+      entries_.erase(entries_.begin());
+    }
+  }
+
+private:
+  static constexpr std::size_t k_max_entries = 24;
+  std::mutex                   mutex_;
+  std::vector<id<MTLBuffer>>   entries_; // most recently released last
+  std::size_t                  cached_bytes_ = 0;
+  std::size_t                  capacity_ = 0;
+};
+
+TransientBufferCache &transient_cache()
+{
+  static TransientBufferCache cache;
+  return cache;
+}
+
+void recycle_transient_buffer(id<MTLBuffer> buffer)
+{
+  if (buffer) transient_cache().release(buffer);
+}
+
+// Shared buffer for a synchronous wrapper: reused from the cache when one of
+// the same size is free, otherwise freshly allocated. Inside an
+// OperationScope the buffer returns to the cache when the scope ends.
+id<MTLBuffer> transient_buffer(std::size_t bytes, const char *what)
+{
+  const auto    allocation_start = Clock::now();
+  id<MTLBuffer> buffer = operation_depth > 0 ? transient_cache().acquire(bytes)
+                                             : nil;
+  if (buffer)
+  {
+    ++current_stats.buffer_reuses;
+    current_stats.bytes_reused += bytes;
+  }
+  else
+  {
+    buffer = [context().device newBufferWithLength:bytes
+                                           options:MTLResourceStorageModeShared];
+    if (!buffer)
+      throw std::runtime_error(std::string("Metal ") + what +
+                               " buffer allocation failed");
+    ++current_stats.buffer_allocations;
+    current_stats.bytes_allocated += bytes;
+  }
+  current_stats.allocation_ms += elapsed_ms(allocation_start);
+  current_stats.resident_bytes += bytes;
+  current_stats.peak_resident_bytes =
+      std::max(current_stats.peak_resident_bytes, current_stats.resident_bytes);
+  if (operation_depth > 0) transient_buffers.push_back(buffer);
+  return buffer;
+}
+
 id<MTLBuffer> input_buffer(const std::vector<float> &values)
 {
   if (values.empty()) throw std::invalid_argument("Metal cannot bind an empty array");
-  const auto allocation_start = Clock::now();
-  id<MTLBuffer> buffer = [context().device
-      newBufferWithLength:values.size() * sizeof(float)
-                 options:MTLResourceStorageModeShared];
-  if (!buffer) throw std::runtime_error("Metal input buffer allocation failed");
-  current_stats.allocation_ms += elapsed_ms(allocation_start);
+  const std::size_t bytes = values.size() * sizeof(float);
+  id<MTLBuffer>     buffer = transient_buffer(bytes, "input");
   const auto upload_start = Clock::now();
-  std::memcpy([buffer contents], values.data(), values.size() * sizeof(float));
+  std::memcpy([buffer contents], values.data(), bytes);
   current_stats.upload_ms += elapsed_ms(upload_start);
-  ++current_stats.buffer_allocations;
   ++current_stats.upload_count;
-  current_stats.upload_bytes += values.size() * sizeof(float);
-  current_stats.bytes_allocated += values.size() * sizeof(float);
-  current_stats.peak_resident_bytes = std::max(
-      current_stats.peak_resident_bytes, current_stats.bytes_allocated);
+  current_stats.upload_bytes += bytes;
   return buffer;
 }
 
 id<MTLBuffer> zero_buffer(size_t count)
 {
-  const auto allocation_start = Clock::now();
-  id<MTLBuffer> buffer = [context().device
-      newBufferWithLength:count * sizeof(float)
-                  options:MTLResourceStorageModeShared];
-  if (!buffer) throw std::runtime_error("Metal output buffer allocation failed");
+  id<MTLBuffer> buffer = transient_buffer(count * sizeof(float), "output");
   std::memset([buffer contents], 0, count * sizeof(float));
-  current_stats.allocation_ms += elapsed_ms(allocation_start);
-  ++current_stats.buffer_allocations;
-  current_stats.bytes_allocated += count * sizeof(float);
-  current_stats.peak_resident_bytes = std::max(
-      current_stats.peak_resident_bytes, current_stats.bytes_allocated);
   return buffer;
 }
 
 // Output buffer for kernels that overwrite every element; skips the memset
-// that zero_buffer pays for (tens of ms at 4096^2).
+// that zero_buffer pays for.
 id<MTLBuffer> output_buffer(size_t count)
 {
-  const auto allocation_start = Clock::now();
-  id<MTLBuffer> buffer = [context().device
-      newBufferWithLength:count * sizeof(float)
-                  options:MTLResourceStorageModeShared];
-  if (!buffer) throw std::runtime_error("Metal output buffer allocation failed");
-  current_stats.allocation_ms += elapsed_ms(allocation_start);
-  ++current_stats.buffer_allocations;
-  current_stats.bytes_allocated += count * sizeof(float);
-  current_stats.peak_resident_bytes = std::max(
-      current_stats.peak_resident_bytes, current_stats.bytes_allocated);
-  return buffer;
+  return transient_buffer(count * sizeof(float), "output");
 }
 
 struct DispatchShape
@@ -639,6 +738,23 @@ void set_bytes(id<MTLComputeCommandEncoder> encoder,
                NSUInteger index)
 {
   [encoder setBytes:bytes length:size atIndex:index];
+}
+
+// Normalized 1D Gaussian used by gpu::smooth_cpulse (OpenCL) and the CPU
+// smooth_cpulse (sigma ~ ir / 3), computed identically on the host.
+std::vector<float> smooth_cpulse_weights(int ir)
+{
+  const int          nk = 2 * ir + 1;
+  std::vector<float> weights(nk);
+  float              weight_sum = 0.f;
+  for (int i = 0; i < nk; ++i)
+  {
+    const float d = std::abs(static_cast<float>(i - ir)) / static_cast<float>(ir);
+    weights[i] = std::exp(-0.5f * d * d * 9.f);
+    weight_sum += weights[i];
+  }
+  for (float &w : weights) w /= weight_sum;
+  return weights;
 }
 
 // Bind a small read-only float table. setBytes is limited to 4 KB, so larger
@@ -1207,7 +1323,7 @@ bool supports_noise_fbm(NoiseType noise_type)
 
 Array gradient_norm(const Array &array)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   check_shape_2d(array.shape);
 
@@ -1237,7 +1353,7 @@ Array smooth_extrema(const Array &array1,
                      float        k,
                      const char  *kernel_name)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   check_shape_2d(array1.shape);
   check_shape(array2, array1.shape, "array2");
@@ -1277,7 +1393,7 @@ Array minimum_smooth(const Array &array1, const Array &array2, float k)
 
 Array morphological_gradient(const Array &array, int ir)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   check_shape_2d(array.shape);
   if (ir < 0)
@@ -1317,7 +1433,7 @@ Array local_extrema(const Array &array,
                     MinMaxKernel kernel_type,
                     bool         is_max)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   check_shape_2d(array.shape);
   if (ir <= 0) return array;
@@ -1404,7 +1520,7 @@ Array noise(NoiseType     noise_type,
             glm::vec4     bbox,
             glm::ivec2    period)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   check_shape_2d(shape);
   if (!supports_noise(noise_type))
@@ -1463,26 +1579,61 @@ Array noise_fbm(NoiseType     noise_type,
                 glm::vec4     bbox,
                 glm::ivec2    period)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
-  DeviceSession session;
-  auto ctrl = p_ctrl_param ? session.upload(*p_ctrl_param) : DeviceArray{};
-  auto noise_x = p_noise_x ? session.upload(*p_noise_x) : DeviceArray{};
-  auto noise_y = p_noise_y ? session.upload(*p_noise_y) : DeviceArray{};
-  auto result = session.noise_fbm(noise_type,
-                                  shape,
-                                  kw,
-                                  seed,
-                                  octaves,
-                                  weight,
-                                  persistence,
-                                  lacunarity,
-                                  p_ctrl_param ? &ctrl : nullptr,
-                                  p_noise_x ? &noise_x : nullptr,
-                                  p_noise_y ? &noise_y : nullptr,
-                                  bbox,
-                                  period);
-  return session.download(result);
+  check_shape_2d(shape);
+  if (!supports_noise_fbm(noise_type))
+    throw std::invalid_argument("Metal FBM noise type is unsupported");
+  if (octaves < 0)
+    throw std::invalid_argument("Metal FBM octaves must be non-negative");
+  if (p_ctrl_param) check_shape(*p_ctrl_param, shape, "ctrl_param");
+  if (p_noise_x) check_shape(*p_noise_x, shape, "noise_x");
+  if (p_noise_y) check_shape(*p_noise_y, shape, "noise_y");
+
+  // Same kernel as DeviceSession::noise_fbm, on the cached synchronous
+  // buffers instead of a session (no host shadow copies of the inputs).
+  const std::vector<float> dummy(1, 0.f);
+  Array                    output(shape);
+  id<MTLBuffer> result = output_buffer(output.vector.size());
+  id<MTLBuffer> ctrl = input_buffer(p_ctrl_param ? p_ctrl_param->vector : dummy);
+  id<MTLBuffer> noise_x = input_buffer(p_noise_x ? p_noise_x->vector : dummy);
+  id<MTLBuffer> noise_y = input_buffer(p_noise_y ? p_noise_y->vector : dummy);
+  NoiseFbmParams params{shape.x,
+                        shape.y,
+                        static_cast<int>(noise_type),
+                        kw.x,
+                        kw.y,
+                        seed,
+                        octaves,
+                        weight,
+                        persistence,
+                        lacunarity,
+                        p_ctrl_param ? 1 : 0,
+                        p_noise_x ? 1 : 0,
+                        p_noise_y ? 1 : 0,
+                        period.x,
+                        period.y,
+                        bbox.x,
+                        bbox.y,
+                        bbox.z,
+                        bbox.w};
+
+  id<MTLComputePipelineState> pipeline = context().pipeline("noise_fbm");
+  id<MTLCommandBuffer>        command_buffer = make_command_buffer();
+  const auto                  encoding_start = Clock::now();
+  id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
+  [encoder setComputePipelineState:pipeline];
+  [encoder setBuffer:result offset:0 atIndex:0];
+  [encoder setBuffer:ctrl offset:0 atIndex:1];
+  [encoder setBuffer:noise_x offset:0 atIndex:2];
+  [encoder setBuffer:noise_y offset:0 atIndex:3];
+  set_bytes(encoder, &params, sizeof(params), 4);
+  dispatch(encoder, pipeline, shape.x, shape.y, "noise_fbm");
+  [encoder endEncoding];
+  record_encoding(encoding_start);
+  wait_for_completion(command_buffer);
+  read_buffer(result, output.vector);
+  return output;
 }
 
 Array gabor_wave_fbm(glm::ivec2        shape,
@@ -1500,7 +1651,7 @@ Array gabor_wave_fbm(glm::ivec2        shape,
                      const Array      *p_angle,
                      glm::vec4         bbox)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   DeviceSession session;
   auto ctrl = p_ctrl_param ? session.upload(*p_ctrl_param) : DeviceArray{};
@@ -1526,11 +1677,37 @@ Array gabor_wave_fbm(glm::ivec2        shape,
 
 Array smooth_cpulse(const Array &array, int ir)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
-  DeviceSession session;
-  auto result = session.smooth_cpulse(session.upload(array), ir);
-  return session.download(result);
+  check_shape_2d(array.shape);
+  if (ir <= 0) return array;
+
+  const std::vector<float> weights = smooth_cpulse_weights(ir);
+  Array                    output(array.shape);
+  id<MTLBuffer>            input = input_buffer(array.vector);
+  id<MTLBuffer>            temp = output_buffer(output.vector.size());
+  id<MTLComputePipelineState> pipeline = context().pipeline("smooth_cpulse");
+  id<MTLCommandBuffer>        command_buffer = make_command_buffer();
+  const auto                  encoding_start = Clock::now();
+
+  // x pass into temp, then y pass back into the (already consumed) input.
+  for (int pass = 0; pass < 2; ++pass)
+  {
+    SmoothCpulseParams params{array.shape.x, array.shape.y, ir, pass};
+    id<MTLComputeCommandEncoder> encoder = compute_encoder(command_buffer);
+    [encoder setComputePipelineState:pipeline];
+    [encoder setBuffer:(pass == 0 ? input : temp) offset:0 atIndex:0];
+    [encoder setBuffer:(pass == 0 ? temp : input) offset:0 atIndex:1];
+    set_bytes(encoder, &params, sizeof(params), 2);
+    set_float_table(encoder, weights, 3);
+    dispatch(encoder, pipeline, params.nx, params.ny, "smooth_cpulse");
+    [encoder endEncoding];
+  }
+
+  record_encoding(encoding_start);
+  wait_for_completion(command_buffer);
+  read_buffer(input, output.vector);
+  return output;
 }
 
 Array spectral_equalizer(const Array              &array,
@@ -1538,7 +1715,7 @@ Array spectral_equalizer(const Array              &array,
                          int                       ir_min,
                          int                       ir_max)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   DeviceSession session;
   auto result = session.spectral_equalizer(session.upload(array),
@@ -1556,7 +1733,7 @@ Array advection_warp(const Array &z,
                      float        value_persistence,
                      const Array *p_mask)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -1598,7 +1775,7 @@ Array advection_warp(const Array &z,
 
 void thermal(Array &z, const Array &talus, int iterations)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -1662,7 +1839,7 @@ void hydraulic_vpipes(Array &z,
                       Array *p_vel_u,
                       Array *p_vel_v)
 {
-  begin_operation();
+  const OperationScope operation_scope;
   require_ready();
   const glm::ivec2 shape = z.shape;
   check_shape_2d(shape);
@@ -2303,17 +2480,7 @@ DeviceArray DeviceSession::smooth_cpulse(DeviceArray array, int ir)
   const glm::ivec2 shape = array.state_->shape;
   const StorageMode mode = array.state_->storage;
   const std::size_t bytes = array.state_->byte_size;
-  // Same normalized kernel as gpu::smooth_cpulse (OpenCL) and the CPU path.
-  const int          nk = 2 * ir + 1;
-  std::vector<float> weights(nk);
-  float              weight_sum = 0.f;
-  for (int i = 0; i < nk; ++i)
-  {
-    const float d = std::abs(static_cast<float>(i - ir)) / static_cast<float>(ir);
-    weights[i] = std::exp(-0.5f * d * d * 9.f);
-    weight_sum += weights[i];
-  }
-  for (float &w : weights) w /= weight_sum;
+  const std::vector<float> weights = smooth_cpulse_weights(ir);
 
   id<MTLBuffer> first = acquire_session_buffer(state_, bytes, mode);
   id<MTLBuffer> second = acquire_session_buffer(state_, bytes, mode);

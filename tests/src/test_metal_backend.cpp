@@ -238,6 +238,49 @@ Array opencl_thermal_kernel(const std::string &kernel,
   return z;
 }
 
+// Direct OpenCL noise_fbm (the public gpu::noise_fbm routes to Metal).
+Array opencl_noise_fbm(hmap::NoiseType noise_type,
+                       glm::ivec2      shape,
+                       glm::vec2       kw,
+                       std::uint32_t   seed,
+                       int             octaves,
+                       float           weight,
+                       float           persistence,
+                       float           lacunarity,
+                       const Array    *p_ctrl_param = nullptr,
+                       const Array    *p_noise_x = nullptr,
+                       const Array    *p_noise_y = nullptr,
+                       glm::vec4       bbox = {0.f, 1.f, 0.f, 1.f},
+                       glm::ivec2      period = {0, 0})
+{
+  Array array(shape);
+  auto  run = clwrapper::Run("noise_fbm");
+  run.bind_buffer<float>("array", array.vector);
+  hmap::gpu::helper_bind_optional_buffer(run, "ctrl_param", p_ctrl_param);
+  hmap::gpu::helper_bind_optional_buffer(run, "noise_x", p_noise_x);
+  hmap::gpu::helper_bind_optional_buffer(run, "noise_y", p_noise_y);
+  run.bind_arguments(shape.x,
+                     shape.y,
+                     static_cast<int>(noise_type),
+                     kw.x,
+                     kw.y,
+                     seed,
+                     octaves,
+                     weight,
+                     persistence,
+                     lacunarity,
+                     p_ctrl_param ? 1 : 0,
+                     p_noise_x ? 1 : 0,
+                     p_noise_y ? 1 : 0,
+                     period.x,
+                     period.y,
+                     bbox);
+  run.write_buffer("array");
+  run.execute({shape.x, shape.y});
+  run.read_buffer("array");
+  return array;
+}
+
 bool opencl_available()
 {
   static const bool available = hmap::gpu::init_opencl();
@@ -740,14 +783,14 @@ TEST_F(MetalBackend, ResidentNoiseFbmAndNormalizationMatchOpenCL)
   const glm::ivec2 shape = {37, 29};
   const glm::vec2 kw = {5.f, 3.f};
   const std::uint32_t seed = 1234u;
-  Array expected = hmap::gpu::noise_fbm(hmap::NoiseType::SIMPLEX2,
-                                        shape,
-                                        kw,
-                                        seed,
-                                        8,
-                                        0.7f,
-                                        0.5f,
-                                        2.f);
+  Array expected = opencl_noise_fbm(hmap::NoiseType::SIMPLEX2,
+                                    shape,
+                                    kw,
+                                    seed,
+                                    8,
+                                    0.7f,
+                                    0.5f,
+                                    2.f);
   hmap::remap(expected, 0.f, 1.f);
 
   hmap::gpu::metal::DeviceSession session;
